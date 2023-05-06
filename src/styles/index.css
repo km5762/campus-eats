@@ -1,0 +1,21 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: grid;
+  grid-template-rows: 3fr 15fr 1fr;
+}
+
+nav {
+  background-color: tan;
+}
+
+section {
+  background-color: red;
+}
+
+footer {
+  background-color: green;
+}
