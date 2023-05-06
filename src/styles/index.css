@@ -43,7 +43,7 @@ body {
   font-style: italic;
   font-weight: 400;
   color: #ffff;
-  font-size: max(1em, 2vw);
+  font-size: min(2.125rem, 5vw);
   margin-bottom: 3em;
 }
 
