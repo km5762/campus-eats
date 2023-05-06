@@ -3,7 +3,7 @@ const pages = ["index", "settings"];
 
 module.exports = {
   entry: pages.reduce((config, page) => {
-    config[page] = `./src/${page}.ts`;
+    config[page] = `./src/scripts/${page}.ts`;
     return config;
   }, {}),
   module: {
