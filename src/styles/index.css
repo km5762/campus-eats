@@ -75,7 +75,7 @@ button[type="submit"] {
 }
 
 input[type="search"] {
-  width: min(40em, 40vw);
+  width: 50vw;
   border: none;
   background: transparent;
   margin: 0;
