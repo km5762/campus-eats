@@ -41,7 +41,7 @@ header nav {
 }
 
 header h2 {
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   margin-right: 1em;
 }
 
@@ -54,7 +54,7 @@ header button {
   border-style: none;
   border-radius: 15px;
   padding: 5px 7.5px;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -70,11 +70,6 @@ section {
     font-size: 0.45rem;
   }
 
-  header picture img {
-    object-fit: contain;
-    width: 0.9em;
-  }
-
   header button {
     font-size: 0.45rem;
     max-width: 150px;
@@ -82,6 +77,13 @@ section {
 
   header {
     padding-left: 7vw;
+  }
+}
+
+@media (max-width: 400px) {
+  header picture img {
+    object-fit: contain;
+    width: 0.9em;
   }
 }
 
