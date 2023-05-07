@@ -29,7 +29,7 @@ header picture {
 
 header img {
   object-fit: cover;
-  height: 1.25em;
+  height: 1.5em;
   cursor: pointer;
 }
 
@@ -68,6 +68,11 @@ section {
 @media (max-width: 650px) {
   header h2 {
     font-size: 0.45rem;
+  }
+
+  header picture img {
+    object-fit: contain;
+    width: 0.9em;
   }
 
   header button {
