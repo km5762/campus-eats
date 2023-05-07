@@ -1,5 +1,5 @@
 const path = require("path");
-const pages = ["index", "settings"];
+const pages = ["index", "school-page"];
 
 module.exports = {
   entry: pages.reduce((config, page) => {

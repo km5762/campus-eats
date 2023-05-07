@@ -1,0 +1,17 @@
+body,
+html {
+  height: 100%;
+}
+
+body {
+  display: grid;
+  grid-template-rows: 0.1fr 1fr;
+}
+
+header {
+  background-color: red;
+}
+
+section {
+  background-color: blue;
+}
