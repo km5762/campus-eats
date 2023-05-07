@@ -25,12 +25,12 @@ header {
 header picture {
   display: flex;
   align-items: center;
-  cursor: pointer;
 }
 
 header img {
   object-fit: cover;
-  height: 1em;
+  height: 1.25em;
+  cursor: pointer;
 }
 
 header nav {
@@ -41,7 +41,7 @@ header nav {
 }
 
 header h2 {
-  font-size: 0.45rem;
+  font-size: 0.65rem;
   margin-right: 1em;
 }
 
@@ -54,7 +54,7 @@ header button {
   border-style: none;
   border-radius: 15px;
   padding: 5px 7.5px;
-  font-size: 0.45rem;
+  font-size: 0.65rem;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
