@@ -90,3 +90,13 @@ input[type="search"] {
 input[type="search"]:focus {
   outline: none;
 }
+
+input[type="search"]::-webkit-search-cancel-button {
+  color: red;
+}
+
+@media only screen and (max-width: 600px) {
+  form {
+    padding: 2.5px 10px;
+  }
+}
