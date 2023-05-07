@@ -3,15 +3,92 @@ html {
   height: 100%;
 }
 
+:root {
+  font-family: "Raleway";
+  font-style: italic;
+  font-size: 1.5rem;
+}
+
 body {
   display: grid;
-  grid-template-rows: 0.1fr 1fr;
+  grid-template-rows: 0.065fr 1fr;
 }
 
 header {
-  background-color: red;
+  background-color: white;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  padding-left: 10vw;
+}
+
+header picture {
+  display: flex;
+  align-items: center;
+}
+
+header img {
+  object-fit: cover;
+  height: 1em;
+}
+
+header nav {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header h2 {
+  font-size: 0.45rem;
+  margin-right: 1em;
+}
+
+header button {
+  max-width: 300px;
+  font-family: "Raleway";
+  font-style: italic;
+  background-color: black;
+  color: white;
+  border-style: none;
+  border-radius: 15px;
+  padding: 5px 7.5px;
+  font-size: 0.45rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 section {
   background-color: blue;
+}
+
+@media (max-width: 650px) {
+  header h2 {
+    font-size: 0.45rem;
+  }
+
+  header button {
+    font-size: 0.45rem;
+    max-width: 150px;
+  }
+
+  header {
+    padding-left: 7vw;
+  }
+}
+
+@media (max-width: 300px) {
+  header h2 {
+    font-size: 0.35rem;
+  }
+
+  header button {
+    font-size: 0.35rem;
+  }
+
+  header picture img {
+    object-fit: contain;
+    width: 0.7em;
+  }
 }
