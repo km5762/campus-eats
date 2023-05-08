@@ -24,7 +24,8 @@ header {
   background-color: white;
   display: flex;
   align-items: center;
-  padding-left: 10vw;
+  padding-left: 7vw;
+  padding-right: 5vw;
 }
 
 header picture {
@@ -38,7 +39,7 @@ header img {
   cursor: pointer;
 }
 
-header nav {
+header .places-at {
   flex: 1;
   display: flex;
   align-items: center;
@@ -66,6 +67,34 @@ header button {
   cursor: pointer;
 }
 
+.login-signup {
+  display: flex;
+  justify-content: flex-end;
+  gap: min(1.5em, 2vw);
+}
+
+.login {
+  border-style: none;
+  background-color: transparent;
+  color: black;
+  font-family: "Raleway";
+  font-size: 0.75rem;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.signup {
+  color: white;
+  font-family: "Raleway";
+  font-size: 0.75rem;
+  font-style: italic;
+  border-style: none;
+  background-color: #6184d8;
+  border-radius: 55px;
+  padding: 5px 7.5px;
+  cursor: pointer;
+}
+
 section {
   background-color: #f5f5f5;
   padding: 3em;
@@ -87,23 +116,26 @@ section {
   justify-content: space-between;
 }
 
+@media (max-width: 820px) {
+  header button {
+    max-width: 150px;
+  }
+}
+
 @media (max-width: 650px) {
   header h2 {
     font-size: 0.45rem;
   }
 
-  header button {
+  header button,
+  .login,
+  .signup {
     font-size: 0.45rem;
-    max-width: 150px;
   }
 
   header picture img {
     object-fit: contain;
     height: 1em;
-  }
-
-  header {
-    padding-left: 7vw;
   }
 
   .location {
@@ -119,6 +151,19 @@ section {
   }
 }
 
+@media (max-width: 450px) {
+  header h2 {
+    display: none;
+  }
+}
+
+@media (max-width: 415px) {
+  header {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+}
+
 @media (max-width: 300px) {
   header h2 {
     font-size: 0.35rem;
@@ -126,6 +171,7 @@ section {
 
   header button {
     font-size: 0.35rem;
+    max-width: 100px;
   }
 
   header picture img {
