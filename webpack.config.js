@@ -4,6 +4,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   mode: "development",
+  devtool: "source-map",
   entry: pages.reduce((config, page) => {
     config[page] = `./src/${page}.tsx`;
     return config;
