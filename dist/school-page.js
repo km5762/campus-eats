@@ -9,13 +9,13 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/school-page.ts":
-/*!****************************!*\
-  !*** ./src/school-page.ts ***!
-  \****************************/
+/***/ "./src/school-page.tsx":
+/*!*****************************!*\
+  !*** ./src/school-page.tsx ***!
+  \*****************************/
 /***/ (() => {
 
-eval("\n\n//# sourceURL=webpack://campus-eats/./src/school-page.ts?");
+eval("\n\n//# sourceURL=webpack://campus-eats/./src/school-page.tsx?");
 
 /***/ })
 
@@ -26,7 +26,7 @@ eval("\n\n//# sourceURL=webpack://campus-eats/./src/school-page.ts?");
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
 /******/ 	var __webpack_exports__ = {};
-/******/ 	__webpack_modules__["./src/school-page.ts"]();
+/******/ 	__webpack_modules__["./src/school-page.tsx"]();
 /******/ 	
 /******/ })()
 ;

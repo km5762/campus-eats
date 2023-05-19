@@ -5,7 +5,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 module.exports = {
   mode: "development",
   entry: pages.reduce((config, page) => {
-    config[page] = `./src/${page}.ts`;
+    config[page] = `./src/${page}.tsx`;
     return config;
   }, {}),
   module: {
@@ -18,7 +18,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
+    extensions: [".tsx", ".ts", ".js", ".jsx"],
   },
   output: {
     filename: "[name].js",
@@ -40,9 +40,4 @@ module.exports = {
       ],
     }),
   ],
-  optimization: {
-    splitChunks: {
-      chunks: "all",
-    },
-  },
 };
