@@ -9,12 +9,13 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 router.get("/search", async (req, res) => {
   const search = decodeURIComponent(req.query.query);
+  console.log(search);
 
   try {
     const { data, error } = await supabase
       .from("campus")
       .select()
-      .textSearch("name", search, { type: "websearch" });
+      .textSearch("name", search, { type: "websearch", config: "english" });
 
     if (error) {
       throw error;

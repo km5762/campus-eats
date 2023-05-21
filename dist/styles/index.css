@@ -113,7 +113,6 @@ button[type="submit"] {
 input[type="search"] {
   width: 37.5vw;
   border: none;
-  background: transparent;
   margin: 0;
   padding: 7px 8px;
   font-size: min(1.4rem, 2.25vw);
@@ -121,15 +120,11 @@ input[type="search"] {
   font-style: italic;
   color: inherit;
   border: 1px solid transparent;
-  border-radius: inherit;
+  border-radius: 10px;
 }
 
 input[type="search"]:focus {
   outline: none;
-}
-
-input[type="search"]::-webkit-search-cancel-button {
-  color: red;
 }
 
 @media only screen and (max-width: 600px) {

@@ -1,4 +1,4 @@
-async function fetchSearch(query: string): Promise<JSON> {
+export default async function fetchSearch(query: string) {
   try {
     const response = await fetch(
       `/campus/search?query=${encodeURIComponent(query)}`
@@ -9,8 +9,8 @@ async function fetchSearch(query: string): Promise<JSON> {
       throw new Error(`HTTP error: ${response.status}`);
     }
 
-    const json = await response.json();
-    return json;
+    const suggestions = await response.text();
+    return JSON.parse(suggestions);
   } catch (error) {
     console.error("Error occurred during fetchSearch:", error);
     throw error;
