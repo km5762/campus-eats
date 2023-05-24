@@ -9,13 +9,18 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 router.get("/search", async (req, res) => {
   const search = decodeURIComponent(req.query.query);
-  console.log(search);
+  const regexPattern = /(\b\w+&\w+\b|\b\w+\b)(?!$)/g;
+  const replacementString = "$1 &";
+  let query = search.replace(regexPattern, replacementString).trim();
+  query += query === "" ? "" : ":*";
 
+  console.log(query);
   try {
     const { data, error } = await supabase
       .from("campus")
       .select()
-      .textSearch("name", search, { type: "websearch", config: "english" });
+      .textSearch("name", query, { config: "english" });
+    console.log(data);
 
     if (error) {
       throw error;
