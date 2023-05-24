@@ -33430,6 +33430,7 @@ function SearchBar() {
     var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialState), suggestions = _a[0], setSuggestions = _a[1];
     var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""), searchValue = _b[0], setSearchValue = _b[1];
     var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("10px"), borderRadius = _c[0], setBorderRadius = _c[1];
+    var _d = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("0px"), paddingBottom = _d[0], setPaddingBottom = _d[1];
     function handleInput(event) {
         return __awaiter(this, void 0, void 0, function () {
             var currentSearch, result;
@@ -33444,9 +33445,11 @@ function SearchBar() {
                         setSuggestions(result);
                         if (result.length > 0) {
                             setBorderRadius("10px 10px 0px 0px");
+                            setPaddingBottom("10px");
                         }
                         else {
                             setBorderRadius("10px");
+                            setPaddingBottom("0px");
                         }
                         return [2 /*return*/];
                 }
@@ -33454,13 +33457,13 @@ function SearchBar() {
         });
     }
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "search-container" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", { style: { borderRadius: borderRadius }, type: "search", onInput: handleInput }),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Suggestions, { suggestions: suggestions })));
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", { style: { borderRadius: borderRadius }, type: "search", onInput: handleInput, placeholder: "Find my school!" }),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Suggestions, { suggestions: suggestions, paddingBottom: paddingBottom })));
 }
 function Suggestions(_a) {
-    var suggestions = _a.suggestions;
+    var suggestions = _a.suggestions, paddingBottom = _a.paddingBottom;
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "suggestions" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, suggestions.map(function (suggestion) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null,
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", { style: { paddingBottom: paddingBottom } }, suggestions.map(function (suggestion) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null,
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { key: suggestion.id }, suggestion.name))); }))));
 }
 
