@@ -9,17 +9,17 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 router.get("/search", async (req, res) => {
   const search = decodeURIComponent(req.query.query);
-  const regexPattern = /(\b\w+&\w+\b|\b\w+\b)(?!$)/g;
-  const replacementString = "$1 &";
-  let query = search.replace(regexPattern, replacementString).trim();
-  query += query === "" ? "" : ":*";
+  // const regexPattern = /(\b\w+&\w+\b|\b\w+\b)(?!$)/g;
+  // const replacementString = "$1 &";
+  // let query = search.replace(regexPattern, replacementString).trim();
+  // query += query === "" ? "" : ":*";
 
-  console.log(query);
+  console.log(search);
   try {
     const { data, error } = await supabase
       .from("campus")
       .select()
-      .textSearch("name", query, { config: "english" });
+      .ilike("name", `%${search}%`);
     console.log(data);
 
     if (error) {
