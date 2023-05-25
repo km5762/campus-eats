@@ -20,10 +20,16 @@ export default function SearchBar() {
   async function handleInput(event: any) {
     const currentSearch = event.target.value;
     setSearchValue(currentSearch);
-    let result = await fetchSearch(currentSearch);
-    if (result.length > 6) {
-      result = result.slice(0, 5);
+    let result = [];
+
+    if (currentSearch !== "") {
+      result = await fetchSearch(currentSearch);
+
+      if (result.length > 5) {
+        result = result.slice(0, 5);
+      }
     }
+
     setSuggestions(result);
 
     if (result.length > 0) {
@@ -39,6 +45,7 @@ export default function SearchBar() {
         style={{ borderRadius: borderRadius }}
         type="search"
         onInput={handleInput}
+        value={searchValue}
         placeholder="Find my school!"
       />
       <Suggestions suggestions={suggestions} />
@@ -51,9 +58,11 @@ function Suggestions({ suggestions }: SuggestionsProps) {
     <div className="suggestions">
       <ul>
         {suggestions.map((suggestion) => (
-          <li>
-            <img src="/images/magnify.svg" />
-            <a key={suggestion.id}>{suggestion.name}</a>
+          <li key={suggestion.id}>
+            <a href={`/${encodeURIComponent(suggestion.name)}/locations`}>
+              <img src="/images/magnify.svg" alt="Magnify" />
+              {suggestion.name}
+            </a>
           </li>
         ))}
       </ul>

@@ -8,7 +8,7 @@ const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 router.get("/search", async (req, res) => {
-  const search = decodeURIComponent(req.query.query);
+  const search = req.query.query;
   // const regexPattern = /(\b\w+&\w+\b|\b\w+\b)(?!$)/g;
   // const replacementString = "$1 &";
   // let query = search.replace(regexPattern, replacementString).trim();
@@ -20,7 +20,6 @@ router.get("/search", async (req, res) => {
       .from("campus")
       .select()
       .ilike("name", `%${search}%`);
-    console.log(data);
 
     if (error) {
       throw error;
