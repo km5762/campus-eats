@@ -2,6 +2,7 @@ const { createClient } = require("@supabase/supabase-js");
 const express = require("express");
 const router = express.Router();
 require("dotenv").config();
+const path = require("path");
 
 const supabaseUrl = "https://praaunntraqzwomikleq.supabase.co";
 const supabaseKey = process.env.SUPABASE_KEY;
@@ -29,6 +30,10 @@ router.get("/search", async (req, res) => {
     console.error("Error:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
+});
+
+router.get("/:id/locations", (req, res) => {
+  res.sendFile(path.join(__dirname, "../", "dist", "school-page.html"));
 });
 
 module.exports = router;

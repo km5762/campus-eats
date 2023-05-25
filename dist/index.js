@@ -33468,7 +33468,7 @@ function Suggestions(_a) {
     var suggestions = _a.suggestions;
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "suggestions" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, suggestions.map(function (suggestion) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", { key: suggestion.id },
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { href: "/".concat(encodeURIComponent(suggestion.name), "/locations") },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { href: "/campus/".concat(suggestion.id, "/locations") },
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", { src: "/images/magnify.svg", alt: "Magnify" }),
                 suggestion.name))); }))));
 }
