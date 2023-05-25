@@ -33430,7 +33430,6 @@ function SearchBar() {
     var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialState), suggestions = _a[0], setSuggestions = _a[1];
     var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""), searchValue = _b[0], setSearchValue = _b[1];
     var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("10px"), borderRadius = _c[0], setBorderRadius = _c[1];
-    var _d = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("0px"), paddingBottom = _d[0], setPaddingBottom = _d[1];
     function handleInput(event) {
         return __awaiter(this, void 0, void 0, function () {
             var currentSearch, result;
@@ -33442,28 +33441,30 @@ function SearchBar() {
                         return [4 /*yield*/, (0,_services_api__WEBPACK_IMPORTED_MODULE_1__["default"])(currentSearch)];
                     case 1:
                         result = _a.sent();
+                        if (result.length > 6) {
+                            result = result.slice(0, 5);
+                        }
                         setSuggestions(result);
                         if (result.length > 0) {
                             setBorderRadius("10px 10px 0px 0px");
-                            setPaddingBottom("10px");
                         }
                         else {
                             setBorderRadius("10px");
-                            setPaddingBottom("0px");
                         }
                         return [2 /*return*/];
                 }
             });
         });
     }
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "search-container" },
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", { style: { borderRadius: borderRadius }, type: "search", onInput: handleInput, placeholder: "Find my school!" }),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Suggestions, { suggestions: suggestions, paddingBottom: paddingBottom })));
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Suggestions, { suggestions: suggestions })));
 }
 function Suggestions(_a) {
-    var suggestions = _a.suggestions, paddingBottom = _a.paddingBottom;
+    var suggestions = _a.suggestions;
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "suggestions" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", { style: { paddingBottom: paddingBottom } }, suggestions.map(function (suggestion) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null,
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, suggestions.map(function (suggestion) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null,
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", { src: "/images/magnify.svg" }),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { key: suggestion.id }, suggestion.name))); }))));
 }
 

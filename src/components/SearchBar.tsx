@@ -16,45 +16,43 @@ export default function SearchBar() {
   const [suggestions, setSuggestions] = useState(initialState);
   const [searchValue, setSearchValue] = useState("");
   const [borderRadius, setBorderRadius] = useState("10px");
-  const [paddingBottom, setPaddingBottom] = useState("0px");
 
   async function handleInput(event: any) {
     const currentSearch = event.target.value;
     setSearchValue(currentSearch);
-    const result = await fetchSearch(currentSearch);
+    let result = await fetchSearch(currentSearch);
+    if (result.length > 6) {
+      result = result.slice(0, 5);
+    }
     setSuggestions(result);
 
     if (result.length > 0) {
       setBorderRadius("10px 10px 0px 0px");
-      setPaddingBottom("10px");
     } else {
       setBorderRadius("10px");
-      setPaddingBottom("0px");
     }
   }
 
   return (
-    <div className="search-container">
+    <>
       <input
         style={{ borderRadius: borderRadius }}
         type="search"
         onInput={handleInput}
         placeholder="Find my school!"
       />
-      <Suggestions suggestions={suggestions} paddingBottom={paddingBottom} />
-    </div>
+      <Suggestions suggestions={suggestions} />
+    </>
   );
 }
 
-function Suggestions({
-  suggestions,
-  paddingBottom,
-}: SuggestionsProps & { paddingBottom: string }) {
+function Suggestions({ suggestions }: SuggestionsProps) {
   return (
     <div className="suggestions">
-      <ul style={{ paddingBottom: paddingBottom }}>
+      <ul>
         {suggestions.map((suggestion) => (
           <li>
+            <img src="/images/magnify.svg" />
             <a key={suggestion.id}>{suggestion.name}</a>
           </li>
         ))}

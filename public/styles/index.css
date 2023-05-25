@@ -29,8 +29,6 @@ body {
 
 .container {
   height: 100%;
-  display: grid;
-  grid-template-rows: 16vh 90vh;
 }
 
 .login-signup {
@@ -84,16 +82,8 @@ body {
     0px 18px 23px rgba(0, 0, 0, 0.1);
 }
 
-form {
-  display: flex;
-  justify-content: space-between;
-  background: #f5f5f5;
-  border-radius: 10px;
-  padding: 5px 20px;
-  margin-bottom: 15em;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+.search-container {
+  max-width: min-content;
 }
 
 button[type="submit"] {
@@ -114,13 +104,16 @@ input[type="search"] {
   width: 37.5vw;
   border: none;
   margin: 0;
-  padding: 7px 8px;
+  padding: 10px;
   font-size: min(1.4rem, 2.25vw);
   font-family: "Raleway";
-  font-style: italic;
   color: inherit;
   border: 1px solid transparent;
   border-radius: 10px;
+}
+
+input[type="search"]::placeholder {
+  font-style: italic;
 }
 
 input[type="search"]:focus {
@@ -131,13 +124,22 @@ ul {
   background-color: #f5f5f5;
   border-radius: 0px 0px 10px 10px;
   font-family: "Raleway";
+  overflow: hidden;
 }
 
 ul li {
-  padding: 10px;
+  font-size: min(1.2rem, 2.2vw);
+  padding: 15px;
   display: flex;
   align-items: center;
+  cursor: default;
 }
+
+ul img {
+  max-height: 23px;
+  margin-right: 10px;
+}
+
 ul li:hover {
   background-color: darkgray;
 }
@@ -145,5 +147,22 @@ ul li:hover {
 @media only screen and (max-width: 600px) {
   form {
     padding: 2.5px 10px;
+  }
+
+  input[type="search"] {
+    width: 50vw;
+    padding: 5px;
+  }
+
+  ul li {
+    font-size: min(1.2rem, 2.2vw);
+    padding: 5px;
+    display: flex;
+    align-items: center;
+  }
+
+  ul li img {
+    max-height: 10px;
+    margin-right: 6px;
   }
 }
