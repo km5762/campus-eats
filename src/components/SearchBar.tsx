@@ -15,7 +15,7 @@ export default function SearchBar() {
   const initialState: Suggestion[] = [];
   const [suggestions, setSuggestions] = useState(initialState);
   const [searchValue, setSearchValue] = useState("");
-  const [borderRadius, setBorderRadius] = useState("10px");
+  const [borderRadius, setBorderRadius] = useState("15px");
 
   async function handleInput(event: any) {
     const currentSearch = event.target.value;
@@ -33,9 +33,9 @@ export default function SearchBar() {
     setSuggestions(result);
 
     if (result.length > 0) {
-      setBorderRadius("10px 10px 0px 0px");
+      setBorderRadius("15px 15px 0px 0px");
     } else {
-      setBorderRadius("10px");
+      setBorderRadius("15px");
     }
   }
 
@@ -53,7 +53,7 @@ export default function SearchBar() {
   );
 }
 
-function Suggestions({ suggestions }: SuggestionsProps) {
+export function Suggestions({ suggestions }: SuggestionsProps) {
   return (
     <div className="suggestions">
       <ul>

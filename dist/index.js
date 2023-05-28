@@ -33382,6 +33382,7 @@ if (false) {} else {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Suggestions": () => (/* binding */ Suggestions),
 /* harmony export */   "default": () => (/* binding */ SearchBar)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -33429,7 +33430,7 @@ function SearchBar() {
     var initialState = [];
     var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialState), suggestions = _a[0], setSuggestions = _a[1];
     var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""), searchValue = _b[0], setSearchValue = _b[1];
-    var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("10px"), borderRadius = _c[0], setBorderRadius = _c[1];
+    var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("15px"), borderRadius = _c[0], setBorderRadius = _c[1];
     function handleInput(event) {
         return __awaiter(this, void 0, void 0, function () {
             var currentSearch, result;
@@ -33450,10 +33451,10 @@ function SearchBar() {
                     case 2:
                         setSuggestions(result);
                         if (result.length > 0) {
-                            setBorderRadius("10px 10px 0px 0px");
+                            setBorderRadius("15px 15px 0px 0px");
                         }
                         else {
-                            setBorderRadius("10px");
+                            setBorderRadius("15px");
                         }
                         return [2 /*return*/];
                 }
