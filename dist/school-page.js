@@ -33738,8 +33738,28 @@ __webpack_require__.r(__webpack_exports__);
 
 
 window.addEventListener("load", function () {
-    var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(document.querySelector(".search-container")); // notice the '!'
-    root.render(react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_components_MiniSearchBar__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+    // const root = createRoot(document.querySelector(".search-container")!); // notice the '!'
+    // root.render(<MiniSearchBar />);
+    var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(document.querySelector("body")); // notice the '!'
+    root.render(react__WEBPACK_IMPORTED_MODULE_1___default().createElement((react__WEBPACK_IMPORTED_MODULE_1___default().Fragment), null,
+        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("header", null,
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("picture", { title: "Campus Eats" },
+                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("source", { media: "(min-width: 400px)", srcSet: "../../images/campus-eats-logo-black.svg" }),
+                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("img", { src: "../../images/campus-eats-logo-mini.svg", alt: "campus-eats-logo" })),
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("nav", { className: "places-at" },
+                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h2", null, "Places"),
+                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h2", null, "at"),
+                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "search-container" },
+                    react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_components_MiniSearchBar__WEBPACK_IMPORTED_MODULE_2__["default"], null))),
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("nav", { className: "login-signup" },
+                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("button", { className: "login" }, "Log in"),
+                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("button", { className: "signup" }, "Sign up"))),
+        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("section", null,
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "locations" },
+                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "location" },
+                    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("span", null, "Morgan Dining Hall"),
+                    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("span", null,
+                        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("em", null, "See all 50 dishes")))))));
 });
 
 })();
