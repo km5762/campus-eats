@@ -8,7 +8,7 @@ html {
 }
 
 body {
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 /* clears the ‘X’ from Internet Explorer */
@@ -46,6 +46,8 @@ body {
 
 header {
   position: sticky;
+  z-index: 5;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   top: 0;
   padding-top: 15px;
   padding-bottom: 15px;
@@ -112,6 +114,7 @@ ul {
   background-color: #f5f5f5;
   font-family: "Raleway";
   overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 ul img {
@@ -161,7 +164,7 @@ ul a {
   border-style: none;
   background-color: #6184d8;
   border-radius: 55px;
-  padding: 5px 7.5px;
+  padding: 10px 20px;
   cursor: pointer;
 }
 
@@ -171,6 +174,8 @@ section {
 }
 
 .locations {
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -178,6 +183,7 @@ section {
 }
 
 .location {
+  border-radius: 5px;
   margin-bottom: 1.25em;
   flex: 1;
   padding: 1.35em;
@@ -186,9 +192,9 @@ section {
   justify-content: space-between;
 }
 
-@media (max-width: 820px) {
+@media (max-width: 800px) {
   input[type="search"] {
-    max-width: 130px;
+    max-width: 150px;
   }
 }
 
@@ -255,5 +261,9 @@ section {
   header picture img {
     object-fit: contain;
     width: 0.7em;
+  }
+
+  header .signup {
+    padding: 5px 10px;
   }
 }
