@@ -7,14 +7,14 @@ const supabaseUrl = "https://praaunntraqzwomikleq.supabase.co";
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-router.get("/search", async (req, res) => {
-  const search = req.query.query;
+router.get("/", async (req, res) => {
+  const campusID = req.query.id;
 
   try {
     const { data, error } = await supabase
-      .from("campus")
+      .from("location")
       .select()
-      .ilike("name", `%${search}%`);
+      .eq("campus_id", campusID);
 
     if (error) {
       throw error;

@@ -33485,7 +33485,8 @@ function Suggestions(_a) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ fetchSearch)
+/* harmony export */   "default": () => (/* binding */ fetchSearch),
+/* harmony export */   "fetchLocations": () => (/* binding */ fetchLocations)
 /* harmony export */ });
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -33530,7 +33531,7 @@ function fetchSearch(query) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 3, , 4]);
-                    return [4 /*yield*/, fetch("/campus/search?query=".concat(encodeURIComponent(query)))];
+                    return [4 /*yield*/, fetch("/api/campus/search?query=".concat(encodeURIComponent(query)))];
                 case 1:
                     response = _a.sent();
                     if (!response.ok) {
@@ -33545,6 +33546,32 @@ function fetchSearch(query) {
                     error_1 = _a.sent();
                     console.error("Error occurred during fetchSearch:", error_1);
                     throw error_1;
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+function fetchLocations(campusID) {
+    return __awaiter(this, void 0, void 0, function () {
+        var response, locations, error_2;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 3, , 4]);
+                    return [4 /*yield*/, fetch("/api/locations?id=".concat(campusID))];
+                case 1:
+                    response = _a.sent();
+                    if (!response.ok) {
+                        throw new Error("HTTP error: ".concat(response.status));
+                    }
+                    return [4 /*yield*/, response.text()];
+                case 2:
+                    locations = _a.sent();
+                    return [2 /*return*/, JSON.parse(locations)];
+                case 3:
+                    error_2 = _a.sent();
+                    console.error("Error occurred during fetchLocations:", error_2);
+                    throw error_2;
                 case 4: return [2 /*return*/];
             }
         });

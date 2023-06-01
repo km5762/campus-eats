@@ -33374,6 +33374,38 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./src/components/ContentContainer.tsx":
+/*!*********************************************!*\
+  !*** ./src/components/ContentContainer.tsx ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "LocationCard": () => (/* binding */ LocationCard),
+/* harmony export */   "default": () => (/* binding */ ContentContainer)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+function ContentContainer() {
+    var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("locations"), contentClass = _a[0], setContentClass = _a[1];
+    var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]), contentArray = _b[0], setContentArray = _b[1];
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: contentClass })));
+}
+function LocationCard(_a) {
+    var id = _a.id, name = _a.name, rating = _a.rating;
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "location" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, name),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null,
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("em", null, "See all 50 dishes")))));
+}
+
+
+/***/ }),
+
 /***/ "./src/components/MiniSearchBar.tsx":
 /*!******************************************!*\
   !*** ./src/components/MiniSearchBar.tsx ***!
@@ -33458,6 +33490,44 @@ function MiniSearchBar() {
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", { type: "search", onInput: handleInput, value: searchValue, placeholder: "Find my school!" }),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SearchBar__WEBPACK_IMPORTED_MODULE_2__.Suggestions, { suggestions: suggestions })));
+}
+
+
+/***/ }),
+
+/***/ "./src/components/SchoolPage.tsx":
+/*!***************************************!*\
+  !*** ./src/components/SchoolPage.tsx ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ SchoolPage)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _MiniSearchBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MiniSearchBar */ "./src/components/MiniSearchBar.tsx");
+/* harmony import */ var _ContentContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ContentContainer */ "./src/components/ContentContainer.tsx");
+
+
+
+function SchoolPage() {
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("header", null,
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("picture", { title: "Campus Eats" },
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("source", { media: "(min-width: 400px)", srcSet: "/images/campus-eats-logo-black.svg" }),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", { src: "/images/campus-eats-logo-mini.svg", alt: "campus-eats-logo" })),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", { className: "places-at" },
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Places"),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "at"),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "search-container" },
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MiniSearchBar__WEBPACK_IMPORTED_MODULE_1__["default"], null))),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", { className: "login-signup" },
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "login" }, "Log in"),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "signup" }, "Sign up"))),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", null,
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ContentContainer__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
 }
 
 
@@ -33574,7 +33644,8 @@ function Suggestions(_a) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ fetchSearch)
+/* harmony export */   "default": () => (/* binding */ fetchSearch),
+/* harmony export */   "fetchLocations": () => (/* binding */ fetchLocations)
 /* harmony export */ });
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -33619,7 +33690,7 @@ function fetchSearch(query) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 3, , 4]);
-                    return [4 /*yield*/, fetch("/campus/search?query=".concat(encodeURIComponent(query)))];
+                    return [4 /*yield*/, fetch("/api/campus/search?query=".concat(encodeURIComponent(query)))];
                 case 1:
                     response = _a.sent();
                     if (!response.ok) {
@@ -33634,6 +33705,32 @@ function fetchSearch(query) {
                     error_1 = _a.sent();
                     console.error("Error occurred during fetchSearch:", error_1);
                     throw error_1;
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+function fetchLocations(campusID) {
+    return __awaiter(this, void 0, void 0, function () {
+        var response, locations, error_2;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 3, , 4]);
+                    return [4 /*yield*/, fetch("/api/locations?id=".concat(campusID))];
+                case 1:
+                    response = _a.sent();
+                    if (!response.ok) {
+                        throw new Error("HTTP error: ".concat(response.status));
+                    }
+                    return [4 /*yield*/, response.text()];
+                case 2:
+                    locations = _a.sent();
+                    return [2 /*return*/, JSON.parse(locations)];
+                case 3:
+                    error_2 = _a.sent();
+                    console.error("Error occurred during fetchLocations:", error_2);
+                    throw error_2;
                 case 4: return [2 /*return*/];
             }
         });
@@ -33733,34 +33830,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_MiniSearchBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/MiniSearchBar */ "./src/components/MiniSearchBar.tsx");
+/* harmony import */ var _components_SchoolPage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/SchoolPage */ "./src/components/SchoolPage.tsx");
 
 
 
-window.addEventListener("load", function () {
-    // const root = createRoot(document.querySelector(".search-container")!); // notice the '!'
-    // root.render(<MiniSearchBar />);
-    var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(document.querySelector("body")); // notice the '!'
-    root.render(react__WEBPACK_IMPORTED_MODULE_1___default().createElement((react__WEBPACK_IMPORTED_MODULE_1___default().Fragment), null,
-        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("header", null,
-            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("picture", { title: "Campus Eats" },
-                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("source", { media: "(min-width: 400px)", srcSet: "../../images/campus-eats-logo-black.svg" }),
-                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("img", { src: "../../images/campus-eats-logo-mini.svg", alt: "campus-eats-logo" })),
-            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("nav", { className: "places-at" },
-                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h2", null, "Places"),
-                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h2", null, "at"),
-                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "search-container" },
-                    react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_components_MiniSearchBar__WEBPACK_IMPORTED_MODULE_2__["default"], null))),
-            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("nav", { className: "login-signup" },
-                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("button", { className: "login" }, "Log in"),
-                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("button", { className: "signup" }, "Sign up"))),
-        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("section", null,
-            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "locations" },
-                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "location" },
-                    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("span", null, "Morgan Dining Hall"),
-                    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("span", null,
-                        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("em", null, "See all 50 dishes")))))));
-});
+var root = document.querySelector("#root");
+(0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.hydrateRoot)(root, react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_components_SchoolPage__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+console.log("Success");
 
 })();
 
