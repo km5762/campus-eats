@@ -3,7 +3,7 @@ const React = require("react");
 const campusRouter = require("./routes/campus");
 const { renderToString } = require("react-dom/server");
 const locations = require("./routes/locations");
-const { createClient } = require("@supabase/supabase-js");
+// const { createClient } = require("@supabase/supabase-js");
 const express = require("express");
 const ejs = require("ejs");
 const app = express();
@@ -11,9 +11,9 @@ const port = process.env.PORT || 3000;
 const path = require("path");
 require("dotenv").config();
 
-const supabaseUrl = "https://praaunntraqzwomikleq.supabase.co";
-const supabaseKey = process.env.SUPABASE_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+// const supabaseUrl = "https://praaunntraqzwomikleq.supabase.co";
+// const supabaseKey = process.env.SUPABASE_KEY;
+// const supabase = createClient(supabaseUrl, supabaseKey);
 
 app.use(express.static(path.join(__dirname, "dist")));
 
