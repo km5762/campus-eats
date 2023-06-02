@@ -137,35 +137,43 @@ var supabaseUrl = "https://praaunntraqzwomikleq.supabase.co";
 var supabaseKey = process.env.SUPABASE_KEY;
 var supabase = createClient(supabaseUrl, supabaseKey);
 router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var campusID, _a, data, error, error_1;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0:
-                campusID = req.query.id;
-                _b.label = 1;
-            case 1:
-                _b.trys.push([1, 3, , 4]);
-                return [4 /*yield*/, supabase
-                        .from("location")
-                        .select()
-                        .eq("campus_id", campusID)];
-            case 2:
-                _a = _b.sent(), data = _a.data, error = _a.error;
-                if (error) {
-                    throw error;
-                }
-                res.json(data);
-                return [3 /*break*/, 4];
-            case 3:
-                error_1 = _b.sent();
-                console.error("Error:", error_1);
-                res.status(500).json({ error: "Internal Server Error" });
-                return [3 /*break*/, 4];
-            case 4: return [2 /*return*/];
-        }
+    var campusID;
+    return __generator(this, function (_a) {
+        campusID = req.query.id;
+        res.json(queryLocations(campusID));
+        return [2 /*return*/];
     });
 }); });
-module.exports = router;
+function queryLocations(campusID) {
+    return __awaiter(this, void 0, void 0, function () {
+        var _a, data, error, error_1;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    _b.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, supabase
+                            .from("location")
+                            .select()
+                            .eq("campus_id", campusID)];
+                case 1:
+                    _a = _b.sent(), data = _a.data, error = _a.error;
+                    if (error) {
+                        throw error;
+                    }
+                    return [2 /*return*/, data];
+                case 2:
+                    error_1 = _b.sent();
+                    console.error("Error:", error_1);
+                    return [2 /*return*/, { error: "Internal Server Error" }];
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+module.exports = {
+    router: router,
+    queryLocations: queryLocations,
+};
 
 
 /***/ }),
@@ -184,9 +192,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
-function ContentContainer() {
-    var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("locations"), contentClass = _a[0], setContentClass = _a[1];
-    var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]), contentArray = _b[0], setContentArray = _b[1];
+function ContentContainer(_a) {
+    var locations = _a.locations;
+    var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("locations"), contentClass = _b[0], setContentClass = _b[1];
+    var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(locations), contentArray = _c[0], setContentArray = _c[1];
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: contentClass })));
 }
@@ -308,7 +317,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function SchoolPage() {
+function SchoolPage(_a) {
+    var locations = _a.locations;
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("header", null,
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("picture", { title: "Campus Eats" },
@@ -323,7 +333,7 @@ function SchoolPage() {
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "login" }, "Log in"),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "signup" }, "Sign up"))),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", null,
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ContentContainer__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ContentContainer__WEBPACK_IMPORTED_MODULE_2__["default"], { locations: locations }))));
 }
 
 
@@ -513,7 +523,7 @@ function fetchLocations(campusID) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 3, , 4]);
-                    return [4 /*yield*/, fetch("/api/locations?id=".concat(campusID))];
+                    return [4 /*yield*/, fetch("./api/locations?id=".concat(campusID))];
                 case 1:
                     response = _a.sent();
                     if (!response.ok) {
@@ -681,9 +691,7 @@ var __webpack_exports__ = {};
   !*** ./server.jsx ***!
   \********************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _src_components_SchoolPage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/components/SchoolPage */ "./src/components/SchoolPage.tsx");
+/* harmony import */ var _src_components_SchoolPage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/components/SchoolPage */ "./src/components/SchoolPage.tsx");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -721,8 +729,10 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
     }
 };
 
-
+var React = __webpack_require__(/*! react */ "react");
+var campusRouter = __webpack_require__(/*! ./routes/campus */ "./routes/campus.js");
 var renderToString = (__webpack_require__(/*! react-dom/server */ "react-dom/server").renderToString);
+var locations = __webpack_require__(/*! ./routes/locations */ "./routes/locations.js");
 var createClient = (__webpack_require__(/*! @supabase/supabase-js */ "@supabase/supabase-js").createClient);
 var express = __webpack_require__(/*! express */ "express");
 var ejs = __webpack_require__(/*! ejs */ "ejs");
@@ -734,26 +744,30 @@ var supabaseUrl = "https://praaunntraqzwomikleq.supabase.co";
 var supabaseKey = process.env.SUPABASE_KEY;
 var supabase = createClient(supabaseUrl, supabaseKey);
 app.use(express.static(path.join(__dirname, "dist")));
-var campusRouter = __webpack_require__(/*! ./routes/campus */ "./routes/campus.js");
-var locationsRouter = __webpack_require__(/*! ./routes/locations */ "./routes/locations.js");
 app.use("/api/campus", campusRouter);
-app.use("/api/locations", locationsRouter);
+app.use("/api/locations", locations.router);
 app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 app.get("/campus/:id/locations", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var schoolPageApp, filePath;
+    var initialState, schoolPageApp, filePath;
     return __generator(this, function (_a) {
-        schoolPageApp = renderToString(react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_src_components_SchoolPage__WEBPACK_IMPORTED_MODULE_1__["default"], null));
-        filePath = path.join(__dirname, "dist", "school-page.ejs");
-        ejs.renderFile(filePath, { schoolPageApp: schoolPageApp }, function (err, html) {
-            if (err) {
-                console.error("Error rendering template:", err);
-                return res.status(500).end();
-            }
-            res.send(html);
-        });
-        return [2 /*return*/];
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, locations.queryLocations(req.params.id)];
+            case 1:
+                initialState = _a.sent();
+                schoolPageApp = renderToString(React.createElement(_src_components_SchoolPage__WEBPACK_IMPORTED_MODULE_0__["default"], { locations: initialState }));
+                filePath = path.join(__dirname, "dist", "school-page.ejs");
+                initialState = JSON.stringify(initialState);
+                ejs.renderFile(filePath, { schoolPageApp: schoolPageApp, initialState: initialState }, function (err, html) {
+                    if (err) {
+                        console.error("Error rendering template:", err);
+                        return res.status(500).end();
+                    }
+                    res.send(html);
+                });
+                return [2 /*return*/];
+        }
     });
 }); });
 app.listen(port, function () {

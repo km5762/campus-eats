@@ -20,6 +20,9 @@
   </head>
   <body>
     <div id="root"><%- schoolPageApp %></div>
+    <script>
+      window.__INITIAL_STATE__ = <%- initialState %>;
+    </script>
     <script src="/school-page.js"></script>
   </body>
 </html>

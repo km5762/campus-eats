@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-interface Location {
+export interface Location {
   id: number;
   name: string;
   rating: number;
@@ -14,9 +14,13 @@ interface Dish {
   rating: number;
 }
 
-export default function ContentContainer() {
+export default function ContentContainer({
+  locations,
+}: {
+  locations: Location[];
+}) {
   const [contentClass, setContentClass] = useState("locations");
-  const [contentArray, setContentArray] = useState([]);
+  const [contentArray, setContentArray] = useState(locations);
 
   return (
     <>

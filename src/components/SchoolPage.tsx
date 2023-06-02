@@ -1,8 +1,9 @@
 import React from "react";
 import MiniSearchBar from "./MiniSearchBar";
 import ContentContainer from "./ContentContainer";
+import { Location } from "./ContentContainer";
 
-export default function SchoolPage() {
+export default function SchoolPage({ locations }: { locations: Location[] }) {
   return (
     <>
       <header>
@@ -26,7 +27,7 @@ export default function SchoolPage() {
         </nav>
       </header>
       <section>
-        <ContentContainer></ContentContainer>
+        <ContentContainer locations={locations}></ContentContainer>
       </section>
     </>
   );

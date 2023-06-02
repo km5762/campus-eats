@@ -19,7 +19,7 @@ export default async function fetchSearch(query: string) {
 
 export async function fetchLocations(campusID: number) {
   try {
-    const response = await fetch(`/api/locations?id=${campusID}`);
+    const response = await fetch(`./api/locations?id=${campusID}`);
 
     if (!response.ok) {
       throw new Error(`HTTP error: ${response.status}`);

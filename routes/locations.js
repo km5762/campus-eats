@@ -9,7 +9,10 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 router.get("/", async (req, res) => {
   const campusID = req.query.id;
+  res.json(queryLocations(campusID));
+});
 
+async function queryLocations(campusID) {
   try {
     const { data, error } = await supabase
       .from("location")
@@ -19,11 +22,14 @@ router.get("/", async (req, res) => {
     if (error) {
       throw error;
     }
-    res.json(data);
+    return data;
   } catch (error) {
     console.error("Error:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+    return { error: "Internal Server Error" };
   }
-});
+}
 
-module.exports = router;
+module.exports = {
+  router: router,
+  queryLocations: queryLocations,
+};

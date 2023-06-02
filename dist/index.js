@@ -33558,7 +33558,7 @@ function fetchLocations(campusID) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 3, , 4]);
-                    return [4 /*yield*/, fetch("/api/locations?id=".concat(campusID))];
+                    return [4 /*yield*/, fetch("./api/locations?id=".concat(campusID))];
                 case 1:
                     response = _a.sent();
                     if (!response.ok) {

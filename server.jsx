@@ -1,6 +1,8 @@
-import React from "react";
 import SchoolPage from "./src/components/SchoolPage";
+const React = require("react");
+const campusRouter = require("./routes/campus");
 const { renderToString } = require("react-dom/server");
+const locations = require("./routes/locations");
 const { createClient } = require("@supabase/supabase-js");
 const express = require("express");
 const ejs = require("ejs");
@@ -15,20 +17,19 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 app.use(express.static(path.join(__dirname, "dist")));
 
-const campusRouter = require("./routes/campus");
-const locationsRouter = require("./routes/locations");
-
 app.use("/api/campus", campusRouter);
-app.use("/api/locations", locationsRouter);
+app.use("/api/locations", locations.router);
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 app.get("/campus/:id/locations", async (req, res) => {
-  const schoolPageApp = renderToString(<SchoolPage />);
+  let initialState = await locations.queryLocations(req.params.id);
+  const schoolPageApp = renderToString(<SchoolPage locations={initialState} />);
   const filePath = path.join(__dirname, "dist", "school-page.ejs");
-  ejs.renderFile(filePath, { schoolPageApp }, (err, html) => {
+  initialState = JSON.stringify(initialState);
+  ejs.renderFile(filePath, { schoolPageApp, initialState }, (err, html) => {
     if (err) {
       console.error("Error rendering template:", err);
       return res.status(500).end();

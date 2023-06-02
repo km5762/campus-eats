@@ -33388,9 +33388,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
-function ContentContainer() {
-    var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("locations"), contentClass = _a[0], setContentClass = _a[1];
-    var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]), contentArray = _b[0], setContentArray = _b[1];
+function ContentContainer(_a) {
+    var locations = _a.locations;
+    var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("locations"), contentClass = _b[0], setContentClass = _b[1];
+    var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(locations), contentArray = _c[0], setContentArray = _c[1];
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: contentClass })));
 }
@@ -33512,7 +33513,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function SchoolPage() {
+function SchoolPage(_a) {
+    var locations = _a.locations;
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("header", null,
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("picture", { title: "Campus Eats" },
@@ -33527,7 +33529,7 @@ function SchoolPage() {
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "login" }, "Log in"),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "signup" }, "Sign up"))),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", null,
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ContentContainer__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ContentContainer__WEBPACK_IMPORTED_MODULE_2__["default"], { locations: locations }))));
 }
 
 
@@ -33717,7 +33719,7 @@ function fetchLocations(campusID) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 3, , 4]);
-                    return [4 /*yield*/, fetch("/api/locations?id=".concat(campusID))];
+                    return [4 /*yield*/, fetch("./api/locations?id=".concat(campusID))];
                 case 1:
                     response = _a.sent();
                     if (!response.ok) {
@@ -33835,8 +33837,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var root = document.querySelector("#root");
-(0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.hydrateRoot)(root, react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_components_SchoolPage__WEBPACK_IMPORTED_MODULE_2__["default"], null));
-console.log("Success");
+(0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.hydrateRoot)(root, react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_components_SchoolPage__WEBPACK_IMPORTED_MODULE_2__["default"], { locations: window.__INITIAL_STATE__ }));
 
 })();
 

@@ -4,7 +4,13 @@ import MiniSearchBar from "./components/MiniSearchBar";
 import ContentContainer from "./components/ContentContainer";
 import SchoolPage from "./components/SchoolPage";
 import { renderToString } from "react-dom/server";
+import { fetchLocations } from "./services/api";
+
+declare global {
+  interface Window {
+    __INITIAL_STATE__: any;
+  }
+}
 
 const root = document.querySelector("#root") as Element;
-hydrateRoot(root, <SchoolPage />);
-console.log("Success");
+hydrateRoot(root, <SchoolPage locations={window.__INITIAL_STATE__} />);
