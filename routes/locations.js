@@ -30,6 +30,6 @@ async function queryLocations(campusID) {
 }
 
 module.exports = {
-  router: router,
-  queryLocations: queryLocations,
+  router,
+  queryLocations,
 };

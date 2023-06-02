@@ -3,7 +3,11 @@ import fetchSearch from "../services/api";
 import { Suggestions } from "./SearchBar";
 import { Suggestion } from "./SearchBar";
 
-export default function MiniSearchBar() {
+export default function MiniSearchBar({
+  placeholder,
+}: {
+  placeholder: string;
+}) {
   const initialState: Suggestion[] = [];
   const [suggestions, setSuggestions] = useState(initialState);
   const [searchValue, setSearchValue] = useState("");
@@ -30,7 +34,7 @@ export default function MiniSearchBar() {
         type="search"
         onInput={handleInput}
         value={searchValue}
-        placeholder="Find my school!"
+        placeholder={placeholder}
       />
       <Suggestions suggestions={suggestions} />
     </>

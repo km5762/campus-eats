@@ -3,7 +3,13 @@ import MiniSearchBar from "./MiniSearchBar";
 import ContentContainer from "./ContentContainer";
 import { Location } from "./ContentContainer";
 
-export default function SchoolPage({ locations }: { locations: Location[] }) {
+export default function SchoolPage({
+  locations,
+  name,
+}: {
+  locations: Location[];
+  name: string;
+}) {
   return (
     <>
       <header>
@@ -18,7 +24,7 @@ export default function SchoolPage({ locations }: { locations: Location[] }) {
           <h2>Places</h2>
           <h2>at</h2>
           <div className="search-container">
-            <MiniSearchBar></MiniSearchBar>
+            <MiniSearchBar placeholder={name}></MiniSearchBar>
           </div>
         </nav>
         <nav className="login-signup">

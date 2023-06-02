@@ -33390,10 +33390,11 @@ __webpack_require__.r(__webpack_exports__);
 
 function ContentContainer(_a) {
     var locations = _a.locations;
+    var locationComponents = locations.map(function (location) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(LocationCard, { key: location.id, id: location.id, name: location.name, rating: location.rating })); });
     var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("locations"), contentClass = _b[0], setContentClass = _b[1];
-    var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(locations), contentArray = _c[0], setContentArray = _c[1];
+    var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(locationComponents), contentArray = _c[0], setContentArray = _c[1];
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: contentClass })));
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: contentClass }, contentArray)));
 }
 function LocationCard(_a) {
     var id = _a.id, name = _a.name, rating = _a.rating;
@@ -33460,10 +33461,11 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
-function MiniSearchBar() {
+function MiniSearchBar(_a) {
+    var placeholder = _a.placeholder;
     var initialState = [];
-    var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialState), suggestions = _a[0], setSuggestions = _a[1];
-    var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""), searchValue = _b[0], setSearchValue = _b[1];
+    var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialState), suggestions = _b[0], setSuggestions = _b[1];
+    var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""), searchValue = _c[0], setSearchValue = _c[1];
     function handleInput(event) {
         return __awaiter(this, void 0, void 0, function () {
             var currentSearch, result;
@@ -33489,7 +33491,7 @@ function MiniSearchBar() {
         });
     }
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", { type: "search", onInput: handleInput, value: searchValue, placeholder: "Find my school!" }),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", { type: "search", onInput: handleInput, value: searchValue, placeholder: placeholder }),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SearchBar__WEBPACK_IMPORTED_MODULE_2__.Suggestions, { suggestions: suggestions })));
 }
 
@@ -33514,7 +33516,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function SchoolPage(_a) {
-    var locations = _a.locations;
+    var locations = _a.locations, name = _a.name;
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("header", null,
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("picture", { title: "Campus Eats" },
@@ -33524,7 +33526,7 @@ function SchoolPage(_a) {
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Places"),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "at"),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "search-container" },
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MiniSearchBar__WEBPACK_IMPORTED_MODULE_1__["default"], null))),
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MiniSearchBar__WEBPACK_IMPORTED_MODULE_1__["default"], { placeholder: name }))),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", { className: "login-signup" },
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "login" }, "Log in"),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "signup" }, "Sign up"))),
@@ -33630,7 +33632,7 @@ function Suggestions(_a) {
     var suggestions = _a.suggestions;
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "suggestions" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, suggestions.map(function (suggestion) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", { key: suggestion.id },
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { href: "/campus/".concat(suggestion.id, "/locations") },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { href: "/campus/".concat(suggestion.id, "/locations?name=").concat(encodeURIComponent(suggestion.name)) },
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", { src: "/images/magnify.svg", alt: "Magnify" }),
                 suggestion.name))); }))));
 }
@@ -33837,7 +33839,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var root = document.querySelector("#root");
-(0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.hydrateRoot)(root, react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_components_SchoolPage__WEBPACK_IMPORTED_MODULE_2__["default"], { locations: window.__INITIAL_STATE__ }));
+(0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.hydrateRoot)(root, react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_components_SchoolPage__WEBPACK_IMPORTED_MODULE_2__["default"], { locations: window.__INITIAL_STATE__, name: decodeURIComponent(window.location.search).slice(6) }));
 
 })();
 

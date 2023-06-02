@@ -1,4 +1,4 @@
-import SchoolPage from "./src/components/SchoolPage";
+const SchoolPage = require("./src/components/SchoolPage").default;
 const React = require("react");
 const campusRouter = require("./routes/campus");
 const { renderToString } = require("react-dom/server");
@@ -26,7 +26,10 @@ app.get("/", (req, res) => {
 
 app.get("/campus/:id/locations", async (req, res) => {
   let initialState = await locations.queryLocations(req.params.id);
-  const schoolPageApp = renderToString(<SchoolPage locations={initialState} />);
+  const name = req.query.name;
+  const schoolPageApp = renderToString(
+    <SchoolPage locations={initialState} name={name} />
+  );
   const filePath = path.join(__dirname, "dist", "school-page.ejs");
   initialState = JSON.stringify(initialState);
   ejs.renderFile(filePath, { schoolPageApp, initialState }, (err, html) => {

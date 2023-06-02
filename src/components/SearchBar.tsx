@@ -59,7 +59,11 @@ export function Suggestions({ suggestions }: SuggestionsProps) {
       <ul>
         {suggestions.map((suggestion) => (
           <li key={suggestion.id}>
-            <a href={`/campus/${suggestion.id}/locations`}>
+            <a
+              href={`/campus/${
+                suggestion.id
+              }/locations?name=${encodeURIComponent(suggestion.name)}`}
+            >
               <img src="/images/magnify.svg" alt="Magnify" />
               {suggestion.name}
             </a>

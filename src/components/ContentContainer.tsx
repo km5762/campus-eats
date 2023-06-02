@@ -19,12 +19,20 @@ export default function ContentContainer({
 }: {
   locations: Location[];
 }) {
+  const locationComponents = locations.map((location) => (
+    <LocationCard
+      key={location.id}
+      id={location.id}
+      name={location.name}
+      rating={location.rating}
+    />
+  ));
   const [contentClass, setContentClass] = useState("locations");
-  const [contentArray, setContentArray] = useState(locations);
+  const [contentArray, setContentArray] = useState(locationComponents);
 
   return (
     <>
-      <div className={contentClass}></div>
+      <div className={contentClass}>{contentArray}</div>
     </>
   );
 }

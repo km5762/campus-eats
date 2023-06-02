@@ -13,4 +13,10 @@ declare global {
 }
 
 const root = document.querySelector("#root") as Element;
-hydrateRoot(root, <SchoolPage locations={window.__INITIAL_STATE__} />);
+hydrateRoot(
+  root,
+  <SchoolPage
+    locations={window.__INITIAL_STATE__}
+    name={decodeURIComponent(window.location.search).slice(6)}
+  />
+);
