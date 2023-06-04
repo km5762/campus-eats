@@ -13,13 +13,18 @@ export default function SchoolPage({
   return (
     <>
       <header>
-        <picture title="Campus Eats">
-          <source
-            media="(min-width: 400px)"
-            srcSet="/images/campus-eats-logo-black.svg"
-          />
-          <img src="/images/campus-eats-logo-mini.svg" alt="campus-eats-logo" />
-        </picture>
+        <a href="/">
+          <picture title="Campus Eats">
+            <source
+              media="(min-width: 400px)"
+              srcSet="/images/campus-eats-logo-black.svg"
+            />
+            <img
+              src="/images/campus-eats-logo-mini.svg"
+              alt="campus-eats-logo"
+            />
+          </picture>
+        </a>
         <nav className="places-at">
           <h2>Places</h2>
           <h2>at</h2>

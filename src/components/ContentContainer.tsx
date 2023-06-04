@@ -1,3 +1,4 @@
+import { Rating, useMediaQuery } from "@mui/material";
 import React, { useState } from "react";
 
 export interface Location {
@@ -40,11 +41,23 @@ export default function ContentContainer({
 }
 
 export function LocationCard({ id, name, rating, count }: Location) {
+  const smallScreen = useMediaQuery("(max-width: 890px)");
   return (
     <>
       <div className="location">
         <span>{name}</span>
-        <a>{`See all ${count} dishes`}</a>
+        <div className="rating-container">
+          <span className="decimal-value">{rating}</span>
+          <Rating
+            name="read-only"
+            value={smallScreen ? 1 : rating}
+            max={smallScreen ? 1 : 5}
+            precision={0.25}
+            size={smallScreen ? "small" : "medium"}
+            readOnly
+          />
+        </div>
+        <button>{`See all ${count} dishes`}</button>
       </div>
     </>
   );

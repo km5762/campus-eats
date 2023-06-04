@@ -41,10 +41,6 @@ input[type="search"]::-webkit-search-results-decoration {
   font-size: 1.5rem;
 }
 
-.location a {
-  color: #6184d8;
-}
-
 header {
   position: sticky;
   z-index: 5;
@@ -193,6 +189,37 @@ section {
   justify-content: space-between;
 }
 
+.location span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.location .rating-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.location .rating-container .decimal-value {
+  font-style: italic;
+  font-size: clamp(0.25rem, 4vw, 0.85rem);
+  color: #7b7b7b;
+}
+
+.location button {
+  color: #6184d8;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.location button:hover {
+  color: black;
+}
+
 @media (max-width: 800px) {
   input[type="search"] {
     max-width: 150px;
@@ -220,7 +247,7 @@ section {
   }
 
   .location {
-    font-size: 0.35rem;
+    font-size: 3vw;
   }
 
   .locations {

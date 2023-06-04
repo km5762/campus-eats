@@ -41,8 +41,18 @@ input[type="search"]::-webkit-search-results-decoration {
   font-size: 1.5rem;
 }
 
-.location a {
+.location button {
   color: #6184d8;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.location button:hover {
+  color: black;
 }
 
 header {

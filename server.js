@@ -287,23 +287,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "LocationCard": () => (/* binding */ LocationCard),
 /* harmony export */   "default": () => (/* binding */ ContentContainer)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @mui/material */ "@mui/material");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_mui_material__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
 
 function ContentContainer(_a) {
     var locations = _a.locations;
-    var locationComponents = locations.map(function (location) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(LocationCard, { key: location.id, id: location.id, name: location.name, rating: location.rating, count: location.count })); });
-    var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("locations"), contentClass = _b[0], setContentClass = _b[1];
-    var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(locationComponents), contentArray = _c[0], setContentArray = _c[1];
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: contentClass }, contentArray)));
+    var locationComponents = locations.map(function (location) { return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement(LocationCard, { key: location.id, id: location.id, name: location.name, rating: location.rating, count: location.count })); });
+    var _b = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("locations"), contentClass = _b[0], setContentClass = _b[1];
+    var _c = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(locationComponents), contentArray = _c[0], setContentArray = _c[1];
+    return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement((react__WEBPACK_IMPORTED_MODULE_1___default().Fragment), null,
+        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: contentClass }, contentArray)));
 }
 function LocationCard(_a) {
     var id = _a.id, name = _a.name, rating = _a.rating, count = _a.count;
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "location" },
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, name),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", null, "See all ".concat(count, " dishes")))));
+    var smallScreen = (0,_mui_material__WEBPACK_IMPORTED_MODULE_0__.useMediaQuery)("(max-width: 890px)");
+    return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement((react__WEBPACK_IMPORTED_MODULE_1___default().Fragment), null,
+        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "location" },
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("span", null, name),
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "rating-container" },
+                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("span", { className: "decimal-value" }, rating),
+                react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.Rating, { name: "read-only", value: smallScreen ? 1 : rating, max: smallScreen ? 1 : 5, precision: 0.25, size: smallScreen ? "small" : "medium", readOnly: true })),
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("button", null, "See all ".concat(count, " dishes")))));
 }
 
 
@@ -420,9 +427,10 @@ function SchoolPage(_a) {
     var locations = _a.locations, name = _a.name;
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("header", null,
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("picture", { title: "Campus Eats" },
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("source", { media: "(min-width: 400px)", srcSet: "/images/campus-eats-logo-black.svg" }),
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", { src: "/images/campus-eats-logo-mini.svg", alt: "campus-eats-logo" })),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { href: "/" },
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("picture", { title: "Campus Eats" },
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("source", { media: "(min-width: 400px)", srcSet: "/images/campus-eats-logo-black.svg" }),
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", { src: "/images/campus-eats-logo-mini.svg", alt: "campus-eats-logo" }))),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", { className: "places-at" },
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Places"),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "at"),
@@ -642,6 +650,16 @@ function fetchLocations(campusID) {
     });
 }
 
+
+/***/ }),
+
+/***/ "@mui/material":
+/*!********************************!*\
+  !*** external "@mui/material" ***!
+  \********************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/material");
 
 /***/ }),
 
