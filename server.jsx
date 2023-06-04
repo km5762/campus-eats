@@ -26,6 +26,12 @@ app.get("/", (req, res) => {
 
 app.get("/campus/:id/locations", async (req, res) => {
   let initialState = await locations.queryLocations(req.params.id);
+  initialState = initialState.map((location) => ({
+    id: location.name,
+    name: location.name,
+    rating: location.rating,
+    count: location.dish_count,
+  }));
   const name = req.query.name;
   const schoolPageApp = renderToString(
     <SchoolPage locations={initialState} name={name} />

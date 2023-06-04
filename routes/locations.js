@@ -14,10 +14,9 @@ router.get("/", async (req, res) => {
 
 async function queryLocations(campusID) {
   try {
-    const { data, error } = await supabase
-      .from("location")
-      .select()
-      .eq("campus_id", campusID);
+    const { data, error } = await supabase.rpc("fn_get_locations_at", {
+      p_id: campusID,
+    });
 
     if (error) {
       throw error;

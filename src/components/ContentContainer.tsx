@@ -4,6 +4,7 @@ export interface Location {
   id: number;
   name: string;
   rating: number;
+  count: number;
 }
 
 interface Dish {
@@ -25,6 +26,7 @@ export default function ContentContainer({
       id={location.id}
       name={location.name}
       rating={location.rating}
+      count={location.count}
     />
   ));
   const [contentClass, setContentClass] = useState("locations");
@@ -37,14 +39,12 @@ export default function ContentContainer({
   );
 }
 
-export function LocationCard({ id, name, rating }: Location) {
+export function LocationCard({ id, name, rating, count }: Location) {
   return (
     <>
       <div className="location">
         <span>{name}</span>
-        <span>
-          <em>See all 50 dishes</em>
-        </span>
+        <a>{`See all ${count} dishes`}</a>
       </div>
     </>
   );

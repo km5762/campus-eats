@@ -33390,19 +33390,18 @@ __webpack_require__.r(__webpack_exports__);
 
 function ContentContainer(_a) {
     var locations = _a.locations;
-    var locationComponents = locations.map(function (location) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(LocationCard, { key: location.id, id: location.id, name: location.name, rating: location.rating })); });
+    var locationComponents = locations.map(function (location) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(LocationCard, { key: location.id, id: location.id, name: location.name, rating: location.rating, count: location.count })); });
     var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("locations"), contentClass = _b[0], setContentClass = _b[1];
     var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(locationComponents), contentArray = _c[0], setContentArray = _c[1];
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: contentClass }, contentArray)));
 }
 function LocationCard(_a) {
-    var id = _a.id, name = _a.name, rating = _a.rating;
+    var id = _a.id, name = _a.name, rating = _a.rating, count = _a.count;
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "location" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, name),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null,
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("em", null, "See all 50 dishes")))));
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", null, "See all ".concat(count, " dishes")))));
 }
 
 

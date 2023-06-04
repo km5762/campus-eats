@@ -151,10 +151,9 @@ function queryLocations(campusID) {
             switch (_b.label) {
                 case 0:
                     _b.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, supabase
-                            .from("location")
-                            .select()
-                            .eq("campus_id", campusID)];
+                    return [4 /*yield*/, supabase.rpc("fn_get_locations_at", {
+                            p_id: campusID,
+                        })];
                 case 1:
                     _a = _b.sent(), data = _a.data, error = _a.error;
                     if (error) {
@@ -226,16 +225,16 @@ var React = __webpack_require__(/*! react */ "react");
 var campusRouter = __webpack_require__(/*! ./routes/campus */ "./routes/campus.js");
 var renderToString = (__webpack_require__(/*! react-dom/server */ "react-dom/server").renderToString);
 var locations = __webpack_require__(/*! ./routes/locations */ "./routes/locations.js");
-var createClient = (__webpack_require__(/*! @supabase/supabase-js */ "@supabase/supabase-js").createClient);
+// const { createClient } = require("@supabase/supabase-js");
 var express = __webpack_require__(/*! express */ "express");
 var ejs = __webpack_require__(/*! ejs */ "ejs");
 var app = express();
 var port = process.env.PORT || 3000;
 var path = __webpack_require__(/*! path */ "path");
 (__webpack_require__(/*! dotenv */ "dotenv").config)();
-var supabaseUrl = "https://praaunntraqzwomikleq.supabase.co";
-var supabaseKey = process.env.SUPABASE_KEY;
-var supabase = createClient(supabaseUrl, supabaseKey);
+// const supabaseUrl = "https://praaunntraqzwomikleq.supabase.co";
+// const supabaseKey = process.env.SUPABASE_KEY;
+// const supabase = createClient(supabaseUrl, supabaseKey);
 app.use(express.static(path.join(__dirname, "dist")));
 app.use("/api/campus", campusRouter);
 app.use("/api/locations", locations.router);
@@ -249,6 +248,12 @@ app.get("/campus/:id/locations", function (req, res) { return __awaiter(void 0, 
             case 0: return [4 /*yield*/, locations.queryLocations(req.params.id)];
             case 1:
                 initialState = _a.sent();
+                initialState = initialState.map(function (location) { return ({
+                    id: location.name,
+                    name: location.name,
+                    rating: location.rating,
+                    count: location.dish_count,
+                }); });
                 name = req.query.name;
                 schoolPageApp = renderToString(React.createElement(SchoolPage, { locations: initialState, name: name }));
                 filePath = path.join(__dirname, "dist", "school-page.ejs");
@@ -287,19 +292,18 @@ __webpack_require__.r(__webpack_exports__);
 
 function ContentContainer(_a) {
     var locations = _a.locations;
-    var locationComponents = locations.map(function (location) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(LocationCard, { key: location.id, id: location.id, name: location.name, rating: location.rating })); });
+    var locationComponents = locations.map(function (location) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(LocationCard, { key: location.id, id: location.id, name: location.name, rating: location.rating, count: location.count })); });
     var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("locations"), contentClass = _b[0], setContentClass = _b[1];
     var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(locationComponents), contentArray = _c[0], setContentArray = _c[1];
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: contentClass }, contentArray)));
 }
 function LocationCard(_a) {
-    var id = _a.id, name = _a.name, rating = _a.rating;
+    var id = _a.id, name = _a.name, rating = _a.rating, count = _a.count;
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "location" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, name),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null,
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("em", null, "See all 50 dishes")))));
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", null, "See all ".concat(count, " dishes")))));
 }
 
 
