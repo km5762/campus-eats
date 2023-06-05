@@ -44295,22 +44295,28 @@ __webpack_require__.r(__webpack_exports__);
 
 function ContentContainer(_a) {
     var locations = _a.locations;
-    var locationComponents = locations.map(function (location) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(LocationCard, { key: location.id, id: location.id, name: location.name, rating: location.rating, count: location.count })); });
+    var handleLocationCardClick = function (id) {
+        console.log(id);
+    };
+    var locationComponents = locations.map(function (location) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(LocationCard, { key: location.id, id: location.id, name: location.name, rating: location.rating, count: location.count, onLocationCardClick: handleLocationCardClick })); });
     var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("locations"), contentClass = _b[0], setContentClass = _b[1];
     var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(locationComponents), contentArray = _c[0], setContentArray = _c[1];
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: contentClass }, contentArray)));
 }
 function LocationCard(_a) {
-    var id = _a.id, name = _a.name, rating = _a.rating, count = _a.count;
+    var id = _a.id, name = _a.name, rating = _a.rating, count = _a.count, onLocationCardClick = _a.onLocationCardClick;
     var smallScreen = (0,_mui_material__WEBPACK_IMPORTED_MODULE_1__["default"])("(max-width: 890px)");
+    var handleButtonClick = function () {
+        onLocationCardClick(id);
+    };
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "location" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, name),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "rating-container" },
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", { className: "decimal-value" }, rating),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], { name: "read-only", value: smallScreen ? 1 : rating, max: smallScreen ? 1 : 5, precision: 0.25, sx: smallScreen ? { svg: { width: "4vw" } } : undefined, readOnly: true })),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "See all ".concat(count, " dishes")))));
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: handleButtonClick }, "See all ".concat(count, " dishes")))));
 }
 
 

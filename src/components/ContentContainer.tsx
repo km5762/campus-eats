@@ -21,6 +21,10 @@ export default function ContentContainer({
 }: {
   locations: Location[];
 }) {
+  const handleLocationCardClick = (id: number) => {
+    console.log(id);
+  };
+
   const locationComponents = locations.map((location) => (
     <LocationCard
       key={location.id}
@@ -28,8 +32,10 @@ export default function ContentContainer({
       name={location.name}
       rating={location.rating}
       count={location.count}
+      onLocationCardClick={handleLocationCardClick}
     />
   ));
+
   const [contentClass, setContentClass] = useState("locations");
   const [contentArray, setContentArray] = useState(locationComponents);
 
@@ -40,8 +46,19 @@ export default function ContentContainer({
   );
 }
 
-export function LocationCard({ id, name, rating, count }: Location) {
+export function LocationCard({
+  id,
+  name,
+  rating,
+  count,
+  onLocationCardClick,
+}: Location & { onLocationCardClick: (id: number) => void }) {
   const smallScreen = useMediaQuery("(max-width: 890px)");
+
+  const handleButtonClick = () => {
+    onLocationCardClick(id);
+  };
+
   return (
     <>
       <div className="location">
@@ -57,7 +74,7 @@ export function LocationCard({ id, name, rating, count }: Location) {
             readOnly
           />
         </div>
-        <button>{`See all ${count} dishes`}</button>
+        <button onClick={handleButtonClick}>{`See all ${count} dishes`}</button>
       </div>
     </>
   );
