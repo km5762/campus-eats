@@ -19,7 +19,7 @@ export default async function fetchSearch(query: string) {
 
 export async function fetchLocations(campusID: number) {
   try {
-    const response = await fetch(`./api/locations?id=${campusID}`);
+    const response = await fetch(`/api/campus/${campusID}/locations`);
 
     if (!response.ok) {
       throw new Error(`HTTP error: ${response.status}`);
@@ -29,6 +29,22 @@ export async function fetchLocations(campusID: number) {
     return JSON.parse(locations);
   } catch (error) {
     console.error("Error occurred during fetchLocations:", error);
+    throw error;
+  }
+}
+
+export async function fetchDishes(locationID: number) {
+  try {
+    const response = await fetch(`/api/locations/${locationID}/dishes`);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+
+    const dishes = await response.text();
+    return JSON.parse(dishes);
+  } catch (error) {
+    console.error("Error occurred during fetchDishes:", error);
     throw error;
   }
 }

@@ -7,29 +7,23 @@ const supabaseUrl = "https://praaunntraqzwomikleq.supabase.co";
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-router.get("/:id/locations", async (req, res) => {
-  const campusID = req.params.id;
-  console.log(campusID);
-  res.json(queryLocations(campusID));
-});
+router.get("/:id/dishes", async (req, res) => {
+  const locationID = req.params.id;
 
-async function queryLocations(campusID) {
   try {
-    const { data, error } = await supabase.rpc("fn_get_locations_at", {
-      p_id: campusID,
-    });
+    const { data, error } = await supabase
+      .from("dish")
+      .select("*")
+      .eq("location_id", locationID);
 
     if (error) {
       throw error;
     }
-    return data;
+    res.json(data);
   } catch (error) {
     console.error("Error:", error);
-    return { error: "Internal Server Error" };
+    res.status(500).json({ error: "Internal Server Error" });
   }
-}
+});
 
-module.exports = {
-  router,
-  queryLocations,
-};
+module.exports = router;

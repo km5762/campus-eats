@@ -1,5 +1,6 @@
 import { Rating, useMediaQuery } from "@mui/material";
 import React, { useState } from "react";
+import { fetchDishes } from "../services/api";
 
 export interface Location {
   id: number;
@@ -21,9 +22,12 @@ export default function ContentContainer({
 }: {
   locations: Location[];
 }) {
-  const handleLocationCardClick = (id: number) => {
-    console.log(id);
-  };
+  async function handleLocationCardClick(id: number) {
+    const res = await fetchDishes(id);
+    const dishes: Dish[] = res.map((dish: any) => ({
+      ...dish,
+    }));
+  }
 
   const locationComponents = locations.map((location) => (
     <LocationCard
@@ -46,7 +50,7 @@ export default function ContentContainer({
   );
 }
 
-export function LocationCard({
+function LocationCard({
   id,
   name,
   rating,
@@ -60,22 +64,31 @@ export function LocationCard({
   };
 
   return (
-    <>
-      <div className="location">
-        <span>{name}</span>
-        <div className="rating-container">
-          <span className="decimal-value">{rating}</span>
-          <Rating
-            name="read-only"
-            value={smallScreen ? 1 : rating}
-            max={smallScreen ? 1 : 5}
-            precision={0.25}
-            sx={smallScreen ? { svg: { width: "4vw" } } : undefined}
-            readOnly
-          />
-        </div>
-        <button onClick={handleButtonClick}>{`See all ${count} dishes`}</button>
+    <div className="location">
+      <span>{name}</span>
+      <div className="rating-container">
+        <span className="decimal-value">{rating}</span>
+        <Rating
+          name="read-only"
+          value={smallScreen ? 1 : rating}
+          max={smallScreen ? 1 : 5}
+          precision={0.25}
+          sx={smallScreen ? { svg: { width: "4vw" } } : undefined}
+          readOnly
+        />
       </div>
-    </>
+      <button onClick={handleButtonClick}>{`See all ${count} dishes`}</button>
+    </div>
   );
+}
+
+function DishCard({
+  id,
+  name,
+  price,
+  availability,
+  rating,
+  onDishCardClick,
+}: Dish & { onDishCardClick: (id: number) => void }) {
+  return <div className="dish"></div>;
 }

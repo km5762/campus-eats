@@ -33486,6 +33486,7 @@ function Suggestions(_a) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ fetchSearch),
+/* harmony export */   "fetchDishes": () => (/* binding */ fetchDishes),
 /* harmony export */   "fetchLocations": () => (/* binding */ fetchLocations)
 /* harmony export */ });
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
@@ -33558,7 +33559,7 @@ function fetchLocations(campusID) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 3, , 4]);
-                    return [4 /*yield*/, fetch("./api/locations?id=".concat(campusID))];
+                    return [4 /*yield*/, fetch("/api/campus/".concat(campusID, "/locations"))];
                 case 1:
                     response = _a.sent();
                     if (!response.ok) {
@@ -33572,6 +33573,32 @@ function fetchLocations(campusID) {
                     error_2 = _a.sent();
                     console.error("Error occurred during fetchLocations:", error_2);
                     throw error_2;
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+function fetchDishes(locationID) {
+    return __awaiter(this, void 0, void 0, function () {
+        var response, dishes, error_3;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 3, , 4]);
+                    return [4 /*yield*/, fetch("/api/locations/".concat(locationID, "/dishes"))];
+                case 1:
+                    response = _a.sent();
+                    if (!response.ok) {
+                        throw new Error("HTTP error: ".concat(response.status));
+                    }
+                    return [4 /*yield*/, response.text()];
+                case 2:
+                    dishes = _a.sent();
+                    return [2 /*return*/, JSON.parse(dishes)];
+                case 3:
+                    error_3 = _a.sent();
+                    console.error("Error occurred during fetchDishes:", error_3);
+                    throw error_3;
                 case 4: return [2 /*return*/];
             }
         });

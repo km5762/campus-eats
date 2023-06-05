@@ -1,9 +1,9 @@
 const SchoolPage = require("./src/components/SchoolPage").default;
 const React = require("react");
 const campusRouter = require("./routes/campus");
+const dishesRouter = require("./routes/dishes");
 const { renderToString } = require("react-dom/server");
 const locations = require("./routes/locations");
-// const { createClient } = require("@supabase/supabase-js");
 const express = require("express");
 const ejs = require("ejs");
 const app = express();
@@ -11,14 +11,11 @@ const port = process.env.PORT || 3000;
 const path = require("path");
 require("dotenv").config();
 
-// const supabaseUrl = "https://praaunntraqzwomikleq.supabase.co";
-// const supabaseKey = process.env.SUPABASE_KEY;
-// const supabase = createClient(supabaseUrl, supabaseKey);
-
 app.use(express.static(path.join(__dirname, "dist")));
 
 app.use("/api/campus", campusRouter);
-app.use("/api/locations", locations.router);
+app.use("/api/campus", locations.router);
+app.use("/api/locations", dishesRouter);
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
