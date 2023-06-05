@@ -53,7 +53,7 @@ export function LocationCard({ id, name, rating, count }: Location) {
             value={smallScreen ? 1 : rating}
             max={smallScreen ? 1 : 5}
             precision={0.25}
-            size={smallScreen ? "small" : "medium"}
+            sx={smallScreen ? { svg: { width: "4vw" } } : undefined}
             readOnly
           />
         </div>

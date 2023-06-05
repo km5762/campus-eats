@@ -309,7 +309,7 @@ function LocationCard(_a) {
             react__WEBPACK_IMPORTED_MODULE_1___default().createElement("span", null, name),
             react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "rating-container" },
                 react__WEBPACK_IMPORTED_MODULE_1___default().createElement("span", { className: "decimal-value" }, rating),
-                react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.Rating, { name: "read-only", value: smallScreen ? 1 : rating, max: smallScreen ? 1 : 5, precision: 0.25, size: smallScreen ? "small" : "medium", readOnly: true })),
+                react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.Rating, { name: "read-only", value: smallScreen ? 1 : rating, max: smallScreen ? 1 : 5, precision: 0.25, sx: smallScreen ? { svg: { width: "4vw" } } : undefined, readOnly: true })),
             react__WEBPACK_IMPORTED_MODULE_1___default().createElement("button", null, "See all ".concat(count, " dishes")))));
 }
 
