@@ -23,6 +23,7 @@ app.get("/", (req, res) => {
 
 app.get("/campus/:id/locations", async (req, res) => {
   let initialState = await locations.queryLocations(req.params.id);
+  console.log(initialState);
   initialState = initialState.map((location) => ({
     id: location.id,
     name: location.name,

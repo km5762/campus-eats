@@ -209,6 +209,38 @@ span {
   align-items: center;
 }
 
+.dishes {
+  padding: 3em;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 5vw;
+}
+
+.dish .top-half,
+.bottom-half {
+  padding: 1.35em;
+  background-color: #d5d5d5;
+}
+
+.dish .top-half {
+  border-radius: 15px 15px 0px 0px;
+}
+
+.dish .bottom-half {
+  border-radius: 0px 0px 15px 15px;
+}
+
+.dish h2 {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.dish h3 {
+  font-size: 0.75rem;
+}
+
 @media (max-width: 800px) {
   input[type="search"] {
     max-width: 150px;

@@ -331,6 +331,7 @@ app.get("/campus/:id/locations", function (req, res) { return __awaiter(void 0, 
             case 0: return [4 /*yield*/, locations.queryLocations(req.params.id)];
             case 1:
                 initialState = _a.sent();
+                console.log(initialState);
                 initialState = initialState.map(function (location) { return ({
                     id: location.id,
                     name: location.name,
@@ -374,6 +375,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/api */ "./src/services/api.ts");
+/* harmony import */ var _mui_icons_material_ArrowBack__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/icons-material/ArrowBack */ "@mui/icons-material/ArrowBack");
+/* harmony import */ var _mui_icons_material_ArrowBack__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_mui_icons_material_ArrowBack__WEBPACK_IMPORTED_MODULE_3__);
 var __assign = (undefined && undefined.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -424,6 +427,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 function ContentContainer(_a) {
     var locations = _a.locations;
     function handleLocationCardClick(id) {
@@ -435,6 +439,8 @@ function ContentContainer(_a) {
                     case 1:
                         res = _a.sent();
                         dishes = res.map(function (dish) { return (__assign({}, dish)); });
+                        setContentClass("dishes");
+                        setContentArray(dishes.map(function (dish) { return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement(DishCard, { id: dish.id, name: dish.name, price: dish.price, availability: dish.availability, rating: dish.rating, onDishCardClick: function (id) { return console.log("yee"); } })); }));
                         return [2 /*return*/];
                 }
             });
@@ -444,6 +450,8 @@ function ContentContainer(_a) {
     var _b = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("locations"), contentClass = _b[0], setContentClass = _b[1];
     var _c = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(locationComponents), contentArray = _c[0], setContentArray = _c[1];
     return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement((react__WEBPACK_IMPORTED_MODULE_1___default().Fragment), null,
+        react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.IconButton, null,
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement((_mui_icons_material_ArrowBack__WEBPACK_IMPORTED_MODULE_3___default()), null)),
         react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: contentClass }, contentArray)));
 }
 function LocationCard(_a) {
@@ -461,7 +469,28 @@ function LocationCard(_a) {
 }
 function DishCard(_a) {
     var id = _a.id, name = _a.name, price = _a.price, availability = _a.availability, rating = _a.rating, onDishCardClick = _a.onDishCardClick;
-    return react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "dish" });
+    return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "dish" },
+        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "top-half" },
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h2", null, name),
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.Rating, { name: "read-only", value: rating, precision: 0.25, readOnly: true })),
+        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "bottom-half" },
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h2", null, "$".concat(price)),
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h3", null, formatAvailability(availability)))));
+}
+function formatAvailability(binaryString) {
+    var formattedString = "";
+    if (binaryString.charAt(0) === "1") {
+        formattedString += "Breakfast, ";
+    }
+    if (binaryString.charAt(1) === "1") {
+        formattedString += "Lunch, ";
+    }
+    if (binaryString.charAt(2) === "1") {
+        formattedString += "Dinner";
+    }
+    // Remove trailing comma and whitespace
+    formattedString = formattedString.trim().replace(/,\s*$/, "");
+    return formattedString;
 }
 
 
@@ -828,6 +857,16 @@ function fetchDishes(locationID) {
     });
 }
 
+
+/***/ }),
+
+/***/ "@mui/icons-material/ArrowBack":
+/*!************************************************!*\
+  !*** external "@mui/icons-material/ArrowBack" ***!
+  \************************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/icons-material/ArrowBack");
 
 /***/ }),
 

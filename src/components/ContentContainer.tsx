@@ -1,6 +1,7 @@
-import { Rating, useMediaQuery } from "@mui/material";
+import { IconButton, Rating, useMediaQuery } from "@mui/material";
 import React, { useState } from "react";
 import { fetchDishes } from "../services/api";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export interface Location {
   id: number;
@@ -27,6 +28,19 @@ export default function ContentContainer({
     const dishes: Dish[] = res.map((dish: any) => ({
       ...dish,
     }));
+    setContentClass("dishes");
+    setContentArray(
+      dishes.map((dish) => (
+        <DishCard
+          id={dish.id}
+          name={dish.name}
+          price={dish.price}
+          availability={dish.availability}
+          rating={dish.rating}
+          onDishCardClick={(id) => console.log("yee")}
+        />
+      ))
+    );
   }
 
   const locationComponents = locations.map((location) => (
@@ -45,6 +59,9 @@ export default function ContentContainer({
 
   return (
     <>
+      <IconButton>
+        <ArrowBackIcon />
+      </IconButton>
       <div className={contentClass}>{contentArray}</div>
     </>
   );
@@ -90,5 +107,37 @@ function DishCard({
   rating,
   onDishCardClick,
 }: Dish & { onDishCardClick: (id: number) => void }) {
-  return <div className="dish"></div>;
+  return (
+    <div className="dish">
+      <div className="top-half">
+        <h2>{name}</h2>
+        <Rating name="read-only" value={rating} precision={0.25} readOnly />
+      </div>
+      <div className="bottom-half">
+        <h2>{`$${price}`}</h2>
+        <h3>{formatAvailability(availability)}</h3>
+      </div>
+    </div>
+  );
+}
+
+function formatAvailability(binaryString: string) {
+  let formattedString = "";
+
+  if (binaryString.charAt(0) === "1") {
+    formattedString += "Breakfast, ";
+  }
+
+  if (binaryString.charAt(1) === "1") {
+    formattedString += "Lunch, ";
+  }
+
+  if (binaryString.charAt(2) === "1") {
+    formattedString += "Dinner";
+  }
+
+  // Remove trailing comma and whitespace
+  formattedString = formattedString.trim().replace(/,\s*$/, "");
+
+  return formattedString;
 }
