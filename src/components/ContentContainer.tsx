@@ -1,16 +1,19 @@
 import { IconButton, Rating, useMediaQuery } from "@mui/material";
 import React, { useState } from "react";
-import { fetchDishes } from "../services/api";
+import { fetchDishes, fetchLocations } from "../services/api";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { Route, Routes, useParams } from "react-router-dom";
 
-export interface Location {
+export interface LocationData {
+  type: "location";
   id: number;
   name: string;
   rating: number;
   count: number;
 }
 
-interface Dish {
+interface DishData {
+  type: "dish";
   id: number;
   name: string;
   price: number;
@@ -18,67 +21,89 @@ interface Dish {
   rating: number;
 }
 
+export interface LocationCardProps {
+  id: number;
+  name: string;
+  rating: number;
+  count: number;
+}
+
+interface DishCardProps {
+  id: number;
+  name: string;
+  price: number;
+  availability: string;
+  rating: number;
+}
+
+type CardData = LocationData | DishData;
+
+interface ContentContainerProps {
+  cardData: CardData[];
+  className: string;
+}
+
+function DishContentContainerWrapper(id: number, className: string) {
+  return <ContentContainer cardData={fetchDishes(id)} />;
+}
+
 export default function ContentContainer({
-  locations,
-}: {
-  locations: Location[];
-}) {
-  async function handleLocationCardClick(id: number) {
-    const res = await fetchDishes(id);
-    const dishes: Dish[] = res.map((dish: any) => ({
-      ...dish,
-    }));
-    setContentClass("dishes");
-    setContentArray(
-      dishes.map((dish) => (
-        <DishCard
-          id={dish.id}
-          name={dish.name}
-          price={dish.price}
-          availability={dish.availability}
-          rating={dish.rating}
-          onDishCardClick={(id) => console.log("yee")}
-        />
-      ))
-    );
-  }
+  cardData,
+  className,
+}: ContentContainerProps) {
+  let renderedCards: React.ReactNode[] = [];
+  let contentID = useParams();
 
-  const locationComponents = locations.map((location) => (
-    <LocationCard
-      key={location.id}
-      id={location.id}
-      name={location.name}
-      rating={location.rating}
-      count={location.count}
-      onLocationCardClick={handleLocationCardClick}
-    />
-  ));
-
-  const [contentClass, setContentClass] = useState("locations");
-  const [contentArray, setContentArray] = useState(locationComponents);
+  cardData.forEach((data) => {
+    switch (data.type) {
+      case "location":
+        renderedCards.push(
+          <LocationCard
+            id={data.id}
+            name={data.name}
+            rating={data.rating}
+            count={data.count}
+          />
+        );
+        break;
+      case "dish":
+        renderedCards.push(
+          <DishCard
+            id={data.id}
+            name={data.name}
+            price={data.price}
+            availability={data.availability}
+            rating={data.rating}
+          />
+        );
+        break;
+    }
+  });
 
   return (
     <>
-      <IconButton>
-        <ArrowBackIcon />
-      </IconButton>
-      <div className={contentClass}>{contentArray}</div>
+      <Routes>
+        <Route
+          path="/:id/dishes"
+          element={
+            <ContentContainer
+              className="dishes"
+              cardData={fetchDishes(contentID)}
+            />
+          }
+        />
+        <Route
+          path="/:id/dishes/:dishID/reviews"
+          element={<ContentContainer className="reviews" cardData={} />}
+        />
+      </Routes>
+      <div className={className}>{renderedCards}</div>
     </>
   );
 }
 
-function LocationCard({
-  id,
-  name,
-  rating,
-  count,
-  onLocationCardClick,
-}: Location & { onLocationCardClick: (id: number) => void }) {
+export function LocationCard({ id, name, rating, count }: LocationCardProps) {
   const smallScreen = useMediaQuery("(max-width: 890px)");
-
-  const handleButtonClick = () => {
-    onLocationCardClick(id);
-  };
 
   return (
     <div className="location">
@@ -89,29 +114,22 @@ function LocationCard({
           name="read-only"
           value={smallScreen ? 1 : rating}
           max={smallScreen ? 1 : 5}
-          precision={0.25}
+          precision={0.5}
           sx={smallScreen ? { svg: { width: "4vw" } } : undefined}
           readOnly
         />
       </div>
-      <button onClick={handleButtonClick}>{`See all ${count} dishes`}</button>
+      <button>{`See all ${count} dishes`}</button>
     </div>
   );
 }
 
-function DishCard({
-  id,
-  name,
-  price,
-  availability,
-  rating,
-  onDishCardClick,
-}: Dish & { onDishCardClick: (id: number) => void }) {
+function DishCard({ id, name, price, availability, rating }: DishCardProps) {
   return (
     <div className="dish">
       <div className="top-half">
         <h2>{name}</h2>
-        <Rating name="read-only" value={rating} precision={0.25} readOnly />
+        <Rating name="read-only" value={rating} precision={0.5} readOnly />
       </div>
       <div className="bottom-half">
         <h2>{`$${price}`}</h2>

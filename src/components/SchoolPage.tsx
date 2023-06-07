@@ -1,13 +1,14 @@
 import React from "react";
 import MiniSearchBar from "./MiniSearchBar";
-import ContentContainer from "./ContentContainer";
-import { Location } from "./ContentContainer";
+import ContentContainer, { LocationCard } from "./ContentContainer";
+import { LocationData } from "./ContentContainer";
+import { BrowserRouter } from "react-router-dom";
 
 export default function SchoolPage({
   locations,
   name,
 }: {
-  locations: Location[];
+  locations: LocationData[];
   name: string;
 }) {
   return (
@@ -38,7 +39,12 @@ export default function SchoolPage({
         </nav>
       </header>
       <section>
-        <ContentContainer locations={locations}></ContentContainer>
+        <BrowserRouter>
+          <ContentContainer
+            cardData={locations}
+            className="locations"
+          ></ContentContainer>
+        </BrowserRouter>
       </section>
     </>
   );

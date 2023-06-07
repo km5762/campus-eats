@@ -331,8 +331,8 @@ app.get("/campus/:id/locations", function (req, res) { return __awaiter(void 0, 
             case 0: return [4 /*yield*/, locations.queryLocations(req.params.id)];
             case 1:
                 initialState = _a.sent();
-                console.log(initialState);
                 initialState = initialState.map(function (location) { return ({
+                    type: "location",
                     id: location.id,
                     name: location.name,
                     rating: location.rating,
@@ -368,6 +368,7 @@ app.listen(port, function () {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "LocationCard": () => (/* binding */ LocationCard),
 /* harmony export */   "default": () => (/* binding */ ContentContainer)
 /* harmony export */ });
 /* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @mui/material */ "@mui/material");
@@ -375,104 +376,51 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/api */ "./src/services/api.ts");
-/* harmony import */ var _mui_icons_material_ArrowBack__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/icons-material/ArrowBack */ "@mui/icons-material/ArrowBack");
-/* harmony import */ var _mui_icons_material_ArrowBack__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_mui_icons_material_ArrowBack__WEBPACK_IMPORTED_MODULE_3__);
-var __assign = (undefined && undefined.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "react-router-dom");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
 
+function DishContentContainerWrapper(id, className) {
+    return react__WEBPACK_IMPORTED_MODULE_1___default().createElement(ContentContainer, { cardData: (0,_services_api__WEBPACK_IMPORTED_MODULE_2__.fetchDishes)(id) });
+}
 function ContentContainer(_a) {
-    var locations = _a.locations;
-    function handleLocationCardClick(id) {
-        return __awaiter(this, void 0, void 0, function () {
-            var res, dishes;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, (0,_services_api__WEBPACK_IMPORTED_MODULE_2__.fetchDishes)(id)];
-                    case 1:
-                        res = _a.sent();
-                        dishes = res.map(function (dish) { return (__assign({}, dish)); });
-                        setContentClass("dishes");
-                        setContentArray(dishes.map(function (dish) { return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement(DishCard, { id: dish.id, name: dish.name, price: dish.price, availability: dish.availability, rating: dish.rating, onDishCardClick: function (id) { return console.log("yee"); } })); }));
-                        return [2 /*return*/];
-                }
-            });
-        });
-    }
-    var locationComponents = locations.map(function (location) { return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement(LocationCard, { key: location.id, id: location.id, name: location.name, rating: location.rating, count: location.count, onLocationCardClick: handleLocationCardClick })); });
-    var _b = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("locations"), contentClass = _b[0], setContentClass = _b[1];
-    var _c = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(locationComponents), contentArray = _c[0], setContentArray = _c[1];
+    var cardData = _a.cardData, className = _a.className;
+    var renderedCards = [];
+    var contentID = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useParams)();
+    cardData.forEach(function (data) {
+        switch (data.type) {
+            case "location":
+                renderedCards.push(react__WEBPACK_IMPORTED_MODULE_1___default().createElement(LocationCard, { id: data.id, name: data.name, rating: data.rating, count: data.count }));
+                break;
+            case "dish":
+                renderedCards.push(react__WEBPACK_IMPORTED_MODULE_1___default().createElement(DishCard, { id: data.id, name: data.name, price: data.price, availability: data.availability, rating: data.rating }));
+                break;
+        }
+    });
     return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement((react__WEBPACK_IMPORTED_MODULE_1___default().Fragment), null,
-        react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.IconButton, null,
-            react__WEBPACK_IMPORTED_MODULE_1___default().createElement((_mui_icons_material_ArrowBack__WEBPACK_IMPORTED_MODULE_3___default()), null)),
-        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: contentClass }, contentArray)));
+        react__WEBPACK_IMPORTED_MODULE_1___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Routes, null,
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, { path: "/:id/dishes", element: react__WEBPACK_IMPORTED_MODULE_1___default().createElement(ContentContainer, { className: "dishes", cardData: (0,_services_api__WEBPACK_IMPORTED_MODULE_2__.fetchDishes)(contentID) }) }),
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, { path: "/:id/dishes/:dishID/reviews", element: react__WEBPACK_IMPORTED_MODULE_1___default().createElement(ContentContainer, { className: "reviews", cardData: true }) })),
+        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: className }, renderedCards)));
 }
 function LocationCard(_a) {
-    var id = _a.id, name = _a.name, rating = _a.rating, count = _a.count, onLocationCardClick = _a.onLocationCardClick;
+    var id = _a.id, name = _a.name, rating = _a.rating, count = _a.count;
     var smallScreen = (0,_mui_material__WEBPACK_IMPORTED_MODULE_0__.useMediaQuery)("(max-width: 890px)");
-    var handleButtonClick = function () {
-        onLocationCardClick(id);
-    };
     return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "location" },
         react__WEBPACK_IMPORTED_MODULE_1___default().createElement("span", null, name),
         react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "rating-container" },
             react__WEBPACK_IMPORTED_MODULE_1___default().createElement("span", { className: "decimal-value" }, rating),
-            react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.Rating, { name: "read-only", value: smallScreen ? 1 : rating, max: smallScreen ? 1 : 5, precision: 0.25, sx: smallScreen ? { svg: { width: "4vw" } } : undefined, readOnly: true })),
-        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("button", { onClick: handleButtonClick }, "See all ".concat(count, " dishes"))));
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.Rating, { name: "read-only", value: smallScreen ? 1 : rating, max: smallScreen ? 1 : 5, precision: 0.5, sx: smallScreen ? { svg: { width: "4vw" } } : undefined, readOnly: true })),
+        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("button", null, "See all ".concat(count, " dishes"))));
 }
 function DishCard(_a) {
-    var id = _a.id, name = _a.name, price = _a.price, availability = _a.availability, rating = _a.rating, onDishCardClick = _a.onDishCardClick;
+    var id = _a.id, name = _a.name, price = _a.price, availability = _a.availability, rating = _a.rating;
     return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "dish" },
         react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "top-half" },
             react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h2", null, name),
-            react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.Rating, { name: "read-only", value: rating, precision: 0.25, readOnly: true })),
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.Rating, { name: "read-only", value: rating, precision: 0.5, readOnly: true })),
         react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "bottom-half" },
             react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h2", null, "$".concat(price)),
             react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h3", null, formatAvailability(availability)))));
@@ -600,6 +548,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _MiniSearchBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MiniSearchBar */ "./src/components/MiniSearchBar.tsx");
 /* harmony import */ var _ContentContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ContentContainer */ "./src/components/ContentContainer.tsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "react-router-dom");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -620,7 +571,8 @@ function SchoolPage(_a) {
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "login" }, "Log in"),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "signup" }, "Sign up"))),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", null,
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ContentContainer__WEBPACK_IMPORTED_MODULE_2__["default"], { locations: locations }))));
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.BrowserRouter, null,
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ContentContainer__WEBPACK_IMPORTED_MODULE_2__["default"], { cardData: locations, className: "locations" })))));
 }
 
 
@@ -860,16 +812,6 @@ function fetchDishes(locationID) {
 
 /***/ }),
 
-/***/ "@mui/icons-material/ArrowBack":
-/*!************************************************!*\
-  !*** external "@mui/icons-material/ArrowBack" ***!
-  \************************************************/
-/***/ ((module) => {
-
-module.exports = require("@mui/icons-material/ArrowBack");
-
-/***/ }),
-
 /***/ "@mui/material":
 /*!********************************!*\
   !*** external "@mui/material" ***!
@@ -937,6 +879,16 @@ module.exports = require("react");
 /***/ ((module) => {
 
 module.exports = require("react-dom/server");
+
+/***/ }),
+
+/***/ "react-router-dom":
+/*!***********************************!*\
+  !*** external "react-router-dom" ***!
+  \***********************************/
+/***/ ((module) => {
+
+module.exports = require("react-router-dom");
 
 /***/ }),
 
