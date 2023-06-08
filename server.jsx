@@ -1,3 +1,4 @@
+const { StaticRouter } = require("react-router-dom/server");
 const SchoolPage = require("./src/components/SchoolPage").default;
 const React = require("react");
 const campusRouter = require("./routes/campus");
@@ -32,7 +33,9 @@ app.get("/campus/:id/locations", async (req, res) => {
   }));
   const name = req.query.name;
   const schoolPageApp = renderToString(
-    <SchoolPage locations={initialState} name={name} />
+    <StaticRouter location={req.url}>
+      <SchoolPage locations={initialState} name={name} />
+    </StaticRouter>
   );
   const filePath = path.join(__dirname, "dist", "school-page.ejs");
   initialState = JSON.stringify(initialState);

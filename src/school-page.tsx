@@ -5,6 +5,7 @@ import ContentContainer from "./components/ContentContainer";
 import SchoolPage from "./components/SchoolPage";
 import { renderToString } from "react-dom/server";
 import { fetchLocations } from "./services/api";
+import { BrowserRouter } from "react-router-dom";
 
 declare global {
   interface Window {
@@ -15,8 +16,10 @@ declare global {
 const root = document.querySelector("#root") as Element;
 hydrateRoot(
   root,
-  <SchoolPage
-    locations={window.__INITIAL_STATE__}
-    name={decodeURIComponent(window.location.search).slice(6)}
-  />
+  <BrowserRouter>
+    <SchoolPage
+      locations={window.__INITIAL_STATE__}
+      name={decodeURIComponent(window.location.search).slice(6)}
+    />
+  </BrowserRouter>
 );

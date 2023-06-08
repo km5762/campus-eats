@@ -39,12 +39,10 @@ export default function SchoolPage({
         </nav>
       </header>
       <section>
-        <BrowserRouter>
-          <ContentContainer
-            cardData={locations}
-            className="locations"
-          ></ContentContainer>
-        </BrowserRouter>
+        <ContentContainer
+          cardData={locations}
+          className="locations"
+        ></ContentContainer>
       </section>
     </>
   );

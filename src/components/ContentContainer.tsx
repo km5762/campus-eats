@@ -1,8 +1,8 @@
 import { IconButton, Rating, useMediaQuery } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { fetchDishes, fetchLocations } from "../services/api";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Route, Routes, useParams } from "react-router-dom";
+import { Link, Route, Routes, useParams } from "react-router-dom";
 
 export interface LocationData {
   type: "location";
@@ -43,8 +43,28 @@ interface ContentContainerProps {
   className: string;
 }
 
-function DishContentContainerWrapper(id: number, className: string) {
-  return <ContentContainer cardData={fetchDishes(id)} />;
+function DishContentContainer() {
+  const { locationID } = useParams();
+  const [dishData, setDishData] = useState<DishData[]>([]);
+  useEffect(() => {
+    async () => {
+      const data = await fetchDishes(parseInt(locationID!));
+      setDishData(data);
+    };
+  }, [locationID]);
+  return <ContentContainer cardData={dishData} className="dishes" />;
+}
+
+function LocationContentContainer() {
+  const { campusID } = useParams();
+  const [locationData, setLocationData] = useState<LocationData[]>([]);
+  useEffect(() => {
+    async () => {
+      const data = await fetchLocations(parseInt(campusID!));
+      setLocationData(data);
+    };
+  }, [campusID]);
+  return <ContentContainer cardData={locationData} className="locations" />;
 }
 
 export default function ContentContainer({
@@ -84,17 +104,12 @@ export default function ContentContainer({
     <>
       <Routes>
         <Route
-          path="/:id/dishes"
-          element={
-            <ContentContainer
-              className="dishes"
-              cardData={fetchDishes(contentID)}
-            />
-          }
+          path="/campus/:campusID/locations/:locationID/dishes"
+          element={<DishContentContainer />}
         />
         <Route
-          path="/:id/dishes/:dishID/reviews"
-          element={<ContentContainer className="reviews" cardData={} />}
+          path="/campus/:campusID/locations"
+          element={<LocationContentContainer />}
         />
       </Routes>
       <div className={className}>{renderedCards}</div>
@@ -119,7 +134,7 @@ export function LocationCard({ id, name, rating, count }: LocationCardProps) {
           readOnly
         />
       </div>
-      <button>{`See all ${count} dishes`}</button>
+      <Link to={`/locations/${id}/dishes`}>{`See all ${count} dishes`}</Link>
     </div>
   );
 }
