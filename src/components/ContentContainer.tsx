@@ -18,11 +18,7 @@ interface Dish {
   rating: number;
 }
 
-export default function ContentContainer({
-  locations,
-}: {
-  locations: Location[];
-}) {
+export default function ContentContainer(locations: Location[]) {
   async function handleLocationCardClick(id: number) {
     const res = await fetchDishes(id);
     const dishes: Dish[] = res.map((dish: any) => ({
