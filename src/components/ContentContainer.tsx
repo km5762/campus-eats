@@ -1,7 +1,8 @@
 import { IconButton, Rating, useMediaQuery } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { fetchDishes } from "../services/api";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { BreadCrumb } from "./BreadCrumbs";
 import BreadCrumbs from "./BreadCrumbs";
 
 export interface Location {
@@ -19,57 +20,62 @@ interface Dish {
   rating: number;
 }
 
-interface BreadCrumbs {
-  locationCards: React.ReactNode[];
-  dishCards: React.ReactNode[];
-}
-
 export default function ContentContainer({
   locations,
+  campusName,
 }: {
   locations: Location[];
+  campusName: string;
 }) {
-  async function handleLocationCardClick(id: number) {
+  const [contentClass, setContentClass] = useState("locations");
+  const [contentArray, setContentArray] = useState<React.JSX.Element[]>(
+    locations.map((location) => (
+      <LocationCard
+        key={location.id}
+        id={location.id}
+        name={location.name}
+        rating={location.rating}
+        count={location.count}
+        onLocationCardClick={handleLocationCardClick}
+      />
+    ))
+  );
+  const [breadCrumbs, setBreadCrumbs] = useState<BreadCrumb[]>([
+    { class: "locations", name: campusName, cards: contentArray },
+  ]);
+
+  async function handleLocationCardClick(id: number, name: string) {
     const res = await fetchDishes(id);
     const dishes: Dish[] = res.map((dish: any) => ({
       ...dish,
     }));
+    const dishCards = dishes.map((dish) => (
+      <DishCard
+        id={dish.id}
+        name={dish.name}
+        price={dish.price}
+        availability={dish.availability}
+        rating={dish.rating}
+        onDishCardClick={(id) => console.log("yee")}
+      />
+    ));
+
     setContentClass("dishes");
-    setContentArray(
-      dishes.map((dish) => (
-        <DishCard
-          id={dish.id}
-          name={dish.name}
-          price={dish.price}
-          availability={dish.availability}
-          rating={dish.rating}
-          onDishCardClick={(id) => console.log("yee")}
-        />
-      ))
-    );
+    setBreadCrumbs((breadCrumbs) => [
+      ...breadCrumbs,
+      { class: "dishes", name: name, cards: dishCards },
+    ]);
+    setContentArray(dishCards);
   }
-
-  const locationComponents = locations.map((location) => (
-    <LocationCard
-      key={location.id}
-      id={location.id}
-      name={location.name}
-      rating={location.rating}
-      count={location.count}
-      onLocationCardClick={handleLocationCardClick}
-    />
-  ));
-
-  const [contentClass, setContentClass] = useState("locations");
-  const [contentArray, setContentArray] = useState(locationComponents);
-  const [breadCrumbs, setBreadCrumbs] = useState<BreadCrumbs>({
-    locationCards: [locationComponents],
-    dishCards: [],
-  });
 
   return (
     <>
-      <BreadCrumbs />
+      <BreadCrumbs
+        breadCrumbs={breadCrumbs}
+        setContentArray={setContentArray}
+        setContentClass={setContentClass}
+        setBreadCrumbs={setBreadCrumbs}
+      />
       <div className={contentClass}>{contentArray}</div>
     </>
   );
@@ -81,11 +87,11 @@ function LocationCard({
   rating,
   count,
   onLocationCardClick,
-}: Location & { onLocationCardClick: (id: number) => void }) {
+}: Location & { onLocationCardClick: (id: number, name: string) => void }) {
   const smallScreen = useMediaQuery("(max-width: 890px)");
 
   const handleButtonClick = () => {
-    onLocationCardClick(id);
+    onLocationCardClick(id, name);
   };
 
   return (

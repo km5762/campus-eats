@@ -44289,9 +44289,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
-function BreadCrumbs() {
-    var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]), buttonData = _a[0], setButtonData = _a[1];
-    return react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "bread-crumbs" });
+function BreadCrumbs(_a) {
+    var breadCrumbs = _a.breadCrumbs, setBreadCrumbs = _a.setBreadCrumbs, setContentArray = _a.setContentArray, setContentClass = _a.setContentClass;
+    function handleBreadCrumbClick(index) {
+        var breadCrumb = breadCrumbs[index];
+        setContentArray(breadCrumb.cards);
+        setContentClass(breadCrumb.class);
+        console.log(index);
+        console.log(breadCrumbs);
+        console.log(breadCrumbs.slice(0, index + 1));
+        setBreadCrumbs(breadCrumbs.slice(0, index + 1));
+    }
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "bread-crumbs" }, breadCrumbsToButtons(breadCrumbs, handleBreadCrumbClick)));
+}
+function breadCrumbsToButtons(breadCrumbs, handleBreadCrumbClick) {
+    var buttons = [];
+    var _loop_1 = function (i) {
+        var breadCrumb = breadCrumbs[i];
+        buttons.push(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { key: breadCrumb.class, onClick: function () { return handleBreadCrumbClick(i); } }, breadCrumb.name));
+    };
+    for (var i = 0; i < breadCrumbs.length; i++) {
+        _loop_1(i);
+    }
+    return buttons;
 }
 
 
@@ -44361,44 +44381,55 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 
 
 
 
 function ContentContainer(_a) {
-    var locations = _a.locations;
-    function handleLocationCardClick(id) {
+    var locations = _a.locations, campusName = _a.campusName;
+    var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("locations"), contentClass = _b[0], setContentClass = _b[1];
+    var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(locations.map(function (location) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(LocationCard, { key: location.id, id: location.id, name: location.name, rating: location.rating, count: location.count, onLocationCardClick: handleLocationCardClick })); })), contentArray = _c[0], setContentArray = _c[1];
+    var _d = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([
+        { class: "locations", name: campusName, cards: contentArray },
+    ]), breadCrumbs = _d[0], setBreadCrumbs = _d[1];
+    function handleLocationCardClick(id, name) {
         return __awaiter(this, void 0, void 0, function () {
-            var res, dishes;
+            var res, dishes, dishCards;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, (0,_services_api__WEBPACK_IMPORTED_MODULE_1__.fetchDishes)(id)];
                     case 1:
                         res = _a.sent();
                         dishes = res.map(function (dish) { return (__assign({}, dish)); });
+                        dishCards = dishes.map(function (dish) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(DishCard, { id: dish.id, name: dish.name, price: dish.price, availability: dish.availability, rating: dish.rating, onDishCardClick: function (id) { return console.log("yee"); } })); });
                         setContentClass("dishes");
-                        setContentArray(dishes.map(function (dish) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(DishCard, { id: dish.id, name: dish.name, price: dish.price, availability: dish.availability, rating: dish.rating, onDishCardClick: function (id) { return console.log("yee"); } })); }));
+                        setBreadCrumbs(function (breadCrumbs) { return __spreadArray(__spreadArray([], breadCrumbs, true), [
+                            { class: "dishes", name: name, cards: dishCards },
+                        ], false); });
+                        setContentArray(dishCards);
                         return [2 /*return*/];
                 }
             });
         });
     }
-    var locationComponents = locations.map(function (location) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(LocationCard, { key: location.id, id: location.id, name: location.name, rating: location.rating, count: location.count, onLocationCardClick: handleLocationCardClick })); });
-    var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("locations"), contentClass = _b[0], setContentClass = _b[1];
-    var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(locationComponents), contentArray = _c[0], setContentArray = _c[1];
-    var _d = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-        locationCards: [locationComponents],
-        dishCards: [],
-    }), breadCrumbs = _d[0], setBreadCrumbs = _d[1];
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_BreadCrumbs__WEBPACK_IMPORTED_MODULE_2__["default"], null),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_BreadCrumbs__WEBPACK_IMPORTED_MODULE_2__["default"], { breadCrumbs: breadCrumbs, setContentArray: setContentArray, setContentClass: setContentClass, setBreadCrumbs: setBreadCrumbs }),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: contentClass }, contentArray)));
 }
 function LocationCard(_a) {
     var id = _a.id, name = _a.name, rating = _a.rating, count = _a.count, onLocationCardClick = _a.onLocationCardClick;
     var smallScreen = (0,_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"])("(max-width: 890px)");
     var handleButtonClick = function () {
-        onLocationCardClick(id);
+        onLocationCardClick(id, name);
     };
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "location" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, name),
@@ -44562,7 +44593,7 @@ function SchoolPage(_a) {
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "login" }, "Log in"),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "signup" }, "Sign up"))),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", null,
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ContentContainer__WEBPACK_IMPORTED_MODULE_2__["default"], { locations: locations }))));
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ContentContainer__WEBPACK_IMPORTED_MODULE_2__["default"], { locations: locations, campusName: name }))));
 }
 
 

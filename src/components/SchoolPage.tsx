@@ -38,7 +38,10 @@ export default function SchoolPage({
         </nav>
       </header>
       <section>
-        <ContentContainer locations={locations}></ContentContainer>
+        <ContentContainer
+          locations={locations}
+          campusName={name}
+        ></ContentContainer>
       </section>
     </>
   );
