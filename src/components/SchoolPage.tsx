@@ -30,7 +30,7 @@ export default function SchoolPage({
           <h2>Places</h2>
           <h2>at</h2>
           <div className="search-container">
-            <MiniSearchBar placeholder={name}></MiniSearchBar>
+            <MiniSearchBar placeholder={"Test"}></MiniSearchBar>
           </div>
         </nav>
         <nav className="login-signup">

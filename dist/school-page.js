@@ -50622,7 +50622,7 @@ function DishContentContainer() {
                 }
             });
         }); });
-    }, [locationID]);
+    }, []);
     return react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ContentContainer, { cardData: dishData, className: "dishes" });
 }
 function LocationContentContainer() {
@@ -50642,7 +50642,7 @@ function LocationContentContainer() {
                 }
             });
         }); });
-    }, [campusID]);
+    }, []);
     return react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ContentContainer, { cardData: locationData, className: "locations" });
 }
 function ContentContainer(_a) {
@@ -50661,8 +50661,8 @@ function ContentContainer(_a) {
     });
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Routes, null,
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, { path: "/campus/:campusID/locations/:locationID/dishes", element: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(DishContentContainer, null) }),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, { path: "/campus/:campusID/locations", element: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(LocationContentContainer, null) })),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, { path: "/campus/7/locations", element: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(LocationContentContainer, null) }),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, { path: "/campus/7/locations/:locationID/dishes", element: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(DishContentContainer, null) })),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: className }, renderedCards)));
 }
 function LocationCard(_a) {
@@ -50673,7 +50673,7 @@ function LocationCard(_a) {
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "rating-container" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", { className: "decimal-value" }, rating),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], { name: "read-only", value: smallScreen ? 1 : rating, max: smallScreen ? 1 : 5, precision: 0.5, sx: smallScreen ? { svg: { width: "4vw" } } : undefined, readOnly: true })),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, { to: "/locations/".concat(id, "/dishes") }, "See all ".concat(count, " dishes"))));
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, { to: "/campus/7/locations/".concat(id, "/dishes") }, "See all ".concat(count, " dishes"))));
 }
 function DishCard(_a) {
     var id = _a.id, name = _a.name, price = _a.price, availability = _a.availability, rating = _a.rating;
@@ -50825,7 +50825,7 @@ function SchoolPage(_a) {
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Places"),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "at"),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "search-container" },
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MiniSearchBar__WEBPACK_IMPORTED_MODULE_1__["default"], { placeholder: name }))),
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MiniSearchBar__WEBPACK_IMPORTED_MODULE_1__["default"], { placeholder: "Test" }))),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", { className: "login-signup" },
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "login" }, "Log in"),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "signup" }, "Sign up"))),
@@ -50851,7 +50851,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/api */ "./src/services/api.ts");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -50888,7 +50887,6 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-
 
 
 function SearchBar() {
@@ -50934,7 +50932,7 @@ function Suggestions(_a) {
     var suggestions = _a.suggestions;
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "suggestions" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, suggestions.map(function (suggestion) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", { key: suggestion.id },
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, { to: "/campus/".concat(suggestion.id, "/locations?name=").concat(encodeURIComponent(suggestion.name)) },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { href: "/campus/".concat(suggestion.id, "/locations") },
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", { src: "/images/magnify.svg", alt: "Magnify" }),
                 suggestion.name))); }))));
 }

@@ -51,7 +51,7 @@ function DishContentContainer() {
       const data = await fetchDishes(parseInt(locationID!));
       setDishData(data);
     };
-  }, [locationID]);
+  }, []);
   return <ContentContainer cardData={dishData} className="dishes" />;
 }
 
@@ -63,14 +63,14 @@ function LocationContentContainer() {
       const data = await fetchLocations(parseInt(campusID!));
       setLocationData(data);
     };
-  }, [campusID]);
+  }, []);
   return <ContentContainer cardData={locationData} className="locations" />;
 }
 
-export default function ContentContainer({
-  cardData,
-  className,
-}: ContentContainerProps) {
+export default function ContentContainer(
+  this: any,
+  { cardData, className }: ContentContainerProps
+) {
   let renderedCards: React.ReactNode[] = [];
   let contentID = useParams();
 
@@ -104,12 +104,12 @@ export default function ContentContainer({
     <>
       <Routes>
         <Route
-          path="/campus/:campusID/locations/:locationID/dishes"
-          element={<DishContentContainer />}
+          path={`/campus/7/locations`}
+          element={<LocationContentContainer />}
         />
         <Route
-          path="/campus/:campusID/locations"
-          element={<LocationContentContainer />}
+          path={`/campus/7/locations/:locationID/dishes`}
+          element={<DishContentContainer />}
         />
       </Routes>
       <div className={className}>{renderedCards}</div>
@@ -117,7 +117,10 @@ export default function ContentContainer({
   );
 }
 
-export function LocationCard({ id, name, rating, count }: LocationCardProps) {
+export function LocationCard(
+  this: any,
+  { id, name, rating, count }: LocationCardProps
+) {
   const smallScreen = useMediaQuery("(max-width: 890px)");
 
   return (
@@ -134,7 +137,9 @@ export function LocationCard({ id, name, rating, count }: LocationCardProps) {
           readOnly
         />
       </div>
-      <Link to={`/locations/${id}/dishes`}>{`See all ${count} dishes`}</Link>
+      <Link
+        to={`/campus/7/locations/${id}/dishes`}
+      >{`See all ${count} dishes`}</Link>
     </div>
   );
 }
