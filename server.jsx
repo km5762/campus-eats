@@ -23,26 +23,29 @@ app.get("/", (req, res) => {
 
 app.get("/campus/:id/locations", async (req, res) => {
   let initialState = await locations.queryLocations(req.params.id);
-  console.log(initialState);
+  const campusName = initialState[0].campus_name;
   initialState = initialState.map((location) => ({
     id: location.id,
     name: location.name,
     rating: location.rating,
     count: location.dish_count,
   }));
-  const name = req.query.name;
   const schoolPageApp = renderToString(
-    <SchoolPage locations={initialState} name={name} />
+    <SchoolPage locations={initialState} name={campusName} />
   );
   const filePath = path.join(__dirname, "dist", "school-page.ejs");
   initialState = JSON.stringify(initialState);
-  ejs.renderFile(filePath, { schoolPageApp, initialState }, (err, html) => {
-    if (err) {
-      console.error("Error rendering template:", err);
-      return res.status(500).end();
+  ejs.renderFile(
+    filePath,
+    { schoolPageApp, initialState, campusName },
+    (err, html) => {
+      if (err) {
+        console.error("Error rendering template:", err);
+        return res.status(500).end();
+      }
+      res.send(html);
     }
-    res.send(html);
-  });
+  );
 });
 
 app.listen(port, () => {

@@ -2,6 +2,7 @@ import { IconButton, Rating, useMediaQuery } from "@mui/material";
 import React, { useState } from "react";
 import { fetchDishes } from "../services/api";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import BreadCrumbs from "./BreadCrumbs";
 
 export interface Location {
   id: number;
@@ -16,6 +17,11 @@ interface Dish {
   price: number;
   availability: string;
   rating: number;
+}
+
+interface BreadCrumbs {
+  locationCards: React.ReactNode[];
+  dishCards: React.ReactNode[];
 }
 
 export default function ContentContainer({
@@ -56,12 +62,14 @@ export default function ContentContainer({
 
   const [contentClass, setContentClass] = useState("locations");
   const [contentArray, setContentArray] = useState(locationComponents);
+  const [breadCrumbs, setBreadCrumbs] = useState<BreadCrumbs>({
+    locationCards: [locationComponents],
+    dishCards: [],
+  });
 
   return (
     <>
-      <IconButton>
-        <ArrowBackIcon />
-      </IconButton>
+      <BreadCrumbs />
       <div className={contentClass}>{contentArray}</div>
     </>
   );

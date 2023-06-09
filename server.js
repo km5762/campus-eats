@@ -325,24 +325,23 @@ app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 app.get("/campus/:id/locations", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var initialState, name, schoolPageApp, filePath;
+    var initialState, campusName, schoolPageApp, filePath;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, locations.queryLocations(req.params.id)];
             case 1:
                 initialState = _a.sent();
-                console.log(initialState);
+                campusName = initialState[0].campus_name;
                 initialState = initialState.map(function (location) { return ({
                     id: location.id,
                     name: location.name,
                     rating: location.rating,
                     count: location.dish_count,
                 }); });
-                name = req.query.name;
-                schoolPageApp = renderToString(React.createElement(SchoolPage, { locations: initialState, name: name }));
+                schoolPageApp = renderToString(React.createElement(SchoolPage, { locations: initialState, name: campusName }));
                 filePath = path.join(__dirname, "dist", "school-page.ejs");
                 initialState = JSON.stringify(initialState);
-                ejs.renderFile(filePath, { schoolPageApp: schoolPageApp, initialState: initialState }, function (err, html) {
+                ejs.renderFile(filePath, { schoolPageApp: schoolPageApp, initialState: initialState, campusName: campusName }, function (err, html) {
                     if (err) {
                         console.error("Error rendering template:", err);
                         return res.status(500).end();
@@ -356,6 +355,27 @@ app.get("/campus/:id/locations", function (req, res) { return __awaiter(void 0, 
 app.listen(port, function () {
     console.log("Server is running on port ".concat(port));
 });
+
+
+/***/ }),
+
+/***/ "./src/components/BreadCrumbs.tsx":
+/*!****************************************!*\
+  !*** ./src/components/BreadCrumbs.tsx ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ BreadCrumbs)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+function BreadCrumbs() {
+    var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]), buttonData = _a[0], setButtonData = _a[1];
+    return react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "bread-crumbs" });
+}
 
 
 /***/ }),
@@ -375,8 +395,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/api */ "./src/services/api.ts");
-/* harmony import */ var _mui_icons_material_ArrowBack__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/icons-material/ArrowBack */ "@mui/icons-material/ArrowBack");
-/* harmony import */ var _mui_icons_material_ArrowBack__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_mui_icons_material_ArrowBack__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _BreadCrumbs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BreadCrumbs */ "./src/components/BreadCrumbs.tsx");
 var __assign = (undefined && undefined.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -449,9 +468,12 @@ function ContentContainer(_a) {
     var locationComponents = locations.map(function (location) { return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement(LocationCard, { key: location.id, id: location.id, name: location.name, rating: location.rating, count: location.count, onLocationCardClick: handleLocationCardClick })); });
     var _b = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("locations"), contentClass = _b[0], setContentClass = _b[1];
     var _c = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(locationComponents), contentArray = _c[0], setContentArray = _c[1];
+    var _d = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
+        locationCards: [locationComponents],
+        dishCards: [],
+    }), breadCrumbs = _d[0], setBreadCrumbs = _d[1];
     return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement((react__WEBPACK_IMPORTED_MODULE_1___default().Fragment), null,
-        react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.IconButton, null,
-            react__WEBPACK_IMPORTED_MODULE_1___default().createElement((_mui_icons_material_ArrowBack__WEBPACK_IMPORTED_MODULE_3___default()), null)),
+        react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_BreadCrumbs__WEBPACK_IMPORTED_MODULE_3__["default"], null),
         react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: contentClass }, contentArray)));
 }
 function LocationCard(_a) {
@@ -721,7 +743,7 @@ function Suggestions(_a) {
     var suggestions = _a.suggestions;
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "suggestions" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, suggestions.map(function (suggestion) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", { key: suggestion.id },
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { href: "/campus/".concat(suggestion.id, "/locations?name=").concat(encodeURIComponent(suggestion.name)) },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { href: "/campus/".concat(suggestion.id, "/locations") },
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", { src: "/images/magnify.svg", alt: "Magnify" }),
                 suggestion.name))); }))));
 }
@@ -857,16 +879,6 @@ function fetchDishes(locationID) {
     });
 }
 
-
-/***/ }),
-
-/***/ "@mui/icons-material/ArrowBack":
-/*!************************************************!*\
-  !*** external "@mui/icons-material/ArrowBack" ***!
-  \************************************************/
-/***/ ((module) => {
-
-module.exports = require("@mui/icons-material/ArrowBack");
 
 /***/ }),
 
