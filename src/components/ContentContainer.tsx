@@ -1,9 +1,9 @@
 import { IconButton, Rating, useMediaQuery } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { fetchDishes } from "../services/api";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { BreadCrumb } from "./BreadCrumbs";
 import BreadCrumbs from "./BreadCrumbs";
+import queryThroughCache from "../services/cache";
 
 export interface Location {
   id: number;
@@ -12,7 +12,7 @@ export interface Location {
   count: number;
 }
 
-interface Dish {
+export interface Dish {
   id: number;
   name: string;
   price: number;
@@ -45,7 +45,7 @@ export default function ContentContainer({
   ]);
 
   async function handleLocationCardClick(id: number, name: string) {
-    const res = await fetchDishes(id);
+    const res = await queryThroughCache(`location.${id}`);
     const dishes: Dish[] = res.map((dish: any) => ({
       ...dish,
     }));
