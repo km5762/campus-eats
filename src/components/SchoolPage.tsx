@@ -1,7 +1,7 @@
 import React from "react";
 import MiniSearchBar from "./MiniSearchBar";
 import ContentContainer from "./ContentContainer";
-import { Location } from "./ContentContainer";
+import { Location } from "./LocationCard";
 
 export default function SchoolPage({
   locations,

@@ -1,6 +1,5 @@
-import { Dish } from "../components/ContentContainer";
-import { Location } from "../components/ContentContainer";
-import { fetchDishes, fetchLocations } from "./api";
+import { Dish } from "../components/DishCard";
+import { fetchLocations, fetchDishes } from "./api";
 
 interface Cache {
   campus: { [id: number]: Location[] };

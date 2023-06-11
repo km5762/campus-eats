@@ -1,24 +1,8 @@
-import { IconButton, Rating, useMediaQuery } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { BreadCrumb } from "./BreadCrumbs";
-import BreadCrumbs from "./BreadCrumbs";
+import React, { useState } from "react";
 import queryThroughCache from "../services/cache";
-
-export interface Location {
-  id: number;
-  name: string;
-  rating: number;
-  count: number;
-}
-
-export interface Dish {
-  id: number;
-  name: string;
-  price: number;
-  availability: string;
-  rating: number;
-}
+import BreadCrumbs, { BreadCrumb } from "./BreadCrumbs";
+import DishCard, { Dish } from "./DishCard";
+import LocationCard, { Location } from "./LocationCard";
 
 export default function ContentContainer({
   locations,
@@ -49,16 +33,7 @@ export default function ContentContainer({
     const dishes: Dish[] = res.map((dish: any) => ({
       ...dish,
     }));
-    const dishCards = dishes.map((dish) => (
-      <DishCard
-        id={dish.id}
-        name={dish.name}
-        price={dish.price}
-        availability={dish.availability}
-        rating={dish.rating}
-        onDishCardClick={(id) => console.log("yee")}
-      />
-    ));
+    const dishCards = parseDishes(dishes, () => console.log("click"));
 
     setContentClass("dishes");
     setBreadCrumbs((breadCrumbs) => [
@@ -81,77 +56,31 @@ export default function ContentContainer({
   );
 }
 
-function LocationCard({
-  id,
-  name,
-  rating,
-  count,
-  onLocationCardClick,
-}: Location & { onLocationCardClick: (id: number, name: string) => void }) {
-  const smallScreen = useMediaQuery("(max-width: 890px)");
-
-  const handleButtonClick = () => {
-    onLocationCardClick(id, name);
-  };
-
-  return (
-    <div className="location">
-      <span>{name}</span>
-      <div className="rating-container">
-        <span className="decimal-value">{rating}</span>
-        <Rating
-          name="read-only"
-          value={smallScreen ? 1 : rating}
-          max={smallScreen ? 1 : 5}
-          precision={0.25}
-          sx={smallScreen ? { svg: { width: "4vw" } } : undefined}
-          readOnly
-        />
-      </div>
-      <button onClick={handleButtonClick}>{`See all ${count} dishes`}</button>
-    </div>
-  );
+function parseLocations(
+  locations: Location[],
+  handleLocationCardClick: () => any
+) {
+  return locations.map((location) => (
+    <LocationCard
+      key={location.id}
+      id={location.id}
+      name={location.name}
+      rating={location.rating}
+      count={location.count}
+      onLocationCardClick={handleLocationCardClick}
+    />
+  ));
 }
 
-function DishCard({
-  id,
-  name,
-  price,
-  availability,
-  rating,
-  onDishCardClick,
-}: Dish & { onDishCardClick: (id: number) => void }) {
-  return (
-    <div className="dish">
-      <div className="top-half">
-        <h2>{name}</h2>
-        <Rating name="read-only" value={rating} precision={0.25} readOnly />
-      </div>
-      <div className="bottom-half">
-        <h2>{`$${price}`}</h2>
-        <h3>{formatAvailability(availability)}</h3>
-      </div>
-    </div>
-  );
-}
-
-function formatAvailability(binaryString: string) {
-  let formattedString = "";
-
-  if (binaryString.charAt(0) === "1") {
-    formattedString += "Breakfast, ";
-  }
-
-  if (binaryString.charAt(1) === "1") {
-    formattedString += "Lunch, ";
-  }
-
-  if (binaryString.charAt(2) === "1") {
-    formattedString += "Dinner";
-  }
-
-  // Remove trailing comma and whitespace
-  formattedString = formattedString.trim().replace(/,\s*$/, "");
-
-  return formattedString;
+function parseDishes(dishes: Dish[], handleDishCardClick: () => any) {
+  return dishes.map((dish) => (
+    <DishCard
+      id={dish.id}
+      name={dish.name}
+      price={dish.price}
+      availability={dish.availability}
+      rating={dish.rating}
+      onDishCardClick={handleDishCardClick}
+    />
+  ));
 }

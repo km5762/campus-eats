@@ -407,12 +407,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ ContentContainer)
 /* harmony export */ });
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @mui/material */ "@mui/material");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_mui_material__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _services_cache__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/cache */ "./src/services/cache.ts");
 /* harmony import */ var _BreadCrumbs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BreadCrumbs */ "./src/components/BreadCrumbs.tsx");
-/* harmony import */ var _services_cache__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/cache */ "./src/services/cache.ts");
+/* harmony import */ var _DishCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DishCard */ "./src/components/DishCard.tsx");
+/* harmony import */ var _LocationCard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./LocationCard */ "./src/components/LocationCard.tsx");
 var __assign = (undefined && undefined.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -473,11 +473,12 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
 
 
 
+
 function ContentContainer(_a) {
     var locations = _a.locations, campusName = _a.campusName;
-    var _b = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("locations"), contentClass = _b[0], setContentClass = _b[1];
-    var _c = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(locations.map(function (location) { return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement(LocationCard, { key: location.id, id: location.id, name: location.name, rating: location.rating, count: location.count, onLocationCardClick: handleLocationCardClick })); })), contentArray = _c[0], setContentArray = _c[1];
-    var _d = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([
+    var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("locations"), contentClass = _b[0], setContentClass = _b[1];
+    var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(locations.map(function (location) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_LocationCard__WEBPACK_IMPORTED_MODULE_4__["default"], { key: location.id, id: location.id, name: location.name, rating: location.rating, count: location.count, onLocationCardClick: handleLocationCardClick })); })), contentArray = _c[0], setContentArray = _c[1];
+    var _d = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([
         { class: "locations", name: campusName, cards: contentArray },
     ]), breadCrumbs = _d[0], setBreadCrumbs = _d[1];
     function handleLocationCardClick(id, name) {
@@ -485,11 +486,11 @@ function ContentContainer(_a) {
             var res, dishes, dishCards;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, (0,_services_cache__WEBPACK_IMPORTED_MODULE_3__["default"])("location.".concat(id))];
+                    case 0: return [4 /*yield*/, (0,_services_cache__WEBPACK_IMPORTED_MODULE_1__["default"])("location.".concat(id))];
                     case 1:
                         res = _a.sent();
                         dishes = res.map(function (dish) { return (__assign({}, dish)); });
-                        dishCards = dishes.map(function (dish) { return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement(DishCard, { id: dish.id, name: dish.name, price: dish.price, availability: dish.availability, rating: dish.rating, onDishCardClick: function (id) { return console.log("yee"); } })); });
+                        dishCards = parseDishes(dishes, function () { return console.log("click"); });
                         setContentClass("dishes");
                         setBreadCrumbs(function (breadCrumbs) { return __spreadArray(__spreadArray([], breadCrumbs, true), [
                             { class: "dishes", name: name, cards: dishCards },
@@ -500,32 +501,45 @@ function ContentContainer(_a) {
             });
         });
     }
-    return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement((react__WEBPACK_IMPORTED_MODULE_1___default().Fragment), null,
-        react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_BreadCrumbs__WEBPACK_IMPORTED_MODULE_2__["default"], { breadCrumbs: breadCrumbs, setContentArray: setContentArray, setContentClass: setContentClass, setBreadCrumbs: setBreadCrumbs }),
-        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: contentClass }, contentArray)));
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_BreadCrumbs__WEBPACK_IMPORTED_MODULE_2__["default"], { breadCrumbs: breadCrumbs, setContentArray: setContentArray, setContentClass: setContentClass, setBreadCrumbs: setBreadCrumbs }),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: contentClass }, contentArray)));
 }
-function LocationCard(_a) {
-    var id = _a.id, name = _a.name, rating = _a.rating, count = _a.count, onLocationCardClick = _a.onLocationCardClick;
-    var smallScreen = (0,_mui_material__WEBPACK_IMPORTED_MODULE_0__.useMediaQuery)("(max-width: 890px)");
-    var handleButtonClick = function () {
-        onLocationCardClick(id, name);
-    };
-    return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "location" },
-        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("span", null, name),
-        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "rating-container" },
-            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("span", { className: "decimal-value" }, rating),
-            react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.Rating, { name: "read-only", value: smallScreen ? 1 : rating, max: smallScreen ? 1 : 5, precision: 0.25, sx: smallScreen ? { svg: { width: "4vw" } } : undefined, readOnly: true })),
-        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("button", { onClick: handleButtonClick }, "See all ".concat(count, " dishes"))));
+function parseLocations(locations, handleLocationCardClick) {
+    return locations.map(function (location) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_LocationCard__WEBPACK_IMPORTED_MODULE_4__["default"], { key: location.id, id: location.id, name: location.name, rating: location.rating, count: location.count, onLocationCardClick: handleLocationCardClick })); });
 }
+function parseDishes(dishes, handleDishCardClick) {
+    return dishes.map(function (dish) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_DishCard__WEBPACK_IMPORTED_MODULE_3__["default"], { id: dish.id, name: dish.name, price: dish.price, availability: dish.availability, rating: dish.rating, onDishCardClick: handleDishCardClick })); });
+}
+
+
+/***/ }),
+
+/***/ "./src/components/DishCard.tsx":
+/*!*************************************!*\
+  !*** ./src/components/DishCard.tsx ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ DishCard)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/material */ "@mui/material");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_mui_material__WEBPACK_IMPORTED_MODULE_1__);
+
+
 function DishCard(_a) {
     var id = _a.id, name = _a.name, price = _a.price, availability = _a.availability, rating = _a.rating, onDishCardClick = _a.onDishCardClick;
-    return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "dish" },
-        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "top-half" },
-            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h2", null, name),
-            react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.Rating, { name: "read-only", value: rating, precision: 0.25, readOnly: true })),
-        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "bottom-half" },
-            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h2", null, "$".concat(price)),
-            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h3", null, formatAvailability(availability)))));
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "dish" },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "top-half" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, name),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_1__.Rating, { name: "read-only", value: rating, precision: 0.25, readOnly: true })),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "bottom-half" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "$".concat(price)),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, formatAvailability(availability)))));
 }
 function formatAvailability(binaryString) {
     var formattedString = "";
@@ -541,6 +555,39 @@ function formatAvailability(binaryString) {
     // Remove trailing comma and whitespace
     formattedString = formattedString.trim().replace(/,\s*$/, "");
     return formattedString;
+}
+
+
+/***/ }),
+
+/***/ "./src/components/LocationCard.tsx":
+/*!*****************************************!*\
+  !*** ./src/components/LocationCard.tsx ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ LocationCard)
+/* harmony export */ });
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @mui/material */ "@mui/material");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_mui_material__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function LocationCard(_a) {
+    var id = _a.id, name = _a.name, rating = _a.rating, count = _a.count, onLocationCardClick = _a.onLocationCardClick;
+    var smallScreen = (0,_mui_material__WEBPACK_IMPORTED_MODULE_0__.useMediaQuery)("(max-width: 890px)");
+    var handleButtonClick = function () {
+        onLocationCardClick(id, name);
+    };
+    return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "location" },
+        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("span", null, name),
+        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "rating-container" },
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("span", { className: "decimal-value" }, rating),
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.Rating, { name: "read-only", value: smallScreen ? 1 : rating, max: smallScreen ? 1 : 5, precision: 0.25, sx: smallScreen ? { svg: { width: "4vw" } } : undefined, readOnly: true })),
+        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("button", { onClick: handleButtonClick }, "See all ".concat(count, " dishes"))));
 }
 
 

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import LocationCard, { Location } from "./LocationCard";
+import DishCard, { Dish } from "./DishCard";
 
 export interface BreadCrumb {
   class: string;
