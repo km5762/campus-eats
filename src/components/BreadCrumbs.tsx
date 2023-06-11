@@ -21,9 +21,6 @@ export default function BreadCrumbs({
     const breadCrumb = breadCrumbs[index];
     setContentArray(breadCrumb.cards);
     setContentClass(breadCrumb.class);
-    console.log(index);
-    console.log(breadCrumbs);
-    console.log(breadCrumbs.slice(0, index + 1));
     setBreadCrumbs(breadCrumbs.slice(0, index + 1));
   }
 
