@@ -1,4 +1,3 @@
-import { ErrorOutline } from "@mui/icons-material";
 import { DishData } from "../components/DishCard";
 import { fetchLocations, fetchDishes } from "./api";
 import { LocationData } from "../components/LocationCard";
