@@ -1,14 +1,16 @@
 import React from "react";
 import MiniSearchBar from "./MiniSearchBar";
 import ContentContainer from "./ContentContainer";
-import { Location } from "./LocationCard";
+import { LocationData } from "./LocationCard";
 
 export default function SchoolPage({
   locations,
-  name,
+  campusName,
+  campusID,
 }: {
-  locations: Location[];
-  name: string;
+  locations: LocationData[];
+  campusName: string;
+  campusID: number;
 }) {
   return (
     <>
@@ -29,7 +31,7 @@ export default function SchoolPage({
           <h2>Places</h2>
           <h2>at</h2>
           <div className="search-container">
-            <MiniSearchBar placeholder={name}></MiniSearchBar>
+            <MiniSearchBar placeholder={campusName}></MiniSearchBar>
           </div>
         </nav>
         <nav className="login-signup">
@@ -40,7 +42,8 @@ export default function SchoolPage({
       <section>
         <ContentContainer
           locations={locations}
-          campusName={name}
+          campusName={campusName}
+          campusID={campusID}
         ></ContentContainer>
       </section>
     </>

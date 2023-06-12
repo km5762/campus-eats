@@ -15,5 +15,9 @@ declare global {
 const root = document.querySelector("#root") as Element;
 hydrateRoot(
   root,
-  <SchoolPage locations={window.__INITIAL_STATE__} name={document.title} />
+  <SchoolPage
+    locations={window.__INITIAL_STATE__.data}
+    campusName={document.title}
+    campusID={window.__INITIAL_STATE__.id}
+  />
 );

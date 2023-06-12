@@ -1,12 +1,23 @@
 import React from "react";
 import { Rating } from "@mui/material";
 
-export interface Dish {
+export interface DishData {
+  type: "dish";
   id: number;
   name: string;
   price: number;
   availability: string;
   rating: number;
+}
+
+export interface DishCardProps {
+  key: number;
+  id: number;
+  name: string;
+  price: number;
+  availability: string;
+  rating: number;
+  onDishCardClick: Function;
 }
 
 export default function DishCard({
@@ -16,7 +27,7 @@ export default function DishCard({
   availability,
   rating,
   onDishCardClick,
-}: Dish & { onDishCardClick: (id: number) => void }) {
+}: DishCardProps) {
   return (
     <div className="dish">
       <div className="top-half">

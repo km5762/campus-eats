@@ -21,7 +21,7 @@
   <body>
     <div id="root"><%- schoolPageApp %></div>
     <script>
-      window.__INITIAL_STATE__ = <%- initialState %>;
+      window.__INITIAL_STATE__ = {id: <%- campusID%>, data: <%- initialState %>};
     </script>
     <script src="/school-page.js"></script>
   </body>

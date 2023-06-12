@@ -1,3 +1,6 @@
+import { DishData } from "../components/DishCard";
+import { LocationData } from "../components/LocationCard";
+
 export default async function fetchSearch(query: string) {
   try {
     const response = await fetch(
@@ -25,8 +28,14 @@ export async function fetchLocations(campusID: number) {
       throw new Error(`HTTP error: ${response.status}`);
     }
 
-    const locations = await response.text();
-    return JSON.parse(locations);
+    const locations = await response.json();
+
+    const locationData: LocationData[] = locations.map((location: any) => ({
+      type: "location",
+      ...location,
+    }));
+
+    return locationData;
   } catch (error) {
     console.error("Error occurred during fetchLocations:", error);
     throw error;
@@ -41,8 +50,14 @@ export async function fetchDishes(locationID: number) {
       throw new Error(`HTTP error: ${response.status}`);
     }
 
-    const dishes = await response.text();
-    return JSON.parse(dishes);
+    const dishes = await response.json();
+
+    const dishData: DishData[] = dishes.map((dish: any) => ({
+      type: "dish",
+      ...dish,
+    }));
+
+    return dishData;
   } catch (error) {
     console.error("Error occurred during fetchDishes:", error);
     throw error;

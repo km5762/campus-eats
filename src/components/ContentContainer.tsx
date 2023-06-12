@@ -1,47 +1,72 @@
-import React, { useState } from "react";
-import queryThroughCache from "../services/cache";
+import React, { useEffect, useState } from "react";
 import BreadCrumbs, { BreadCrumb } from "./BreadCrumbs";
-import DishCard, { Dish } from "./DishCard";
-import LocationCard, { Location } from "./LocationCard";
+import DishCard, { DishData } from "./DishCard";
+import LocationCard, { LocationData } from "./LocationCard";
+import { queryThroughCache, cache } from "../services/cache";
+import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
+
+export type CardData = DishData | LocationData;
 
 export default function ContentContainer({
   locations,
   campusName,
+  campusID,
 }: {
-  locations: Location[];
+  locations: LocationData[];
   campusName: string;
+  campusID: number;
 }) {
   const [contentClass, setContentClass] = useState("locations");
-  const [contentArray, setContentArray] = useState<React.JSX.Element[]>(
-    locations.map((location) => (
-      <LocationCard
-        key={location.id}
-        id={location.id}
-        name={location.name}
-        rating={location.rating}
-        count={location.count}
-        onLocationCardClick={handleLocationCardClick}
-      />
-    ))
-  );
+  const [contentArray, setContentArray] = useState<CardData[]>(locations);
   const [breadCrumbs, setBreadCrumbs] = useState<BreadCrumb[]>([
-    { class: "locations", name: campusName, cards: contentArray },
+    { class: "locations", name: campusName, query: `campus.${campusID}` },
   ]);
 
   async function handleLocationCardClick(id: number, name: string) {
-    const res = await queryThroughCache(`location.${id}`);
-    const dishes: Dish[] = res.map((dish: any) => ({
-      ...dish,
-    }));
-    const dishCards = parseDishes(dishes, () => console.log("click"));
+    const dishes = await queryThroughCache(`location.${id}`);
 
     setContentClass("dishes");
     setBreadCrumbs((breadCrumbs) => [
       ...breadCrumbs,
-      { class: "dishes", name: name, cards: dishCards },
+      { class: "dishes", name: name, query: `location.${id}` },
     ]);
-    setContentArray(dishCards);
+    setContentArray(dishes);
   }
+
+  async function handleDishCardClick(id: number, name: string) {}
+
+  function parseData(data: CardData[]) {
+    const cards: ReactJSXElement[] = [];
+    for (let i = 0; i < data.length; i++) {
+      switch (data[i].type) {
+        case "location":
+          const locationData = data[i] as LocationData;
+          cards.push(
+            <LocationCard
+              {...locationData}
+              key={locationData.id}
+              onLocationCardClick={handleLocationCardClick}
+            />
+          );
+          break;
+        case "dish":
+          const dishData = data[i] as DishData;
+          cards.push(
+            <DishCard
+              {...dishData}
+              key={dishData.id}
+              onDishCardClick={handleDishCardClick}
+            />
+          );
+          break;
+      }
+    }
+    return cards;
+  }
+
+  useEffect(() => {
+    cache.campus[campusID] = locations; // Seed cache with initial location data from server
+  }, []);
 
   return (
     <>
@@ -51,36 +76,7 @@ export default function ContentContainer({
         setContentClass={setContentClass}
         setBreadCrumbs={setBreadCrumbs}
       />
-      <div className={contentClass}>{contentArray}</div>
+      <div className={contentClass}>{parseData(contentArray)}</div>
     </>
   );
-}
-
-function parseLocations(
-  locations: Location[],
-  handleLocationCardClick: () => any
-) {
-  return locations.map((location) => (
-    <LocationCard
-      key={location.id}
-      id={location.id}
-      name={location.name}
-      rating={location.rating}
-      count={location.count}
-      onLocationCardClick={handleLocationCardClick}
-    />
-  ));
-}
-
-function parseDishes(dishes: Dish[], handleDishCardClick: () => any) {
-  return dishes.map((dish) => (
-    <DishCard
-      id={dish.id}
-      name={dish.name}
-      price={dish.price}
-      availability={dish.availability}
-      rating={dish.rating}
-      onDishCardClick={handleDishCardClick}
-    />
-  ));
 }

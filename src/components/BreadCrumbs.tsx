@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import LocationCard, { Location } from "./LocationCard";
-import DishCard, { Dish } from "./DishCard";
+import React from "react";
+import { queryCache, cache } from "../services/cache";
+import { CardData } from "./ContentContainer";
 
 export interface BreadCrumb {
-  class: string;
+  class: "locations" | "dishes";
   name: string;
-  cards: React.JSX.Element[];
+  query: string;
 }
 
 export default function BreadCrumbs({
@@ -15,13 +15,13 @@ export default function BreadCrumbs({
   setContentClass,
 }: {
   breadCrumbs: BreadCrumb[];
-  setContentArray: React.Dispatch<React.SetStateAction<React.JSX.Element[]>>;
+  setContentArray: React.Dispatch<React.SetStateAction<CardData[]>>;
   setContentClass: React.Dispatch<React.SetStateAction<string>>;
   setBreadCrumbs: React.Dispatch<React.SetStateAction<BreadCrumb[]>>;
 }) {
   function handleBreadCrumbClick(index: number) {
     const breadCrumb = breadCrumbs[index];
-    setContentArray(breadCrumb.cards);
+    setContentArray(queryCache(breadCrumb.query));
     setContentClass(breadCrumb.class);
     setBreadCrumbs(breadCrumbs.slice(0, index + 1));
   }

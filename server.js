@@ -325,23 +325,26 @@ app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 app.get("/campus/:id/locations", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var initialState, campusName, schoolPageApp, filePath;
+    var campusID, initialState, campusName, schoolPageApp, filePath;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, locations.queryLocations(req.params.id)];
+            case 0:
+                campusID = req.params.id;
+                return [4 /*yield*/, locations.queryLocations(campusID)];
             case 1:
                 initialState = _a.sent();
                 campusName = initialState[0].campus_name;
                 initialState = initialState.map(function (location) { return ({
+                    type: "location",
                     id: location.id,
                     name: location.name,
                     rating: location.rating,
                     count: location.dish_count,
                 }); });
-                schoolPageApp = renderToString(React.createElement(SchoolPage, { locations: initialState, name: campusName }));
+                schoolPageApp = renderToString(React.createElement(SchoolPage, { locations: initialState, campusName: campusName, campusID: campusID }));
                 filePath = path.join(__dirname, "dist", "school-page.ejs");
                 initialState = JSON.stringify(initialState);
-                ejs.renderFile(filePath, { schoolPageApp: schoolPageApp, initialState: initialState, campusName: campusName }, function (err, html) {
+                ejs.renderFile(filePath, { schoolPageApp: schoolPageApp, initialState: initialState, campusName: campusName, campusID: campusID }, function (err, html) {
                     if (err) {
                         console.error("Error rendering template:", err);
                         return res.status(500).end();
@@ -371,12 +374,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _services_cache__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/cache */ "./src/services/cache.ts");
+
 
 function BreadCrumbs(_a) {
     var breadCrumbs = _a.breadCrumbs, setBreadCrumbs = _a.setBreadCrumbs, setContentArray = _a.setContentArray, setContentClass = _a.setContentClass;
     function handleBreadCrumbClick(index) {
         var breadCrumb = breadCrumbs[index];
-        setContentArray(breadCrumb.cards);
+        console.log(breadCrumb.query);
+        console.log(_services_cache__WEBPACK_IMPORTED_MODULE_1__.cache);
+        setContentArray((0,_services_cache__WEBPACK_IMPORTED_MODULE_1__.queryCache)(breadCrumb.query));
         setContentClass(breadCrumb.class);
         setBreadCrumbs(breadCrumbs.slice(0, index + 1));
     }
@@ -409,10 +416,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _services_cache__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/cache */ "./src/services/cache.ts");
-/* harmony import */ var _BreadCrumbs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BreadCrumbs */ "./src/components/BreadCrumbs.tsx");
-/* harmony import */ var _DishCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DishCard */ "./src/components/DishCard.tsx");
-/* harmony import */ var _LocationCard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./LocationCard */ "./src/components/LocationCard.tsx");
+/* harmony import */ var _BreadCrumbs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BreadCrumbs */ "./src/components/BreadCrumbs.tsx");
+/* harmony import */ var _DishCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DishCard */ "./src/components/DishCard.tsx");
+/* harmony import */ var _LocationCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./LocationCard */ "./src/components/LocationCard.tsx");
+/* harmony import */ var _services_cache__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/cache */ "./src/services/cache.ts");
 var __assign = (undefined && undefined.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -475,41 +482,57 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
 
 
 function ContentContainer(_a) {
-    var locations = _a.locations, campusName = _a.campusName;
+    var locations = _a.locations, campusName = _a.campusName, campusID = _a.campusID;
     var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("locations"), contentClass = _b[0], setContentClass = _b[1];
-    var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(locations.map(function (location) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_LocationCard__WEBPACK_IMPORTED_MODULE_4__["default"], { key: location.id, id: location.id, name: location.name, rating: location.rating, count: location.count, onLocationCardClick: handleLocationCardClick })); })), contentArray = _c[0], setContentArray = _c[1];
+    var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(locations), contentArray = _c[0], setContentArray = _c[1];
     var _d = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([
-        { class: "locations", name: campusName, cards: contentArray },
+        { class: "locations", name: campusName, query: "campus.".concat(campusID) },
     ]), breadCrumbs = _d[0], setBreadCrumbs = _d[1];
     function handleLocationCardClick(id, name) {
         return __awaiter(this, void 0, void 0, function () {
-            var res, dishes, dishCards;
+            var dishes;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, (0,_services_cache__WEBPACK_IMPORTED_MODULE_1__["default"])("location.".concat(id))];
+                    case 0: return [4 /*yield*/, (0,_services_cache__WEBPACK_IMPORTED_MODULE_4__.queryThroughCache)("location.".concat(id))];
                     case 1:
-                        res = _a.sent();
-                        dishes = res.map(function (dish) { return (__assign({}, dish)); });
-                        dishCards = parseDishes(dishes, function () { return console.log("click"); });
+                        dishes = _a.sent();
                         setContentClass("dishes");
                         setBreadCrumbs(function (breadCrumbs) { return __spreadArray(__spreadArray([], breadCrumbs, true), [
-                            { class: "dishes", name: name, cards: dishCards },
+                            { class: "dishes", name: name, query: "location.".concat(id) },
                         ], false); });
-                        setContentArray(dishCards);
+                        setContentArray(dishes);
                         return [2 /*return*/];
                 }
             });
         });
     }
+    function handleDishCardClick(id, name) {
+        return __awaiter(this, void 0, void 0, function () { return __generator(this, function (_a) {
+            return [2 /*return*/];
+        }); });
+    }
+    function parseData(data) {
+        var cards = [];
+        for (var i = 0; i < data.length; i++) {
+            switch (data[i].type) {
+                case "location":
+                    var locationData = data[i];
+                    cards.push(react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_LocationCard__WEBPACK_IMPORTED_MODULE_3__["default"], __assign({}, locationData, { key: locationData.id, onLocationCardClick: handleLocationCardClick })));
+                    break;
+                case "dish":
+                    var dishData = data[i];
+                    cards.push(react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_DishCard__WEBPACK_IMPORTED_MODULE_2__["default"], __assign({}, dishData, { key: dishData.id, onDishCardClick: handleDishCardClick })));
+                    break;
+            }
+        }
+        return cards;
+    }
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+        _services_cache__WEBPACK_IMPORTED_MODULE_4__.cache.campus[campusID] = locations;
+    }, []);
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_BreadCrumbs__WEBPACK_IMPORTED_MODULE_2__["default"], { breadCrumbs: breadCrumbs, setContentArray: setContentArray, setContentClass: setContentClass, setBreadCrumbs: setBreadCrumbs }),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: contentClass }, contentArray)));
-}
-function parseLocations(locations, handleLocationCardClick) {
-    return locations.map(function (location) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_LocationCard__WEBPACK_IMPORTED_MODULE_4__["default"], { key: location.id, id: location.id, name: location.name, rating: location.rating, count: location.count, onLocationCardClick: handleLocationCardClick })); });
-}
-function parseDishes(dishes, handleDishCardClick) {
-    return dishes.map(function (dish) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_DishCard__WEBPACK_IMPORTED_MODULE_3__["default"], { id: dish.id, name: dish.name, price: dish.price, availability: dish.availability, rating: dish.rating, onDishCardClick: handleDishCardClick })); });
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_BreadCrumbs__WEBPACK_IMPORTED_MODULE_1__["default"], { breadCrumbs: breadCrumbs, setContentArray: setContentArray, setContentClass: setContentClass, setBreadCrumbs: setBreadCrumbs }),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: contentClass }, parseData(contentArray))));
 }
 
 
@@ -701,7 +724,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function SchoolPage(_a) {
-    var locations = _a.locations, name = _a.name;
+    var locations = _a.locations, campusName = _a.campusName, campusID = _a.campusID;
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("header", null,
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { href: "/" },
@@ -712,12 +735,12 @@ function SchoolPage(_a) {
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Places"),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "at"),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "search-container" },
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MiniSearchBar__WEBPACK_IMPORTED_MODULE_1__["default"], { placeholder: name }))),
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MiniSearchBar__WEBPACK_IMPORTED_MODULE_1__["default"], { placeholder: campusName }))),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", { className: "login-signup" },
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "login" }, "Log in"),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "signup" }, "Sign up"))),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", null,
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ContentContainer__WEBPACK_IMPORTED_MODULE_2__["default"], { locations: locations, campusName: name }))));
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ContentContainer__WEBPACK_IMPORTED_MODULE_2__["default"], { locations: locations, campusName: campusName, campusID: campusID }))));
 }
 
 
@@ -838,6 +861,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "fetchDishes": () => (/* binding */ fetchDishes),
 /* harmony export */   "fetchLocations": () => (/* binding */ fetchLocations)
 /* harmony export */ });
+var __assign = (undefined && undefined.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -903,7 +937,7 @@ function fetchSearch(query) {
 }
 function fetchLocations(campusID) {
     return __awaiter(this, void 0, void 0, function () {
-        var response, locations, error_2;
+        var response, locations, locationData, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -914,10 +948,11 @@ function fetchLocations(campusID) {
                     if (!response.ok) {
                         throw new Error("HTTP error: ".concat(response.status));
                     }
-                    return [4 /*yield*/, response.text()];
+                    return [4 /*yield*/, response.json()];
                 case 2:
                     locations = _a.sent();
-                    return [2 /*return*/, JSON.parse(locations)];
+                    locationData = locations.map(function (location) { return (__assign({ type: "location" }, location)); });
+                    return [2 /*return*/, locationData];
                 case 3:
                     error_2 = _a.sent();
                     console.error("Error occurred during fetchLocations:", error_2);
@@ -929,7 +964,7 @@ function fetchLocations(campusID) {
 }
 function fetchDishes(locationID) {
     return __awaiter(this, void 0, void 0, function () {
-        var response, dishes, error_3;
+        var response, dishes, dishData, error_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -940,10 +975,11 @@ function fetchDishes(locationID) {
                     if (!response.ok) {
                         throw new Error("HTTP error: ".concat(response.status));
                     }
-                    return [4 /*yield*/, response.text()];
+                    return [4 /*yield*/, response.json()];
                 case 2:
                     dishes = _a.sent();
-                    return [2 /*return*/, JSON.parse(dishes)];
+                    dishData = dishes.map(function (dish) { return (__assign({ type: "dish" }, dish)); });
+                    return [2 /*return*/, dishData];
                 case 3:
                     error_3 = _a.sent();
                     console.error("Error occurred during fetchDishes:", error_3);
@@ -966,7 +1002,8 @@ function fetchDishes(locationID) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "cache": () => (/* binding */ cache),
-/* harmony export */   "default": () => (/* binding */ queryThroughCache)
+/* harmony export */   "queryCache": () => (/* binding */ queryCache),
+/* harmony export */   "queryThroughCache": () => (/* binding */ queryThroughCache)
 /* harmony export */ });
 /* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api */ "./src/services/api.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
@@ -1007,19 +1044,18 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 };
 
 var cache = { campus: {}, location: {} };
+// Use if it is not known whether the query is cached
 function queryThroughCache(query) {
     return __awaiter(this, void 0, void 0, function () {
         var _a, type, idString, id, cacheType, fetchData, data;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
-                    console.log(cache);
                     _a = query.split("."), type = _a[0], idString = _a[1];
                     id = parseInt(idString);
                     if (!(type === "campus" || type === "location")) return [3 /*break*/, 2];
                     cacheType = cache[type];
                     if (id in cacheType) {
-                        console.log("cached!");
                         return [2 /*return*/, cacheType[id]];
                     }
                     fetchData = type === "campus" ? _api__WEBPACK_IMPORTED_MODULE_0__.fetchLocations : _api__WEBPACK_IMPORTED_MODULE_0__.fetchDishes;
@@ -1032,6 +1068,21 @@ function queryThroughCache(query) {
             }
         });
     });
+}
+// Use only if you know the query is cached
+function queryCache(query) {
+    var _a = query.split("."), type = _a[0], idString = _a[1];
+    var id = parseInt(idString);
+    if (type === "campus" || type === "location") {
+        var cacheType = cache[type];
+        if (id in cacheType) {
+            return cacheType[id];
+        }
+        else {
+            throw new Error("Error: query \"".concat(query, "\" not cached. Use queryThroughCache if you are unsure whether the query is cached."));
+        }
+    }
+    throw new Error("Error: cache type \"".concat(type, "\" does not exist"));
 }
 
 

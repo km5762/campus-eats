@@ -1,11 +1,21 @@
 import { Rating, useMediaQuery } from "@mui/material";
 import React from "react";
 
-export interface Location {
+export interface LocationData {
+  type: "location";
   id: number;
   name: string;
   rating: number;
   count: number;
+}
+
+export interface LocationCardProps {
+  key: number;
+  id: number;
+  name: string;
+  rating: number;
+  count: number;
+  onLocationCardClick: Function;
 }
 
 export default function LocationCard({
@@ -14,7 +24,7 @@ export default function LocationCard({
   rating,
   count,
   onLocationCardClick,
-}: Location & { onLocationCardClick: (id: number, name: string) => void }) {
+}: LocationCardProps) {
   const smallScreen = useMediaQuery("(max-width: 890px)");
 
   const handleButtonClick = () => {

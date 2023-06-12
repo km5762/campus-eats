@@ -33489,6 +33489,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "fetchDishes": () => (/* binding */ fetchDishes),
 /* harmony export */   "fetchLocations": () => (/* binding */ fetchLocations)
 /* harmony export */ });
+var __assign = (undefined && undefined.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -33554,7 +33565,7 @@ function fetchSearch(query) {
 }
 function fetchLocations(campusID) {
     return __awaiter(this, void 0, void 0, function () {
-        var response, locations, error_2;
+        var response, locations, locationData, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -33565,10 +33576,11 @@ function fetchLocations(campusID) {
                     if (!response.ok) {
                         throw new Error("HTTP error: ".concat(response.status));
                     }
-                    return [4 /*yield*/, response.text()];
+                    return [4 /*yield*/, response.json()];
                 case 2:
                     locations = _a.sent();
-                    return [2 /*return*/, JSON.parse(locations)];
+                    locationData = locations.map(function (location) { return (__assign({ type: "location" }, location)); });
+                    return [2 /*return*/, locationData];
                 case 3:
                     error_2 = _a.sent();
                     console.error("Error occurred during fetchLocations:", error_2);
@@ -33580,7 +33592,7 @@ function fetchLocations(campusID) {
 }
 function fetchDishes(locationID) {
     return __awaiter(this, void 0, void 0, function () {
-        var response, dishes, error_3;
+        var response, dishes, dishData, error_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -33591,10 +33603,11 @@ function fetchDishes(locationID) {
                     if (!response.ok) {
                         throw new Error("HTTP error: ".concat(response.status));
                     }
-                    return [4 /*yield*/, response.text()];
+                    return [4 /*yield*/, response.json()];
                 case 2:
                     dishes = _a.sent();
-                    return [2 /*return*/, JSON.parse(dishes)];
+                    dishData = dishes.map(function (dish) { return (__assign({ type: "dish" }, dish)); });
+                    return [2 /*return*/, dishData];
                 case 3:
                     error_3 = _a.sent();
                     console.error("Error occurred during fetchDishes:", error_3);
