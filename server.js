@@ -381,8 +381,6 @@ function BreadCrumbs(_a) {
     var breadCrumbs = _a.breadCrumbs, setBreadCrumbs = _a.setBreadCrumbs, setContentArray = _a.setContentArray, setContentClass = _a.setContentClass;
     function handleBreadCrumbClick(index) {
         var breadCrumb = breadCrumbs[index];
-        console.log(breadCrumb.query);
-        console.log(_services_cache__WEBPACK_IMPORTED_MODULE_1__.cache);
         setContentArray((0,_services_cache__WEBPACK_IMPORTED_MODULE_1__.queryCache)(breadCrumb.query));
         setContentClass(breadCrumb.class);
         setBreadCrumbs(breadCrumbs.slice(0, index + 1));
@@ -394,6 +392,9 @@ function breadCrumbsToButtons(breadCrumbs, handleBreadCrumbClick) {
     var _loop_1 = function (i) {
         var breadCrumb = breadCrumbs[i];
         buttons.push(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { key: breadCrumb.class, onClick: function () { return handleBreadCrumbClick(i); } }, breadCrumb.name));
+        if (i !== breadCrumbs.length - 1) {
+            buttons.push(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, ">"));
+        }
     };
     for (var i = 0; i < breadCrumbs.length; i++) {
         _loop_1(i);
@@ -528,7 +529,7 @@ function ContentContainer(_a) {
         return cards;
     }
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-        _services_cache__WEBPACK_IMPORTED_MODULE_4__.cache.campus[campusID] = locations;
+        _services_cache__WEBPACK_IMPORTED_MODULE_4__.cache.campus[campusID] = locations; // Seed cache with initial location data from server
     }, []);
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_BreadCrumbs__WEBPACK_IMPORTED_MODULE_1__["default"], { breadCrumbs: breadCrumbs, setContentArray: setContentArray, setContentClass: setContentClass, setBreadCrumbs: setBreadCrumbs }),
@@ -556,10 +557,11 @@ __webpack_require__.r(__webpack_exports__);
 
 function DishCard(_a) {
     var id = _a.id, name = _a.name, price = _a.price, availability = _a.availability, rating = _a.rating, onDishCardClick = _a.onDishCardClick;
+    var smallScreen = (0,_mui_material__WEBPACK_IMPORTED_MODULE_1__.useMediaQuery)("(max-width: 890px)");
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "dish" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "top-half" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, name),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_1__.Rating, { name: "read-only", value: rating, precision: 0.25, readOnly: true })),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_1__.Rating, { name: "read-only", value: rating, precision: 0.25, sx: smallScreen ? { svg: { width: "4vw" } } : undefined, readOnly: true })),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "bottom-half" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "$".concat(price)),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, formatAvailability(availability)))));

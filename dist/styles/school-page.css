@@ -184,6 +184,33 @@ section {
   padding: 2em 3em;
 }
 
+.bread-crumbs {
+  display: flex;
+  margin-bottom: 0.35em;
+}
+
+.bread-crumbs button {
+  font-family: "Raleway";
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.75rem;
+  max-width: 25vw;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.bread-crumbs button:hover {
+  color: #6184d8;
+}
+
+.bread-crumbs span {
+  cursor: default;
+  display: flex;
+  align-items: center;
+}
+
 .locations {
   border-radius: 15px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -203,19 +230,29 @@ section {
   justify-content: space-between;
 }
 
-.location .rating-container,
-span {
+.location span {
+  display: flex;
+  align-items: center;
+}
+
+.location .rating-container {
   display: flex;
   align-items: center;
 }
 
 .dishes {
+  border-radius: 15px;
   padding: 3em;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background-color: white;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 5vw;
+}
+
+.dish {
+  background-color: #d5d5d5;
+  border-radius: 15px;
 }
 
 .dish .top-half,
@@ -245,6 +282,14 @@ span {
   input[type="search"] {
     max-width: 150px;
   }
+  .locations,
+  .dishes {
+    padding: 1.5em;
+  }
+  .location,
+  .dish {
+    font-size: 3vw;
+  }
 }
 
 @media (max-width: 650px) {
@@ -267,12 +312,9 @@ span {
     height: 1em;
   }
 
-  .location {
-    font-size: 3vw;
-  }
-
-  .locations {
-    padding: 1em;
+  .bread-crumbs button,
+  span {
+    font-size: 3.5vw;
   }
 
   section {

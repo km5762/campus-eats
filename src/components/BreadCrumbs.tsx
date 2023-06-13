@@ -46,6 +46,9 @@ function breadCrumbsToButtons(
         {breadCrumb.name}
       </button>
     );
+    if (i !== breadCrumbs.length - 1) {
+      buttons.push(<span>&gt;</span>);
+    }
   }
 
   return buttons;
