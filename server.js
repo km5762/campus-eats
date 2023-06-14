@@ -806,6 +806,10 @@ function SearchBar() {
     var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialState), suggestions = _a[0], setSuggestions = _a[1];
     var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""), searchValue = _b[0], setSearchValue = _b[1];
     var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("15px"), borderRadius = _c[0], setBorderRadius = _c[1];
+    function handleBlur() {
+        setSuggestions([]);
+        setBorderRadius("15px");
+    }
     function handleInput(event) {
         return __awaiter(this, void 0, void 0, function () {
             var currentSearch, result;
@@ -837,14 +841,17 @@ function SearchBar() {
         });
     }
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", { style: { borderRadius: borderRadius }, type: "search", onInput: handleInput, value: searchValue, placeholder: "Find my school!" }),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", { onBlur: handleBlur, onFocus: handleInput, style: { borderRadius: borderRadius }, type: "search", onInput: handleInput, value: searchValue, placeholder: "Find my school!" }),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Suggestions, { suggestions: suggestions })));
 }
 function Suggestions(_a) {
     var suggestions = _a.suggestions;
+    function handleSuggestionClick(event) {
+        event.preventDefault();
+    }
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "suggestions" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, suggestions.map(function (suggestion) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", { key: suggestion.id },
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { href: "/campus/".concat(suggestion.id, "/locations") },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { href: "/campus/".concat(suggestion.id, "/locations"), onMouseDown: function (e) { return handleSuggestionClick(e); } },
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", { src: "/images/magnify.svg", alt: "Magnify" }),
                 suggestion.name))); }))));
 }

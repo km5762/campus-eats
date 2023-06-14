@@ -17,6 +17,11 @@ export default function SearchBar() {
   const [searchValue, setSearchValue] = useState("");
   const [borderRadius, setBorderRadius] = useState("15px");
 
+  function handleBlur() {
+    setSuggestions([]);
+    setBorderRadius("15px");
+  }
+
   async function handleInput(event: any) {
     const currentSearch = event.target.value;
     setSearchValue(currentSearch);
@@ -42,6 +47,8 @@ export default function SearchBar() {
   return (
     <>
       <input
+        onBlur={handleBlur}
+        onFocus={handleInput}
         style={{ borderRadius: borderRadius }}
         type="search"
         onInput={handleInput}
@@ -54,12 +61,19 @@ export default function SearchBar() {
 }
 
 export function Suggestions({ suggestions }: SuggestionsProps) {
+  function handleSuggestionClick(event: React.MouseEvent) {
+    event.preventDefault();
+  }
+
   return (
     <div className="suggestions">
       <ul>
         {suggestions.map((suggestion) => (
           <li key={suggestion.id}>
-            <a href={`/campus/${suggestion.id}/locations`}>
+            <a
+              href={`/campus/${suggestion.id}/locations`}
+              onMouseDown={(e) => handleSuggestionClick(e)}
+            >
               <img src="/images/magnify.svg" alt="Magnify" />
               {suggestion.name}
             </a>
