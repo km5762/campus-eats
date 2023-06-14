@@ -44467,17 +44467,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/useMediaQuery/useMediaQuery.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Rating/Rating.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Rating/Rating.js");
 
 
 function DishCard(_a) {
     var id = _a.id, name = _a.name, price = _a.price, availability = _a.availability, rating = _a.rating, onDishCardClick = _a.onDishCardClick;
-    var smallScreen = (0,_mui_material__WEBPACK_IMPORTED_MODULE_1__["default"])("(max-width: 890px)");
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "dish" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "top-half" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, name),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], { name: "read-only", value: rating, precision: 0.25, sx: smallScreen ? { svg: { width: "4vw" } } : undefined, readOnly: true })),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_1__["default"], { name: "read-only", value: rating, precision: 0.25, sx: { svg: { width: "clamp(16px, 4vw, 24px)" } }, readOnly: true })),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "bottom-half" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "$".concat(price)),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, formatAvailability(availability)))));
@@ -44521,14 +44519,16 @@ __webpack_require__.r(__webpack_exports__);
 function LocationCard(_a) {
     var id = _a.id, name = _a.name, rating = _a.rating, count = _a.count, onLocationCardClick = _a.onLocationCardClick;
     var smallScreen = (0,_mui_material__WEBPACK_IMPORTED_MODULE_1__["default"])("(max-width: 890px)");
+    var smallestScreen = (0,_mui_material__WEBPACK_IMPORTED_MODULE_1__["default"])("(max-width: 400px");
+    var notStacked = smallScreen && !smallestScreen;
     var handleButtonClick = function () {
         onLocationCardClick(id, name);
     };
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "location" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, name),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", { className: "name" }, name),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "rating-container" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", { className: "decimal-value" }, rating),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], { name: "read-only", value: smallScreen ? 1 : rating, max: smallScreen ? 1 : 5, precision: 0.25, sx: smallScreen ? { svg: { width: "4vw" } } : undefined, readOnly: true })),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], { name: "read-only", value: notStacked ? 1 : rating, max: notStacked ? 1 : 5, precision: 0.25, sx: smallScreen ? { svg: { width: "4vw" } } : undefined, readOnly: true })),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: handleButtonClick }, "See all ".concat(count, " dishes"))));
 }
 

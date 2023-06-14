@@ -28,8 +28,6 @@ export default function DishCard({
   rating,
   onDishCardClick,
 }: DishCardProps) {
-  const smallScreen = useMediaQuery("(max-width: 890px)");
-
   return (
     <div className="dish">
       <div className="top-half">
@@ -38,7 +36,7 @@ export default function DishCard({
           name="read-only"
           value={rating}
           precision={0.25}
-          sx={smallScreen ? { svg: { width: "4vw" } } : undefined}
+          sx={{ svg: { width: "clamp(16px, 4vw, 24px)" } }}
           readOnly
         />
       </div>

@@ -26,6 +26,8 @@ export default function LocationCard({
   onLocationCardClick,
 }: LocationCardProps) {
   const smallScreen = useMediaQuery("(max-width: 890px)");
+  const smallestScreen = useMediaQuery("(max-width: 400px");
+  const notStacked = smallScreen && !smallestScreen;
 
   const handleButtonClick = () => {
     onLocationCardClick(id, name);
@@ -33,13 +35,13 @@ export default function LocationCard({
 
   return (
     <div className="location">
-      <span>{name}</span>
+      <span className="name">{name}</span>
       <div className="rating-container">
         <span className="decimal-value">{rating}</span>
         <Rating
           name="read-only"
-          value={smallScreen ? 1 : rating}
-          max={smallScreen ? 1 : 5}
+          value={notStacked ? 1 : rating}
+          max={notStacked ? 1 : 5}
           precision={0.25}
           sx={smallScreen ? { svg: { width: "4vw" } } : undefined}
           readOnly
