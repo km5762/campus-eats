@@ -3201,6 +3201,814 @@ function useSlotProps(parameters) {
 
 /***/ }),
 
+/***/ "./node_modules/@mui/material/Backdrop/Backdrop.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/@mui/material/Backdrop/Backdrop.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
+/* harmony import */ var _mui_base__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/base */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
+/* harmony import */ var _styles_styled__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../styles/styled */ "./node_modules/@mui/material/styles/styled.js");
+/* harmony import */ var _styles_useThemeProps__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../styles/useThemeProps */ "./node_modules/@mui/material/styles/useThemeProps.js");
+/* harmony import */ var _Fade__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Fade */ "./node_modules/@mui/material/Fade/Fade.js");
+/* harmony import */ var _backdropClasses__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./backdropClasses */ "./node_modules/@mui/material/Backdrop/backdropClasses.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+const _excluded = ["children", "className", "component", "components", "componentsProps", "invisible", "open", "slotProps", "slots", "TransitionComponent", "transitionDuration"];
+
+
+
+
+
+
+
+
+
+const useUtilityClasses = ownerState => {
+  const {
+    classes,
+    invisible
+  } = ownerState;
+  const slots = {
+    root: ['root', invisible && 'invisible']
+  };
+  return (0,_mui_base__WEBPACK_IMPORTED_MODULE_5__["default"])(slots, _backdropClasses__WEBPACK_IMPORTED_MODULE_6__.getBackdropUtilityClass, classes);
+};
+const BackdropRoot = (0,_styles_styled__WEBPACK_IMPORTED_MODULE_7__["default"])('div', {
+  name: 'MuiBackdrop',
+  slot: 'Root',
+  overridesResolver: (props, styles) => {
+    const {
+      ownerState
+    } = props;
+    return [styles.root, ownerState.invisible && styles.invisible];
+  }
+})(({
+  ownerState
+}) => (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({
+  position: 'fixed',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  right: 0,
+  bottom: 0,
+  top: 0,
+  left: 0,
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  WebkitTapHighlightColor: 'transparent'
+}, ownerState.invisible && {
+  backgroundColor: 'transparent'
+}));
+const Backdrop = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(function Backdrop(inProps, ref) {
+  var _slotProps$root, _ref, _slots$root;
+  const props = (0,_styles_useThemeProps__WEBPACK_IMPORTED_MODULE_8__["default"])({
+    props: inProps,
+    name: 'MuiBackdrop'
+  });
+  const {
+      children,
+      className,
+      component = 'div',
+      components = {},
+      componentsProps = {},
+      invisible = false,
+      open,
+      slotProps = {},
+      slots = {},
+      TransitionComponent = _Fade__WEBPACK_IMPORTED_MODULE_9__["default"],
+      transitionDuration
+    } = props,
+    other = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(props, _excluded);
+  const ownerState = (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, props, {
+    component,
+    invisible
+  });
+  const classes = useUtilityClasses(ownerState);
+  const rootSlotProps = (_slotProps$root = slotProps.root) != null ? _slotProps$root : componentsProps.root;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(TransitionComponent, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    in: open,
+    timeout: transitionDuration
+  }, other, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(BackdropRoot, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({
+      "aria-hidden": true
+    }, rootSlotProps, {
+      as: (_ref = (_slots$root = slots.root) != null ? _slots$root : components.Root) != null ? _ref : component,
+      className: (0,clsx__WEBPACK_IMPORTED_MODULE_3__["default"])(classes.root, className, rootSlotProps == null ? void 0 : rootSlotProps.className),
+      ownerState: (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, ownerState, rootSlotProps == null ? void 0 : rootSlotProps.ownerState),
+      classes: classes,
+      ref: ref,
+      children: children
+    }))
+  }));
+});
+ true ? Backdrop.propTypes /* remove-proptypes */ = {
+  // ----------------------------- Warning --------------------------------
+  // | These PropTypes are generated from the TypeScript type definitions |
+  // |     To update them edit the d.ts file and run "yarn proptypes"     |
+  // ----------------------------------------------------------------------
+  /**
+   * The content of the component.
+   */
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().node),
+  /**
+   * Override or extend the styles applied to the component.
+   */
+  classes: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().object),
+  /**
+   * @ignore
+   */
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().string),
+  /**
+   * The component used for the root node.
+   * Either a string to use a HTML element or a component.
+   */
+  component: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().elementType),
+  /**
+   * The components used for each slot inside.
+   *
+   * This prop is an alias for the `slots` prop.
+   * It's recommended to use the `slots` prop instead.
+   *
+   * @default {}
+   */
+  components: prop_types__WEBPACK_IMPORTED_MODULE_10___default().shape({
+    Root: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().elementType)
+  }),
+  /**
+   * The extra props for the slot components.
+   * You can override the existing props or add new ones.
+   *
+   * This prop is an alias for the `slotProps` prop.
+   * It's recommended to use the `slotProps` prop instead, as `componentsProps` will be deprecated in the future.
+   *
+   * @default {}
+   */
+  componentsProps: prop_types__WEBPACK_IMPORTED_MODULE_10___default().shape({
+    root: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().object)
+  }),
+  /**
+   * If `true`, the backdrop is invisible.
+   * It can be used when rendering a popover or a custom select component.
+   * @default false
+   */
+  invisible: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().bool),
+  /**
+   * If `true`, the component is shown.
+   */
+  open: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().bool.isRequired),
+  /**
+   * The extra props for the slot components.
+   * You can override the existing props or add new ones.
+   *
+   * This prop is an alias for the `componentsProps` prop, which will be deprecated in the future.
+   *
+   * @default {}
+   */
+  slotProps: prop_types__WEBPACK_IMPORTED_MODULE_10___default().shape({
+    root: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().object)
+  }),
+  /**
+   * The components used for each slot inside.
+   *
+   * This prop is an alias for the `components` prop, which will be deprecated in the future.
+   *
+   * @default {}
+   */
+  slots: prop_types__WEBPACK_IMPORTED_MODULE_10___default().shape({
+    root: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().elementType)
+  }),
+  /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */
+  sx: prop_types__WEBPACK_IMPORTED_MODULE_10___default().oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_10___default().arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_10___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_10___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_10___default().object), (prop_types__WEBPACK_IMPORTED_MODULE_10___default().bool)])), (prop_types__WEBPACK_IMPORTED_MODULE_10___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_10___default().object)]),
+  /**
+   * The component used for the transition.
+   * [Follow this guide](/material-ui/transitions/#transitioncomponent-prop) to learn more about the requirements for this component.
+   * @default Fade
+   */
+  TransitionComponent: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().elementType),
+  /**
+   * The duration for the transition, in milliseconds.
+   * You may specify a single timeout for all transitions, or individually with an object.
+   */
+  transitionDuration: prop_types__WEBPACK_IMPORTED_MODULE_10___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_10___default().number), prop_types__WEBPACK_IMPORTED_MODULE_10___default().shape({
+    appear: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().number),
+    enter: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().number),
+    exit: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().number)
+  })])
+} : 0;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Backdrop);
+
+/***/ }),
+
+/***/ "./node_modules/@mui/material/Backdrop/backdropClasses.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/@mui/material/Backdrop/backdropClasses.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   "getBackdropUtilityClass": () => (/* binding */ getBackdropUtilityClass)
+/* harmony export */ });
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/generateUtilityClasses/generateUtilityClasses.js");
+/* harmony import */ var _generateUtilityClass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../generateUtilityClass */ "./node_modules/@mui/utils/esm/generateUtilityClass/generateUtilityClass.js");
+
+
+function getBackdropUtilityClass(slot) {
+  return (0,_generateUtilityClass__WEBPACK_IMPORTED_MODULE_0__["default"])('MuiBackdrop', slot);
+}
+const backdropClasses = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_1__["default"])('MuiBackdrop', ['root', 'invisible']);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (backdropClasses);
+
+/***/ }),
+
+/***/ "./node_modules/@mui/material/Fade/Fade.js":
+/*!*************************************************!*\
+  !*** ./node_modules/@mui/material/Fade/Fade.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-transition-group */ "./node_modules/react-transition-group/esm/Transition.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/elementAcceptingRef.js");
+/* harmony import */ var _styles_useTheme__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../styles/useTheme */ "./node_modules/@mui/material/styles/useTheme.js");
+/* harmony import */ var _transitions_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../transitions/utils */ "./node_modules/@mui/material/transitions/utils.js");
+/* harmony import */ var _utils_useForkRef__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/useForkRef */ "./node_modules/@mui/material/utils/useForkRef.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+const _excluded = ["addEndListener", "appear", "children", "easing", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "style", "timeout", "TransitionComponent"];
+
+
+
+
+
+
+
+
+const styles = {
+  entering: {
+    opacity: 1
+  },
+  entered: {
+    opacity: 1
+  }
+};
+
+/**
+ * The Fade transition is used by the [Modal](/material-ui/react-modal/) component.
+ * It uses [react-transition-group](https://github.com/reactjs/react-transition-group) internally.
+ */
+const Fade = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(function Fade(props, ref) {
+  const theme = (0,_styles_useTheme__WEBPACK_IMPORTED_MODULE_4__["default"])();
+  const defaultTimeout = {
+    enter: theme.transitions.duration.enteringScreen,
+    exit: theme.transitions.duration.leavingScreen
+  };
+  const {
+      addEndListener,
+      appear = true,
+      children,
+      easing,
+      in: inProp,
+      onEnter,
+      onEntered,
+      onEntering,
+      onExit,
+      onExited,
+      onExiting,
+      style,
+      timeout = defaultTimeout,
+      // eslint-disable-next-line react/prop-types
+      TransitionComponent = react_transition_group__WEBPACK_IMPORTED_MODULE_5__["default"]
+    } = props,
+    other = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(props, _excluded);
+  const enableStrictModeCompat = true;
+  const nodeRef = react__WEBPACK_IMPORTED_MODULE_2__.useRef(null);
+  const handleRef = (0,_utils_useForkRef__WEBPACK_IMPORTED_MODULE_6__["default"])(nodeRef, children.ref, ref);
+  const normalizedTransitionCallback = callback => maybeIsAppearing => {
+    if (callback) {
+      const node = nodeRef.current;
+
+      // onEnterXxx and onExitXxx callbacks have a different arguments.length value.
+      if (maybeIsAppearing === undefined) {
+        callback(node);
+      } else {
+        callback(node, maybeIsAppearing);
+      }
+    }
+  };
+  const handleEntering = normalizedTransitionCallback(onEntering);
+  const handleEnter = normalizedTransitionCallback((node, isAppearing) => {
+    (0,_transitions_utils__WEBPACK_IMPORTED_MODULE_7__.reflow)(node); // So the animation always start from the start.
+
+    const transitionProps = (0,_transitions_utils__WEBPACK_IMPORTED_MODULE_7__.getTransitionProps)({
+      style,
+      timeout,
+      easing
+    }, {
+      mode: 'enter'
+    });
+    node.style.webkitTransition = theme.transitions.create('opacity', transitionProps);
+    node.style.transition = theme.transitions.create('opacity', transitionProps);
+    if (onEnter) {
+      onEnter(node, isAppearing);
+    }
+  });
+  const handleEntered = normalizedTransitionCallback(onEntered);
+  const handleExiting = normalizedTransitionCallback(onExiting);
+  const handleExit = normalizedTransitionCallback(node => {
+    const transitionProps = (0,_transitions_utils__WEBPACK_IMPORTED_MODULE_7__.getTransitionProps)({
+      style,
+      timeout,
+      easing
+    }, {
+      mode: 'exit'
+    });
+    node.style.webkitTransition = theme.transitions.create('opacity', transitionProps);
+    node.style.transition = theme.transitions.create('opacity', transitionProps);
+    if (onExit) {
+      onExit(node);
+    }
+  });
+  const handleExited = normalizedTransitionCallback(onExited);
+  const handleAddEndListener = next => {
+    if (addEndListener) {
+      // Old call signature before `react-transition-group` implemented `nodeRef`
+      addEndListener(nodeRef.current, next);
+    }
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(TransitionComponent, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    appear: appear,
+    in: inProp,
+    nodeRef: enableStrictModeCompat ? nodeRef : undefined,
+    onEnter: handleEnter,
+    onEntered: handleEntered,
+    onEntering: handleEntering,
+    onExit: handleExit,
+    onExited: handleExited,
+    onExiting: handleExiting,
+    addEndListener: handleAddEndListener,
+    timeout: timeout
+  }, other, {
+    children: (state, childProps) => {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.cloneElement(children, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+        style: (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+          opacity: 0,
+          visibility: state === 'exited' && !inProp ? 'hidden' : undefined
+        }, styles[state], style, children.props.style),
+        ref: handleRef
+      }, childProps));
+    }
+  }));
+});
+ true ? Fade.propTypes /* remove-proptypes */ = {
+  // ----------------------------- Warning --------------------------------
+  // | These PropTypes are generated from the TypeScript type definitions |
+  // |     To update them edit the d.ts file and run "yarn proptypes"     |
+  // ----------------------------------------------------------------------
+  /**
+   * Add a custom transition end trigger. Called with the transitioning DOM
+   * node and a done callback. Allows for more fine grained transition end
+   * logic. Note: Timeouts are still used as a fallback if provided.
+   */
+  addEndListener: (prop_types__WEBPACK_IMPORTED_MODULE_8___default().func),
+  /**
+   * Perform the enter transition when it first mounts if `in` is also `true`.
+   * Set this to `false` to disable this behavior.
+   * @default true
+   */
+  appear: (prop_types__WEBPACK_IMPORTED_MODULE_8___default().bool),
+  /**
+   * A single child content element.
+   */
+  children: _mui_utils__WEBPACK_IMPORTED_MODULE_9__["default"].isRequired,
+  /**
+   * The transition timing function.
+   * You may specify a single easing or a object containing enter and exit values.
+   */
+  easing: prop_types__WEBPACK_IMPORTED_MODULE_8___default().oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_8___default().shape({
+    enter: (prop_types__WEBPACK_IMPORTED_MODULE_8___default().string),
+    exit: (prop_types__WEBPACK_IMPORTED_MODULE_8___default().string)
+  }), (prop_types__WEBPACK_IMPORTED_MODULE_8___default().string)]),
+  /**
+   * If `true`, the component will transition in.
+   */
+  in: (prop_types__WEBPACK_IMPORTED_MODULE_8___default().bool),
+  /**
+   * @ignore
+   */
+  onEnter: (prop_types__WEBPACK_IMPORTED_MODULE_8___default().func),
+  /**
+   * @ignore
+   */
+  onEntered: (prop_types__WEBPACK_IMPORTED_MODULE_8___default().func),
+  /**
+   * @ignore
+   */
+  onEntering: (prop_types__WEBPACK_IMPORTED_MODULE_8___default().func),
+  /**
+   * @ignore
+   */
+  onExit: (prop_types__WEBPACK_IMPORTED_MODULE_8___default().func),
+  /**
+   * @ignore
+   */
+  onExited: (prop_types__WEBPACK_IMPORTED_MODULE_8___default().func),
+  /**
+   * @ignore
+   */
+  onExiting: (prop_types__WEBPACK_IMPORTED_MODULE_8___default().func),
+  /**
+   * @ignore
+   */
+  style: (prop_types__WEBPACK_IMPORTED_MODULE_8___default().object),
+  /**
+   * The duration for the transition, in milliseconds.
+   * You may specify a single timeout for all transitions, or individually with an object.
+   * @default {
+   *   enter: theme.transitions.duration.enteringScreen,
+   *   exit: theme.transitions.duration.leavingScreen,
+   * }
+   */
+  timeout: prop_types__WEBPACK_IMPORTED_MODULE_8___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_8___default().number), prop_types__WEBPACK_IMPORTED_MODULE_8___default().shape({
+    appear: (prop_types__WEBPACK_IMPORTED_MODULE_8___default().number),
+    enter: (prop_types__WEBPACK_IMPORTED_MODULE_8___default().number),
+    exit: (prop_types__WEBPACK_IMPORTED_MODULE_8___default().number)
+  })])
+} : 0;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Fade);
+
+/***/ }),
+
+/***/ "./node_modules/@mui/material/Modal/Modal.js":
+/*!***************************************************!*\
+  !*** ./node_modules/@mui/material/Modal/Modal.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   "modalClasses": () => (/* binding */ modalClasses)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
+/* harmony import */ var _mui_base_Modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/base/Modal */ "./node_modules/@mui/material/node_modules/@mui/base/Modal/modalClasses.js");
+/* harmony import */ var _mui_base_Modal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @mui/base/Modal */ "./node_modules/@mui/material/node_modules/@mui/base/Modal/Modal.js");
+/* harmony import */ var _mui_base_utils__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @mui/base/utils */ "./node_modules/@mui/material/node_modules/@mui/base/utils/resolveComponentProps.js");
+/* harmony import */ var _mui_base_utils__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @mui/base/utils */ "./node_modules/@mui/material/node_modules/@mui/base/utils/isHostComponent.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/elementAcceptingRef.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/HTMLElementType.js");
+/* harmony import */ var _styles_styled__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../styles/styled */ "./node_modules/@mui/material/styles/styled.js");
+/* harmony import */ var _styles_useThemeProps__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../styles/useThemeProps */ "./node_modules/@mui/material/styles/useThemeProps.js");
+/* harmony import */ var _Backdrop__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Backdrop */ "./node_modules/@mui/material/Backdrop/Backdrop.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+const _excluded = ["BackdropComponent", "BackdropProps", "classes", "className", "closeAfterTransition", "children", "container", "component", "components", "componentsProps", "disableAutoFocus", "disableEnforceFocus", "disableEscapeKeyDown", "disablePortal", "disableRestoreFocus", "disableScrollLock", "hideBackdrop", "keepMounted", "onBackdropClick", "onClose", "open", "slotProps", "slots", "theme"];
+
+
+
+
+
+
+
+
+
+
+const modalClasses = _mui_base_Modal__WEBPACK_IMPORTED_MODULE_5__["default"];
+const ModalRoot = (0,_styles_styled__WEBPACK_IMPORTED_MODULE_6__["default"])('div', {
+  name: 'MuiModal',
+  slot: 'Root',
+  overridesResolver: (props, styles) => {
+    const {
+      ownerState
+    } = props;
+    return [styles.root, !ownerState.open && ownerState.exited && styles.hidden];
+  }
+})(({
+  theme,
+  ownerState
+}) => (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({
+  position: 'fixed',
+  zIndex: (theme.vars || theme).zIndex.modal,
+  right: 0,
+  bottom: 0,
+  top: 0,
+  left: 0
+}, !ownerState.open && ownerState.exited && {
+  visibility: 'hidden'
+}));
+const ModalBackdrop = (0,_styles_styled__WEBPACK_IMPORTED_MODULE_6__["default"])(_Backdrop__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  name: 'MuiModal',
+  slot: 'Backdrop',
+  overridesResolver: (props, styles) => {
+    return styles.backdrop;
+  }
+})({
+  zIndex: -1
+});
+
+/**
+ * Modal is a lower-level construct that is leveraged by the following components:
+ *
+ * - [Dialog](/material-ui/api/dialog/)
+ * - [Drawer](/material-ui/api/drawer/)
+ * - [Menu](/material-ui/api/menu/)
+ * - [Popover](/material-ui/api/popover/)
+ *
+ * If you are creating a modal dialog, you probably want to use the [Dialog](/material-ui/api/dialog/) component
+ * rather than directly using Modal.
+ *
+ * This component shares many concepts with [react-overlays](https://react-bootstrap.github.io/react-overlays/#modals).
+ */
+const Modal = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(function Modal(inProps, ref) {
+  var _ref, _slots$root, _ref2, _slots$backdrop, _slotProps$root, _slotProps$backdrop;
+  const props = (0,_styles_useThemeProps__WEBPACK_IMPORTED_MODULE_8__["default"])({
+    name: 'MuiModal',
+    props: inProps
+  });
+  const {
+      BackdropComponent = ModalBackdrop,
+      BackdropProps,
+      classes,
+      className,
+      closeAfterTransition = false,
+      children,
+      container,
+      component,
+      components = {},
+      componentsProps = {},
+      disableAutoFocus = false,
+      disableEnforceFocus = false,
+      disableEscapeKeyDown = false,
+      disablePortal = false,
+      disableRestoreFocus = false,
+      disableScrollLock = false,
+      hideBackdrop = false,
+      keepMounted = false,
+      onBackdropClick,
+      onClose,
+      open,
+      slotProps,
+      slots,
+      // eslint-disable-next-line react/prop-types
+      theme
+    } = props,
+    other = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(props, _excluded);
+  const [exited, setExited] = react__WEBPACK_IMPORTED_MODULE_2__.useState(true);
+  const commonProps = {
+    container,
+    closeAfterTransition,
+    disableAutoFocus,
+    disableEnforceFocus,
+    disableEscapeKeyDown,
+    disablePortal,
+    disableRestoreFocus,
+    disableScrollLock,
+    hideBackdrop,
+    keepMounted,
+    onBackdropClick,
+    onClose,
+    open
+  };
+  const ownerState = (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, props, commonProps, {
+    exited
+  });
+  const RootSlot = (_ref = (_slots$root = slots == null ? void 0 : slots.root) != null ? _slots$root : components.Root) != null ? _ref : ModalRoot;
+  const BackdropSlot = (_ref2 = (_slots$backdrop = slots == null ? void 0 : slots.backdrop) != null ? _slots$backdrop : components.Backdrop) != null ? _ref2 : BackdropComponent;
+  const rootSlotProps = (_slotProps$root = slotProps == null ? void 0 : slotProps.root) != null ? _slotProps$root : componentsProps.root;
+  const backdropSlotProps = (_slotProps$backdrop = slotProps == null ? void 0 : slotProps.backdrop) != null ? _slotProps$backdrop : componentsProps.backdrop;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_base_Modal__WEBPACK_IMPORTED_MODULE_9__["default"], (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    slots: {
+      root: RootSlot,
+      backdrop: BackdropSlot
+    },
+    slotProps: {
+      root: () => (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, (0,_mui_base_utils__WEBPACK_IMPORTED_MODULE_10__["default"])(rootSlotProps, ownerState), !(0,_mui_base_utils__WEBPACK_IMPORTED_MODULE_11__["default"])(RootSlot) && {
+        as: component,
+        theme
+      }, {
+        className: (0,clsx__WEBPACK_IMPORTED_MODULE_3__["default"])(className, rootSlotProps == null ? void 0 : rootSlotProps.className, classes == null ? void 0 : classes.root, !ownerState.open && ownerState.exited && (classes == null ? void 0 : classes.hidden))
+      }),
+      backdrop: () => (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, BackdropProps, (0,_mui_base_utils__WEBPACK_IMPORTED_MODULE_10__["default"])(backdropSlotProps, ownerState), {
+        className: (0,clsx__WEBPACK_IMPORTED_MODULE_3__["default"])(backdropSlotProps == null ? void 0 : backdropSlotProps.className, BackdropProps == null ? void 0 : BackdropProps.className, classes == null ? void 0 : classes.backdrop)
+      })
+    },
+    onTransitionEnter: () => setExited(false),
+    onTransitionExited: () => setExited(true),
+    ref: ref
+  }, other, commonProps, {
+    children: children
+  }));
+});
+ true ? Modal.propTypes /* remove-proptypes */ = {
+  // ----------------------------- Warning --------------------------------
+  // | These PropTypes are generated from the TypeScript type definitions |
+  // |     To update them edit the d.ts file and run "yarn proptypes"     |
+  // ----------------------------------------------------------------------
+  /**
+   * A backdrop component. This prop enables custom backdrop rendering.
+   * @deprecated Use `slots.backdrop` instead. While this prop currently works, it will be removed in the next major version.
+   * Use the `slots.backdrop` prop to make your application ready for the next version of Material UI.
+   * @default styled(Backdrop, {
+   *   name: 'MuiModal',
+   *   slot: 'Backdrop',
+   *   overridesResolver: (props, styles) => {
+   *     return styles.backdrop;
+   *   },
+   * })({
+   *   zIndex: -1,
+   * })
+   */
+  BackdropComponent: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().elementType),
+  /**
+   * Props applied to the [`Backdrop`](/material-ui/api/backdrop/) element.
+   * @deprecated Use `slotProps.backdrop` instead.
+   */
+  BackdropProps: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().object),
+  /**
+   * A single child content element.
+   */
+  children: _mui_utils__WEBPACK_IMPORTED_MODULE_13__["default"].isRequired,
+  /**
+   * Override or extend the styles applied to the component.
+   */
+  classes: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().object),
+  /**
+   * @ignore
+   */
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().string),
+  /**
+   * When set to true the Modal waits until a nested Transition is completed before closing.
+   * @default false
+   */
+  closeAfterTransition: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().bool),
+  /**
+   * The component used for the root node.
+   * Either a string to use a HTML element or a component.
+   */
+  component: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().elementType),
+  /**
+   * The components used for each slot inside.
+   *
+   * This prop is an alias for the `slots` prop.
+   * It's recommended to use the `slots` prop instead.
+   *
+   * @default {}
+   */
+  components: prop_types__WEBPACK_IMPORTED_MODULE_12___default().shape({
+    Backdrop: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().elementType),
+    Root: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().elementType)
+  }),
+  /**
+   * The extra props for the slot components.
+   * You can override the existing props or add new ones.
+   *
+   * This prop is an alias for the `slotProps` prop.
+   * It's recommended to use the `slotProps` prop instead, as `componentsProps` will be deprecated in the future.
+   *
+   * @default {}
+   */
+  componentsProps: prop_types__WEBPACK_IMPORTED_MODULE_12___default().shape({
+    backdrop: prop_types__WEBPACK_IMPORTED_MODULE_12___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_12___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_12___default().object)]),
+    root: prop_types__WEBPACK_IMPORTED_MODULE_12___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_12___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_12___default().object)])
+  }),
+  /**
+   * An HTML element or function that returns one.
+   * The `container` will have the portal children appended to it.
+   *
+   * By default, it uses the body of the top-level document object,
+   * so it's simply `document.body` most of the time.
+   */
+  container: prop_types__WEBPACK_IMPORTED_MODULE_12___default().oneOfType([_mui_utils__WEBPACK_IMPORTED_MODULE_14__["default"], (prop_types__WEBPACK_IMPORTED_MODULE_12___default().func)]),
+  /**
+   * If `true`, the modal will not automatically shift focus to itself when it opens, and
+   * replace it to the last focused element when it closes.
+   * This also works correctly with any modal children that have the `disableAutoFocus` prop.
+   *
+   * Generally this should never be set to `true` as it makes the modal less
+   * accessible to assistive technologies, like screen readers.
+   * @default false
+   */
+  disableAutoFocus: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().bool),
+  /**
+   * If `true`, the modal will not prevent focus from leaving the modal while open.
+   *
+   * Generally this should never be set to `true` as it makes the modal less
+   * accessible to assistive technologies, like screen readers.
+   * @default false
+   */
+  disableEnforceFocus: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().bool),
+  /**
+   * If `true`, hitting escape will not fire the `onClose` callback.
+   * @default false
+   */
+  disableEscapeKeyDown: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().bool),
+  /**
+   * The `children` will be under the DOM hierarchy of the parent component.
+   * @default false
+   */
+  disablePortal: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().bool),
+  /**
+   * If `true`, the modal will not restore focus to previously focused element once
+   * modal is hidden or unmounted.
+   * @default false
+   */
+  disableRestoreFocus: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().bool),
+  /**
+   * Disable the scroll lock behavior.
+   * @default false
+   */
+  disableScrollLock: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().bool),
+  /**
+   * If `true`, the backdrop is not rendered.
+   * @default false
+   */
+  hideBackdrop: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().bool),
+  /**
+   * Always keep the children in the DOM.
+   * This prop can be useful in SEO situation or
+   * when you want to maximize the responsiveness of the Modal.
+   * @default false
+   */
+  keepMounted: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().bool),
+  /**
+   * Callback fired when the backdrop is clicked.
+   * @deprecated Use the `onClose` prop with the `reason` argument to handle the `backdropClick` events.
+   */
+  onBackdropClick: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().func),
+  /**
+   * Callback fired when the component requests to be closed.
+   * The `reason` parameter can optionally be used to control the response to `onClose`.
+   *
+   * @param {object} event The event source of the callback.
+   * @param {string} reason Can be: `"escapeKeyDown"`, `"backdropClick"`.
+   */
+  onClose: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().func),
+  /**
+   * If `true`, the component is shown.
+   */
+  open: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().bool.isRequired),
+  /**
+   * The props used for each slot inside the Modal.
+   * @default {}
+   */
+  slotProps: prop_types__WEBPACK_IMPORTED_MODULE_12___default().shape({
+    backdrop: prop_types__WEBPACK_IMPORTED_MODULE_12___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_12___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_12___default().object)]),
+    root: prop_types__WEBPACK_IMPORTED_MODULE_12___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_12___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_12___default().object)])
+  }),
+  /**
+   * The components used for each slot inside the Modal.
+   * Either a string to use a HTML element or a component.
+   * @default {}
+   */
+  slots: prop_types__WEBPACK_IMPORTED_MODULE_12___default().shape({
+    backdrop: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().elementType),
+    root: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().elementType)
+  }),
+  /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */
+  sx: prop_types__WEBPACK_IMPORTED_MODULE_12___default().oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_12___default().arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_12___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_12___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_12___default().object), (prop_types__WEBPACK_IMPORTED_MODULE_12___default().bool)])), (prop_types__WEBPACK_IMPORTED_MODULE_12___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_12___default().object)])
+} : 0;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Modal);
+
+/***/ }),
+
 /***/ "./node_modules/@mui/material/Rating/Rating.js":
 /*!*****************************************************!*\
   !*** ./node_modules/@mui/material/Rating/Rating.js ***!
@@ -4430,6 +5238,1478 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/@mui/material/node_modules/@mui/base/FocusTrap/FocusTrap.js":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/@mui/material/node_modules/@mui/base/FocusTrap/FocusTrap.js ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/useForkRef.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/ownerDocument.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/elementAcceptingRef.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/exactProp.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* eslint-disable consistent-return, jsx-a11y/no-noninteractive-tabindex */
+
+
+
+
+
+// Inspired by https://github.com/focus-trap/tabbable
+const candidatesSelector = ['input', 'select', 'textarea', 'a[href]', 'button', '[tabindex]', 'audio[controls]', 'video[controls]', '[contenteditable]:not([contenteditable="false"])'].join(',');
+function getTabIndex(node) {
+  const tabindexAttr = parseInt(node.getAttribute('tabindex') || '', 10);
+  if (!Number.isNaN(tabindexAttr)) {
+    return tabindexAttr;
+  }
+
+  // Browsers do not return `tabIndex` correctly for contentEditable nodes;
+  // https://bugs.chromium.org/p/chromium/issues/detail?id=661108&q=contenteditable%20tabindex&can=2
+  // so if they don't have a tabindex attribute specifically set, assume it's 0.
+  // in Chrome, <details/>, <audio controls/> and <video controls/> elements get a default
+  //  `tabIndex` of -1 when the 'tabindex' attribute isn't specified in the DOM,
+  //  yet they are still part of the regular tab order; in FF, they get a default
+  //  `tabIndex` of 0; since Chrome still puts those elements in the regular tab
+  //  order, consider their tab index to be 0.
+  if (node.contentEditable === 'true' || (node.nodeName === 'AUDIO' || node.nodeName === 'VIDEO' || node.nodeName === 'DETAILS') && node.getAttribute('tabindex') === null) {
+    return 0;
+  }
+  return node.tabIndex;
+}
+function isNonTabbableRadio(node) {
+  if (node.tagName !== 'INPUT' || node.type !== 'radio') {
+    return false;
+  }
+  if (!node.name) {
+    return false;
+  }
+  const getRadio = selector => node.ownerDocument.querySelector(`input[type="radio"]${selector}`);
+  let roving = getRadio(`[name="${node.name}"]:checked`);
+  if (!roving) {
+    roving = getRadio(`[name="${node.name}"]`);
+  }
+  return roving !== node;
+}
+function isNodeMatchingSelectorFocusable(node) {
+  if (node.disabled || node.tagName === 'INPUT' && node.type === 'hidden' || isNonTabbableRadio(node)) {
+    return false;
+  }
+  return true;
+}
+function defaultGetTabbable(root) {
+  const regularTabNodes = [];
+  const orderedTabNodes = [];
+  Array.from(root.querySelectorAll(candidatesSelector)).forEach((node, i) => {
+    const nodeTabIndex = getTabIndex(node);
+    if (nodeTabIndex === -1 || !isNodeMatchingSelectorFocusable(node)) {
+      return;
+    }
+    if (nodeTabIndex === 0) {
+      regularTabNodes.push(node);
+    } else {
+      orderedTabNodes.push({
+        documentOrder: i,
+        tabIndex: nodeTabIndex,
+        node: node
+      });
+    }
+  });
+  return orderedTabNodes.sort((a, b) => a.tabIndex === b.tabIndex ? a.documentOrder - b.documentOrder : a.tabIndex - b.tabIndex).map(a => a.node).concat(regularTabNodes);
+}
+function defaultIsEnabled() {
+  return true;
+}
+
+/**
+ * Utility component that locks focus inside the component.
+ *
+ * Demos:
+ *
+ * - [Focus Trap](https://mui.com/base/react-focus-trap/)
+ *
+ * API:
+ *
+ * - [FocusTrap API](https://mui.com/base/react-focus-trap/components-api/#focus-trap)
+ */
+function FocusTrap(props) {
+  const {
+    children,
+    disableAutoFocus = false,
+    disableEnforceFocus = false,
+    disableRestoreFocus = false,
+    getTabbable = defaultGetTabbable,
+    isEnabled = defaultIsEnabled,
+    open
+  } = props;
+  const ignoreNextEnforceFocus = react__WEBPACK_IMPORTED_MODULE_0__.useRef(false);
+  const sentinelStart = react__WEBPACK_IMPORTED_MODULE_0__.useRef(null);
+  const sentinelEnd = react__WEBPACK_IMPORTED_MODULE_0__.useRef(null);
+  const nodeToRestore = react__WEBPACK_IMPORTED_MODULE_0__.useRef(null);
+  const reactFocusEventTarget = react__WEBPACK_IMPORTED_MODULE_0__.useRef(null);
+  // This variable is useful when disableAutoFocus is true.
+  // It waits for the active element to move into the component to activate.
+  const activated = react__WEBPACK_IMPORTED_MODULE_0__.useRef(false);
+  const rootRef = react__WEBPACK_IMPORTED_MODULE_0__.useRef(null);
+  // @ts-expect-error TODO upstream fix
+  const handleRef = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_2__["default"])(children.ref, rootRef);
+  const lastKeydown = react__WEBPACK_IMPORTED_MODULE_0__.useRef(null);
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(() => {
+    // We might render an empty child.
+    if (!open || !rootRef.current) {
+      return;
+    }
+    activated.current = !disableAutoFocus;
+  }, [disableAutoFocus, open]);
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(() => {
+    // We might render an empty child.
+    if (!open || !rootRef.current) {
+      return;
+    }
+    const doc = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_3__["default"])(rootRef.current);
+    if (!rootRef.current.contains(doc.activeElement)) {
+      if (!rootRef.current.hasAttribute('tabIndex')) {
+        if (true) {
+          console.error(['MUI: The modal content node does not accept focus.', 'For the benefit of assistive technologies, ' + 'the tabIndex of the node is being set to "-1".'].join('\n'));
+        }
+        rootRef.current.setAttribute('tabIndex', '-1');
+      }
+      if (activated.current) {
+        rootRef.current.focus();
+      }
+    }
+    return () => {
+      // restoreLastFocus()
+      if (!disableRestoreFocus) {
+        // In IE11 it is possible for document.activeElement to be null resulting
+        // in nodeToRestore.current being null.
+        // Not all elements in IE11 have a focus method.
+        // Once IE11 support is dropped the focus() call can be unconditional.
+        if (nodeToRestore.current && nodeToRestore.current.focus) {
+          ignoreNextEnforceFocus.current = true;
+          nodeToRestore.current.focus();
+        }
+        nodeToRestore.current = null;
+      }
+    };
+    // Missing `disableRestoreFocus` which is fine.
+    // We don't support changing that prop on an open FocusTrap
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(() => {
+    // We might render an empty child.
+    if (!open || !rootRef.current) {
+      return;
+    }
+    const doc = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_3__["default"])(rootRef.current);
+    const contain = nativeEvent => {
+      const {
+        current: rootElement
+      } = rootRef;
+
+      // Cleanup functions are executed lazily in React 17.
+      // Contain can be called between the component being unmounted and its cleanup function being run.
+      if (rootElement === null) {
+        return;
+      }
+      if (!doc.hasFocus() || disableEnforceFocus || !isEnabled() || ignoreNextEnforceFocus.current) {
+        ignoreNextEnforceFocus.current = false;
+        return;
+      }
+      if (!rootElement.contains(doc.activeElement)) {
+        // if the focus event is not coming from inside the children's react tree, reset the refs
+        if (nativeEvent && reactFocusEventTarget.current !== nativeEvent.target || doc.activeElement !== reactFocusEventTarget.current) {
+          reactFocusEventTarget.current = null;
+        } else if (reactFocusEventTarget.current !== null) {
+          return;
+        }
+        if (!activated.current) {
+          return;
+        }
+        let tabbable = [];
+        if (doc.activeElement === sentinelStart.current || doc.activeElement === sentinelEnd.current) {
+          tabbable = getTabbable(rootRef.current);
+        }
+        if (tabbable.length > 0) {
+          var _lastKeydown$current, _lastKeydown$current2;
+          const isShiftTab = Boolean(((_lastKeydown$current = lastKeydown.current) == null ? void 0 : _lastKeydown$current.shiftKey) && ((_lastKeydown$current2 = lastKeydown.current) == null ? void 0 : _lastKeydown$current2.key) === 'Tab');
+          const focusNext = tabbable[0];
+          const focusPrevious = tabbable[tabbable.length - 1];
+          if (typeof focusNext !== 'string' && typeof focusPrevious !== 'string') {
+            if (isShiftTab) {
+              focusPrevious.focus();
+            } else {
+              focusNext.focus();
+            }
+          }
+        } else {
+          rootElement.focus();
+        }
+      }
+    };
+    const loopFocus = nativeEvent => {
+      lastKeydown.current = nativeEvent;
+      if (disableEnforceFocus || !isEnabled() || nativeEvent.key !== 'Tab') {
+        return;
+      }
+
+      // Make sure the next tab starts from the right place.
+      // doc.activeElement refers to the origin.
+      if (doc.activeElement === rootRef.current && nativeEvent.shiftKey) {
+        // We need to ignore the next contain as
+        // it will try to move the focus back to the rootRef element.
+        ignoreNextEnforceFocus.current = true;
+        if (sentinelEnd.current) {
+          sentinelEnd.current.focus();
+        }
+      }
+    };
+    doc.addEventListener('focusin', contain);
+    doc.addEventListener('keydown', loopFocus, true);
+
+    // With Edge, Safari and Firefox, no focus related events are fired when the focused area stops being a focused area.
+    // e.g. https://bugzilla.mozilla.org/show_bug.cgi?id=559561.
+    // Instead, we can look if the active element was restored on the BODY element.
+    //
+    // The whatwg spec defines how the browser should behave but does not explicitly mention any events:
+    // https://html.spec.whatwg.org/multipage/interaction.html#focus-fixup-rule.
+    const interval = setInterval(() => {
+      if (doc.activeElement && doc.activeElement.tagName === 'BODY') {
+        contain(null);
+      }
+    }, 50);
+    return () => {
+      clearInterval(interval);
+      doc.removeEventListener('focusin', contain);
+      doc.removeEventListener('keydown', loopFocus, true);
+    };
+  }, [disableAutoFocus, disableEnforceFocus, disableRestoreFocus, isEnabled, open, getTabbable]);
+  const onFocus = event => {
+    if (nodeToRestore.current === null) {
+      nodeToRestore.current = event.relatedTarget;
+    }
+    activated.current = true;
+    reactFocusEventTarget.current = event.target;
+    const childrenPropsHandler = children.props.onFocus;
+    if (childrenPropsHandler) {
+      childrenPropsHandler(event);
+    }
+  };
+  const handleFocusSentinel = event => {
+    if (nodeToRestore.current === null) {
+      nodeToRestore.current = event.relatedTarget;
+    }
+    activated.current = true;
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      tabIndex: open ? 0 : -1,
+      onFocus: handleFocusSentinel,
+      ref: sentinelStart,
+      "data-testid": "sentinelStart"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.cloneElement(children, {
+      ref: handleRef,
+      onFocus
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      tabIndex: open ? 0 : -1,
+      onFocus: handleFocusSentinel,
+      ref: sentinelEnd,
+      "data-testid": "sentinelEnd"
+    })]
+  });
+}
+ true ? FocusTrap.propTypes /* remove-proptypes */ = {
+  // ----------------------------- Warning --------------------------------
+  // | These PropTypes are generated from the TypeScript type definitions |
+  // |     To update them edit TypeScript types and run "yarn proptypes"  |
+  // ----------------------------------------------------------------------
+  /**
+   * A single child content element.
+   */
+  children: _mui_utils__WEBPACK_IMPORTED_MODULE_4__["default"],
+  /**
+   * If `true`, the focus trap will not automatically shift focus to itself when it opens, and
+   * replace it to the last focused element when it closes.
+   * This also works correctly with any focus trap children that have the `disableAutoFocus` prop.
+   *
+   * Generally this should never be set to `true` as it makes the focus trap less
+   * accessible to assistive technologies, like screen readers.
+   * @default false
+   */
+  disableAutoFocus: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().bool),
+  /**
+   * If `true`, the focus trap will not prevent focus from leaving the focus trap while open.
+   *
+   * Generally this should never be set to `true` as it makes the focus trap less
+   * accessible to assistive technologies, like screen readers.
+   * @default false
+   */
+  disableEnforceFocus: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().bool),
+  /**
+   * If `true`, the focus trap will not restore focus to previously focused element once
+   * focus trap is hidden or unmounted.
+   * @default false
+   */
+  disableRestoreFocus: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().bool),
+  /**
+   * Returns an array of ordered tabbable nodes (i.e. in tab order) within the root.
+   * For instance, you can provide the "tabbable" npm dependency.
+   * @param {HTMLElement} root
+   */
+  getTabbable: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().func),
+  /**
+   * This prop extends the `open` prop.
+   * It allows to toggle the open state without having to wait for a rerender when changing the `open` prop.
+   * This prop should be memoized.
+   * It can be used to support multiple focus trap mounted at the same time.
+   * @default function defaultIsEnabled(): boolean {
+   *   return true;
+   * }
+   */
+  isEnabled: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().func),
+  /**
+   * If `true`, focus is locked.
+   */
+  open: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().bool.isRequired)
+} : 0;
+if (true) {
+  // eslint-disable-next-line
+  FocusTrap['propTypes' + ''] = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_6__["default"])(FocusTrap.propTypes);
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FocusTrap);
+
+/***/ }),
+
+/***/ "./node_modules/@mui/material/node_modules/@mui/base/Modal/Modal.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@mui/material/node_modules/@mui/base/Modal/Modal.js ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/useForkRef.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/ownerDocument.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/useEventCallback.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/createChainedFunction.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/elementAcceptingRef.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/HTMLElementType.js");
+/* harmony import */ var _composeClasses__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../composeClasses */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
+/* harmony import */ var _Portal__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../Portal */ "./node_modules/@mui/material/node_modules/@mui/base/Portal/Portal.js");
+/* harmony import */ var _ModalManager__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ModalManager */ "./node_modules/@mui/material/node_modules/@mui/base/Modal/ModalManager.js");
+/* harmony import */ var _FocusTrap__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../FocusTrap */ "./node_modules/@mui/material/node_modules/@mui/base/FocusTrap/FocusTrap.js");
+/* harmony import */ var _modalClasses__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modalClasses */ "./node_modules/@mui/material/node_modules/@mui/base/Modal/modalClasses.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../utils */ "./node_modules/@mui/material/node_modules/@mui/base/utils/useSlotProps.js");
+/* harmony import */ var _utils_ClassNameConfigurator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/ClassNameConfigurator */ "./node_modules/@mui/material/node_modules/@mui/base/utils/ClassNameConfigurator.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+const _excluded = ["children", "closeAfterTransition", "container", "disableAutoFocus", "disableEnforceFocus", "disableEscapeKeyDown", "disablePortal", "disableRestoreFocus", "disableScrollLock", "hideBackdrop", "keepMounted", "manager", "onBackdropClick", "onClose", "onKeyDown", "open", "onTransitionEnter", "onTransitionExited", "slotProps", "slots"];
+
+
+
+
+
+
+
+
+
+
+
+
+const useUtilityClasses = ownerState => {
+  const {
+    open,
+    exited
+  } = ownerState;
+  const slots = {
+    root: ['root', !open && exited && 'hidden'],
+    backdrop: ['backdrop']
+  };
+  return (0,_composeClasses__WEBPACK_IMPORTED_MODULE_4__["default"])(slots, (0,_utils_ClassNameConfigurator__WEBPACK_IMPORTED_MODULE_5__.useClassNamesOverride)(_modalClasses__WEBPACK_IMPORTED_MODULE_6__.getModalUtilityClass));
+};
+function getContainer(container) {
+  return typeof container === 'function' ? container() : container;
+}
+function getHasTransition(children) {
+  return children ? children.props.hasOwnProperty('in') : false;
+}
+
+// A modal manager used to track and manage the state of open Modals.
+// Modals don't open on the server so this won't conflict with concurrent requests.
+const defaultManager = new _ModalManager__WEBPACK_IMPORTED_MODULE_7__["default"]();
+
+/**
+ * Modal is a lower-level construct that is leveraged by the following components:
+ *
+ * *   [Dialog](https://mui.com/material-ui/api/dialog/)
+ * *   [Drawer](https://mui.com/material-ui/api/drawer/)
+ * *   [Menu](https://mui.com/material-ui/api/menu/)
+ * *   [Popover](https://mui.com/material-ui/api/popover/)
+ *
+ * If you are creating a modal dialog, you probably want to use the [Dialog](https://mui.com/material-ui/api/dialog/) component
+ * rather than directly using Modal.
+ *
+ * This component shares many concepts with [react-overlays](https://react-bootstrap.github.io/react-overlays/#modals).
+ *
+ * Demos:
+ *
+ * - [Modal](https://mui.com/base/react-modal/)
+ *
+ * API:
+ *
+ * - [Modal API](https://mui.com/base/react-modal/components-api/#modal)
+ */
+const Modal = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(function Modal(props, forwardedRef) {
+  var _props$ariaHidden, _slots$root;
+  const {
+      children,
+      closeAfterTransition = false,
+      container,
+      disableAutoFocus = false,
+      disableEnforceFocus = false,
+      disableEscapeKeyDown = false,
+      disablePortal = false,
+      disableRestoreFocus = false,
+      disableScrollLock = false,
+      hideBackdrop = false,
+      keepMounted = false,
+      // private
+      manager: managerProp = defaultManager,
+      onBackdropClick,
+      onClose,
+      onKeyDown,
+      open,
+      onTransitionEnter,
+      onTransitionExited,
+      slotProps = {},
+      slots = {}
+    } = props,
+    other = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(props, _excluded);
+  // TODO: `modal`` must change its type in this file to match the type of methods
+  // provided by `ModalManager`
+  const manager = managerProp;
+  const [exited, setExited] = react__WEBPACK_IMPORTED_MODULE_2__.useState(!open);
+  const modal = react__WEBPACK_IMPORTED_MODULE_2__.useRef({});
+  const mountNodeRef = react__WEBPACK_IMPORTED_MODULE_2__.useRef(null);
+  const modalRef = react__WEBPACK_IMPORTED_MODULE_2__.useRef(null);
+  const handleRef = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_8__["default"])(modalRef, forwardedRef);
+  const hasTransition = getHasTransition(children);
+  const ariaHiddenProp = (_props$ariaHidden = props['aria-hidden']) != null ? _props$ariaHidden : true;
+  const getDoc = () => (0,_mui_utils__WEBPACK_IMPORTED_MODULE_9__["default"])(mountNodeRef.current);
+  const getModal = () => {
+    modal.current.modalRef = modalRef.current;
+    modal.current.mountNode = mountNodeRef.current;
+    return modal.current;
+  };
+  const handleMounted = () => {
+    manager.mount(getModal(), {
+      disableScrollLock
+    });
+
+    // Fix a bug on Chrome where the scroll isn't initially 0.
+    if (modalRef.current) {
+      modalRef.current.scrollTop = 0;
+    }
+  };
+  const handleOpen = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_10__["default"])(() => {
+    const resolvedContainer = getContainer(container) || getDoc().body;
+    manager.add(getModal(), resolvedContainer);
+
+    // The element was already mounted.
+    if (modalRef.current) {
+      handleMounted();
+    }
+  });
+  const isTopModal = react__WEBPACK_IMPORTED_MODULE_2__.useCallback(() => manager.isTopModal(getModal()), [manager]);
+  const handlePortalRef = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_10__["default"])(node => {
+    mountNodeRef.current = node;
+    if (!node || !modalRef.current) {
+      return;
+    }
+    if (open && isTopModal()) {
+      handleMounted();
+    } else {
+      (0,_ModalManager__WEBPACK_IMPORTED_MODULE_7__.ariaHidden)(modalRef.current, ariaHiddenProp);
+    }
+  });
+  const handleClose = react__WEBPACK_IMPORTED_MODULE_2__.useCallback(() => {
+    manager.remove(getModal(), ariaHiddenProp);
+  }, [manager, ariaHiddenProp]);
+  react__WEBPACK_IMPORTED_MODULE_2__.useEffect(() => {
+    return () => {
+      handleClose();
+    };
+  }, [handleClose]);
+  react__WEBPACK_IMPORTED_MODULE_2__.useEffect(() => {
+    if (open) {
+      handleOpen();
+    } else if (!hasTransition || !closeAfterTransition) {
+      handleClose();
+    }
+  }, [open, handleClose, hasTransition, closeAfterTransition, handleOpen]);
+  const ownerState = (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+    closeAfterTransition,
+    disableAutoFocus,
+    disableEnforceFocus,
+    disableEscapeKeyDown,
+    disablePortal,
+    disableRestoreFocus,
+    disableScrollLock,
+    exited,
+    hideBackdrop,
+    keepMounted
+  });
+  const classes = useUtilityClasses(ownerState);
+  const handleEnter = () => {
+    setExited(false);
+    if (onTransitionEnter) {
+      onTransitionEnter();
+    }
+  };
+  const handleExited = () => {
+    setExited(true);
+    if (onTransitionExited) {
+      onTransitionExited();
+    }
+    if (closeAfterTransition) {
+      handleClose();
+    }
+  };
+  const handleBackdropClick = event => {
+    if (event.target !== event.currentTarget) {
+      return;
+    }
+    if (onBackdropClick) {
+      onBackdropClick(event);
+    }
+    if (onClose) {
+      onClose(event, 'backdropClick');
+    }
+  };
+  const handleKeyDown = event => {
+    if (onKeyDown) {
+      onKeyDown(event);
+    }
+
+    // The handler doesn't take event.defaultPrevented into account:
+    //
+    // event.preventDefault() is meant to stop default behaviors like
+    // clicking a checkbox to check it, hitting a button to submit a form,
+    // and hitting left arrow to move the cursor in a text input etc.
+    // Only special HTML elements have these default behaviors.
+    if (event.key !== 'Escape' || !isTopModal()) {
+      return;
+    }
+    if (!disableEscapeKeyDown) {
+      // Swallow the event, in case someone is listening for the escape key on the body.
+      event.stopPropagation();
+      if (onClose) {
+        onClose(event, 'escapeKeyDown');
+      }
+    }
+  };
+  const childProps = {};
+  if (children.props.tabIndex === undefined) {
+    childProps.tabIndex = '-1';
+  }
+
+  // It's a Transition like component
+  if (hasTransition) {
+    childProps.onEnter = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_11__["default"])(handleEnter, children.props.onEnter);
+    childProps.onExited = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_11__["default"])(handleExited, children.props.onExited);
+  }
+  const Root = (_slots$root = slots.root) != null ? _slots$root : 'div';
+  const rootProps = (0,_utils__WEBPACK_IMPORTED_MODULE_12__["default"])({
+    elementType: Root,
+    externalSlotProps: slotProps.root,
+    externalForwardedProps: other,
+    additionalProps: {
+      ref: handleRef,
+      role: 'presentation',
+      onKeyDown: handleKeyDown
+    },
+    className: classes.root,
+    ownerState
+  });
+  const BackdropComponent = slots.backdrop;
+  const backdropProps = (0,_utils__WEBPACK_IMPORTED_MODULE_12__["default"])({
+    elementType: BackdropComponent,
+    externalSlotProps: slotProps.backdrop,
+    additionalProps: {
+      'aria-hidden': true,
+      onClick: handleBackdropClick,
+      open
+    },
+    className: classes.backdrop,
+    ownerState
+  });
+  if (!keepMounted && !open && (!hasTransition || exited)) {
+    return null;
+  }
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Portal__WEBPACK_IMPORTED_MODULE_13__["default"]
+  // @ts-expect-error TODO: include ref to Base UI Portal props
+  , {
+    ref: handlePortalRef,
+    container: container,
+    disablePortal: disablePortal,
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(Root, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, rootProps, {
+      children: [!hideBackdrop && BackdropComponent ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(BackdropComponent, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, backdropProps)) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_FocusTrap__WEBPACK_IMPORTED_MODULE_14__["default"], {
+        disableEnforceFocus: disableEnforceFocus,
+        disableAutoFocus: disableAutoFocus,
+        disableRestoreFocus: disableRestoreFocus,
+        isEnabled: isTopModal,
+        open: open,
+        children: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.cloneElement(children, childProps)
+      })]
+    }))
+  });
+});
+ true ? Modal.propTypes /* remove-proptypes */ = {
+  // ----------------------------- Warning --------------------------------
+  // | These PropTypes are generated from the TypeScript type definitions |
+  // |     To update them edit TypeScript types and run "yarn proptypes"  |
+  // ----------------------------------------------------------------------
+  /**
+   * A single child content element.
+   */
+  children: _mui_utils__WEBPACK_IMPORTED_MODULE_15__["default"].isRequired,
+  /**
+   * When set to true the Modal waits until a nested Transition is completed before closing.
+   * @default false
+   */
+  closeAfterTransition: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().bool),
+  /**
+   * An HTML element or function that returns one.
+   * The `container` will have the portal children appended to it.
+   *
+   * By default, it uses the body of the top-level document object,
+   * so it's simply `document.body` most of the time.
+   */
+  container: prop_types__WEBPACK_IMPORTED_MODULE_16___default().oneOfType([_mui_utils__WEBPACK_IMPORTED_MODULE_17__["default"], (prop_types__WEBPACK_IMPORTED_MODULE_16___default().func)]),
+  /**
+   * If `true`, the modal will not automatically shift focus to itself when it opens, and
+   * replace it to the last focused element when it closes.
+   * This also works correctly with any modal children that have the `disableAutoFocus` prop.
+   *
+   * Generally this should never be set to `true` as it makes the modal less
+   * accessible to assistive technologies, like screen readers.
+   * @default false
+   */
+  disableAutoFocus: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().bool),
+  /**
+   * If `true`, the modal will not prevent focus from leaving the modal while open.
+   *
+   * Generally this should never be set to `true` as it makes the modal less
+   * accessible to assistive technologies, like screen readers.
+   * @default false
+   */
+  disableEnforceFocus: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().bool),
+  /**
+   * If `true`, hitting escape will not fire the `onClose` callback.
+   * @default false
+   */
+  disableEscapeKeyDown: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().bool),
+  /**
+   * The `children` will be under the DOM hierarchy of the parent component.
+   * @default false
+   */
+  disablePortal: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().bool),
+  /**
+   * If `true`, the modal will not restore focus to previously focused element once
+   * modal is hidden or unmounted.
+   * @default false
+   */
+  disableRestoreFocus: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().bool),
+  /**
+   * Disable the scroll lock behavior.
+   * @default false
+   */
+  disableScrollLock: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().bool),
+  /**
+   * If `true`, the backdrop is not rendered.
+   * @default false
+   */
+  hideBackdrop: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().bool),
+  /**
+   * Always keep the children in the DOM.
+   * This prop can be useful in SEO situation or
+   * when you want to maximize the responsiveness of the Modal.
+   * @default false
+   */
+  keepMounted: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().bool),
+  /**
+   * Callback fired when the backdrop is clicked.
+   * @deprecated Use the `onClose` prop with the `reason` argument to handle the `backdropClick` events.
+   */
+  onBackdropClick: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().func),
+  /**
+   * Callback fired when the component requests to be closed.
+   * The `reason` parameter can optionally be used to control the response to `onClose`.
+   *
+   * @param {object} event The event source of the callback.
+   * @param {string} reason Can be: `"escapeKeyDown"`, `"backdropClick"`.
+   */
+  onClose: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().func),
+  /**
+   * If `true`, the component is shown.
+   */
+  open: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().bool.isRequired),
+  /**
+   * The props used for each slot inside the Modal.
+   * @default {}
+   */
+  slotProps: prop_types__WEBPACK_IMPORTED_MODULE_16___default().shape({
+    backdrop: prop_types__WEBPACK_IMPORTED_MODULE_16___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_16___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_16___default().object)]),
+    root: prop_types__WEBPACK_IMPORTED_MODULE_16___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_16___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_16___default().object)])
+  }),
+  /**
+   * The components used for each slot inside the Modal.
+   * Either a string to use a HTML element or a component.
+   * @default {}
+   */
+  slots: prop_types__WEBPACK_IMPORTED_MODULE_16___default().shape({
+    backdrop: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().elementType),
+    root: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().elementType)
+  })
+} : 0;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Modal);
+
+/***/ }),
+
+/***/ "./node_modules/@mui/material/node_modules/@mui/base/Modal/ModalManager.js":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/@mui/material/node_modules/@mui/base/Modal/ModalManager.js ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ariaHidden": () => (/* binding */ ariaHidden),
+/* harmony export */   "default": () => (/* binding */ ModalManager)
+/* harmony export */ });
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/ownerDocument.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/ownerWindow.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/getScrollbarSize.js");
+
+// Is a vertical scrollbar displayed?
+function isOverflowing(container) {
+  const doc = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_0__["default"])(container);
+  if (doc.body === container) {
+    return (0,_mui_utils__WEBPACK_IMPORTED_MODULE_1__["default"])(container).innerWidth > doc.documentElement.clientWidth;
+  }
+  return container.scrollHeight > container.clientHeight;
+}
+function ariaHidden(element, show) {
+  if (show) {
+    element.setAttribute('aria-hidden', 'true');
+  } else {
+    element.removeAttribute('aria-hidden');
+  }
+}
+function getPaddingRight(element) {
+  return parseInt((0,_mui_utils__WEBPACK_IMPORTED_MODULE_1__["default"])(element).getComputedStyle(element).paddingRight, 10) || 0;
+}
+function isAriaHiddenForbiddenOnElement(element) {
+  // The forbidden HTML tags are the ones from ARIA specification that
+  // can be children of body and can't have aria-hidden attribute.
+  // cf. https://www.w3.org/TR/html-aria/#docconformance
+  const forbiddenTagNames = ['TEMPLATE', 'SCRIPT', 'STYLE', 'LINK', 'MAP', 'META', 'NOSCRIPT', 'PICTURE', 'COL', 'COLGROUP', 'PARAM', 'SLOT', 'SOURCE', 'TRACK'];
+  const isForbiddenTagName = forbiddenTagNames.indexOf(element.tagName) !== -1;
+  const isInputHidden = element.tagName === 'INPUT' && element.getAttribute('type') === 'hidden';
+  return isForbiddenTagName || isInputHidden;
+}
+function ariaHiddenSiblings(container, mountElement, currentElement, elementsToExclude, show) {
+  const blacklist = [mountElement, currentElement, ...elementsToExclude];
+  [].forEach.call(container.children, element => {
+    const isNotExcludedElement = blacklist.indexOf(element) === -1;
+    const isNotForbiddenElement = !isAriaHiddenForbiddenOnElement(element);
+    if (isNotExcludedElement && isNotForbiddenElement) {
+      ariaHidden(element, show);
+    }
+  });
+}
+function findIndexOf(items, callback) {
+  let idx = -1;
+  items.some((item, index) => {
+    if (callback(item)) {
+      idx = index;
+      return true;
+    }
+    return false;
+  });
+  return idx;
+}
+function handleContainer(containerInfo, props) {
+  const restoreStyle = [];
+  const container = containerInfo.container;
+  if (!props.disableScrollLock) {
+    if (isOverflowing(container)) {
+      // Compute the size before applying overflow hidden to avoid any scroll jumps.
+      const scrollbarSize = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_2__["default"])((0,_mui_utils__WEBPACK_IMPORTED_MODULE_0__["default"])(container));
+      restoreStyle.push({
+        value: container.style.paddingRight,
+        property: 'padding-right',
+        el: container
+      });
+      // Use computed style, here to get the real padding to add our scrollbar width.
+      container.style.paddingRight = `${getPaddingRight(container) + scrollbarSize}px`;
+
+      // .mui-fixed is a global helper.
+      const fixedElements = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_0__["default"])(container).querySelectorAll('.mui-fixed');
+      [].forEach.call(fixedElements, element => {
+        restoreStyle.push({
+          value: element.style.paddingRight,
+          property: 'padding-right',
+          el: element
+        });
+        element.style.paddingRight = `${getPaddingRight(element) + scrollbarSize}px`;
+      });
+    }
+    let scrollContainer;
+    if (container.parentNode instanceof DocumentFragment) {
+      scrollContainer = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_0__["default"])(container).body;
+    } else {
+      // Improve Gatsby support
+      // https://css-tricks.com/snippets/css/force-vertical-scrollbar/
+      const parent = container.parentElement;
+      const containerWindow = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_1__["default"])(container);
+      scrollContainer = (parent == null ? void 0 : parent.nodeName) === 'HTML' && containerWindow.getComputedStyle(parent).overflowY === 'scroll' ? parent : container;
+    }
+
+    // Block the scroll even if no scrollbar is visible to account for mobile keyboard
+    // screensize shrink.
+    restoreStyle.push({
+      value: scrollContainer.style.overflow,
+      property: 'overflow',
+      el: scrollContainer
+    }, {
+      value: scrollContainer.style.overflowX,
+      property: 'overflow-x',
+      el: scrollContainer
+    }, {
+      value: scrollContainer.style.overflowY,
+      property: 'overflow-y',
+      el: scrollContainer
+    });
+    scrollContainer.style.overflow = 'hidden';
+  }
+  const restore = () => {
+    restoreStyle.forEach(({
+      value,
+      el,
+      property
+    }) => {
+      if (value) {
+        el.style.setProperty(property, value);
+      } else {
+        el.style.removeProperty(property);
+      }
+    });
+  };
+  return restore;
+}
+function getHiddenSiblings(container) {
+  const hiddenSiblings = [];
+  [].forEach.call(container.children, element => {
+    if (element.getAttribute('aria-hidden') === 'true') {
+      hiddenSiblings.push(element);
+    }
+  });
+  return hiddenSiblings;
+}
+/**
+ * @ignore - do not document.
+ *
+ * Proper state management for containers and the modals in those containers.
+ * Simplified, but inspired by react-overlay's ModalManager class.
+ * Used by the Modal to ensure proper styling of containers.
+ */
+class ModalManager {
+  constructor() {
+    this.containers = void 0;
+    this.modals = void 0;
+    this.modals = [];
+    this.containers = [];
+  }
+  add(modal, container) {
+    let modalIndex = this.modals.indexOf(modal);
+    if (modalIndex !== -1) {
+      return modalIndex;
+    }
+    modalIndex = this.modals.length;
+    this.modals.push(modal);
+
+    // If the modal we are adding is already in the DOM.
+    if (modal.modalRef) {
+      ariaHidden(modal.modalRef, false);
+    }
+    const hiddenSiblings = getHiddenSiblings(container);
+    ariaHiddenSiblings(container, modal.mount, modal.modalRef, hiddenSiblings, true);
+    const containerIndex = findIndexOf(this.containers, item => item.container === container);
+    if (containerIndex !== -1) {
+      this.containers[containerIndex].modals.push(modal);
+      return modalIndex;
+    }
+    this.containers.push({
+      modals: [modal],
+      container,
+      restore: null,
+      hiddenSiblings
+    });
+    return modalIndex;
+  }
+  mount(modal, props) {
+    const containerIndex = findIndexOf(this.containers, item => item.modals.indexOf(modal) !== -1);
+    const containerInfo = this.containers[containerIndex];
+    if (!containerInfo.restore) {
+      containerInfo.restore = handleContainer(containerInfo, props);
+    }
+  }
+  remove(modal, ariaHiddenState = true) {
+    const modalIndex = this.modals.indexOf(modal);
+    if (modalIndex === -1) {
+      return modalIndex;
+    }
+    const containerIndex = findIndexOf(this.containers, item => item.modals.indexOf(modal) !== -1);
+    const containerInfo = this.containers[containerIndex];
+    containerInfo.modals.splice(containerInfo.modals.indexOf(modal), 1);
+    this.modals.splice(modalIndex, 1);
+
+    // If that was the last modal in a container, clean up the container.
+    if (containerInfo.modals.length === 0) {
+      // The modal might be closed before it had the chance to be mounted in the DOM.
+      if (containerInfo.restore) {
+        containerInfo.restore();
+      }
+      if (modal.modalRef) {
+        // In case the modal wasn't in the DOM yet.
+        ariaHidden(modal.modalRef, ariaHiddenState);
+      }
+      ariaHiddenSiblings(containerInfo.container, modal.mount, modal.modalRef, containerInfo.hiddenSiblings, false);
+      this.containers.splice(containerIndex, 1);
+    } else {
+      // Otherwise make sure the next top modal is visible to a screen reader.
+      const nextTop = containerInfo.modals[containerInfo.modals.length - 1];
+      // as soon as a modal is adding its modalRef is undefined. it can't set
+      // aria-hidden because the dom element doesn't exist either
+      // when modal was unmounted before modalRef gets null
+      if (nextTop.modalRef) {
+        ariaHidden(nextTop.modalRef, false);
+      }
+    }
+    return modalIndex;
+  }
+  isTopModal(modal) {
+    return this.modals.length > 0 && this.modals[this.modals.length - 1] === modal;
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/@mui/material/node_modules/@mui/base/Modal/modalClasses.js":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/@mui/material/node_modules/@mui/base/Modal/modalClasses.js ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   "getModalUtilityClass": () => (/* binding */ getModalUtilityClass)
+/* harmony export */ });
+/* harmony import */ var _generateUtilityClasses__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../generateUtilityClasses */ "./node_modules/@mui/utils/esm/generateUtilityClasses/generateUtilityClasses.js");
+/* harmony import */ var _generateUtilityClass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../generateUtilityClass */ "./node_modules/@mui/utils/esm/generateUtilityClass/generateUtilityClass.js");
+
+
+function getModalUtilityClass(slot) {
+  return (0,_generateUtilityClass__WEBPACK_IMPORTED_MODULE_0__["default"])('MuiModal', slot);
+}
+const modalClasses = (0,_generateUtilityClasses__WEBPACK_IMPORTED_MODULE_1__["default"])('MuiModal', ['root', 'hidden', 'backdrop']);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (modalClasses);
+
+/***/ }),
+
+/***/ "./node_modules/@mui/material/node_modules/@mui/base/Portal/Portal.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/@mui/material/node_modules/@mui/base/Portal/Portal.js ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/useForkRef.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/useEnhancedEffect.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/setRef.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/HTMLElementType.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/exactProp.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+function getContainer(container) {
+  return typeof container === 'function' ? container() : container;
+}
+
+/**
+ * Portals provide a first-class way to render children into a DOM node
+ * that exists outside the DOM hierarchy of the parent component.
+ *
+ * Demos:
+ *
+ * - [Portal](https://mui.com/base/react-portal/)
+ *
+ * API:
+ *
+ * - [Portal API](https://mui.com/base/react-portal/components-api/#portal)
+ */
+const Portal = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function Portal(props, forwardedRef) {
+  const {
+    children,
+    container,
+    disablePortal = false
+  } = props;
+  const [mountNode, setMountNode] = react__WEBPACK_IMPORTED_MODULE_0__.useState(null);
+  // @ts-expect-error TODO upstream fix
+  const handleRef = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_3__["default"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.isValidElement(children) ? children.ref : null, forwardedRef);
+  (0,_mui_utils__WEBPACK_IMPORTED_MODULE_4__["default"])(() => {
+    if (!disablePortal) {
+      setMountNode(getContainer(container) || document.body);
+    }
+  }, [container, disablePortal]);
+  (0,_mui_utils__WEBPACK_IMPORTED_MODULE_4__["default"])(() => {
+    if (mountNode && !disablePortal) {
+      (0,_mui_utils__WEBPACK_IMPORTED_MODULE_5__["default"])(forwardedRef, mountNode);
+      return () => {
+        (0,_mui_utils__WEBPACK_IMPORTED_MODULE_5__["default"])(forwardedRef, null);
+      };
+    }
+    return undefined;
+  }, [forwardedRef, mountNode, disablePortal]);
+  if (disablePortal) {
+    if ( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.isValidElement(children)) {
+      const newProps = {
+        ref: handleRef
+      };
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.cloneElement(children, newProps);
+    }
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+      children: children
+    });
+  }
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    children: mountNode ? /*#__PURE__*/react_dom__WEBPACK_IMPORTED_MODULE_1__.createPortal(children, mountNode) : mountNode
+  });
+});
+ true ? Portal.propTypes /* remove-proptypes */ = {
+  // ----------------------------- Warning --------------------------------
+  // | These PropTypes are generated from the TypeScript type definitions |
+  // |     To update them edit TypeScript types and run "yarn proptypes"  |
+  // ----------------------------------------------------------------------
+  /**
+   * The children to render into the `container`.
+   */
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().node),
+  /**
+   * An HTML element or function that returns one.
+   * The `container` will have the portal children appended to it.
+   *
+   * By default, it uses the body of the top-level document object,
+   * so it's simply `document.body` most of the time.
+   */
+  container: prop_types__WEBPACK_IMPORTED_MODULE_6___default().oneOfType([_mui_utils__WEBPACK_IMPORTED_MODULE_7__["default"], (prop_types__WEBPACK_IMPORTED_MODULE_6___default().func)]),
+  /**
+   * The `children` will be under the DOM hierarchy of the parent component.
+   * @default false
+   */
+  disablePortal: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().bool)
+} : 0;
+if (true) {
+  // eslint-disable-next-line
+  Portal['propTypes' + ''] = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_8__["default"])(Portal.propTypes);
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Portal);
+
+/***/ }),
+
+/***/ "./node_modules/@mui/material/node_modules/@mui/base/utils/ClassNameConfigurator.js":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/@mui/material/node_modules/@mui/base/utils/ClassNameConfigurator.js ***!
+  \******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ClassNameConfigurator),
+/* harmony export */   "useClassNamesOverride": () => (/* binding */ useClassNamesOverride)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+const defaultContextValue = {
+  disableDefaultClasses: false
+};
+const ClassNameConfiguratorContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createContext(defaultContextValue);
+/**
+ * @ignore - internal hook.
+ *
+ * Wraps the `generateUtilityClass` function and controls how the classes are generated.
+ * Currently it only affects whether the classes are applied or not.
+ *
+ * @returns Function to be called with the `generateUtilityClass` function specific to a component to generate the classes.
+ */
+function useClassNamesOverride(generateUtilityClass) {
+  const {
+    disableDefaultClasses
+  } = react__WEBPACK_IMPORTED_MODULE_0__.useContext(ClassNameConfiguratorContext);
+  return slot => {
+    if (disableDefaultClasses) {
+      return '';
+    }
+    return generateUtilityClass(slot);
+  };
+}
+
+/**
+ * Allows to configure the components within to not apply any built-in classes.
+ */
+function ClassNameConfigurator(props) {
+  const {
+    disableDefaultClasses,
+    children
+  } = props;
+  const contextValue = react__WEBPACK_IMPORTED_MODULE_0__.useMemo(() => ({
+    disableDefaultClasses: disableDefaultClasses != null ? disableDefaultClasses : false
+  }), [disableDefaultClasses]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(ClassNameConfiguratorContext.Provider, {
+    value: contextValue,
+    children: children
+  });
+}
+
+/***/ }),
+
+/***/ "./node_modules/@mui/material/node_modules/@mui/base/utils/appendOwnerState.js":
+/*!*************************************************************************************!*\
+  !*** ./node_modules/@mui/material/node_modules/@mui/base/utils/appendOwnerState.js ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ appendOwnerState)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _isHostComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isHostComponent */ "./node_modules/@mui/material/node_modules/@mui/base/utils/isHostComponent.js");
+
+
+
+/**
+ * Type of the ownerState based on the type of an element it applies to.
+ * This resolves to the provided OwnerState for React components and `undefined` for host components.
+ * Falls back to `OwnerState | undefined` when the exact type can't be determined in development time.
+ */
+
+/**
+ * Appends the ownerState object to the props, merging with the existing one if necessary.
+ *
+ * @param elementType Type of the element that owns the `existingProps`. If the element is a DOM node or undefined, `ownerState` is not applied.
+ * @param otherProps Props of the element.
+ * @param ownerState
+ */
+function appendOwnerState(elementType, otherProps, ownerState) {
+  if (elementType === undefined || (0,_isHostComponent__WEBPACK_IMPORTED_MODULE_1__["default"])(elementType)) {
+    return otherProps;
+  }
+  return (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, otherProps, {
+    ownerState: (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, otherProps.ownerState, ownerState)
+  });
+}
+
+/***/ }),
+
+/***/ "./node_modules/@mui/material/node_modules/@mui/base/utils/extractEventHandlers.js":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/@mui/material/node_modules/@mui/base/utils/extractEventHandlers.js ***!
+  \*****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ extractEventHandlers)
+/* harmony export */ });
+/**
+ * Extracts event handlers from a given object.
+ * A prop is considered an event handler if it is a function and its name starts with `on`.
+ *
+ * @param object An object to extract event handlers from.
+ * @param excludeKeys An array of keys to exclude from the returned object.
+ */
+function extractEventHandlers(object, excludeKeys = []) {
+  if (object === undefined) {
+    return {};
+  }
+  const result = {};
+  Object.keys(object).filter(prop => prop.match(/^on[A-Z]/) && typeof object[prop] === 'function' && !excludeKeys.includes(prop)).forEach(prop => {
+    result[prop] = object[prop];
+  });
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@mui/material/node_modules/@mui/base/utils/isHostComponent.js":
+/*!************************************************************************************!*\
+  !*** ./node_modules/@mui/material/node_modules/@mui/base/utils/isHostComponent.js ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ isHostComponent)
+/* harmony export */ });
+/**
+ * Determines if a given element is a DOM element name (i.e. not a React component).
+ */
+function isHostComponent(element) {
+  return typeof element === 'string';
+}
+
+/***/ }),
+
+/***/ "./node_modules/@mui/material/node_modules/@mui/base/utils/mergeSlotProps.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/@mui/material/node_modules/@mui/base/utils/mergeSlotProps.js ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ mergeSlotProps)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
+/* harmony import */ var _extractEventHandlers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./extractEventHandlers */ "./node_modules/@mui/material/node_modules/@mui/base/utils/extractEventHandlers.js");
+/* harmony import */ var _omitEventHandlers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./omitEventHandlers */ "./node_modules/@mui/material/node_modules/@mui/base/utils/omitEventHandlers.js");
+
+
+
+
+/**
+ * Merges the slot component internal props (usually coming from a hook)
+ * with the externally provided ones.
+ *
+ * The merge order is (the latter overrides the former):
+ * 1. The internal props (specified as a getter function to work with get*Props hook result)
+ * 2. Additional props (specified internally on a Base UI component)
+ * 3. External props specified on the owner component. These should only be used on a root slot.
+ * 4. External props specified in the `slotProps.*` prop.
+ * 5. The `className` prop - combined from all the above.
+ * @param parameters
+ * @returns
+ */
+function mergeSlotProps(parameters) {
+  const {
+    getSlotProps,
+    additionalProps,
+    externalSlotProps,
+    externalForwardedProps,
+    className
+  } = parameters;
+  if (!getSlotProps) {
+    // The simpler case - getSlotProps is not defined, so no internal event handlers are defined,
+    // so we can simply merge all the props without having to worry about extracting event handlers.
+    const joinedClasses = (0,clsx__WEBPACK_IMPORTED_MODULE_1__["default"])(externalForwardedProps == null ? void 0 : externalForwardedProps.className, externalSlotProps == null ? void 0 : externalSlotProps.className, className, additionalProps == null ? void 0 : additionalProps.className);
+    const mergedStyle = (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, additionalProps == null ? void 0 : additionalProps.style, externalForwardedProps == null ? void 0 : externalForwardedProps.style, externalSlotProps == null ? void 0 : externalSlotProps.style);
+    const props = (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, additionalProps, externalForwardedProps, externalSlotProps);
+    if (joinedClasses.length > 0) {
+      props.className = joinedClasses;
+    }
+    if (Object.keys(mergedStyle).length > 0) {
+      props.style = mergedStyle;
+    }
+    return {
+      props,
+      internalRef: undefined
+    };
+  }
+
+  // In this case, getSlotProps is responsible for calling the external event handlers.
+  // We don't need to include them in the merged props because of this.
+
+  const eventHandlers = (0,_extractEventHandlers__WEBPACK_IMPORTED_MODULE_2__["default"])((0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, externalForwardedProps, externalSlotProps));
+  const componentsPropsWithoutEventHandlers = (0,_omitEventHandlers__WEBPACK_IMPORTED_MODULE_3__["default"])(externalSlotProps);
+  const otherPropsWithoutEventHandlers = (0,_omitEventHandlers__WEBPACK_IMPORTED_MODULE_3__["default"])(externalForwardedProps);
+  const internalSlotProps = getSlotProps(eventHandlers);
+
+  // The order of classes is important here.
+  // Emotion (that we use in libraries consuming Base UI) depends on this order
+  // to properly override style. It requires the most important classes to be last
+  // (see https://github.com/mui/material-ui/pull/33205) for the related discussion.
+  const joinedClasses = (0,clsx__WEBPACK_IMPORTED_MODULE_1__["default"])(internalSlotProps == null ? void 0 : internalSlotProps.className, additionalProps == null ? void 0 : additionalProps.className, className, externalForwardedProps == null ? void 0 : externalForwardedProps.className, externalSlotProps == null ? void 0 : externalSlotProps.className);
+  const mergedStyle = (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, internalSlotProps == null ? void 0 : internalSlotProps.style, additionalProps == null ? void 0 : additionalProps.style, externalForwardedProps == null ? void 0 : externalForwardedProps.style, externalSlotProps == null ? void 0 : externalSlotProps.style);
+  const props = (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, internalSlotProps, additionalProps, otherPropsWithoutEventHandlers, componentsPropsWithoutEventHandlers);
+  if (joinedClasses.length > 0) {
+    props.className = joinedClasses;
+  }
+  if (Object.keys(mergedStyle).length > 0) {
+    props.style = mergedStyle;
+  }
+  return {
+    props,
+    internalRef: internalSlotProps.ref
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/@mui/material/node_modules/@mui/base/utils/omitEventHandlers.js":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/@mui/material/node_modules/@mui/base/utils/omitEventHandlers.js ***!
+  \**************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ omitEventHandlers)
+/* harmony export */ });
+/**
+ * Removes event handlers from the given object.
+ * A field is considered an event handler if it is a function with a name beginning with `on`.
+ *
+ * @param object Object to remove event handlers from.
+ * @returns Object with event handlers removed.
+ */
+function omitEventHandlers(object) {
+  if (object === undefined) {
+    return {};
+  }
+  const result = {};
+  Object.keys(object).filter(prop => !(prop.match(/^on[A-Z]/) && typeof object[prop] === 'function')).forEach(prop => {
+    result[prop] = object[prop];
+  });
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@mui/material/node_modules/@mui/base/utils/resolveComponentProps.js":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/@mui/material/node_modules/@mui/base/utils/resolveComponentProps.js ***!
+  \******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ resolveComponentProps)
+/* harmony export */ });
+/**
+ * If `componentProps` is a function, calls it with the provided `ownerState`.
+ * Otherwise, just returns `componentProps`.
+ */
+function resolveComponentProps(componentProps, ownerState) {
+  if (typeof componentProps === 'function') {
+    return componentProps(ownerState);
+  }
+  return componentProps;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@mui/material/node_modules/@mui/base/utils/useSlotProps.js":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/@mui/material/node_modules/@mui/base/utils/useSlotProps.js ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ useSlotProps)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/useForkRef.js");
+/* harmony import */ var _appendOwnerState__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./appendOwnerState */ "./node_modules/@mui/material/node_modules/@mui/base/utils/appendOwnerState.js");
+/* harmony import */ var _mergeSlotProps__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mergeSlotProps */ "./node_modules/@mui/material/node_modules/@mui/base/utils/mergeSlotProps.js");
+/* harmony import */ var _resolveComponentProps__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./resolveComponentProps */ "./node_modules/@mui/material/node_modules/@mui/base/utils/resolveComponentProps.js");
+
+
+const _excluded = ["elementType", "externalSlotProps", "ownerState"];
+
+
+
+
+/**
+ * @ignore - do not document.
+ * Builds the props to be passed into the slot of an unstyled component.
+ * It merges the internal props of the component with the ones supplied by the user, allowing to customize the behavior.
+ * If the slot component is not a host component, it also merges in the `ownerState`.
+ *
+ * @param parameters.getSlotProps - A function that returns the props to be passed to the slot component.
+ */
+function useSlotProps(parameters) {
+  var _parameters$additiona;
+  const {
+      elementType,
+      externalSlotProps,
+      ownerState
+    } = parameters,
+    rest = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(parameters, _excluded);
+  const resolvedComponentsProps = (0,_resolveComponentProps__WEBPACK_IMPORTED_MODULE_2__["default"])(externalSlotProps, ownerState);
+  const {
+    props: mergedProps,
+    internalRef
+  } = (0,_mergeSlotProps__WEBPACK_IMPORTED_MODULE_3__["default"])((0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, rest, {
+    externalSlotProps: resolvedComponentsProps
+  }));
+  const ref = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_4__["default"])(internalRef, resolvedComponentsProps == null ? void 0 : resolvedComponentsProps.ref, (_parameters$additiona = parameters.additionalProps) == null ? void 0 : _parameters$additiona.ref);
+  const props = (0,_appendOwnerState__WEBPACK_IMPORTED_MODULE_5__["default"])(elementType, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, mergedProps, {
+    ref
+  }), ownerState);
+  return props;
+}
+
+/***/ }),
+
 /***/ "./node_modules/@mui/material/styles/createMixins.js":
 /*!***********************************************************!*\
   !*** ./node_modules/@mui/material/styles/createMixins.js ***!
@@ -5292,6 +7572,35 @@ const zIndex = {
   tooltip: 1500
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (zIndex);
+
+/***/ }),
+
+/***/ "./node_modules/@mui/material/transitions/utils.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/@mui/material/transitions/utils.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getTransitionProps": () => (/* binding */ getTransitionProps),
+/* harmony export */   "reflow": () => (/* binding */ reflow)
+/* harmony export */ });
+const reflow = node => node.scrollTop;
+function getTransitionProps(props, options) {
+  var _style$transitionDura, _style$transitionTimi;
+  const {
+    timeout,
+    easing,
+    style = {}
+  } = props;
+  return {
+    duration: (_style$transitionDura = style.transitionDuration) != null ? _style$transitionDura : typeof timeout === 'number' ? timeout : timeout[options.mode] || 0,
+    easing: (_style$transitionTimi = style.transitionTimingFunction) != null ? _style$transitionTimi : typeof easing === 'object' ? easing[options.mode] : easing,
+    delay: style.transitionDelay
+  };
+}
 
 /***/ }),
 
@@ -8107,6 +10416,32 @@ const ClassNameGenerator = createClassNameGenerator();
 
 /***/ }),
 
+/***/ "./node_modules/@mui/utils/esm/HTMLElementType.js":
+/*!********************************************************!*\
+  !*** ./node_modules/@mui/utils/esm/HTMLElementType.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ HTMLElementType)
+/* harmony export */ });
+function HTMLElementType(props, propName, componentName, location, propFullName) {
+  if (false) {}
+  const propValue = props[propName];
+  const safePropName = propFullName || propName;
+  if (propValue == null) {
+    return null;
+  }
+  if (propValue && propValue.nodeType !== 1) {
+    return new Error(`Invalid ${location} \`${safePropName}\` supplied to \`${componentName}\`. ` + `Expected an HTMLElement.`);
+  }
+  return null;
+}
+
+/***/ }),
+
 /***/ "./node_modules/@mui/utils/esm/capitalize.js":
 /*!***************************************************!*\
   !*** ./node_modules/@mui/utils/esm/capitalize.js ***!
@@ -8187,6 +10522,37 @@ function composeClasses(slots, getUtilityClass, classes = undefined) {
 
 /***/ }),
 
+/***/ "./node_modules/@mui/utils/esm/createChainedFunction.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/@mui/utils/esm/createChainedFunction.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ createChainedFunction)
+/* harmony export */ });
+/**
+ * Safe chained function.
+ *
+ * Will only create a new function if needed,
+ * otherwise will pass back existing functions or null.
+ */
+function createChainedFunction(...funcs) {
+  return funcs.reduce((acc, func) => {
+    if (func == null) {
+      return acc;
+    }
+    return function chainedFunction(...args) {
+      acc.apply(this, args);
+      func.apply(this, args);
+    };
+  }, () => {});
+}
+
+/***/ }),
+
 /***/ "./node_modules/@mui/utils/esm/deepmerge.js":
 /*!**************************************************!*\
   !*** ./node_modules/@mui/utils/esm/deepmerge.js ***!
@@ -8235,6 +10601,96 @@ function deepmerge(target, source, options = {
     });
   }
   return output;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@mui/utils/esm/elementAcceptingRef.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@mui/utils/esm/elementAcceptingRef.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _chainPropTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./chainPropTypes */ "./node_modules/@mui/utils/esm/chainPropTypes.js");
+
+
+function isClassComponent(elementType) {
+  // elementType.prototype?.isReactComponent
+  const {
+    prototype = {}
+  } = elementType;
+  return Boolean(prototype.isReactComponent);
+}
+function acceptingRef(props, propName, componentName, location, propFullName) {
+  const element = props[propName];
+  const safePropName = propFullName || propName;
+  if (element == null ||
+  // When server-side rendering React doesn't warn either.
+  // This is not an accurate check for SSR.
+  // This is only in place for Emotion compat.
+  // TODO: Revisit once https://github.com/facebook/react/issues/20047 is resolved.
+  typeof window === 'undefined') {
+    return null;
+  }
+  let warningHint;
+  const elementType = element.type;
+  /**
+   * Blacklisting instead of whitelisting
+   *
+   * Blacklisting will miss some components, such as React.Fragment. Those will at least
+   * trigger a warning in React.
+   * We can't whitelist because there is no safe way to detect React.forwardRef
+   * or class components. "Safe" means there's no public API.
+   *
+   */
+  if (typeof elementType === 'function' && !isClassComponent(elementType)) {
+    warningHint = 'Did you accidentally use a plain function component for an element instead?';
+  }
+  if (warningHint !== undefined) {
+    return new Error(`Invalid ${location} \`${safePropName}\` supplied to \`${componentName}\`. ` + `Expected an element that can hold a ref. ${warningHint} ` + 'For more information see https://mui.com/r/caveat-with-refs-guide');
+  }
+  return null;
+}
+const elementAcceptingRef = (0,_chainPropTypes__WEBPACK_IMPORTED_MODULE_0__["default"])((prop_types__WEBPACK_IMPORTED_MODULE_1___default().element), acceptingRef);
+elementAcceptingRef.isRequired = (0,_chainPropTypes__WEBPACK_IMPORTED_MODULE_0__["default"])((prop_types__WEBPACK_IMPORTED_MODULE_1___default().element.isRequired), acceptingRef);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (elementAcceptingRef);
+
+/***/ }),
+
+/***/ "./node_modules/@mui/utils/esm/exactProp.js":
+/*!**************************************************!*\
+  !*** ./node_modules/@mui/utils/esm/exactProp.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ exactProp)
+/* harmony export */ });
+// This module is based on https://github.com/airbnb/prop-types-exact repository.
+// However, in order to reduce the number of dependencies and to remove some extra safe checks
+// the module was forked.
+const specialProperty = 'exact-prop: \u200b';
+function exactProp(propTypes) {
+  if (false) {}
+  return {
+    ...propTypes,
+    [specialProperty]: props => {
+      const unsupportedProps = Object.keys(props).filter(prop => !propTypes.hasOwnProperty(prop));
+      if (unsupportedProps.length > 0) {
+        return new Error(`The following props are not supported: ${unsupportedProps.map(prop => `\`${prop}\``).join(', ')}. Please remove them.`);
+      }
+      return null;
+    }
+  };
 }
 
 /***/ }),
@@ -8354,6 +10810,64 @@ function getDisplayName(Component) {
     }
   }
   return undefined;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@mui/utils/esm/getScrollbarSize.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/@mui/utils/esm/getScrollbarSize.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ getScrollbarSize)
+/* harmony export */ });
+// A change of the browser zoom change the scrollbar size.
+// Credit https://github.com/twbs/bootstrap/blob/488fd8afc535ca3a6ad4dc581f5e89217b6a36ac/js/src/util/scrollbar.js#L14-L18
+function getScrollbarSize(doc) {
+  // https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth#usage_notes
+  const documentWidth = doc.documentElement.clientWidth;
+  return Math.abs(window.innerWidth - documentWidth);
+}
+
+/***/ }),
+
+/***/ "./node_modules/@mui/utils/esm/ownerDocument.js":
+/*!******************************************************!*\
+  !*** ./node_modules/@mui/utils/esm/ownerDocument.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ownerDocument)
+/* harmony export */ });
+function ownerDocument(node) {
+  return node && node.ownerDocument || document;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@mui/utils/esm/ownerWindow.js":
+/*!****************************************************!*\
+  !*** ./node_modules/@mui/utils/esm/ownerWindow.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ownerWindow)
+/* harmony export */ });
+/* harmony import */ var _ownerDocument__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ownerDocument */ "./node_modules/@mui/utils/esm/ownerDocument.js");
+
+function ownerWindow(node) {
+  const doc = (0,_ownerDocument__WEBPACK_IMPORTED_MODULE_0__["default"])(node);
+  return doc.defaultView || window;
 }
 
 /***/ }),
@@ -8514,6 +11028,39 @@ __webpack_require__.r(__webpack_exports__);
 
 const useEnhancedEffect = typeof window !== 'undefined' ? react__WEBPACK_IMPORTED_MODULE_0__.useLayoutEffect : react__WEBPACK_IMPORTED_MODULE_0__.useEffect;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useEnhancedEffect);
+
+/***/ }),
+
+/***/ "./node_modules/@mui/utils/esm/useEventCallback.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/@mui/utils/esm/useEventCallback.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ useEventCallback)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _useEnhancedEffect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./useEnhancedEffect */ "./node_modules/@mui/utils/esm/useEnhancedEffect.js");
+
+
+
+/**
+ * https://github.com/facebook/react/issues/14099#issuecomment-440013892
+ */
+function useEventCallback(fn) {
+  const ref = react__WEBPACK_IMPORTED_MODULE_0__.useRef(fn);
+  (0,_useEnhancedEffect__WEBPACK_IMPORTED_MODULE_1__["default"])(() => {
+    ref.current = fn;
+  });
+  return react__WEBPACK_IMPORTED_MODULE_0__.useCallback((...args) =>
+  // @ts-expect-error hide `this`
+  // tslint:disable-next-line:ban-comma-operator
+  (0, ref.current)(...args), []);
+}
 
 /***/ }),
 
@@ -9056,6 +11603,7898 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/@supabase/functions-js/dist/module/FunctionsClient.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/@supabase/functions-js/dist/module/FunctionsClient.js ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "FunctionsClient": () => (/* binding */ FunctionsClient)
+/* harmony export */ });
+/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helper */ "./node_modules/@supabase/functions-js/dist/module/helper.js");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./types */ "./node_modules/@supabase/functions-js/dist/module/types.js");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+class FunctionsClient {
+    constructor(url, { headers = {}, customFetch, } = {}) {
+        this.url = url;
+        this.headers = headers;
+        this.fetch = (0,_helper__WEBPACK_IMPORTED_MODULE_0__.resolveFetch)(customFetch);
+    }
+    /**
+     * Updates the authorization header
+     * @param token - the new jwt token sent in the authorisation header
+     */
+    setAuth(token) {
+        this.headers.Authorization = `Bearer ${token}`;
+    }
+    /**
+     * Invokes a function
+     * @param functionName - The name of the Function to invoke.
+     * @param options - Options for invoking the Function.
+     */
+    invoke(functionName, options = {}) {
+        var _a;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { headers, method, body: functionArgs } = options;
+                let _headers = {};
+                let body;
+                if (functionArgs &&
+                    ((headers && !Object.prototype.hasOwnProperty.call(headers, 'Content-Type')) || !headers)) {
+                    if ((typeof Blob !== 'undefined' && functionArgs instanceof Blob) ||
+                        functionArgs instanceof ArrayBuffer) {
+                        // will work for File as File inherits Blob
+                        // also works for ArrayBuffer as it is the same underlying structure as a Blob
+                        _headers['Content-Type'] = 'application/octet-stream';
+                        body = functionArgs;
+                    }
+                    else if (typeof functionArgs === 'string') {
+                        // plain string
+                        _headers['Content-Type'] = 'text/plain';
+                        body = functionArgs;
+                    }
+                    else if (typeof FormData !== 'undefined' && functionArgs instanceof FormData) {
+                        // don't set content-type headers
+                        // Request will automatically add the right boundary value
+                        body = functionArgs;
+                    }
+                    else {
+                        // default, assume this is JSON
+                        _headers['Content-Type'] = 'application/json';
+                        body = JSON.stringify(functionArgs);
+                    }
+                }
+                const response = yield this.fetch(`${this.url}/${functionName}`, {
+                    method: method || 'POST',
+                    // headers priority is (high to low):
+                    // 1. invoke-level headers
+                    // 2. client-level headers
+                    // 3. default Content-Type header
+                    headers: Object.assign(Object.assign(Object.assign({}, _headers), this.headers), headers),
+                    body,
+                }).catch((fetchError) => {
+                    throw new _types__WEBPACK_IMPORTED_MODULE_1__.FunctionsFetchError(fetchError);
+                });
+                const isRelayError = response.headers.get('x-relay-error');
+                if (isRelayError && isRelayError === 'true') {
+                    throw new _types__WEBPACK_IMPORTED_MODULE_1__.FunctionsRelayError(response);
+                }
+                if (!response.ok) {
+                    throw new _types__WEBPACK_IMPORTED_MODULE_1__.FunctionsHttpError(response);
+                }
+                let responseType = ((_a = response.headers.get('Content-Type')) !== null && _a !== void 0 ? _a : 'text/plain').split(';')[0].trim();
+                let data;
+                if (responseType === 'application/json') {
+                    data = yield response.json();
+                }
+                else if (responseType === 'application/octet-stream') {
+                    data = yield response.blob();
+                }
+                else if (responseType === 'multipart/form-data') {
+                    data = yield response.formData();
+                }
+                else {
+                    // default to text
+                    data = yield response.text();
+                }
+                return { data, error: null };
+            }
+            catch (error) {
+                return { data: null, error };
+            }
+        });
+    }
+}
+//# sourceMappingURL=FunctionsClient.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/functions-js/dist/module/helper.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@supabase/functions-js/dist/module/helper.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "resolveFetch": () => (/* binding */ resolveFetch)
+/* harmony export */ });
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+const resolveFetch = (customFetch) => {
+    let _fetch;
+    if (customFetch) {
+        _fetch = customFetch;
+    }
+    else if (typeof fetch === 'undefined') {
+        _fetch = (...args) => __awaiter(void 0, void 0, void 0, function* () { return yield (yield Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! cross-fetch */ "./node_modules/cross-fetch/dist/browser-ponyfill.js", 23))).fetch(...args); });
+    }
+    else {
+        _fetch = fetch;
+    }
+    return (...args) => _fetch(...args);
+};
+//# sourceMappingURL=helper.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/functions-js/dist/module/types.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@supabase/functions-js/dist/module/types.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "FunctionsError": () => (/* binding */ FunctionsError),
+/* harmony export */   "FunctionsFetchError": () => (/* binding */ FunctionsFetchError),
+/* harmony export */   "FunctionsHttpError": () => (/* binding */ FunctionsHttpError),
+/* harmony export */   "FunctionsRelayError": () => (/* binding */ FunctionsRelayError)
+/* harmony export */ });
+class FunctionsError extends Error {
+    constructor(message, name = 'FunctionsError', context) {
+        super(message);
+        super.name = name;
+        this.context = context;
+    }
+}
+class FunctionsFetchError extends FunctionsError {
+    constructor(context) {
+        super('Failed to send a request to the Edge Function', 'FunctionsFetchError', context);
+    }
+}
+class FunctionsRelayError extends FunctionsError {
+    constructor(context) {
+        super('Relay Error invoking the Edge Function', 'FunctionsRelayError', context);
+    }
+}
+class FunctionsHttpError extends FunctionsError {
+    constructor(context) {
+        super('Edge Function returned a non-2xx status code', 'FunctionsHttpError', context);
+    }
+}
+//# sourceMappingURL=types.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/gotrue-js/dist/module/GoTrueAdminApi.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/@supabase/gotrue-js/dist/module/GoTrueAdminApi.js ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ GoTrueAdminApi)
+/* harmony export */ });
+/* harmony import */ var _lib_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/fetch */ "./node_modules/@supabase/gotrue-js/dist/module/lib/fetch.js");
+/* harmony import */ var _lib_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/helpers */ "./node_modules/@supabase/gotrue-js/dist/module/lib/helpers.js");
+/* harmony import */ var _lib_errors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/errors */ "./node_modules/@supabase/gotrue-js/dist/module/lib/errors.js");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __rest = (undefined && undefined.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+
+
+
+class GoTrueAdminApi {
+    constructor({ url = '', headers = {}, fetch, }) {
+        this.url = url;
+        this.headers = headers;
+        this.fetch = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_1__.resolveFetch)(fetch);
+        this.mfa = {
+            listFactors: this._listFactors.bind(this),
+            deleteFactor: this._deleteFactor.bind(this),
+        };
+    }
+    /**
+     * Removes a logged-in session.
+     * @param jwt A valid, logged-in JWT.
+     */
+    signOut(jwt) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'POST', `${this.url}/logout`, {
+                    headers: this.headers,
+                    jwt,
+                    noResolveJson: true,
+                });
+                return { data: null, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Sends an invite link to an email address.
+     * @param email The email address of the user.
+     * @param options.redirectTo A URL or mobile deeplink to send the user to after they are confirmed.
+     * @param options.data Optional user metadata
+     */
+    inviteUserByEmail(email, options = {}) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'POST', `${this.url}/invite`, {
+                    body: { email, data: options.data },
+                    headers: this.headers,
+                    redirectTo: options.redirectTo,
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._userResponse,
+                });
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Generates email links and OTPs to be sent via a custom email provider.
+     * @param email The user's email.
+     * @param options.password User password. For signup only.
+     * @param options.data Optional user metadata. For signup only.
+     * @param options.redirectTo The redirect url which should be appended to the generated link
+     */
+    generateLink(params) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { options } = params, rest = __rest(params, ["options"]);
+                const body = Object.assign(Object.assign({}, rest), options);
+                if ('newEmail' in rest) {
+                    // replace newEmail with new_email in request body
+                    body.new_email = rest === null || rest === void 0 ? void 0 : rest.newEmail;
+                    delete body['newEmail'];
+                }
+                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'POST', `${this.url}/admin/generate_link`, {
+                    body: body,
+                    headers: this.headers,
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._generateLinkResponse,
+                    redirectTo: options === null || options === void 0 ? void 0 : options.redirectTo,
+                });
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return {
+                        data: {
+                            properties: null,
+                            user: null,
+                        },
+                        error,
+                    };
+                }
+                throw error;
+            }
+        });
+    }
+    // User Admin API
+    /**
+     * Creates a new user.
+     * This function should only be called on a server. Never expose your `service_role` key in the browser.
+     */
+    createUser(attributes) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'POST', `${this.url}/admin/users`, {
+                    body: attributes,
+                    headers: this.headers,
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._userResponse,
+                });
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Get a list of users.
+     *
+     * This function should only be called on a server. Never expose your `service_role` key in the browser.
+     * @param params An object which supports `page` and `perPage` as numbers, to alter the paginated results.
+     */
+    listUsers(params) {
+        var _a, _b, _c, _d, _e, _f, _g;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const pagination = { nextPage: null, lastPage: 0, total: 0 };
+                const response = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'GET', `${this.url}/admin/users`, {
+                    headers: this.headers,
+                    noResolveJson: true,
+                    query: {
+                        page: (_b = (_a = params === null || params === void 0 ? void 0 : params.page) === null || _a === void 0 ? void 0 : _a.toString()) !== null && _b !== void 0 ? _b : '',
+                        per_page: (_d = (_c = params === null || params === void 0 ? void 0 : params.perPage) === null || _c === void 0 ? void 0 : _c.toString()) !== null && _d !== void 0 ? _d : '',
+                    },
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._noResolveJsonResponse,
+                });
+                if (response.error)
+                    throw response.error;
+                const users = yield response.json();
+                const total = (_e = response.headers.get('x-total-count')) !== null && _e !== void 0 ? _e : 0;
+                const links = (_g = (_f = response.headers.get('link')) === null || _f === void 0 ? void 0 : _f.split(',')) !== null && _g !== void 0 ? _g : [];
+                if (links.length > 0) {
+                    links.forEach((link) => {
+                        const page = parseInt(link.split(';')[0].split('=')[1].substring(0, 1));
+                        const rel = JSON.parse(link.split(';')[1].split('=')[1]);
+                        pagination[`${rel}Page`] = page;
+                    });
+                    pagination.total = parseInt(total);
+                }
+                return { data: Object.assign(Object.assign({}, users), pagination), error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { users: [] }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Get user by id.
+     *
+     * @param uid The user's unique identifier
+     *
+     * This function should only be called on a server. Never expose your `service_role` key in the browser.
+     */
+    getUserById(uid) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'GET', `${this.url}/admin/users/${uid}`, {
+                    headers: this.headers,
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._userResponse,
+                });
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Updates the user data.
+     *
+     * @param attributes The data you want to update.
+     *
+     * This function should only be called on a server. Never expose your `service_role` key in the browser.
+     */
+    updateUserById(uid, attributes) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'PUT', `${this.url}/admin/users/${uid}`, {
+                    body: attributes,
+                    headers: this.headers,
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._userResponse,
+                });
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Delete a user. Requires a `service_role` key.
+     *
+     * @param id The user id you want to remove.
+     * @param shouldSoftDelete If true, then the user will be soft-deleted from the auth schema.
+     * Defaults to false for backward compatibility.
+     *
+     * This function should only be called on a server. Never expose your `service_role` key in the browser.
+     */
+    deleteUser(id, shouldSoftDelete = false) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'DELETE', `${this.url}/admin/users/${id}`, {
+                    headers: this.headers,
+                    body: {
+                        should_soft_delete: shouldSoftDelete,
+                    },
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._userResponse,
+                });
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    _listFactors(params) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { data, error } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'GET', `${this.url}/admin/users/${params.userId}/factors`, {
+                    headers: this.headers,
+                    xform: (factors) => {
+                        return { data: { factors }, error: null };
+                    },
+                });
+                return { data, error };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    _deleteFactor(params) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'DELETE', `${this.url}/admin/users/${params.userId}/factors/${params.id}`, {
+                    headers: this.headers,
+                });
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+}
+//# sourceMappingURL=GoTrueAdminApi.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/gotrue-js/dist/module/GoTrueClient.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@supabase/gotrue-js/dist/module/GoTrueClient.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ GoTrueClient)
+/* harmony export */ });
+/* harmony import */ var _GoTrueAdminApi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GoTrueAdminApi */ "./node_modules/@supabase/gotrue-js/dist/module/GoTrueAdminApi.js");
+/* harmony import */ var _lib_constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/constants */ "./node_modules/@supabase/gotrue-js/dist/module/lib/constants.js");
+/* harmony import */ var _lib_errors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/errors */ "./node_modules/@supabase/gotrue-js/dist/module/lib/errors.js");
+/* harmony import */ var _lib_fetch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lib/fetch */ "./node_modules/@supabase/gotrue-js/dist/module/lib/fetch.js");
+/* harmony import */ var _lib_helpers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./lib/helpers */ "./node_modules/@supabase/gotrue-js/dist/module/lib/helpers.js");
+/* harmony import */ var _lib_local_storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./lib/local-storage */ "./node_modules/@supabase/gotrue-js/dist/module/lib/local-storage.js");
+/* harmony import */ var _lib_polyfills__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./lib/polyfills */ "./node_modules/@supabase/gotrue-js/dist/module/lib/polyfills.js");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+
+
+
+
+
+(0,_lib_polyfills__WEBPACK_IMPORTED_MODULE_6__.polyfillGlobalThis)(); // Make "globalThis" available
+const DEFAULT_OPTIONS = {
+    url: _lib_constants__WEBPACK_IMPORTED_MODULE_1__.GOTRUE_URL,
+    storageKey: _lib_constants__WEBPACK_IMPORTED_MODULE_1__.STORAGE_KEY,
+    autoRefreshToken: true,
+    persistSession: true,
+    detectSessionInUrl: true,
+    headers: _lib_constants__WEBPACK_IMPORTED_MODULE_1__.DEFAULT_HEADERS,
+    flowType: 'implicit',
+};
+/** Current session will be checked for refresh at this interval. */
+const AUTO_REFRESH_TICK_DURATION = 30 * 1000;
+/**
+ * A token refresh will be attempted this many ticks before the current session expires. */
+const AUTO_REFRESH_TICK_THRESHOLD = 3;
+class GoTrueClient {
+    /**
+     * Create a new client for use in the browser.
+     */
+    constructor(options) {
+        var _a;
+        this.stateChangeEmitters = new Map();
+        this.autoRefreshTicker = null;
+        this.visibilityChangedCallback = null;
+        this.refreshingDeferred = null;
+        /**
+         * Keeps track of the async client initialization.
+         * When null or not yet resolved the auth state is `unknown`
+         * Once resolved the the auth state is known and it's save to call any further client methods.
+         * Keep extra care to never reject or throw uncaught errors
+         */
+        this.initializePromise = null;
+        this.detectSessionInUrl = true;
+        /**
+         * Used to broadcast state change events to other tabs listening.
+         */
+        this.broadcastChannel = null;
+        const settings = Object.assign(Object.assign({}, DEFAULT_OPTIONS), options);
+        this.inMemorySession = null;
+        this.storageKey = settings.storageKey;
+        this.autoRefreshToken = settings.autoRefreshToken;
+        this.persistSession = settings.persistSession;
+        this.storage = settings.storage || _lib_local_storage__WEBPACK_IMPORTED_MODULE_5__["default"];
+        this.admin = new _GoTrueAdminApi__WEBPACK_IMPORTED_MODULE_0__["default"]({
+            url: settings.url,
+            headers: settings.headers,
+            fetch: settings.fetch,
+        });
+        this.url = settings.url;
+        this.headers = settings.headers;
+        this.fetch = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.resolveFetch)(settings.fetch);
+        this.detectSessionInUrl = settings.detectSessionInUrl;
+        this.flowType = settings.flowType;
+        this.mfa = {
+            verify: this._verify.bind(this),
+            enroll: this._enroll.bind(this),
+            unenroll: this._unenroll.bind(this),
+            challenge: this._challenge.bind(this),
+            listFactors: this._listFactors.bind(this),
+            challengeAndVerify: this._challengeAndVerify.bind(this),
+            getAuthenticatorAssuranceLevel: this._getAuthenticatorAssuranceLevel.bind(this),
+        };
+        if ((0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)() && globalThis.BroadcastChannel && this.persistSession && this.storageKey) {
+            try {
+                this.broadcastChannel = new globalThis.BroadcastChannel(this.storageKey);
+            }
+            catch (e) {
+                console.error('Failed to create a new BroadcastChannel, multi-tab state changes will not be available', e);
+            }
+            (_a = this.broadcastChannel) === null || _a === void 0 ? void 0 : _a.addEventListener('message', (event) => {
+                this._notifyAllSubscribers(event.data.event, event.data.session, false); // broadcast = false so we don't get an endless loop of messages
+            });
+        }
+        this.initialize();
+    }
+    /**
+     * Initializes the client session either from the url or from storage.
+     * This method is automatically called when instantiating the client, but should also be called
+     * manually when checking for an error from an auth redirect (oauth, magiclink, password recovery, etc).
+     */
+    initialize() {
+        if (!this.initializePromise) {
+            this.initializePromise = this._initialize();
+        }
+        return this.initializePromise;
+    }
+    /**
+     * IMPORTANT:
+     * 1. Never throw in this method, as it is called from the constructor
+     * 2. Never return a session from this method as it would be cached over
+     *    the whole lifetime of the client
+     */
+    _initialize() {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (this.initializePromise) {
+                return this.initializePromise;
+            }
+            try {
+                const isPKCEFlow = yield this._isPKCEFlow();
+                if ((this.detectSessionInUrl && this._isImplicitGrantFlow()) || isPKCEFlow) {
+                    const { data, error } = yield this._getSessionFromUrl(isPKCEFlow);
+                    if (error) {
+                        // failed login attempt via url,
+                        // remove old session as in verifyOtp, signUp and signInWith*
+                        yield this._removeSession();
+                        return { error };
+                    }
+                    const { session, redirectType } = data;
+                    yield this._saveSession(session);
+                    setTimeout(() => {
+                        if (redirectType === 'recovery') {
+                            this._notifyAllSubscribers('PASSWORD_RECOVERY', session);
+                        }
+                        else {
+                            this._notifyAllSubscribers('SIGNED_IN', session);
+                        }
+                    }, 0);
+                    return { error: null };
+                }
+                // no login attempt via callback url try to recover session from storage
+                yield this._recoverAndRefresh();
+                return { error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { error };
+                }
+                return {
+                    error: new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthUnknownError('Unexpected error during initialization', error),
+                };
+            }
+            finally {
+                yield this._handleVisibilityChange();
+            }
+        });
+    }
+    /**
+     * Creates a new user.
+     *
+     * Be aware that if a user account exists in the system you may get back an
+     * error message that attempts to hide this information from the user.
+     *
+     * @returns A logged-in session if the server has "autoconfirm" ON
+     * @returns A user if the server has "autoconfirm" OFF
+     */
+    signUp(credentials) {
+        var _a, _b, _c;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield this._removeSession();
+                let res;
+                if ('email' in credentials) {
+                    const { email, password, options } = credentials;
+                    let codeChallenge = null;
+                    let codeChallengeMethod = null;
+                    if (this.flowType === 'pkce') {
+                        const codeVerifier = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEVerifier)();
+                        yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.setItemAsync)(this.storage, `${this.storageKey}-code-verifier`, codeVerifier);
+                        codeChallenge = yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEChallenge)(codeVerifier);
+                        codeChallengeMethod = codeVerifier === codeChallenge ? 'plain' : 's256';
+                    }
+                    res = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/signup`, {
+                        headers: this.headers,
+                        redirectTo: options === null || options === void 0 ? void 0 : options.emailRedirectTo,
+                        body: {
+                            email,
+                            password,
+                            data: (_a = options === null || options === void 0 ? void 0 : options.data) !== null && _a !== void 0 ? _a : {},
+                            gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
+                            code_challenge: codeChallenge,
+                            code_challenge_method: codeChallengeMethod,
+                        },
+                        xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
+                    });
+                }
+                else if ('phone' in credentials) {
+                    const { phone, password, options } = credentials;
+                    res = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/signup`, {
+                        headers: this.headers,
+                        body: {
+                            phone,
+                            password,
+                            data: (_b = options === null || options === void 0 ? void 0 : options.data) !== null && _b !== void 0 ? _b : {},
+                            channel: (_c = options === null || options === void 0 ? void 0 : options.channel) !== null && _c !== void 0 ? _c : 'sms',
+                            gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
+                        },
+                        xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
+                    });
+                }
+                else {
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthInvalidCredentialsError('You must provide either an email or phone number and a password');
+                }
+                const { data, error } = res;
+                if (error || !data) {
+                    return { data: { user: null, session: null }, error: error };
+                }
+                const session = data.session;
+                const user = data.user;
+                if (data.session) {
+                    yield this._saveSession(data.session);
+                    this._notifyAllSubscribers('SIGNED_IN', session);
+                }
+                return { data: { user, session }, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null, session: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Log in an existing user with an email and password or phone and password.
+     *
+     * Be aware that you may get back an error message that will not distinguish
+     * between the cases where the account does not exist or that the
+     * email/phone and password combination is wrong or that the account can only
+     * be accessed via social login.
+     */
+    signInWithPassword(credentials) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield this._removeSession();
+                let res;
+                if ('email' in credentials) {
+                    const { email, password, options } = credentials;
+                    res = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/token?grant_type=password`, {
+                        headers: this.headers,
+                        body: {
+                            email,
+                            password,
+                            gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
+                        },
+                        xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
+                    });
+                }
+                else if ('phone' in credentials) {
+                    const { phone, password, options } = credentials;
+                    res = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/token?grant_type=password`, {
+                        headers: this.headers,
+                        body: {
+                            phone,
+                            password,
+                            gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
+                        },
+                        xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
+                    });
+                }
+                else {
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthInvalidCredentialsError('You must provide either an email or phone number and a password');
+                }
+                const { data, error } = res;
+                if (error || !data)
+                    return { data: { user: null, session: null }, error };
+                if (data.session) {
+                    yield this._saveSession(data.session);
+                    this._notifyAllSubscribers('SIGNED_IN', data.session);
+                }
+                return { data, error };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null, session: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Log in an existing user via a third-party provider.
+     */
+    signInWithOAuth(credentials) {
+        var _a, _b, _c, _d;
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this._removeSession();
+            return yield this._handleProviderSignIn(credentials.provider, {
+                redirectTo: (_a = credentials.options) === null || _a === void 0 ? void 0 : _a.redirectTo,
+                scopes: (_b = credentials.options) === null || _b === void 0 ? void 0 : _b.scopes,
+                queryParams: (_c = credentials.options) === null || _c === void 0 ? void 0 : _c.queryParams,
+                skipBrowserRedirect: (_d = credentials.options) === null || _d === void 0 ? void 0 : _d.skipBrowserRedirect,
+            });
+        });
+    }
+    /**
+     * Log in an existing user by exchanging an Auth Code issued during the PKCE flow.
+     */
+    exchangeCodeForSession(authCode) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const codeVerifier = yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getItemAsync)(this.storage, `${this.storageKey}-code-verifier`);
+            const { data, error } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/token?grant_type=pkce`, {
+                headers: this.headers,
+                body: {
+                    auth_code: authCode,
+                    code_verifier: codeVerifier,
+                },
+                xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
+            });
+            yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.removeItemAsync)(this.storage, `${this.storageKey}-code-verifier`);
+            if (error || !data)
+                return { data: { user: null, session: null }, error };
+            if (data.session) {
+                yield this._saveSession(data.session);
+                this._notifyAllSubscribers('SIGNED_IN', data.session);
+            }
+            return { data, error };
+        });
+    }
+    /**
+     * Allows signing in with an ID token issued by certain supported providers.
+     * The ID token is verified for validity and a new session is established.
+     *
+     * @experimental
+     */
+    signInWithIdToken(credentials) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this._removeSession();
+            try {
+                const { options, provider, token, nonce } = credentials;
+                const res = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/token?grant_type=id_token`, {
+                    headers: this.headers,
+                    body: {
+                        provider,
+                        id_token: token,
+                        nonce,
+                        gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
+                    },
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
+                });
+                const { data, error } = res;
+                if (error || !data)
+                    return { data: { user: null, session: null }, error };
+                if (data.session) {
+                    yield this._saveSession(data.session);
+                    this._notifyAllSubscribers('SIGNED_IN', data.session);
+                }
+                return { data, error };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null, session: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Log in a user using magiclink or a one-time password (OTP).
+     *
+     * If the `{{ .ConfirmationURL }}` variable is specified in the email template, a magiclink will be sent.
+     * If the `{{ .Token }}` variable is specified in the email template, an OTP will be sent.
+     * If you're using phone sign-ins, only an OTP will be sent. You won't be able to send a magiclink for phone sign-ins.
+     *
+     * Be aware that you may get back an error message that will not distinguish
+     * between the cases where the account does not exist or, that the account
+     * can only be accessed via social login.
+     *
+     * Do note that you will need to configure a Whatsapp sender on Twilio
+     * if you are using phone sign in with the 'whatsapp' channel. The whatsapp
+     * channel is not supported on other providers
+     * at this time.
+     */
+    signInWithOtp(credentials) {
+        var _a, _b, _c, _d, _e;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield this._removeSession();
+                if ('email' in credentials) {
+                    const { email, options } = credentials;
+                    let codeChallenge = null;
+                    let codeChallengeMethod = null;
+                    if (this.flowType === 'pkce') {
+                        const codeVerifier = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEVerifier)();
+                        yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.setItemAsync)(this.storage, `${this.storageKey}-code-verifier`, codeVerifier);
+                        codeChallenge = yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEChallenge)(codeVerifier);
+                        codeChallengeMethod = codeVerifier === codeChallenge ? 'plain' : 's256';
+                    }
+                    const { error } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/otp`, {
+                        headers: this.headers,
+                        body: {
+                            email,
+                            data: (_a = options === null || options === void 0 ? void 0 : options.data) !== null && _a !== void 0 ? _a : {},
+                            create_user: (_b = options === null || options === void 0 ? void 0 : options.shouldCreateUser) !== null && _b !== void 0 ? _b : true,
+                            gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
+                            code_challenge: codeChallenge,
+                            code_challenge_method: codeChallengeMethod,
+                        },
+                        redirectTo: options === null || options === void 0 ? void 0 : options.emailRedirectTo,
+                    });
+                    return { data: { user: null, session: null }, error };
+                }
+                if ('phone' in credentials) {
+                    const { phone, options } = credentials;
+                    const { error } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/otp`, {
+                        headers: this.headers,
+                        body: {
+                            phone,
+                            data: (_c = options === null || options === void 0 ? void 0 : options.data) !== null && _c !== void 0 ? _c : {},
+                            create_user: (_d = options === null || options === void 0 ? void 0 : options.shouldCreateUser) !== null && _d !== void 0 ? _d : true,
+                            gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
+                            channel: (_e = options === null || options === void 0 ? void 0 : options.channel) !== null && _e !== void 0 ? _e : 'sms',
+                        },
+                    });
+                    return { data: { user: null, session: null }, error };
+                }
+                throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthInvalidCredentialsError('You must provide either an email or phone number.');
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null, session: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Log in a user given a User supplied OTP received via mobile.
+     */
+    verifyOtp(params) {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield this._removeSession();
+                const { data, error } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/verify`, {
+                    headers: this.headers,
+                    body: Object.assign(Object.assign({}, params), { gotrue_meta_security: { captcha_token: (_a = params.options) === null || _a === void 0 ? void 0 : _a.captchaToken } }),
+                    redirectTo: (_b = params.options) === null || _b === void 0 ? void 0 : _b.redirectTo,
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
+                });
+                if (error) {
+                    throw error;
+                }
+                if (!data) {
+                    throw new Error('An error occurred on token verification.');
+                }
+                const session = data.session;
+                const user = data.user;
+                if (session === null || session === void 0 ? void 0 : session.access_token) {
+                    yield this._saveSession(session);
+                    this._notifyAllSubscribers('SIGNED_IN', session);
+                }
+                return { data: { user, session }, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null, session: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Attempts a single-sign on using an enterprise Identity Provider. A
+     * successful SSO attempt will redirect the current page to the identity
+     * provider authorization page. The redirect URL is implementation and SSO
+     * protocol specific.
+     *
+     * You can use it by providing a SSO domain. Typically you can extract this
+     * domain by asking users for their email address. If this domain is
+     * registered on the Auth instance the redirect will use that organization's
+     * currently active SSO Identity Provider for the login.
+     *
+     * If you have built an organization-specific login page, you can use the
+     * organization's SSO Identity Provider UUID directly instead.
+     */
+    signInWithSSO(params) {
+        var _a, _b, _c;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield this._removeSession();
+                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/sso`, {
+                    body: Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({}, ('providerId' in params ? { provider_id: params.providerId } : null)), ('domain' in params ? { domain: params.domain } : null)), { redirect_to: (_b = (_a = params.options) === null || _a === void 0 ? void 0 : _a.redirectTo) !== null && _b !== void 0 ? _b : undefined }), (((_c = params === null || params === void 0 ? void 0 : params.options) === null || _c === void 0 ? void 0 : _c.captchaToken)
+                        ? { gotrue_meta_security: { captcha_token: params.options.captchaToken } }
+                        : null)), { skip_http_redirect: true }),
+                    headers: this.headers,
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._ssoResponse,
+                });
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Resends an existing signup confirmation email, email change email, SMS OTP or phone change OTP.
+     */
+    resend(credentials) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield this._removeSession();
+                const endpoint = `${this.url}/resend`;
+                if ('email' in credentials) {
+                    const { email, type, options } = credentials;
+                    const { error } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', endpoint, {
+                        headers: this.headers,
+                        body: {
+                            email,
+                            type,
+                            gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
+                        },
+                    });
+                    return { data: { user: null, session: null }, error };
+                }
+                else if ('phone' in credentials) {
+                    const { phone, type, options } = credentials;
+                    const { error } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', endpoint, {
+                        headers: this.headers,
+                        body: {
+                            phone,
+                            type,
+                            gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
+                        },
+                    });
+                    return { data: { user: null, session: null }, error };
+                }
+                throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthInvalidCredentialsError('You must provide either an email or phone number and a type');
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null, session: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Returns the session, refreshing it if necessary.
+     * The session returned can be null if the session is not detected which can happen in the event a user is not signed-in or has logged out.
+     */
+    getSession() {
+        return __awaiter(this, void 0, void 0, function* () {
+            // make sure we've read the session from the url if there is one
+            // save to just await, as long we make sure _initialize() never throws
+            yield this.initializePromise;
+            let currentSession = null;
+            if (this.persistSession) {
+                const maybeSession = yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getItemAsync)(this.storage, this.storageKey);
+                if (maybeSession !== null) {
+                    if (this._isValidSession(maybeSession)) {
+                        currentSession = maybeSession;
+                    }
+                    else {
+                        yield this._removeSession();
+                    }
+                }
+            }
+            else {
+                currentSession = this.inMemorySession;
+            }
+            if (!currentSession) {
+                return { data: { session: null }, error: null };
+            }
+            const hasExpired = currentSession.expires_at
+                ? currentSession.expires_at <= Date.now() / 1000
+                : false;
+            if (!hasExpired) {
+                return { data: { session: currentSession }, error: null };
+            }
+            const { session, error } = yield this._callRefreshToken(currentSession.refresh_token);
+            if (error) {
+                return { data: { session: null }, error };
+            }
+            return { data: { session }, error: null };
+        });
+    }
+    /**
+     * Gets the current user details if there is an existing session.
+     * @param jwt Takes in an optional access token jwt. If no jwt is provided, getUser() will attempt to get the jwt from the current session.
+     */
+    getUser(jwt) {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                if (!jwt) {
+                    const { data, error } = yield this.getSession();
+                    if (error) {
+                        throw error;
+                    }
+                    // Default to Authorization header if there is no existing session
+                    jwt = (_b = (_a = data.session) === null || _a === void 0 ? void 0 : _a.access_token) !== null && _b !== void 0 ? _b : undefined;
+                }
+                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'GET', `${this.url}/user`, {
+                    headers: this.headers,
+                    jwt: jwt,
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._userResponse,
+                });
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Updates user data for a logged in user.
+     */
+    updateUser(attributes, options = {}) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { data: sessionData, error: sessionError } = yield this.getSession();
+                if (sessionError) {
+                    throw sessionError;
+                }
+                if (!sessionData.session) {
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthSessionMissingError();
+                }
+                const session = sessionData.session;
+                const { data, error: userError } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'PUT', `${this.url}/user`, {
+                    headers: this.headers,
+                    redirectTo: options === null || options === void 0 ? void 0 : options.emailRedirectTo,
+                    body: attributes,
+                    jwt: session.access_token,
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._userResponse,
+                });
+                if (userError)
+                    throw userError;
+                session.user = data.user;
+                yield this._saveSession(session);
+                this._notifyAllSubscribers('USER_UPDATED', session);
+                return { data: { user: session.user }, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Decodes a JWT (without performing any validation).
+     */
+    _decodeJWT(jwt) {
+        return (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.decodeJWTPayload)(jwt);
+    }
+    /**
+     * Sets the session data from the current session. If the current session is expired, setSession will take care of refreshing it to obtain a new session.
+     * If the refresh token or access token in the current session is invalid, an error will be thrown.
+     * @param currentSession The current session that minimally contains an access token and refresh token.
+     */
+    setSession(currentSession) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                if (!currentSession.access_token || !currentSession.refresh_token) {
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthSessionMissingError();
+                }
+                const timeNow = Date.now() / 1000;
+                let expiresAt = timeNow;
+                let hasExpired = true;
+                let session = null;
+                const payload = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.decodeJWTPayload)(currentSession.access_token);
+                if (payload.exp) {
+                    expiresAt = payload.exp;
+                    hasExpired = expiresAt <= timeNow;
+                }
+                if (hasExpired) {
+                    const { session: refreshedSession, error } = yield this._callRefreshToken(currentSession.refresh_token);
+                    if (error) {
+                        return { data: { user: null, session: null }, error: error };
+                    }
+                    if (!refreshedSession) {
+                        return { data: { user: null, session: null }, error: null };
+                    }
+                    session = refreshedSession;
+                }
+                else {
+                    const { data, error } = yield this.getUser(currentSession.access_token);
+                    if (error) {
+                        throw error;
+                    }
+                    session = {
+                        access_token: currentSession.access_token,
+                        refresh_token: currentSession.refresh_token,
+                        user: data.user,
+                        token_type: 'bearer',
+                        expires_in: expiresAt - timeNow,
+                        expires_at: expiresAt,
+                    };
+                    yield this._saveSession(session);
+                    this._notifyAllSubscribers('SIGNED_IN', session);
+                }
+                return { data: { user: session.user, session }, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { session: null, user: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Returns a new session, regardless of expiry status.
+     * Takes in an optional current session. If not passed in, then refreshSession() will attempt to retrieve it from getSession().
+     * If the current session's refresh token is invalid, an error will be thrown.
+     * @param currentSession The current session. If passed in, it must contain a refresh token.
+     */
+    refreshSession(currentSession) {
+        var _a;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                if (!currentSession) {
+                    const { data, error } = yield this.getSession();
+                    if (error) {
+                        throw error;
+                    }
+                    currentSession = (_a = data.session) !== null && _a !== void 0 ? _a : undefined;
+                }
+                if (!(currentSession === null || currentSession === void 0 ? void 0 : currentSession.refresh_token)) {
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthSessionMissingError();
+                }
+                const { session, error } = yield this._callRefreshToken(currentSession.refresh_token);
+                if (error) {
+                    return { data: { user: null, session: null }, error: error };
+                }
+                if (!session) {
+                    return { data: { user: null, session: null }, error: null };
+                }
+                return { data: { user: session.user, session }, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null, session: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Gets the session data from a URL string
+     */
+    _getSessionFromUrl(isPKCEFlow) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                if (!(0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)())
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No browser detected.');
+                if (this.flowType === 'implicit' && !this._isImplicitGrantFlow()) {
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('Not a valid implicit grant flow url.');
+                }
+                else if (this.flowType == 'pkce' && !isPKCEFlow) {
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthPKCEGrantCodeExchangeError('Not a valid PKCE flow url.');
+                }
+                if (isPKCEFlow) {
+                    const authCode = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('code');
+                    if (!authCode)
+                        throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthPKCEGrantCodeExchangeError('No code detected.');
+                    const { data, error } = yield this.exchangeCodeForSession(authCode);
+                    if (error)
+                        throw error;
+                    if (!data.session)
+                        throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthPKCEGrantCodeExchangeError('No session detected.');
+                    let url = new URL(window.location.href);
+                    url.searchParams.delete('code');
+                    window.history.replaceState(window.history.state, '', url.toString());
+                    return { data: { session: data.session, redirectType: null }, error: null };
+                }
+                const error_description = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('error_description');
+                if (error_description) {
+                    const error_code = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('error_code');
+                    if (!error_code)
+                        throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No error_code detected.');
+                    const error = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('error');
+                    if (!error)
+                        throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No error detected.');
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError(error_description, { error, code: error_code });
+                }
+                const provider_token = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('provider_token');
+                const provider_refresh_token = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('provider_refresh_token');
+                const access_token = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('access_token');
+                if (!access_token)
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No access_token detected.');
+                const expires_in = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('expires_in');
+                if (!expires_in)
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No expires_in detected.');
+                const refresh_token = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('refresh_token');
+                if (!refresh_token)
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No refresh_token detected.');
+                const token_type = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('token_type');
+                if (!token_type)
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No token_type detected.');
+                const timeNow = Math.round(Date.now() / 1000);
+                const expires_at = timeNow + parseInt(expires_in);
+                const { data, error } = yield this.getUser(access_token);
+                if (error)
+                    throw error;
+                const user = data.user;
+                const session = {
+                    provider_token,
+                    provider_refresh_token,
+                    access_token,
+                    expires_in: parseInt(expires_in),
+                    expires_at,
+                    refresh_token,
+                    token_type,
+                    user,
+                };
+                const redirectType = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('type');
+                // Remove tokens from URL
+                window.location.hash = '';
+                return { data: { session, redirectType }, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { session: null, redirectType: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Checks if the current URL contains parameters given by an implicit oauth grant flow (https://www.rfc-editor.org/rfc/rfc6749.html#section-4.2)
+     */
+    _isImplicitGrantFlow() {
+        return ((0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)() &&
+            (Boolean((0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('access_token')) ||
+                Boolean((0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('error_description'))));
+    }
+    /**
+     * Checks if the current URL and backing storage contain parameters given by a PKCE flow
+     */
+    _isPKCEFlow() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const currentStorageContent = yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getItemAsync)(this.storage, `${this.storageKey}-code-verifier`);
+            return (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)() && Boolean((0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('code')) && Boolean(currentStorageContent);
+        });
+    }
+    /**
+     * Inside a browser context, `signOut()` will remove the logged in user from the browser session
+     * and log them out - removing all items from localstorage and then trigger a `"SIGNED_OUT"` event.
+     *
+     * For server-side management, you can revoke all refresh tokens for a user by passing a user's JWT through to `auth.api.signOut(JWT: string)`.
+     * There is no way to revoke a user's access token jwt until it expires. It is recommended to set a shorter expiry on the jwt for this reason.
+     */
+    signOut() {
+        var _a;
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data, error: sessionError } = yield this.getSession();
+            if (sessionError) {
+                return { error: sessionError };
+            }
+            const accessToken = (_a = data.session) === null || _a === void 0 ? void 0 : _a.access_token;
+            if (accessToken) {
+                const { error } = yield this.admin.signOut(accessToken);
+                if (error) {
+                    // ignore 404s since user might not exist anymore
+                    // ignore 401s since an invalid or expired JWT should sign out the current session
+                    if (!((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthApiError)(error) && (error.status === 404 || error.status === 401))) {
+                        return { error };
+                    }
+                }
+            }
+            yield this._removeSession();
+            yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.removeItemAsync)(this.storage, `${this.storageKey}-code-verifier`);
+            this._notifyAllSubscribers('SIGNED_OUT', null);
+            return { error: null };
+        });
+    }
+    /**
+     * Receive a notification every time an auth event happens.
+     * @param callback A callback function to be invoked when an auth event happens.
+     */
+    onAuthStateChange(callback) {
+        const id = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.uuid)();
+        const subscription = {
+            id,
+            callback,
+            unsubscribe: () => {
+                this.stateChangeEmitters.delete(id);
+            },
+        };
+        this.stateChangeEmitters.set(id, subscription);
+        this.emitInitialSession(id);
+        return { data: { subscription } };
+    }
+    emitInitialSession(id) {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { data: { session }, error, } = yield this.getSession();
+                if (error)
+                    throw error;
+                (_a = this.stateChangeEmitters.get(id)) === null || _a === void 0 ? void 0 : _a.callback('INITIAL_SESSION', session);
+            }
+            catch (err) {
+                (_b = this.stateChangeEmitters.get(id)) === null || _b === void 0 ? void 0 : _b.callback('INITIAL_SESSION', null);
+                console.error(err);
+            }
+        });
+    }
+    /**
+     * Sends a password reset request to an email address.
+     * @param email The email address of the user.
+     * @param options.redirectTo The URL to send the user to after they click the password reset link.
+     * @param options.captchaToken Verification token received when the user completes the captcha on the site.
+     */
+    resetPasswordForEmail(email, options = {}) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let codeChallenge = null;
+            let codeChallengeMethod = null;
+            if (this.flowType === 'pkce') {
+                const codeVerifier = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEVerifier)();
+                yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.setItemAsync)(this.storage, `${this.storageKey}-code-verifier`, codeVerifier);
+                codeChallenge = yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEChallenge)(codeVerifier);
+                codeChallengeMethod = codeVerifier === codeChallenge ? 'plain' : 's256';
+            }
+            try {
+                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/recover`, {
+                    body: {
+                        email,
+                        code_challenge: codeChallenge,
+                        code_challenge_method: codeChallengeMethod,
+                        gotrue_meta_security: { captcha_token: options.captchaToken },
+                    },
+                    headers: this.headers,
+                    redirectTo: options.redirectTo,
+                });
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Generates a new JWT.
+     * @param refreshToken A valid refresh token that was returned on login.
+     */
+    _refreshAccessToken(refreshToken) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const startedAt = Date.now();
+                // will attempt to refresh the token with exponential backoff
+                return yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.retryable)((attempt) => __awaiter(this, void 0, void 0, function* () {
+                    yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.sleep)(attempt * 200); // 0, 200, 400, 800, ...
+                    return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/token?grant_type=refresh_token`, {
+                        body: { refresh_token: refreshToken },
+                        headers: this.headers,
+                        xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
+                    });
+                }), (attempt, _, result) => result &&
+                    result.error &&
+                    result.error instanceof _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthRetryableFetchError &&
+                    // retryable only if the request can be sent before the backoff overflows the tick duration
+                    Date.now() + (attempt + 1) * 200 - startedAt < AUTO_REFRESH_TICK_DURATION);
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { session: null, user: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    _isValidSession(maybeSession) {
+        const isValidSession = typeof maybeSession === 'object' &&
+            maybeSession !== null &&
+            'access_token' in maybeSession &&
+            'refresh_token' in maybeSession &&
+            'expires_at' in maybeSession;
+        return isValidSession;
+    }
+    _handleProviderSignIn(provider, options) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const url = yield this._getUrlForProvider(provider, {
+                redirectTo: options.redirectTo,
+                scopes: options.scopes,
+                queryParams: options.queryParams,
+            });
+            // try to open on the browser
+            if ((0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)() && !options.skipBrowserRedirect) {
+                window.location.assign(url);
+            }
+            return { data: { provider, url }, error: null };
+        });
+    }
+    /**
+     * Recovers the session from LocalStorage and refreshes
+     * Note: this method is async to accommodate for AsyncStorage e.g. in React native.
+     */
+    _recoverAndRefresh() {
+        var _a;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const currentSession = yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getItemAsync)(this.storage, this.storageKey);
+                if (!this._isValidSession(currentSession)) {
+                    if (currentSession !== null) {
+                        yield this._removeSession();
+                    }
+                    return;
+                }
+                const timeNow = Math.round(Date.now() / 1000);
+                if (((_a = currentSession.expires_at) !== null && _a !== void 0 ? _a : Infinity) < timeNow + _lib_constants__WEBPACK_IMPORTED_MODULE_1__.EXPIRY_MARGIN) {
+                    if (this.autoRefreshToken && currentSession.refresh_token) {
+                        const { error } = yield this._callRefreshToken(currentSession.refresh_token);
+                        if (error) {
+                            console.log(error.message);
+                            yield this._removeSession();
+                        }
+                    }
+                }
+                else {
+                    if (this.persistSession) {
+                        yield this._saveSession(currentSession);
+                    }
+                    this._notifyAllSubscribers('SIGNED_IN', currentSession);
+                }
+            }
+            catch (err) {
+                console.error(err);
+                return;
+            }
+        });
+    }
+    _callRefreshToken(refreshToken) {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+            // refreshing is already in progress
+            if (this.refreshingDeferred) {
+                return this.refreshingDeferred.promise;
+            }
+            try {
+                this.refreshingDeferred = new _lib_helpers__WEBPACK_IMPORTED_MODULE_4__.Deferred();
+                if (!refreshToken) {
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthSessionMissingError();
+                }
+                const { data, error } = yield this._refreshAccessToken(refreshToken);
+                if (error)
+                    throw error;
+                if (!data.session)
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthSessionMissingError();
+                yield this._saveSession(data.session);
+                this._notifyAllSubscribers('TOKEN_REFRESHED', data.session);
+                const result = { session: data.session, error: null };
+                this.refreshingDeferred.resolve(result);
+                return result;
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    const result = { session: null, error };
+                    (_a = this.refreshingDeferred) === null || _a === void 0 ? void 0 : _a.resolve(result);
+                    return result;
+                }
+                (_b = this.refreshingDeferred) === null || _b === void 0 ? void 0 : _b.reject(error);
+                throw error;
+            }
+            finally {
+                this.refreshingDeferred = null;
+            }
+        });
+    }
+    _notifyAllSubscribers(event, session, broadcast = true) {
+        if (this.broadcastChannel && broadcast) {
+            this.broadcastChannel.postMessage({ event, session });
+        }
+        this.stateChangeEmitters.forEach((x) => x.callback(event, session));
+    }
+    /**
+     * set currentSession and currentUser
+     * process to _startAutoRefreshToken if possible
+     */
+    _saveSession(session) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (!this.persistSession) {
+                this.inMemorySession = session;
+            }
+            if (this.persistSession && session.expires_at) {
+                yield this._persistSession(session);
+            }
+        });
+    }
+    _persistSession(currentSession) {
+        return (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.setItemAsync)(this.storage, this.storageKey, currentSession);
+    }
+    _removeSession() {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (this.persistSession) {
+                yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.removeItemAsync)(this.storage, this.storageKey);
+            }
+            else {
+                this.inMemorySession = null;
+            }
+        });
+    }
+    /**
+     * Removes any registered visibilitychange callback.
+     *
+     * {@see #startAutoRefresh}
+     * {@see #stopAutoRefresh}
+     */
+    _removeVisibilityChangedCallback() {
+        const callback = this.visibilityChangedCallback;
+        this.visibilityChangedCallback = null;
+        try {
+            if (callback && (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)() && (window === null || window === void 0 ? void 0 : window.removeEventListener)) {
+                window.removeEventListener('visibilitychange', callback);
+            }
+        }
+        catch (e) {
+            console.error('removing visibilitychange callback failed', e);
+        }
+    }
+    /**
+     * This is the private implementation of {@link #startAutoRefresh}. Use this
+     * within the library.
+     */
+    _startAutoRefresh() {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this._stopAutoRefresh();
+            const ticker = setInterval(() => this._autoRefreshTokenTick(), AUTO_REFRESH_TICK_DURATION);
+            this.autoRefreshTicker = ticker;
+            if (ticker && typeof ticker === 'object' && typeof ticker.unref === 'function') {
+                // ticker is a NodeJS Timeout object that has an `unref` method
+                // https://nodejs.org/api/timers.html#timeoutunref
+                // When auto refresh is used in NodeJS (like for testing) the
+                // `setInterval` is preventing the process from being marked as
+                // finished and tests run endlessly. This can be prevented by calling
+                // `unref()` on the returned object.
+                ticker.unref();
+                // @ts-ignore
+            }
+            else if (typeof Deno !== 'undefined' && typeof Deno.unrefTimer === 'function') {
+                // similar like for NodeJS, but with the Deno API
+                // https://deno.land/api@latest?unstable&s=Deno.unrefTimer
+                // @ts-ignore
+                Deno.unrefTimer(ticker);
+            }
+            // run the tick immediately
+            yield this._autoRefreshTokenTick();
+        });
+    }
+    /**
+     * This is the private implementation of {@link #stopAutoRefresh}. Use this
+     * within the library.
+     */
+    _stopAutoRefresh() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const ticker = this.autoRefreshTicker;
+            this.autoRefreshTicker = null;
+            if (ticker) {
+                clearInterval(ticker);
+            }
+        });
+    }
+    /**
+     * Starts an auto-refresh process in the background. The session is checked
+     * every few seconds. Close to the time of expiration a process is started to
+     * refresh the session. If refreshing fails it will be retried for as long as
+     * necessary.
+     *
+     * If you set the {@link GoTrueClientOptions#autoRefreshToken} you don't need
+     * to call this function, it will be called for you.
+     *
+     * On browsers the refresh process works only when the tab/window is in the
+     * foreground to conserve resources as well as prevent race conditions and
+     * flooding auth with requests. If you call this method any managed
+     * visibility change callback will be removed and you must manage visibility
+     * changes on your own.
+     *
+     * On non-browser platforms the refresh process works *continuously* in the
+     * background, which may not be desireable. You should hook into your
+     * platform's foreground indication mechanism and call these methods
+     * appropriately to conserve resources.
+     *
+     * {@see #stopAutoRefresh}
+     */
+    startAutoRefresh() {
+        return __awaiter(this, void 0, void 0, function* () {
+            this._removeVisibilityChangedCallback();
+            yield this._startAutoRefresh();
+        });
+    }
+    /**
+     * Stops an active auto refresh process running in the background (if any).
+     *
+     * If you call this method any managed visibility change callback will be
+     * removed and you must manage visibility changes on your own.
+     *
+     * See {@link #startAutoRefresh} for more details.
+     */
+    stopAutoRefresh() {
+        return __awaiter(this, void 0, void 0, function* () {
+            this._removeVisibilityChangedCallback();
+            yield this._stopAutoRefresh();
+        });
+    }
+    /**
+     * Runs the auto refresh token tick.
+     */
+    _autoRefreshTokenTick() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const now = Date.now();
+            try {
+                const { data: { session }, } = yield this.getSession();
+                if (!session || !session.refresh_token || !session.expires_at) {
+                    return;
+                }
+                // session will expire in this many ticks (or has already expired if <= 0)
+                const expiresInTicks = Math.floor((session.expires_at * 1000 - now) / AUTO_REFRESH_TICK_DURATION);
+                if (expiresInTicks < AUTO_REFRESH_TICK_THRESHOLD) {
+                    yield this._callRefreshToken(session.refresh_token);
+                }
+            }
+            catch (e) {
+                console.error('Auto refresh tick failed with error. This is likely a transient error.', e);
+            }
+        });
+    }
+    /**
+     * Registers callbacks on the browser / platform, which in-turn run
+     * algorithms when the browser window/tab are in foreground. On non-browser
+     * platforms it assumes always foreground.
+     */
+    _handleVisibilityChange() {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (!(0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)() || !(window === null || window === void 0 ? void 0 : window.addEventListener)) {
+                if (this.autoRefreshToken) {
+                    // in non-browser environments the refresh token ticker runs always
+                    this.startAutoRefresh();
+                }
+                return false;
+            }
+            try {
+                this.visibilityChangedCallback = () => __awaiter(this, void 0, void 0, function* () { return yield this._onVisibilityChanged(false); });
+                window === null || window === void 0 ? void 0 : window.addEventListener('visibilitychange', this.visibilityChangedCallback);
+                // now immediately call the visbility changed callback to setup with the
+                // current visbility state
+                yield this._onVisibilityChanged(true); // initial call
+            }
+            catch (error) {
+                console.error('_handleVisibilityChange', error);
+            }
+        });
+    }
+    /**
+     * Callback registered with `window.addEventListener('visibilitychange')`.
+     */
+    _onVisibilityChanged(isInitial) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (document.visibilityState === 'visible') {
+                if (!isInitial) {
+                    // initial visibility change setup is handled in another flow under #initialize()
+                    yield this.initializePromise;
+                    yield this._recoverAndRefresh();
+                }
+                if (this.autoRefreshToken) {
+                    // in browser environments the refresh token ticker runs only on focused tabs
+                    // which prevents race conditions
+                    this._startAutoRefresh();
+                }
+            }
+            else if (document.visibilityState === 'hidden') {
+                if (this.autoRefreshToken) {
+                    this._stopAutoRefresh();
+                }
+            }
+        });
+    }
+    /**
+     * Generates the relevant login URL for a third-party provider.
+     * @param options.redirectTo A URL or mobile address to send the user to after they are confirmed.
+     * @param options.scopes A space-separated list of scopes granted to the OAuth application.
+     * @param options.queryParams An object of key-value pairs containing query parameters granted to the OAuth application.
+     */
+    _getUrlForProvider(provider, options) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const urlParams = [`provider=${encodeURIComponent(provider)}`];
+            if (options === null || options === void 0 ? void 0 : options.redirectTo) {
+                urlParams.push(`redirect_to=${encodeURIComponent(options.redirectTo)}`);
+            }
+            if (options === null || options === void 0 ? void 0 : options.scopes) {
+                urlParams.push(`scopes=${encodeURIComponent(options.scopes)}`);
+            }
+            if (this.flowType === 'pkce') {
+                const codeVerifier = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEVerifier)();
+                yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.setItemAsync)(this.storage, `${this.storageKey}-code-verifier`, codeVerifier);
+                const codeChallenge = yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEChallenge)(codeVerifier);
+                const codeChallengeMethod = codeVerifier === codeChallenge ? 'plain' : 's256';
+                const flowParams = new URLSearchParams({
+                    code_challenge: `${encodeURIComponent(codeChallenge)}`,
+                    code_challenge_method: `${encodeURIComponent(codeChallengeMethod)}`,
+                });
+                urlParams.push(flowParams.toString());
+            }
+            if (options === null || options === void 0 ? void 0 : options.queryParams) {
+                const query = new URLSearchParams(options.queryParams);
+                urlParams.push(query.toString());
+            }
+            return `${this.url}/authorize?${urlParams.join('&')}`;
+        });
+    }
+    _unenroll(params) {
+        var _a;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { data: sessionData, error: sessionError } = yield this.getSession();
+                if (sessionError) {
+                    return { data: null, error: sessionError };
+                }
+                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'DELETE', `${this.url}/factors/${params.factorId}`, {
+                    headers: this.headers,
+                    jwt: (_a = sessionData === null || sessionData === void 0 ? void 0 : sessionData.session) === null || _a === void 0 ? void 0 : _a.access_token,
+                });
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * {@see GoTrueMFAApi#enroll}
+     */
+    _enroll(params) {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { data: sessionData, error: sessionError } = yield this.getSession();
+                if (sessionError) {
+                    return { data: null, error: sessionError };
+                }
+                const { data, error } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/factors`, {
+                    body: {
+                        friendly_name: params.friendlyName,
+                        factor_type: params.factorType,
+                        issuer: params.issuer,
+                    },
+                    headers: this.headers,
+                    jwt: (_a = sessionData === null || sessionData === void 0 ? void 0 : sessionData.session) === null || _a === void 0 ? void 0 : _a.access_token,
+                });
+                if (error) {
+                    return { data: null, error };
+                }
+                if ((_b = data === null || data === void 0 ? void 0 : data.totp) === null || _b === void 0 ? void 0 : _b.qr_code) {
+                    data.totp.qr_code = `data:image/svg+xml;utf-8,${data.totp.qr_code}`;
+                }
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * {@see GoTrueMFAApi#verify}
+     */
+    _verify(params) {
+        var _a;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { data: sessionData, error: sessionError } = yield this.getSession();
+                if (sessionError) {
+                    return { data: null, error: sessionError };
+                }
+                const { data, error } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/factors/${params.factorId}/verify`, {
+                    body: { code: params.code, challenge_id: params.challengeId },
+                    headers: this.headers,
+                    jwt: (_a = sessionData === null || sessionData === void 0 ? void 0 : sessionData.session) === null || _a === void 0 ? void 0 : _a.access_token,
+                });
+                if (error) {
+                    return { data: null, error };
+                }
+                yield this._saveSession(Object.assign({ expires_at: Math.round(Date.now() / 1000) + data.expires_in }, data));
+                this._notifyAllSubscribers('MFA_CHALLENGE_VERIFIED', data);
+                return { data, error };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * {@see GoTrueMFAApi#challenge}
+     */
+    _challenge(params) {
+        var _a;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { data: sessionData, error: sessionError } = yield this.getSession();
+                if (sessionError) {
+                    return { data: null, error: sessionError };
+                }
+                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/factors/${params.factorId}/challenge`, {
+                    headers: this.headers,
+                    jwt: (_a = sessionData === null || sessionData === void 0 ? void 0 : sessionData.session) === null || _a === void 0 ? void 0 : _a.access_token,
+                });
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * {@see GoTrueMFAApi#challengeAndVerify}
+     */
+    _challengeAndVerify(params) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data: challengeData, error: challengeError } = yield this._challenge({
+                factorId: params.factorId,
+            });
+            if (challengeError) {
+                return { data: null, error: challengeError };
+            }
+            return yield this._verify({
+                factorId: params.factorId,
+                challengeId: challengeData.id,
+                code: params.code,
+            });
+        });
+    }
+    /**
+     * {@see GoTrueMFAApi#listFactors}
+     */
+    _listFactors() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data: { user }, error: userError, } = yield this.getUser();
+            if (userError) {
+                return { data: null, error: userError };
+            }
+            const factors = (user === null || user === void 0 ? void 0 : user.factors) || [];
+            const totp = factors.filter((factor) => factor.factor_type === 'totp' && factor.status === 'verified');
+            return {
+                data: {
+                    all: factors,
+                    totp,
+                },
+                error: null,
+            };
+        });
+    }
+    /**
+     * {@see GoTrueMFAApi#getAuthenticatorAssuranceLevel}
+     */
+    _getAuthenticatorAssuranceLevel() {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data: { session }, error: sessionError, } = yield this.getSession();
+            if (sessionError) {
+                return { data: null, error: sessionError };
+            }
+            if (!session) {
+                return {
+                    data: { currentLevel: null, nextLevel: null, currentAuthenticationMethods: [] },
+                    error: null,
+                };
+            }
+            const payload = this._decodeJWT(session.access_token);
+            let currentLevel = null;
+            if (payload.aal) {
+                currentLevel = payload.aal;
+            }
+            let nextLevel = currentLevel;
+            const verifiedFactors = (_b = (_a = session.user.factors) === null || _a === void 0 ? void 0 : _a.filter((factor) => factor.status === 'verified')) !== null && _b !== void 0 ? _b : [];
+            if (verifiedFactors.length > 0) {
+                nextLevel = 'aal2';
+            }
+            const currentAuthenticationMethods = payload.amr || [];
+            return { data: { currentLevel, nextLevel, currentAuthenticationMethods }, error: null };
+        });
+    }
+}
+//# sourceMappingURL=GoTrueClient.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/gotrue-js/dist/module/index.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@supabase/gotrue-js/dist/module/index.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AuthApiError": () => (/* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.AuthApiError),
+/* harmony export */   "AuthError": () => (/* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.AuthError),
+/* harmony export */   "AuthImplicitGrantRedirectError": () => (/* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.AuthImplicitGrantRedirectError),
+/* harmony export */   "AuthInvalidCredentialsError": () => (/* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.AuthInvalidCredentialsError),
+/* harmony export */   "AuthPKCEGrantCodeExchangeError": () => (/* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.AuthPKCEGrantCodeExchangeError),
+/* harmony export */   "AuthRetryableFetchError": () => (/* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.AuthRetryableFetchError),
+/* harmony export */   "AuthSessionMissingError": () => (/* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.AuthSessionMissingError),
+/* harmony export */   "AuthUnknownError": () => (/* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.AuthUnknownError),
+/* harmony export */   "CustomAuthError": () => (/* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.CustomAuthError),
+/* harmony export */   "GoTrueAdminApi": () => (/* reexport safe */ _GoTrueAdminApi__WEBPACK_IMPORTED_MODULE_0__["default"]),
+/* harmony export */   "GoTrueClient": () => (/* reexport safe */ _GoTrueClient__WEBPACK_IMPORTED_MODULE_1__["default"]),
+/* harmony export */   "isAuthApiError": () => (/* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.isAuthApiError),
+/* harmony export */   "isAuthError": () => (/* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.isAuthError)
+/* harmony export */ });
+/* harmony import */ var _GoTrueAdminApi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GoTrueAdminApi */ "./node_modules/@supabase/gotrue-js/dist/module/GoTrueAdminApi.js");
+/* harmony import */ var _GoTrueClient__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GoTrueClient */ "./node_modules/@supabase/gotrue-js/dist/module/GoTrueClient.js");
+/* harmony import */ var _lib_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/types */ "./node_modules/@supabase/gotrue-js/dist/module/lib/types.js");
+/* harmony import */ var _lib_errors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lib/errors */ "./node_modules/@supabase/gotrue-js/dist/module/lib/errors.js");
+
+
+
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/gotrue-js/dist/module/lib/constants.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@supabase/gotrue-js/dist/module/lib/constants.js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AUDIENCE": () => (/* binding */ AUDIENCE),
+/* harmony export */   "DEFAULT_HEADERS": () => (/* binding */ DEFAULT_HEADERS),
+/* harmony export */   "EXPIRY_MARGIN": () => (/* binding */ EXPIRY_MARGIN),
+/* harmony export */   "GOTRUE_URL": () => (/* binding */ GOTRUE_URL),
+/* harmony export */   "NETWORK_FAILURE": () => (/* binding */ NETWORK_FAILURE),
+/* harmony export */   "STORAGE_KEY": () => (/* binding */ STORAGE_KEY)
+/* harmony export */ });
+/* harmony import */ var _version__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./version */ "./node_modules/@supabase/gotrue-js/dist/module/lib/version.js");
+
+const GOTRUE_URL = 'http://localhost:9999';
+const STORAGE_KEY = 'supabase.auth.token';
+const AUDIENCE = '';
+const DEFAULT_HEADERS = { 'X-Client-Info': `gotrue-js/${_version__WEBPACK_IMPORTED_MODULE_0__.version}` };
+const EXPIRY_MARGIN = 10; // in seconds
+const NETWORK_FAILURE = {
+    MAX_RETRIES: 10,
+    RETRY_INTERVAL: 2, // in deciseconds
+};
+//# sourceMappingURL=constants.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/gotrue-js/dist/module/lib/errors.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@supabase/gotrue-js/dist/module/lib/errors.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AuthApiError": () => (/* binding */ AuthApiError),
+/* harmony export */   "AuthError": () => (/* binding */ AuthError),
+/* harmony export */   "AuthImplicitGrantRedirectError": () => (/* binding */ AuthImplicitGrantRedirectError),
+/* harmony export */   "AuthInvalidCredentialsError": () => (/* binding */ AuthInvalidCredentialsError),
+/* harmony export */   "AuthPKCEGrantCodeExchangeError": () => (/* binding */ AuthPKCEGrantCodeExchangeError),
+/* harmony export */   "AuthRetryableFetchError": () => (/* binding */ AuthRetryableFetchError),
+/* harmony export */   "AuthSessionMissingError": () => (/* binding */ AuthSessionMissingError),
+/* harmony export */   "AuthUnknownError": () => (/* binding */ AuthUnknownError),
+/* harmony export */   "CustomAuthError": () => (/* binding */ CustomAuthError),
+/* harmony export */   "isAuthApiError": () => (/* binding */ isAuthApiError),
+/* harmony export */   "isAuthError": () => (/* binding */ isAuthError)
+/* harmony export */ });
+class AuthError extends Error {
+    constructor(message, status) {
+        super(message);
+        this.__isAuthError = true;
+        this.name = 'AuthError';
+        this.status = status;
+    }
+}
+function isAuthError(error) {
+    return typeof error === 'object' && error !== null && '__isAuthError' in error;
+}
+class AuthApiError extends AuthError {
+    constructor(message, status) {
+        super(message, status);
+        this.name = 'AuthApiError';
+        this.status = status;
+    }
+    toJSON() {
+        return {
+            name: this.name,
+            message: this.message,
+            status: this.status,
+        };
+    }
+}
+function isAuthApiError(error) {
+    return isAuthError(error) && error.name === 'AuthApiError';
+}
+class AuthUnknownError extends AuthError {
+    constructor(message, originalError) {
+        super(message);
+        this.name = 'AuthUnknownError';
+        this.originalError = originalError;
+    }
+}
+class CustomAuthError extends AuthError {
+    constructor(message, name, status) {
+        super(message);
+        this.name = name;
+        this.status = status;
+    }
+    toJSON() {
+        return {
+            name: this.name,
+            message: this.message,
+            status: this.status,
+        };
+    }
+}
+class AuthSessionMissingError extends CustomAuthError {
+    constructor() {
+        super('Auth session missing!', 'AuthSessionMissingError', 400);
+    }
+}
+class AuthInvalidCredentialsError extends CustomAuthError {
+    constructor(message) {
+        super(message, 'AuthInvalidCredentialsError', 400);
+    }
+}
+class AuthImplicitGrantRedirectError extends CustomAuthError {
+    constructor(message, details = null) {
+        super(message, 'AuthImplicitGrantRedirectError', 500);
+        this.details = null;
+        this.details = details;
+    }
+    toJSON() {
+        return {
+            name: this.name,
+            message: this.message,
+            status: this.status,
+            details: this.details,
+        };
+    }
+}
+class AuthPKCEGrantCodeExchangeError extends CustomAuthError {
+    constructor(message, details = null) {
+        super(message, 'AuthPKCEGrantCodeExchangeError', 500);
+        this.details = null;
+        this.details = details;
+    }
+    toJSON() {
+        return {
+            name: this.name,
+            message: this.message,
+            status: this.status,
+            details: this.details,
+        };
+    }
+}
+class AuthRetryableFetchError extends CustomAuthError {
+    constructor(message, status) {
+        super(message, 'AuthRetryableFetchError', status);
+    }
+}
+//# sourceMappingURL=errors.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/gotrue-js/dist/module/lib/fetch.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@supabase/gotrue-js/dist/module/lib/fetch.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "_generateLinkResponse": () => (/* binding */ _generateLinkResponse),
+/* harmony export */   "_noResolveJsonResponse": () => (/* binding */ _noResolveJsonResponse),
+/* harmony export */   "_request": () => (/* binding */ _request),
+/* harmony export */   "_sessionResponse": () => (/* binding */ _sessionResponse),
+/* harmony export */   "_ssoResponse": () => (/* binding */ _ssoResponse),
+/* harmony export */   "_userResponse": () => (/* binding */ _userResponse)
+/* harmony export */ });
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers */ "./node_modules/@supabase/gotrue-js/dist/module/lib/helpers.js");
+/* harmony import */ var _errors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./errors */ "./node_modules/@supabase/gotrue-js/dist/module/lib/errors.js");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __rest = (undefined && undefined.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+
+
+const _getErrorMessage = (err) => err.msg || err.message || err.error_description || err.error || JSON.stringify(err);
+const handleError = (error, reject) => __awaiter(void 0, void 0, void 0, function* () {
+    const NETWORK_ERROR_CODES = [502, 503, 504];
+    if (!(0,_helpers__WEBPACK_IMPORTED_MODULE_0__.looksLikeFetchResponse)(error)) {
+        reject(new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthRetryableFetchError(_getErrorMessage(error), 0));
+    }
+    else if (NETWORK_ERROR_CODES.includes(error.status)) {
+        // status in 500...599 range - server had an error, request might be retryed.
+        reject(new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthRetryableFetchError(_getErrorMessage(error), error.status));
+    }
+    else {
+        // got a response from server that is not in the 500...599 range - should not retry
+        error
+            .json()
+            .then((err) => {
+            reject(new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthApiError(_getErrorMessage(err), error.status || 500));
+        })
+            .catch((e) => {
+            // not a valid json response
+            reject(new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthUnknownError(_getErrorMessage(e), e));
+        });
+    }
+});
+const _getRequestParams = (method, options, parameters, body) => {
+    const params = { method, headers: (options === null || options === void 0 ? void 0 : options.headers) || {} };
+    if (method === 'GET') {
+        return params;
+    }
+    params.headers = Object.assign({ 'Content-Type': 'application/json;charset=UTF-8' }, options === null || options === void 0 ? void 0 : options.headers);
+    params.body = JSON.stringify(body);
+    return Object.assign(Object.assign({}, params), parameters);
+};
+function _request(fetcher, method, url, options) {
+    var _a;
+    return __awaiter(this, void 0, void 0, function* () {
+        const headers = Object.assign({}, options === null || options === void 0 ? void 0 : options.headers);
+        if (options === null || options === void 0 ? void 0 : options.jwt) {
+            headers['Authorization'] = `Bearer ${options.jwt}`;
+        }
+        const qs = (_a = options === null || options === void 0 ? void 0 : options.query) !== null && _a !== void 0 ? _a : {};
+        if (options === null || options === void 0 ? void 0 : options.redirectTo) {
+            qs['redirect_to'] = options.redirectTo;
+        }
+        const queryString = Object.keys(qs).length ? '?' + new URLSearchParams(qs).toString() : '';
+        const data = yield _handleRequest(fetcher, method, url + queryString, { headers, noResolveJson: options === null || options === void 0 ? void 0 : options.noResolveJson }, {}, options === null || options === void 0 ? void 0 : options.body);
+        return (options === null || options === void 0 ? void 0 : options.xform) ? options === null || options === void 0 ? void 0 : options.xform(data) : { data: Object.assign({}, data), error: null };
+    });
+}
+function _handleRequest(fetcher, method, url, options, parameters, body) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return new Promise((resolve, reject) => {
+            fetcher(url, _getRequestParams(method, options, parameters, body))
+                .then((result) => {
+                if (!result.ok)
+                    throw result;
+                if (options === null || options === void 0 ? void 0 : options.noResolveJson)
+                    return result;
+                return result.json();
+            })
+                .then((data) => resolve(data))
+                .catch((error) => handleError(error, reject));
+        });
+    });
+}
+function _sessionResponse(data) {
+    var _a;
+    let session = null;
+    if (hasSession(data)) {
+        session = Object.assign({}, data);
+        session.expires_at = (0,_helpers__WEBPACK_IMPORTED_MODULE_0__.expiresAt)(data.expires_in);
+    }
+    const user = (_a = data.user) !== null && _a !== void 0 ? _a : data;
+    return { data: { session, user }, error: null };
+}
+function _userResponse(data) {
+    var _a;
+    const user = (_a = data.user) !== null && _a !== void 0 ? _a : data;
+    return { data: { user }, error: null };
+}
+function _ssoResponse(data) {
+    return { data, error: null };
+}
+function _generateLinkResponse(data) {
+    const { action_link, email_otp, hashed_token, redirect_to, verification_type } = data, rest = __rest(data, ["action_link", "email_otp", "hashed_token", "redirect_to", "verification_type"]);
+    const properties = {
+        action_link,
+        email_otp,
+        hashed_token,
+        redirect_to,
+        verification_type,
+    };
+    const user = Object.assign({}, rest);
+    return {
+        data: {
+            properties,
+            user,
+        },
+        error: null,
+    };
+}
+function _noResolveJsonResponse(data) {
+    return data;
+}
+/**
+ * hasSession checks if the response object contains a valid session
+ * @param data A response object
+ * @returns true if a session is in the response
+ */
+function hasSession(data) {
+    return data.access_token && data.refresh_token && data.expires_in;
+}
+//# sourceMappingURL=fetch.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/gotrue-js/dist/module/lib/helpers.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@supabase/gotrue-js/dist/module/lib/helpers.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Deferred": () => (/* binding */ Deferred),
+/* harmony export */   "decodeBase64URL": () => (/* binding */ decodeBase64URL),
+/* harmony export */   "decodeJWTPayload": () => (/* binding */ decodeJWTPayload),
+/* harmony export */   "expiresAt": () => (/* binding */ expiresAt),
+/* harmony export */   "generatePKCEChallenge": () => (/* binding */ generatePKCEChallenge),
+/* harmony export */   "generatePKCEVerifier": () => (/* binding */ generatePKCEVerifier),
+/* harmony export */   "getItemAsync": () => (/* binding */ getItemAsync),
+/* harmony export */   "getParameterByName": () => (/* binding */ getParameterByName),
+/* harmony export */   "isBrowser": () => (/* binding */ isBrowser),
+/* harmony export */   "looksLikeFetchResponse": () => (/* binding */ looksLikeFetchResponse),
+/* harmony export */   "removeItemAsync": () => (/* binding */ removeItemAsync),
+/* harmony export */   "resolveFetch": () => (/* binding */ resolveFetch),
+/* harmony export */   "retryable": () => (/* binding */ retryable),
+/* harmony export */   "setItemAsync": () => (/* binding */ setItemAsync),
+/* harmony export */   "sleep": () => (/* binding */ sleep),
+/* harmony export */   "supportsLocalStorage": () => (/* binding */ supportsLocalStorage),
+/* harmony export */   "uuid": () => (/* binding */ uuid)
+/* harmony export */ });
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+function expiresAt(expiresIn) {
+    const timeNow = Math.round(Date.now() / 1000);
+    return timeNow + expiresIn;
+}
+function uuid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        const r = (Math.random() * 16) | 0, v = c == 'x' ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+    });
+}
+const isBrowser = () => typeof document !== 'undefined';
+const localStorageWriteTests = {
+    tested: false,
+    writable: false,
+};
+/**
+ * Checks whether localStorage is supported on this browser.
+ */
+const supportsLocalStorage = () => {
+    if (!isBrowser()) {
+        return false;
+    }
+    try {
+        if (typeof globalThis.localStorage !== 'object') {
+            return false;
+        }
+    }
+    catch (e) {
+        // DOM exception when accessing `localStorage`
+        return false;
+    }
+    if (localStorageWriteTests.tested) {
+        return localStorageWriteTests.writable;
+    }
+    const randomKey = `lswt-${Math.random()}${Math.random()}`;
+    try {
+        globalThis.localStorage.setItem(randomKey, randomKey);
+        globalThis.localStorage.removeItem(randomKey);
+        localStorageWriteTests.tested = true;
+        localStorageWriteTests.writable = true;
+    }
+    catch (e) {
+        // localStorage can't be written to
+        // https://www.chromium.org/for-testers/bug-reporting-guidelines/uncaught-securityerror-failed-to-read-the-localstorage-property-from-window-access-is-denied-for-this-document
+        localStorageWriteTests.tested = true;
+        localStorageWriteTests.writable = false;
+    }
+    return localStorageWriteTests.writable;
+};
+function getParameterByName(name, url) {
+    var _a;
+    if (!url)
+        url = ((_a = window === null || window === void 0 ? void 0 : window.location) === null || _a === void 0 ? void 0 : _a.href) || '';
+    // eslint-disable-next-line no-useless-escape
+    name = name.replace(/[\[\]]/g, '\\$&');
+    const regex = new RegExp('[?&#]' + name + '(=([^&#]*)|&|#|$)'), results = regex.exec(url);
+    if (!results)
+        return null;
+    if (!results[2])
+        return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+const resolveFetch = (customFetch) => {
+    let _fetch;
+    if (customFetch) {
+        _fetch = customFetch;
+    }
+    else if (typeof fetch === 'undefined') {
+        _fetch = (...args) => __awaiter(void 0, void 0, void 0, function* () { return yield (yield Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! cross-fetch */ "./node_modules/cross-fetch/dist/browser-ponyfill.js", 23))).fetch(...args); });
+    }
+    else {
+        _fetch = fetch;
+    }
+    return (...args) => _fetch(...args);
+};
+const looksLikeFetchResponse = (maybeResponse) => {
+    return (typeof maybeResponse === 'object' &&
+        maybeResponse !== null &&
+        'status' in maybeResponse &&
+        'ok' in maybeResponse &&
+        'json' in maybeResponse &&
+        typeof maybeResponse.json === 'function');
+};
+// Storage helpers
+const setItemAsync = (storage, key, data) => __awaiter(void 0, void 0, void 0, function* () {
+    yield storage.setItem(key, JSON.stringify(data));
+});
+const getItemAsync = (storage, key) => __awaiter(void 0, void 0, void 0, function* () {
+    const value = yield storage.getItem(key);
+    if (!value) {
+        return null;
+    }
+    try {
+        return JSON.parse(value);
+    }
+    catch (_a) {
+        return value;
+    }
+});
+const removeItemAsync = (storage, key) => __awaiter(void 0, void 0, void 0, function* () {
+    yield storage.removeItem(key);
+});
+function decodeBase64URL(value) {
+    const key = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+    let base64 = '';
+    let chr1, chr2, chr3;
+    let enc1, enc2, enc3, enc4;
+    let i = 0;
+    value = value.replace('-', '+').replace('_', '/');
+    while (i < value.length) {
+        enc1 = key.indexOf(value.charAt(i++));
+        enc2 = key.indexOf(value.charAt(i++));
+        enc3 = key.indexOf(value.charAt(i++));
+        enc4 = key.indexOf(value.charAt(i++));
+        chr1 = (enc1 << 2) | (enc2 >> 4);
+        chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+        chr3 = ((enc3 & 3) << 6) | enc4;
+        base64 = base64 + String.fromCharCode(chr1);
+        if (enc3 != 64 && chr2 != 0) {
+            base64 = base64 + String.fromCharCode(chr2);
+        }
+        if (enc4 != 64 && chr3 != 0) {
+            base64 = base64 + String.fromCharCode(chr3);
+        }
+    }
+    return base64;
+}
+/**
+ * A deferred represents some asynchronous work that is not yet finished, which
+ * may or may not culminate in a value.
+ * Taken from: https://github.com/mike-north/types/blob/master/src/async.ts
+ */
+class Deferred {
+    constructor() {
+        // eslint-disable-next-line @typescript-eslint/no-extra-semi
+        ;
+        this.promise = new Deferred.promiseConstructor((res, rej) => {
+            // eslint-disable-next-line @typescript-eslint/no-extra-semi
+            ;
+            this.resolve = res;
+            this.reject = rej;
+        });
+    }
+}
+Deferred.promiseConstructor = Promise;
+// Taken from: https://stackoverflow.com/questions/38552003/how-to-decode-jwt-token-in-javascript-without-using-a-library
+function decodeJWTPayload(token) {
+    // Regex checks for base64url format
+    const base64UrlRegex = /^([a-z0-9_-]{4})*($|[a-z0-9_-]{3}=?$|[a-z0-9_-]{2}(==)?$)$/i;
+    const parts = token.split('.');
+    if (parts.length !== 3) {
+        throw new Error('JWT is not valid: not a JWT structure');
+    }
+    if (!base64UrlRegex.test(parts[1])) {
+        throw new Error('JWT is not valid: payload is not in base64url format');
+    }
+    const base64Url = parts[1];
+    return JSON.parse(decodeBase64URL(base64Url));
+}
+/**
+ * Creates a promise that resolves to null after some time.
+ */
+function sleep(time) {
+    return new Promise((accept) => {
+        setTimeout(() => accept(null), time);
+    });
+}
+/**
+ * Converts the provided async function into a retryable function. Each result
+ * or thrown error is sent to the isRetryable function which should return true
+ * if the function should run again.
+ */
+function retryable(fn, isRetryable) {
+    const promise = new Promise((accept, reject) => {
+        // eslint-disable-next-line @typescript-eslint/no-extra-semi
+        ;
+        (() => __awaiter(this, void 0, void 0, function* () {
+            for (let attempt = 0; attempt < Infinity; attempt++) {
+                try {
+                    const result = yield fn(attempt);
+                    if (!isRetryable(attempt, null, result)) {
+                        accept(result);
+                        return;
+                    }
+                }
+                catch (e) {
+                    if (!isRetryable(attempt, e)) {
+                        reject(e);
+                        return;
+                    }
+                }
+            }
+        }))();
+    });
+    return promise;
+}
+function dec2hex(dec) {
+    return ('0' + dec.toString(16)).substr(-2);
+}
+// Functions below taken from: https://stackoverflow.com/questions/63309409/creating-a-code-verifier-and-challenge-for-pkce-auth-on-spotify-api-in-reactjs
+function generatePKCEVerifier() {
+    const verifierLength = 56;
+    const array = new Uint32Array(verifierLength);
+    if (typeof crypto === 'undefined') {
+        const charSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~';
+        const charSetLen = charSet.length;
+        let verifier = '';
+        for (let i = 0; i < verifierLength; i++) {
+            verifier += charSet.charAt(Math.floor(Math.random() * charSetLen));
+        }
+        return verifier;
+    }
+    crypto.getRandomValues(array);
+    return Array.from(array, dec2hex).join('');
+}
+function sha256(randomString) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const encoder = new TextEncoder();
+        const encodedData = encoder.encode(randomString);
+        const hash = yield crypto.subtle.digest('SHA-256', encodedData);
+        const bytes = new Uint8Array(hash);
+        return Array.from(bytes)
+            .map((c) => String.fromCharCode(c))
+            .join('');
+    });
+}
+function base64urlencode(str) {
+    return btoa(str).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+function generatePKCEChallenge(verifier) {
+    return __awaiter(this, void 0, void 0, function* () {
+        if (typeof crypto === 'undefined') {
+            console.warn('WebCrypto API is not supported. Code challenge method will default to use plain instead of sha256.');
+            return verifier;
+        }
+        const hashed = yield sha256(verifier);
+        return base64urlencode(hashed);
+    });
+}
+//# sourceMappingURL=helpers.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/gotrue-js/dist/module/lib/local-storage.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/@supabase/gotrue-js/dist/module/lib/local-storage.js ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers */ "./node_modules/@supabase/gotrue-js/dist/module/lib/helpers.js");
+
+const localStorageAdapter = {
+    getItem: (key) => {
+        if (!(0,_helpers__WEBPACK_IMPORTED_MODULE_0__.supportsLocalStorage)()) {
+            return null;
+        }
+        return globalThis.localStorage.getItem(key);
+    },
+    setItem: (key, value) => {
+        if (!(0,_helpers__WEBPACK_IMPORTED_MODULE_0__.supportsLocalStorage)()) {
+            return;
+        }
+        globalThis.localStorage.setItem(key, value);
+    },
+    removeItem: (key) => {
+        if (!(0,_helpers__WEBPACK_IMPORTED_MODULE_0__.supportsLocalStorage)()) {
+            return;
+        }
+        globalThis.localStorage.removeItem(key);
+    },
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (localStorageAdapter);
+//# sourceMappingURL=local-storage.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/gotrue-js/dist/module/lib/polyfills.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@supabase/gotrue-js/dist/module/lib/polyfills.js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "polyfillGlobalThis": () => (/* binding */ polyfillGlobalThis)
+/* harmony export */ });
+/**
+ * https://mathiasbynens.be/notes/globalthis
+ */
+function polyfillGlobalThis() {
+    if (typeof globalThis === 'object')
+        return;
+    try {
+        Object.defineProperty(Object.prototype, '__magic__', {
+            get: function () {
+                return this;
+            },
+            configurable: true,
+        });
+        // @ts-expect-error 'Allow access to magic'
+        __magic__.globalThis = __magic__;
+        // @ts-expect-error 'Allow access to magic'
+        delete Object.prototype.__magic__;
+    }
+    catch (e) {
+        if (typeof self !== 'undefined') {
+            // @ts-expect-error 'Allow access to globals'
+            self.globalThis = self;
+        }
+    }
+}
+//# sourceMappingURL=polyfills.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/gotrue-js/dist/module/lib/types.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@supabase/gotrue-js/dist/module/lib/types.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+//# sourceMappingURL=types.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/gotrue-js/dist/module/lib/version.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@supabase/gotrue-js/dist/module/lib/version.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "version": () => (/* binding */ version)
+/* harmony export */ });
+// Generated by genversion.
+const version = '2.27.0';
+//# sourceMappingURL=version.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestBuilder.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/@supabase/postgrest-js/dist/module/PostgrestBuilder.js ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ PostgrestBuilder)
+/* harmony export */ });
+/* harmony import */ var cross_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cross-fetch */ "./node_modules/cross-fetch/dist/browser-ponyfill.js");
+/* harmony import */ var cross_fetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(cross_fetch__WEBPACK_IMPORTED_MODULE_0__);
+
+class PostgrestBuilder {
+    constructor(builder) {
+        this.shouldThrowOnError = false;
+        this.method = builder.method;
+        this.url = builder.url;
+        this.headers = builder.headers;
+        this.schema = builder.schema;
+        this.body = builder.body;
+        this.shouldThrowOnError = builder.shouldThrowOnError;
+        this.signal = builder.signal;
+        this.isMaybeSingle = builder.isMaybeSingle;
+        if (builder.fetch) {
+            this.fetch = builder.fetch;
+        }
+        else if (typeof fetch === 'undefined') {
+            this.fetch = (cross_fetch__WEBPACK_IMPORTED_MODULE_0___default());
+        }
+        else {
+            this.fetch = fetch;
+        }
+    }
+    /**
+     * If there's an error with the query, throwOnError will reject the promise by
+     * throwing the error instead of returning it as part of a successful response.
+     *
+     * {@link https://github.com/supabase/supabase-js/issues/92}
+     */
+    throwOnError() {
+        this.shouldThrowOnError = true;
+        return this;
+    }
+    then(onfulfilled, onrejected) {
+        // https://postgrest.org/en/stable/api.html#switching-schemas
+        if (this.schema === undefined) {
+            // skip
+        }
+        else if (['GET', 'HEAD'].includes(this.method)) {
+            this.headers['Accept-Profile'] = this.schema;
+        }
+        else {
+            this.headers['Content-Profile'] = this.schema;
+        }
+        if (this.method !== 'GET' && this.method !== 'HEAD') {
+            this.headers['Content-Type'] = 'application/json';
+        }
+        // NOTE: Invoke w/o `this` to avoid illegal invocation error.
+        // https://github.com/supabase/postgrest-js/pull/247
+        const _fetch = this.fetch;
+        let res = _fetch(this.url.toString(), {
+            method: this.method,
+            headers: this.headers,
+            body: JSON.stringify(this.body),
+            signal: this.signal,
+        }).then(async (res) => {
+            var _a, _b, _c;
+            let error = null;
+            let data = null;
+            let count = null;
+            let status = res.status;
+            let statusText = res.statusText;
+            if (res.ok) {
+                if (this.method !== 'HEAD') {
+                    const body = await res.text();
+                    if (body === '') {
+                        // Prefer: return=minimal
+                    }
+                    else if (this.headers['Accept'] === 'text/csv') {
+                        data = body;
+                    }
+                    else if (this.headers['Accept'] &&
+                        this.headers['Accept'].includes('application/vnd.pgrst.plan+text')) {
+                        data = body;
+                    }
+                    else {
+                        data = JSON.parse(body);
+                    }
+                }
+                const countHeader = (_a = this.headers['Prefer']) === null || _a === void 0 ? void 0 : _a.match(/count=(exact|planned|estimated)/);
+                const contentRange = (_b = res.headers.get('content-range')) === null || _b === void 0 ? void 0 : _b.split('/');
+                if (countHeader && contentRange && contentRange.length > 1) {
+                    count = parseInt(contentRange[1]);
+                }
+                // Temporary partial fix for https://github.com/supabase/postgrest-js/issues/361
+                // Issue persists e.g. for `.insert([...]).select().maybeSingle()`
+                if (this.isMaybeSingle && this.method === 'GET' && Array.isArray(data)) {
+                    if (data.length > 1) {
+                        error = {
+                            // https://github.com/PostgREST/postgrest/blob/a867d79c42419af16c18c3fb019eba8df992626f/src/PostgREST/Error.hs#L553
+                            code: 'PGRST116',
+                            details: `Results contain ${data.length} rows, application/vnd.pgrst.object+json requires 1 row`,
+                            hint: null,
+                            message: 'JSON object requested, multiple (or no) rows returned',
+                        };
+                        data = null;
+                        count = null;
+                        status = 406;
+                        statusText = 'Not Acceptable';
+                    }
+                    else if (data.length === 1) {
+                        data = data[0];
+                    }
+                    else {
+                        data = null;
+                    }
+                }
+            }
+            else {
+                const body = await res.text();
+                try {
+                    error = JSON.parse(body);
+                    // Workaround for https://github.com/supabase/postgrest-js/issues/295
+                    if (Array.isArray(error) && res.status === 404) {
+                        data = [];
+                        error = null;
+                        status = 200;
+                        statusText = 'OK';
+                    }
+                }
+                catch (_d) {
+                    // Workaround for https://github.com/supabase/postgrest-js/issues/295
+                    if (res.status === 404 && body === '') {
+                        status = 204;
+                        statusText = 'No Content';
+                    }
+                    else {
+                        error = {
+                            message: body,
+                        };
+                    }
+                }
+                if (error && this.isMaybeSingle && ((_c = error === null || error === void 0 ? void 0 : error.details) === null || _c === void 0 ? void 0 : _c.includes('Results contain 0 rows'))) {
+                    error = null;
+                    status = 200;
+                    statusText = 'OK';
+                }
+                if (error && this.shouldThrowOnError) {
+                    throw error;
+                }
+            }
+            const postgrestResponse = {
+                error,
+                data,
+                count,
+                status,
+                statusText,
+            };
+            return postgrestResponse;
+        });
+        if (!this.shouldThrowOnError) {
+            res = res.catch((fetchError) => {
+                var _a, _b, _c;
+                return ({
+                    error: {
+                        message: `${(_a = fetchError === null || fetchError === void 0 ? void 0 : fetchError.name) !== null && _a !== void 0 ? _a : 'FetchError'}: ${fetchError === null || fetchError === void 0 ? void 0 : fetchError.message}`,
+                        details: `${(_b = fetchError === null || fetchError === void 0 ? void 0 : fetchError.stack) !== null && _b !== void 0 ? _b : ''}`,
+                        hint: '',
+                        code: `${(_c = fetchError === null || fetchError === void 0 ? void 0 : fetchError.code) !== null && _c !== void 0 ? _c : ''}`,
+                    },
+                    data: null,
+                    count: null,
+                    status: 0,
+                    statusText: '',
+                });
+            });
+        }
+        return res.then(onfulfilled, onrejected);
+    }
+}
+//# sourceMappingURL=PostgrestBuilder.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestClient.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/@supabase/postgrest-js/dist/module/PostgrestClient.js ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ PostgrestClient)
+/* harmony export */ });
+/* harmony import */ var _PostgrestQueryBuilder__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PostgrestQueryBuilder */ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestQueryBuilder.js");
+/* harmony import */ var _PostgrestFilterBuilder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PostgrestFilterBuilder */ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestFilterBuilder.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants */ "./node_modules/@supabase/postgrest-js/dist/module/constants.js");
+
+
+
+/**
+ * PostgREST client.
+ *
+ * @typeParam Database - Types for the schema from the [type
+ * generator](https://supabase.com/docs/reference/javascript/next/typescript-support)
+ *
+ * @typeParam SchemaName - Postgres schema to switch to. Must be a string
+ * literal, the same one passed to the constructor. If the schema is not
+ * `"public"`, this must be supplied manually.
+ */
+class PostgrestClient {
+    // TODO: Add back shouldThrowOnError once we figure out the typings
+    /**
+     * Creates a PostgREST client.
+     *
+     * @param url - URL of the PostgREST endpoint
+     * @param options - Named parameters
+     * @param options.headers - Custom headers
+     * @param options.schema - Postgres schema to switch to
+     * @param options.fetch - Custom fetch
+     */
+    constructor(url, { headers = {}, schema, fetch, } = {}) {
+        this.url = url;
+        this.headers = Object.assign(Object.assign({}, _constants__WEBPACK_IMPORTED_MODULE_2__.DEFAULT_HEADERS), headers);
+        this.schema = schema;
+        this.fetch = fetch;
+    }
+    /**
+     * Perform a query on a table or a view.
+     *
+     * @param relation - The table or view name to query
+     */
+    from(relation) {
+        const url = new URL(`${this.url}/${relation}`);
+        return new _PostgrestQueryBuilder__WEBPACK_IMPORTED_MODULE_0__["default"](url, {
+            headers: Object.assign({}, this.headers),
+            schema: this.schema,
+            fetch: this.fetch,
+        });
+    }
+    /**
+     * Perform a function call.
+     *
+     * @param fn - The function name to call
+     * @param args - The arguments to pass to the function call
+     * @param options - Named parameters
+     * @param options.head - When set to `true`, `data` will not be returned.
+     * Useful if you only need the count.
+     * @param options.count - Count algorithm to use to count rows returned by the
+     * function. Only applicable for [set-returning
+     * functions](https://www.postgresql.org/docs/current/functions-srf.html).
+     *
+     * `"exact"`: Exact but slow count algorithm. Performs a `COUNT(*)` under the
+     * hood.
+     *
+     * `"planned"`: Approximated but fast count algorithm. Uses the Postgres
+     * statistics under the hood.
+     *
+     * `"estimated"`: Uses exact count for low numbers and planned count for high
+     * numbers.
+     */
+    rpc(fn, args = {}, { head = false, count, } = {}) {
+        let method;
+        const url = new URL(`${this.url}/rpc/${fn}`);
+        let body;
+        if (head) {
+            method = 'HEAD';
+            Object.entries(args).forEach(([name, value]) => {
+                url.searchParams.append(name, `${value}`);
+            });
+        }
+        else {
+            method = 'POST';
+            body = args;
+        }
+        const headers = Object.assign({}, this.headers);
+        if (count) {
+            headers['Prefer'] = `count=${count}`;
+        }
+        return new _PostgrestFilterBuilder__WEBPACK_IMPORTED_MODULE_1__["default"]({
+            method,
+            url,
+            headers,
+            schema: this.schema,
+            body,
+            fetch: this.fetch,
+            allowEmpty: false,
+        });
+    }
+}
+//# sourceMappingURL=PostgrestClient.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestFilterBuilder.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/@supabase/postgrest-js/dist/module/PostgrestFilterBuilder.js ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ PostgrestFilterBuilder)
+/* harmony export */ });
+/* harmony import */ var _PostgrestTransformBuilder__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PostgrestTransformBuilder */ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestTransformBuilder.js");
+
+class PostgrestFilterBuilder extends _PostgrestTransformBuilder__WEBPACK_IMPORTED_MODULE_0__["default"] {
+    /**
+     * Match only rows where `column` is equal to `value`.
+     *
+     * To check if the value of `column` is NULL, you should use `.is()` instead.
+     *
+     * @param column - The column to filter on
+     * @param value - The value to filter with
+     */
+    eq(column, value) {
+        this.url.searchParams.append(column, `eq.${value}`);
+        return this;
+    }
+    /**
+     * Match only rows where `column` is not equal to `value`.
+     *
+     * @param column - The column to filter on
+     * @param value - The value to filter with
+     */
+    neq(column, value) {
+        this.url.searchParams.append(column, `neq.${value}`);
+        return this;
+    }
+    /**
+     * Match only rows where `column` is greater than `value`.
+     *
+     * @param column - The column to filter on
+     * @param value - The value to filter with
+     */
+    gt(column, value) {
+        this.url.searchParams.append(column, `gt.${value}`);
+        return this;
+    }
+    /**
+     * Match only rows where `column` is greater than or equal to `value`.
+     *
+     * @param column - The column to filter on
+     * @param value - The value to filter with
+     */
+    gte(column, value) {
+        this.url.searchParams.append(column, `gte.${value}`);
+        return this;
+    }
+    /**
+     * Match only rows where `column` is less than `value`.
+     *
+     * @param column - The column to filter on
+     * @param value - The value to filter with
+     */
+    lt(column, value) {
+        this.url.searchParams.append(column, `lt.${value}`);
+        return this;
+    }
+    /**
+     * Match only rows where `column` is less than or equal to `value`.
+     *
+     * @param column - The column to filter on
+     * @param value - The value to filter with
+     */
+    lte(column, value) {
+        this.url.searchParams.append(column, `lte.${value}`);
+        return this;
+    }
+    /**
+     * Match only rows where `column` matches `pattern` case-sensitively.
+     *
+     * @param column - The column to filter on
+     * @param pattern - The pattern to match with
+     */
+    like(column, pattern) {
+        this.url.searchParams.append(column, `like.${pattern}`);
+        return this;
+    }
+    /**
+     * Match only rows where `column` matches all of `patterns` case-sensitively.
+     *
+     * @param column - The column to filter on
+     * @param patterns - The patterns to match with
+     */
+    likeAllOf(column, patterns) {
+        this.url.searchParams.append(column, `like(all).{${patterns.join(',')}}`);
+        return this;
+    }
+    /**
+     * Match only rows where `column` matches any of `patterns` case-sensitively.
+     *
+     * @param column - The column to filter on
+     * @param patterns - The patterns to match with
+     */
+    likeAnyOf(column, patterns) {
+        this.url.searchParams.append(column, `like(any).{${patterns.join(',')}}`);
+        return this;
+    }
+    /**
+     * Match only rows where `column` matches `pattern` case-insensitively.
+     *
+     * @param column - The column to filter on
+     * @param pattern - The pattern to match with
+     */
+    ilike(column, pattern) {
+        this.url.searchParams.append(column, `ilike.${pattern}`);
+        return this;
+    }
+    /**
+     * Match only rows where `column` matches all of `patterns` case-insensitively.
+     *
+     * @param column - The column to filter on
+     * @param patterns - The patterns to match with
+     */
+    ilikeAllOf(column, patterns) {
+        this.url.searchParams.append(column, `ilike(all).{${patterns.join(',')}}`);
+        return this;
+    }
+    /**
+     * Match only rows where `column` matches any of `patterns` case-insensitively.
+     *
+     * @param column - The column to filter on
+     * @param patterns - The patterns to match with
+     */
+    ilikeAnyOf(column, patterns) {
+        this.url.searchParams.append(column, `ilike(any).{${patterns.join(',')}}`);
+        return this;
+    }
+    /**
+     * Match only rows where `column` IS `value`.
+     *
+     * For non-boolean columns, this is only relevant for checking if the value of
+     * `column` is NULL by setting `value` to `null`.
+     *
+     * For boolean columns, you can also set `value` to `true` or `false` and it
+     * will behave the same way as `.eq()`.
+     *
+     * @param column - The column to filter on
+     * @param value - The value to filter with
+     */
+    is(column, value) {
+        this.url.searchParams.append(column, `is.${value}`);
+        return this;
+    }
+    /**
+     * Match only rows where `column` is included in the `values` array.
+     *
+     * @param column - The column to filter on
+     * @param values - The values array to filter with
+     */
+    in(column, values) {
+        const cleanedValues = values
+            .map((s) => {
+            // handle postgrest reserved characters
+            // https://postgrest.org/en/v7.0.0/api.html#reserved-characters
+            if (typeof s === 'string' && new RegExp('[,()]').test(s))
+                return `"${s}"`;
+            else
+                return `${s}`;
+        })
+            .join(',');
+        this.url.searchParams.append(column, `in.(${cleanedValues})`);
+        return this;
+    }
+    /**
+     * Only relevant for jsonb, array, and range columns. Match only rows where
+     * `column` contains every element appearing in `value`.
+     *
+     * @param column - The jsonb, array, or range column to filter on
+     * @param value - The jsonb, array, or range value to filter with
+     */
+    contains(column, value) {
+        if (typeof value === 'string') {
+            // range types can be inclusive '[', ']' or exclusive '(', ')' so just
+            // keep it simple and accept a string
+            this.url.searchParams.append(column, `cs.${value}`);
+        }
+        else if (Array.isArray(value)) {
+            // array
+            this.url.searchParams.append(column, `cs.{${value.join(',')}}`);
+        }
+        else {
+            // json
+            this.url.searchParams.append(column, `cs.${JSON.stringify(value)}`);
+        }
+        return this;
+    }
+    /**
+     * Only relevant for jsonb, array, and range columns. Match only rows where
+     * every element appearing in `column` is contained by `value`.
+     *
+     * @param column - The jsonb, array, or range column to filter on
+     * @param value - The jsonb, array, or range value to filter with
+     */
+    containedBy(column, value) {
+        if (typeof value === 'string') {
+            // range
+            this.url.searchParams.append(column, `cd.${value}`);
+        }
+        else if (Array.isArray(value)) {
+            // array
+            this.url.searchParams.append(column, `cd.{${value.join(',')}}`);
+        }
+        else {
+            // json
+            this.url.searchParams.append(column, `cd.${JSON.stringify(value)}`);
+        }
+        return this;
+    }
+    /**
+     * Only relevant for range columns. Match only rows where every element in
+     * `column` is greater than any element in `range`.
+     *
+     * @param column - The range column to filter on
+     * @param range - The range to filter with
+     */
+    rangeGt(column, range) {
+        this.url.searchParams.append(column, `sr.${range}`);
+        return this;
+    }
+    /**
+     * Only relevant for range columns. Match only rows where every element in
+     * `column` is either contained in `range` or greater than any element in
+     * `range`.
+     *
+     * @param column - The range column to filter on
+     * @param range - The range to filter with
+     */
+    rangeGte(column, range) {
+        this.url.searchParams.append(column, `nxl.${range}`);
+        return this;
+    }
+    /**
+     * Only relevant for range columns. Match only rows where every element in
+     * `column` is less than any element in `range`.
+     *
+     * @param column - The range column to filter on
+     * @param range - The range to filter with
+     */
+    rangeLt(column, range) {
+        this.url.searchParams.append(column, `sl.${range}`);
+        return this;
+    }
+    /**
+     * Only relevant for range columns. Match only rows where every element in
+     * `column` is either contained in `range` or less than any element in
+     * `range`.
+     *
+     * @param column - The range column to filter on
+     * @param range - The range to filter with
+     */
+    rangeLte(column, range) {
+        this.url.searchParams.append(column, `nxr.${range}`);
+        return this;
+    }
+    /**
+     * Only relevant for range columns. Match only rows where `column` is
+     * mutually exclusive to `range` and there can be no element between the two
+     * ranges.
+     *
+     * @param column - The range column to filter on
+     * @param range - The range to filter with
+     */
+    rangeAdjacent(column, range) {
+        this.url.searchParams.append(column, `adj.${range}`);
+        return this;
+    }
+    /**
+     * Only relevant for array and range columns. Match only rows where
+     * `column` and `value` have an element in common.
+     *
+     * @param column - The array or range column to filter on
+     * @param value - The array or range value to filter with
+     */
+    overlaps(column, value) {
+        if (typeof value === 'string') {
+            // range
+            this.url.searchParams.append(column, `ov.${value}`);
+        }
+        else {
+            // array
+            this.url.searchParams.append(column, `ov.{${value.join(',')}}`);
+        }
+        return this;
+    }
+    /**
+     * Only relevant for text and tsvector columns. Match only rows where
+     * `column` matches the query string in `query`.
+     *
+     * @param column - The text or tsvector column to filter on
+     * @param query - The query text to match with
+     * @param options - Named parameters
+     * @param options.config - The text search configuration to use
+     * @param options.type - Change how the `query` text is interpreted
+     */
+    textSearch(column, query, { config, type } = {}) {
+        let typePart = '';
+        if (type === 'plain') {
+            typePart = 'pl';
+        }
+        else if (type === 'phrase') {
+            typePart = 'ph';
+        }
+        else if (type === 'websearch') {
+            typePart = 'w';
+        }
+        const configPart = config === undefined ? '' : `(${config})`;
+        this.url.searchParams.append(column, `${typePart}fts${configPart}.${query}`);
+        return this;
+    }
+    /**
+     * Match only rows where each column in `query` keys is equal to its
+     * associated value. Shorthand for multiple `.eq()`s.
+     *
+     * @param query - The object to filter with, with column names as keys mapped
+     * to their filter values
+     */
+    match(query) {
+        Object.entries(query).forEach(([column, value]) => {
+            this.url.searchParams.append(column, `eq.${value}`);
+        });
+        return this;
+    }
+    /**
+     * Match only rows which doesn't satisfy the filter.
+     *
+     * Unlike most filters, `opearator` and `value` are used as-is and need to
+     * follow [PostgREST
+     * syntax](https://postgrest.org/en/stable/api.html#operators). You also need
+     * to make sure they are properly sanitized.
+     *
+     * @param column - The column to filter on
+     * @param operator - The operator to be negated to filter with, following
+     * PostgREST syntax
+     * @param value - The value to filter with, following PostgREST syntax
+     */
+    not(column, operator, value) {
+        this.url.searchParams.append(column, `not.${operator}.${value}`);
+        return this;
+    }
+    /**
+     * Match only rows which satisfy at least one of the filters.
+     *
+     * Unlike most filters, `filters` is used as-is and needs to follow [PostgREST
+     * syntax](https://postgrest.org/en/stable/api.html#operators). You also need
+     * to make sure it's properly sanitized.
+     *
+     * It's currently not possible to do an `.or()` filter across multiple tables.
+     *
+     * @param filters - The filters to use, following PostgREST syntax
+     * @param foreignTable - Set this to filter on foreign tables instead of the
+     * current table
+     */
+    or(filters, { foreignTable } = {}) {
+        const key = foreignTable ? `${foreignTable}.or` : 'or';
+        this.url.searchParams.append(key, `(${filters})`);
+        return this;
+    }
+    /**
+     * Match only rows which satisfy the filter. This is an escape hatch - you
+     * should use the specific filter methods wherever possible.
+     *
+     * Unlike most filters, `opearator` and `value` are used as-is and need to
+     * follow [PostgREST
+     * syntax](https://postgrest.org/en/stable/api.html#operators). You also need
+     * to make sure they are properly sanitized.
+     *
+     * @param column - The column to filter on
+     * @param operator - The operator to filter with, following PostgREST syntax
+     * @param value - The value to filter with, following PostgREST syntax
+     */
+    filter(column, operator, value) {
+        this.url.searchParams.append(column, `${operator}.${value}`);
+        return this;
+    }
+}
+//# sourceMappingURL=PostgrestFilterBuilder.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestQueryBuilder.js":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/@supabase/postgrest-js/dist/module/PostgrestQueryBuilder.js ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ PostgrestQueryBuilder)
+/* harmony export */ });
+/* harmony import */ var _PostgrestFilterBuilder__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PostgrestFilterBuilder */ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestFilterBuilder.js");
+
+class PostgrestQueryBuilder {
+    constructor(url, { headers = {}, schema, fetch, }) {
+        this.url = url;
+        this.headers = headers;
+        this.schema = schema;
+        this.fetch = fetch;
+    }
+    /**
+     * Perform a SELECT query on the table or view.
+     *
+     * @param columns - The columns to retrieve, separated by commas. Columns can be renamed when returned with `customName:columnName`
+     *
+     * @param options - Named parameters
+     *
+     * @param options.head - When set to `true`, `data` will not be returned.
+     * Useful if you only need the count.
+     *
+     * @param options.count - Count algorithm to use to count rows in the table or view.
+     *
+     * `"exact"`: Exact but slow count algorithm. Performs a `COUNT(*)` under the
+     * hood.
+     *
+     * `"planned"`: Approximated but fast count algorithm. Uses the Postgres
+     * statistics under the hood.
+     *
+     * `"estimated"`: Uses exact count for low numbers and planned count for high
+     * numbers.
+     */
+    select(columns, { head = false, count, } = {}) {
+        const method = head ? 'HEAD' : 'GET';
+        // Remove whitespaces except when quoted
+        let quoted = false;
+        const cleanedColumns = (columns !== null && columns !== void 0 ? columns : '*')
+            .split('')
+            .map((c) => {
+            if (/\s/.test(c) && !quoted) {
+                return '';
+            }
+            if (c === '"') {
+                quoted = !quoted;
+            }
+            return c;
+        })
+            .join('');
+        this.url.searchParams.set('select', cleanedColumns);
+        if (count) {
+            this.headers['Prefer'] = `count=${count}`;
+        }
+        return new _PostgrestFilterBuilder__WEBPACK_IMPORTED_MODULE_0__["default"]({
+            method,
+            url: this.url,
+            headers: this.headers,
+            schema: this.schema,
+            fetch: this.fetch,
+            allowEmpty: false,
+        });
+    }
+    /**
+     * Perform an INSERT into the table or view.
+     *
+     * By default, inserted rows are not returned. To return it, chain the call
+     * with `.select()`.
+     *
+     * @param values - The values to insert. Pass an object to insert a single row
+     * or an array to insert multiple rows.
+     *
+     * @param options - Named parameters
+     *
+     * @param options.count - Count algorithm to use to count inserted rows.
+     *
+     * `"exact"`: Exact but slow count algorithm. Performs a `COUNT(*)` under the
+     * hood.
+     *
+     * `"planned"`: Approximated but fast count algorithm. Uses the Postgres
+     * statistics under the hood.
+     *
+     * `"estimated"`: Uses exact count for low numbers and planned count for high
+     * numbers.
+     *
+     * @param options.defaultToNull - Make missing fields default to `null`.
+     * Otherwise, use the default value for the column.
+     */
+    insert(values, { count, defaultToNull = true, } = {}) {
+        const method = 'POST';
+        const prefersHeaders = [];
+        if (this.headers['Prefer']) {
+            prefersHeaders.push(this.headers['Prefer']);
+        }
+        if (count) {
+            prefersHeaders.push(`count=${count}`);
+        }
+        if (!defaultToNull) {
+            prefersHeaders.push('missing=default');
+        }
+        this.headers['Prefer'] = prefersHeaders.join(',');
+        if (Array.isArray(values)) {
+            const columns = values.reduce((acc, x) => acc.concat(Object.keys(x)), []);
+            if (columns.length > 0) {
+                const uniqueColumns = [...new Set(columns)].map((column) => `"${column}"`);
+                this.url.searchParams.set('columns', uniqueColumns.join(','));
+            }
+        }
+        return new _PostgrestFilterBuilder__WEBPACK_IMPORTED_MODULE_0__["default"]({
+            method,
+            url: this.url,
+            headers: this.headers,
+            schema: this.schema,
+            body: values,
+            fetch: this.fetch,
+            allowEmpty: false,
+        });
+    }
+    /**
+     * Perform an UPSERT on the table or view. Depending on the column(s) passed
+     * to `onConflict`, `.upsert()` allows you to perform the equivalent of
+     * `.insert()` if a row with the corresponding `onConflict` columns doesn't
+     * exist, or if it does exist, perform an alternative action depending on
+     * `ignoreDuplicates`.
+     *
+     * By default, upserted rows are not returned. To return it, chain the call
+     * with `.select()`.
+     *
+     * @param values - The values to upsert with. Pass an object to upsert a
+     * single row or an array to upsert multiple rows.
+     *
+     * @param options - Named parameters
+     *
+     * @param options.onConflict - Comma-separated UNIQUE column(s) to specify how
+     * duplicate rows are determined. Two rows are duplicates if all the
+     * `onConflict` columns are equal.
+     *
+     * @param options.ignoreDuplicates - If `true`, duplicate rows are ignored. If
+     * `false`, duplicate rows are merged with existing rows.
+     *
+     * @param options.count - Count algorithm to use to count upserted rows.
+     *
+     * `"exact"`: Exact but slow count algorithm. Performs a `COUNT(*)` under the
+     * hood.
+     *
+     * `"planned"`: Approximated but fast count algorithm. Uses the Postgres
+     * statistics under the hood.
+     *
+     * `"estimated"`: Uses exact count for low numbers and planned count for high
+     * numbers.
+     *
+     * @param options.defaultToNull - Make missing fields default to `null`.
+     * Otherwise, use the default value for the column. This only applies when
+     * inserting new rows, not when merging with existing rows under
+     * `ignoreDuplicates: false`.
+     */
+    upsert(values, { onConflict, ignoreDuplicates = false, count, defaultToNull = true, } = {}) {
+        const method = 'POST';
+        const prefersHeaders = [`resolution=${ignoreDuplicates ? 'ignore' : 'merge'}-duplicates`];
+        if (onConflict !== undefined)
+            this.url.searchParams.set('on_conflict', onConflict);
+        if (this.headers['Prefer']) {
+            prefersHeaders.push(this.headers['Prefer']);
+        }
+        if (count) {
+            prefersHeaders.push(`count=${count}`);
+        }
+        if (!defaultToNull) {
+            prefersHeaders.push('missing=default');
+        }
+        this.headers['Prefer'] = prefersHeaders.join(',');
+        if (Array.isArray(values)) {
+            const columns = values.reduce((acc, x) => acc.concat(Object.keys(x)), []);
+            if (columns.length > 0) {
+                const uniqueColumns = [...new Set(columns)].map((column) => `"${column}"`);
+                this.url.searchParams.set('columns', uniqueColumns.join(','));
+            }
+        }
+        return new _PostgrestFilterBuilder__WEBPACK_IMPORTED_MODULE_0__["default"]({
+            method,
+            url: this.url,
+            headers: this.headers,
+            schema: this.schema,
+            body: values,
+            fetch: this.fetch,
+            allowEmpty: false,
+        });
+    }
+    /**
+     * Perform an UPDATE on the table or view.
+     *
+     * By default, updated rows are not returned. To return it, chain the call
+     * with `.select()` after filters.
+     *
+     * @param values - The values to update with
+     *
+     * @param options - Named parameters
+     *
+     * @param options.count - Count algorithm to use to count updated rows.
+     *
+     * `"exact"`: Exact but slow count algorithm. Performs a `COUNT(*)` under the
+     * hood.
+     *
+     * `"planned"`: Approximated but fast count algorithm. Uses the Postgres
+     * statistics under the hood.
+     *
+     * `"estimated"`: Uses exact count for low numbers and planned count for high
+     * numbers.
+     */
+    update(values, { count, } = {}) {
+        const method = 'PATCH';
+        const prefersHeaders = [];
+        if (this.headers['Prefer']) {
+            prefersHeaders.push(this.headers['Prefer']);
+        }
+        if (count) {
+            prefersHeaders.push(`count=${count}`);
+        }
+        this.headers['Prefer'] = prefersHeaders.join(',');
+        return new _PostgrestFilterBuilder__WEBPACK_IMPORTED_MODULE_0__["default"]({
+            method,
+            url: this.url,
+            headers: this.headers,
+            schema: this.schema,
+            body: values,
+            fetch: this.fetch,
+            allowEmpty: false,
+        });
+    }
+    /**
+     * Perform a DELETE on the table or view.
+     *
+     * By default, deleted rows are not returned. To return it, chain the call
+     * with `.select()` after filters.
+     *
+     * @param options - Named parameters
+     *
+     * @param options.count - Count algorithm to use to count deleted rows.
+     *
+     * `"exact"`: Exact but slow count algorithm. Performs a `COUNT(*)` under the
+     * hood.
+     *
+     * `"planned"`: Approximated but fast count algorithm. Uses the Postgres
+     * statistics under the hood.
+     *
+     * `"estimated"`: Uses exact count for low numbers and planned count for high
+     * numbers.
+     */
+    delete({ count, } = {}) {
+        const method = 'DELETE';
+        const prefersHeaders = [];
+        if (count) {
+            prefersHeaders.push(`count=${count}`);
+        }
+        if (this.headers['Prefer']) {
+            prefersHeaders.unshift(this.headers['Prefer']);
+        }
+        this.headers['Prefer'] = prefersHeaders.join(',');
+        return new _PostgrestFilterBuilder__WEBPACK_IMPORTED_MODULE_0__["default"]({
+            method,
+            url: this.url,
+            headers: this.headers,
+            schema: this.schema,
+            fetch: this.fetch,
+            allowEmpty: false,
+        });
+    }
+}
+//# sourceMappingURL=PostgrestQueryBuilder.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestTransformBuilder.js":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/@supabase/postgrest-js/dist/module/PostgrestTransformBuilder.js ***!
+  \**************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ PostgrestTransformBuilder)
+/* harmony export */ });
+/* harmony import */ var _PostgrestBuilder__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PostgrestBuilder */ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestBuilder.js");
+
+class PostgrestTransformBuilder extends _PostgrestBuilder__WEBPACK_IMPORTED_MODULE_0__["default"] {
+    /**
+     * Perform a SELECT on the query result.
+     *
+     * By default, `.insert()`, `.update()`, `.upsert()`, and `.delete()` do not
+     * return modified rows. By calling this method, modified rows are returned in
+     * `data`.
+     *
+     * @param columns - The columns to retrieve, separated by commas
+     */
+    select(columns) {
+        // Remove whitespaces except when quoted
+        let quoted = false;
+        const cleanedColumns = (columns !== null && columns !== void 0 ? columns : '*')
+            .split('')
+            .map((c) => {
+            if (/\s/.test(c) && !quoted) {
+                return '';
+            }
+            if (c === '"') {
+                quoted = !quoted;
+            }
+            return c;
+        })
+            .join('');
+        this.url.searchParams.set('select', cleanedColumns);
+        if (this.headers['Prefer']) {
+            this.headers['Prefer'] += ',';
+        }
+        this.headers['Prefer'] += 'return=representation';
+        return this;
+    }
+    /**
+     * Order the query result by `column`.
+     *
+     * You can call this method multiple times to order by multiple columns.
+     *
+     * You can order foreign tables, but it doesn't affect the ordering of the
+     * current table.
+     *
+     * @param column - The column to order by
+     * @param options - Named parameters
+     * @param options.ascending - If `true`, the result will be in ascending order
+     * @param options.nullsFirst - If `true`, `null`s appear first. If `false`,
+     * `null`s appear last.
+     * @param options.foreignTable - Set this to order a foreign table by foreign
+     * columns
+     */
+    order(column, { ascending = true, nullsFirst, foreignTable, } = {}) {
+        const key = foreignTable ? `${foreignTable}.order` : 'order';
+        const existingOrder = this.url.searchParams.get(key);
+        this.url.searchParams.set(key, `${existingOrder ? `${existingOrder},` : ''}${column}.${ascending ? 'asc' : 'desc'}${nullsFirst === undefined ? '' : nullsFirst ? '.nullsfirst' : '.nullslast'}`);
+        return this;
+    }
+    /**
+     * Limit the query result by `count`.
+     *
+     * @param count - The maximum number of rows to return
+     * @param options - Named parameters
+     * @param options.foreignTable - Set this to limit rows of foreign tables
+     * instead of the current table
+     */
+    limit(count, { foreignTable } = {}) {
+        const key = typeof foreignTable === 'undefined' ? 'limit' : `${foreignTable}.limit`;
+        this.url.searchParams.set(key, `${count}`);
+        return this;
+    }
+    /**
+     * Limit the query result by `from` and `to` inclusively.
+     *
+     * @param from - The starting index from which to limit the result
+     * @param to - The last index to which to limit the result
+     * @param options - Named parameters
+     * @param options.foreignTable - Set this to limit rows of foreign tables
+     * instead of the current table
+     */
+    range(from, to, { foreignTable } = {}) {
+        const keyOffset = typeof foreignTable === 'undefined' ? 'offset' : `${foreignTable}.offset`;
+        const keyLimit = typeof foreignTable === 'undefined' ? 'limit' : `${foreignTable}.limit`;
+        this.url.searchParams.set(keyOffset, `${from}`);
+        // Range is inclusive, so add 1
+        this.url.searchParams.set(keyLimit, `${to - from + 1}`);
+        return this;
+    }
+    /**
+     * Set the AbortSignal for the fetch request.
+     *
+     * @param signal - The AbortSignal to use for the fetch request
+     */
+    abortSignal(signal) {
+        this.signal = signal;
+        return this;
+    }
+    /**
+     * Return `data` as a single object instead of an array of objects.
+     *
+     * Query result must be one row (e.g. using `.limit(1)`), otherwise this
+     * returns an error.
+     */
+    single() {
+        this.headers['Accept'] = 'application/vnd.pgrst.object+json';
+        return this;
+    }
+    /**
+     * Return `data` as a single object instead of an array of objects.
+     *
+     * Query result must be zero or one row (e.g. using `.limit(1)`), otherwise
+     * this returns an error.
+     */
+    maybeSingle() {
+        // Temporary partial fix for https://github.com/supabase/postgrest-js/issues/361
+        // Issue persists e.g. for `.insert([...]).select().maybeSingle()`
+        if (this.method === 'GET') {
+            this.headers['Accept'] = 'application/json';
+        }
+        else {
+            this.headers['Accept'] = 'application/vnd.pgrst.object+json';
+        }
+        this.isMaybeSingle = true;
+        return this;
+    }
+    /**
+     * Return `data` as a string in CSV format.
+     */
+    csv() {
+        this.headers['Accept'] = 'text/csv';
+        return this;
+    }
+    /**
+     * Return `data` as an object in [GeoJSON](https://geojson.org) format.
+     */
+    geojson() {
+        this.headers['Accept'] = 'application/geo+json';
+        return this;
+    }
+    /**
+     * Return `data` as the EXPLAIN plan for the query.
+     *
+     * @param options - Named parameters
+     *
+     * @param options.analyze - If `true`, the query will be executed and the
+     * actual run time will be returned
+     *
+     * @param options.verbose - If `true`, the query identifier will be returned
+     * and `data` will include the output columns of the query
+     *
+     * @param options.settings - If `true`, include information on configuration
+     * parameters that affect query planning
+     *
+     * @param options.buffers - If `true`, include information on buffer usage
+     *
+     * @param options.wal - If `true`, include information on WAL record generation
+     *
+     * @param options.format - The format of the output, can be `"text"` (default)
+     * or `"json"`
+     */
+    explain({ analyze = false, verbose = false, settings = false, buffers = false, wal = false, format = 'text', } = {}) {
+        const options = [
+            analyze ? 'analyze' : null,
+            verbose ? 'verbose' : null,
+            settings ? 'settings' : null,
+            buffers ? 'buffers' : null,
+            wal ? 'wal' : null,
+        ]
+            .filter(Boolean)
+            .join('|');
+        // An Accept header can carry multiple media types but postgrest-js always sends one
+        const forMediatype = this.headers['Accept'];
+        this.headers['Accept'] = `application/vnd.pgrst.plan+${format}; for="${forMediatype}"; options=${options};`;
+        if (format === 'json')
+            return this;
+        else
+            return this;
+    }
+    /**
+     * Rollback the query.
+     *
+     * `data` will still be returned, but the query is not committed.
+     */
+    rollback() {
+        var _a;
+        if (((_a = this.headers['Prefer']) !== null && _a !== void 0 ? _a : '').trim().length > 0) {
+            this.headers['Prefer'] += ',tx=rollback';
+        }
+        else {
+            this.headers['Prefer'] = 'tx=rollback';
+        }
+        return this;
+    }
+    /**
+     * Override the type of the returned `data`.
+     *
+     * @typeParam NewResult - The new result type to override with
+     */
+    returns() {
+        return this;
+    }
+}
+//# sourceMappingURL=PostgrestTransformBuilder.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/postgrest-js/dist/module/constants.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@supabase/postgrest-js/dist/module/constants.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "DEFAULT_HEADERS": () => (/* binding */ DEFAULT_HEADERS)
+/* harmony export */ });
+/* harmony import */ var _version__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./version */ "./node_modules/@supabase/postgrest-js/dist/module/version.js");
+
+const DEFAULT_HEADERS = { 'X-Client-Info': `postgrest-js/${_version__WEBPACK_IMPORTED_MODULE_0__.version}` };
+//# sourceMappingURL=constants.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/postgrest-js/dist/module/index.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@supabase/postgrest-js/dist/module/index.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PostgrestBuilder": () => (/* reexport safe */ _PostgrestBuilder__WEBPACK_IMPORTED_MODULE_4__["default"]),
+/* harmony export */   "PostgrestClient": () => (/* reexport safe */ _PostgrestClient__WEBPACK_IMPORTED_MODULE_0__["default"]),
+/* harmony export */   "PostgrestFilterBuilder": () => (/* reexport safe */ _PostgrestFilterBuilder__WEBPACK_IMPORTED_MODULE_2__["default"]),
+/* harmony export */   "PostgrestQueryBuilder": () => (/* reexport safe */ _PostgrestQueryBuilder__WEBPACK_IMPORTED_MODULE_1__["default"]),
+/* harmony export */   "PostgrestTransformBuilder": () => (/* reexport safe */ _PostgrestTransformBuilder__WEBPACK_IMPORTED_MODULE_3__["default"])
+/* harmony export */ });
+/* harmony import */ var _PostgrestClient__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PostgrestClient */ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestClient.js");
+/* harmony import */ var _PostgrestQueryBuilder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PostgrestQueryBuilder */ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestQueryBuilder.js");
+/* harmony import */ var _PostgrestFilterBuilder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PostgrestFilterBuilder */ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestFilterBuilder.js");
+/* harmony import */ var _PostgrestTransformBuilder__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PostgrestTransformBuilder */ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestTransformBuilder.js");
+/* harmony import */ var _PostgrestBuilder__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./PostgrestBuilder */ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestBuilder.js");
+
+
+
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/postgrest-js/dist/module/version.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@supabase/postgrest-js/dist/module/version.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "version": () => (/* binding */ version)
+/* harmony export */ });
+const version = '1.6.1';
+//# sourceMappingURL=version.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/realtime-js/dist/module/RealtimeChannel.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/@supabase/realtime-js/dist/module/RealtimeChannel.js ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "REALTIME_LISTEN_TYPES": () => (/* binding */ REALTIME_LISTEN_TYPES),
+/* harmony export */   "REALTIME_POSTGRES_CHANGES_LISTEN_EVENT": () => (/* binding */ REALTIME_POSTGRES_CHANGES_LISTEN_EVENT),
+/* harmony export */   "REALTIME_SUBSCRIBE_STATES": () => (/* binding */ REALTIME_SUBSCRIBE_STATES),
+/* harmony export */   "default": () => (/* binding */ RealtimeChannel)
+/* harmony export */ });
+/* harmony import */ var _lib_constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/constants */ "./node_modules/@supabase/realtime-js/dist/module/lib/constants.js");
+/* harmony import */ var _lib_push__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/push */ "./node_modules/@supabase/realtime-js/dist/module/lib/push.js");
+/* harmony import */ var _lib_timer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/timer */ "./node_modules/@supabase/realtime-js/dist/module/lib/timer.js");
+/* harmony import */ var _RealtimePresence__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RealtimePresence */ "./node_modules/@supabase/realtime-js/dist/module/RealtimePresence.js");
+/* harmony import */ var _lib_transformers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./lib/transformers */ "./node_modules/@supabase/realtime-js/dist/module/lib/transformers.js");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+
+
+
+var REALTIME_POSTGRES_CHANGES_LISTEN_EVENT;
+(function (REALTIME_POSTGRES_CHANGES_LISTEN_EVENT) {
+    REALTIME_POSTGRES_CHANGES_LISTEN_EVENT["ALL"] = "*";
+    REALTIME_POSTGRES_CHANGES_LISTEN_EVENT["INSERT"] = "INSERT";
+    REALTIME_POSTGRES_CHANGES_LISTEN_EVENT["UPDATE"] = "UPDATE";
+    REALTIME_POSTGRES_CHANGES_LISTEN_EVENT["DELETE"] = "DELETE";
+})(REALTIME_POSTGRES_CHANGES_LISTEN_EVENT || (REALTIME_POSTGRES_CHANGES_LISTEN_EVENT = {}));
+var REALTIME_LISTEN_TYPES;
+(function (REALTIME_LISTEN_TYPES) {
+    REALTIME_LISTEN_TYPES["BROADCAST"] = "broadcast";
+    REALTIME_LISTEN_TYPES["PRESENCE"] = "presence";
+    /**
+     * listen to Postgres changes.
+     */
+    REALTIME_LISTEN_TYPES["POSTGRES_CHANGES"] = "postgres_changes";
+})(REALTIME_LISTEN_TYPES || (REALTIME_LISTEN_TYPES = {}));
+var REALTIME_SUBSCRIBE_STATES;
+(function (REALTIME_SUBSCRIBE_STATES) {
+    REALTIME_SUBSCRIBE_STATES["SUBSCRIBED"] = "SUBSCRIBED";
+    REALTIME_SUBSCRIBE_STATES["TIMED_OUT"] = "TIMED_OUT";
+    REALTIME_SUBSCRIBE_STATES["CLOSED"] = "CLOSED";
+    REALTIME_SUBSCRIBE_STATES["CHANNEL_ERROR"] = "CHANNEL_ERROR";
+})(REALTIME_SUBSCRIBE_STATES || (REALTIME_SUBSCRIBE_STATES = {}));
+/** A channel is the basic building block of Realtime
+ * and narrows the scope of data flow to subscribed clients.
+ * You can think of a channel as a chatroom where participants are able to see who's online
+ * and send and receive messages.
+ **/
+class RealtimeChannel {
+    constructor(
+    /** Topic name can be any string. */
+    topic, params = { config: {} }, socket) {
+        this.topic = topic;
+        this.params = params;
+        this.socket = socket;
+        this.bindings = {};
+        this.state = _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_STATES.closed;
+        this.joinedOnce = false;
+        this.pushBuffer = [];
+        this.params.config = Object.assign({
+            broadcast: { ack: false, self: false },
+            presence: { key: '' },
+        }, params.config);
+        this.timeout = this.socket.timeout;
+        this.joinPush = new _lib_push__WEBPACK_IMPORTED_MODULE_1__["default"](this, _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_EVENTS.join, this.params, this.timeout);
+        this.rejoinTimer = new _lib_timer__WEBPACK_IMPORTED_MODULE_2__["default"](() => this._rejoinUntilConnected(), this.socket.reconnectAfterMs);
+        this.joinPush.receive('ok', () => {
+            this.state = _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_STATES.joined;
+            this.rejoinTimer.reset();
+            this.pushBuffer.forEach((pushEvent) => pushEvent.send());
+            this.pushBuffer = [];
+        });
+        this._onClose(() => {
+            this.rejoinTimer.reset();
+            this.socket.log('channel', `close ${this.topic} ${this._joinRef()}`);
+            this.state = _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_STATES.closed;
+            this.socket._remove(this);
+        });
+        this._onError((reason) => {
+            if (this._isLeaving() || this._isClosed()) {
+                return;
+            }
+            this.socket.log('channel', `error ${this.topic}`, reason);
+            this.state = _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_STATES.errored;
+            this.rejoinTimer.scheduleTimeout();
+        });
+        this.joinPush.receive('timeout', () => {
+            if (!this._isJoining()) {
+                return;
+            }
+            this.socket.log('channel', `timeout ${this.topic}`, this.joinPush.timeout);
+            this.state = _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_STATES.errored;
+            this.rejoinTimer.scheduleTimeout();
+        });
+        this._on(_lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_EVENTS.reply, {}, (payload, ref) => {
+            this._trigger(this._replyEventName(ref), payload);
+        });
+        this.presence = new _RealtimePresence__WEBPACK_IMPORTED_MODULE_3__["default"](this);
+    }
+    /** Subscribe registers your client with the server */
+    subscribe(callback, timeout = this.timeout) {
+        var _a, _b;
+        if (this.joinedOnce) {
+            throw `tried to subscribe multiple times. 'subscribe' can only be called a single time per channel instance`;
+        }
+        else {
+            const { config: { broadcast, presence }, } = this.params;
+            this._onError((e) => callback && callback('CHANNEL_ERROR', e));
+            this._onClose(() => callback && callback('CLOSED'));
+            const accessTokenPayload = {};
+            const config = {
+                broadcast,
+                presence,
+                postgres_changes: (_b = (_a = this.bindings.postgres_changes) === null || _a === void 0 ? void 0 : _a.map((r) => r.filter)) !== null && _b !== void 0 ? _b : [],
+            };
+            if (this.socket.accessToken) {
+                accessTokenPayload.access_token = this.socket.accessToken;
+            }
+            this.updateJoinPayload(Object.assign({ config }, accessTokenPayload));
+            this.joinedOnce = true;
+            this._rejoin(timeout);
+            this.joinPush
+                .receive('ok', ({ postgres_changes: serverPostgresFilters, }) => {
+                var _a;
+                this.socket.accessToken &&
+                    this.socket.setAuth(this.socket.accessToken);
+                if (serverPostgresFilters === undefined) {
+                    callback && callback('SUBSCRIBED');
+                    return;
+                }
+                else {
+                    const clientPostgresBindings = this.bindings.postgres_changes;
+                    const bindingsLen = (_a = clientPostgresBindings === null || clientPostgresBindings === void 0 ? void 0 : clientPostgresBindings.length) !== null && _a !== void 0 ? _a : 0;
+                    const newPostgresBindings = [];
+                    for (let i = 0; i < bindingsLen; i++) {
+                        const clientPostgresBinding = clientPostgresBindings[i];
+                        const { filter: { event, schema, table, filter }, } = clientPostgresBinding;
+                        const serverPostgresFilter = serverPostgresFilters && serverPostgresFilters[i];
+                        if (serverPostgresFilter &&
+                            serverPostgresFilter.event === event &&
+                            serverPostgresFilter.schema === schema &&
+                            serverPostgresFilter.table === table &&
+                            serverPostgresFilter.filter === filter) {
+                            newPostgresBindings.push(Object.assign(Object.assign({}, clientPostgresBinding), { id: serverPostgresFilter.id }));
+                        }
+                        else {
+                            this.unsubscribe();
+                            callback &&
+                                callback('CHANNEL_ERROR', new Error('mismatch between server and client bindings for postgres changes'));
+                            return;
+                        }
+                    }
+                    this.bindings.postgres_changes = newPostgresBindings;
+                    callback && callback('SUBSCRIBED');
+                    return;
+                }
+            })
+                .receive('error', (error) => {
+                callback &&
+                    callback('CHANNEL_ERROR', new Error(JSON.stringify(Object.values(error).join(', ') || 'error')));
+                return;
+            })
+                .receive('timeout', () => {
+                callback && callback('TIMED_OUT');
+                return;
+            });
+        }
+        return this;
+    }
+    presenceState() {
+        return this.presence.state;
+    }
+    track(payload, opts = {}) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.send({
+                type: 'presence',
+                event: 'track',
+                payload,
+            }, opts.timeout || this.timeout);
+        });
+    }
+    untrack(opts = {}) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.send({
+                type: 'presence',
+                event: 'untrack',
+            }, opts);
+        });
+    }
+    on(type, filter, callback) {
+        return this._on(type, filter, callback);
+    }
+    send(payload, opts = {}) {
+        return new Promise((resolve) => {
+            var _a, _b, _c;
+            const push = this._push(payload.type, payload, opts.timeout || this.timeout);
+            if (push.rateLimited) {
+                resolve('rate limited');
+            }
+            if (payload.type === 'broadcast' &&
+                !((_c = (_b = (_a = this.params) === null || _a === void 0 ? void 0 : _a.config) === null || _b === void 0 ? void 0 : _b.broadcast) === null || _c === void 0 ? void 0 : _c.ack)) {
+                resolve('ok');
+            }
+            push.receive('ok', () => resolve('ok'));
+            push.receive('timeout', () => resolve('timed out'));
+        });
+    }
+    updateJoinPayload(payload) {
+        this.joinPush.updatePayload(payload);
+    }
+    /**
+     * Leaves the channel.
+     *
+     * Unsubscribes from server events, and instructs channel to terminate on server.
+     * Triggers onClose() hooks.
+     *
+     * To receive leave acknowledgements, use the a `receive` hook to bind to the server ack, ie:
+     * channel.unsubscribe().receive("ok", () => alert("left!") )
+     */
+    unsubscribe(timeout = this.timeout) {
+        this.state = _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_STATES.leaving;
+        const onClose = () => {
+            this.socket.log('channel', `leave ${this.topic}`);
+            this._trigger(_lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_EVENTS.close, 'leave', this._joinRef());
+        };
+        this.rejoinTimer.reset();
+        // Destroy joinPush to avoid connection timeouts during unscription phase
+        this.joinPush.destroy();
+        return new Promise((resolve) => {
+            const leavePush = new _lib_push__WEBPACK_IMPORTED_MODULE_1__["default"](this, _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_EVENTS.leave, {}, timeout);
+            leavePush
+                .receive('ok', () => {
+                onClose();
+                resolve('ok');
+            })
+                .receive('timeout', () => {
+                onClose();
+                resolve('timed out');
+            })
+                .receive('error', () => {
+                resolve('error');
+            });
+            leavePush.send();
+            if (!this._canPush()) {
+                leavePush.trigger('ok', {});
+            }
+        });
+    }
+    /** @internal */
+    _push(event, payload, timeout = this.timeout) {
+        if (!this.joinedOnce) {
+            throw `tried to push '${event}' to '${this.topic}' before joining. Use channel.subscribe() before pushing events`;
+        }
+        let pushEvent = new _lib_push__WEBPACK_IMPORTED_MODULE_1__["default"](this, event, payload, timeout);
+        if (this._canPush()) {
+            pushEvent.send();
+        }
+        else {
+            pushEvent.startTimeout();
+            this.pushBuffer.push(pushEvent);
+        }
+        return pushEvent;
+    }
+    /**
+     * Overridable message hook
+     *
+     * Receives all events for specialized message handling before dispatching to the channel callbacks.
+     * Must return the payload, modified or unmodified.
+     *
+     * @internal
+     */
+    _onMessage(_event, payload, _ref) {
+        return payload;
+    }
+    /** @internal */
+    _isMember(topic) {
+        return this.topic === topic;
+    }
+    /** @internal */
+    _joinRef() {
+        return this.joinPush.ref;
+    }
+    /** @internal */
+    _trigger(type, payload, ref) {
+        var _a, _b;
+        const typeLower = type.toLocaleLowerCase();
+        const { close, error, leave, join } = _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_EVENTS;
+        const events = [close, error, leave, join];
+        if (ref && events.indexOf(typeLower) >= 0 && ref !== this._joinRef()) {
+            return;
+        }
+        let handledPayload = this._onMessage(typeLower, payload, ref);
+        if (payload && !handledPayload) {
+            throw 'channel onMessage callbacks must return the payload, modified or unmodified';
+        }
+        if (['insert', 'update', 'delete'].includes(typeLower)) {
+            (_a = this.bindings.postgres_changes) === null || _a === void 0 ? void 0 : _a.filter((bind) => {
+                var _a, _b, _c;
+                return (((_a = bind.filter) === null || _a === void 0 ? void 0 : _a.event) === '*' ||
+                    ((_c = (_b = bind.filter) === null || _b === void 0 ? void 0 : _b.event) === null || _c === void 0 ? void 0 : _c.toLocaleLowerCase()) === typeLower);
+            }).map((bind) => bind.callback(handledPayload, ref));
+        }
+        else {
+            (_b = this.bindings[typeLower]) === null || _b === void 0 ? void 0 : _b.filter((bind) => {
+                var _a, _b, _c, _d, _e, _f;
+                if (['broadcast', 'presence', 'postgres_changes'].includes(typeLower)) {
+                    if ('id' in bind) {
+                        const bindId = bind.id;
+                        const bindEvent = (_a = bind.filter) === null || _a === void 0 ? void 0 : _a.event;
+                        return (bindId &&
+                            ((_b = payload.ids) === null || _b === void 0 ? void 0 : _b.includes(bindId)) &&
+                            (bindEvent === '*' ||
+                                (bindEvent === null || bindEvent === void 0 ? void 0 : bindEvent.toLocaleLowerCase()) ===
+                                    ((_c = payload.data) === null || _c === void 0 ? void 0 : _c.type.toLocaleLowerCase())));
+                    }
+                    else {
+                        const bindEvent = (_e = (_d = bind === null || bind === void 0 ? void 0 : bind.filter) === null || _d === void 0 ? void 0 : _d.event) === null || _e === void 0 ? void 0 : _e.toLocaleLowerCase();
+                        return (bindEvent === '*' ||
+                            bindEvent === ((_f = payload === null || payload === void 0 ? void 0 : payload.event) === null || _f === void 0 ? void 0 : _f.toLocaleLowerCase()));
+                    }
+                }
+                else {
+                    return bind.type.toLocaleLowerCase() === typeLower;
+                }
+            }).map((bind) => {
+                if (typeof handledPayload === 'object' && 'ids' in handledPayload) {
+                    const postgresChanges = handledPayload.data;
+                    const { schema, table, commit_timestamp, type, errors } = postgresChanges;
+                    const enrichedPayload = {
+                        schema: schema,
+                        table: table,
+                        commit_timestamp: commit_timestamp,
+                        eventType: type,
+                        new: {},
+                        old: {},
+                        errors: errors,
+                    };
+                    handledPayload = Object.assign(Object.assign({}, enrichedPayload), this._getPayloadRecords(postgresChanges));
+                }
+                bind.callback(handledPayload, ref);
+            });
+        }
+    }
+    /** @internal */
+    _isClosed() {
+        return this.state === _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_STATES.closed;
+    }
+    /** @internal */
+    _isJoined() {
+        return this.state === _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_STATES.joined;
+    }
+    /** @internal */
+    _isJoining() {
+        return this.state === _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_STATES.joining;
+    }
+    /** @internal */
+    _isLeaving() {
+        return this.state === _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_STATES.leaving;
+    }
+    /** @internal */
+    _replyEventName(ref) {
+        return `chan_reply_${ref}`;
+    }
+    /** @internal */
+    _on(type, filter, callback) {
+        const typeLower = type.toLocaleLowerCase();
+        const binding = {
+            type: typeLower,
+            filter: filter,
+            callback: callback,
+        };
+        if (this.bindings[typeLower]) {
+            this.bindings[typeLower].push(binding);
+        }
+        else {
+            this.bindings[typeLower] = [binding];
+        }
+        return this;
+    }
+    /** @internal */
+    _off(type, filter) {
+        const typeLower = type.toLocaleLowerCase();
+        this.bindings[typeLower] = this.bindings[typeLower].filter((bind) => {
+            var _a;
+            return !(((_a = bind.type) === null || _a === void 0 ? void 0 : _a.toLocaleLowerCase()) === typeLower &&
+                RealtimeChannel.isEqual(bind.filter, filter));
+        });
+        return this;
+    }
+    /** @internal */
+    static isEqual(obj1, obj2) {
+        if (Object.keys(obj1).length !== Object.keys(obj2).length) {
+            return false;
+        }
+        for (const k in obj1) {
+            if (obj1[k] !== obj2[k]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    /** @internal */
+    _rejoinUntilConnected() {
+        this.rejoinTimer.scheduleTimeout();
+        if (this.socket.isConnected()) {
+            this._rejoin();
+        }
+    }
+    /**
+     * Registers a callback that will be executed when the channel closes.
+     *
+     * @internal
+     */
+    _onClose(callback) {
+        this._on(_lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_EVENTS.close, {}, callback);
+    }
+    /**
+     * Registers a callback that will be executed when the channel encounteres an error.
+     *
+     * @internal
+     */
+    _onError(callback) {
+        this._on(_lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_EVENTS.error, {}, (reason) => callback(reason));
+    }
+    /**
+     * Returns `true` if the socket is connected and the channel has been joined.
+     *
+     * @internal
+     */
+    _canPush() {
+        return this.socket.isConnected() && this._isJoined();
+    }
+    /** @internal */
+    _rejoin(timeout = this.timeout) {
+        if (this._isLeaving()) {
+            return;
+        }
+        this.socket._leaveOpenTopic(this.topic);
+        this.state = _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_STATES.joining;
+        this.joinPush.resend(timeout);
+    }
+    /** @internal */
+    _getPayloadRecords(payload) {
+        const records = {
+            new: {},
+            old: {},
+        };
+        if (payload.type === 'INSERT' || payload.type === 'UPDATE') {
+            records.new = _lib_transformers__WEBPACK_IMPORTED_MODULE_4__.convertChangeData(payload.columns, payload.record);
+        }
+        if (payload.type === 'UPDATE' || payload.type === 'DELETE') {
+            records.old = _lib_transformers__WEBPACK_IMPORTED_MODULE_4__.convertChangeData(payload.columns, payload.old_record);
+        }
+        return records;
+    }
+}
+//# sourceMappingURL=RealtimeChannel.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/realtime-js/dist/module/RealtimeClient.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@supabase/realtime-js/dist/module/RealtimeClient.js ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ RealtimeClient)
+/* harmony export */ });
+/* harmony import */ var websocket__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! websocket */ "./node_modules/websocket/lib/browser.js");
+/* harmony import */ var websocket__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(websocket__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _lib_constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/constants */ "./node_modules/@supabase/realtime-js/dist/module/lib/constants.js");
+/* harmony import */ var _lib_timer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/timer */ "./node_modules/@supabase/realtime-js/dist/module/lib/timer.js");
+/* harmony import */ var _lib_serializer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lib/serializer */ "./node_modules/@supabase/realtime-js/dist/module/lib/serializer.js");
+/* harmony import */ var _RealtimeChannel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./RealtimeChannel */ "./node_modules/@supabase/realtime-js/dist/module/RealtimeChannel.js");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+
+
+
+const noop = () => { };
+class RealtimeClient {
+    /**
+     * Initializes the Socket.
+     *
+     * @param endPoint The string WebSocket endpoint, ie, "ws://example.com/socket", "wss://example.com", "/socket" (inherited host & protocol)
+     * @param options.transport The Websocket Transport, for example WebSocket.
+     * @param options.timeout The default timeout in milliseconds to trigger push timeouts.
+     * @param options.params The optional params to pass when connecting.
+     * @param options.headers The optional headers to pass when connecting.
+     * @param options.heartbeatIntervalMs The millisec interval to send a heartbeat message.
+     * @param options.logger The optional function for specialized logging, ie: logger: (kind, msg, data) => { console.log(`${kind}: ${msg}`, data) }
+     * @param options.encode The function to encode outgoing messages. Defaults to JSON: (payload, callback) => callback(JSON.stringify(payload))
+     * @param options.decode The function to decode incoming messages. Defaults to Serializer's decode.
+     * @param options.reconnectAfterMs he optional function that returns the millsec reconnect interval. Defaults to stepped backoff off.
+     */
+    constructor(endPoint, options) {
+        var _a;
+        this.accessToken = null;
+        this.channels = [];
+        this.endPoint = '';
+        this.headers = _lib_constants__WEBPACK_IMPORTED_MODULE_1__.DEFAULT_HEADERS;
+        this.params = {};
+        this.timeout = _lib_constants__WEBPACK_IMPORTED_MODULE_1__.DEFAULT_TIMEOUT;
+        this.transport = websocket__WEBPACK_IMPORTED_MODULE_0__.w3cwebsocket;
+        this.heartbeatIntervalMs = 30000;
+        this.heartbeatTimer = undefined;
+        this.pendingHeartbeatRef = null;
+        this.ref = 0;
+        this.logger = noop;
+        this.conn = null;
+        this.sendBuffer = [];
+        this.serializer = new _lib_serializer__WEBPACK_IMPORTED_MODULE_3__["default"]();
+        this.stateChangeCallbacks = {
+            open: [],
+            close: [],
+            error: [],
+            message: [],
+        };
+        this.eventsPerSecondLimitMs = 100;
+        this.inThrottle = false;
+        this.endPoint = `${endPoint}/${_lib_constants__WEBPACK_IMPORTED_MODULE_1__.TRANSPORTS.websocket}`;
+        if (options === null || options === void 0 ? void 0 : options.params)
+            this.params = options.params;
+        if (options === null || options === void 0 ? void 0 : options.headers)
+            this.headers = Object.assign(Object.assign({}, this.headers), options.headers);
+        if (options === null || options === void 0 ? void 0 : options.timeout)
+            this.timeout = options.timeout;
+        if (options === null || options === void 0 ? void 0 : options.logger)
+            this.logger = options.logger;
+        if (options === null || options === void 0 ? void 0 : options.transport)
+            this.transport = options.transport;
+        if (options === null || options === void 0 ? void 0 : options.heartbeatIntervalMs)
+            this.heartbeatIntervalMs = options.heartbeatIntervalMs;
+        const eventsPerSecond = (_a = options === null || options === void 0 ? void 0 : options.params) === null || _a === void 0 ? void 0 : _a.eventsPerSecond;
+        if (eventsPerSecond)
+            this.eventsPerSecondLimitMs = Math.floor(1000 / eventsPerSecond);
+        this.reconnectAfterMs = (options === null || options === void 0 ? void 0 : options.reconnectAfterMs)
+            ? options.reconnectAfterMs
+            : (tries) => {
+                return [1000, 2000, 5000, 10000][tries - 1] || 10000;
+            };
+        this.encode = (options === null || options === void 0 ? void 0 : options.encode)
+            ? options.encode
+            : (payload, callback) => {
+                return callback(JSON.stringify(payload));
+            };
+        this.decode = (options === null || options === void 0 ? void 0 : options.decode)
+            ? options.decode
+            : this.serializer.decode.bind(this.serializer);
+        this.reconnectTimer = new _lib_timer__WEBPACK_IMPORTED_MODULE_2__["default"](() => __awaiter(this, void 0, void 0, function* () {
+            this.disconnect();
+            this.connect();
+        }), this.reconnectAfterMs);
+    }
+    /**
+     * Connects the socket, unless already connected.
+     */
+    connect() {
+        if (this.conn) {
+            return;
+        }
+        this.conn = new this.transport(this._endPointURL(), [], null, this.headers);
+        if (this.conn) {
+            this.conn.binaryType = 'arraybuffer';
+            this.conn.onopen = () => this._onConnOpen();
+            this.conn.onerror = (error) => this._onConnError(error);
+            this.conn.onmessage = (event) => this._onConnMessage(event);
+            this.conn.onclose = (event) => this._onConnClose(event);
+        }
+    }
+    /**
+     * Disconnects the socket.
+     *
+     * @param code A numeric status code to send on disconnect.
+     * @param reason A custom reason for the disconnect.
+     */
+    disconnect(code, reason) {
+        if (this.conn) {
+            this.conn.onclose = function () { }; // noop
+            if (code) {
+                this.conn.close(code, reason !== null && reason !== void 0 ? reason : '');
+            }
+            else {
+                this.conn.close();
+            }
+            this.conn = null;
+            // remove open handles
+            this.heartbeatTimer && clearInterval(this.heartbeatTimer);
+            this.reconnectTimer.reset();
+        }
+    }
+    /**
+     * Returns all created channels
+     */
+    getChannels() {
+        return this.channels;
+    }
+    /**
+     * Unsubscribes and removes a single channel
+     * @param channel A RealtimeChannel instance
+     */
+    removeChannel(channel) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const status = yield channel.unsubscribe();
+            if (this.channels.length === 0) {
+                this.disconnect();
+            }
+            return status;
+        });
+    }
+    /**
+     * Unsubscribes and removes all channels
+     */
+    removeAllChannels() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const values_1 = yield Promise.all(this.channels.map((channel) => channel.unsubscribe()));
+            this.disconnect();
+            return values_1;
+        });
+    }
+    /**
+     * Logs the message.
+     *
+     * For customized logging, `this.logger` can be overridden.
+     */
+    log(kind, msg, data) {
+        this.logger(kind, msg, data);
+    }
+    /**
+     * Returns the current state of the socket.
+     */
+    connectionState() {
+        switch (this.conn && this.conn.readyState) {
+            case _lib_constants__WEBPACK_IMPORTED_MODULE_1__.SOCKET_STATES.connecting:
+                return _lib_constants__WEBPACK_IMPORTED_MODULE_1__.CONNECTION_STATE.Connecting;
+            case _lib_constants__WEBPACK_IMPORTED_MODULE_1__.SOCKET_STATES.open:
+                return _lib_constants__WEBPACK_IMPORTED_MODULE_1__.CONNECTION_STATE.Open;
+            case _lib_constants__WEBPACK_IMPORTED_MODULE_1__.SOCKET_STATES.closing:
+                return _lib_constants__WEBPACK_IMPORTED_MODULE_1__.CONNECTION_STATE.Closing;
+            default:
+                return _lib_constants__WEBPACK_IMPORTED_MODULE_1__.CONNECTION_STATE.Closed;
+        }
+    }
+    /**
+     * Returns `true` is the connection is open.
+     */
+    isConnected() {
+        return this.connectionState() === _lib_constants__WEBPACK_IMPORTED_MODULE_1__.CONNECTION_STATE.Open;
+    }
+    channel(topic, params = { config: {} }) {
+        if (!this.isConnected()) {
+            this.connect();
+        }
+        const chan = new _RealtimeChannel__WEBPACK_IMPORTED_MODULE_4__["default"](`realtime:${topic}`, params, this);
+        this.channels.push(chan);
+        return chan;
+    }
+    /**
+     * Push out a message if the socket is connected.
+     *
+     * If the socket is not connected, the message gets enqueued within a local buffer, and sent out when a connection is next established.
+     */
+    push(data) {
+        const { topic, event, payload, ref } = data;
+        let callback = () => {
+            this.encode(data, (result) => {
+                var _a;
+                (_a = this.conn) === null || _a === void 0 ? void 0 : _a.send(result);
+            });
+        };
+        this.log('push', `${topic} ${event} (${ref})`, payload);
+        if (this.isConnected()) {
+            if (['broadcast', 'presence', 'postgres_changes'].includes(event)) {
+                const isThrottled = this._throttle(callback)();
+                if (isThrottled) {
+                    return 'rate limited';
+                }
+            }
+            else {
+                callback();
+            }
+        }
+        else {
+            this.sendBuffer.push(callback);
+        }
+    }
+    /**
+     * Sets the JWT access token used for channel subscription authorization and Realtime RLS.
+     *
+     * @param token A JWT string.
+     */
+    setAuth(token) {
+        this.accessToken = token;
+        this.channels.forEach((channel) => {
+            token && channel.updateJoinPayload({ access_token: token });
+            if (channel.joinedOnce && channel._isJoined()) {
+                channel._push(_lib_constants__WEBPACK_IMPORTED_MODULE_1__.CHANNEL_EVENTS.access_token, { access_token: token });
+            }
+        });
+    }
+    /**
+     * Return the next message ref, accounting for overflows
+     *
+     * @internal
+     */
+    _makeRef() {
+        let newRef = this.ref + 1;
+        if (newRef === this.ref) {
+            this.ref = 0;
+        }
+        else {
+            this.ref = newRef;
+        }
+        return this.ref.toString();
+    }
+    /**
+     * Unsubscribe from channels with the specified topic.
+     *
+     * @internal
+     */
+    _leaveOpenTopic(topic) {
+        let dupChannel = this.channels.find((c) => c.topic === topic && (c._isJoined() || c._isJoining()));
+        if (dupChannel) {
+            this.log('transport', `leaving duplicate topic "${topic}"`);
+            dupChannel.unsubscribe();
+        }
+    }
+    /**
+     * Removes a subscription from the socket.
+     *
+     * @param channel An open subscription.
+     *
+     * @internal
+     */
+    _remove(channel) {
+        this.channels = this.channels.filter((c) => c._joinRef() !== channel._joinRef());
+    }
+    /**
+     * Returns the URL of the websocket.
+     *
+     * @internal
+     */
+    _endPointURL() {
+        return this._appendParams(this.endPoint, Object.assign({}, this.params, { vsn: _lib_constants__WEBPACK_IMPORTED_MODULE_1__.VSN }));
+    }
+    /** @internal */
+    _onConnMessage(rawMessage) {
+        this.decode(rawMessage.data, (msg) => {
+            let { topic, event, payload, ref } = msg;
+            if ((ref && ref === this.pendingHeartbeatRef) ||
+                event === (payload === null || payload === void 0 ? void 0 : payload.type)) {
+                this.pendingHeartbeatRef = null;
+            }
+            this.log('receive', `${payload.status || ''} ${topic} ${event} ${(ref && '(' + ref + ')') || ''}`, payload);
+            this.channels
+                .filter((channel) => channel._isMember(topic))
+                .forEach((channel) => channel._trigger(event, payload, ref));
+            this.stateChangeCallbacks.message.forEach((callback) => callback(msg));
+        });
+    }
+    /** @internal */
+    _onConnOpen() {
+        this.log('transport', `connected to ${this._endPointURL()}`);
+        this._flushSendBuffer();
+        this.reconnectTimer.reset();
+        this.heartbeatTimer && clearInterval(this.heartbeatTimer);
+        this.heartbeatTimer = setInterval(() => this._sendHeartbeat(), this.heartbeatIntervalMs);
+        this.stateChangeCallbacks.open.forEach((callback) => callback());
+    }
+    /** @internal */
+    _onConnClose(event) {
+        this.log('transport', 'close', event);
+        this._triggerChanError();
+        this.heartbeatTimer && clearInterval(this.heartbeatTimer);
+        this.reconnectTimer.scheduleTimeout();
+        this.stateChangeCallbacks.close.forEach((callback) => callback(event));
+    }
+    /** @internal */
+    _onConnError(error) {
+        this.log('transport', error.message);
+        this._triggerChanError();
+        this.stateChangeCallbacks.error.forEach((callback) => callback(error));
+    }
+    /** @internal */
+    _triggerChanError() {
+        this.channels.forEach((channel) => channel._trigger(_lib_constants__WEBPACK_IMPORTED_MODULE_1__.CHANNEL_EVENTS.error));
+    }
+    /** @internal */
+    _appendParams(url, params) {
+        if (Object.keys(params).length === 0) {
+            return url;
+        }
+        const prefix = url.match(/\?/) ? '&' : '?';
+        const query = new URLSearchParams(params);
+        return `${url}${prefix}${query}`;
+    }
+    /** @internal */
+    _flushSendBuffer() {
+        if (this.isConnected() && this.sendBuffer.length > 0) {
+            this.sendBuffer.forEach((callback) => callback());
+            this.sendBuffer = [];
+        }
+    }
+    /** @internal */
+    _sendHeartbeat() {
+        var _a;
+        if (!this.isConnected()) {
+            return;
+        }
+        if (this.pendingHeartbeatRef) {
+            this.pendingHeartbeatRef = null;
+            this.log('transport', 'heartbeat timeout. Attempting to re-establish connection');
+            (_a = this.conn) === null || _a === void 0 ? void 0 : _a.close(_lib_constants__WEBPACK_IMPORTED_MODULE_1__.WS_CLOSE_NORMAL, 'hearbeat timeout');
+            return;
+        }
+        this.pendingHeartbeatRef = this._makeRef();
+        this.push({
+            topic: 'phoenix',
+            event: 'heartbeat',
+            payload: {},
+            ref: this.pendingHeartbeatRef,
+        });
+        this.setAuth(this.accessToken);
+    }
+    /** @internal */
+    _throttle(callback, eventsPerSecondLimitMs = this.eventsPerSecondLimitMs) {
+        return () => {
+            if (this.inThrottle)
+                return true;
+            callback();
+            if (eventsPerSecondLimitMs > 0) {
+                this.inThrottle = true;
+                setTimeout(() => {
+                    this.inThrottle = false;
+                }, eventsPerSecondLimitMs);
+            }
+            return false;
+        };
+    }
+}
+//# sourceMappingURL=RealtimeClient.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/realtime-js/dist/module/RealtimePresence.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/@supabase/realtime-js/dist/module/RealtimePresence.js ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "REALTIME_PRESENCE_LISTEN_EVENTS": () => (/* binding */ REALTIME_PRESENCE_LISTEN_EVENTS),
+/* harmony export */   "default": () => (/* binding */ RealtimePresence)
+/* harmony export */ });
+/*
+  This file draws heavily from https://github.com/phoenixframework/phoenix/blob/d344ec0a732ab4ee204215b31de69cf4be72e3bf/assets/js/phoenix/presence.js
+  License: https://github.com/phoenixframework/phoenix/blob/d344ec0a732ab4ee204215b31de69cf4be72e3bf/LICENSE.md
+*/
+var REALTIME_PRESENCE_LISTEN_EVENTS;
+(function (REALTIME_PRESENCE_LISTEN_EVENTS) {
+    REALTIME_PRESENCE_LISTEN_EVENTS["SYNC"] = "sync";
+    REALTIME_PRESENCE_LISTEN_EVENTS["JOIN"] = "join";
+    REALTIME_PRESENCE_LISTEN_EVENTS["LEAVE"] = "leave";
+})(REALTIME_PRESENCE_LISTEN_EVENTS || (REALTIME_PRESENCE_LISTEN_EVENTS = {}));
+class RealtimePresence {
+    /**
+     * Initializes the Presence.
+     *
+     * @param channel - The RealtimeChannel
+     * @param opts - The options,
+     *        for example `{events: {state: 'state', diff: 'diff'}}`
+     */
+    constructor(channel, opts) {
+        this.channel = channel;
+        this.state = {};
+        this.pendingDiffs = [];
+        this.joinRef = null;
+        this.caller = {
+            onJoin: () => { },
+            onLeave: () => { },
+            onSync: () => { },
+        };
+        const events = (opts === null || opts === void 0 ? void 0 : opts.events) || {
+            state: 'presence_state',
+            diff: 'presence_diff',
+        };
+        this.channel._on(events.state, {}, (newState) => {
+            const { onJoin, onLeave, onSync } = this.caller;
+            this.joinRef = this.channel._joinRef();
+            this.state = RealtimePresence.syncState(this.state, newState, onJoin, onLeave);
+            this.pendingDiffs.forEach((diff) => {
+                this.state = RealtimePresence.syncDiff(this.state, diff, onJoin, onLeave);
+            });
+            this.pendingDiffs = [];
+            onSync();
+        });
+        this.channel._on(events.diff, {}, (diff) => {
+            const { onJoin, onLeave, onSync } = this.caller;
+            if (this.inPendingSyncState()) {
+                this.pendingDiffs.push(diff);
+            }
+            else {
+                this.state = RealtimePresence.syncDiff(this.state, diff, onJoin, onLeave);
+                onSync();
+            }
+        });
+        this.onJoin((key, currentPresences, newPresences) => {
+            this.channel._trigger('presence', {
+                event: 'join',
+                key,
+                currentPresences,
+                newPresences,
+            });
+        });
+        this.onLeave((key, currentPresences, leftPresences) => {
+            this.channel._trigger('presence', {
+                event: 'leave',
+                key,
+                currentPresences,
+                leftPresences,
+            });
+        });
+        this.onSync(() => {
+            this.channel._trigger('presence', { event: 'sync' });
+        });
+    }
+    /**
+     * Used to sync the list of presences on the server with the
+     * client's state.
+     *
+     * An optional `onJoin` and `onLeave` callback can be provided to
+     * react to changes in the client's local presences across
+     * disconnects and reconnects with the server.
+     *
+     * @internal
+     */
+    static syncState(currentState, newState, onJoin, onLeave) {
+        const state = this.cloneDeep(currentState);
+        const transformedState = this.transformState(newState);
+        const joins = {};
+        const leaves = {};
+        this.map(state, (key, presences) => {
+            if (!transformedState[key]) {
+                leaves[key] = presences;
+            }
+        });
+        this.map(transformedState, (key, newPresences) => {
+            const currentPresences = state[key];
+            if (currentPresences) {
+                const newPresenceRefs = newPresences.map((m) => m.presence_ref);
+                const curPresenceRefs = currentPresences.map((m) => m.presence_ref);
+                const joinedPresences = newPresences.filter((m) => curPresenceRefs.indexOf(m.presence_ref) < 0);
+                const leftPresences = currentPresences.filter((m) => newPresenceRefs.indexOf(m.presence_ref) < 0);
+                if (joinedPresences.length > 0) {
+                    joins[key] = joinedPresences;
+                }
+                if (leftPresences.length > 0) {
+                    leaves[key] = leftPresences;
+                }
+            }
+            else {
+                joins[key] = newPresences;
+            }
+        });
+        return this.syncDiff(state, { joins, leaves }, onJoin, onLeave);
+    }
+    /**
+     * Used to sync a diff of presence join and leave events from the
+     * server, as they happen.
+     *
+     * Like `syncState`, `syncDiff` accepts optional `onJoin` and
+     * `onLeave` callbacks to react to a user joining or leaving from a
+     * device.
+     *
+     * @internal
+     */
+    static syncDiff(state, diff, onJoin, onLeave) {
+        const { joins, leaves } = {
+            joins: this.transformState(diff.joins),
+            leaves: this.transformState(diff.leaves),
+        };
+        if (!onJoin) {
+            onJoin = () => { };
+        }
+        if (!onLeave) {
+            onLeave = () => { };
+        }
+        this.map(joins, (key, newPresences) => {
+            var _a;
+            const currentPresences = (_a = state[key]) !== null && _a !== void 0 ? _a : [];
+            state[key] = this.cloneDeep(newPresences);
+            if (currentPresences.length > 0) {
+                const joinedPresenceRefs = state[key].map((m) => m.presence_ref);
+                const curPresences = currentPresences.filter((m) => joinedPresenceRefs.indexOf(m.presence_ref) < 0);
+                state[key].unshift(...curPresences);
+            }
+            onJoin(key, currentPresences, newPresences);
+        });
+        this.map(leaves, (key, leftPresences) => {
+            let currentPresences = state[key];
+            if (!currentPresences)
+                return;
+            const presenceRefsToRemove = leftPresences.map((m) => m.presence_ref);
+            currentPresences = currentPresences.filter((m) => presenceRefsToRemove.indexOf(m.presence_ref) < 0);
+            state[key] = currentPresences;
+            onLeave(key, currentPresences, leftPresences);
+            if (currentPresences.length === 0)
+                delete state[key];
+        });
+        return state;
+    }
+    /** @internal */
+    static map(obj, func) {
+        return Object.getOwnPropertyNames(obj).map((key) => func(key, obj[key]));
+    }
+    /**
+     * Remove 'metas' key
+     * Change 'phx_ref' to 'presence_ref'
+     * Remove 'phx_ref' and 'phx_ref_prev'
+     *
+     * @example
+     * // returns {
+     *  abc123: [
+     *    { presence_ref: '2', user_id: 1 },
+     *    { presence_ref: '3', user_id: 2 }
+     *  ]
+     * }
+     * RealtimePresence.transformState({
+     *  abc123: {
+     *    metas: [
+     *      { phx_ref: '2', phx_ref_prev: '1' user_id: 1 },
+     *      { phx_ref: '3', user_id: 2 }
+     *    ]
+     *  }
+     * })
+     *
+     * @internal
+     */
+    static transformState(state) {
+        state = this.cloneDeep(state);
+        return Object.getOwnPropertyNames(state).reduce((newState, key) => {
+            const presences = state[key];
+            if ('metas' in presences) {
+                newState[key] = presences.metas.map((presence) => {
+                    presence['presence_ref'] = presence['phx_ref'];
+                    delete presence['phx_ref'];
+                    delete presence['phx_ref_prev'];
+                    return presence;
+                });
+            }
+            else {
+                newState[key] = presences;
+            }
+            return newState;
+        }, {});
+    }
+    /** @internal */
+    static cloneDeep(obj) {
+        return JSON.parse(JSON.stringify(obj));
+    }
+    /** @internal */
+    onJoin(callback) {
+        this.caller.onJoin = callback;
+    }
+    /** @internal */
+    onLeave(callback) {
+        this.caller.onLeave = callback;
+    }
+    /** @internal */
+    onSync(callback) {
+        this.caller.onSync = callback;
+    }
+    /** @internal */
+    inPendingSyncState() {
+        return !this.joinRef || this.joinRef !== this.channel._joinRef();
+    }
+}
+//# sourceMappingURL=RealtimePresence.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/realtime-js/dist/module/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@supabase/realtime-js/dist/module/index.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "REALTIME_LISTEN_TYPES": () => (/* reexport safe */ _RealtimeChannel__WEBPACK_IMPORTED_MODULE_1__.REALTIME_LISTEN_TYPES),
+/* harmony export */   "REALTIME_POSTGRES_CHANGES_LISTEN_EVENT": () => (/* reexport safe */ _RealtimeChannel__WEBPACK_IMPORTED_MODULE_1__.REALTIME_POSTGRES_CHANGES_LISTEN_EVENT),
+/* harmony export */   "REALTIME_PRESENCE_LISTEN_EVENTS": () => (/* reexport safe */ _RealtimePresence__WEBPACK_IMPORTED_MODULE_2__.REALTIME_PRESENCE_LISTEN_EVENTS),
+/* harmony export */   "REALTIME_SUBSCRIBE_STATES": () => (/* reexport safe */ _RealtimeChannel__WEBPACK_IMPORTED_MODULE_1__.REALTIME_SUBSCRIBE_STATES),
+/* harmony export */   "RealtimeChannel": () => (/* reexport safe */ _RealtimeChannel__WEBPACK_IMPORTED_MODULE_1__["default"]),
+/* harmony export */   "RealtimeClient": () => (/* reexport safe */ _RealtimeClient__WEBPACK_IMPORTED_MODULE_0__["default"]),
+/* harmony export */   "RealtimePresence": () => (/* reexport safe */ _RealtimePresence__WEBPACK_IMPORTED_MODULE_2__["default"])
+/* harmony export */ });
+/* harmony import */ var _RealtimeClient__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RealtimeClient */ "./node_modules/@supabase/realtime-js/dist/module/RealtimeClient.js");
+/* harmony import */ var _RealtimeChannel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RealtimeChannel */ "./node_modules/@supabase/realtime-js/dist/module/RealtimeChannel.js");
+/* harmony import */ var _RealtimePresence__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RealtimePresence */ "./node_modules/@supabase/realtime-js/dist/module/RealtimePresence.js");
+
+
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/realtime-js/dist/module/lib/constants.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/@supabase/realtime-js/dist/module/lib/constants.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CHANNEL_EVENTS": () => (/* binding */ CHANNEL_EVENTS),
+/* harmony export */   "CHANNEL_STATES": () => (/* binding */ CHANNEL_STATES),
+/* harmony export */   "CONNECTION_STATE": () => (/* binding */ CONNECTION_STATE),
+/* harmony export */   "DEFAULT_HEADERS": () => (/* binding */ DEFAULT_HEADERS),
+/* harmony export */   "DEFAULT_TIMEOUT": () => (/* binding */ DEFAULT_TIMEOUT),
+/* harmony export */   "SOCKET_STATES": () => (/* binding */ SOCKET_STATES),
+/* harmony export */   "TRANSPORTS": () => (/* binding */ TRANSPORTS),
+/* harmony export */   "VSN": () => (/* binding */ VSN),
+/* harmony export */   "WS_CLOSE_NORMAL": () => (/* binding */ WS_CLOSE_NORMAL)
+/* harmony export */ });
+/* harmony import */ var _version__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./version */ "./node_modules/@supabase/realtime-js/dist/module/lib/version.js");
+
+const DEFAULT_HEADERS = { 'X-Client-Info': `realtime-js/${_version__WEBPACK_IMPORTED_MODULE_0__.version}` };
+const VSN = '1.0.0';
+const DEFAULT_TIMEOUT = 10000;
+const WS_CLOSE_NORMAL = 1000;
+var SOCKET_STATES;
+(function (SOCKET_STATES) {
+    SOCKET_STATES[SOCKET_STATES["connecting"] = 0] = "connecting";
+    SOCKET_STATES[SOCKET_STATES["open"] = 1] = "open";
+    SOCKET_STATES[SOCKET_STATES["closing"] = 2] = "closing";
+    SOCKET_STATES[SOCKET_STATES["closed"] = 3] = "closed";
+})(SOCKET_STATES || (SOCKET_STATES = {}));
+var CHANNEL_STATES;
+(function (CHANNEL_STATES) {
+    CHANNEL_STATES["closed"] = "closed";
+    CHANNEL_STATES["errored"] = "errored";
+    CHANNEL_STATES["joined"] = "joined";
+    CHANNEL_STATES["joining"] = "joining";
+    CHANNEL_STATES["leaving"] = "leaving";
+})(CHANNEL_STATES || (CHANNEL_STATES = {}));
+var CHANNEL_EVENTS;
+(function (CHANNEL_EVENTS) {
+    CHANNEL_EVENTS["close"] = "phx_close";
+    CHANNEL_EVENTS["error"] = "phx_error";
+    CHANNEL_EVENTS["join"] = "phx_join";
+    CHANNEL_EVENTS["reply"] = "phx_reply";
+    CHANNEL_EVENTS["leave"] = "phx_leave";
+    CHANNEL_EVENTS["access_token"] = "access_token";
+})(CHANNEL_EVENTS || (CHANNEL_EVENTS = {}));
+var TRANSPORTS;
+(function (TRANSPORTS) {
+    TRANSPORTS["websocket"] = "websocket";
+})(TRANSPORTS || (TRANSPORTS = {}));
+var CONNECTION_STATE;
+(function (CONNECTION_STATE) {
+    CONNECTION_STATE["Connecting"] = "connecting";
+    CONNECTION_STATE["Open"] = "open";
+    CONNECTION_STATE["Closing"] = "closing";
+    CONNECTION_STATE["Closed"] = "closed";
+})(CONNECTION_STATE || (CONNECTION_STATE = {}));
+//# sourceMappingURL=constants.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/realtime-js/dist/module/lib/push.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@supabase/realtime-js/dist/module/lib/push.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Push)
+/* harmony export */ });
+/* harmony import */ var _lib_constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../lib/constants */ "./node_modules/@supabase/realtime-js/dist/module/lib/constants.js");
+
+class Push {
+    /**
+     * Initializes the Push
+     *
+     * @param channel The Channel
+     * @param event The event, for example `"phx_join"`
+     * @param payload The payload, for example `{user_id: 123}`
+     * @param timeout The push timeout in milliseconds
+     */
+    constructor(channel, event, payload = {}, timeout = _lib_constants__WEBPACK_IMPORTED_MODULE_0__.DEFAULT_TIMEOUT) {
+        this.channel = channel;
+        this.event = event;
+        this.payload = payload;
+        this.timeout = timeout;
+        this.sent = false;
+        this.timeoutTimer = undefined;
+        this.ref = '';
+        this.receivedResp = null;
+        this.recHooks = [];
+        this.refEvent = null;
+        this.rateLimited = false;
+    }
+    resend(timeout) {
+        this.timeout = timeout;
+        this._cancelRefEvent();
+        this.ref = '';
+        this.refEvent = null;
+        this.receivedResp = null;
+        this.sent = false;
+        this.send();
+    }
+    send() {
+        if (this._hasReceived('timeout')) {
+            return;
+        }
+        this.startTimeout();
+        this.sent = true;
+        const status = this.channel.socket.push({
+            topic: this.channel.topic,
+            event: this.event,
+            payload: this.payload,
+            ref: this.ref,
+            join_ref: this.channel._joinRef(),
+        });
+        if (status === 'rate limited') {
+            this.rateLimited = true;
+        }
+    }
+    updatePayload(payload) {
+        this.payload = Object.assign(Object.assign({}, this.payload), payload);
+    }
+    receive(status, callback) {
+        var _a;
+        if (this._hasReceived(status)) {
+            callback((_a = this.receivedResp) === null || _a === void 0 ? void 0 : _a.response);
+        }
+        this.recHooks.push({ status, callback });
+        return this;
+    }
+    startTimeout() {
+        if (this.timeoutTimer) {
+            return;
+        }
+        this.ref = this.channel.socket._makeRef();
+        this.refEvent = this.channel._replyEventName(this.ref);
+        const callback = (payload) => {
+            this._cancelRefEvent();
+            this._cancelTimeout();
+            this.receivedResp = payload;
+            this._matchReceive(payload);
+        };
+        this.channel._on(this.refEvent, {}, callback);
+        this.timeoutTimer = setTimeout(() => {
+            this.trigger('timeout', {});
+        }, this.timeout);
+    }
+    trigger(status, response) {
+        if (this.refEvent)
+            this.channel._trigger(this.refEvent, { status, response });
+    }
+    destroy() {
+        this._cancelRefEvent();
+        this._cancelTimeout();
+    }
+    _cancelRefEvent() {
+        if (!this.refEvent) {
+            return;
+        }
+        this.channel._off(this.refEvent, {});
+    }
+    _cancelTimeout() {
+        clearTimeout(this.timeoutTimer);
+        this.timeoutTimer = undefined;
+    }
+    _matchReceive({ status, response, }) {
+        this.recHooks
+            .filter((h) => h.status === status)
+            .forEach((h) => h.callback(response));
+    }
+    _hasReceived(status) {
+        return this.receivedResp && this.receivedResp.status === status;
+    }
+}
+//# sourceMappingURL=push.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/realtime-js/dist/module/lib/serializer.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@supabase/realtime-js/dist/module/lib/serializer.js ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Serializer)
+/* harmony export */ });
+// This file draws heavily from https://github.com/phoenixframework/phoenix/commit/cf098e9cf7a44ee6479d31d911a97d3c7430c6fe
+// License: https://github.com/phoenixframework/phoenix/blob/master/LICENSE.md
+class Serializer {
+    constructor() {
+        this.HEADER_LENGTH = 1;
+    }
+    decode(rawPayload, callback) {
+        if (rawPayload.constructor === ArrayBuffer) {
+            return callback(this._binaryDecode(rawPayload));
+        }
+        if (typeof rawPayload === 'string') {
+            return callback(JSON.parse(rawPayload));
+        }
+        return callback({});
+    }
+    _binaryDecode(buffer) {
+        const view = new DataView(buffer);
+        const decoder = new TextDecoder();
+        return this._decodeBroadcast(buffer, view, decoder);
+    }
+    _decodeBroadcast(buffer, view, decoder) {
+        const topicSize = view.getUint8(1);
+        const eventSize = view.getUint8(2);
+        let offset = this.HEADER_LENGTH + 2;
+        const topic = decoder.decode(buffer.slice(offset, offset + topicSize));
+        offset = offset + topicSize;
+        const event = decoder.decode(buffer.slice(offset, offset + eventSize));
+        offset = offset + eventSize;
+        const data = JSON.parse(decoder.decode(buffer.slice(offset, buffer.byteLength)));
+        return { ref: null, topic: topic, event: event, payload: data };
+    }
+}
+//# sourceMappingURL=serializer.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/realtime-js/dist/module/lib/timer.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@supabase/realtime-js/dist/module/lib/timer.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Timer)
+/* harmony export */ });
+/**
+ * Creates a timer that accepts a `timerCalc` function to perform calculated timeout retries, such as exponential backoff.
+ *
+ * @example
+ *    let reconnectTimer = new Timer(() => this.connect(), function(tries){
+ *      return [1000, 5000, 10000][tries - 1] || 10000
+ *    })
+ *    reconnectTimer.scheduleTimeout() // fires after 1000
+ *    reconnectTimer.scheduleTimeout() // fires after 5000
+ *    reconnectTimer.reset()
+ *    reconnectTimer.scheduleTimeout() // fires after 1000
+ */
+class Timer {
+    constructor(callback, timerCalc) {
+        this.callback = callback;
+        this.timerCalc = timerCalc;
+        this.timer = undefined;
+        this.tries = 0;
+        this.callback = callback;
+        this.timerCalc = timerCalc;
+    }
+    reset() {
+        this.tries = 0;
+        clearTimeout(this.timer);
+    }
+    // Cancels any previous scheduleTimeout and schedules callback
+    scheduleTimeout() {
+        clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
+            this.tries = this.tries + 1;
+            this.callback();
+        }, this.timerCalc(this.tries + 1));
+    }
+}
+//# sourceMappingURL=timer.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/realtime-js/dist/module/lib/transformers.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/@supabase/realtime-js/dist/module/lib/transformers.js ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PostgresTypes": () => (/* binding */ PostgresTypes),
+/* harmony export */   "convertCell": () => (/* binding */ convertCell),
+/* harmony export */   "convertChangeData": () => (/* binding */ convertChangeData),
+/* harmony export */   "convertColumn": () => (/* binding */ convertColumn),
+/* harmony export */   "toArray": () => (/* binding */ toArray),
+/* harmony export */   "toBoolean": () => (/* binding */ toBoolean),
+/* harmony export */   "toJson": () => (/* binding */ toJson),
+/* harmony export */   "toNumber": () => (/* binding */ toNumber),
+/* harmony export */   "toTimestampString": () => (/* binding */ toTimestampString)
+/* harmony export */ });
+/**
+ * Helpers to convert the change Payload into native JS types.
+ */
+// Adapted from epgsql (src/epgsql_binary.erl), this module licensed under
+// 3-clause BSD found here: https://raw.githubusercontent.com/epgsql/epgsql/devel/LICENSE
+var PostgresTypes;
+(function (PostgresTypes) {
+    PostgresTypes["abstime"] = "abstime";
+    PostgresTypes["bool"] = "bool";
+    PostgresTypes["date"] = "date";
+    PostgresTypes["daterange"] = "daterange";
+    PostgresTypes["float4"] = "float4";
+    PostgresTypes["float8"] = "float8";
+    PostgresTypes["int2"] = "int2";
+    PostgresTypes["int4"] = "int4";
+    PostgresTypes["int4range"] = "int4range";
+    PostgresTypes["int8"] = "int8";
+    PostgresTypes["int8range"] = "int8range";
+    PostgresTypes["json"] = "json";
+    PostgresTypes["jsonb"] = "jsonb";
+    PostgresTypes["money"] = "money";
+    PostgresTypes["numeric"] = "numeric";
+    PostgresTypes["oid"] = "oid";
+    PostgresTypes["reltime"] = "reltime";
+    PostgresTypes["text"] = "text";
+    PostgresTypes["time"] = "time";
+    PostgresTypes["timestamp"] = "timestamp";
+    PostgresTypes["timestamptz"] = "timestamptz";
+    PostgresTypes["timetz"] = "timetz";
+    PostgresTypes["tsrange"] = "tsrange";
+    PostgresTypes["tstzrange"] = "tstzrange";
+})(PostgresTypes || (PostgresTypes = {}));
+/**
+ * Takes an array of columns and an object of string values then converts each string value
+ * to its mapped type.
+ *
+ * @param {{name: String, type: String}[]} columns
+ * @param {Object} record
+ * @param {Object} options The map of various options that can be applied to the mapper
+ * @param {Array} options.skipTypes The array of types that should not be converted
+ *
+ * @example convertChangeData([{name: 'first_name', type: 'text'}, {name: 'age', type: 'int4'}], {first_name: 'Paul', age:'33'}, {})
+ * //=>{ first_name: 'Paul', age: 33 }
+ */
+const convertChangeData = (columns, record, options = {}) => {
+    var _a;
+    const skipTypes = (_a = options.skipTypes) !== null && _a !== void 0 ? _a : [];
+    return Object.keys(record).reduce((acc, rec_key) => {
+        acc[rec_key] = convertColumn(rec_key, columns, record, skipTypes);
+        return acc;
+    }, {});
+};
+/**
+ * Converts the value of an individual column.
+ *
+ * @param {String} columnName The column that you want to convert
+ * @param {{name: String, type: String}[]} columns All of the columns
+ * @param {Object} record The map of string values
+ * @param {Array} skipTypes An array of types that should not be converted
+ * @return {object} Useless information
+ *
+ * @example convertColumn('age', [{name: 'first_name', type: 'text'}, {name: 'age', type: 'int4'}], {first_name: 'Paul', age: '33'}, [])
+ * //=> 33
+ * @example convertColumn('age', [{name: 'first_name', type: 'text'}, {name: 'age', type: 'int4'}], {first_name: 'Paul', age: '33'}, ['int4'])
+ * //=> "33"
+ */
+const convertColumn = (columnName, columns, record, skipTypes) => {
+    const column = columns.find((x) => x.name === columnName);
+    const colType = column === null || column === void 0 ? void 0 : column.type;
+    const value = record[columnName];
+    if (colType && !skipTypes.includes(colType)) {
+        return convertCell(colType, value);
+    }
+    return noop(value);
+};
+/**
+ * If the value of the cell is `null`, returns null.
+ * Otherwise converts the string value to the correct type.
+ * @param {String} type A postgres column type
+ * @param {String} value The cell value
+ *
+ * @example convertCell('bool', 't')
+ * //=> true
+ * @example convertCell('int8', '10')
+ * //=> 10
+ * @example convertCell('_int4', '{1,2,3,4}')
+ * //=> [1,2,3,4]
+ */
+const convertCell = (type, value) => {
+    // if data type is an array
+    if (type.charAt(0) === '_') {
+        const dataType = type.slice(1, type.length);
+        return toArray(value, dataType);
+    }
+    // If not null, convert to correct type.
+    switch (type) {
+        case PostgresTypes.bool:
+            return toBoolean(value);
+        case PostgresTypes.float4:
+        case PostgresTypes.float8:
+        case PostgresTypes.int2:
+        case PostgresTypes.int4:
+        case PostgresTypes.int8:
+        case PostgresTypes.numeric:
+        case PostgresTypes.oid:
+            return toNumber(value);
+        case PostgresTypes.json:
+        case PostgresTypes.jsonb:
+            return toJson(value);
+        case PostgresTypes.timestamp:
+            return toTimestampString(value); // Format to be consistent with PostgREST
+        case PostgresTypes.abstime: // To allow users to cast it based on Timezone
+        case PostgresTypes.date: // To allow users to cast it based on Timezone
+        case PostgresTypes.daterange:
+        case PostgresTypes.int4range:
+        case PostgresTypes.int8range:
+        case PostgresTypes.money:
+        case PostgresTypes.reltime: // To allow users to cast it based on Timezone
+        case PostgresTypes.text:
+        case PostgresTypes.time: // To allow users to cast it based on Timezone
+        case PostgresTypes.timestamptz: // To allow users to cast it based on Timezone
+        case PostgresTypes.timetz: // To allow users to cast it based on Timezone
+        case PostgresTypes.tsrange:
+        case PostgresTypes.tstzrange:
+            return noop(value);
+        default:
+            // Return the value for remaining types
+            return noop(value);
+    }
+};
+const noop = (value) => {
+    return value;
+};
+const toBoolean = (value) => {
+    switch (value) {
+        case 't':
+            return true;
+        case 'f':
+            return false;
+        default:
+            return value;
+    }
+};
+const toNumber = (value) => {
+    if (typeof value === 'string') {
+        const parsedValue = parseFloat(value);
+        if (!Number.isNaN(parsedValue)) {
+            return parsedValue;
+        }
+    }
+    return value;
+};
+const toJson = (value) => {
+    if (typeof value === 'string') {
+        try {
+            return JSON.parse(value);
+        }
+        catch (error) {
+            console.log(`JSON parse error: ${error}`);
+            return value;
+        }
+    }
+    return value;
+};
+/**
+ * Converts a Postgres Array into a native JS array
+ *
+ * @example toArray('{}', 'int4')
+ * //=> []
+ * @example toArray('{"[2021-01-01,2021-12-31)","(2021-01-01,2021-12-32]"}', 'daterange')
+ * //=> ['[2021-01-01,2021-12-31)', '(2021-01-01,2021-12-32]']
+ * @example toArray([1,2,3,4], 'int4')
+ * //=> [1,2,3,4]
+ */
+const toArray = (value, type) => {
+    if (typeof value !== 'string') {
+        return value;
+    }
+    const lastIdx = value.length - 1;
+    const closeBrace = value[lastIdx];
+    const openBrace = value[0];
+    // Confirm value is a Postgres array by checking curly brackets
+    if (openBrace === '{' && closeBrace === '}') {
+        let arr;
+        const valTrim = value.slice(1, lastIdx);
+        // TODO: find a better solution to separate Postgres array data
+        try {
+            arr = JSON.parse('[' + valTrim + ']');
+        }
+        catch (_) {
+            // WARNING: splitting on comma does not cover all edge cases
+            arr = valTrim ? valTrim.split(',') : [];
+        }
+        return arr.map((val) => convertCell(type, val));
+    }
+    return value;
+};
+/**
+ * Fixes timestamp to be ISO-8601. Swaps the space between the date and time for a 'T'
+ * See https://github.com/supabase/supabase/issues/18
+ *
+ * @example toTimestampString('2019-09-10 00:00:00')
+ * //=> '2019-09-10T00:00:00'
+ */
+const toTimestampString = (value) => {
+    if (typeof value === 'string') {
+        return value.replace(' ', 'T');
+    }
+    return value;
+};
+//# sourceMappingURL=transformers.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/realtime-js/dist/module/lib/version.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@supabase/realtime-js/dist/module/lib/version.js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "version": () => (/* binding */ version)
+/* harmony export */ });
+const version = '2.7.2';
+//# sourceMappingURL=version.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/storage-js/dist/module/StorageClient.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/@supabase/storage-js/dist/module/StorageClient.js ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "StorageClient": () => (/* binding */ StorageClient)
+/* harmony export */ });
+/* harmony import */ var _packages_StorageFileApi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./packages/StorageFileApi */ "./node_modules/@supabase/storage-js/dist/module/packages/StorageFileApi.js");
+/* harmony import */ var _packages_StorageBucketApi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./packages/StorageBucketApi */ "./node_modules/@supabase/storage-js/dist/module/packages/StorageBucketApi.js");
+
+
+class StorageClient extends _packages_StorageBucketApi__WEBPACK_IMPORTED_MODULE_0__["default"] {
+    constructor(url, headers = {}, fetch) {
+        super(url, headers, fetch);
+    }
+    /**
+     * Perform file operation in a bucket.
+     *
+     * @param id The bucket id to operate on.
+     */
+    from(id) {
+        return new _packages_StorageFileApi__WEBPACK_IMPORTED_MODULE_1__["default"](this.url, this.headers, id, this.fetch);
+    }
+}
+//# sourceMappingURL=StorageClient.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/storage-js/dist/module/lib/constants.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/@supabase/storage-js/dist/module/lib/constants.js ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "DEFAULT_HEADERS": () => (/* binding */ DEFAULT_HEADERS)
+/* harmony export */ });
+/* harmony import */ var _version__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./version */ "./node_modules/@supabase/storage-js/dist/module/lib/version.js");
+
+const DEFAULT_HEADERS = { 'X-Client-Info': `storage-js/${_version__WEBPACK_IMPORTED_MODULE_0__.version}` };
+//# sourceMappingURL=constants.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/storage-js/dist/module/lib/errors.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@supabase/storage-js/dist/module/lib/errors.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "StorageApiError": () => (/* binding */ StorageApiError),
+/* harmony export */   "StorageError": () => (/* binding */ StorageError),
+/* harmony export */   "StorageUnknownError": () => (/* binding */ StorageUnknownError),
+/* harmony export */   "isStorageError": () => (/* binding */ isStorageError)
+/* harmony export */ });
+class StorageError extends Error {
+    constructor(message) {
+        super(message);
+        this.__isStorageError = true;
+        this.name = 'StorageError';
+    }
+}
+function isStorageError(error) {
+    return typeof error === 'object' && error !== null && '__isStorageError' in error;
+}
+class StorageApiError extends StorageError {
+    constructor(message, status) {
+        super(message);
+        this.name = 'StorageApiError';
+        this.status = status;
+    }
+    toJSON() {
+        return {
+            name: this.name,
+            message: this.message,
+            status: this.status,
+        };
+    }
+}
+class StorageUnknownError extends StorageError {
+    constructor(message, originalError) {
+        super(message);
+        this.name = 'StorageUnknownError';
+        this.originalError = originalError;
+    }
+}
+//# sourceMappingURL=errors.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/storage-js/dist/module/lib/fetch.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@supabase/storage-js/dist/module/lib/fetch.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "get": () => (/* binding */ get),
+/* harmony export */   "post": () => (/* binding */ post),
+/* harmony export */   "put": () => (/* binding */ put),
+/* harmony export */   "remove": () => (/* binding */ remove)
+/* harmony export */ });
+/* harmony import */ var _errors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./errors */ "./node_modules/@supabase/storage-js/dist/module/lib/errors.js");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers */ "./node_modules/@supabase/storage-js/dist/module/lib/helpers.js");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+const _getErrorMessage = (err) => err.msg || err.message || err.error_description || err.error || JSON.stringify(err);
+const handleError = (error, reject) => __awaiter(void 0, void 0, void 0, function* () {
+    const Res = yield (0,_helpers__WEBPACK_IMPORTED_MODULE_0__.resolveResponse)();
+    if (error instanceof Res) {
+        error
+            .json()
+            .then((err) => {
+            reject(new _errors__WEBPACK_IMPORTED_MODULE_1__.StorageApiError(_getErrorMessage(err), error.status || 500));
+        })
+            .catch((err) => {
+            reject(new _errors__WEBPACK_IMPORTED_MODULE_1__.StorageUnknownError(_getErrorMessage(err), err));
+        });
+    }
+    else {
+        reject(new _errors__WEBPACK_IMPORTED_MODULE_1__.StorageUnknownError(_getErrorMessage(error), error));
+    }
+});
+const _getRequestParams = (method, options, parameters, body) => {
+    const params = { method, headers: (options === null || options === void 0 ? void 0 : options.headers) || {} };
+    if (method === 'GET') {
+        return params;
+    }
+    params.headers = Object.assign({ 'Content-Type': 'application/json' }, options === null || options === void 0 ? void 0 : options.headers);
+    params.body = JSON.stringify(body);
+    return Object.assign(Object.assign({}, params), parameters);
+};
+function _handleRequest(fetcher, method, url, options, parameters, body) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return new Promise((resolve, reject) => {
+            fetcher(url, _getRequestParams(method, options, parameters, body))
+                .then((result) => {
+                if (!result.ok)
+                    throw result;
+                if (options === null || options === void 0 ? void 0 : options.noResolveJson)
+                    return result;
+                return result.json();
+            })
+                .then((data) => resolve(data))
+                .catch((error) => handleError(error, reject));
+        });
+    });
+}
+function get(fetcher, url, options, parameters) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return _handleRequest(fetcher, 'GET', url, options, parameters);
+    });
+}
+function post(fetcher, url, body, options, parameters) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return _handleRequest(fetcher, 'POST', url, options, parameters, body);
+    });
+}
+function put(fetcher, url, body, options, parameters) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return _handleRequest(fetcher, 'PUT', url, options, parameters, body);
+    });
+}
+function remove(fetcher, url, body, options, parameters) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return _handleRequest(fetcher, 'DELETE', url, options, parameters, body);
+    });
+}
+//# sourceMappingURL=fetch.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/storage-js/dist/module/lib/helpers.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@supabase/storage-js/dist/module/lib/helpers.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "resolveFetch": () => (/* binding */ resolveFetch),
+/* harmony export */   "resolveResponse": () => (/* binding */ resolveResponse)
+/* harmony export */ });
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+const resolveFetch = (customFetch) => {
+    let _fetch;
+    if (customFetch) {
+        _fetch = customFetch;
+    }
+    else if (typeof fetch === 'undefined') {
+        _fetch = (...args) => __awaiter(void 0, void 0, void 0, function* () { return yield (yield Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! cross-fetch */ "./node_modules/cross-fetch/dist/browser-ponyfill.js", 23))).fetch(...args); });
+    }
+    else {
+        _fetch = fetch;
+    }
+    return (...args) => _fetch(...args);
+};
+const resolveResponse = () => __awaiter(void 0, void 0, void 0, function* () {
+    if (typeof Response === 'undefined') {
+        return (yield Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! cross-fetch */ "./node_modules/cross-fetch/dist/browser-ponyfill.js", 23))).Response;
+    }
+    return Response;
+});
+//# sourceMappingURL=helpers.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/storage-js/dist/module/lib/version.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@supabase/storage-js/dist/module/lib/version.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "version": () => (/* binding */ version)
+/* harmony export */ });
+// generated by genversion
+const version = '2.5.1';
+//# sourceMappingURL=version.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/storage-js/dist/module/packages/StorageBucketApi.js":
+/*!************************************************************************************!*\
+  !*** ./node_modules/@supabase/storage-js/dist/module/packages/StorageBucketApi.js ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ StorageBucketApi)
+/* harmony export */ });
+/* harmony import */ var _lib_constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../lib/constants */ "./node_modules/@supabase/storage-js/dist/module/lib/constants.js");
+/* harmony import */ var _lib_errors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../lib/errors */ "./node_modules/@supabase/storage-js/dist/module/lib/errors.js");
+/* harmony import */ var _lib_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../lib/fetch */ "./node_modules/@supabase/storage-js/dist/module/lib/fetch.js");
+/* harmony import */ var _lib_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../lib/helpers */ "./node_modules/@supabase/storage-js/dist/module/lib/helpers.js");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+
+
+class StorageBucketApi {
+    constructor(url, headers = {}, fetch) {
+        this.url = url;
+        this.headers = Object.assign(Object.assign({}, _lib_constants__WEBPACK_IMPORTED_MODULE_0__.DEFAULT_HEADERS), headers);
+        this.fetch = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_1__.resolveFetch)(fetch);
+    }
+    /**
+     * Retrieves the details of all Storage buckets within an existing project.
+     */
+    listBuckets() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.get)(this.fetch, `${this.url}/bucket`, { headers: this.headers });
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_3__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Retrieves the details of an existing Storage bucket.
+     *
+     * @param id The unique identifier of the bucket you would like to retrieve.
+     */
+    getBucket(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.get)(this.fetch, `${this.url}/bucket/${id}`, { headers: this.headers });
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_3__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Creates a new Storage bucket
+     *
+     * @param id A unique identifier for the bucket you are creating.
+     * @param options.public The visibility of the bucket. Public buckets don't require an authorization token to download objects, but still require a valid token for all other operations. By default, buckets are private.
+     * @param options.fileSizeLimit specifies the max file size in bytes that can be uploaded to this bucket.
+     * The global file size limit takes precedence over this value.
+     * The default value is null, which doesn't set a per bucket file size limit.
+     * @param options.allowedMimeTypes specifies the allowed mime types that this bucket can accept during upload.
+     * The default value is null, which allows files with all mime types to be uploaded.
+     * Each mime type specified can be a wildcard, e.g. image/*, or a specific mime type, e.g. image/png.
+     * @returns newly created bucket id
+     */
+    createBucket(id, options = {
+        public: false,
+    }) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.post)(this.fetch, `${this.url}/bucket`, {
+                    id,
+                    name: id,
+                    public: options.public,
+                    file_size_limit: options.fileSizeLimit,
+                    allowed_mime_types: options.allowedMimeTypes,
+                }, { headers: this.headers });
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_3__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Updates a Storage bucket
+     *
+     * @param id A unique identifier for the bucket you are updating.
+     * @param options.public The visibility of the bucket. Public buckets don't require an authorization token to download objects, but still require a valid token for all other operations.
+     * @param options.fileSizeLimit specifies the max file size in bytes that can be uploaded to this bucket.
+     * The global file size limit takes precedence over this value.
+     * The default value is null, which doesn't set a per bucket file size limit.
+     * @param options.allowedMimeTypes specifies the allowed mime types that this bucket can accept during upload.
+     * The default value is null, which allows files with all mime types to be uploaded.
+     * Each mime type specified can be a wildcard, e.g. image/*, or a specific mime type, e.g. image/png.
+     */
+    updateBucket(id, options) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.put)(this.fetch, `${this.url}/bucket/${id}`, {
+                    id,
+                    name: id,
+                    public: options.public,
+                    file_size_limit: options.fileSizeLimit,
+                    allowed_mime_types: options.allowedMimeTypes,
+                }, { headers: this.headers });
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_3__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Removes all objects inside a single bucket.
+     *
+     * @param id The unique identifier of the bucket you would like to empty.
+     */
+    emptyBucket(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.post)(this.fetch, `${this.url}/bucket/${id}/empty`, {}, { headers: this.headers });
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_3__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Deletes an existing bucket. A bucket can't be deleted with existing objects inside it.
+     * You must first `empty()` the bucket.
+     *
+     * @param id The unique identifier of the bucket you would like to delete.
+     */
+    deleteBucket(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.remove)(this.fetch, `${this.url}/bucket/${id}`, {}, { headers: this.headers });
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_3__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+}
+//# sourceMappingURL=StorageBucketApi.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/storage-js/dist/module/packages/StorageFileApi.js":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/@supabase/storage-js/dist/module/packages/StorageFileApi.js ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ StorageFileApi)
+/* harmony export */ });
+/* harmony import */ var _lib_errors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../lib/errors */ "./node_modules/@supabase/storage-js/dist/module/lib/errors.js");
+/* harmony import */ var _lib_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../lib/fetch */ "./node_modules/@supabase/storage-js/dist/module/lib/fetch.js");
+/* harmony import */ var _lib_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../lib/helpers */ "./node_modules/@supabase/storage-js/dist/module/lib/helpers.js");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+
+const DEFAULT_SEARCH_OPTIONS = {
+    limit: 100,
+    offset: 0,
+    sortBy: {
+        column: 'name',
+        order: 'asc',
+    },
+};
+const DEFAULT_FILE_OPTIONS = {
+    cacheControl: '3600',
+    contentType: 'text/plain;charset=UTF-8',
+    upsert: false,
+};
+class StorageFileApi {
+    constructor(url, headers = {}, bucketId, fetch) {
+        this.url = url;
+        this.headers = headers;
+        this.bucketId = bucketId;
+        this.fetch = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_0__.resolveFetch)(fetch);
+    }
+    /**
+     * Uploads a file to an existing bucket or replaces an existing file at the specified path with a new one.
+     *
+     * @param method HTTP method.
+     * @param path The relative file path. Should be of the format `folder/subfolder/filename.png`. The bucket must already exist before attempting to upload.
+     * @param fileBody The body of the file to be stored in the bucket.
+     */
+    uploadOrUpdate(method, path, fileBody, fileOptions) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                let body;
+                const options = Object.assign(Object.assign({}, DEFAULT_FILE_OPTIONS), fileOptions);
+                const headers = Object.assign(Object.assign({}, this.headers), (method === 'POST' && { 'x-upsert': String(options.upsert) }));
+                if (typeof Blob !== 'undefined' && fileBody instanceof Blob) {
+                    body = new FormData();
+                    body.append('cacheControl', options.cacheControl);
+                    body.append('', fileBody);
+                }
+                else if (typeof FormData !== 'undefined' && fileBody instanceof FormData) {
+                    body = fileBody;
+                    body.append('cacheControl', options.cacheControl);
+                }
+                else {
+                    body = fileBody;
+                    headers['cache-control'] = `max-age=${options.cacheControl}`;
+                    headers['content-type'] = options.contentType;
+                }
+                const cleanPath = this._removeEmptyFolders(path);
+                const _path = this._getFinalPath(cleanPath);
+                const res = yield this.fetch(`${this.url}/object/${_path}`, Object.assign({ method, body: body, headers }, ((options === null || options === void 0 ? void 0 : options.duplex) ? { duplex: options.duplex } : {})));
+                if (res.ok) {
+                    return {
+                        data: { path: cleanPath },
+                        error: null,
+                    };
+                }
+                else {
+                    const error = yield res.json();
+                    return { data: null, error };
+                }
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_1__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Uploads a file to an existing bucket.
+     *
+     * @param path The file path, including the file name. Should be of the format `folder/subfolder/filename.png`. The bucket must already exist before attempting to upload.
+     * @param fileBody The body of the file to be stored in the bucket.
+     */
+    upload(path, fileBody, fileOptions) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.uploadOrUpdate('POST', path, fileBody, fileOptions);
+        });
+    }
+    /**
+     * Upload a file with a token generated from `createSignedUploadUrl`.
+     * @param path The file path, including the file name. Should be of the format `folder/subfolder/filename.png`. The bucket must already exist before attempting to upload.
+     * @param token The token generated from `createSignedUploadUrl`
+     * @param fileBody The body of the file to be stored in the bucket.
+     */
+    uploadToSignedUrl(path, token, fileBody, fileOptions) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const cleanPath = this._removeEmptyFolders(path);
+            const _path = this._getFinalPath(cleanPath);
+            const url = new URL(this.url + `/object/upload/sign/${_path}`);
+            url.searchParams.set('token', token);
+            try {
+                let body;
+                const options = Object.assign({ upsert: DEFAULT_FILE_OPTIONS.upsert }, fileOptions);
+                const headers = Object.assign(Object.assign({}, this.headers), { 'x-upsert': String(options.upsert) });
+                if (typeof Blob !== 'undefined' && fileBody instanceof Blob) {
+                    body = new FormData();
+                    body.append('cacheControl', options.cacheControl);
+                    body.append('', fileBody);
+                }
+                else if (typeof FormData !== 'undefined' && fileBody instanceof FormData) {
+                    body = fileBody;
+                    body.append('cacheControl', options.cacheControl);
+                }
+                else {
+                    body = fileBody;
+                    headers['cache-control'] = `max-age=${options.cacheControl}`;
+                    headers['content-type'] = options.contentType;
+                }
+                const res = yield this.fetch(url.toString(), {
+                    method: 'PUT',
+                    body: body,
+                    headers,
+                });
+                if (res.ok) {
+                    return {
+                        data: { path: cleanPath },
+                        error: null,
+                    };
+                }
+                else {
+                    const error = yield res.json();
+                    return { data: null, error };
+                }
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_1__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Creates a signed upload URL.
+     * Signed upload URLs can be used to upload files to the bucket without further authentication.
+     * They are valid for one minute.
+     * @param path The file path, including the current file name. For example `folder/image.png`.
+     */
+    createSignedUploadUrl(path) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                let _path = this._getFinalPath(path);
+                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.post)(this.fetch, `${this.url}/object/upload/sign/${_path}`, {}, { headers: this.headers });
+                const url = new URL(this.url + data.url);
+                const token = url.searchParams.get('token');
+                if (!token) {
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_1__.StorageError('No token returned by API');
+                }
+                return { data: { signedUrl: url.toString(), path, token }, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_1__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Replaces an existing file at the specified path with a new one.
+     *
+     * @param path The relative file path. Should be of the format `folder/subfolder/filename.png`. The bucket must already exist before attempting to update.
+     * @param fileBody The body of the file to be stored in the bucket.
+     */
+    update(path, fileBody, fileOptions) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.uploadOrUpdate('PUT', path, fileBody, fileOptions);
+        });
+    }
+    /**
+     * Moves an existing file to a new path in the same bucket.
+     *
+     * @param fromPath The original file path, including the current file name. For example `folder/image.png`.
+     * @param toPath The new file path, including the new file name. For example `folder/image-new.png`.
+     */
+    move(fromPath, toPath) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.post)(this.fetch, `${this.url}/object/move`, { bucketId: this.bucketId, sourceKey: fromPath, destinationKey: toPath }, { headers: this.headers });
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_1__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Copies an existing file to a new path in the same bucket.
+     *
+     * @param fromPath The original file path, including the current file name. For example `folder/image.png`.
+     * @param toPath The new file path, including the new file name. For example `folder/image-copy.png`.
+     */
+    copy(fromPath, toPath) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.post)(this.fetch, `${this.url}/object/copy`, { bucketId: this.bucketId, sourceKey: fromPath, destinationKey: toPath }, { headers: this.headers });
+                return { data: { path: data.Key }, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_1__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Creates a signed URL. Use a signed URL to share a file for a fixed amount of time.
+     *
+     * @param path The file path, including the current file name. For example `folder/image.png`.
+     * @param expiresIn The number of seconds until the signed URL expires. For example, `60` for a URL which is valid for one minute.
+     * @param options.download triggers the file as a download if set to true. Set this parameter as the name of the file if you want to trigger the download with a different filename.
+     * @param options.transform Transform the asset before serving it to the client.
+     */
+    createSignedUrl(path, expiresIn, options) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                let _path = this._getFinalPath(path);
+                let data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.post)(this.fetch, `${this.url}/object/sign/${_path}`, Object.assign({ expiresIn }, ((options === null || options === void 0 ? void 0 : options.transform) ? { transform: options.transform } : {})), { headers: this.headers });
+                const downloadQueryParam = (options === null || options === void 0 ? void 0 : options.download)
+                    ? `&download=${options.download === true ? '' : options.download}`
+                    : '';
+                const signedUrl = encodeURI(`${this.url}${data.signedURL}${downloadQueryParam}`);
+                data = { signedUrl };
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_1__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Creates multiple signed URLs. Use a signed URL to share a file for a fixed amount of time.
+     *
+     * @param paths The file paths to be downloaded, including the current file names. For example `['folder/image.png', 'folder2/image2.png']`.
+     * @param expiresIn The number of seconds until the signed URLs expire. For example, `60` for URLs which are valid for one minute.
+     * @param options.download triggers the file as a download if set to true. Set this parameter as the name of the file if you want to trigger the download with a different filename.
+     */
+    createSignedUrls(paths, expiresIn, options) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.post)(this.fetch, `${this.url}/object/sign/${this.bucketId}`, { expiresIn, paths }, { headers: this.headers });
+                const downloadQueryParam = (options === null || options === void 0 ? void 0 : options.download)
+                    ? `&download=${options.download === true ? '' : options.download}`
+                    : '';
+                return {
+                    data: data.map((datum) => (Object.assign(Object.assign({}, datum), { signedUrl: datum.signedURL
+                            ? encodeURI(`${this.url}${datum.signedURL}${downloadQueryParam}`)
+                            : null }))),
+                    error: null,
+                };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_1__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Downloads a file from a private bucket. For public buckets, make a request to the URL returned from `getPublicUrl` instead.
+     *
+     * @param path The full path and file name of the file to be downloaded. For example `folder/image.png`.
+     * @param options.transform Transform the asset before serving it to the client.
+     */
+    download(path, options) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const wantsTransformation = typeof (options === null || options === void 0 ? void 0 : options.transform) !== 'undefined';
+            const renderPath = wantsTransformation ? 'render/image/authenticated' : 'object';
+            const transformationQuery = this.transformOptsToQueryString((options === null || options === void 0 ? void 0 : options.transform) || {});
+            const queryString = transformationQuery ? `?${transformationQuery}` : '';
+            try {
+                const _path = this._getFinalPath(path);
+                const res = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.get)(this.fetch, `${this.url}/${renderPath}/${_path}${queryString}`, {
+                    headers: this.headers,
+                    noResolveJson: true,
+                });
+                const data = yield res.blob();
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_1__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * A simple convenience function to get the URL for an asset in a public bucket. If you do not want to use this function, you can construct the public URL by concatenating the bucket URL with the path to the asset.
+     * This function does not verify if the bucket is public. If a public URL is created for a bucket which is not public, you will not be able to download the asset.
+     *
+     * @param path The path and name of the file to generate the public URL for. For example `folder/image.png`.
+     * @param options.download Triggers the file as a download if set to true. Set this parameter as the name of the file if you want to trigger the download with a different filename.
+     * @param options.transform Transform the asset before serving it to the client.
+     */
+    getPublicUrl(path, options) {
+        const _path = this._getFinalPath(path);
+        const _queryString = [];
+        const downloadQueryParam = (options === null || options === void 0 ? void 0 : options.download)
+            ? `download=${options.download === true ? '' : options.download}`
+            : '';
+        if (downloadQueryParam !== '') {
+            _queryString.push(downloadQueryParam);
+        }
+        const wantsTransformation = typeof (options === null || options === void 0 ? void 0 : options.transform) !== 'undefined';
+        const renderPath = wantsTransformation ? 'render/image' : 'object';
+        const transformationQuery = this.transformOptsToQueryString((options === null || options === void 0 ? void 0 : options.transform) || {});
+        if (transformationQuery !== '') {
+            _queryString.push(transformationQuery);
+        }
+        let queryString = _queryString.join('&');
+        if (queryString !== '') {
+            queryString = `?${queryString}`;
+        }
+        return {
+            data: { publicUrl: encodeURI(`${this.url}/${renderPath}/public/${_path}${queryString}`) },
+        };
+    }
+    /**
+     * Deletes files within the same bucket
+     *
+     * @param paths An array of files to delete, including the path and file name. For example [`'folder/image.png'`].
+     */
+    remove(paths) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.remove)(this.fetch, `${this.url}/object/${this.bucketId}`, { prefixes: paths }, { headers: this.headers });
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_1__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Get file metadata
+     * @param id the file id to retrieve metadata
+     */
+    // async getMetadata(
+    //   id: string
+    // ): Promise<
+    //   | {
+    //       data: Metadata
+    //       error: null
+    //     }
+    //   | {
+    //       data: null
+    //       error: StorageError
+    //     }
+    // > {
+    //   try {
+    //     const data = await get(this.fetch, `${this.url}/metadata/${id}`, { headers: this.headers })
+    //     return { data, error: null }
+    //   } catch (error) {
+    //     if (isStorageError(error)) {
+    //       return { data: null, error }
+    //     }
+    //     throw error
+    //   }
+    // }
+    /**
+     * Update file metadata
+     * @param id the file id to update metadata
+     * @param meta the new file metadata
+     */
+    // async updateMetadata(
+    //   id: string,
+    //   meta: Metadata
+    // ): Promise<
+    //   | {
+    //       data: Metadata
+    //       error: null
+    //     }
+    //   | {
+    //       data: null
+    //       error: StorageError
+    //     }
+    // > {
+    //   try {
+    //     const data = await post(
+    //       this.fetch,
+    //       `${this.url}/metadata/${id}`,
+    //       { ...meta },
+    //       { headers: this.headers }
+    //     )
+    //     return { data, error: null }
+    //   } catch (error) {
+    //     if (isStorageError(error)) {
+    //       return { data: null, error }
+    //     }
+    //     throw error
+    //   }
+    // }
+    /**
+     * Lists all the files within a bucket.
+     * @param path The folder path.
+     */
+    list(path, options, parameters) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const body = Object.assign(Object.assign(Object.assign({}, DEFAULT_SEARCH_OPTIONS), options), { prefix: path || '' });
+                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.post)(this.fetch, `${this.url}/object/list/${this.bucketId}`, body, { headers: this.headers }, parameters);
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_1__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    _getFinalPath(path) {
+        return `${this.bucketId}/${path}`;
+    }
+    _removeEmptyFolders(path) {
+        return path.replace(/^\/|\/$/g, '').replace(/\/+/g, '/');
+    }
+    transformOptsToQueryString(transform) {
+        const params = [];
+        if (transform.width) {
+            params.push(`width=${transform.width}`);
+        }
+        if (transform.height) {
+            params.push(`height=${transform.height}`);
+        }
+        if (transform.resize) {
+            params.push(`resize=${transform.resize}`);
+        }
+        if (transform.format) {
+            params.push(`format=${transform.format}`);
+        }
+        if (transform.quality) {
+            params.push(`quality=${transform.quality}`);
+        }
+        return params.join('&');
+    }
+}
+//# sourceMappingURL=StorageFileApi.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/supabase-js/dist/module/SupabaseClient.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@supabase/supabase-js/dist/module/SupabaseClient.js ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ SupabaseClient)
+/* harmony export */ });
+/* harmony import */ var _supabase_functions_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @supabase/functions-js */ "./node_modules/@supabase/functions-js/dist/module/FunctionsClient.js");
+/* harmony import */ var _supabase_postgrest_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @supabase/postgrest-js */ "./node_modules/@supabase/postgrest-js/dist/module/index.js");
+/* harmony import */ var _supabase_realtime_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @supabase/realtime-js */ "./node_modules/@supabase/realtime-js/dist/module/index.js");
+/* harmony import */ var _supabase_storage_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @supabase/storage-js */ "./node_modules/@supabase/storage-js/dist/module/StorageClient.js");
+/* harmony import */ var _lib_constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/constants */ "./node_modules/@supabase/supabase-js/dist/module/lib/constants.js");
+/* harmony import */ var _lib_fetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./lib/fetch */ "./node_modules/@supabase/supabase-js/dist/module/lib/fetch.js");
+/* harmony import */ var _lib_helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lib/helpers */ "./node_modules/@supabase/supabase-js/dist/module/lib/helpers.js");
+/* harmony import */ var _lib_SupabaseAuthClient__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./lib/SupabaseAuthClient */ "./node_modules/@supabase/supabase-js/dist/module/lib/SupabaseAuthClient.js");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+
+
+
+
+
+
+const DEFAULT_GLOBAL_OPTIONS = {
+    headers: _lib_constants__WEBPACK_IMPORTED_MODULE_2__.DEFAULT_HEADERS,
+};
+const DEFAULT_DB_OPTIONS = {
+    schema: 'public',
+};
+const DEFAULT_AUTH_OPTIONS = {
+    autoRefreshToken: true,
+    persistSession: true,
+    detectSessionInUrl: true,
+    flowType: 'implicit',
+};
+const DEFAULT_REALTIME_OPTIONS = {};
+/**
+ * Supabase Client.
+ *
+ * An isomorphic Javascript client for interacting with Postgres.
+ */
+class SupabaseClient {
+    /**
+     * Create a new client for use in the browser.
+     * @param supabaseUrl The unique Supabase URL which is supplied when you create a new project in your project dashboard.
+     * @param supabaseKey The unique Supabase Key which is supplied when you create a new project in your project dashboard.
+     * @param options.db.schema You can switch in between schemas. The schema needs to be on the list of exposed schemas inside Supabase.
+     * @param options.auth.autoRefreshToken Set to "true" if you want to automatically refresh the token before expiring.
+     * @param options.auth.persistSession Set to "true" if you want to automatically save the user session into local storage.
+     * @param options.auth.detectSessionInUrl Set to "true" if you want to automatically detects OAuth grants in the URL and signs in the user.
+     * @param options.realtime Options passed along to realtime-js constructor.
+     * @param options.global.fetch A custom fetch implementation.
+     * @param options.global.headers Any additional headers to send with each network request.
+     */
+    constructor(supabaseUrl, supabaseKey, options) {
+        var _a, _b, _c, _d, _e, _f, _g, _h;
+        this.supabaseUrl = supabaseUrl;
+        this.supabaseKey = supabaseKey;
+        if (!supabaseUrl)
+            throw new Error('supabaseUrl is required.');
+        if (!supabaseKey)
+            throw new Error('supabaseKey is required.');
+        const _supabaseUrl = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_3__.stripTrailingSlash)(supabaseUrl);
+        this.realtimeUrl = `${_supabaseUrl}/realtime/v1`.replace(/^http/i, 'ws');
+        this.authUrl = `${_supabaseUrl}/auth/v1`;
+        this.storageUrl = `${_supabaseUrl}/storage/v1`;
+        const isPlatform = _supabaseUrl.match(/(supabase\.co)|(supabase\.in)/);
+        if (isPlatform) {
+            const urlParts = _supabaseUrl.split('.');
+            this.functionsUrl = `${urlParts[0]}.functions.${urlParts[1]}.${urlParts[2]}`;
+        }
+        else {
+            this.functionsUrl = `${_supabaseUrl}/functions/v1`;
+        }
+        // default storage key uses the supabase project ref as a namespace
+        const defaultStorageKey = `sb-${new URL(this.authUrl).hostname.split('.')[0]}-auth-token`;
+        const DEFAULTS = {
+            db: DEFAULT_DB_OPTIONS,
+            realtime: DEFAULT_REALTIME_OPTIONS,
+            auth: Object.assign(Object.assign({}, DEFAULT_AUTH_OPTIONS), { storageKey: defaultStorageKey }),
+            global: DEFAULT_GLOBAL_OPTIONS,
+        };
+        const settings = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_3__.applySettingDefaults)(options !== null && options !== void 0 ? options : {}, DEFAULTS);
+        this.storageKey = (_b = (_a = settings.auth) === null || _a === void 0 ? void 0 : _a.storageKey) !== null && _b !== void 0 ? _b : '';
+        this.headers = (_d = (_c = settings.global) === null || _c === void 0 ? void 0 : _c.headers) !== null && _d !== void 0 ? _d : {};
+        this.auth = this._initSupabaseAuthClient((_e = settings.auth) !== null && _e !== void 0 ? _e : {}, this.headers, (_f = settings.global) === null || _f === void 0 ? void 0 : _f.fetch);
+        this.fetch = (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_4__.fetchWithAuth)(supabaseKey, this._getAccessToken.bind(this), (_g = settings.global) === null || _g === void 0 ? void 0 : _g.fetch);
+        this.realtime = this._initRealtimeClient(Object.assign({ headers: this.headers }, settings.realtime));
+        this.rest = new _supabase_postgrest_js__WEBPACK_IMPORTED_MODULE_0__.PostgrestClient(`${_supabaseUrl}/rest/v1`, {
+            headers: this.headers,
+            schema: (_h = settings.db) === null || _h === void 0 ? void 0 : _h.schema,
+            fetch: this.fetch,
+        });
+        this._listenForAuthEvents();
+    }
+    /**
+     * Supabase Functions allows you to deploy and invoke edge functions.
+     */
+    get functions() {
+        return new _supabase_functions_js__WEBPACK_IMPORTED_MODULE_5__.FunctionsClient(this.functionsUrl, {
+            headers: this.headers,
+            customFetch: this.fetch,
+        });
+    }
+    /**
+     * Supabase Storage allows you to manage user-generated content, such as photos or videos.
+     */
+    get storage() {
+        return new _supabase_storage_js__WEBPACK_IMPORTED_MODULE_6__.StorageClient(this.storageUrl, this.headers, this.fetch);
+    }
+    from(relation) {
+        return this.rest.from(relation);
+    }
+    /**
+     * Perform a function call.
+     *
+     * @param fn  The function name to call.
+     * @param args  The parameters to pass to the function call.
+     * @param options.head   When set to true, no data will be returned.
+     * @param options.count  Count algorithm to use to count rows in a table.
+     *
+     */
+    rpc(fn, args = {}, options) {
+        return this.rest.rpc(fn, args, options);
+    }
+    /**
+     * Creates a Realtime channel with Broadcast, Presence, and Postgres Changes.
+     *
+     * @param {string} name - The name of the Realtime channel.
+     * @param {Object} opts - The options to pass to the Realtime channel.
+     *
+     */
+    channel(name, opts = { config: {} }) {
+        return this.realtime.channel(name, opts);
+    }
+    /**
+     * Returns all Realtime channels.
+     */
+    getChannels() {
+        return this.realtime.getChannels();
+    }
+    /**
+     * Unsubscribes and removes Realtime channel from Realtime client.
+     *
+     * @param {RealtimeChannel} channel - The name of the Realtime channel.
+     *
+     */
+    removeChannel(channel) {
+        return this.realtime.removeChannel(channel);
+    }
+    /**
+     * Unsubscribes and removes all Realtime channels from Realtime client.
+     */
+    removeAllChannels() {
+        return this.realtime.removeAllChannels();
+    }
+    _getAccessToken() {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data } = yield this.auth.getSession();
+            return (_b = (_a = data.session) === null || _a === void 0 ? void 0 : _a.access_token) !== null && _b !== void 0 ? _b : null;
+        });
+    }
+    _initSupabaseAuthClient({ autoRefreshToken, persistSession, detectSessionInUrl, storage, storageKey, flowType, }, headers, fetch) {
+        const authHeaders = {
+            Authorization: `Bearer ${this.supabaseKey}`,
+            apikey: `${this.supabaseKey}`,
+        };
+        return new _lib_SupabaseAuthClient__WEBPACK_IMPORTED_MODULE_7__.SupabaseAuthClient({
+            url: this.authUrl,
+            headers: Object.assign(Object.assign({}, authHeaders), headers),
+            storageKey: storageKey,
+            autoRefreshToken,
+            persistSession,
+            detectSessionInUrl,
+            storage,
+            flowType,
+            fetch,
+        });
+    }
+    _initRealtimeClient(options) {
+        return new _supabase_realtime_js__WEBPACK_IMPORTED_MODULE_1__.RealtimeClient(this.realtimeUrl, Object.assign(Object.assign({}, options), { params: Object.assign({ apikey: this.supabaseKey }, options === null || options === void 0 ? void 0 : options.params) }));
+    }
+    _listenForAuthEvents() {
+        let data = this.auth.onAuthStateChange((event, session) => {
+            this._handleTokenChanged(event, session === null || session === void 0 ? void 0 : session.access_token, 'CLIENT');
+        });
+        return data;
+    }
+    _handleTokenChanged(event, token, source) {
+        if ((event === 'TOKEN_REFRESHED' || event === 'SIGNED_IN') &&
+            this.changedAccessToken !== token) {
+            // Token has changed
+            this.realtime.setAuth(token !== null && token !== void 0 ? token : null);
+            this.changedAccessToken = token;
+        }
+        else if (event === 'SIGNED_OUT') {
+            // Token is removed
+            this.realtime.setAuth(this.supabaseKey);
+            if (source == 'STORAGE')
+                this.auth.signOut();
+            this.changedAccessToken = undefined;
+        }
+    }
+}
+//# sourceMappingURL=SupabaseClient.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/supabase-js/dist/module/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@supabase/supabase-js/dist/module/index.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AuthApiError": () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.AuthApiError),
+/* harmony export */   "AuthError": () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.AuthError),
+/* harmony export */   "AuthImplicitGrantRedirectError": () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.AuthImplicitGrantRedirectError),
+/* harmony export */   "AuthInvalidCredentialsError": () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.AuthInvalidCredentialsError),
+/* harmony export */   "AuthPKCEGrantCodeExchangeError": () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.AuthPKCEGrantCodeExchangeError),
+/* harmony export */   "AuthRetryableFetchError": () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.AuthRetryableFetchError),
+/* harmony export */   "AuthSessionMissingError": () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.AuthSessionMissingError),
+/* harmony export */   "AuthUnknownError": () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.AuthUnknownError),
+/* harmony export */   "CustomAuthError": () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.CustomAuthError),
+/* harmony export */   "FunctionsError": () => (/* reexport safe */ _supabase_functions_js__WEBPACK_IMPORTED_MODULE_1__.FunctionsError),
+/* harmony export */   "FunctionsFetchError": () => (/* reexport safe */ _supabase_functions_js__WEBPACK_IMPORTED_MODULE_1__.FunctionsFetchError),
+/* harmony export */   "FunctionsHttpError": () => (/* reexport safe */ _supabase_functions_js__WEBPACK_IMPORTED_MODULE_1__.FunctionsHttpError),
+/* harmony export */   "FunctionsRelayError": () => (/* reexport safe */ _supabase_functions_js__WEBPACK_IMPORTED_MODULE_1__.FunctionsRelayError),
+/* harmony export */   "GoTrueAdminApi": () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.GoTrueAdminApi),
+/* harmony export */   "GoTrueClient": () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.GoTrueClient),
+/* harmony export */   "REALTIME_LISTEN_TYPES": () => (/* reexport safe */ _supabase_realtime_js__WEBPACK_IMPORTED_MODULE_2__.REALTIME_LISTEN_TYPES),
+/* harmony export */   "REALTIME_POSTGRES_CHANGES_LISTEN_EVENT": () => (/* reexport safe */ _supabase_realtime_js__WEBPACK_IMPORTED_MODULE_2__.REALTIME_POSTGRES_CHANGES_LISTEN_EVENT),
+/* harmony export */   "REALTIME_PRESENCE_LISTEN_EVENTS": () => (/* reexport safe */ _supabase_realtime_js__WEBPACK_IMPORTED_MODULE_2__.REALTIME_PRESENCE_LISTEN_EVENTS),
+/* harmony export */   "REALTIME_SUBSCRIBE_STATES": () => (/* reexport safe */ _supabase_realtime_js__WEBPACK_IMPORTED_MODULE_2__.REALTIME_SUBSCRIBE_STATES),
+/* harmony export */   "RealtimeChannel": () => (/* reexport safe */ _supabase_realtime_js__WEBPACK_IMPORTED_MODULE_2__.RealtimeChannel),
+/* harmony export */   "RealtimeClient": () => (/* reexport safe */ _supabase_realtime_js__WEBPACK_IMPORTED_MODULE_2__.RealtimeClient),
+/* harmony export */   "RealtimePresence": () => (/* reexport safe */ _supabase_realtime_js__WEBPACK_IMPORTED_MODULE_2__.RealtimePresence),
+/* harmony export */   "SupabaseClient": () => (/* reexport safe */ _SupabaseClient__WEBPACK_IMPORTED_MODULE_3__["default"]),
+/* harmony export */   "createClient": () => (/* binding */ createClient),
+/* harmony export */   "isAuthApiError": () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.isAuthApiError),
+/* harmony export */   "isAuthError": () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.isAuthError)
+/* harmony export */ });
+/* harmony import */ var _SupabaseClient__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SupabaseClient */ "./node_modules/@supabase/supabase-js/dist/module/SupabaseClient.js");
+/* harmony import */ var _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @supabase/gotrue-js */ "./node_modules/@supabase/gotrue-js/dist/module/index.js");
+/* harmony import */ var _supabase_functions_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @supabase/functions-js */ "./node_modules/@supabase/functions-js/dist/module/types.js");
+/* harmony import */ var _supabase_realtime_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @supabase/realtime-js */ "./node_modules/@supabase/realtime-js/dist/module/index.js");
+
+
+
+
+
+/**
+ * Creates a new Supabase Client.
+ */
+const createClient = (supabaseUrl, supabaseKey, options) => {
+    return new _SupabaseClient__WEBPACK_IMPORTED_MODULE_3__["default"](supabaseUrl, supabaseKey, options);
+};
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/supabase-js/dist/module/lib/SupabaseAuthClient.js":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/@supabase/supabase-js/dist/module/lib/SupabaseAuthClient.js ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SupabaseAuthClient": () => (/* binding */ SupabaseAuthClient)
+/* harmony export */ });
+/* harmony import */ var _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @supabase/gotrue-js */ "./node_modules/@supabase/gotrue-js/dist/module/index.js");
+
+class SupabaseAuthClient extends _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.GoTrueClient {
+    constructor(options) {
+        super(options);
+    }
+}
+//# sourceMappingURL=SupabaseAuthClient.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/supabase-js/dist/module/lib/constants.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/@supabase/supabase-js/dist/module/lib/constants.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "DEFAULT_HEADERS": () => (/* binding */ DEFAULT_HEADERS)
+/* harmony export */ });
+/* harmony import */ var _version__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./version */ "./node_modules/@supabase/supabase-js/dist/module/lib/version.js");
+// constants.ts
+
+const DEFAULT_HEADERS = { 'X-Client-Info': `supabase-js/${_version__WEBPACK_IMPORTED_MODULE_0__.version}` };
+//# sourceMappingURL=constants.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/supabase-js/dist/module/lib/fetch.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@supabase/supabase-js/dist/module/lib/fetch.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "fetchWithAuth": () => (/* binding */ fetchWithAuth),
+/* harmony export */   "resolveFetch": () => (/* binding */ resolveFetch),
+/* harmony export */   "resolveHeadersConstructor": () => (/* binding */ resolveHeadersConstructor)
+/* harmony export */ });
+/* harmony import */ var cross_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cross-fetch */ "./node_modules/cross-fetch/dist/browser-ponyfill.js");
+/* harmony import */ var cross_fetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(cross_fetch__WEBPACK_IMPORTED_MODULE_0__);
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+const resolveFetch = (customFetch) => {
+    let _fetch;
+    if (customFetch) {
+        _fetch = customFetch;
+    }
+    else if (typeof fetch === 'undefined') {
+        _fetch = (cross_fetch__WEBPACK_IMPORTED_MODULE_0___default());
+    }
+    else {
+        _fetch = fetch;
+    }
+    return (...args) => _fetch(...args);
+};
+const resolveHeadersConstructor = () => {
+    if (typeof Headers === 'undefined') {
+        return cross_fetch__WEBPACK_IMPORTED_MODULE_0__.Headers;
+    }
+    return Headers;
+};
+const fetchWithAuth = (supabaseKey, getAccessToken, customFetch) => {
+    const fetch = resolveFetch(customFetch);
+    const HeadersConstructor = resolveHeadersConstructor();
+    return (input, init) => __awaiter(void 0, void 0, void 0, function* () {
+        var _a;
+        const accessToken = (_a = (yield getAccessToken())) !== null && _a !== void 0 ? _a : supabaseKey;
+        let headers = new HeadersConstructor(init === null || init === void 0 ? void 0 : init.headers);
+        if (!headers.has('apikey')) {
+            headers.set('apikey', supabaseKey);
+        }
+        if (!headers.has('Authorization')) {
+            headers.set('Authorization', `Bearer ${accessToken}`);
+        }
+        return fetch(input, Object.assign(Object.assign({}, init), { headers }));
+    });
+};
+//# sourceMappingURL=fetch.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/supabase-js/dist/module/lib/helpers.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@supabase/supabase-js/dist/module/lib/helpers.js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "applySettingDefaults": () => (/* binding */ applySettingDefaults),
+/* harmony export */   "isBrowser": () => (/* binding */ isBrowser),
+/* harmony export */   "stripTrailingSlash": () => (/* binding */ stripTrailingSlash),
+/* harmony export */   "uuid": () => (/* binding */ uuid)
+/* harmony export */ });
+function uuid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = (Math.random() * 16) | 0, v = c == 'x' ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+    });
+}
+function stripTrailingSlash(url) {
+    return url.replace(/\/$/, '');
+}
+const isBrowser = () => typeof window !== 'undefined';
+function applySettingDefaults(options, defaults) {
+    const { db: dbOptions, auth: authOptions, realtime: realtimeOptions, global: globalOptions, } = options;
+    const { db: DEFAULT_DB_OPTIONS, auth: DEFAULT_AUTH_OPTIONS, realtime: DEFAULT_REALTIME_OPTIONS, global: DEFAULT_GLOBAL_OPTIONS, } = defaults;
+    return {
+        db: Object.assign(Object.assign({}, DEFAULT_DB_OPTIONS), dbOptions),
+        auth: Object.assign(Object.assign({}, DEFAULT_AUTH_OPTIONS), authOptions),
+        realtime: Object.assign(Object.assign({}, DEFAULT_REALTIME_OPTIONS), realtimeOptions),
+        global: Object.assign(Object.assign({}, DEFAULT_GLOBAL_OPTIONS), globalOptions),
+    };
+}
+//# sourceMappingURL=helpers.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/supabase-js/dist/module/lib/version.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@supabase/supabase-js/dist/module/lib/version.js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "version": () => (/* binding */ version)
+/* harmony export */ });
+const version = '2.22.0';
+//# sourceMappingURL=version.js.map
+
+/***/ }),
+
+/***/ "./src/components/AuthButtons.tsx":
+/*!****************************************!*\
+  !*** ./src/components/AuthButtons.tsx ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ AuthButtons)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Modal/Modal.js");
+/* harmony import */ var _mui_base__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/base */ "./node_modules/@mui/base/Button/Button.js");
+/* harmony import */ var _supabase_supabase_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @supabase/supabase-js */ "./node_modules/@supabase/supabase-js/dist/module/index.js");
+/* harmony import */ var _supabase_auth_ui_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @supabase/auth-ui-react */ "./node_modules/@supabase/auth-ui-react/dist/index.es.js");
+/* harmony import */ var _supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @supabase/auth-ui-shared */ "./node_modules/@supabase/auth-ui-shared/dist/index.mjs");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+var supabaseUrl = "https://praaunntraqzwomikleq.supabase.co";
+var supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\n    .eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InByYWF1bm50cmFxendvbWlrbGVxIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQ1NDAzODMsImV4cCI6MjAwMDExNjM4M30\n    .iy7rGNKGQ5HeK0xJhKN3OzXqbNnegkVVAic7rWZ - iXU";
+var supabase = (0,_supabase_supabase_js__WEBPACK_IMPORTED_MODULE_2__.createClient)(supabaseUrl, supabaseKey);
+function AuthButtons() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    open = _useState2[0],
+    setOpen = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState4 = _slicedToArray(_useState3, 2),
+    session = _useState4[0],
+    setSession = _useState4[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    supabase.auth.getSession().then(function (_ref) {
+      var session = _ref.data.session;
+      setSession(session);
+    });
+    var _supabase$auth$onAuth = supabase.auth.onAuthStateChange(function (_event, session) {
+        setSession(session);
+      }),
+      subscription = _supabase$auth$onAuth.data.subscription;
+    return function () {
+      return subscription.unsubscribe();
+    };
+  }, []);
+  var handleOpen = function handleOpen() {
+    return setOpen(true);
+  };
+  var handleClose = function handleClose() {
+    return setOpen(false);
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_base__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    onClick: handleOpen,
+    className: "login"
+  }, "Log in"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_base__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    className: "signup"
+  }, "Sign up"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    open: open,
+    onClose: handleClose
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_supabase_auth_ui_react__WEBPACK_IMPORTED_MODULE_5__.Auth, {
+    supabaseClient: supabase,
+    appearance: {
+      theme: _supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_1__.ThemeSupa
+    }
+  })));
+}
+
+/***/ }),
+
+/***/ "./src/components/BreadCrumbs.tsx":
+/*!****************************************!*\
+  !*** ./src/components/BreadCrumbs.tsx ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ BreadCrumbs)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _services_cache__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/cache */ "./src/services/cache.ts");
+
+
+function BreadCrumbs(_ref) {
+  var breadCrumbs = _ref.breadCrumbs,
+    setBreadCrumbs = _ref.setBreadCrumbs,
+    setContentArray = _ref.setContentArray,
+    setContentClass = _ref.setContentClass;
+  function handleBreadCrumbClick(index) {
+    var breadCrumb = breadCrumbs[index];
+    setContentArray((0,_services_cache__WEBPACK_IMPORTED_MODULE_1__.queryCache)(breadCrumb.query));
+    setContentClass(breadCrumb["class"]);
+    setBreadCrumbs(breadCrumbs.slice(0, index + 1));
+  }
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "bread-crumbs"
+  }, breadCrumbsToButtons(breadCrumbs, handleBreadCrumbClick));
+}
+function breadCrumbsToButtons(breadCrumbs, handleBreadCrumbClick) {
+  var buttons = [];
+  var _loop = function _loop(i) {
+    var breadCrumb = breadCrumbs[i];
+    buttons.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      key: breadCrumb["class"],
+      onClick: function onClick() {
+        return handleBreadCrumbClick(i);
+      }
+    }, breadCrumb.name));
+    if (i !== breadCrumbs.length - 1) {
+      buttons.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, ">"));
+    }
+  };
+  for (var i = 0; i < breadCrumbs.length; i++) {
+    _loop(i);
+  }
+  return buttons;
+}
+
+/***/ }),
+
+/***/ "./src/components/ContentContainer.tsx":
+/*!*********************************************!*\
+  !*** ./src/components/ContentContainer.tsx ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ContentContainer)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _BreadCrumbs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BreadCrumbs */ "./src/components/BreadCrumbs.tsx");
+/* harmony import */ var _DishCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DishCard */ "./src/components/DishCard.tsx");
+/* harmony import */ var _LocationCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./LocationCard */ "./src/components/LocationCard.tsx");
+/* harmony import */ var _services_cache__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/cache */ "./src/services/cache.ts");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+function ContentContainer(_ref) {
+  var locations = _ref.locations,
+    campusName = _ref.campusName,
+    campusID = _ref.campusID;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("locations"),
+    _useState2 = _slicedToArray(_useState, 2),
+    contentClass = _useState2[0],
+    setContentClass = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(locations),
+    _useState4 = _slicedToArray(_useState3, 2),
+    contentArray = _useState4[0],
+    setContentArray = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
+      "class": "locations",
+      name: campusName,
+      query: "campus.".concat(campusID)
+    }]),
+    _useState6 = _slicedToArray(_useState5, 2),
+    breadCrumbs = _useState6[0],
+    setBreadCrumbs = _useState6[1];
+  function handleLocationCardClick(_x2, _x3) {
+    return _handleLocationCardClick.apply(this, arguments);
+  }
+  function _handleLocationCardClick() {
+    _handleLocationCardClick = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(id, name) {
+      var dishes;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return (0,_services_cache__WEBPACK_IMPORTED_MODULE_4__.queryThroughCache)("location.".concat(id));
+          case 2:
+            dishes = _context.sent;
+            setContentClass("dishes");
+            setBreadCrumbs(function (breadCrumbs) {
+              return [].concat(_toConsumableArray(breadCrumbs), [{
+                "class": "dishes",
+                name: name,
+                query: "location.".concat(id)
+              }]);
+            });
+            setContentArray(dishes);
+          case 6:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee);
+    }));
+    return _handleLocationCardClick.apply(this, arguments);
+  }
+  function handleDishCardClick(_x4, _x5) {
+    return _handleDishCardClick.apply(this, arguments);
+  }
+  function _handleDishCardClick() {
+    _handleDishCardClick = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(id, name) {
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2);
+    }));
+    return _handleDishCardClick.apply(this, arguments);
+  }
+  function parseData(data) {
+    var cards = [];
+    for (var i = 0; i < data.length; i++) {
+      switch (data[i].type) {
+        case "location":
+          var locationData = data[i];
+          cards.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_LocationCard__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({}, locationData, {
+            key: locationData.id,
+            onLocationCardClick: handleLocationCardClick
+          })));
+          break;
+        case "dish":
+          var dishData = data[i];
+          cards.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_DishCard__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({}, dishData, {
+            key: dishData.id,
+            onDishCardClick: handleDishCardClick
+          })));
+          break;
+      }
+    }
+    return cards;
+  }
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    _services_cache__WEBPACK_IMPORTED_MODULE_4__.cache.campus[campusID] = locations; // Seed cache with initial location data from server
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_BreadCrumbs__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    breadCrumbs: breadCrumbs,
+    setContentArray: setContentArray,
+    setContentClass: setContentClass,
+    setBreadCrumbs: setBreadCrumbs
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: contentClass
+  }, parseData(contentArray)));
+}
+
+/***/ }),
+
+/***/ "./src/components/DishCard.tsx":
+/*!*************************************!*\
+  !*** ./src/components/DishCard.tsx ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ DishCard)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Rating/Rating.js");
+
+
+function DishCard(_ref) {
+  var id = _ref.id,
+    name = _ref.name,
+    price = _ref.price,
+    availability = _ref.availability,
+    rating = _ref.rating,
+    onDishCardClick = _ref.onDishCardClick;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "dish"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "top-half"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    name: "read-only",
+    value: rating,
+    precision: 0.25,
+    sx: {
+      svg: {
+        width: "clamp(16px, 4vw, 24px)"
+      }
+    },
+    readOnly: true
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "bottom-half"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "$".concat(price)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, formatAvailability(availability))));
+}
+function formatAvailability(binaryString) {
+  var formattedString = "";
+  if (binaryString.charAt(0) === "1") {
+    formattedString += "Breakfast, ";
+  }
+  if (binaryString.charAt(1) === "1") {
+    formattedString += "Lunch, ";
+  }
+  if (binaryString.charAt(2) === "1") {
+    formattedString += "Dinner";
+  }
+
+  // Remove trailing comma and whitespace
+  formattedString = formattedString.trim().replace(/,\s*$/, "");
+  return formattedString;
+}
+
+/***/ }),
+
+/***/ "./src/components/LocationCard.tsx":
+/*!*****************************************!*\
+  !*** ./src/components/LocationCard.tsx ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ LocationCard)
+/* harmony export */ });
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/useMediaQuery/useMediaQuery.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Rating/Rating.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function LocationCard(_ref) {
+  var id = _ref.id,
+    name = _ref.name,
+    rating = _ref.rating,
+    count = _ref.count,
+    onLocationCardClick = _ref.onLocationCardClick;
+  var smallScreen = (0,_mui_material__WEBPACK_IMPORTED_MODULE_1__["default"])("(max-width: 890px)");
+  var smallestScreen = (0,_mui_material__WEBPACK_IMPORTED_MODULE_1__["default"])("(max-width: 400px");
+  var notStacked = smallScreen && !smallestScreen;
+  var handleButtonClick = function handleButtonClick() {
+    onLocationCardClick(id, name);
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "location"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "name"
+  }, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "rating-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "decimal-value"
+  }, rating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    name: "read-only",
+    value: notStacked ? 1 : rating,
+    max: notStacked ? 1 : 5,
+    precision: 0.25,
+    sx: smallScreen ? {
+      svg: {
+        width: "4vw"
+      }
+    } : undefined,
+    readOnly: true
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: handleButtonClick
+  }, "See all ".concat(count, " dishes")));
+}
+
+/***/ }),
+
+/***/ "./src/components/MiniSearchBar.tsx":
+/*!******************************************!*\
+  !*** ./src/components/MiniSearchBar.tsx ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ MiniSearchBar)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/api */ "./src/services/api.ts");
+/* harmony import */ var _SearchBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SearchBar */ "./src/components/SearchBar.tsx");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+function MiniSearchBar(_ref) {
+  var placeholder = _ref.placeholder;
+  var initialState = [];
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialState),
+    _useState2 = _slicedToArray(_useState, 2),
+    suggestions = _useState2[0],
+    setSuggestions = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState4 = _slicedToArray(_useState3, 2),
+    searchValue = _useState4[0],
+    setSearchValue = _useState4[1];
+  function handleInput(_x2) {
+    return _handleInput.apply(this, arguments);
+  }
+  function _handleInput() {
+    _handleInput = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
+      var currentSearch, result;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            currentSearch = event.target.value;
+            setSearchValue(currentSearch);
+            result = [];
+            if (!(currentSearch !== "")) {
+              _context.next = 8;
+              break;
+            }
+            _context.next = 6;
+            return (0,_services_api__WEBPACK_IMPORTED_MODULE_1__["default"])(currentSearch);
+          case 6:
+            result = _context.sent;
+            if (result.length > 5) {
+              result = result.slice(0, 5);
+            }
+          case 8:
+            setSuggestions(result);
+          case 9:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee);
+    }));
+    return _handleInput.apply(this, arguments);
+  }
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "search",
+    onInput: handleInput,
+    value: searchValue,
+    placeholder: placeholder
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SearchBar__WEBPACK_IMPORTED_MODULE_2__.Suggestions, {
+    suggestions: suggestions
+  }));
+}
+
+/***/ }),
+
+/***/ "./src/components/SchoolPage.tsx":
+/*!***************************************!*\
+  !*** ./src/components/SchoolPage.tsx ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ SchoolPage)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _MiniSearchBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MiniSearchBar */ "./src/components/MiniSearchBar.tsx");
+/* harmony import */ var _ContentContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ContentContainer */ "./src/components/ContentContainer.tsx");
+/* harmony import */ var _AuthButtons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AuthButtons */ "./src/components/AuthButtons.tsx");
+
+
+
+
+function SchoolPage(_ref) {
+  var locations = _ref.locations,
+    campusName = _ref.campusName,
+    campusID = _ref.campusID;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("header", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+    href: "/"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("picture", {
+    title: "Campus Eats"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("source", {
+    media: "(min-width: 400px)",
+    srcSet: "/images/campus-eats-logo-black.svg"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: "/images/campus-eats-logo-mini.svg",
+    alt: "campus-eats-logo"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
+    className: "places-at"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Places"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "at"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "search-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MiniSearchBar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    placeholder: campusName
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
+    className: "login-signup"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AuthButtons__WEBPACK_IMPORTED_MODULE_3__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ContentContainer__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    locations: locations,
+    campusName: campusName,
+    campusID: campusID
+  })));
+}
+
+/***/ }),
+
+/***/ "./src/components/SearchBar.tsx":
+/*!**************************************!*\
+  !*** ./src/components/SearchBar.tsx ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Suggestions": () => (/* binding */ Suggestions),
+/* harmony export */   "default": () => (/* binding */ SearchBar)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/api */ "./src/services/api.ts");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+function SearchBar() {
+  var initialState = [];
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialState),
+    _useState2 = _slicedToArray(_useState, 2),
+    suggestions = _useState2[0],
+    setSuggestions = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState4 = _slicedToArray(_useState3, 2),
+    searchValue = _useState4[0],
+    setSearchValue = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("15px"),
+    _useState6 = _slicedToArray(_useState5, 2),
+    borderRadius = _useState6[0],
+    setBorderRadius = _useState6[1];
+  function handleBlur() {
+    setSuggestions([]);
+    setBorderRadius("15px");
+  }
+  function handleInput(_x2) {
+    return _handleInput.apply(this, arguments);
+  }
+  function _handleInput() {
+    _handleInput = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
+      var currentSearch, result;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            currentSearch = event.target.value;
+            setSearchValue(currentSearch);
+            result = [];
+            if (!(currentSearch !== "")) {
+              _context.next = 8;
+              break;
+            }
+            _context.next = 6;
+            return (0,_services_api__WEBPACK_IMPORTED_MODULE_1__["default"])(currentSearch);
+          case 6:
+            result = _context.sent;
+            if (result.length > 5) {
+              result = result.slice(0, 5);
+            }
+          case 8:
+            setSuggestions(result);
+            if (result.length > 0) {
+              setBorderRadius("15px 15px 0px 0px");
+            } else {
+              setBorderRadius("15px");
+            }
+          case 10:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee);
+    }));
+    return _handleInput.apply(this, arguments);
+  }
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    onBlur: handleBlur,
+    onFocus: handleInput,
+    style: {
+      borderRadius: borderRadius
+    },
+    type: "search",
+    onInput: handleInput,
+    value: searchValue,
+    placeholder: "Find my school!"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Suggestions, {
+    suggestions: suggestions
+  }));
+}
+function Suggestions(_ref) {
+  var suggestions = _ref.suggestions;
+  function handleSuggestionClick(event) {
+    event.preventDefault();
+  }
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "suggestions"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, suggestions.map(function (suggestion) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+      key: suggestion.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+      href: "/campus/".concat(suggestion.id, "/locations"),
+      onMouseDown: function onMouseDown(e) {
+        return handleSuggestionClick(e);
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+      src: "/images/magnify.svg",
+      alt: "Magnify"
+    }), suggestion.name));
+  })));
+}
+
+/***/ }),
+
+/***/ "./src/services/api.ts":
+/*!*****************************!*\
+  !*** ./src/services/api.ts ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ fetchSearch),
+/* harmony export */   "fetchDishes": () => (/* binding */ fetchDishes),
+/* harmony export */   "fetchLocations": () => (/* binding */ fetchLocations)
+/* harmony export */ });
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+function fetchSearch(_x) {
+  return _fetchSearch.apply(this, arguments);
+}
+function _fetchSearch() {
+  _fetchSearch = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(query) {
+    var response, suggestions;
+    return _regeneratorRuntime().wrap(function _callee$(_context) {
+      while (1) switch (_context.prev = _context.next) {
+        case 0:
+          _context.prev = 0;
+          _context.next = 3;
+          return fetch("/api/campus/search?query=".concat(encodeURIComponent(query)));
+        case 3:
+          response = _context.sent;
+          if (response.ok) {
+            _context.next = 6;
+            break;
+          }
+          throw new Error("HTTP error: ".concat(response.status));
+        case 6:
+          _context.next = 8;
+          return response.text();
+        case 8:
+          suggestions = _context.sent;
+          return _context.abrupt("return", JSON.parse(suggestions));
+        case 12:
+          _context.prev = 12;
+          _context.t0 = _context["catch"](0);
+          console.error("Error occurred during fetchSearch:", _context.t0);
+          throw _context.t0;
+        case 16:
+        case "end":
+          return _context.stop();
+      }
+    }, _callee, null, [[0, 12]]);
+  }));
+  return _fetchSearch.apply(this, arguments);
+}
+function fetchLocations(_x2) {
+  return _fetchLocations.apply(this, arguments);
+}
+function _fetchLocations() {
+  _fetchLocations = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(campusID) {
+    var response, locations, locationData;
+    return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+      while (1) switch (_context2.prev = _context2.next) {
+        case 0:
+          _context2.prev = 0;
+          _context2.next = 3;
+          return fetch("/api/campus/".concat(campusID, "/locations"));
+        case 3:
+          response = _context2.sent;
+          if (response.ok) {
+            _context2.next = 6;
+            break;
+          }
+          throw new Error("HTTP error: ".concat(response.status));
+        case 6:
+          _context2.next = 8;
+          return response.json();
+        case 8:
+          locations = _context2.sent;
+          locationData = locations.map(function (location) {
+            return _objectSpread({
+              type: "location"
+            }, location);
+          });
+          return _context2.abrupt("return", locationData);
+        case 13:
+          _context2.prev = 13;
+          _context2.t0 = _context2["catch"](0);
+          console.error("Error occurred during fetchLocations:", _context2.t0);
+          throw _context2.t0;
+        case 17:
+        case "end":
+          return _context2.stop();
+      }
+    }, _callee2, null, [[0, 13]]);
+  }));
+  return _fetchLocations.apply(this, arguments);
+}
+function fetchDishes(_x3) {
+  return _fetchDishes.apply(this, arguments);
+}
+function _fetchDishes() {
+  _fetchDishes = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(locationID) {
+    var response, dishes, dishData;
+    return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+      while (1) switch (_context3.prev = _context3.next) {
+        case 0:
+          _context3.prev = 0;
+          _context3.next = 3;
+          return fetch("/api/locations/".concat(locationID, "/dishes"));
+        case 3:
+          response = _context3.sent;
+          if (response.ok) {
+            _context3.next = 6;
+            break;
+          }
+          throw new Error("HTTP error: ".concat(response.status));
+        case 6:
+          _context3.next = 8;
+          return response.json();
+        case 8:
+          dishes = _context3.sent;
+          dishData = dishes.map(function (dish) {
+            return _objectSpread({
+              type: "dish"
+            }, dish);
+          });
+          return _context3.abrupt("return", dishData);
+        case 13:
+          _context3.prev = 13;
+          _context3.t0 = _context3["catch"](0);
+          console.error("Error occurred during fetchDishes:", _context3.t0);
+          throw _context3.t0;
+        case 17:
+        case "end":
+          return _context3.stop();
+      }
+    }, _callee3, null, [[0, 13]]);
+  }));
+  return _fetchDishes.apply(this, arguments);
+}
+
+/***/ }),
+
+/***/ "./src/services/cache.ts":
+/*!*******************************!*\
+  !*** ./src/services/cache.ts ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "cache": () => (/* binding */ cache),
+/* harmony export */   "queryCache": () => (/* binding */ queryCache),
+/* harmony export */   "queryThroughCache": () => (/* binding */ queryThroughCache)
+/* harmony export */ });
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api */ "./src/services/api.ts");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+var cache = {
+  campus: {},
+  location: {}
+};
+
+// Use if it is not known whether the query is cached
+function queryThroughCache(_x) {
+  return _queryThroughCache.apply(this, arguments);
+}
+
+// Use only if you know the query is cached
+function _queryThroughCache() {
+  _queryThroughCache = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(query) {
+    var _query$split3, _query$split4, type, idString, id, cacheType, fetchData, data;
+    return _regeneratorRuntime().wrap(function _callee$(_context) {
+      while (1) switch (_context.prev = _context.next) {
+        case 0:
+          _query$split3 = query.split("."), _query$split4 = _slicedToArray(_query$split3, 2), type = _query$split4[0], idString = _query$split4[1];
+          id = parseInt(idString);
+          if (!(type === "campus" || type === "location")) {
+            _context.next = 12;
+            break;
+          }
+          cacheType = cache[type];
+          if (!(id in cacheType)) {
+            _context.next = 6;
+            break;
+          }
+          return _context.abrupt("return", cacheType[id]);
+        case 6:
+          fetchData = type === "campus" ? _api__WEBPACK_IMPORTED_MODULE_0__.fetchLocations : _api__WEBPACK_IMPORTED_MODULE_0__.fetchDishes;
+          _context.next = 9;
+          return fetchData(id);
+        case 9:
+          data = _context.sent;
+          cacheType[id] = data;
+          return _context.abrupt("return", data);
+        case 12:
+          throw new Error("Error: cache type ".concat(type, " does not exist"));
+        case 13:
+        case "end":
+          return _context.stop();
+      }
+    }, _callee);
+  }));
+  return _queryThroughCache.apply(this, arguments);
+}
+function queryCache(query) {
+  var _query$split = query.split("."),
+    _query$split2 = _slicedToArray(_query$split, 2),
+    type = _query$split2[0],
+    idString = _query$split2[1];
+  var id = parseInt(idString);
+  if (type === "campus" || type === "location") {
+    var cacheType = cache[type];
+    if (id in cacheType) {
+      return cacheType[id];
+    } else {
+      throw new Error("Error: query \"".concat(query, "\" not cached. Use queryThroughCache if you are unsure whether the query is cached."));
+    }
+  }
+  throw new Error("Error: cache type \"".concat(type, "\" does not exist"));
+}
+
+/***/ }),
+
 /***/ "./node_modules/clsx/dist/clsx.m.js":
 /*!******************************************!*\
   !*** ./node_modules/clsx/dist/clsx.m.js ***!
@@ -9069,6 +19508,615 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 function r(e){var t,f,n="";if("string"==typeof e||"number"==typeof e)n+=e;else if("object"==typeof e)if(Array.isArray(e))for(t=0;t<e.length;t++)e[t]&&(f=r(e[t]))&&(n&&(n+=" "),n+=f);else for(t in e)e[t]&&(n&&(n+=" "),n+=t);return n}function clsx(){for(var e,t,f=0,n="";f<arguments.length;)(e=arguments[f++])&&(t=r(e))&&(n&&(n+=" "),n+=t);return n}/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (clsx);
+
+/***/ }),
+
+/***/ "./node_modules/cross-fetch/dist/browser-ponyfill.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/cross-fetch/dist/browser-ponyfill.js ***!
+  \***********************************************************/
+/***/ (function(module, exports) {
+
+var global = typeof self !== 'undefined' ? self : this;
+var __self__ = (function () {
+function F() {
+this.fetch = false;
+this.DOMException = global.DOMException
+}
+F.prototype = global;
+return new F();
+})();
+(function(self) {
+
+var irrelevant = (function (exports) {
+
+  var support = {
+    searchParams: 'URLSearchParams' in self,
+    iterable: 'Symbol' in self && 'iterator' in Symbol,
+    blob:
+      'FileReader' in self &&
+      'Blob' in self &&
+      (function() {
+        try {
+          new Blob();
+          return true
+        } catch (e) {
+          return false
+        }
+      })(),
+    formData: 'FormData' in self,
+    arrayBuffer: 'ArrayBuffer' in self
+  };
+
+  function isDataView(obj) {
+    return obj && DataView.prototype.isPrototypeOf(obj)
+  }
+
+  if (support.arrayBuffer) {
+    var viewClasses = [
+      '[object Int8Array]',
+      '[object Uint8Array]',
+      '[object Uint8ClampedArray]',
+      '[object Int16Array]',
+      '[object Uint16Array]',
+      '[object Int32Array]',
+      '[object Uint32Array]',
+      '[object Float32Array]',
+      '[object Float64Array]'
+    ];
+
+    var isArrayBufferView =
+      ArrayBuffer.isView ||
+      function(obj) {
+        return obj && viewClasses.indexOf(Object.prototype.toString.call(obj)) > -1
+      };
+  }
+
+  function normalizeName(name) {
+    if (typeof name !== 'string') {
+      name = String(name);
+    }
+    if (/[^a-z0-9\-#$%&'*+.^_`|~]/i.test(name)) {
+      throw new TypeError('Invalid character in header field name')
+    }
+    return name.toLowerCase()
+  }
+
+  function normalizeValue(value) {
+    if (typeof value !== 'string') {
+      value = String(value);
+    }
+    return value
+  }
+
+  // Build a destructive iterator for the value list
+  function iteratorFor(items) {
+    var iterator = {
+      next: function() {
+        var value = items.shift();
+        return {done: value === undefined, value: value}
+      }
+    };
+
+    if (support.iterable) {
+      iterator[Symbol.iterator] = function() {
+        return iterator
+      };
+    }
+
+    return iterator
+  }
+
+  function Headers(headers) {
+    this.map = {};
+
+    if (headers instanceof Headers) {
+      headers.forEach(function(value, name) {
+        this.append(name, value);
+      }, this);
+    } else if (Array.isArray(headers)) {
+      headers.forEach(function(header) {
+        this.append(header[0], header[1]);
+      }, this);
+    } else if (headers) {
+      Object.getOwnPropertyNames(headers).forEach(function(name) {
+        this.append(name, headers[name]);
+      }, this);
+    }
+  }
+
+  Headers.prototype.append = function(name, value) {
+    name = normalizeName(name);
+    value = normalizeValue(value);
+    var oldValue = this.map[name];
+    this.map[name] = oldValue ? oldValue + ', ' + value : value;
+  };
+
+  Headers.prototype['delete'] = function(name) {
+    delete this.map[normalizeName(name)];
+  };
+
+  Headers.prototype.get = function(name) {
+    name = normalizeName(name);
+    return this.has(name) ? this.map[name] : null
+  };
+
+  Headers.prototype.has = function(name) {
+    return this.map.hasOwnProperty(normalizeName(name))
+  };
+
+  Headers.prototype.set = function(name, value) {
+    this.map[normalizeName(name)] = normalizeValue(value);
+  };
+
+  Headers.prototype.forEach = function(callback, thisArg) {
+    for (var name in this.map) {
+      if (this.map.hasOwnProperty(name)) {
+        callback.call(thisArg, this.map[name], name, this);
+      }
+    }
+  };
+
+  Headers.prototype.keys = function() {
+    var items = [];
+    this.forEach(function(value, name) {
+      items.push(name);
+    });
+    return iteratorFor(items)
+  };
+
+  Headers.prototype.values = function() {
+    var items = [];
+    this.forEach(function(value) {
+      items.push(value);
+    });
+    return iteratorFor(items)
+  };
+
+  Headers.prototype.entries = function() {
+    var items = [];
+    this.forEach(function(value, name) {
+      items.push([name, value]);
+    });
+    return iteratorFor(items)
+  };
+
+  if (support.iterable) {
+    Headers.prototype[Symbol.iterator] = Headers.prototype.entries;
+  }
+
+  function consumed(body) {
+    if (body.bodyUsed) {
+      return Promise.reject(new TypeError('Already read'))
+    }
+    body.bodyUsed = true;
+  }
+
+  function fileReaderReady(reader) {
+    return new Promise(function(resolve, reject) {
+      reader.onload = function() {
+        resolve(reader.result);
+      };
+      reader.onerror = function() {
+        reject(reader.error);
+      };
+    })
+  }
+
+  function readBlobAsArrayBuffer(blob) {
+    var reader = new FileReader();
+    var promise = fileReaderReady(reader);
+    reader.readAsArrayBuffer(blob);
+    return promise
+  }
+
+  function readBlobAsText(blob) {
+    var reader = new FileReader();
+    var promise = fileReaderReady(reader);
+    reader.readAsText(blob);
+    return promise
+  }
+
+  function readArrayBufferAsText(buf) {
+    var view = new Uint8Array(buf);
+    var chars = new Array(view.length);
+
+    for (var i = 0; i < view.length; i++) {
+      chars[i] = String.fromCharCode(view[i]);
+    }
+    return chars.join('')
+  }
+
+  function bufferClone(buf) {
+    if (buf.slice) {
+      return buf.slice(0)
+    } else {
+      var view = new Uint8Array(buf.byteLength);
+      view.set(new Uint8Array(buf));
+      return view.buffer
+    }
+  }
+
+  function Body() {
+    this.bodyUsed = false;
+
+    this._initBody = function(body) {
+      this._bodyInit = body;
+      if (!body) {
+        this._bodyText = '';
+      } else if (typeof body === 'string') {
+        this._bodyText = body;
+      } else if (support.blob && Blob.prototype.isPrototypeOf(body)) {
+        this._bodyBlob = body;
+      } else if (support.formData && FormData.prototype.isPrototypeOf(body)) {
+        this._bodyFormData = body;
+      } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
+        this._bodyText = body.toString();
+      } else if (support.arrayBuffer && support.blob && isDataView(body)) {
+        this._bodyArrayBuffer = bufferClone(body.buffer);
+        // IE 10-11 can't handle a DataView body.
+        this._bodyInit = new Blob([this._bodyArrayBuffer]);
+      } else if (support.arrayBuffer && (ArrayBuffer.prototype.isPrototypeOf(body) || isArrayBufferView(body))) {
+        this._bodyArrayBuffer = bufferClone(body);
+      } else {
+        this._bodyText = body = Object.prototype.toString.call(body);
+      }
+
+      if (!this.headers.get('content-type')) {
+        if (typeof body === 'string') {
+          this.headers.set('content-type', 'text/plain;charset=UTF-8');
+        } else if (this._bodyBlob && this._bodyBlob.type) {
+          this.headers.set('content-type', this._bodyBlob.type);
+        } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
+          this.headers.set('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+        }
+      }
+    };
+
+    if (support.blob) {
+      this.blob = function() {
+        var rejected = consumed(this);
+        if (rejected) {
+          return rejected
+        }
+
+        if (this._bodyBlob) {
+          return Promise.resolve(this._bodyBlob)
+        } else if (this._bodyArrayBuffer) {
+          return Promise.resolve(new Blob([this._bodyArrayBuffer]))
+        } else if (this._bodyFormData) {
+          throw new Error('could not read FormData body as blob')
+        } else {
+          return Promise.resolve(new Blob([this._bodyText]))
+        }
+      };
+
+      this.arrayBuffer = function() {
+        if (this._bodyArrayBuffer) {
+          return consumed(this) || Promise.resolve(this._bodyArrayBuffer)
+        } else {
+          return this.blob().then(readBlobAsArrayBuffer)
+        }
+      };
+    }
+
+    this.text = function() {
+      var rejected = consumed(this);
+      if (rejected) {
+        return rejected
+      }
+
+      if (this._bodyBlob) {
+        return readBlobAsText(this._bodyBlob)
+      } else if (this._bodyArrayBuffer) {
+        return Promise.resolve(readArrayBufferAsText(this._bodyArrayBuffer))
+      } else if (this._bodyFormData) {
+        throw new Error('could not read FormData body as text')
+      } else {
+        return Promise.resolve(this._bodyText)
+      }
+    };
+
+    if (support.formData) {
+      this.formData = function() {
+        return this.text().then(decode)
+      };
+    }
+
+    this.json = function() {
+      return this.text().then(JSON.parse)
+    };
+
+    return this
+  }
+
+  // HTTP methods whose capitalization should be normalized
+  var methods = ['DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT'];
+
+  function normalizeMethod(method) {
+    var upcased = method.toUpperCase();
+    return methods.indexOf(upcased) > -1 ? upcased : method
+  }
+
+  function Request(input, options) {
+    options = options || {};
+    var body = options.body;
+
+    if (input instanceof Request) {
+      if (input.bodyUsed) {
+        throw new TypeError('Already read')
+      }
+      this.url = input.url;
+      this.credentials = input.credentials;
+      if (!options.headers) {
+        this.headers = new Headers(input.headers);
+      }
+      this.method = input.method;
+      this.mode = input.mode;
+      this.signal = input.signal;
+      if (!body && input._bodyInit != null) {
+        body = input._bodyInit;
+        input.bodyUsed = true;
+      }
+    } else {
+      this.url = String(input);
+    }
+
+    this.credentials = options.credentials || this.credentials || 'same-origin';
+    if (options.headers || !this.headers) {
+      this.headers = new Headers(options.headers);
+    }
+    this.method = normalizeMethod(options.method || this.method || 'GET');
+    this.mode = options.mode || this.mode || null;
+    this.signal = options.signal || this.signal;
+    this.referrer = null;
+
+    if ((this.method === 'GET' || this.method === 'HEAD') && body) {
+      throw new TypeError('Body not allowed for GET or HEAD requests')
+    }
+    this._initBody(body);
+  }
+
+  Request.prototype.clone = function() {
+    return new Request(this, {body: this._bodyInit})
+  };
+
+  function decode(body) {
+    var form = new FormData();
+    body
+      .trim()
+      .split('&')
+      .forEach(function(bytes) {
+        if (bytes) {
+          var split = bytes.split('=');
+          var name = split.shift().replace(/\+/g, ' ');
+          var value = split.join('=').replace(/\+/g, ' ');
+          form.append(decodeURIComponent(name), decodeURIComponent(value));
+        }
+      });
+    return form
+  }
+
+  function parseHeaders(rawHeaders) {
+    var headers = new Headers();
+    // Replace instances of \r\n and \n followed by at least one space or horizontal tab with a space
+    // https://tools.ietf.org/html/rfc7230#section-3.2
+    var preProcessedHeaders = rawHeaders.replace(/\r?\n[\t ]+/g, ' ');
+    preProcessedHeaders.split(/\r?\n/).forEach(function(line) {
+      var parts = line.split(':');
+      var key = parts.shift().trim();
+      if (key) {
+        var value = parts.join(':').trim();
+        headers.append(key, value);
+      }
+    });
+    return headers
+  }
+
+  Body.call(Request.prototype);
+
+  function Response(bodyInit, options) {
+    if (!options) {
+      options = {};
+    }
+
+    this.type = 'default';
+    this.status = options.status === undefined ? 200 : options.status;
+    this.ok = this.status >= 200 && this.status < 300;
+    this.statusText = 'statusText' in options ? options.statusText : 'OK';
+    this.headers = new Headers(options.headers);
+    this.url = options.url || '';
+    this._initBody(bodyInit);
+  }
+
+  Body.call(Response.prototype);
+
+  Response.prototype.clone = function() {
+    return new Response(this._bodyInit, {
+      status: this.status,
+      statusText: this.statusText,
+      headers: new Headers(this.headers),
+      url: this.url
+    })
+  };
+
+  Response.error = function() {
+    var response = new Response(null, {status: 0, statusText: ''});
+    response.type = 'error';
+    return response
+  };
+
+  var redirectStatuses = [301, 302, 303, 307, 308];
+
+  Response.redirect = function(url, status) {
+    if (redirectStatuses.indexOf(status) === -1) {
+      throw new RangeError('Invalid status code')
+    }
+
+    return new Response(null, {status: status, headers: {location: url}})
+  };
+
+  exports.DOMException = self.DOMException;
+  try {
+    new exports.DOMException();
+  } catch (err) {
+    exports.DOMException = function(message, name) {
+      this.message = message;
+      this.name = name;
+      var error = Error(message);
+      this.stack = error.stack;
+    };
+    exports.DOMException.prototype = Object.create(Error.prototype);
+    exports.DOMException.prototype.constructor = exports.DOMException;
+  }
+
+  function fetch(input, init) {
+    return new Promise(function(resolve, reject) {
+      var request = new Request(input, init);
+
+      if (request.signal && request.signal.aborted) {
+        return reject(new exports.DOMException('Aborted', 'AbortError'))
+      }
+
+      var xhr = new XMLHttpRequest();
+
+      function abortXhr() {
+        xhr.abort();
+      }
+
+      xhr.onload = function() {
+        var options = {
+          status: xhr.status,
+          statusText: xhr.statusText,
+          headers: parseHeaders(xhr.getAllResponseHeaders() || '')
+        };
+        options.url = 'responseURL' in xhr ? xhr.responseURL : options.headers.get('X-Request-URL');
+        var body = 'response' in xhr ? xhr.response : xhr.responseText;
+        resolve(new Response(body, options));
+      };
+
+      xhr.onerror = function() {
+        reject(new TypeError('Network request failed'));
+      };
+
+      xhr.ontimeout = function() {
+        reject(new TypeError('Network request failed'));
+      };
+
+      xhr.onabort = function() {
+        reject(new exports.DOMException('Aborted', 'AbortError'));
+      };
+
+      xhr.open(request.method, request.url, true);
+
+      if (request.credentials === 'include') {
+        xhr.withCredentials = true;
+      } else if (request.credentials === 'omit') {
+        xhr.withCredentials = false;
+      }
+
+      if ('responseType' in xhr && support.blob) {
+        xhr.responseType = 'blob';
+      }
+
+      request.headers.forEach(function(value, name) {
+        xhr.setRequestHeader(name, value);
+      });
+
+      if (request.signal) {
+        request.signal.addEventListener('abort', abortXhr);
+
+        xhr.onreadystatechange = function() {
+          // DONE (success or failure)
+          if (xhr.readyState === 4) {
+            request.signal.removeEventListener('abort', abortXhr);
+          }
+        };
+      }
+
+      xhr.send(typeof request._bodyInit === 'undefined' ? null : request._bodyInit);
+    })
+  }
+
+  fetch.polyfill = true;
+
+  if (!self.fetch) {
+    self.fetch = fetch;
+    self.Headers = Headers;
+    self.Request = Request;
+    self.Response = Response;
+  }
+
+  exports.Headers = Headers;
+  exports.Request = Request;
+  exports.Response = Response;
+  exports.fetch = fetch;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+  return exports;
+
+})({});
+})(__self__);
+__self__.fetch.ponyfill = true;
+// Remove "polyfill" property added by whatwg-fetch
+delete __self__.fetch.polyfill;
+// Choose between native implementation (global) or custom implementation (__self__)
+// var ctx = global.fetch ? global : __self__;
+var ctx = __self__; // this line disable service worker support temporarily
+exports = ctx.fetch // To enable: import fetch from 'cross-fetch'
+exports["default"] = ctx.fetch // For TypeScript consumers without esModuleInterop.
+exports.fetch = ctx.fetch // To enable: import {fetch} from 'cross-fetch'
+exports.Headers = ctx.Headers
+exports.Request = ctx.Request
+exports.Response = ctx.Response
+module.exports = exports
+
+
+/***/ }),
+
+/***/ "./node_modules/es5-ext/global.js":
+/*!****************************************!*\
+  !*** ./node_modules/es5-ext/global.js ***!
+  \****************************************/
+/***/ ((module) => {
+
+var naiveFallback = function () {
+	if (typeof self === "object" && self) return self;
+	if (typeof window === "object" && window) return window;
+	throw new Error("Unable to resolve global `this`");
+};
+
+module.exports = (function () {
+	if (this) return this;
+
+	// Unexpected strict mode (may happen if e.g. bundled into ESM module)
+
+	// Fallback to standard globalThis if available
+	if (typeof globalThis === "object" && globalThis) return globalThis;
+
+	// Thanks @mathiasbynens -> https://mathiasbynens.be/notes/globalthis
+	// In all ES5+ engines global object inherits from Object.prototype
+	// (if you approached one that doesn't please report)
+	try {
+		Object.defineProperty(Object.prototype, "__global__", {
+			get: function () { return this; },
+			configurable: true
+		});
+	} catch (error) {
+		// Unfortunate case of updates to Object.prototype being restricted
+		// via preventExtensions, seal or freeze
+		return naiveFallback();
+	}
+	try {
+		// Safari case (window.__global__ works, but __global__ does not)
+		if (!__global__) return naiveFallback();
+		return __global__;
+	} finally {
+		delete Object.prototype.__global__;
+	}
+})();
+
 
 /***/ }),
 
@@ -40240,6 +51288,748 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/react-transition-group/esm/Transition.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/react-transition-group/esm/Transition.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ENTERED": () => (/* binding */ ENTERED),
+/* harmony export */   "ENTERING": () => (/* binding */ ENTERING),
+/* harmony export */   "EXITED": () => (/* binding */ EXITED),
+/* harmony export */   "EXITING": () => (/* binding */ EXITING),
+/* harmony export */   "UNMOUNTED": () => (/* binding */ UNMOUNTED),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./config */ "./node_modules/react-transition-group/esm/config.js");
+/* harmony import */ var _utils_PropTypes__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./utils/PropTypes */ "./node_modules/react-transition-group/esm/utils/PropTypes.js");
+/* harmony import */ var _TransitionGroupContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./TransitionGroupContext */ "./node_modules/react-transition-group/esm/TransitionGroupContext.js");
+/* harmony import */ var _utils_reflow__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils/reflow */ "./node_modules/react-transition-group/esm/utils/reflow.js");
+
+
+
+
+
+
+
+
+
+var UNMOUNTED = 'unmounted';
+var EXITED = 'exited';
+var ENTERING = 'entering';
+var ENTERED = 'entered';
+var EXITING = 'exiting';
+/**
+ * The Transition component lets you describe a transition from one component
+ * state to another _over time_ with a simple declarative API. Most commonly
+ * it's used to animate the mounting and unmounting of a component, but can also
+ * be used to describe in-place transition states as well.
+ *
+ * ---
+ *
+ * **Note**: `Transition` is a platform-agnostic base component. If you're using
+ * transitions in CSS, you'll probably want to use
+ * [`CSSTransition`](https://reactcommunity.org/react-transition-group/css-transition)
+ * instead. It inherits all the features of `Transition`, but contains
+ * additional features necessary to play nice with CSS transitions (hence the
+ * name of the component).
+ *
+ * ---
+ *
+ * By default the `Transition` component does not alter the behavior of the
+ * component it renders, it only tracks "enter" and "exit" states for the
+ * components. It's up to you to give meaning and effect to those states. For
+ * example we can add styles to a component when it enters or exits:
+ *
+ * ```jsx
+ * import { Transition } from 'react-transition-group';
+ *
+ * const duration = 300;
+ *
+ * const defaultStyle = {
+ *   transition: `opacity ${duration}ms ease-in-out`,
+ *   opacity: 0,
+ * }
+ *
+ * const transitionStyles = {
+ *   entering: { opacity: 1 },
+ *   entered:  { opacity: 1 },
+ *   exiting:  { opacity: 0 },
+ *   exited:  { opacity: 0 },
+ * };
+ *
+ * const Fade = ({ in: inProp }) => (
+ *   <Transition in={inProp} timeout={duration}>
+ *     {state => (
+ *       <div style={{
+ *         ...defaultStyle,
+ *         ...transitionStyles[state]
+ *       }}>
+ *         I'm a fade Transition!
+ *       </div>
+ *     )}
+ *   </Transition>
+ * );
+ * ```
+ *
+ * There are 4 main states a Transition can be in:
+ *  - `'entering'`
+ *  - `'entered'`
+ *  - `'exiting'`
+ *  - `'exited'`
+ *
+ * Transition state is toggled via the `in` prop. When `true` the component
+ * begins the "Enter" stage. During this stage, the component will shift from
+ * its current transition state, to `'entering'` for the duration of the
+ * transition and then to the `'entered'` stage once it's complete. Let's take
+ * the following example (we'll use the
+ * [useState](https://reactjs.org/docs/hooks-reference.html#usestate) hook):
+ *
+ * ```jsx
+ * function App() {
+ *   const [inProp, setInProp] = useState(false);
+ *   return (
+ *     <div>
+ *       <Transition in={inProp} timeout={500}>
+ *         {state => (
+ *           // ...
+ *         )}
+ *       </Transition>
+ *       <button onClick={() => setInProp(true)}>
+ *         Click to Enter
+ *       </button>
+ *     </div>
+ *   );
+ * }
+ * ```
+ *
+ * When the button is clicked the component will shift to the `'entering'` state
+ * and stay there for 500ms (the value of `timeout`) before it finally switches
+ * to `'entered'`.
+ *
+ * When `in` is `false` the same thing happens except the state moves from
+ * `'exiting'` to `'exited'`.
+ */
+
+var Transition = /*#__PURE__*/function (_React$Component) {
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(Transition, _React$Component);
+
+  function Transition(props, context) {
+    var _this;
+
+    _this = _React$Component.call(this, props, context) || this;
+    var parentGroup = context; // In the context of a TransitionGroup all enters are really appears
+
+    var appear = parentGroup && !parentGroup.isMounting ? props.enter : props.appear;
+    var initialStatus;
+    _this.appearStatus = null;
+
+    if (props.in) {
+      if (appear) {
+        initialStatus = EXITED;
+        _this.appearStatus = ENTERING;
+      } else {
+        initialStatus = ENTERED;
+      }
+    } else {
+      if (props.unmountOnExit || props.mountOnEnter) {
+        initialStatus = UNMOUNTED;
+      } else {
+        initialStatus = EXITED;
+      }
+    }
+
+    _this.state = {
+      status: initialStatus
+    };
+    _this.nextCallback = null;
+    return _this;
+  }
+
+  Transition.getDerivedStateFromProps = function getDerivedStateFromProps(_ref, prevState) {
+    var nextIn = _ref.in;
+
+    if (nextIn && prevState.status === UNMOUNTED) {
+      return {
+        status: EXITED
+      };
+    }
+
+    return null;
+  } // getSnapshotBeforeUpdate(prevProps) {
+  //   let nextStatus = null
+  //   if (prevProps !== this.props) {
+  //     const { status } = this.state
+  //     if (this.props.in) {
+  //       if (status !== ENTERING && status !== ENTERED) {
+  //         nextStatus = ENTERING
+  //       }
+  //     } else {
+  //       if (status === ENTERING || status === ENTERED) {
+  //         nextStatus = EXITING
+  //       }
+  //     }
+  //   }
+  //   return { nextStatus }
+  // }
+  ;
+
+  var _proto = Transition.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    this.updateStatus(true, this.appearStatus);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    var nextStatus = null;
+
+    if (prevProps !== this.props) {
+      var status = this.state.status;
+
+      if (this.props.in) {
+        if (status !== ENTERING && status !== ENTERED) {
+          nextStatus = ENTERING;
+        }
+      } else {
+        if (status === ENTERING || status === ENTERED) {
+          nextStatus = EXITING;
+        }
+      }
+    }
+
+    this.updateStatus(false, nextStatus);
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.cancelNextCallback();
+  };
+
+  _proto.getTimeouts = function getTimeouts() {
+    var timeout = this.props.timeout;
+    var exit, enter, appear;
+    exit = enter = appear = timeout;
+
+    if (timeout != null && typeof timeout !== 'number') {
+      exit = timeout.exit;
+      enter = timeout.enter; // TODO: remove fallback for next major
+
+      appear = timeout.appear !== undefined ? timeout.appear : enter;
+    }
+
+    return {
+      exit: exit,
+      enter: enter,
+      appear: appear
+    };
+  };
+
+  _proto.updateStatus = function updateStatus(mounting, nextStatus) {
+    if (mounting === void 0) {
+      mounting = false;
+    }
+
+    if (nextStatus !== null) {
+      // nextStatus will always be ENTERING or EXITING.
+      this.cancelNextCallback();
+
+      if (nextStatus === ENTERING) {
+        if (this.props.unmountOnExit || this.props.mountOnEnter) {
+          var node = this.props.nodeRef ? this.props.nodeRef.current : react_dom__WEBPACK_IMPORTED_MODULE_3__.findDOMNode(this); // https://github.com/reactjs/react-transition-group/pull/749
+          // With unmountOnExit or mountOnEnter, the enter animation should happen at the transition between `exited` and `entering`.
+          // To make the animation happen,  we have to separate each rendering and avoid being processed as batched.
+
+          if (node) (0,_utils_reflow__WEBPACK_IMPORTED_MODULE_4__.forceReflow)(node);
+        }
+
+        this.performEnter(mounting);
+      } else {
+        this.performExit();
+      }
+    } else if (this.props.unmountOnExit && this.state.status === EXITED) {
+      this.setState({
+        status: UNMOUNTED
+      });
+    }
+  };
+
+  _proto.performEnter = function performEnter(mounting) {
+    var _this2 = this;
+
+    var enter = this.props.enter;
+    var appearing = this.context ? this.context.isMounting : mounting;
+
+    var _ref2 = this.props.nodeRef ? [appearing] : [react_dom__WEBPACK_IMPORTED_MODULE_3__.findDOMNode(this), appearing],
+        maybeNode = _ref2[0],
+        maybeAppearing = _ref2[1];
+
+    var timeouts = this.getTimeouts();
+    var enterTimeout = appearing ? timeouts.appear : timeouts.enter; // no enter animation skip right to ENTERED
+    // if we are mounting and running this it means appear _must_ be set
+
+    if (!mounting && !enter || _config__WEBPACK_IMPORTED_MODULE_5__["default"].disabled) {
+      this.safeSetState({
+        status: ENTERED
+      }, function () {
+        _this2.props.onEntered(maybeNode);
+      });
+      return;
+    }
+
+    this.props.onEnter(maybeNode, maybeAppearing);
+    this.safeSetState({
+      status: ENTERING
+    }, function () {
+      _this2.props.onEntering(maybeNode, maybeAppearing);
+
+      _this2.onTransitionEnd(enterTimeout, function () {
+        _this2.safeSetState({
+          status: ENTERED
+        }, function () {
+          _this2.props.onEntered(maybeNode, maybeAppearing);
+        });
+      });
+    });
+  };
+
+  _proto.performExit = function performExit() {
+    var _this3 = this;
+
+    var exit = this.props.exit;
+    var timeouts = this.getTimeouts();
+    var maybeNode = this.props.nodeRef ? undefined : react_dom__WEBPACK_IMPORTED_MODULE_3__.findDOMNode(this); // no exit animation skip right to EXITED
+
+    if (!exit || _config__WEBPACK_IMPORTED_MODULE_5__["default"].disabled) {
+      this.safeSetState({
+        status: EXITED
+      }, function () {
+        _this3.props.onExited(maybeNode);
+      });
+      return;
+    }
+
+    this.props.onExit(maybeNode);
+    this.safeSetState({
+      status: EXITING
+    }, function () {
+      _this3.props.onExiting(maybeNode);
+
+      _this3.onTransitionEnd(timeouts.exit, function () {
+        _this3.safeSetState({
+          status: EXITED
+        }, function () {
+          _this3.props.onExited(maybeNode);
+        });
+      });
+    });
+  };
+
+  _proto.cancelNextCallback = function cancelNextCallback() {
+    if (this.nextCallback !== null) {
+      this.nextCallback.cancel();
+      this.nextCallback = null;
+    }
+  };
+
+  _proto.safeSetState = function safeSetState(nextState, callback) {
+    // This shouldn't be necessary, but there are weird race conditions with
+    // setState callbacks and unmounting in testing, so always make sure that
+    // we can cancel any pending setState callbacks after we unmount.
+    callback = this.setNextCallback(callback);
+    this.setState(nextState, callback);
+  };
+
+  _proto.setNextCallback = function setNextCallback(callback) {
+    var _this4 = this;
+
+    var active = true;
+
+    this.nextCallback = function (event) {
+      if (active) {
+        active = false;
+        _this4.nextCallback = null;
+        callback(event);
+      }
+    };
+
+    this.nextCallback.cancel = function () {
+      active = false;
+    };
+
+    return this.nextCallback;
+  };
+
+  _proto.onTransitionEnd = function onTransitionEnd(timeout, handler) {
+    this.setNextCallback(handler);
+    var node = this.props.nodeRef ? this.props.nodeRef.current : react_dom__WEBPACK_IMPORTED_MODULE_3__.findDOMNode(this);
+    var doesNotHaveTimeoutOrListener = timeout == null && !this.props.addEndListener;
+
+    if (!node || doesNotHaveTimeoutOrListener) {
+      setTimeout(this.nextCallback, 0);
+      return;
+    }
+
+    if (this.props.addEndListener) {
+      var _ref3 = this.props.nodeRef ? [this.nextCallback] : [node, this.nextCallback],
+          maybeNode = _ref3[0],
+          maybeNextCallback = _ref3[1];
+
+      this.props.addEndListener(maybeNode, maybeNextCallback);
+    }
+
+    if (timeout != null) {
+      setTimeout(this.nextCallback, timeout);
+    }
+  };
+
+  _proto.render = function render() {
+    var status = this.state.status;
+
+    if (status === UNMOUNTED) {
+      return null;
+    }
+
+    var _this$props = this.props,
+        children = _this$props.children,
+        _in = _this$props.in,
+        _mountOnEnter = _this$props.mountOnEnter,
+        _unmountOnExit = _this$props.unmountOnExit,
+        _appear = _this$props.appear,
+        _enter = _this$props.enter,
+        _exit = _this$props.exit,
+        _timeout = _this$props.timeout,
+        _addEndListener = _this$props.addEndListener,
+        _onEnter = _this$props.onEnter,
+        _onEntering = _this$props.onEntering,
+        _onEntered = _this$props.onEntered,
+        _onExit = _this$props.onExit,
+        _onExiting = _this$props.onExiting,
+        _onExited = _this$props.onExited,
+        _nodeRef = _this$props.nodeRef,
+        childProps = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(_this$props, ["children", "in", "mountOnEnter", "unmountOnExit", "appear", "enter", "exit", "timeout", "addEndListener", "onEnter", "onEntering", "onEntered", "onExit", "onExiting", "onExited", "nodeRef"]);
+
+    return (
+      /*#__PURE__*/
+      // allows for nested Transitions
+      react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_TransitionGroupContext__WEBPACK_IMPORTED_MODULE_6__["default"].Provider, {
+        value: null
+      }, typeof children === 'function' ? children(status, childProps) : react__WEBPACK_IMPORTED_MODULE_2___default().cloneElement(react__WEBPACK_IMPORTED_MODULE_2___default().Children.only(children), childProps))
+    );
+  };
+
+  return Transition;
+}((react__WEBPACK_IMPORTED_MODULE_2___default().Component));
+
+Transition.contextType = _TransitionGroupContext__WEBPACK_IMPORTED_MODULE_6__["default"];
+Transition.propTypes =  true ? {
+  /**
+   * A React reference to DOM element that need to transition:
+   * https://stackoverflow.com/a/51127130/4671932
+   *
+   *   - When `nodeRef` prop is used, `node` is not passed to callback functions
+   *      (e.g. `onEnter`) because user already has direct access to the node.
+   *   - When changing `key` prop of `Transition` in a `TransitionGroup` a new
+   *     `nodeRef` need to be provided to `Transition` with changed `key` prop
+   *     (see
+   *     [test/CSSTransition-test.js](https://github.com/reactjs/react-transition-group/blob/13435f897b3ab71f6e19d724f145596f5910581c/test/CSSTransition-test.js#L362-L437)).
+   */
+  nodeRef: prop_types__WEBPACK_IMPORTED_MODULE_7___default().shape({
+    current: typeof Element === 'undefined' ? (prop_types__WEBPACK_IMPORTED_MODULE_7___default().any) : function (propValue, key, componentName, location, propFullName, secret) {
+      var value = propValue[key];
+      return prop_types__WEBPACK_IMPORTED_MODULE_7___default().instanceOf(value && 'ownerDocument' in value ? value.ownerDocument.defaultView.Element : Element)(propValue, key, componentName, location, propFullName, secret);
+    }
+  }),
+
+  /**
+   * A `function` child can be used instead of a React element. This function is
+   * called with the current transition status (`'entering'`, `'entered'`,
+   * `'exiting'`, `'exited'`), which can be used to apply context
+   * specific props to a component.
+   *
+   * ```jsx
+   * <Transition in={this.state.in} timeout={150}>
+   *   {state => (
+   *     <MyComponent className={`fade fade-${state}`} />
+   *   )}
+   * </Transition>
+   * ```
+   */
+  children: prop_types__WEBPACK_IMPORTED_MODULE_7___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_7___default().func.isRequired), (prop_types__WEBPACK_IMPORTED_MODULE_7___default().element.isRequired)]).isRequired,
+
+  /**
+   * Show the component; triggers the enter or exit states
+   */
+  in: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool),
+
+  /**
+   * By default the child component is mounted immediately along with
+   * the parent `Transition` component. If you want to "lazy mount" the component on the
+   * first `in={true}` you can set `mountOnEnter`. After the first enter transition the component will stay
+   * mounted, even on "exited", unless you also specify `unmountOnExit`.
+   */
+  mountOnEnter: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool),
+
+  /**
+   * By default the child component stays mounted after it reaches the `'exited'` state.
+   * Set `unmountOnExit` if you'd prefer to unmount the component after it finishes exiting.
+   */
+  unmountOnExit: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool),
+
+  /**
+   * By default the child component does not perform the enter transition when
+   * it first mounts, regardless of the value of `in`. If you want this
+   * behavior, set both `appear` and `in` to `true`.
+   *
+   * > **Note**: there are no special appear states like `appearing`/`appeared`, this prop
+   * > only adds an additional enter transition. However, in the
+   * > `<CSSTransition>` component that first enter transition does result in
+   * > additional `.appear-*` classes, that way you can choose to style it
+   * > differently.
+   */
+  appear: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool),
+
+  /**
+   * Enable or disable enter transitions.
+   */
+  enter: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool),
+
+  /**
+   * Enable or disable exit transitions.
+   */
+  exit: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool),
+
+  /**
+   * The duration of the transition, in milliseconds.
+   * Required unless `addEndListener` is provided.
+   *
+   * You may specify a single timeout for all transitions:
+   *
+   * ```jsx
+   * timeout={500}
+   * ```
+   *
+   * or individually:
+   *
+   * ```jsx
+   * timeout={{
+   *  appear: 500,
+   *  enter: 300,
+   *  exit: 500,
+   * }}
+   * ```
+   *
+   * - `appear` defaults to the value of `enter`
+   * - `enter` defaults to `0`
+   * - `exit` defaults to `0`
+   *
+   * @type {number | { enter?: number, exit?: number, appear?: number }}
+   */
+  timeout: function timeout(props) {
+    var pt = _utils_PropTypes__WEBPACK_IMPORTED_MODULE_8__.timeoutsShape;
+    if (!props.addEndListener) pt = pt.isRequired;
+
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    return pt.apply(void 0, [props].concat(args));
+  },
+
+  /**
+   * Add a custom transition end trigger. Called with the transitioning
+   * DOM node and a `done` callback. Allows for more fine grained transition end
+   * logic. Timeouts are still used as a fallback if provided.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * ```jsx
+   * addEndListener={(node, done) => {
+   *   // use the css transitionend event to mark the finish of a transition
+   *   node.addEventListener('transitionend', done, false);
+   * }}
+   * ```
+   */
+  addEndListener: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().func),
+
+  /**
+   * Callback fired before the "entering" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool) -> void
+   */
+  onEnter: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().func),
+
+  /**
+   * Callback fired after the "entering" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool)
+   */
+  onEntering: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().func),
+
+  /**
+   * Callback fired after the "entered" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool) -> void
+   */
+  onEntered: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().func),
+
+  /**
+   * Callback fired before the "exiting" status is applied.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExit: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().func),
+
+  /**
+   * Callback fired after the "exiting" status is applied.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExiting: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().func),
+
+  /**
+   * Callback fired after the "exited" status is applied.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExited: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().func)
+} : 0; // Name the function so it is clearer in the documentation
+
+function noop() {}
+
+Transition.defaultProps = {
+  in: false,
+  mountOnEnter: false,
+  unmountOnExit: false,
+  appear: false,
+  enter: true,
+  exit: true,
+  onEnter: noop,
+  onEntering: noop,
+  onEntered: noop,
+  onExit: noop,
+  onExiting: noop,
+  onExited: noop
+};
+Transition.UNMOUNTED = UNMOUNTED;
+Transition.EXITED = EXITED;
+Transition.ENTERING = ENTERING;
+Transition.ENTERED = ENTERED;
+Transition.EXITING = EXITING;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Transition);
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/esm/TransitionGroupContext.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/react-transition-group/esm/TransitionGroupContext.js ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (react__WEBPACK_IMPORTED_MODULE_0___default().createContext(null));
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/esm/config.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/react-transition-group/esm/config.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  disabled: false
+});
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/esm/utils/PropTypes.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/react-transition-group/esm/utils/PropTypes.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "classNamesShape": () => (/* binding */ classNamesShape),
+/* harmony export */   "timeoutsShape": () => (/* binding */ timeoutsShape)
+/* harmony export */ });
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_0__);
+
+var timeoutsShape =  true ? prop_types__WEBPACK_IMPORTED_MODULE_0___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_0___default().number), prop_types__WEBPACK_IMPORTED_MODULE_0___default().shape({
+  enter: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().number),
+  exit: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().number),
+  appear: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().number)
+}).isRequired]) : 0;
+var classNamesShape =  true ? prop_types__WEBPACK_IMPORTED_MODULE_0___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_0___default().string), prop_types__WEBPACK_IMPORTED_MODULE_0___default().shape({
+  enter: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  exit: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  active: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string)
+}), prop_types__WEBPACK_IMPORTED_MODULE_0___default().shape({
+  enter: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  enterDone: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  enterActive: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  exit: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  exitDone: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  exitActive: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string)
+})]) : 0;
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/esm/utils/reflow.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/react-transition-group/esm/utils/reflow.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "forceReflow": () => (/* binding */ forceReflow)
+/* harmony export */ });
+var forceReflow = function forceReflow(node) {
+  return node.scrollTop;
+};
+
+/***/ }),
+
 /***/ "./node_modules/react/cjs/react-jsx-runtime.development.js":
 /*!*****************************************************************!*\
   !*** ./node_modules/react/cjs/react-jsx-runtime.development.js ***!
@@ -45009,748 +56799,77 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "./src/components/BreadCrumbs.tsx":
-/*!****************************************!*\
-  !*** ./src/components/BreadCrumbs.tsx ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ "./node_modules/websocket/lib/browser.js":
+/*!***********************************************!*\
+  !*** ./node_modules/websocket/lib/browser.js ***!
+  \***********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ BreadCrumbs)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _services_cache__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/cache */ "./src/services/cache.ts");
-
-
-function BreadCrumbs(_a) {
-    var breadCrumbs = _a.breadCrumbs, setBreadCrumbs = _a.setBreadCrumbs, setContentArray = _a.setContentArray, setContentClass = _a.setContentClass;
-    function handleBreadCrumbClick(index) {
-        var breadCrumb = breadCrumbs[index];
-        setContentArray((0,_services_cache__WEBPACK_IMPORTED_MODULE_1__.queryCache)(breadCrumb.query));
-        setContentClass(breadCrumb.class);
-        setBreadCrumbs(breadCrumbs.slice(0, index + 1));
-    }
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "bread-crumbs" }, breadCrumbsToButtons(breadCrumbs, handleBreadCrumbClick)));
+var _globalThis;
+if (typeof globalThis === 'object') {
+	_globalThis = globalThis;
+} else {
+	try {
+		_globalThis = __webpack_require__(/*! es5-ext/global */ "./node_modules/es5-ext/global.js");
+	} catch (error) {
+	} finally {
+		if (!_globalThis && typeof window !== 'undefined') { _globalThis = window; }
+		if (!_globalThis) { throw new Error('Could not determine global this'); }
+	}
 }
-function breadCrumbsToButtons(breadCrumbs, handleBreadCrumbClick) {
-    var buttons = [];
-    var _loop_1 = function (i) {
-        var breadCrumb = breadCrumbs[i];
-        buttons.push(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { key: breadCrumb.class, onClick: function () { return handleBreadCrumbClick(i); } }, breadCrumb.name));
-        if (i !== breadCrumbs.length - 1) {
-            buttons.push(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, ">"));
-        }
-    };
-    for (var i = 0; i < breadCrumbs.length; i++) {
-        _loop_1(i);
-    }
-    return buttons;
+
+var NativeWebSocket = _globalThis.WebSocket || _globalThis.MozWebSocket;
+var websocket_version = __webpack_require__(/*! ./version */ "./node_modules/websocket/lib/version.js");
+
+
+/**
+ * Expose a W3C WebSocket class with just one or two arguments.
+ */
+function W3CWebSocket(uri, protocols) {
+	var native_instance;
+
+	if (protocols) {
+		native_instance = new NativeWebSocket(uri, protocols);
+	}
+	else {
+		native_instance = new NativeWebSocket(uri);
+	}
+
+	/**
+	 * 'native_instance' is an instance of nativeWebSocket (the browser's WebSocket
+	 * class). Since it is an Object it will be returned as it is when creating an
+	 * instance of W3CWebSocket via 'new W3CWebSocket()'.
+	 *
+	 * ECMAScript 5: http://bclary.com/2004/11/07/#a-13.2.2
+	 */
+	return native_instance;
 }
+if (NativeWebSocket) {
+	['CONNECTING', 'OPEN', 'CLOSING', 'CLOSED'].forEach(function(prop) {
+		Object.defineProperty(W3CWebSocket, prop, {
+			get: function() { return NativeWebSocket[prop]; }
+		});
+	});
+}
+
+/**
+ * Module exports.
+ */
+module.exports = {
+    'w3cwebsocket' : NativeWebSocket ? W3CWebSocket : null,
+    'version'      : websocket_version
+};
 
 
 /***/ }),
 
-/***/ "./src/components/ContentContainer.tsx":
-/*!*********************************************!*\
-  !*** ./src/components/ContentContainer.tsx ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ "./node_modules/websocket/lib/version.js":
+/*!***********************************************!*\
+  !*** ./node_modules/websocket/lib/version.js ***!
+  \***********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ ContentContainer)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _BreadCrumbs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BreadCrumbs */ "./src/components/BreadCrumbs.tsx");
-/* harmony import */ var _DishCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DishCard */ "./src/components/DishCard.tsx");
-/* harmony import */ var _LocationCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./LocationCard */ "./src/components/LocationCard.tsx");
-/* harmony import */ var _services_cache__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/cache */ "./src/services/cache.ts");
-var __assign = (undefined && undefined.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
-
-
-
-
-
-function ContentContainer(_a) {
-    var locations = _a.locations, campusName = _a.campusName, campusID = _a.campusID;
-    var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("locations"), contentClass = _b[0], setContentClass = _b[1];
-    var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(locations), contentArray = _c[0], setContentArray = _c[1];
-    var _d = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([
-        { class: "locations", name: campusName, query: "campus.".concat(campusID) },
-    ]), breadCrumbs = _d[0], setBreadCrumbs = _d[1];
-    function handleLocationCardClick(id, name) {
-        return __awaiter(this, void 0, void 0, function () {
-            var dishes;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, (0,_services_cache__WEBPACK_IMPORTED_MODULE_4__.queryThroughCache)("location.".concat(id))];
-                    case 1:
-                        dishes = _a.sent();
-                        setContentClass("dishes");
-                        setBreadCrumbs(function (breadCrumbs) { return __spreadArray(__spreadArray([], breadCrumbs, true), [
-                            { class: "dishes", name: name, query: "location.".concat(id) },
-                        ], false); });
-                        setContentArray(dishes);
-                        return [2 /*return*/];
-                }
-            });
-        });
-    }
-    function handleDishCardClick(id, name) {
-        return __awaiter(this, void 0, void 0, function () { return __generator(this, function (_a) {
-            return [2 /*return*/];
-        }); });
-    }
-    function parseData(data) {
-        var cards = [];
-        for (var i = 0; i < data.length; i++) {
-            switch (data[i].type) {
-                case "location":
-                    var locationData = data[i];
-                    cards.push(react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_LocationCard__WEBPACK_IMPORTED_MODULE_3__["default"], __assign({}, locationData, { key: locationData.id, onLocationCardClick: handleLocationCardClick })));
-                    break;
-                case "dish":
-                    var dishData = data[i];
-                    cards.push(react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_DishCard__WEBPACK_IMPORTED_MODULE_2__["default"], __assign({}, dishData, { key: dishData.id, onDishCardClick: handleDishCardClick })));
-                    break;
-            }
-        }
-        return cards;
-    }
-    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-        _services_cache__WEBPACK_IMPORTED_MODULE_4__.cache.campus[campusID] = locations; // Seed cache with initial location data from server
-    }, []);
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_BreadCrumbs__WEBPACK_IMPORTED_MODULE_1__["default"], { breadCrumbs: breadCrumbs, setContentArray: setContentArray, setContentClass: setContentClass, setBreadCrumbs: setBreadCrumbs }),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: contentClass }, parseData(contentArray))));
-}
-
-
-/***/ }),
-
-/***/ "./src/components/DishCard.tsx":
-/*!*************************************!*\
-  !*** ./src/components/DishCard.tsx ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ DishCard)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Rating/Rating.js");
-
-
-function DishCard(_a) {
-    var id = _a.id, name = _a.name, price = _a.price, availability = _a.availability, rating = _a.rating, onDishCardClick = _a.onDishCardClick;
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "dish" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "top-half" },
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, name),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_1__["default"], { name: "read-only", value: rating, precision: 0.25, sx: { svg: { width: "clamp(16px, 4vw, 24px)" } }, readOnly: true })),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "bottom-half" },
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "$".concat(price)),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, formatAvailability(availability)))));
-}
-function formatAvailability(binaryString) {
-    var formattedString = "";
-    if (binaryString.charAt(0) === "1") {
-        formattedString += "Breakfast, ";
-    }
-    if (binaryString.charAt(1) === "1") {
-        formattedString += "Lunch, ";
-    }
-    if (binaryString.charAt(2) === "1") {
-        formattedString += "Dinner";
-    }
-    // Remove trailing comma and whitespace
-    formattedString = formattedString.trim().replace(/,\s*$/, "");
-    return formattedString;
-}
-
-
-/***/ }),
-
-/***/ "./src/components/LocationCard.tsx":
-/*!*****************************************!*\
-  !*** ./src/components/LocationCard.tsx ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ LocationCard)
-/* harmony export */ });
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/useMediaQuery/useMediaQuery.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Rating/Rating.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-
-function LocationCard(_a) {
-    var id = _a.id, name = _a.name, rating = _a.rating, count = _a.count, onLocationCardClick = _a.onLocationCardClick;
-    var smallScreen = (0,_mui_material__WEBPACK_IMPORTED_MODULE_1__["default"])("(max-width: 890px)");
-    var smallestScreen = (0,_mui_material__WEBPACK_IMPORTED_MODULE_1__["default"])("(max-width: 400px");
-    var notStacked = smallScreen && !smallestScreen;
-    var handleButtonClick = function () {
-        onLocationCardClick(id, name);
-    };
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "location" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", { className: "name" }, name),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "rating-container" },
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", { className: "decimal-value" }, rating),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], { name: "read-only", value: notStacked ? 1 : rating, max: notStacked ? 1 : 5, precision: 0.25, sx: smallScreen ? { svg: { width: "4vw" } } : undefined, readOnly: true })),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: handleButtonClick }, "See all ".concat(count, " dishes"))));
-}
-
-
-/***/ }),
-
-/***/ "./src/components/MiniSearchBar.tsx":
-/*!******************************************!*\
-  !*** ./src/components/MiniSearchBar.tsx ***!
-  \******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ MiniSearchBar)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/api */ "./src/services/api.ts");
-/* harmony import */ var _SearchBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SearchBar */ "./src/components/SearchBar.tsx");
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-
-
-
-function MiniSearchBar(_a) {
-    var placeholder = _a.placeholder;
-    var initialState = [];
-    var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialState), suggestions = _b[0], setSuggestions = _b[1];
-    var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""), searchValue = _c[0], setSearchValue = _c[1];
-    function handleInput(event) {
-        return __awaiter(this, void 0, void 0, function () {
-            var currentSearch, result;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        currentSearch = event.target.value;
-                        setSearchValue(currentSearch);
-                        result = [];
-                        if (!(currentSearch !== "")) return [3 /*break*/, 2];
-                        return [4 /*yield*/, (0,_services_api__WEBPACK_IMPORTED_MODULE_1__["default"])(currentSearch)];
-                    case 1:
-                        result = _a.sent();
-                        if (result.length > 5) {
-                            result = result.slice(0, 5);
-                        }
-                        _a.label = 2;
-                    case 2:
-                        setSuggestions(result);
-                        return [2 /*return*/];
-                }
-            });
-        });
-    }
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", { type: "search", onInput: handleInput, value: searchValue, placeholder: placeholder }),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SearchBar__WEBPACK_IMPORTED_MODULE_2__.Suggestions, { suggestions: suggestions })));
-}
-
-
-/***/ }),
-
-/***/ "./src/components/SchoolPage.tsx":
-/*!***************************************!*\
-  !*** ./src/components/SchoolPage.tsx ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ SchoolPage)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _MiniSearchBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MiniSearchBar */ "./src/components/MiniSearchBar.tsx");
-/* harmony import */ var _ContentContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ContentContainer */ "./src/components/ContentContainer.tsx");
-/* harmony import */ var _mui_base__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/base */ "./node_modules/@mui/base/Button/Button.js");
-
-
-
-
-function SchoolPage(_a) {
-    var locations = _a.locations, campusName = _a.campusName, campusID = _a.campusID;
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("header", null,
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { href: "/" },
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("picture", { title: "Campus Eats" },
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("source", { media: "(min-width: 400px)", srcSet: "/images/campus-eats-logo-black.svg" }),
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", { src: "/images/campus-eats-logo-mini.svg", alt: "campus-eats-logo" }))),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", { className: "places-at" },
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Places"),
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "at"),
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "search-container" },
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MiniSearchBar__WEBPACK_IMPORTED_MODULE_1__["default"], { placeholder: campusName }))),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", { className: "login-signup" },
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_base__WEBPACK_IMPORTED_MODULE_3__["default"], { className: "login" }, "Log in"),
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_base__WEBPACK_IMPORTED_MODULE_3__["default"], { className: "signup" }, "Sign up"))),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", null,
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ContentContainer__WEBPACK_IMPORTED_MODULE_2__["default"], { locations: locations, campusName: campusName, campusID: campusID }))));
-}
-
-
-/***/ }),
-
-/***/ "./src/components/SearchBar.tsx":
-/*!**************************************!*\
-  !*** ./src/components/SearchBar.tsx ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Suggestions": () => (/* binding */ Suggestions),
-/* harmony export */   "default": () => (/* binding */ SearchBar)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/api */ "./src/services/api.ts");
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-
-
-function SearchBar() {
-    var initialState = [];
-    var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialState), suggestions = _a[0], setSuggestions = _a[1];
-    var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""), searchValue = _b[0], setSearchValue = _b[1];
-    var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("15px"), borderRadius = _c[0], setBorderRadius = _c[1];
-    function handleBlur() {
-        setSuggestions([]);
-        setBorderRadius("15px");
-    }
-    function handleInput(event) {
-        return __awaiter(this, void 0, void 0, function () {
-            var currentSearch, result;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        currentSearch = event.target.value;
-                        setSearchValue(currentSearch);
-                        result = [];
-                        if (!(currentSearch !== "")) return [3 /*break*/, 2];
-                        return [4 /*yield*/, (0,_services_api__WEBPACK_IMPORTED_MODULE_1__["default"])(currentSearch)];
-                    case 1:
-                        result = _a.sent();
-                        if (result.length > 5) {
-                            result = result.slice(0, 5);
-                        }
-                        _a.label = 2;
-                    case 2:
-                        setSuggestions(result);
-                        if (result.length > 0) {
-                            setBorderRadius("15px 15px 0px 0px");
-                        }
-                        else {
-                            setBorderRadius("15px");
-                        }
-                        return [2 /*return*/];
-                }
-            });
-        });
-    }
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", { onBlur: handleBlur, onFocus: handleInput, style: { borderRadius: borderRadius }, type: "search", onInput: handleInput, value: searchValue, placeholder: "Find my school!" }),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Suggestions, { suggestions: suggestions })));
-}
-function Suggestions(_a) {
-    var suggestions = _a.suggestions;
-    function handleSuggestionClick(event) {
-        event.preventDefault();
-    }
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "suggestions" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, suggestions.map(function (suggestion) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", { key: suggestion.id },
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { href: "/campus/".concat(suggestion.id, "/locations"), onMouseDown: function (e) { return handleSuggestionClick(e); } },
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", { src: "/images/magnify.svg", alt: "Magnify" }),
-                suggestion.name))); }))));
-}
-
-
-/***/ }),
-
-/***/ "./src/services/api.ts":
-/*!*****************************!*\
-  !*** ./src/services/api.ts ***!
-  \*****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ fetchSearch),
-/* harmony export */   "fetchDishes": () => (/* binding */ fetchDishes),
-/* harmony export */   "fetchLocations": () => (/* binding */ fetchLocations)
-/* harmony export */ });
-var __assign = (undefined && undefined.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-function fetchSearch(query) {
-    return __awaiter(this, void 0, void 0, function () {
-        var response, suggestions, error_1;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 3, , 4]);
-                    return [4 /*yield*/, fetch("/api/campus/search?query=".concat(encodeURIComponent(query)))];
-                case 1:
-                    response = _a.sent();
-                    if (!response.ok) {
-                        // Handle HTTP errors
-                        throw new Error("HTTP error: ".concat(response.status));
-                    }
-                    return [4 /*yield*/, response.text()];
-                case 2:
-                    suggestions = _a.sent();
-                    return [2 /*return*/, JSON.parse(suggestions)];
-                case 3:
-                    error_1 = _a.sent();
-                    console.error("Error occurred during fetchSearch:", error_1);
-                    throw error_1;
-                case 4: return [2 /*return*/];
-            }
-        });
-    });
-}
-function fetchLocations(campusID) {
-    return __awaiter(this, void 0, void 0, function () {
-        var response, locations, locationData, error_2;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 3, , 4]);
-                    return [4 /*yield*/, fetch("/api/campus/".concat(campusID, "/locations"))];
-                case 1:
-                    response = _a.sent();
-                    if (!response.ok) {
-                        throw new Error("HTTP error: ".concat(response.status));
-                    }
-                    return [4 /*yield*/, response.json()];
-                case 2:
-                    locations = _a.sent();
-                    locationData = locations.map(function (location) { return (__assign({ type: "location" }, location)); });
-                    return [2 /*return*/, locationData];
-                case 3:
-                    error_2 = _a.sent();
-                    console.error("Error occurred during fetchLocations:", error_2);
-                    throw error_2;
-                case 4: return [2 /*return*/];
-            }
-        });
-    });
-}
-function fetchDishes(locationID) {
-    return __awaiter(this, void 0, void 0, function () {
-        var response, dishes, dishData, error_3;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 3, , 4]);
-                    return [4 /*yield*/, fetch("/api/locations/".concat(locationID, "/dishes"))];
-                case 1:
-                    response = _a.sent();
-                    if (!response.ok) {
-                        throw new Error("HTTP error: ".concat(response.status));
-                    }
-                    return [4 /*yield*/, response.json()];
-                case 2:
-                    dishes = _a.sent();
-                    dishData = dishes.map(function (dish) { return (__assign({ type: "dish" }, dish)); });
-                    return [2 /*return*/, dishData];
-                case 3:
-                    error_3 = _a.sent();
-                    console.error("Error occurred during fetchDishes:", error_3);
-                    throw error_3;
-                case 4: return [2 /*return*/];
-            }
-        });
-    });
-}
-
-
-/***/ }),
-
-/***/ "./src/services/cache.ts":
-/*!*******************************!*\
-  !*** ./src/services/cache.ts ***!
-  \*******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "cache": () => (/* binding */ cache),
-/* harmony export */   "queryCache": () => (/* binding */ queryCache),
-/* harmony export */   "queryThroughCache": () => (/* binding */ queryThroughCache)
-/* harmony export */ });
-/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api */ "./src/services/api.ts");
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-
-var cache = { campus: {}, location: {} };
-// Use if it is not known whether the query is cached
-function queryThroughCache(query) {
-    return __awaiter(this, void 0, void 0, function () {
-        var _a, type, idString, id, cacheType, fetchData, data;
-        return __generator(this, function (_b) {
-            switch (_b.label) {
-                case 0:
-                    _a = query.split("."), type = _a[0], idString = _a[1];
-                    id = parseInt(idString);
-                    if (!(type === "campus" || type === "location")) return [3 /*break*/, 2];
-                    cacheType = cache[type];
-                    if (id in cacheType) {
-                        return [2 /*return*/, cacheType[id]];
-                    }
-                    fetchData = type === "campus" ? _api__WEBPACK_IMPORTED_MODULE_0__.fetchLocations : _api__WEBPACK_IMPORTED_MODULE_0__.fetchDishes;
-                    return [4 /*yield*/, fetchData(id)];
-                case 1:
-                    data = _b.sent();
-                    cacheType[id] = data;
-                    return [2 /*return*/, data];
-                case 2: throw new Error("Error: cache type ".concat(type, " does not exist"));
-            }
-        });
-    });
-}
-// Use only if you know the query is cached
-function queryCache(query) {
-    var _a = query.split("."), type = _a[0], idString = _a[1];
-    var id = parseInt(idString);
-    if (type === "campus" || type === "location") {
-        var cacheType = cache[type];
-        if (id in cacheType) {
-            return cacheType[id];
-        }
-        else {
-            throw new Error("Error: query \"".concat(query, "\" not cached. Use queryThroughCache if you are unsure whether the query is cached."));
-        }
-    }
-    throw new Error("Error: cache type \"".concat(type, "\" does not exist"));
-}
+module.exports = __webpack_require__(/*! ../package.json */ "./node_modules/websocket/package.json").version;
 
 
 /***/ }),
@@ -45783,6 +56902,27 @@ function _extends() {
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _inheritsLoose)
+/* harmony export */ });
+/* harmony import */ var _setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./setPrototypeOf.js */ "./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js");
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  (0,_setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__["default"])(subClass, superClass);
+}
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js":
 /*!*********************************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js ***!
@@ -45806,6 +56946,1917 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   }
   return target;
 }
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _setPrototypeOf)
+/* harmony export */ });
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+  return _setPrototypeOf(o, p);
+}
+
+/***/ }),
+
+/***/ "./node_modules/@stitches/core/dist/index.mjs":
+/*!****************************************************!*\
+  !*** ./node_modules/@stitches/core/dist/index.mjs ***!
+  \****************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "createStitches": () => (/* binding */ X),
+/* harmony export */   "createTheme": () => (/* binding */ q),
+/* harmony export */   "css": () => (/* binding */ _),
+/* harmony export */   "defaultThemeMap": () => (/* binding */ i),
+/* harmony export */   "globalCss": () => (/* binding */ K),
+/* harmony export */   "keyframes": () => (/* binding */ Q)
+/* harmony export */ });
+var e,t="colors",n="sizes",r="space",i={gap:r,gridGap:r,columnGap:r,gridColumnGap:r,rowGap:r,gridRowGap:r,inset:r,insetBlock:r,insetBlockEnd:r,insetBlockStart:r,insetInline:r,insetInlineEnd:r,insetInlineStart:r,margin:r,marginTop:r,marginRight:r,marginBottom:r,marginLeft:r,marginBlock:r,marginBlockEnd:r,marginBlockStart:r,marginInline:r,marginInlineEnd:r,marginInlineStart:r,padding:r,paddingTop:r,paddingRight:r,paddingBottom:r,paddingLeft:r,paddingBlock:r,paddingBlockEnd:r,paddingBlockStart:r,paddingInline:r,paddingInlineEnd:r,paddingInlineStart:r,top:r,right:r,bottom:r,left:r,scrollMargin:r,scrollMarginTop:r,scrollMarginRight:r,scrollMarginBottom:r,scrollMarginLeft:r,scrollMarginX:r,scrollMarginY:r,scrollMarginBlock:r,scrollMarginBlockEnd:r,scrollMarginBlockStart:r,scrollMarginInline:r,scrollMarginInlineEnd:r,scrollMarginInlineStart:r,scrollPadding:r,scrollPaddingTop:r,scrollPaddingRight:r,scrollPaddingBottom:r,scrollPaddingLeft:r,scrollPaddingX:r,scrollPaddingY:r,scrollPaddingBlock:r,scrollPaddingBlockEnd:r,scrollPaddingBlockStart:r,scrollPaddingInline:r,scrollPaddingInlineEnd:r,scrollPaddingInlineStart:r,fontSize:"fontSizes",background:t,backgroundColor:t,backgroundImage:t,borderImage:t,border:t,borderBlock:t,borderBlockEnd:t,borderBlockStart:t,borderBottom:t,borderBottomColor:t,borderColor:t,borderInline:t,borderInlineEnd:t,borderInlineStart:t,borderLeft:t,borderLeftColor:t,borderRight:t,borderRightColor:t,borderTop:t,borderTopColor:t,caretColor:t,color:t,columnRuleColor:t,fill:t,outline:t,outlineColor:t,stroke:t,textDecorationColor:t,fontFamily:"fonts",fontWeight:"fontWeights",lineHeight:"lineHeights",letterSpacing:"letterSpacings",blockSize:n,minBlockSize:n,maxBlockSize:n,inlineSize:n,minInlineSize:n,maxInlineSize:n,width:n,minWidth:n,maxWidth:n,height:n,minHeight:n,maxHeight:n,flexBasis:n,gridTemplateColumns:n,gridTemplateRows:n,borderWidth:"borderWidths",borderTopWidth:"borderWidths",borderRightWidth:"borderWidths",borderBottomWidth:"borderWidths",borderLeftWidth:"borderWidths",borderStyle:"borderStyles",borderTopStyle:"borderStyles",borderRightStyle:"borderStyles",borderBottomStyle:"borderStyles",borderLeftStyle:"borderStyles",borderRadius:"radii",borderTopLeftRadius:"radii",borderTopRightRadius:"radii",borderBottomRightRadius:"radii",borderBottomLeftRadius:"radii",boxShadow:"shadows",textShadow:"shadows",transition:"transitions",zIndex:"zIndices"},o=(e,t)=>"function"==typeof t?{"()":Function.prototype.toString.call(t)}:t,l=()=>{const e=Object.create(null);return(t,n,...r)=>{const i=(e=>JSON.stringify(e,o))(t);return i in e?e[i]:e[i]=n(t,...r)}},s=Symbol.for("sxs.internal"),a=(e,t)=>Object.defineProperties(e,Object.getOwnPropertyDescriptors(t)),c=e=>{for(const t in e)return!0;return!1},{hasOwnProperty:d}=Object.prototype,g=e=>e.includes("-")?e:e.replace(/[A-Z]/g,(e=>"-"+e.toLowerCase())),p=/\s+(?![^()]*\))/,u=e=>t=>e(..."string"==typeof t?String(t).split(p):[t]),h={appearance:e=>({WebkitAppearance:e,appearance:e}),backfaceVisibility:e=>({WebkitBackfaceVisibility:e,backfaceVisibility:e}),backdropFilter:e=>({WebkitBackdropFilter:e,backdropFilter:e}),backgroundClip:e=>({WebkitBackgroundClip:e,backgroundClip:e}),boxDecorationBreak:e=>({WebkitBoxDecorationBreak:e,boxDecorationBreak:e}),clipPath:e=>({WebkitClipPath:e,clipPath:e}),content:e=>({content:e.includes('"')||e.includes("'")||/^([A-Za-z]+\([^]*|[^]*-quote|inherit|initial|none|normal|revert|unset)$/.test(e)?e:`"${e}"`}),hyphens:e=>({WebkitHyphens:e,hyphens:e}),maskImage:e=>({WebkitMaskImage:e,maskImage:e}),maskSize:e=>({WebkitMaskSize:e,maskSize:e}),tabSize:e=>({MozTabSize:e,tabSize:e}),textSizeAdjust:e=>({WebkitTextSizeAdjust:e,textSizeAdjust:e}),userSelect:e=>({WebkitUserSelect:e,userSelect:e}),marginBlock:u(((e,t)=>({marginBlockStart:e,marginBlockEnd:t||e}))),marginInline:u(((e,t)=>({marginInlineStart:e,marginInlineEnd:t||e}))),maxSize:u(((e,t)=>({maxBlockSize:e,maxInlineSize:t||e}))),minSize:u(((e,t)=>({minBlockSize:e,minInlineSize:t||e}))),paddingBlock:u(((e,t)=>({paddingBlockStart:e,paddingBlockEnd:t||e}))),paddingInline:u(((e,t)=>({paddingInlineStart:e,paddingInlineEnd:t||e})))},f=/([\d.]+)([^]*)/,m=(e,t)=>e.length?e.reduce(((e,n)=>(e.push(...t.map((e=>e.includes("&")?e.replace(/&/g,/[ +>|~]/.test(n)&&/&.*&/.test(e)?`:is(${n})`:n):n+" "+e))),e)),[]):t,b=(e,t)=>e in S&&"string"==typeof t?t.replace(/^((?:[^]*[^\w-])?)(fit-content|stretch)((?:[^\w-][^]*)?)$/,((t,n,r,i)=>n+("stretch"===r?`-moz-available${i};${g(e)}:${n}-webkit-fill-available`:`-moz-fit-content${i};${g(e)}:${n}fit-content`)+i)):String(t),S={blockSize:1,height:1,inlineSize:1,maxBlockSize:1,maxHeight:1,maxInlineSize:1,maxWidth:1,minBlockSize:1,minHeight:1,minInlineSize:1,minWidth:1,width:1},k=e=>e?e+"-":"",y=(e,t,n)=>e.replace(/([+-])?((?:\d+(?:\.\d*)?|\.\d+)(?:[Ee][+-]?\d+)?)?(\$|--)([$\w-]+)/g,((e,r,i,o,l)=>"$"==o==!!i?e:(r||"--"==o?"calc(":"")+"var(--"+("$"===o?k(t)+(l.includes("$")?"":k(n))+l.replace(/\$/g,"-"):l)+")"+(r||"--"==o?"*"+(r||"")+(i||"1")+")":""))),B=/\s*,\s*(?![^()]*\))/,$=Object.prototype.toString,x=(e,t,n,r,i)=>{let o,l,s;const a=(e,t,n)=>{let c,d;const p=e=>{for(c in e){const x=64===c.charCodeAt(0),z=x&&Array.isArray(e[c])?e[c]:[e[c]];for(d of z){const e=/[A-Z]/.test(S=c)?S:S.replace(/-[^]/g,(e=>e[1].toUpperCase())),z="object"==typeof d&&d&&d.toString===$&&(!r.utils[e]||!t.length);if(e in r.utils&&!z){const t=r.utils[e];if(t!==l){l=t,p(t(d)),l=null;continue}}else if(e in h){const t=h[e];if(t!==s){s=t,p(t(d)),s=null;continue}}if(x&&(u=c.slice(1)in r.media?"@media "+r.media[c.slice(1)]:c,c=u.replace(/\(\s*([\w-]+)\s*(=|<|<=|>|>=)\s*([\w-]+)\s*(?:(<|<=|>|>=)\s*([\w-]+)\s*)?\)/g,((e,t,n,r,i,o)=>{const l=f.test(t),s=.0625*(l?-1:1),[a,c]=l?[r,t]:[t,r];return"("+("="===n[0]?"":">"===n[0]===l?"max-":"min-")+a+":"+("="!==n[0]&&1===n.length?c.replace(f,((e,t,r)=>Number(t)+s*(">"===n?1:-1)+r)):c)+(i?") and ("+(">"===i[0]?"min-":"max-")+a+":"+(1===i.length?o.replace(f,((e,t,n)=>Number(t)+s*(">"===i?-1:1)+n)):o):"")+")"}))),z){const e=x?n.concat(c):[...n],r=x?[...t]:m(t,c.split(B));void 0!==o&&i(I(...o)),o=void 0,a(d,r,e)}else void 0===o&&(o=[[],t,n]),c=x||36!==c.charCodeAt(0)?c:`--${k(r.prefix)}${c.slice(1).replace(/\$/g,"-")}`,d=z?d:"number"==typeof d?d&&e in R?String(d)+"px":String(d):y(b(e,null==d?"":d),r.prefix,r.themeMap[e]),o[0].push(`${x?`${c} `:`${g(c)}:`}${d}`)}}var u,S};p(e),void 0!==o&&i(I(...o)),o=void 0};a(e,t,n)},I=(e,t,n)=>`${n.map((e=>`${e}{`)).join("")}${t.length?`${t.join(",")}{`:""}${e.join(";")}${t.length?"}":""}${Array(n.length?n.length+1:0).join("}")}`,R={animationDelay:1,animationDuration:1,backgroundSize:1,blockSize:1,border:1,borderBlock:1,borderBlockEnd:1,borderBlockEndWidth:1,borderBlockStart:1,borderBlockStartWidth:1,borderBlockWidth:1,borderBottom:1,borderBottomLeftRadius:1,borderBottomRightRadius:1,borderBottomWidth:1,borderEndEndRadius:1,borderEndStartRadius:1,borderInlineEnd:1,borderInlineEndWidth:1,borderInlineStart:1,borderInlineStartWidth:1,borderInlineWidth:1,borderLeft:1,borderLeftWidth:1,borderRadius:1,borderRight:1,borderRightWidth:1,borderSpacing:1,borderStartEndRadius:1,borderStartStartRadius:1,borderTop:1,borderTopLeftRadius:1,borderTopRightRadius:1,borderTopWidth:1,borderWidth:1,bottom:1,columnGap:1,columnRule:1,columnRuleWidth:1,columnWidth:1,containIntrinsicSize:1,flexBasis:1,fontSize:1,gap:1,gridAutoColumns:1,gridAutoRows:1,gridTemplateColumns:1,gridTemplateRows:1,height:1,inlineSize:1,inset:1,insetBlock:1,insetBlockEnd:1,insetBlockStart:1,insetInline:1,insetInlineEnd:1,insetInlineStart:1,left:1,letterSpacing:1,margin:1,marginBlock:1,marginBlockEnd:1,marginBlockStart:1,marginBottom:1,marginInline:1,marginInlineEnd:1,marginInlineStart:1,marginLeft:1,marginRight:1,marginTop:1,maxBlockSize:1,maxHeight:1,maxInlineSize:1,maxWidth:1,minBlockSize:1,minHeight:1,minInlineSize:1,minWidth:1,offsetDistance:1,offsetRotate:1,outline:1,outlineOffset:1,outlineWidth:1,overflowClipMargin:1,padding:1,paddingBlock:1,paddingBlockEnd:1,paddingBlockStart:1,paddingBottom:1,paddingInline:1,paddingInlineEnd:1,paddingInlineStart:1,paddingLeft:1,paddingRight:1,paddingTop:1,perspective:1,right:1,rowGap:1,scrollMargin:1,scrollMarginBlock:1,scrollMarginBlockEnd:1,scrollMarginBlockStart:1,scrollMarginBottom:1,scrollMarginInline:1,scrollMarginInlineEnd:1,scrollMarginInlineStart:1,scrollMarginLeft:1,scrollMarginRight:1,scrollMarginTop:1,scrollPadding:1,scrollPaddingBlock:1,scrollPaddingBlockEnd:1,scrollPaddingBlockStart:1,scrollPaddingBottom:1,scrollPaddingInline:1,scrollPaddingInlineEnd:1,scrollPaddingInlineStart:1,scrollPaddingLeft:1,scrollPaddingRight:1,scrollPaddingTop:1,shapeMargin:1,textDecoration:1,textDecorationThickness:1,textIndent:1,textUnderlineOffset:1,top:1,transitionDelay:1,transitionDuration:1,verticalAlign:1,width:1,wordSpacing:1},z=e=>String.fromCharCode(e+(e>25?39:97)),W=e=>(e=>{let t,n="";for(t=Math.abs(e);t>52;t=t/52|0)n=z(t%52)+n;return z(t%52)+n})(((e,t)=>{let n=t.length;for(;n;)e=33*e^t.charCodeAt(--n);return e})(5381,JSON.stringify(e))>>>0),j=["themed","global","styled","onevar","resonevar","allvar","inline"],E=e=>{if(e.href&&!e.href.startsWith(location.origin))return!1;try{return!!e.cssRules}catch(e){return!1}},T=e=>{let t;const n=()=>{const{cssRules:e}=t.sheet;return[].map.call(e,((n,r)=>{const{cssText:i}=n;let o="";if(i.startsWith("--sxs"))return"";if(e[r-1]&&(o=e[r-1].cssText).startsWith("--sxs")){if(!n.cssRules.length)return"";for(const e in t.rules)if(t.rules[e].group===n)return`--sxs{--sxs:${[...t.rules[e].cache].join(" ")}}${i}`;return n.cssRules.length?`${o}${i}`:""}return i})).join("")},r=()=>{if(t){const{rules:e,sheet:n}=t;if(!n.deleteRule){for(;3===Object(Object(n.cssRules)[0]).type;)n.cssRules.splice(0,1);n.cssRules=[]}for(const t in e)delete e[t]}const i=Object(e).styleSheets||[];for(const e of i)if(E(e)){for(let i=0,o=e.cssRules;o[i];++i){const l=Object(o[i]);if(1!==l.type)continue;const s=Object(o[i+1]);if(4!==s.type)continue;++i;const{cssText:a}=l;if(!a.startsWith("--sxs"))continue;const c=a.slice(14,-3).trim().split(/\s+/),d=j[c[0]];d&&(t||(t={sheet:e,reset:r,rules:{},toString:n}),t.rules[d]={group:s,index:i,cache:new Set(c)})}if(t)break}if(!t){const i=(e,t)=>({type:t,cssRules:[],insertRule(e,t){this.cssRules.splice(t,0,i(e,{import:3,undefined:1}[(e.toLowerCase().match(/^@([a-z]+)/)||[])[1]]||4))},get cssText(){return"@media{}"===e?`@media{${[].map.call(this.cssRules,(e=>e.cssText)).join("")}}`:e}});t={sheet:e?(e.head||e).appendChild(document.createElement("style")).sheet:i("","text/css"),rules:{},reset:r,toString:n}}const{sheet:o,rules:l}=t;for(let e=j.length-1;e>=0;--e){const t=j[e];if(!l[t]){const n=j[e+1],r=l[n]?l[n].index:o.cssRules.length;o.insertRule("@media{}",r),o.insertRule(`--sxs{--sxs:${e}}`,r),l[t]={group:o.cssRules[r+1],index:r,cache:new Set([e])}}v(l[t])}};return r(),t},v=e=>{const t=e.group;let n=t.cssRules.length;e.apply=e=>{try{t.insertRule(e,n),++n}catch(e){}}},M=Symbol(),w=l(),C=(e,t)=>w(e,(()=>(...n)=>{let r={type:null,composers:new Set};for(const t of n)if(null!=t)if(t[s]){null==r.type&&(r.type=t[s].type);for(const e of t[s].composers)r.composers.add(e)}else t.constructor!==Object||t.$$typeof?null==r.type&&(r.type=t):r.composers.add(P(t,e));return null==r.type&&(r.type="span"),r.composers.size||r.composers.add(["PJLV",{},[],[],{},[]]),L(e,r,t)})),P=({variants:e,compoundVariants:t,defaultVariants:n,...r},i)=>{const o=`${k(i.prefix)}c-${W(r)}`,l=[],s=[],a=Object.create(null),g=[];for(const e in n)a[e]=String(n[e]);if("object"==typeof e&&e)for(const t in e){p=a,u=t,d.call(p,u)||(a[t]="undefined");const n=e[t];for(const e in n){const r={[t]:String(e)};"undefined"===String(e)&&g.push(t);const i=n[e],o=[r,i,!c(i)];l.push(o)}}var p,u;if("object"==typeof t&&t)for(const e of t){let{css:t,...n}=e;t="object"==typeof t&&t||{};for(const e in n)n[e]=String(n[e]);const r=[n,t,!c(t)];s.push(r)}return[o,r,l,s,a,g]},L=(e,t,n)=>{const[r,i,o,l]=O(t.composers),c="function"==typeof t.type||t.type.$$typeof?(e=>{function t(){for(let n=0;n<t[M].length;n++){const[r,i]=t[M][n];e.rules[r].apply(i)}return t[M]=[],null}return t[M]=[],t.rules={},j.forEach((e=>t.rules[e]={apply:n=>t[M].push([e,n])})),t})(n):null,d=(c||n).rules,g=`.${r}${i.length>1?`:where(.${i.slice(1).join(".")})`:""}`,p=s=>{s="object"==typeof s&&s||D;const{css:a,...p}=s,u={};for(const e in o)if(delete p[e],e in s){let t=s[e];"object"==typeof t&&t?u[e]={"@initial":o[e],...t}:(t=String(t),u[e]="undefined"!==t||l.has(e)?t:o[e])}else u[e]=o[e];const h=new Set([...i]);for(const[r,i,o,l]of t.composers){n.rules.styled.cache.has(r)||(n.rules.styled.cache.add(r),x(i,[`.${r}`],[],e,(e=>{d.styled.apply(e)})));const t=A(o,u,e.media),s=A(l,u,e.media,!0);for(const i of t)if(void 0!==i)for(const[t,o,l]of i){const i=`${r}-${W(o)}-${t}`;h.add(i);const s=(l?n.rules.resonevar:n.rules.onevar).cache,a=l?d.resonevar:d.onevar;s.has(i)||(s.add(i),x(o,[`.${i}`],[],e,(e=>{a.apply(e)})))}for(const t of s)if(void 0!==t)for(const[i,o]of t){const t=`${r}-${W(o)}-${i}`;h.add(t),n.rules.allvar.cache.has(t)||(n.rules.allvar.cache.add(t),x(o,[`.${t}`],[],e,(e=>{d.allvar.apply(e)})))}}if("object"==typeof a&&a){const t=`${r}-i${W(a)}-css`;h.add(t),n.rules.inline.cache.has(t)||(n.rules.inline.cache.add(t),x(a,[`.${t}`],[],e,(e=>{d.inline.apply(e)})))}for(const e of String(s.className||"").trim().split(/\s+/))e&&h.add(e);const f=p.className=[...h].join(" ");return{type:t.type,className:f,selector:g,props:p,toString:()=>f,deferredInjector:c}};return a(p,{className:r,selector:g,[s]:t,toString:()=>(n.rules.styled.cache.has(r)||p(),r)})},O=e=>{let t="";const n=[],r={},i=[];for(const[o,,,,l,s]of e){""===t&&(t=o),n.push(o),i.push(...s);for(const e in l){const t=l[e];(void 0===r[e]||"undefined"!==t||s.includes(t))&&(r[e]=t)}}return[t,n,r,new Set(i)]},A=(e,t,n,r)=>{const i=[];e:for(let[o,l,s]of e){if(s)continue;let e,a=0,c=!1;for(e in o){const r=o[e];let i=t[e];if(i!==r){if("object"!=typeof i||!i)continue e;{let e,t,o=0;for(const l in i){if(r===String(i[l])){if("@initial"!==l){const e=l.slice(1);(t=t||[]).push(e in n?n[e]:l.replace(/^@media ?/,"")),c=!0}a+=o,e=!0}++o}if(t&&t.length&&(l={["@media "+t.join(", ")]:l}),!e)continue e}}}(i[a]=i[a]||[]).push([r?"cv":`${e}-${o[e]}`,l,c])}return i},D={},H=l(),N=(e,t)=>H(e,(()=>(...n)=>{const r=()=>{for(let r of n){r="object"==typeof r&&r||{};let n=W(r);if(!t.rules.global.cache.has(n)){if(t.rules.global.cache.add(n),"@import"in r){let e=[].indexOf.call(t.sheet.cssRules,t.rules.themed.group)-1;for(let n of[].concat(r["@import"]))n=n.includes('"')||n.includes("'")?n:`"${n}"`,t.sheet.insertRule(`@import ${n};`,e++);delete r["@import"]}x(r,[],[],e,(e=>{t.rules.global.apply(e)}))}}return""};return a(r,{toString:r})})),V=l(),G=(e,t)=>V(e,(()=>n=>{const r=`${k(e.prefix)}k-${W(n)}`,i=()=>{if(!t.rules.global.cache.has(r)){t.rules.global.cache.add(r);const i=[];x(n,[],[],e,(e=>i.push(e)));const o=`@keyframes ${r}{${i.join("")}}`;t.rules.global.apply(o)}return r};return a(i,{get name(){return i()},toString:i})})),F=class{constructor(e,t,n,r){this.token=null==e?"":String(e),this.value=null==t?"":String(t),this.scale=null==n?"":String(n),this.prefix=null==r?"":String(r)}get computedValue(){return"var("+this.variable+")"}get variable(){return"--"+k(this.prefix)+k(this.scale)+this.token}toString(){return this.computedValue}},J=l(),U=(e,t)=>J(e,(()=>(n,r)=>{r="object"==typeof n&&n||Object(r);const i=`.${n=(n="string"==typeof n?n:"")||`${k(e.prefix)}t-${W(r)}`}`,o={},l=[];for(const t in r){o[t]={};for(const n in r[t]){const i=`--${k(e.prefix)}${t}-${n}`,s=y(String(r[t][n]),e.prefix,t);o[t][n]=new F(n,s,t,e.prefix),l.push(`${i}:${s}`)}}const s=()=>{if(l.length&&!t.rules.themed.cache.has(n)){t.rules.themed.cache.add(n);const i=`${r===e.theme?":root,":""}.${n}{${l.join(";")}}`;t.rules.themed.apply(i)}return n};return{...o,get className(){return s()},selector:i,toString:s}})),Z=l(),X=e=>{let t=!1;const n=Z(e,(e=>{t=!0;const n="prefix"in(e="object"==typeof e&&e||{})?String(e.prefix):"",r="object"==typeof e.media&&e.media||{},o="object"==typeof e.root?e.root||null:globalThis.document||null,l="object"==typeof e.theme&&e.theme||{},s={prefix:n,media:r,theme:l,themeMap:"object"==typeof e.themeMap&&e.themeMap||{...i},utils:"object"==typeof e.utils&&e.utils||{}},a=T(o),c={css:C(s,a),globalCss:N(s,a),keyframes:G(s,a),createTheme:U(s,a),reset(){a.reset(),c.theme.toString()},theme:{},sheet:a,config:s,prefix:n,getCssText:a.toString,toString:a.toString};return String(c.theme=c.createTheme(l)),c}));return t||n.reset(),n},Y=()=>e||(e=X()),q=(...e)=>Y().createTheme(...e),K=(...e)=>Y().globalCss(...e),Q=(...e)=>Y().keyframes(...e),_=(...e)=>Y().css(...e);
+//# sourceMappingUrl=index.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/index.es.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/index.es.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Auth": () => (/* binding */ k),
+/* harmony export */   "AuthCard": () => (/* binding */ Z1),
+/* harmony export */   "ForgottenPassword": () => (/* binding */ J1),
+/* harmony export */   "MagicLink": () => (/* binding */ K1),
+/* harmony export */   "SignIn": () => (/* binding */ q1),
+/* harmony export */   "SignUp": () => (/* binding */ j1),
+/* harmony export */   "SocialAuth": () => (/* binding */ Y1),
+/* harmony export */   "UpdatePassword": () => (/* binding */ Q1),
+/* harmony export */   "VerifyOtp": () => (/* binding */ X1)
+/* harmony export */ });
+/* harmony import */ var _stitches_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @stitches/core */ "./node_modules/@stitches/core/dist/index.mjs");
+/* harmony import */ var _supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @supabase/auth-ui-shared */ "./node_modules/@supabase/auth-ui-shared/dist/index.mjs");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+
+const g1 = (0,_stitches_core__WEBPACK_IMPORTED_MODULE_2__.css)({
+  fontFamily: "$bodyFontFamily",
+  fontSize: "$baseBodySize",
+  marginBottom: "$anchorBottomMargin",
+  color: "$anchorTextColor",
+  display: "block",
+  textAlign: "center",
+  textDecoration: "underline",
+  "&:hover": {
+    color: "$anchorTextHoverColor"
+  }
+}), I = ({ children: t, appearance: l, ...n }) => {
+  var o;
+  const r = (0,_supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.generateClassNames)(
+    "anchor",
+    g1(),
+    l
+  );
+  return /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "a",
+    {
+      ...n,
+      style: (o = l == null ? void 0 : l.style) == null ? void 0 : o.anchor,
+      className: r.join(" ")
+    },
+    t
+  );
+}, h1 = (0,_stitches_core__WEBPACK_IMPORTED_MODULE_2__.css)({
+  fontFamily: "$buttonFontFamily",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "8px",
+  borderRadius: "$borderRadiusButton",
+  fontSize: "$baseButtonSize",
+  padding: "$buttonPadding",
+  cursor: "pointer",
+  borderWidth: "$buttonBorderWidth",
+  borderStyle: "solid",
+  width: "100%",
+  transitionPproperty: "background-color",
+  transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
+  transitionDuration: "100ms",
+  "&:disabled": {
+    opacity: 0.7,
+    cursor: "unset"
+  },
+  variants: {
+    color: {
+      default: {
+        backgroundColor: "$defaultButtonBackground",
+        color: "$defaultButtonText",
+        borderColor: "$defaultButtonBorder",
+        "&:hover:not(:disabled)": {
+          backgroundColor: "$defaultButtonBackgroundHover"
+        }
+      },
+      primary: {
+        backgroundColor: "$brand",
+        color: "$brandButtonText",
+        borderColor: "$brandAccent",
+        "&:hover:not(:disabled)": {
+          backgroundColor: "$brandAccent"
+        }
+      }
+    }
+  }
+}), A = ({
+  children: t,
+  color: l = "default",
+  appearance: n,
+  icon: r,
+  loading: o = !1,
+  ...v
+}) => {
+  var C;
+  const E = (0,_supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.generateClassNames)(
+    "button",
+    h1({ color: l }),
+    n
+  );
+  return /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "button",
+    {
+      ...v,
+      style: (C = n == null ? void 0 : n.style) == null ? void 0 : C.button,
+      className: E.join(" "),
+      disabled: o
+    },
+    r,
+    t
+  );
+}, f1 = (0,_stitches_core__WEBPACK_IMPORTED_MODULE_2__.css)({
+  display: "flex",
+  gap: "4px",
+  variants: {
+    direction: {
+      horizontal: {
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(48px, 1fr))"
+      },
+      vertical: {
+        flexDirection: "column",
+        margin: "8px 0"
+      }
+    },
+    gap: {
+      small: {
+        gap: "4px"
+      },
+      medium: {
+        gap: "8px"
+      },
+      large: {
+        gap: "16px"
+      }
+    }
+  }
+}), z = ({
+  children: t,
+  appearance: l,
+  ...n
+}) => {
+  var o;
+  const r = (0,_supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.generateClassNames)(
+    "container",
+    f1({
+      direction: n.direction,
+      gap: n.gap
+    }),
+    l
+  );
+  return /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "div",
+    {
+      ...n,
+      style: (o = l == null ? void 0 : l.style) == null ? void 0 : o.container,
+      className: r.join(" ")
+    },
+    t
+  );
+}, E1 = (0,_stitches_core__WEBPACK_IMPORTED_MODULE_2__.css)({
+  background: "$dividerBackground",
+  display: "block",
+  margin: "16px 0",
+  height: "1px",
+  width: "100%"
+}), C1 = ({
+  children: t,
+  appearance: l,
+  ...n
+}) => {
+  var o;
+  const r = (0,_supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.generateClassNames)(
+    "divider",
+    E1(),
+    l
+  );
+  return /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "div",
+    {
+      ...n,
+      style: (o = l == null ? void 0 : l.style) == null ? void 0 : o.divider,
+      className: r.join(" ")
+    }
+  );
+}, w1 = (0,_stitches_core__WEBPACK_IMPORTED_MODULE_2__.css)({
+  fontFamily: "$inputFontFamily",
+  background: "$inputBackground",
+  borderRadius: "$inputBorderRadius",
+  padding: "$inputPadding",
+  cursor: "text",
+  borderWidth: "$inputBorderWidth",
+  borderColor: "$inputBorder",
+  borderStyle: "solid",
+  fontSize: "$baseInputSize",
+  width: "100%",
+  color: "$inputText",
+  boxSizing: "border-box",
+  "&:hover": {
+    borderColor: "$inputBorderHover",
+    outline: "none"
+  },
+  "&:focus": {
+    borderColor: "$inputBorderFocus",
+    outline: "none"
+  },
+  "&::placeholder": {
+    color: "$inputPlaceholder",
+    letterSpacing: "initial"
+  },
+  transitionPproperty: "background-color, border",
+  transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
+  transitionDuration: "100ms",
+  variants: {
+    type: {
+      default: {
+        letterSpacing: "0px"
+      },
+      password: {
+        letterSpacing: "6px"
+      }
+    }
+  }
+}), B = ({ children: t, appearance: l, ...n }) => {
+  var o;
+  const r = (0,_supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.generateClassNames)(
+    "input",
+    w1({
+      type: n.type === "password" ? "password" : "default"
+    }),
+    l
+  );
+  return /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "input",
+    {
+      ...n,
+      style: (o = l == null ? void 0 : l.style) == null ? void 0 : o.input,
+      className: r.join(" ")
+    },
+    t
+  );
+}, v1 = (0,_stitches_core__WEBPACK_IMPORTED_MODULE_2__.css)({
+  fontFamily: "$labelFontFamily",
+  fontSize: "$baseLabelSize",
+  marginBottom: "$labelBottomMargin",
+  color: "$inputLabelText",
+  display: "block"
+}), H = ({ children: t, appearance: l, ...n }) => {
+  var o;
+  const r = (0,_supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.generateClassNames)(
+    "label",
+    v1(),
+    l
+  );
+  return /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "label",
+    {
+      ...n,
+      style: (o = l == null ? void 0 : l.style) == null ? void 0 : o.label,
+      className: r.join(" ")
+    },
+    t
+  );
+}, _1 = (0,_stitches_core__WEBPACK_IMPORTED_MODULE_2__.css)({
+  fontFamily: "$bodyFontFamily",
+  fontSize: "$baseBodySize",
+  marginBottom: "$labelBottomMargin",
+  display: "block",
+  textAlign: "center",
+  variants: {
+    color: {
+      default: {
+        color: "$messageText"
+      },
+      danger: {
+        color: "$messageTextDanger"
+      }
+    }
+  }
+}), N = ({
+  children: t,
+  appearance: l,
+  ...n
+}) => {
+  var o;
+  const r = (0,_supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.generateClassNames)(
+    "message",
+    _1({ color: n.color }),
+    l
+  );
+  return /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "span",
+    {
+      ...n,
+      style: (o = l == null ? void 0 : l.style) == null ? void 0 : o.message,
+      className: r.join(" ")
+    },
+    t
+  );
+};
+function X({
+  setAuthView: t = () => {
+  },
+  supabaseClient: l,
+  redirectTo: n,
+  i18n: r,
+  appearance: o,
+  showLinks: v = !1
+}) {
+  var x;
+  const [E, C] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""), [w, d] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""), [a, m] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""), [c, y] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!1), _ = async (h) => {
+    var s;
+    h.preventDefault(), d(""), m(""), y(!0);
+    const { error: g } = await l.auth.signInWithOtp({
+      email: E,
+      options: { emailRedirectTo: n }
+    });
+    g ? d(g.message) : m((s = r == null ? void 0 : r.magic_link) == null ? void 0 : s.confirmation_text), y(!1);
+  }, i = r == null ? void 0 : r.magic_link;
+  return /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("form", { id: "auth-magic-link", onSubmit: _ }, /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(z, { gap: "large", direction: "vertical", appearance: o }, /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(H, { htmlFor: "email", appearance: o }, i == null ? void 0 : i.email_input_label), /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    B,
+    {
+      id: "email",
+      name: "email",
+      type: "email",
+      autoFocus: !0,
+      placeholder: i == null ? void 0 : i.email_input_placeholder,
+      onChange: (h) => C(h.target.value),
+      appearance: o
+    }
+  )), /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    A,
+    {
+      color: "primary",
+      type: "submit",
+      loading: c,
+      appearance: o
+    },
+    c ? i == null ? void 0 : i.loading_button_label : i == null ? void 0 : i.button_label
+  ), v && /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    I,
+    {
+      href: "#auth-sign-in",
+      onClick: (h) => {
+        h.preventDefault(), t(_supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.VIEWS.SIGN_IN);
+      },
+      appearance: o
+    },
+    (x = r == null ? void 0 : r.sign_in) == null ? void 0 : x.link_text
+  ), a && /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(N, { appearance: o }, a), w && /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(N, { color: "danger", appearance: o }, w)));
+}
+const L = (0,_stitches_core__WEBPACK_IMPORTED_MODULE_2__.css)({
+  width: "21px",
+  height: "21px"
+}), x1 = () => /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+  "svg",
+  {
+    className: L(),
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 48 48",
+    width: "21px",
+    height: "21px"
+  },
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      fill: "#FFC107",
+      d: "M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"
+    }
+  ),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      fill: "#FF3D00",
+      d: "M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"
+    }
+  ),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      fill: "#4CAF50",
+      d: "M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"
+    }
+  ),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      fill: "#1976D2",
+      d: "M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
+    }
+  )
+), y1 = () => /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+  "svg",
+  {
+    className: L(),
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 48 48",
+    width: "21px",
+    height: "21px"
+  },
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("path", { fill: "#039be5", d: "M24 5A19 19 0 1 0 24 43A19 19 0 1 0 24 5Z" }),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      fill: "#fff",
+      d: "M26.572,29.036h4.917l0.772-4.995h-5.69v-2.73c0-2.075,0.678-3.915,2.619-3.915h3.119v-4.359c-0.548-0.074-1.707-0.236-3.897-0.236c-4.573,0-7.254,2.415-7.254,7.917v3.323h-4.701v4.995h4.701v13.729C22.089,42.905,23.032,43,24,43c0.875,0,1.729-0.08,2.572-0.194V29.036z"
+    }
+  )
+), p1 = () => /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+  "svg",
+  {
+    className: L(),
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 48 48",
+    width: "21px",
+    height: "21px"
+  },
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      fill: "#03A9F4",
+      d: "M42,12.429c-1.323,0.586-2.746,0.977-4.247,1.162c1.526-0.906,2.7-2.351,3.251-4.058c-1.428,0.837-3.01,1.452-4.693,1.776C34.967,9.884,33.05,9,30.926,9c-4.08,0-7.387,3.278-7.387,7.32c0,0.572,0.067,1.129,0.193,1.67c-6.138-0.308-11.582-3.226-15.224-7.654c-0.64,1.082-1,2.349-1,3.686c0,2.541,1.301,4.778,3.285,6.096c-1.211-0.037-2.351-0.374-3.349-0.914c0,0.022,0,0.055,0,0.086c0,3.551,2.547,6.508,5.923,7.181c-0.617,0.169-1.269,0.263-1.941,0.263c-0.477,0-0.942-0.054-1.392-0.135c0.94,2.902,3.667,5.023,6.898,5.086c-2.528,1.96-5.712,3.134-9.174,3.134c-0.598,0-1.183-0.034-1.761-0.104C9.268,36.786,13.152,38,17.321,38c13.585,0,21.017-11.156,21.017-20.834c0-0.317-0.01-0.633-0.025-0.945C39.763,15.197,41.013,13.905,42,12.429"
+    }
+  )
+), L1 = () => /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+  "svg",
+  {
+    className: L(),
+    fill: "gray",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 24 24",
+    width: "21px",
+    height: "21px"
+  },
+  " ",
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("path", { d: "M 15.904297 1.078125 C 15.843359 1.06875 15.774219 1.0746094 15.699219 1.0996094 C 14.699219 1.2996094 13.600391 1.8996094 12.900391 2.5996094 C 12.300391 3.1996094 11.800781 4.1996094 11.800781 5.0996094 C 11.800781 5.2996094 11.999219 5.5 12.199219 5.5 C 13.299219 5.4 14.399609 4.7996094 15.099609 4.0996094 C 15.699609 3.2996094 16.199219 2.4 16.199219 1.5 C 16.199219 1.275 16.087109 1.10625 15.904297 1.078125 z M 16.199219 5.4003906 C 14.399219 5.4003906 13.600391 6.5 12.400391 6.5 C 11.100391 6.5 9.9003906 5.5 8.4003906 5.5 C 6.3003906 5.5 3.0996094 7.4996094 3.0996094 12.099609 C 2.9996094 16.299609 6.8 21 9 21 C 10.3 21 10.600391 20.199219 12.400391 20.199219 C 14.200391 20.199219 14.600391 21 15.900391 21 C 17.400391 21 18.500391 19.399609 19.400391 18.099609 C 19.800391 17.399609 20.100391 17.000391 20.400391 16.400391 C 20.600391 16.000391 20.4 15.600391 20 15.400391 C 17.4 14.100391 16.900781 9.9003906 19.800781 8.4003906 C 20.300781 8.1003906 20.4 7.4992188 20 7.1992188 C 18.9 6.1992187 17.299219 5.4003906 16.199219 5.4003906 z" })
+), b1 = () => /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+  "svg",
+  {
+    className: L(),
+    fill: "gray",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 30 30",
+    width: "21px",
+    height: "21px"
+  },
+  " ",
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("path", { d: "M15,3C8.373,3,3,8.373,3,15c0,5.623,3.872,10.328,9.092,11.63C12.036,26.468,12,26.28,12,26.047v-2.051 c-0.487,0-1.303,0-1.508,0c-0.821,0-1.551-0.353-1.905-1.009c-0.393-0.729-0.461-1.844-1.435-2.526 c-0.289-0.227-0.069-0.486,0.264-0.451c0.615,0.174,1.125,0.596,1.605,1.222c0.478,0.627,0.703,0.769,1.596,0.769 c0.433,0,1.081-0.025,1.691-0.121c0.328-0.833,0.895-1.6,1.588-1.962c-3.996-0.411-5.903-2.399-5.903-5.098 c0-1.162,0.495-2.286,1.336-3.233C9.053,10.647,8.706,8.73,9.435,8c1.798,0,2.885,1.166,3.146,1.481C13.477,9.174,14.461,9,15.495,9 c1.036,0,2.024,0.174,2.922,0.483C18.675,9.17,19.763,8,21.565,8c0.732,0.731,0.381,2.656,0.102,3.594 c0.836,0.945,1.328,2.066,1.328,3.226c0,2.697-1.904,4.684-5.894,5.097C18.199,20.49,19,22.1,19,23.313v2.734 c0,0.104-0.023,0.179-0.035,0.268C23.641,24.676,27,20.236,27,15C27,8.373,21.627,3,15,3z" })
+), S1 = () => /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+  "svg",
+  {
+    className: L(),
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 48 48",
+    width: "21px",
+    height: "21px"
+  },
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("path", { fill: "#e53935", d: "M24 43L16 20 32 20z" }),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("path", { fill: "#ff7043", d: "M24 43L42 20 32 20z" }),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("path", { fill: "#e53935", d: "M37 5L42 20 32 20z" }),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("path", { fill: "#ffa726", d: "M24 43L42 20 45 28z" }),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("path", { fill: "#ff7043", d: "M24 43L6 20 16 20z" }),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("path", { fill: "#e53935", d: "M11 5L6 20 16 20z" }),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("path", { fill: "#ffa726", d: "M24 43L6 20 3 28z" })
+), M1 = () => /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+  "svg",
+  {
+    className: L(),
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "512",
+    height: "512",
+    viewBox: "0 0 62.42 62.42"
+  },
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("defs", null, /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "linearGradient",
+    {
+      id: "New_Gradient_Swatch_1",
+      x1: "64.01",
+      y1: "30.27",
+      x2: "32.99",
+      y2: "54.48",
+      gradientUnits: "userSpaceOnUse"
+    },
+    /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("stop", { offset: "0.18", stopColor: "#0052cc" }),
+    /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("stop", { offset: "1", stopColor: "#2684ff" })
+  )),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("title", null, "Bitbucket-blue"),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("g", { id: "Layer_2", "data-name": "Layer 2" }, /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("g", { id: "Blue", transform: "translate(0 -3.13)" }, /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      d: "M2,6.26A2,2,0,0,0,0,8.58L8.49,60.12a2.72,2.72,0,0,0,2.66,2.27H51.88a2,2,0,0,0,2-1.68L62.37,8.59a2,2,0,0,0-2-2.32ZM37.75,43.51h-13L21.23,25.12H40.9Z",
+      fill: "#2684ff"
+    }
+  ), /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      d: "M59.67,25.12H40.9L37.75,43.51h-13L9.4,61.73a2.71,2.71,0,0,0,1.75.66H51.89a2,2,0,0,0,2-1.68Z",
+      fill: "url(#New_Gradient_Swatch_1)"
+    }
+  )))
+), k1 = () => /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+  "svg",
+  {
+    className: L(),
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 48 48",
+    width: "21px",
+    height: "21px"
+  },
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      fill: "#536dfe",
+      d: "M39.248,10.177c-2.804-1.287-5.812-2.235-8.956-2.778c-0.057-0.01-0.114,0.016-0.144,0.068	c-0.387,0.688-0.815,1.585-1.115,2.291c-3.382-0.506-6.747-0.506-10.059,0c-0.3-0.721-0.744-1.603-1.133-2.291	c-0.03-0.051-0.087-0.077-0.144-0.068c-3.143,0.541-6.15,1.489-8.956,2.778c-0.024,0.01-0.045,0.028-0.059,0.051	c-5.704,8.522-7.267,16.835-6.5,25.044c0.003,0.04,0.026,0.079,0.057,0.103c3.763,2.764,7.409,4.442,10.987,5.554	c0.057,0.017,0.118-0.003,0.154-0.051c0.846-1.156,1.601-2.374,2.248-3.656c0.038-0.075,0.002-0.164-0.076-0.194	c-1.197-0.454-2.336-1.007-3.432-1.636c-0.087-0.051-0.094-0.175-0.014-0.234c0.231-0.173,0.461-0.353,0.682-0.534	c0.04-0.033,0.095-0.04,0.142-0.019c7.201,3.288,14.997,3.288,22.113,0c0.047-0.023,0.102-0.016,0.144,0.017	c0.22,0.182,0.451,0.363,0.683,0.536c0.08,0.059,0.075,0.183-0.012,0.234c-1.096,0.641-2.236,1.182-3.434,1.634	c-0.078,0.03-0.113,0.12-0.075,0.196c0.661,1.28,1.415,2.498,2.246,3.654c0.035,0.049,0.097,0.07,0.154,0.052	c3.595-1.112,7.241-2.79,11.004-5.554c0.033-0.024,0.054-0.061,0.057-0.101c0.917-9.491-1.537-17.735-6.505-25.044	C39.293,10.205,39.272,10.187,39.248,10.177z M16.703,30.273c-2.168,0-3.954-1.99-3.954-4.435s1.752-4.435,3.954-4.435	c2.22,0,3.989,2.008,3.954,4.435C20.658,28.282,18.906,30.273,16.703,30.273z M31.324,30.273c-2.168,0-3.954-1.99-3.954-4.435	s1.752-4.435,3.954-4.435c2.22,0,3.989,2.008,3.954,4.435C35.278,28.282,33.544,30.273,31.324,30.273z"
+    }
+  )
+), N1 = () => /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+  "svg",
+  {
+    className: L(),
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 48 48",
+    width: "21px",
+    height: "21px"
+  },
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "linearGradient",
+    {
+      id: "k8yl7~hDat~FaoWq8WjN6a",
+      x1: "-1254.397",
+      x2: "-1261.911",
+      y1: "877.268",
+      y2: "899.466",
+      gradientTransform: "translate(1981.75 -1362.063) scale(1.5625)",
+      gradientUnits: "userSpaceOnUse"
+    },
+    /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("stop", { offset: "0", stopColor: "#114a8b" }),
+    /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("stop", { offset: "1", stopColor: "#0669bc" })
+  ),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      fill: "url(#k8yl7~hDat~FaoWq8WjN6a)",
+      d: "M17.634,6h11.305L17.203,40.773c-0.247,0.733-0.934,1.226-1.708,1.226H6.697 c-0.994,0-1.8-0.806-1.8-1.8c0-0.196,0.032-0.39,0.094-0.576L15.926,7.227C16.173,6.494,16.86,6,17.634,6L17.634,6z"
+    }
+  ),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      fill: "#0078d4",
+      d: "M34.062,29.324H16.135c-0.458-0.001-0.83,0.371-0.831,0.829c0,0.231,0.095,0.451,0.264,0.608 l11.52,10.752C27.423,41.826,27.865,42,28.324,42h10.151L34.062,29.324z"
+    }
+  ),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "linearGradient",
+    {
+      id: "k8yl7~hDat~FaoWq8WjN6b",
+      x1: "-1252.05",
+      x2: "-1253.788",
+      y1: "887.612",
+      y2: "888.2",
+      gradientTransform: "translate(1981.75 -1362.063) scale(1.5625)",
+      gradientUnits: "userSpaceOnUse"
+    },
+    /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("stop", { offset: "0", stopOpacity: ".3" }),
+    /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("stop", { offset: ".071", stopOpacity: ".2" }),
+    /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("stop", { offset: ".321", stopOpacity: ".1" }),
+    /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("stop", { offset: ".623", stopOpacity: ".05" }),
+    /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("stop", { offset: "1", stopOpacity: "0" })
+  ),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      fill: "url(#k8yl7~hDat~FaoWq8WjN6b)",
+      d: "M17.634,6c-0.783-0.003-1.476,0.504-1.712,1.25L5.005,39.595 c-0.335,0.934,0.151,1.964,1.085,2.299C6.286,41.964,6.493,42,6.702,42h9.026c0.684-0.122,1.25-0.603,1.481-1.259l2.177-6.416 l7.776,7.253c0.326,0.27,0.735,0.419,1.158,0.422h10.114l-4.436-12.676l-12.931,0.003L28.98,6H17.634z"
+    }
+  ),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "linearGradient",
+    {
+      id: "k8yl7~hDat~FaoWq8WjN6c",
+      x1: "-1252.952",
+      x2: "-1244.704",
+      y1: "876.6",
+      y2: "898.575",
+      gradientTransform: "translate(1981.75 -1362.063) scale(1.5625)",
+      gradientUnits: "userSpaceOnUse"
+    },
+    /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("stop", { offset: "0", stopColor: "#3ccbf4" }),
+    /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("stop", { offset: "1", stopColor: "#2892df" })
+  ),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      fill: "url(#k8yl7~hDat~FaoWq8WjN6c)",
+      d: "M32.074,7.225C31.827,6.493,31.141,6,30.368,6h-12.6c0.772,0,1.459,0.493,1.705,1.224 l10.935,32.399c0.318,0.942-0.188,1.963-1.13,2.281C29.093,41.968,28.899,42,28.703,42h12.6c0.994,0,1.8-0.806,1.8-1.801 c0-0.196-0.032-0.39-0.095-0.575L32.074,7.225z"
+    }
+  )
+), F1 = () => /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+  "svg",
+  {
+    className: L(),
+    width: "512",
+    height: "512",
+    viewBox: "0 0 512 512",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  },
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      d: "M472.136 163.959H408.584C407.401 163.959 406.218 163.327 405.666 162.3L354.651 73.6591C354.02 72.632 352.916 72 351.654 72H143.492C142.309 72 141.126 72.632 140.574 73.6591L87.5084 165.618L36.414 254.259C35.862 255.286 35.862 256.55 36.414 257.656L87.5084 346.297L140.495 438.335C141.047 439.362 142.23 440.073 143.413 439.994H351.654C352.837 439.994 354.02 439.362 354.651 438.335L405.745 349.694C406.297 348.667 407.48 347.956 408.663 348.035H472.215C474.344 348.035 476 346.297 476 344.243V167.83C475.921 165.697 474.186 163.959 472.136 163.959ZM228.728 349.694L212.721 377.345C212.485 377.74 212.091 378.135 211.696 378.372C211.223 378.609 210.75 378.767 210.198 378.767H178.422C177.318 378.767 176.293 378.214 175.82 377.187L128.431 294.787L123.779 286.65L106.748 257.498C106.511 257.103 106.353 256.629 106.432 256.076C106.432 255.602 106.59 255.049 106.827 254.654L123.937 224.949L175.899 134.886C176.451 133.938 177.476 133.306 178.501 133.306H210.198C210.75 133.306 211.302 133.464 211.854 133.701C212.248 133.938 212.643 134.254 212.879 134.728L228.886 162.537C229.359 163.485 229.28 164.67 228.728 165.539L177.397 254.654C177.16 255.049 177.081 255.523 177.081 255.918C177.081 256.392 177.239 256.787 177.397 257.182L228.728 346.218C229.438 347.403 229.359 348.667 228.728 349.694V349.694ZM388.083 257.498L371.051 286.65L366.399 294.787L319.011 377.187C318.459 378.135 317.512 378.767 316.409 378.767H284.632C284.08 378.767 283.607 378.609 283.134 378.372C282.74 378.135 282.346 377.819 282.109 377.345L266.103 349.694C265.393 348.667 265.393 347.403 266.024 346.376L317.355 257.34C317.591 256.945 317.67 256.471 317.67 256.076C317.67 255.602 317.513 255.207 317.355 254.812L266.024 165.697C265.472 164.749 265.393 163.643 265.866 162.695L281.873 134.886C282.109 134.491 282.503 134.096 282.898 133.859C283.371 133.543 283.923 133.464 284.553 133.464H316.409C317.512 133.464 318.538 134.017 319.011 135.044L370.972 225.107L388.083 254.812C388.319 255.286 388.477 255.76 388.477 256.234C388.477 256.55 388.319 257.024 388.083 257.498V257.498Z",
+      fill: "#008AAA"
+    }
+  )
+), z1 = () => /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+  "svg",
+  {
+    className: L(),
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 48 48",
+    width: "21px",
+    height: "21px"
+  },
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      fill: "#0288D1",
+      d: "M42,37c0,2.762-2.238,5-5,5H11c-2.761,0-5-2.238-5-5V11c0-2.762,2.239-5,5-5h26c2.762,0,5,2.238,5,5V37z"
+    }
+  ),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      fill: "#FFF",
+      d: "M12 19H17V36H12zM14.485 17h-.028C12.965 17 12 15.888 12 14.499 12 13.08 12.995 12 14.514 12c1.521 0 2.458 1.08 2.486 2.499C17 15.887 16.035 17 14.485 17zM36 36h-5v-9.099c0-2.198-1.225-3.698-3.192-3.698-1.501 0-2.313 1.012-2.707 1.99C24.957 25.543 25 26.511 25 27v9h-5V19h5v2.616C25.721 20.5 26.85 19 29.738 19c3.578 0 6.261 2.25 6.261 7.274L36 36 36 36z"
+    }
+  )
+), D1 = () => /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+  "svg",
+  {
+    className: L(),
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 48 48",
+    width: "21px",
+    height: "21px",
+    fillRule: "evenodd",
+    clipRule: "evenodd"
+  },
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      fill: "#fff",
+      fillRule: "evenodd",
+      d: "M11.553,11.099c1.232,1.001,1.694,0.925,4.008,0.77 l21.812-1.31c0.463,0,0.078-0.461-0.076-0.538l-3.622-2.619c-0.694-0.539-1.619-1.156-3.391-1.002l-21.12,1.54 c-0.77,0.076-0.924,0.461-0.617,0.77L11.553,11.099z",
+      clipRule: "evenodd"
+    }
+  ),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      fill: "#fff",
+      fillRule: "evenodd",
+      d: "M12.862,16.182v22.95c0,1.233,0.616,1.695,2.004,1.619 l23.971-1.387c1.388-0.076,1.543-0.925,1.543-1.927V14.641c0-1-0.385-1.54-1.234-1.463l-25.05,1.463 C13.171,14.718,12.862,15.181,12.862,16.182L12.862,16.182z",
+      clipRule: "evenodd"
+    }
+  ),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      fill: "#424242",
+      fillRule: "evenodd",
+      d: "M11.553,11.099c1.232,1.001,1.694,0.925,4.008,0.77 l21.812-1.31c0.463,0,0.078-0.461-0.076-0.538l-3.622-2.619c-0.694-0.539-1.619-1.156-3.391-1.002l-21.12,1.54 c-0.77,0.076-0.924,0.461-0.617,0.77L11.553,11.099z M12.862,16.182v22.95c0,1.233,0.616,1.695,2.004,1.619l23.971-1.387 c1.388-0.076,1.543-0.925,1.543-1.927V14.641c0-1-0.385-1.54-1.234-1.463l-25.05,1.463C13.171,14.718,12.862,15.181,12.862,16.182 L12.862,16.182z M36.526,17.413c0.154,0.694,0,1.387-0.695,1.465l-1.155,0.23v16.943c-1.003,0.539-1.928,0.847-2.698,0.847 c-1.234,0-1.543-0.385-2.467-1.54l-7.555-11.86v11.475l2.391,0.539c0,0,0,1.386-1.929,1.386l-5.317,0.308 c-0.154-0.308,0-1.078,0.539-1.232l1.388-0.385V20.418l-1.927-0.154c-0.155-0.694,0.23-1.694,1.31-1.772l5.704-0.385l7.862,12.015 V19.493l-2.005-0.23c-0.154-0.848,0.462-1.464,1.233-1.54L36.526,17.413z M7.389,5.862l21.968-1.618 c2.698-0.231,3.392-0.076,5.087,1.155l7.013,4.929C42.614,11.176,43,11.407,43,12.33v27.032c0,1.694-0.617,2.696-2.775,2.849 l-25.512,1.541c-1.62,0.077-2.391-0.154-3.239-1.232l-5.164-6.7C5.385,34.587,5,33.664,5,32.585V8.556 C5,7.171,5.617,6.015,7.389,5.862z",
+      clipRule: "evenodd"
+    }
+  )
+), $1 = () => /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+  "svg",
+  {
+    className: L(),
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 48 48",
+    width: "21px",
+    height: "21px"
+  },
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      fill: "#33d375",
+      d: "M33,8c0-2.209-1.791-4-4-4s-4,1.791-4,4c0,1.254,0,9.741,0,11c0,2.209,1.791,4,4,4s4-1.791,4-4	C33,17.741,33,9.254,33,8z"
+    }
+  ),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      fill: "#33d375",
+      d: "M43,19c0,2.209-1.791,4-4,4c-1.195,0-4,0-4,0s0-2.986,0-4c0-2.209,1.791-4,4-4S43,16.791,43,19z"
+    }
+  ),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      fill: "#40c4ff",
+      d: "M8,14c-2.209,0-4,1.791-4,4s1.791,4,4,4c1.254,0,9.741,0,11,0c2.209,0,4-1.791,4-4s-1.791-4-4-4	C17.741,14,9.254,14,8,14z"
+    }
+  ),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      fill: "#40c4ff",
+      d: "M19,4c2.209,0,4,1.791,4,4c0,1.195,0,4,0,4s-2.986,0-4,0c-2.209,0-4-1.791-4-4S16.791,4,19,4z"
+    }
+  ),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      fill: "#e91e63",
+      d: "M14,39.006C14,41.212,15.791,43,18,43s4-1.788,4-3.994c0-1.252,0-9.727,0-10.984	c0-2.206-1.791-3.994-4-3.994s-4,1.788-4,3.994C14,29.279,14,37.754,14,39.006z"
+    }
+  ),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      fill: "#e91e63",
+      d: "M4,28.022c0-2.206,1.791-3.994,4-3.994c1.195,0,4,0,4,0s0,2.981,0,3.994c0,2.206-1.791,3.994-4,3.994	S4,30.228,4,28.022z"
+    }
+  ),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      fill: "#ffc107",
+      d: "M39,33c2.209,0,4-1.791,4-4s-1.791-4-4-4c-1.254,0-9.741,0-11,0c-2.209,0-4,1.791-4,4s1.791,4,4,4	C29.258,33,37.746,33,39,33z"
+    }
+  ),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      fill: "#ffc107",
+      d: "M28,43c-2.209,0-4-1.791-4-4c0-1.195,0-4,0-4s2.986,0,4,0c2.209,0,4,1.791,4,4S30.209,43,28,43z"
+    }
+  )
+), B1 = () => /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+  "svg",
+  {
+    className: L(),
+    width: "512",
+    height: "512",
+    viewBox: "0 0 512 512",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  },
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      d: "M255.498 31.0034C131.513 31.0034 31 131.515 31 255.502C31 379.492 131.513 480 255.498 480C379.497 480 480 379.495 480 255.502C480 131.522 379.497 31.0135 255.495 31.0135L255.498 31V31.0034ZM358.453 354.798C354.432 361.391 345.801 363.486 339.204 359.435C286.496 327.237 220.139 319.947 141.993 337.801C134.463 339.516 126.957 334.798 125.24 327.264C123.516 319.731 128.217 312.225 135.767 310.511C221.284 290.972 294.639 299.384 353.816 335.549C360.413 339.596 362.504 348.2 358.453 354.798ZM385.932 293.67C380.864 301.903 370.088 304.503 361.858 299.438C301.512 262.345 209.528 251.602 138.151 273.272C128.893 276.067 119.118 270.851 116.309 261.61C113.521 252.353 118.74 242.597 127.981 239.782C209.512 215.044 310.87 227.026 380.17 269.612C388.4 274.68 391 285.456 385.935 293.676V293.673L385.932 293.67ZM388.293 230.016C315.935 187.039 196.56 183.089 127.479 204.055C116.387 207.42 104.654 201.159 101.293 190.063C97.9326 178.964 104.189 167.241 115.289 163.87C194.59 139.796 326.418 144.446 409.723 193.902C419.722 199.826 422.995 212.71 417.068 222.675C411.168 232.653 398.247 235.943 388.303 230.016H388.293V230.016Z",
+      fill: "#1ED760"
+    }
+  )
+), H1 = () => /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+  "svg",
+  {
+    className: L(),
+    width: "512",
+    height: "512",
+    viewBox: "0 0 512 512",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  },
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("path", { d: "M416 240L352 304H288L232 360V304H160V64H416V240Z", fill: "white" }),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      d: "M144 32L64 112V400H160V480L240 400H304L448 256V32H144ZM416 240L352 304H288L232 360V304H160V64H416V240Z",
+      fill: "#9146FF"
+    }
+  ),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("path", { d: "M368 120H336V216H368V120Z", fill: "#9146FF" }),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("path", { d: "M280 120H248V216H280V120Z", fill: "#9146FF" })
+), P1 = () => /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+  "svg",
+  {
+    className: L(),
+    width: "512",
+    height: "512",
+    viewBox: "0 0 512 512",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  },
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      d: "M33 256.043C33 264.556 35.3159 273.069 39.4845 280.202L117.993 415.493C126.098 429.298 138.373 440.572 153.657 445.634C183.764 455.528 214.797 442.873 229.618 417.333L248.609 384.661L173.806 256.043L252.777 119.831L271.768 87.1591C277.557 77.2654 284.968 69.4424 294 63H285.894H172.185C150.878 63 131.193 74.2742 120.54 92.6812L39.7161 231.884C35.3159 239.016 33 247.53 33 256.043Z",
+      fill: "#6363F1"
+    }
+  ),
+  /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "path",
+    {
+      d: "M480 256.058C480 247.539 477.684 239.021 473.516 231.883L393.849 94.6596C379.028 69.3331 347.995 56.4396 317.888 66.34C302.603 71.4053 290.329 82.6871 282.224 96.5015L264.391 127.354L339.194 256.058L260.223 392.131L241.232 424.825C235.443 434.495 228.032 442.553 219 449H227.106H340.815C362.122 449 381.807 437.718 392.46 419.299L473.284 280.003C477.684 272.866 480 264.577 480 256.058Z",
+      fill: "#6363F1"
+    }
+  )
+), I1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  apple: L1,
+  azure: N1,
+  bitbucket: M1,
+  discord: k1,
+  facebook: y1,
+  github: b1,
+  gitlab: S1,
+  google: x1,
+  keycloak: F1,
+  linkedin: z1,
+  notion: D1,
+  slack: $1,
+  spotify: B1,
+  twitch: H1,
+  twitter: p1,
+  workos: P1
+}, Symbol.toStringTag, { value: "Module" }));
+function V1({
+  supabaseClient: t,
+  socialLayout: l = "vertical",
+  providers: n = ["github", "google", "azure"],
+  providerScopes: r,
+  queryParams: o,
+  redirectTo: v,
+  onlyThirdPartyProviders: E = !0,
+  view: C = "sign_in",
+  i18n: w,
+  appearance: d
+}) {
+  const [a, m] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!1), [c, y] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""), _ = l === "vertical", i = C === "magic_link" ? "sign_in" : C, x = async (g) => {
+    m(!0);
+    const { error: s } = await t.auth.signInWithOAuth({
+      provider: g,
+      options: {
+        redirectTo: v,
+        scopes: r == null ? void 0 : r[g],
+        queryParams: o
+      }
+    });
+    s && y(s.message), m(!1);
+  };
+  function h(g) {
+    const s = g.toLowerCase();
+    return g.charAt(0).toUpperCase() + s.slice(1);
+  }
+  return /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, n && n.length > 0 && /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(z, { gap: "large", direction: "vertical", appearance: d }, /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    z,
+    {
+      direction: _ ? "vertical" : "horizontal",
+      gap: _ ? "small" : "medium",
+      appearance: d
+    },
+    n.map((g) => {
+      var M;
+      const s = I1[g];
+      return /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+        A,
+        {
+          key: g,
+          color: "default",
+          icon: s ? /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(s, null) : "",
+          loading: a,
+          onClick: () => x(g),
+          appearance: d
+        },
+        _ && (0,_supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.template)(
+          (M = w == null ? void 0 : w[i]) == null ? void 0 : M.social_provider_text,
+          {
+            provider: h(g)
+          }
+        )
+      );
+    })
+  )), !E && /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(C1, { appearance: d })));
+}
+function Q({
+  authView: t = "sign_in",
+  defaultEmail: l = "",
+  defaultPassword: n = "",
+  setAuthView: r = () => {
+  },
+  setDefaultEmail: o = (_) => {
+  },
+  setDefaultPassword: v = (_) => {
+  },
+  supabaseClient: E,
+  showLinks: C = !1,
+  redirectTo: w,
+  additionalData: d,
+  magicLink: a,
+  i18n: m,
+  appearance: c,
+  children: y
+}) {
+  var T, G, Z, j;
+  const _ = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(!0), [i, x] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(l), [h, g] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(n), [s, M] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""), [b, $] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!1), [P, U] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("");
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => (_.current = !0, x(l), g(n), () => {
+    _.current = !1;
+  }), [t]);
+  const O = async (S) => {
+    var q;
+    switch (S.preventDefault(), M(""), $(!0), t) {
+      case "sign_in":
+        const { error: K } = await E.auth.signInWithPassword({
+          email: i,
+          password: h
+        });
+        K && M(K.message);
+        break;
+      case "sign_up":
+        let Y = {
+          emailRedirectTo: w
+        };
+        d && (Y.data = d);
+        const {
+          data: { user: o1, session: r1 },
+          error: J
+        } = await E.auth.signUp({
+          email: i,
+          password: h,
+          options: Y
+        });
+        J ? M(J.message) : o1 && !r1 && U((q = m == null ? void 0 : m.sign_up) == null ? void 0 : q.confirmation_text);
+        break;
+    }
+    _.current && $(!1);
+  }, F = (S) => {
+    o(i), v(h), r(S);
+  }, f = m == null ? void 0 : m[t];
+  return /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    "form",
+    {
+      id: t === "sign_in" ? "auth-sign-in" : "auth-sign-up",
+      onSubmit: O,
+      autoComplete: "on",
+      style: { width: "100%" }
+    },
+    /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(z, { direction: "vertical", gap: "large", appearance: c }, /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(z, { direction: "vertical", gap: "large", appearance: c }, /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(H, { htmlFor: "email", appearance: c }, f == null ? void 0 : f.email_label), /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+      B,
+      {
+        id: "email",
+        type: "email",
+        name: "email",
+        placeholder: f == null ? void 0 : f.email_input_placeholder,
+        defaultValue: i,
+        onChange: (S) => x(S.target.value),
+        autoComplete: "email",
+        appearance: c
+      }
+    )), /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(H, { htmlFor: "password", appearance: c }, f == null ? void 0 : f.password_label), /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+      B,
+      {
+        id: "password",
+        type: "password",
+        name: "password",
+        placeholder: f == null ? void 0 : f.password_input_placeholder,
+        defaultValue: h,
+        onChange: (S) => g(S.target.value),
+        autoComplete: t === "sign_in" ? "current-password" : "new-password",
+        appearance: c
+      }
+    )), y), /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+      A,
+      {
+        type: "submit",
+        color: "primary",
+        loading: b,
+        appearance: c
+      },
+      b ? f == null ? void 0 : f.loading_button_label : f == null ? void 0 : f.button_label
+    ), C && /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(z, { direction: "vertical", gap: "small", appearance: c }, t === _supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.VIEWS.SIGN_IN && a && /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+      I,
+      {
+        href: "#auth-magic-link",
+        onClick: (S) => {
+          S.preventDefault(), r(_supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.VIEWS.MAGIC_LINK);
+        },
+        appearance: c
+      },
+      (T = m == null ? void 0 : m.magic_link) == null ? void 0 : T.link_text
+    ), t === _supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.VIEWS.SIGN_IN && /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+      I,
+      {
+        href: "#auth-forgot-password",
+        onClick: (S) => {
+          S.preventDefault(), r(_supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.VIEWS.FORGOTTEN_PASSWORD);
+        },
+        appearance: c
+      },
+      (G = m == null ? void 0 : m.forgotten_password) == null ? void 0 : G.link_text
+    ), t === _supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.VIEWS.SIGN_IN ? /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+      I,
+      {
+        href: "#auth-sign-up",
+        onClick: (S) => {
+          S.preventDefault(), F(_supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.VIEWS.SIGN_UP);
+        },
+        appearance: c
+      },
+      (Z = m == null ? void 0 : m.sign_up) == null ? void 0 : Z.link_text
+    ) : /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+      I,
+      {
+        href: "#auth-sign-in",
+        onClick: (S) => {
+          S.preventDefault(), F(_supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.VIEWS.SIGN_IN);
+        },
+        appearance: c
+      },
+      (j = m == null ? void 0 : m.sign_in) == null ? void 0 : j.link_text
+    ))),
+    P && /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(N, { appearance: c }, P),
+    s && /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(N, { color: "danger", appearance: c }, s)
+  );
+}
+function e1({
+  setAuthView: t = () => {
+  },
+  supabaseClient: l,
+  redirectTo: n,
+  i18n: r,
+  appearance: o,
+  showLinks: v = !1
+}) {
+  var x;
+  const [E, C] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""), [w, d] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""), [a, m] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""), [c, y] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!1), _ = async (h) => {
+    var s;
+    h.preventDefault(), d(""), m(""), y(!0);
+    const { error: g } = await l.auth.resetPasswordForEmail(E, {
+      redirectTo: n
+    });
+    g ? d(g.message) : m((s = r == null ? void 0 : r.forgotten_password) == null ? void 0 : s.confirmation_text), y(!1);
+  }, i = r == null ? void 0 : r.forgotten_password;
+  return /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("form", { id: "auth-forgot-password", onSubmit: _ }, /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(z, { gap: "large", direction: "vertical", appearance: o }, /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(H, { htmlFor: "email", appearance: o }, i == null ? void 0 : i.email_label), /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    B,
+    {
+      id: "email",
+      name: "email",
+      type: "email",
+      autoFocus: !0,
+      placeholder: i == null ? void 0 : i.email_input_placeholder,
+      onChange: (h) => C(h.target.value),
+      appearance: o
+    }
+  )), /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    A,
+    {
+      type: "submit",
+      color: "primary",
+      loading: c,
+      appearance: o
+    },
+    c ? i == null ? void 0 : i.loading_button_label : i == null ? void 0 : i.button_label
+  ), v && /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    I,
+    {
+      href: "#auth-sign-in",
+      onClick: (h) => {
+        h.preventDefault(), t(_supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.VIEWS.SIGN_IN);
+      },
+      appearance: o
+    },
+    (x = r == null ? void 0 : r.sign_in) == null ? void 0 : x.link_text
+  ), a && /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(N, { appearance: o }, a), w && /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(N, { color: "danger", appearance: o }, w)));
+}
+function t1({
+  supabaseClient: t,
+  i18n: l,
+  appearance: n
+}) {
+  const [r, o] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""), [v, E] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""), [C, w] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""), [d, a] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!1), m = async (y) => {
+    var i;
+    y.preventDefault(), E(""), w(""), a(!0);
+    const { error: _ } = await t.auth.updateUser({ password: r });
+    _ ? E(_.message) : w((i = l == null ? void 0 : l.update_password) == null ? void 0 : i.confirmation_text), a(!1);
+  }, c = l == null ? void 0 : l.update_password;
+  return /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("form", { id: "auth-update-password", onSubmit: m }, /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(z, { gap: "large", direction: "vertical", appearance: n }, /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(H, { htmlFor: "password", appearance: n }, c == null ? void 0 : c.password_label), /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    B,
+    {
+      id: "password",
+      name: "password",
+      placeholder: c == null ? void 0 : c.password_label,
+      type: "password",
+      autoFocus: !0,
+      onChange: (y) => o(y.target.value),
+      appearance: n
+    }
+  )), /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    A,
+    {
+      type: "submit",
+      color: "primary",
+      loading: d,
+      appearance: n
+    },
+    d ? c == null ? void 0 : c.loading_button_label : c == null ? void 0 : c.button_label
+  ), C && /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(N, { appearance: n }, C), v && /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(N, { color: "danger", appearance: n }, v)));
+}
+function A1({
+  setAuthView: t = () => {
+  },
+  supabaseClient: l,
+  otpType: n = "email",
+  i18n: r,
+  appearance: o,
+  showLinks: v = !1
+}) {
+  var M;
+  const [E, C] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""), [w, d] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""), [a, m] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""), [c, y] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""), [_, i] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""), [x, h] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!1), g = async (b) => {
+    b.preventDefault(), y(""), i(""), h(!0);
+    let $ = {
+      email: E,
+      token: a,
+      type: n
+    };
+    ["sms", "phone_change"].includes(n) && ($ = {
+      phone: w,
+      token: a,
+      type: n
+    });
+    const { error: P } = await l.auth.verifyOtp($);
+    P && y(P.message), h(!1);
+  }, s = r == null ? void 0 : r.verify_otp;
+  return /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("form", { id: "auth-magic-link", onSubmit: g }, /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(z, { gap: "large", direction: "vertical", appearance: o }, ["sms", "phone_change"].includes(n) ? /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(H, { htmlFor: "phone", appearance: o }, s == null ? void 0 : s.phone_input_label), /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    B,
+    {
+      id: "phone",
+      name: "phone",
+      type: "text",
+      autoFocus: !0,
+      placeholder: s == null ? void 0 : s.phone_input_placeholder,
+      onChange: (b) => d(b.target.value),
+      appearance: o
+    }
+  )) : /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(H, { htmlFor: "email", appearance: o }, s == null ? void 0 : s.email_input_label), /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    B,
+    {
+      id: "email",
+      name: "email",
+      type: "email",
+      autoFocus: !0,
+      placeholder: s == null ? void 0 : s.email_input_placeholder,
+      onChange: (b) => C(b.target.value),
+      appearance: o
+    }
+  )), /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(H, { htmlFor: "token", appearance: o }, s == null ? void 0 : s.token_input_label), /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    B,
+    {
+      id: "token",
+      name: "token",
+      type: "text",
+      placeholder: s == null ? void 0 : s.token_input_placeholder,
+      onChange: (b) => m(b.target.value),
+      appearance: o
+    }
+  )), /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    A,
+    {
+      color: "primary",
+      type: "submit",
+      loading: x,
+      appearance: o
+    },
+    x ? s == null ? void 0 : s.loading_button_label : s == null ? void 0 : s.button_label
+  ), v && /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+    I,
+    {
+      href: "#auth-sign-in",
+      onClick: (b) => {
+        b.preventDefault(), t(_supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.VIEWS.SIGN_IN);
+      },
+      appearance: o
+    },
+    (M = r == null ? void 0 : r.sign_in) == null ? void 0 : M.link_text
+  ), _ && /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(N, { appearance: o }, _), c && /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(N, { color: "danger", appearance: o }, c)));
+}
+const l1 = (0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)({ user: null, session: null }), U1 = (t) => {
+  const { supabaseClient: l } = t, [n, r] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null), [o, v] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((n == null ? void 0 : n.user) ?? null);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+    (async () => {
+      var d;
+      const { data: w } = await l.auth.getSession();
+      r(w.session), v(((d = w.session) == null ? void 0 : d.user) ?? null);
+    })();
+    const { data: C } = l.auth.onAuthStateChange(
+      async (w, d) => {
+        r(d), v((d == null ? void 0 : d.user) ?? null);
+      }
+    );
+    return () => {
+      C == null || C.subscription.unsubscribe();
+    };
+  }, []);
+  const E = {
+    session: n,
+    user: o
+  };
+  return /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(l1.Provider, { value: E, ...t });
+}, R1 = () => {
+  const t = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(l1);
+  if (t === void 0)
+    throw new Error("useUser must be used within a UserContextProvider.");
+  return t;
+};
+function k({
+  supabaseClient: t,
+  socialLayout: l = "vertical",
+  providers: n,
+  providerScopes: r,
+  queryParams: o,
+  view: v = "sign_in",
+  redirectTo: E,
+  onlyThirdPartyProviders: C = !1,
+  magicLink: w = !1,
+  showLinks: d = !0,
+  appearance: a,
+  theme: m = "default",
+  localization: c = { variables: {} },
+  otpType: y = "email",
+  additionalData: _,
+  children: i
+}) {
+  const x = (0,_supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.merge)(_supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.en, c.variables ?? {}), [h, g] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(v), [s, M] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""), [b, $] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""), P = h === "sign_in" || h === "sign_up" || h === "magic_link";
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+    var F, f;
+    (0,_stitches_core__WEBPACK_IMPORTED_MODULE_2__.createStitches)({
+      theme: (0,_supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.merge)(
+        ((F = a == null ? void 0 : a.theme) == null ? void 0 : F.default) ?? {},
+        ((f = a == null ? void 0 : a.variables) == null ? void 0 : f.default) ?? {}
+      )
+    });
+  }, [a]);
+  const U = ({ children: F }) => {
+    var f;
+    return (
+      // @ts-ignore
+      /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+        "div",
+        {
+          className: m !== "default" ? (0,_stitches_core__WEBPACK_IMPORTED_MODULE_2__.createTheme)(
+            (0,_supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.merge)(
+              // @ts-ignore
+              a == null ? void 0 : a.theme[m],
+              ((f = a == null ? void 0 : a.variables) == null ? void 0 : f[m]) ?? {}
+            )
+          ) : ""
+        },
+        P && /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+          V1,
+          {
+            appearance: a,
+            supabaseClient: t,
+            providers: n,
+            providerScopes: r,
+            queryParams: o,
+            socialLayout: l,
+            redirectTo: E,
+            onlyThirdPartyProviders: C,
+            i18n: x,
+            view: h
+          }
+        ),
+        !C && F
+      )
+    );
+  };
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+    const { data: F } = t.auth.onAuthStateChange(
+      (f) => {
+        f === "PASSWORD_RECOVERY" ? g("update_password") : f === "USER_UPDATED" && g("sign_in");
+      }
+    );
+    return g(v), () => F.subscription.unsubscribe();
+  }, [v]);
+  const O = {
+    supabaseClient: t,
+    setAuthView: g,
+    defaultEmail: s,
+    defaultPassword: b,
+    setDefaultEmail: M,
+    setDefaultPassword: $,
+    redirectTo: E,
+    magicLink: w,
+    showLinks: d,
+    i18n: x,
+    appearance: a
+  };
+  switch (h) {
+    case _supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.VIEWS.SIGN_IN:
+      return /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(U, null, /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(Q, { ...O, authView: "sign_in" }));
+    case _supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.VIEWS.SIGN_UP:
+      return /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(U, null, /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+        Q,
+        {
+          appearance: a,
+          supabaseClient: t,
+          authView: "sign_up",
+          setAuthView: g,
+          defaultEmail: s,
+          defaultPassword: b,
+          setDefaultEmail: M,
+          setDefaultPassword: $,
+          redirectTo: E,
+          magicLink: w,
+          showLinks: d,
+          i18n: x,
+          additionalData: _,
+          children: i
+        }
+      ));
+    case _supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.VIEWS.FORGOTTEN_PASSWORD:
+      return /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+        e1,
+        {
+          appearance: a,
+          supabaseClient: t,
+          setAuthView: g,
+          redirectTo: E,
+          showLinks: d,
+          i18n: x
+        }
+      );
+    case _supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.VIEWS.MAGIC_LINK:
+      return /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(U, null, /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+        X,
+        {
+          appearance: a,
+          supabaseClient: t,
+          setAuthView: g,
+          redirectTo: E,
+          showLinks: d,
+          i18n: x
+        }
+      ));
+    case _supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.VIEWS.UPDATE_PASSWORD:
+      return /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+        t1,
+        {
+          appearance: a,
+          supabaseClient: t,
+          i18n: x
+        }
+      );
+    case _supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.VIEWS.VERIFY_OTP:
+      return /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+        A1,
+        {
+          appearance: a,
+          supabaseClient: t,
+          otpType: y,
+          i18n: x
+        }
+      );
+    default:
+      return null;
+  }
+}
+k.ForgottenPassword = e1;
+k.UpdatePassword = t1;
+k.MagicLink = X;
+k.UserContextProvider = U1;
+k.useUser = R1;
+const O1 = (0,_stitches_core__WEBPACK_IMPORTED_MODULE_2__.css)({
+  borderRadius: "12px",
+  boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
+  width: "360px",
+  padding: "28px 32px"
+}), Z1 = ({
+  children: t,
+  appearance: l
+}) => {
+  const n = [
+    `${_supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_0__.PREPENDED_CLASS_NAMES}_ui-card`,
+    O1(),
+    l == null ? void 0 : l.className
+  ];
+  return /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", { className: n.join(" ") }, t);
+}, j1 = (t) => /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+  k,
+  {
+    showLinks: !1,
+    ...t,
+    onlyThirdPartyProviders: !1,
+    view: "sign_up"
+  }
+), q1 = (t) => /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+  k,
+  {
+    showLinks: !1,
+    ...t,
+    onlyThirdPartyProviders: !1,
+    view: "sign_in"
+  }
+), K1 = (t) => /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(k, { ...t, view: "magic_link", showLinks: !1 }), Y1 = (t) => /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+  k,
+  {
+    ...t,
+    view: "sign_in",
+    showLinks: !1,
+    onlyThirdPartyProviders: !0
+  }
+), J1 = (t) => /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(k, { showLinks: !1, ...t, view: "forgotten_password" }), Q1 = (t) => /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(k, { ...t, view: "update_password" }), X1 = (t) => /* @__PURE__ */ react__WEBPACK_IMPORTED_MODULE_1__.createElement(k, { ...t, view: "verify_otp" });
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-shared/dist/index.mjs":
+/*!**************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-shared/dist/index.mjs ***!
+  \**************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CLASS_NAMES": () => (/* binding */ CLASS_NAMES),
+/* harmony export */   "PREPENDED_CLASS_NAMES": () => (/* binding */ PREPENDED_CLASS_NAMES),
+/* harmony export */   "SocialLayouts": () => (/* binding */ SocialLayouts),
+/* harmony export */   "ThemeMinimal": () => (/* binding */ ThemeMinimal),
+/* harmony export */   "ThemeSupa": () => (/* binding */ ThemeSupa),
+/* harmony export */   "VIEWS": () => (/* binding */ VIEWS),
+/* harmony export */   "darkThemes": () => (/* binding */ darkThemes),
+/* harmony export */   "en": () => (/* binding */ en_default),
+/* harmony export */   "generateClassNames": () => (/* binding */ generateClassNames),
+/* harmony export */   "merge": () => (/* binding */ merge),
+/* harmony export */   "minimal": () => (/* binding */ minimal),
+/* harmony export */   "supabase": () => (/* binding */ supabase),
+/* harmony export */   "template": () => (/* binding */ template)
+/* harmony export */ });
+// src/theming/defaultThemes.ts
+var ThemeSupa = {
+  default: {
+    colors: {
+      brand: "hsl(153 60.0% 53.0%)",
+      brandAccent: "hsl(154 54.8% 45.1%)",
+      brandButtonText: "white",
+      defaultButtonBackground: "white",
+      defaultButtonBackgroundHover: "#eaeaea",
+      defaultButtonBorder: "lightgray",
+      defaultButtonText: "gray",
+      dividerBackground: "#eaeaea",
+      inputBackground: "transparent",
+      inputBorder: "lightgray",
+      inputBorderHover: "gray",
+      inputBorderFocus: "gray",
+      inputText: "black",
+      inputLabelText: "gray",
+      inputPlaceholder: "darkgray",
+      messageText: "gray",
+      messageTextDanger: "red",
+      anchorTextColor: "gray",
+      anchorTextHoverColor: "darkgray"
+    },
+    space: {
+      spaceSmall: "4px",
+      spaceMedium: "8px",
+      spaceLarge: "16px",
+      labelBottomMargin: "8px",
+      anchorBottomMargin: "4px",
+      emailInputSpacing: "4px",
+      socialAuthSpacing: "4px",
+      buttonPadding: "10px 15px",
+      inputPadding: "10px 15px"
+    },
+    fontSizes: {
+      baseBodySize: "13px",
+      baseInputSize: "14px",
+      baseLabelSize: "14px",
+      baseButtonSize: "14px"
+    },
+    fonts: {
+      bodyFontFamily: `ui-sans-serif, sans-serif`,
+      buttonFontFamily: `ui-sans-serif, sans-serif`,
+      inputFontFamily: `ui-sans-serif, sans-serif`,
+      labelFontFamily: `ui-sans-serif, sans-serif`
+    },
+    // fontWeights: {},
+    // lineHeights: {},
+    // letterSpacings: {},
+    // sizes: {},
+    borderWidths: {
+      buttonBorderWidth: "1px",
+      inputBorderWidth: "1px"
+    },
+    // borderStyles: {},
+    radii: {
+      borderRadiusButton: "4px",
+      buttonBorderRadius: "4px",
+      inputBorderRadius: "4px"
+    }
+    // shadows: {},
+    // zIndices: {},
+    // transitions: {},
+  },
+  dark: {
+    colors: {
+      brandButtonText: "white",
+      defaultButtonBackground: "#2e2e2e",
+      defaultButtonBackgroundHover: "#3e3e3e",
+      defaultButtonBorder: "#3e3e3e",
+      defaultButtonText: "white",
+      dividerBackground: "#2e2e2e",
+      inputBackground: "#1e1e1e",
+      inputBorder: "#3e3e3e",
+      inputBorderHover: "gray",
+      inputBorderFocus: "gray",
+      inputText: "white",
+      inputPlaceholder: "darkgray"
+    }
+  }
+};
+var ThemeMinimal = {
+  default: {
+    colors: {
+      brand: "black",
+      brandAccent: "#333333",
+      brandButtonText: "white",
+      defaultButtonBackground: "white",
+      defaultButtonBorder: "lightgray",
+      defaultButtonText: "gray",
+      dividerBackground: "#eaeaea",
+      inputBackground: "transparent",
+      inputBorder: "lightgray",
+      inputText: "black",
+      inputPlaceholder: "darkgray"
+    },
+    space: {
+      spaceSmall: "4px",
+      spaceMedium: "8px",
+      spaceLarge: "16px"
+    },
+    fontSizes: {
+      baseInputSize: "14px",
+      baseLabelSize: "12px"
+    },
+    fonts: {
+      bodyFontFamily: "",
+      inputFontFamily: "",
+      buttonFontFamily: "",
+      labelFontFamily: ""
+      // linkFontFamily: '',
+    },
+    // fontWeights: {},
+    // lineHeights: {},
+    // letterSpacings: {},
+    // sizes: {},
+    borderWidths: {},
+    // borderStyles: {},
+    radii: {}
+    // shadows: {},
+    // zIndices: {},
+    // transitions: {},
+  },
+  dark: {
+    colors: {
+      brand: "white",
+      brandAccent: "#afafaf",
+      brandButtonText: "black",
+      defaultButtonBackground: "#080808",
+      defaultButtonBorder: "black",
+      defaultButtonText: "white",
+      dividerBackground: "black",
+      inputBackground: "transparent",
+      inputBorder: "gray",
+      inputText: "black",
+      inputPlaceholder: "darkgray"
+    }
+  }
+};
+
+// src/theming/Themes.ts
+var supabase = {
+  colors: {
+    brand: "hsl(153 60.0% 53.0%)",
+    brandAccent: "hsl(154 54.8% 45.1%)",
+    brandButtonText: "white",
+    defaultButtonBackground: "white",
+    defaultButtonBackgroundHover: "#eaeaea",
+    defaultButtonBorder: "lightgray",
+    defaultButtonText: "gray",
+    dividerBackground: "#eaeaea",
+    inputBackground: "transparent",
+    inputBorder: "lightgray",
+    inputBorderHover: "gray",
+    inputBorderFocus: "gray",
+    inputText: "black",
+    inputLabelText: "gray",
+    inputPlaceholder: "darkgray",
+    messageText: "gray",
+    messageTextDanger: "red",
+    anchorTextColor: "gray",
+    anchorTextHoverColor: "darkgray"
+  },
+  space: {
+    spaceSmall: "4px",
+    spaceMedium: "8px",
+    spaceLarge: "16px",
+    labelBottomMargin: "8px",
+    anchorBottomMargin: "4px",
+    emailInputSpacing: "4px",
+    socialAuthSpacing: "4px",
+    buttonPadding: "10px 15px",
+    inputPadding: "10px 15px"
+  },
+  fontSizes: {
+    baseBodySize: "13px",
+    baseInputSize: "14px",
+    baseLabelSize: "14px",
+    baseButtonSize: "14px"
+  },
+  fonts: {
+    bodyFontFamily: `ui-sans-serif, sans-serif`,
+    buttonFontFamily: `ui-sans-serif, sans-serif`,
+    inputFontFamily: `ui-sans-serif, sans-serif`,
+    labelFontFamily: `ui-sans-serif, sans-serif`
+  },
+  // fontWeights: {},
+  // lineHeights: {},
+  // letterSpacings: {},
+  // sizes: {},
+  borderWidths: {
+    buttonBorderWidth: "1px",
+    inputBorderWidth: "1px"
+  },
+  // borderStyles: {},
+  radii: {
+    borderRadiusButton: "4px",
+    buttonBorderRadius: "4px",
+    inputBorderRadius: "4px"
+  }
+  // shadows: {},
+  // zIndices: {},
+  // transitions: {},
+};
+var defaultDarkTheme = {
+  colors: {
+    brandButtonText: "white",
+    defaultButtonBackground: "#2e2e2e",
+    defaultButtonBackgroundHover: "#3e3e3e",
+    defaultButtonBorder: "#3e3e3e",
+    defaultButtonText: "white",
+    dividerBackground: "#2e2e2e",
+    inputBackground: "#1e1e1e",
+    inputBorder: "#3e3e3e",
+    inputBorderHover: "gray",
+    inputBorderFocus: "gray",
+    inputText: "white",
+    inputPlaceholder: "darkgray"
+  }
+};
+var minimal = {
+  colors: {
+    brand: "black",
+    brandAccent: "#333333",
+    brandButtonText: "white",
+    defaultButtonBackground: "white",
+    defaultButtonBorder: "lightgray",
+    defaultButtonText: "gray",
+    dividerBackground: "#eaeaea",
+    inputBackground: "transparent",
+    inputBorder: "lightgray",
+    inputText: "black",
+    inputPlaceholder: "darkgray"
+  },
+  space: {
+    spaceSmall: "4px",
+    spaceMedium: "8px",
+    spaceLarge: "16px"
+  },
+  fontSizes: {
+    baseInputSize: "14px",
+    baseLabelSize: "12px"
+  },
+  fonts: {
+    bodyFontFamily: "",
+    inputFontFamily: "",
+    buttonFontFamily: "",
+    labelFontFamily: ""
+    // linkFontFamily: '',
+  },
+  // fontWeights: {},
+  // lineHeights: {},
+  // letterSpacings: {},
+  // sizes: {},
+  borderWidths: {},
+  // borderStyles: {},
+  radii: {}
+  // shadows: {},
+  // zIndices: {},
+  // transitions: {},
+};
+var minimalDark = {
+  colors: {
+    brand: "white",
+    brandAccent: "#afafaf",
+    brandButtonText: "black",
+    defaultButtonBackground: "#080808",
+    defaultButtonBorder: "black",
+    defaultButtonText: "white",
+    dividerBackground: "black",
+    inputBackground: "transparent",
+    inputBorder: "gray",
+    inputText: "black",
+    inputPlaceholder: "darkgray"
+  }
+};
+var darkThemes = {
+  supabase: defaultDarkTheme,
+  minimal: minimalDark
+};
+
+// src/constants.ts
+var VIEWS = {
+  SIGN_IN: "sign_in",
+  SIGN_UP: "sign_up",
+  FORGOTTEN_PASSWORD: "forgotten_password",
+  MAGIC_LINK: "magic_link",
+  UPDATE_PASSWORD: "update_password",
+  VERIFY_OTP: "verify_otp"
+};
+var PREPENDED_CLASS_NAMES = "supabase-auth-ui";
+var CLASS_NAMES = {
+  // interfaces
+  ROOT: "root",
+  SIGN_IN: VIEWS.SIGN_IN,
+  SIGN_UP: VIEWS.SIGN_UP,
+  FORGOTTEN_PASSWORD: VIEWS.FORGOTTEN_PASSWORD,
+  MAGIC_LINK: VIEWS.MAGIC_LINK,
+  UPDATE_PASSWORD: VIEWS.UPDATE_PASSWORD,
+  // ui
+  anchor: "ui-anchor",
+  button: "ui-button",
+  container: "ui-container",
+  divider: "ui-divider",
+  input: "ui-input",
+  label: "ui-label",
+  loader: "ui-loader",
+  message: "ui-message"
+};
+
+// src/theming/utils.ts
+function generateClassNames(classNameKey, defaultStyles, appearance) {
+  var _a, _b;
+  const classNames = [];
+  const className = CLASS_NAMES[classNameKey];
+  classNames.push(
+    (appearance == null ? void 0 : appearance.prependedClassName) ? (appearance == null ? void 0 : appearance.prependedClassName) + "_" + className : PREPENDED_CLASS_NAMES + "_" + className
+  );
+  if ((_a = appearance == null ? void 0 : appearance.className) == null ? void 0 : _a[classNameKey]) {
+    classNames.push((_b = appearance == null ? void 0 : appearance.className) == null ? void 0 : _b[classNameKey]);
+  }
+  if ((appearance == null ? void 0 : appearance.extend) === void 0 || (appearance == null ? void 0 : appearance.extend) === true) {
+    classNames.push(defaultStyles);
+  }
+  return classNames;
+}
+
+// src/types.ts
+var SocialLayouts = /* @__PURE__ */ ((SocialLayouts2) => {
+  SocialLayouts2[SocialLayouts2["horizontal"] = 0] = "horizontal";
+  SocialLayouts2[SocialLayouts2["vertical"] = 1] = "vertical";
+  return SocialLayouts2;
+})(SocialLayouts || {});
+
+// src/utils.ts
+function value(src, next) {
+  let k;
+  if (src && next && typeof src === "object" && typeof next === "object") {
+    if (Array.isArray(next)) {
+      for (k = 0; k < next.length; k++) {
+        src[k] = value(src[k], next[k]);
+      }
+    } else {
+      for (k in next) {
+        src[k] = value(src[k], next[k]);
+      }
+    }
+    return src;
+  }
+  return next;
+}
+function merge(target, ...args) {
+  let len = args.length;
+  for (let i = 0; i < len; i++) {
+    target = value(target, args[i]);
+  }
+  return target;
+}
+function template(string, data) {
+  return string.replace(
+    /{{(\w+)}}/g,
+    (placeholderWithDelimiters, placeholderWithoutDelimiters) => data.hasOwnProperty(placeholderWithoutDelimiters) ? data[placeholderWithoutDelimiters] : placeholderWithDelimiters
+  );
+}
+
+// src/localization/en.json
+var en_default = {
+  sign_up: {
+    email_label: "Email address",
+    password_label: "Create a Password",
+    email_input_placeholder: "Your email address",
+    password_input_placeholder: "Your password",
+    button_label: "Sign up",
+    loading_button_label: "Signing up ...",
+    social_provider_text: "Sign in with {{provider}}",
+    link_text: "Don't have an account? Sign up",
+    confirmation_text: "Check your email for the confirmation link"
+  },
+  sign_in: {
+    email_label: "Email address",
+    password_label: "Your Password",
+    email_input_placeholder: "Your email address",
+    password_input_placeholder: "Your password",
+    button_label: "Sign in",
+    loading_button_label: "Signing in ...",
+    social_provider_text: "Sign in with {{provider}}",
+    link_text: "Already have an account? Sign in"
+  },
+  magic_link: {
+    email_input_label: "Email address",
+    email_input_placeholder: "Your email address",
+    button_label: "Send Magic Link",
+    loading_button_label: "Sending Magic Link ...",
+    link_text: "Send a magic link email",
+    confirmation_text: "Check your email for the magic link"
+  },
+  forgotten_password: {
+    email_label: "Email address",
+    password_label: "Your Password",
+    email_input_placeholder: "Your email address",
+    button_label: "Send reset password instructions",
+    loading_button_label: "Sending reset instructions ...",
+    link_text: "Forgot your password?",
+    confirmation_text: "Check your email for the password reset link"
+  },
+  update_password: {
+    password_label: "New password",
+    password_input_placeholder: "Your new password",
+    button_label: "Update password",
+    loading_button_label: "Updating password ...",
+    confirmation_text: "Your password has been updated"
+  },
+  verify_otp: {
+    email_input_label: "Email address",
+    email_input_placeholder: "Your email address",
+    phone_input_label: "Phone number",
+    phone_input_placeholder: "Your phone number",
+    token_input_label: "Token",
+    token_input_placeholder: "Your Otp token",
+    button_label: "Verify token",
+    loading_button_label: "Signing in ..."
+  }
+};
+
+//# sourceMappingURL=index.mjs.map
 
 /***/ }),
 
@@ -46850,6 +59901,17 @@ function combine (array, callback) {
 }
 
 
+/***/ }),
+
+/***/ "./node_modules/websocket/package.json":
+/*!*********************************************!*\
+  !*** ./node_modules/websocket/package.json ***!
+  \*********************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"name":"websocket","description":"Websocket Client & Server Library implementing the WebSocket protocol as specified in RFC 6455.","keywords":["websocket","websockets","socket","networking","comet","push","RFC-6455","realtime","server","client"],"author":"Brian McKelvey <theturtle32@gmail.com> (https://github.com/theturtle32)","contributors":["Iñaki Baz Castillo <ibc@aliax.net> (http://dev.sipdoc.net)"],"version":"1.0.34","repository":{"type":"git","url":"https://github.com/theturtle32/WebSocket-Node.git"},"homepage":"https://github.com/theturtle32/WebSocket-Node","engines":{"node":">=4.0.0"},"dependencies":{"bufferutil":"^4.0.1","debug":"^2.2.0","es5-ext":"^0.10.50","typedarray-to-buffer":"^3.1.5","utf-8-validate":"^5.0.2","yaeti":"^0.0.6"},"devDependencies":{"buffer-equal":"^1.0.0","gulp":"^4.0.2","gulp-jshint":"^2.0.4","jshint-stylish":"^2.2.1","jshint":"^2.0.0","tape":"^4.9.1"},"config":{"verbose":false},"scripts":{"test":"tape test/unit/*.js","gulp":"gulp"},"main":"index","directories":{"lib":"./lib"},"browser":"lib/browser.js","license":"Apache-2.0"}');
+
 /***/ })
 
 /******/ 	});
@@ -46872,7 +59934,7 @@ function combine (array, callback) {
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
@@ -46891,6 +59953,36 @@ function combine (array, callback) {
 /******/ 				() => (module);
 /******/ 			__webpack_require__.d(getter, { a: getter });
 /******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/create fake namespace object */
+/******/ 	(() => {
+/******/ 		var getProto = Object.getPrototypeOf ? (obj) => (Object.getPrototypeOf(obj)) : (obj) => (obj.__proto__);
+/******/ 		var leafPrototypes;
+/******/ 		// create a fake namespace object
+/******/ 		// mode & 1: value is a module id, require it
+/******/ 		// mode & 2: merge all properties of value into the ns
+/******/ 		// mode & 4: return value when already ns object
+/******/ 		// mode & 16: return value when it's Promise-like
+/******/ 		// mode & 8|1: behave like require
+/******/ 		__webpack_require__.t = function(value, mode) {
+/******/ 			if(mode & 1) value = this(value);
+/******/ 			if(mode & 8) return value;
+/******/ 			if(typeof value === 'object' && value) {
+/******/ 				if((mode & 4) && value.__esModule) return value;
+/******/ 				if((mode & 16) && typeof value.then === 'function') return value;
+/******/ 			}
+/******/ 			var ns = Object.create(null);
+/******/ 			__webpack_require__.r(ns);
+/******/ 			var def = {};
+/******/ 			leafPrototypes = leafPrototypes || [null, getProto({}), getProto([]), getProto(getProto)];
+/******/ 			for(var current = mode & 2 && value; typeof current == 'object' && !~leafPrototypes.indexOf(current); current = getProto(current)) {
+/******/ 				Object.getOwnPropertyNames(current).forEach((key) => (def[key] = () => (value[key])));
+/******/ 			}
+/******/ 			def['default'] = () => (value);
+/******/ 			__webpack_require__.d(ns, def);
+/******/ 			return ns;
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -46960,8 +60052,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var root = document.querySelector("#root");
-(0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.hydrateRoot)(root, react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_components_SchoolPage__WEBPACK_IMPORTED_MODULE_2__["default"], { locations: window.__INITIAL_STATE__.data, campusName: document.title, campusID: window.__INITIAL_STATE__.id }));
-
+(0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.hydrateRoot)(root, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_components_SchoolPage__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  locations: window.__INITIAL_STATE__.data,
+  campusName: document.title,
+  campusID: window.__INITIAL_STATE__.id
+}));
 })();
 
 /******/ })()
