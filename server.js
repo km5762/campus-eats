@@ -723,6 +723,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _MiniSearchBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MiniSearchBar */ "./src/components/MiniSearchBar.tsx");
 /* harmony import */ var _ContentContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ContentContainer */ "./src/components/ContentContainer.tsx");
+/* harmony import */ var _mui_base__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/base */ "@mui/base");
+/* harmony import */ var _mui_base__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_mui_base__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -740,8 +743,8 @@ function SchoolPage(_a) {
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "search-container" },
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MiniSearchBar__WEBPACK_IMPORTED_MODULE_1__["default"], { placeholder: campusName }))),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", { className: "login-signup" },
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "login" }, "Log in"),
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "signup" }, "Sign up"))),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_base__WEBPACK_IMPORTED_MODULE_3__.Button, { className: "login" }, "Log in"),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_base__WEBPACK_IMPORTED_MODULE_3__.Button, { className: "signup" }, "Sign up"))),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", null,
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ContentContainer__WEBPACK_IMPORTED_MODULE_2__["default"], { locations: locations, campusName: campusName, campusID: campusID }))));
 }
@@ -1095,6 +1098,16 @@ function queryCache(query) {
     throw new Error("Error: cache type \"".concat(type, "\" does not exist"));
 }
 
+
+/***/ }),
+
+/***/ "@mui/base":
+/*!****************************!*\
+  !*** external "@mui/base" ***!
+  \****************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/base");
 
 /***/ }),
 

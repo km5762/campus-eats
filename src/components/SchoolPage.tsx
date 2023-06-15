@@ -2,6 +2,7 @@ import React from "react";
 import MiniSearchBar from "./MiniSearchBar";
 import ContentContainer from "./ContentContainer";
 import { LocationData } from "./LocationCard";
+import { Button, Modal } from "@mui/base";
 
 export default function SchoolPage({
   locations,
@@ -35,8 +36,8 @@ export default function SchoolPage({
           </div>
         </nav>
         <nav className="login-signup">
-          <button className="login">Log in</button>
-          <button className="signup">Sign up</button>
+          <Button className="login">Log in</Button>
+          <Button className="signup">Sign up</Button>
         </nav>
       </header>
       <section>

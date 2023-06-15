@@ -153,6 +153,13 @@ ul a {
   font-family: "Raleway";
   font-style: italic;
   cursor: pointer;
+  padding: max(4px, 0.75vw) max(8px, 1.5vw);
+  border-radius: 55px;
+  transition: 0.3s;
+}
+
+.login:hover {
+  background-color: #6185d848;
 }
 
 .signup {
@@ -164,6 +171,11 @@ ul a {
   border-radius: 55px;
   padding: max(4px, 0.75vw) max(8px, 1.5vw);
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.signup:hover {
+  background-color: #6185d8b2;
 }
 
 section {
