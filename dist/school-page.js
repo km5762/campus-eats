@@ -18625,11 +18625,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Modal/Modal.js");
-/* harmony import */ var _mui_base__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/base */ "./node_modules/@mui/base/Button/Button.js");
-/* harmony import */ var _supabase_supabase_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @supabase/supabase-js */ "./node_modules/@supabase/supabase-js/dist/module/index.js");
-/* harmony import */ var _supabase_auth_ui_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @supabase/auth-ui-react */ "./node_modules/@supabase/auth-ui-react/dist/index.es.js");
-/* harmony import */ var _supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @supabase/auth-ui-shared */ "./node_modules/@supabase/auth-ui-shared/dist/index.mjs");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Modal/Modal.js");
+/* harmony import */ var _mui_base__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/base */ "./node_modules/@mui/base/Button/Button.js");
+/* harmony import */ var _supabase_supabase_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @supabase/supabase-js */ "./node_modules/@supabase/supabase-js/dist/module/index.js");
+/* harmony import */ var _supabase_auth_ui_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @supabase/auth-ui-react */ "./node_modules/@supabase/auth-ui-react/dist/index.es.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -18642,10 +18641,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 var supabaseUrl = "https://praaunntraqzwomikleq.supabase.co";
 var supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\n    .eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InByYWF1bm50cmFxendvbWlrbGVxIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQ1NDAzODMsImV4cCI6MjAwMDExNjM4M30\n    .iy7rGNKGQ5HeK0xJhKN3OzXqbNnegkVVAic7rWZ - iXU";
-var supabase = (0,_supabase_supabase_js__WEBPACK_IMPORTED_MODULE_2__.createClient)(supabaseUrl, supabaseKey);
+var supabase = (0,_supabase_supabase_js__WEBPACK_IMPORTED_MODULE_1__.createClient)(supabaseUrl, supabaseKey);
 function AuthButtons() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
@@ -18674,21 +18672,87 @@ function AuthButtons() {
   var handleClose = function handleClose() {
     return setOpen(false);
   };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_base__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_base__WEBPACK_IMPORTED_MODULE_2__["default"], {
     onClick: handleOpen,
     className: "login"
-  }, "Log in"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_base__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    className: "signup"
-  }, "Sign up"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, "Log in"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"], {
     open: open,
-    onClose: handleClose
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_supabase_auth_ui_react__WEBPACK_IMPORTED_MODULE_5__.Auth, {
-    supabaseClient: supabase,
-    appearance: {
-      theme: _supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_1__.ThemeSupa
+    onClose: handleClose,
+    sx: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
     }
-  })));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "auth-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+    href: "/"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: "/images/campus-eats-logo-black.svg"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_supabase_auth_ui_react__WEBPACK_IMPORTED_MODULE_4__.Auth, {
+    supabaseClient: supabase,
+    appearance: authAppearence
+  }))));
 }
+var authAppearence = {
+  theme: {
+    "default": {
+      colors: {
+        brand: "#6184d8",
+        brandAccent: "#6185d8b2",
+        brandButtonText: "white",
+        defaultButtonBackground: "white",
+        defaultButtonBackgroundHover: "#eaeaea",
+        defaultButtonBorder: "lightgray",
+        defaultButtonText: "#333333",
+        dividerBackground: "#e5e5e5",
+        inputBorder: "#e5e5e5",
+        inputBorderHover: "#4d4d4d",
+        inputBorderFocus: "#4d4d4d",
+        inputText: "#333333",
+        inputLabelText: "#333333",
+        inputPlaceholder: "#4d4d4d",
+        messageText: "gray",
+        messageTextDanger: "red",
+        anchorTextColor: "gray",
+        anchorTextHoverColor: "darkgray"
+      },
+      fonts: {
+        bodyFontFamily: "Raleway",
+        buttonFontFamily: "Raleway",
+        inputFontFamily: "Raleway",
+        labelFontFamily: "Raleway"
+      },
+      fontSizes: {
+        baseBodySize: "13px",
+        baseInputSize: "16px",
+        baseLabelSize: "14px",
+        baseButtonSize: "14px"
+      },
+      radii: {
+        borderRadiusButton: "15px",
+        buttonBorderRadius: "15px",
+        inputBorderRadius: "5px"
+      },
+      space: {
+        inputPadding: "10px",
+        buttonPadding: "10px"
+      },
+      borderWidths: {
+        buttonBorderWidth: "1px",
+        inputBorderWidth: "1px"
+      }
+    }
+  },
+  style: {
+    container: {
+      backgroundColor: "white"
+    },
+    input: {
+      backgroundColor: "#f2f2f2"
+    }
+  }
+};
 
 /***/ }),
 

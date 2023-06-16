@@ -1,8 +1,8 @@
 import { createRoot } from "react-dom/client";
 import React from "react";
-import SearchBar from "./components/SearchBar";
+import Index from "./components/Index";
 
 window.addEventListener("load", () => {
-  const root = createRoot(document.querySelector(".search-container")!); // notice the '!'
-  root.render(<SearchBar />);
+  const root = createRoot(document.querySelector(".container")!); // notice the '!'
+  root.render(<Index />);
 });

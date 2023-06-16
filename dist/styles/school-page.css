@@ -143,26 +143,9 @@ ul a {
 .login-signup {
   display: flex;
   justify-content: flex-end;
-  gap: min(1.5em, 2vw);
 }
 
 .login {
-  border-style: none;
-  background-color: transparent;
-  color: black;
-  font-family: "Raleway";
-  font-style: italic;
-  cursor: pointer;
-  padding: max(4px, 0.75vw) max(8px, 1.5vw);
-  border-radius: 55px;
-  transition: 0.3s;
-}
-
-.login:hover {
-  background-color: #6185d848;
-}
-
-.signup {
   color: white;
   font-family: "Raleway";
   font-style: italic;
@@ -171,11 +154,26 @@ ul a {
   border-radius: 55px;
   padding: max(4px, 0.75vw) max(8px, 1.5vw);
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.1s;
 }
 
-.signup:hover {
-  background-color: #6185d8b2;
+.login:hover {
+  background-color: #819ad4;
+}
+
+.auth-container {
+  background-color: white;
+  border-radius: 15px;
+  padding: 0.5em 2.5em;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.auth-container img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: max(9vw, 3em);
+  width: 50%;
 }
 
 section {
@@ -300,28 +298,17 @@ h3 {
   }
 }
 
-/* Get rid of sign up button*/
-@media (max-width: 700px) {
-  .login {
-    color: white;
-    font-style: italic;
-    border-style: none;
-    background-color: #6184d8;
-    border-radius: 55px;
-    padding: 6px 12px;
-    cursor: pointer;
-  }
-
-  .signup {
-    display: none;
-  }
-}
-
 /* Stack location card on small screens*/
 @media (max-width: 400px) {
   .location {
     flex-direction: column;
     align-items: start;
     gap: 0.75em;
+  }
+}
+
+@media (max-height: 530px) {
+  .auth-container img {
+    display: none;
   }
 }

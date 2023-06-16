@@ -230,15 +230,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _supabase_supabase_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_supabase_supabase_js__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _supabase_auth_ui_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @supabase/auth-ui-react */ "@supabase/auth-ui-react");
 /* harmony import */ var _supabase_auth_ui_react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_supabase_auth_ui_react__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @supabase/auth-ui-shared */ "@supabase/auth-ui-shared");
-/* harmony import */ var _supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_5__);
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -279,18 +276,84 @@ function AuthButtons() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_base__WEBPACK_IMPORTED_MODULE_2__.Button, {
     onClick: handleOpen,
     className: "login"
-  }, "Log in"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_base__WEBPACK_IMPORTED_MODULE_2__.Button, {
-    className: "signup"
-  }, "Sign up"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_1__.Modal, {
+  }, "Log in"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_1__.Modal, {
     open: open,
-    onClose: handleClose
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_supabase_auth_ui_react__WEBPACK_IMPORTED_MODULE_4__.Auth, {
-    supabaseClient: supabase,
-    appearance: {
-      theme: _supabase_auth_ui_shared__WEBPACK_IMPORTED_MODULE_5__.ThemeSupa
+    onClose: handleClose,
+    sx: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
     }
-  })));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "auth-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+    href: "/"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: "/images/campus-eats-logo-black.svg"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_supabase_auth_ui_react__WEBPACK_IMPORTED_MODULE_4__.Auth, {
+    supabaseClient: supabase,
+    appearance: authAppearence
+  }))));
 }
+var authAppearence = {
+  theme: {
+    "default": {
+      colors: {
+        brand: "#6184d8",
+        brandAccent: "#6185d8b2",
+        brandButtonText: "white",
+        defaultButtonBackground: "white",
+        defaultButtonBackgroundHover: "#eaeaea",
+        defaultButtonBorder: "lightgray",
+        defaultButtonText: "#333333",
+        dividerBackground: "#e5e5e5",
+        inputBorder: "#e5e5e5",
+        inputBorderHover: "#4d4d4d",
+        inputBorderFocus: "#4d4d4d",
+        inputText: "#333333",
+        inputLabelText: "#333333",
+        inputPlaceholder: "#4d4d4d",
+        messageText: "gray",
+        messageTextDanger: "red",
+        anchorTextColor: "gray",
+        anchorTextHoverColor: "darkgray"
+      },
+      fonts: {
+        bodyFontFamily: "Raleway",
+        buttonFontFamily: "Raleway",
+        inputFontFamily: "Raleway",
+        labelFontFamily: "Raleway"
+      },
+      fontSizes: {
+        baseBodySize: "13px",
+        baseInputSize: "16px",
+        baseLabelSize: "14px",
+        baseButtonSize: "14px"
+      },
+      radii: {
+        borderRadiusButton: "15px",
+        buttonBorderRadius: "15px",
+        inputBorderRadius: "5px"
+      },
+      space: {
+        inputPadding: "10px",
+        buttonPadding: "10px"
+      },
+      borderWidths: {
+        buttonBorderWidth: "1px",
+        inputBorderWidth: "1px"
+      }
+    }
+  },
+  style: {
+    container: {
+      backgroundColor: "white"
+    },
+    input: {
+      backgroundColor: "#f2f2f2"
+    }
+  }
+};
 
 /***/ }),
 
@@ -1128,17 +1191,6 @@ module.exports = require("@mui/material");
 
 "use strict";
 module.exports = require("@supabase/auth-ui-react");
-
-/***/ }),
-
-/***/ "@supabase/auth-ui-shared":
-/*!*******************************************!*\
-  !*** external "@supabase/auth-ui-shared" ***!
-  \*******************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("@supabase/auth-ui-shared");
 
 /***/ }),
 
