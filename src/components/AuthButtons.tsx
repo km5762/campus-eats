@@ -45,7 +45,11 @@ export default function AuthButtons() {
           <a href="/">
             <img src="/images/campus-eats-logo-black.svg" />
           </a>
-          <Auth supabaseClient={supabase} appearance={authAppearence} />
+          <Auth
+            supabaseClient={supabase}
+            appearance={authAppearence}
+            providers={["google", "facebook", "twitter"]}
+          />
         </div>
       </Modal>
     </>

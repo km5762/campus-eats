@@ -17299,7 +17299,8 @@ function AuthButtons() {
     src: "/images/campus-eats-logo-black.svg"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_supabase_auth_ui_react__WEBPACK_IMPORTED_MODULE_4__.Auth, {
     supabaseClient: supabase,
-    appearance: authAppearence
+    appearance: authAppearence,
+    providers: ["google", "facebook", "twitter"]
   }))));
 }
 var authAppearence = {
