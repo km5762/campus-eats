@@ -15,11 +15,9 @@ export default function SearchBar() {
   const initialState: Suggestion[] = [];
   const [suggestions, setSuggestions] = useState(initialState);
   const [searchValue, setSearchValue] = useState("");
-  const [borderRadius, setBorderRadius] = useState("15px");
 
   function handleBlur() {
     setSuggestions([]);
-    setBorderRadius("15px");
   }
 
   async function handleInput(event: any) {
@@ -36,12 +34,6 @@ export default function SearchBar() {
     }
 
     setSuggestions(result);
-
-    if (result.length > 0) {
-      setBorderRadius("15px 15px 0px 0px");
-    } else {
-      setBorderRadius("15px");
-    }
   }
 
   return (
@@ -49,7 +41,6 @@ export default function SearchBar() {
       <input
         onBlur={handleBlur}
         onFocus={handleInput}
-        style={{ borderRadius: borderRadius }}
         type="search"
         onInput={handleInput}
         value={searchValue}

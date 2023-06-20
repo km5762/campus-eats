@@ -8,6 +8,7 @@ const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 router.get("/:id/dishes", async (req, res) => {
+  console.log(req.headers.authorization);
   const locationID = req.params.id;
 
   try {
