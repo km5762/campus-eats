@@ -18,32 +18,34 @@ export default function AuthButtons({
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  return session ? null : (
-    <>
-      <Button onClick={handleOpen} className="login">
-        Log in
-      </Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <div className="auth-container">
-          <a href="/">
-            <img src="/images/campus-eats-logo-black.svg" />
-          </a>
-          <Auth
-            supabaseClient={supabaseClient}
-            appearance={authAppearence}
-            providers={["google", "facebook", "twitter"]}
-          />
-        </div>
-      </Modal>
-    </>
+  return (
+    session === null && (
+      <>
+        <Button onClick={handleOpen} className="login">
+          Log in
+        </Button>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <div className="auth-container">
+            <a href="/">
+              <img src="/images/campus-eats-logo-black.svg" />
+            </a>
+            <Auth
+              supabaseClient={supabaseClient}
+              appearance={authAppearence}
+              providers={["google", "facebook", "twitter"]}
+            />
+          </div>
+        </Modal>
+      </>
+    )
   );
 }
 

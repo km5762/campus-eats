@@ -3,7 +3,7 @@ import { supabaseClient } from "./supabaseClient";
 import { Session } from "@supabase/supabase-js";
 
 export const useSupabaseSession = () => {
-  const [session, setSession] = useState<Session | null>(null);
+  const [session, setSession] = useState<Session | null | undefined>(undefined);
 
   useEffect(() => {
     supabaseClient.auth.getSession().then(({ data: { session } }) => {
