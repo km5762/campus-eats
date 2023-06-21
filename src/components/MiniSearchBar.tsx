@@ -15,7 +15,7 @@ export default function MiniSearchBar({
   async function handleInput(event: any) {
     const currentSearch = event.target.value;
     setSearchValue(currentSearch);
-    let result = [];
+    let result: Suggestion[] = [];
 
     if (currentSearch !== "") {
       result = await fetchSearch(currentSearch);

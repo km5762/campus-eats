@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MiniSearchBar from "./MiniSearchBar";
 import ContentContainer from "./ContentContainer";
 import { LocationData } from "./LocationCard";
 import AuthButtons from "./AuthButtons";
+import { supabase } from "@supabase/auth-ui-shared";
+import { Session, createClient } from "@supabase/supabase-js";
+import { supabaseClient } from "../services/supabaseClient";
+import { useSupabaseSession } from "../services/useSupabaseSession";
 
 export default function SchoolPage({
   locations,
@@ -13,6 +17,8 @@ export default function SchoolPage({
   campusName: string;
   campusID: number;
 }) {
+  const session = useSupabaseSession();
+
   return (
     <>
       <header>
@@ -36,7 +42,7 @@ export default function SchoolPage({
           </div>
         </nav>
         <nav className="login-signup">
-          <AuthButtons />
+          <AuthButtons supabaseClient={supabaseClient} session={session} />
         </nav>
       </header>
       <section>

@@ -24,7 +24,6 @@ export default function ContentContainer({
 
   async function handleLocationCardClick(id: number, name: string) {
     const dishes = await queryThroughCache(`location.${id}`);
-
     setContentClass("dishes");
     setBreadCrumbs((breadCrumbs) => [
       ...breadCrumbs,
