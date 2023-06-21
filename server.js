@@ -164,15 +164,12 @@ function breadCrumbsToButtons(breadCrumbs, handleBreadCrumbClick) {
   var buttons = [];
   var _loop = function _loop(i) {
     var breadCrumb = breadCrumbs[i];
-    buttons.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    buttons.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
       key: breadCrumb["class"],
       onClick: function onClick() {
         return handleBreadCrumbClick(i);
       }
-    }, breadCrumb.name));
-    if (i !== breadCrumbs.length - 1) {
-      buttons.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, ">"));
-    }
+    }, i === 0 ? "" : ">", " ", breadCrumb.name)));
   };
   for (var i = 0; i < breadCrumbs.length; i++) {
     _loop(i);

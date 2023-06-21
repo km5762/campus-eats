@@ -42,13 +42,12 @@ function breadCrumbsToButtons(
   for (let i = 0; i < breadCrumbs.length; i++) {
     const breadCrumb = breadCrumbs[i];
     buttons.push(
-      <button key={breadCrumb.class} onClick={() => handleBreadCrumbClick(i)}>
-        {breadCrumb.name}
-      </button>
+      <div>
+        <button key={breadCrumb.class} onClick={() => handleBreadCrumbClick(i)}>
+          {i === 0 ? "" : ">"} {breadCrumb.name}
+        </button>
+      </div>
     );
-    if (i !== breadCrumbs.length - 1) {
-      buttons.push(<span>&gt;</span>);
-    }
   }
 
   return buttons;
