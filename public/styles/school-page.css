@@ -207,17 +207,23 @@ section {
   align-items: center;
 }
 
-.locations,
-.dishes {
+.content-container {
   padding: 5vw;
+  padding-top: 2.5vw;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: white;
+}
+
+.content-label {
+  margin-bottom: 2vw;
+  font-size: 1.25rem;
+  font-weight: 500;
 }
 
 .locations {
-  border-radius: 15px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   display: flex;
   flex-direction: column;
-  background-color: white;
 }
 
 .location {
@@ -255,9 +261,6 @@ section {
 }
 
 .dishes {
-  border-radius: 15px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  background-color: white;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 5vw;

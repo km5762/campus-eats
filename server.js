@@ -315,8 +315,22 @@ function ContentContainer(_ref) {
     setContentClass: setContentClass,
     setBreadCrumbs: setBreadCrumbs
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "content-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+    className: "content-label"
+  }, formatHeader(contentClass)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: contentClass
-  }, parseData(contentArray)));
+  }, parseData(contentArray))));
+}
+function formatHeader(contentClass) {
+  switch (contentClass) {
+    case "locations":
+      return "Dining Locations";
+      break;
+    case "dishes":
+      return "Available Dishes";
+      break;
+  }
 }
 
 /***/ }),

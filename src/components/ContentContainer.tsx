@@ -75,7 +75,21 @@ export default function ContentContainer({
         setContentClass={setContentClass}
         setBreadCrumbs={setBreadCrumbs}
       />
-      <div className={contentClass}>{parseData(contentArray)}</div>
+      <div className="content-container">
+        <h2 className="content-label">{formatHeader(contentClass)}</h2>
+        <div className={contentClass}>{parseData(contentArray)}</div>
+      </div>
     </>
   );
+}
+
+function formatHeader(contentClass: string) {
+  switch (contentClass) {
+    case "locations":
+      return "Dining Locations";
+      break;
+    case "dishes":
+      return "Available Dishes";
+      break;
+  }
 }
