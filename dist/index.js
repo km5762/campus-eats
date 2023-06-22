@@ -3438,6 +3438,309 @@ const backdropClasses = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_1__["default"])('
 
 /***/ }),
 
+/***/ "./node_modules/@mui/material/CircularProgress/CircularProgress.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/@mui/material/CircularProgress/CircularProgress.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/chainPropTypes.js");
+/* harmony import */ var _mui_base__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/base */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
+/* harmony import */ var _mui_system__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/system */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
+/* harmony import */ var _utils_capitalize__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/capitalize */ "./node_modules/@mui/material/utils/capitalize.js");
+/* harmony import */ var _styles_useThemeProps__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../styles/useThemeProps */ "./node_modules/@mui/material/styles/useThemeProps.js");
+/* harmony import */ var _styles_styled__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../styles/styled */ "./node_modules/@mui/material/styles/styled.js");
+/* harmony import */ var _circularProgressClasses__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./circularProgressClasses */ "./node_modules/@mui/material/CircularProgress/circularProgressClasses.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+const _excluded = ["className", "color", "disableShrink", "size", "style", "thickness", "value", "variant"];
+let _ = t => t,
+  _t,
+  _t2,
+  _t3,
+  _t4;
+
+
+
+
+
+
+
+
+
+
+
+const SIZE = 44;
+const circularRotateKeyframe = (0,_mui_system__WEBPACK_IMPORTED_MODULE_5__.keyframes)(_t || (_t = _`
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+`));
+const circularDashKeyframe = (0,_mui_system__WEBPACK_IMPORTED_MODULE_5__.keyframes)(_t2 || (_t2 = _`
+  0% {
+    stroke-dasharray: 1px, 200px;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -15px;
+  }
+
+  100% {
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -125px;
+  }
+`));
+const useUtilityClasses = ownerState => {
+  const {
+    classes,
+    variant,
+    color,
+    disableShrink
+  } = ownerState;
+  const slots = {
+    root: ['root', variant, `color${(0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_6__["default"])(color)}`],
+    svg: ['svg'],
+    circle: ['circle', `circle${(0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_6__["default"])(variant)}`, disableShrink && 'circleDisableShrink']
+  };
+  return (0,_mui_base__WEBPACK_IMPORTED_MODULE_7__["default"])(slots, _circularProgressClasses__WEBPACK_IMPORTED_MODULE_8__.getCircularProgressUtilityClass, classes);
+};
+const CircularProgressRoot = (0,_styles_styled__WEBPACK_IMPORTED_MODULE_9__["default"])('span', {
+  name: 'MuiCircularProgress',
+  slot: 'Root',
+  overridesResolver: (props, styles) => {
+    const {
+      ownerState
+    } = props;
+    return [styles.root, styles[ownerState.variant], styles[`color${(0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_6__["default"])(ownerState.color)}`]];
+  }
+})(({
+  ownerState,
+  theme
+}) => (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({
+  display: 'inline-block'
+}, ownerState.variant === 'determinate' && {
+  transition: theme.transitions.create('transform')
+}, ownerState.color !== 'inherit' && {
+  color: (theme.vars || theme).palette[ownerState.color].main
+}), ({
+  ownerState
+}) => ownerState.variant === 'indeterminate' && (0,_mui_system__WEBPACK_IMPORTED_MODULE_5__.css)(_t3 || (_t3 = _`
+      animation: ${0} 1.4s linear infinite;
+    `), circularRotateKeyframe));
+const CircularProgressSVG = (0,_styles_styled__WEBPACK_IMPORTED_MODULE_9__["default"])('svg', {
+  name: 'MuiCircularProgress',
+  slot: 'Svg',
+  overridesResolver: (props, styles) => styles.svg
+})({
+  display: 'block' // Keeps the progress centered
+});
+
+const CircularProgressCircle = (0,_styles_styled__WEBPACK_IMPORTED_MODULE_9__["default"])('circle', {
+  name: 'MuiCircularProgress',
+  slot: 'Circle',
+  overridesResolver: (props, styles) => {
+    const {
+      ownerState
+    } = props;
+    return [styles.circle, styles[`circle${(0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_6__["default"])(ownerState.variant)}`], ownerState.disableShrink && styles.circleDisableShrink];
+  }
+})(({
+  ownerState,
+  theme
+}) => (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({
+  stroke: 'currentColor'
+}, ownerState.variant === 'determinate' && {
+  transition: theme.transitions.create('stroke-dashoffset')
+}, ownerState.variant === 'indeterminate' && {
+  // Some default value that looks fine waiting for the animation to kicks in.
+  strokeDasharray: '80px, 200px',
+  strokeDashoffset: 0 // Add the unit to fix a Edge 16 and below bug.
+}), ({
+  ownerState
+}) => ownerState.variant === 'indeterminate' && !ownerState.disableShrink && (0,_mui_system__WEBPACK_IMPORTED_MODULE_5__.css)(_t4 || (_t4 = _`
+      animation: ${0} 1.4s ease-in-out infinite;
+    `), circularDashKeyframe));
+
+/**
+ * ## ARIA
+ *
+ * If the progress bar is describing the loading progress of a particular region of a page,
+ * you should use `aria-describedby` to point to the progress bar, and set the `aria-busy`
+ * attribute to `true` on that region until it has finished loading.
+ */
+const CircularProgress = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(function CircularProgress(inProps, ref) {
+  const props = (0,_styles_useThemeProps__WEBPACK_IMPORTED_MODULE_10__["default"])({
+    props: inProps,
+    name: 'MuiCircularProgress'
+  });
+  const {
+      className,
+      color = 'primary',
+      disableShrink = false,
+      size = 40,
+      style,
+      thickness = 3.6,
+      value = 0,
+      variant = 'indeterminate'
+    } = props,
+    other = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(props, _excluded);
+  const ownerState = (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, props, {
+    color,
+    disableShrink,
+    size,
+    thickness,
+    value,
+    variant
+  });
+  const classes = useUtilityClasses(ownerState);
+  const circleStyle = {};
+  const rootStyle = {};
+  const rootProps = {};
+  if (variant === 'determinate') {
+    const circumference = 2 * Math.PI * ((SIZE - thickness) / 2);
+    circleStyle.strokeDasharray = circumference.toFixed(3);
+    rootProps['aria-valuenow'] = Math.round(value);
+    circleStyle.strokeDashoffset = `${((100 - value) / 100 * circumference).toFixed(3)}px`;
+    rootStyle.transform = 'rotate(-90deg)';
+  }
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(CircularProgressRoot, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    className: (0,clsx__WEBPACK_IMPORTED_MODULE_3__["default"])(classes.root, className),
+    style: (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({
+      width: size,
+      height: size
+    }, rootStyle, style),
+    ownerState: ownerState,
+    ref: ref,
+    role: "progressbar"
+  }, rootProps, other, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(CircularProgressSVG, {
+      className: classes.svg,
+      ownerState: ownerState,
+      viewBox: `${SIZE / 2} ${SIZE / 2} ${SIZE} ${SIZE}`,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(CircularProgressCircle, {
+        className: classes.circle,
+        style: circleStyle,
+        ownerState: ownerState,
+        cx: SIZE,
+        cy: SIZE,
+        r: (SIZE - thickness) / 2,
+        fill: "none",
+        strokeWidth: thickness
+      })
+    })
+  }));
+});
+ true ? CircularProgress.propTypes /* remove-proptypes */ = {
+  // ----------------------------- Warning --------------------------------
+  // | These PropTypes are generated from the TypeScript type definitions |
+  // |     To update them edit the d.ts file and run "yarn proptypes"     |
+  // ----------------------------------------------------------------------
+  /**
+   * Override or extend the styles applied to the component.
+   */
+  classes: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().object),
+  /**
+   * @ignore
+   */
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string),
+  /**
+   * The color of the component.
+   * It supports both default and custom theme colors, which can be added as shown in the
+   * [palette customization guide](https://mui.com/material-ui/customization/palette/#adding-new-colors).
+   * @default 'primary'
+   */
+  color: prop_types__WEBPACK_IMPORTED_MODULE_11___default().oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_11___default().oneOf(['inherit', 'primary', 'secondary', 'error', 'info', 'success', 'warning']), (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string)]),
+  /**
+   * If `true`, the shrink animation is disabled.
+   * This only works if variant is `indeterminate`.
+   * @default false
+   */
+  disableShrink: (0,_mui_utils__WEBPACK_IMPORTED_MODULE_12__["default"])((prop_types__WEBPACK_IMPORTED_MODULE_11___default().bool), props => {
+    if (props.disableShrink && props.variant && props.variant !== 'indeterminate') {
+      return new Error('MUI: You have provided the `disableShrink` prop ' + 'with a variant other than `indeterminate`. This will have no effect.');
+    }
+    return null;
+  }),
+  /**
+   * The size of the component.
+   * If using a number, the pixel unit is assumed.
+   * If using a string, you need to provide the CSS unit, e.g '3rem'.
+   * @default 40
+   */
+  size: prop_types__WEBPACK_IMPORTED_MODULE_11___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_11___default().number), (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string)]),
+  /**
+   * @ignore
+   */
+  style: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().object),
+  /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */
+  sx: prop_types__WEBPACK_IMPORTED_MODULE_11___default().oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_11___default().arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_11___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_11___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_11___default().object), (prop_types__WEBPACK_IMPORTED_MODULE_11___default().bool)])), (prop_types__WEBPACK_IMPORTED_MODULE_11___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_11___default().object)]),
+  /**
+   * The thickness of the circle.
+   * @default 3.6
+   */
+  thickness: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().number),
+  /**
+   * The value of the progress indicator for the determinate variant.
+   * Value between 0 and 100.
+   * @default 0
+   */
+  value: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().number),
+  /**
+   * The variant to use.
+   * Use indeterminate when there is no progress value.
+   * @default 'indeterminate'
+   */
+  variant: prop_types__WEBPACK_IMPORTED_MODULE_11___default().oneOf(['determinate', 'indeterminate'])
+} : 0;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CircularProgress);
+
+/***/ }),
+
+/***/ "./node_modules/@mui/material/CircularProgress/circularProgressClasses.js":
+/*!********************************************************************************!*\
+  !*** ./node_modules/@mui/material/CircularProgress/circularProgressClasses.js ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   "getCircularProgressUtilityClass": () => (/* binding */ getCircularProgressUtilityClass)
+/* harmony export */ });
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/generateUtilityClasses/generateUtilityClasses.js");
+/* harmony import */ var _generateUtilityClass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../generateUtilityClass */ "./node_modules/@mui/utils/esm/generateUtilityClass/generateUtilityClass.js");
+
+
+function getCircularProgressUtilityClass(slot) {
+  return (0,_generateUtilityClass__WEBPACK_IMPORTED_MODULE_0__["default"])('MuiCircularProgress', slot);
+}
+const circularProgressClasses = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_1__["default"])('MuiCircularProgress', ['root', 'determinate', 'indeterminate', 'colorPrimary', 'colorSecondary', 'svg', 'circle', 'circleDeterminate', 'circleIndeterminate', 'circleDisableShrink']);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (circularProgressClasses);
+
+/***/ }),
+
 /***/ "./node_modules/@mui/material/Fade/Fade.js":
 /*!*************************************************!*\
   !*** ./node_modules/@mui/material/Fade/Fade.js ***!
@@ -6608,6 +6911,23 @@ function getTransitionProps(props, options) {
     delay: style.transitionDelay
   };
 }
+
+/***/ }),
+
+/***/ "./node_modules/@mui/material/utils/capitalize.js":
+/*!********************************************************!*\
+  !*** ./node_modules/@mui/material/utils/capitalize.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/capitalize.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_mui_utils__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 /***/ }),
 
@@ -17248,8 +17568,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function AuthButtons(_ref) {
-  var supabaseClient = _ref.supabaseClient,
-    session = _ref.session;
+  var supabaseClient = _ref.supabaseClient;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     open = _useState2[0],
@@ -17260,7 +17579,9 @@ function AuthButtons(_ref) {
   var handleClose = function handleClose() {
     return setOpen(false);
   };
-  return session === null ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_base__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
+    className: "login-signup"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_base__WEBPACK_IMPORTED_MODULE_1__["default"], {
     onClick: handleOpen,
     className: "login"
   }, "Log in"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -17281,7 +17602,7 @@ function AuthButtons(_ref) {
     supabaseClient: supabaseClient,
     appearance: authAppearence,
     providers: ["google", "facebook", "twitter"]
-  })))) : null;
+  }))));
 }
 var authAppearence = {
   theme: {
@@ -17360,21 +17681,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _SearchBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SearchBar */ "./src/components/SearchBar.tsx");
 /* harmony import */ var _AuthButtons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AuthButtons */ "./src/components/AuthButtons.tsx");
-Object(function webpackMissingModule() { var e = new Error("Cannot find module '../hooks/useSupabaseSession'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-Object(function webpackMissingModule() { var e = new Error("Cannot find module '../services/supabaseClient'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _hooks_useSupabaseSession__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../hooks/useSupabaseSession */ "./src/hooks/useSupabaseSession.ts");
+/* harmony import */ var _services_supabaseClient__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/supabaseClient */ "./src/services/supabaseClient.ts");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/CircularProgress/CircularProgress.js");
+
 
 
 
 
 
 function Index() {
-  var session = Object(function webpackMissingModule() { var e = new Error("Cannot find module '../hooks/useSupabaseSession'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
-    className: "login-signup"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AuthButtons__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    supabaseClient: Object(function webpackMissingModule() { var e = new Error("Cannot find module '../services/supabaseClient'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
-    session: session
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  var session = (0,_hooks_useSupabaseSession__WEBPACK_IMPORTED_MODULE_3__.useSupabaseSession)();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, renderSwitch(session), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "main-content"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     className: "logo",
@@ -17383,6 +17701,21 @@ function Index() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Campus Dining - Done Smarter."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "search-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SearchBar__WEBPACK_IMPORTED_MODULE_1__["default"], null))));
+}
+function renderSwitch(session) {
+  switch (session) {
+    case undefined:
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], null);
+      break;
+    case null:
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AuthButtons__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        supabaseClient: _services_supabaseClient__WEBPACK_IMPORTED_MODULE_4__.supabaseClient
+      });
+      break;
+    default:
+      return null;
+      break;
+  }
 }
 
 /***/ }),
@@ -17499,6 +17832,51 @@ function Suggestions(_ref) {
     }), suggestion.name));
   })));
 }
+
+/***/ }),
+
+/***/ "./src/hooks/useSupabaseSession.ts":
+/*!*****************************************!*\
+  !*** ./src/hooks/useSupabaseSession.ts ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "useSupabaseSession": () => (/* binding */ useSupabaseSession)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _services_supabaseClient__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/supabaseClient */ "./src/services/supabaseClient.ts");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+var useSupabaseSession = function useSupabaseSession() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(undefined),
+    _useState2 = _slicedToArray(_useState, 2),
+    session = _useState2[0],
+    setSession = _useState2[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    _services_supabaseClient__WEBPACK_IMPORTED_MODULE_1__.supabaseClient.auth.getSession().then(function (_ref) {
+      var session = _ref.data.session;
+      setSession(session);
+    });
+    var _supabaseClient$auth$ = _services_supabaseClient__WEBPACK_IMPORTED_MODULE_1__.supabaseClient.auth.onAuthStateChange(function (_event, session) {
+        setSession(session);
+      }),
+      subscription = _supabaseClient$auth$.data.subscription;
+    return function () {
+      return subscription.unsubscribe();
+    };
+  }, []);
+  return session;
+};
 
 /***/ }),
 
@@ -17652,6 +18030,25 @@ function _fetchDishes() {
   }));
   return _fetchDishes.apply(this, arguments);
 }
+
+/***/ }),
+
+/***/ "./src/services/supabaseClient.ts":
+/*!****************************************!*\
+  !*** ./src/services/supabaseClient.ts ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "supabaseClient": () => (/* binding */ supabaseClient)
+/* harmony export */ });
+/* harmony import */ var _supabase_supabase_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @supabase/supabase-js */ "./node_modules/@supabase/supabase-js/dist/module/index.js");
+
+var supabaseUrl = "https://praaunntraqzwomikleq.supabase.co";
+var supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InByYWF1bm50cmFxendvbWlrbGVxIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQ1NDAzODMsImV4cCI6MjAwMDExNjM4M30.iy7rGNKGQ5HeK0xJhKN3OzXqbNnegkVVAic7rWZ-iXU";
+var supabaseClient = (0,_supabase_supabase_js__WEBPACK_IMPORTED_MODULE_0__.createClient)(supabaseUrl, supabaseKey);
 
 /***/ }),
 

@@ -8,6 +8,7 @@ import { Session, createClient } from "@supabase/supabase-js";
 import { supabaseClient } from "../services/supabaseClient";
 import { useSupabaseSession } from "../hooks/useSupabaseSession";
 import SearchBar from "./SearchBar";
+import { CircularProgress } from "@mui/material";
 
 export default function SchoolPage({
   locations,
@@ -40,9 +41,7 @@ export default function SchoolPage({
             <SearchBar />
           </div>
         </nav>
-        <nav className="login-signup">
-          <AuthButtons supabaseClient={supabaseClient} session={session} />
-        </nav>
+        {renderSwitch(session)}
       </header>
       <section>
         <ContentContainer
@@ -53,4 +52,18 @@ export default function SchoolPage({
       </section>
     </>
   );
+}
+
+function renderSwitch(session: Session | undefined | null) {
+  switch (session) {
+    case undefined:
+      return <CircularProgress />;
+      break;
+    case null:
+      return <AuthButtons supabaseClient={supabaseClient} />;
+      break;
+    default:
+      return null;
+      break;
+  }
 }

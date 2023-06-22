@@ -7,19 +7,15 @@ import { Auth } from "@supabase/auth-ui-react";
 
 interface AuthButtonsProps {
   supabaseClient: SupabaseClient;
-  session: Session | null | undefined;
 }
 
-export default function AuthButtons({
-  supabaseClient,
-  session,
-}: AuthButtonsProps) {
+export default function AuthButtons({ supabaseClient }: AuthButtonsProps) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  return session === null ? (
-    <>
+  return (
+    <nav className="login-signup">
       <Button onClick={handleOpen} className="login">
         Log in
       </Button>
@@ -43,8 +39,8 @@ export default function AuthButtons({
           />
         </div>
       </Modal>
-    </>
-  ) : null;
+    </nav>
+  );
 }
 
 const authAppearence = {

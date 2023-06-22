@@ -3,15 +3,15 @@ import SearchBar from "./SearchBar";
 import AuthButtons from "./AuthButtons";
 import { useSupabaseSession } from "../hooks/useSupabaseSession";
 import { supabaseClient } from "../services/supabaseClient";
+import { Session } from "@supabase/supabase-js";
+import { CircularProgress } from "@mui/material";
 
 export default function Index() {
   const session = useSupabaseSession();
 
   return (
     <>
-      <nav className="login-signup">
-        <AuthButtons supabaseClient={supabaseClient} session={session} />
-      </nav>
+      {renderSwitch(session)}
       <div className="main-content">
         <img
           className="logo"
@@ -25,4 +25,18 @@ export default function Index() {
       </div>
     </>
   );
+}
+
+function renderSwitch(session: Session | undefined | null) {
+  switch (session) {
+    case undefined:
+      return <CircularProgress />;
+      break;
+    case null:
+      return <AuthButtons supabaseClient={supabaseClient} />;
+      break;
+    default:
+      return null;
+      break;
+  }
 }
