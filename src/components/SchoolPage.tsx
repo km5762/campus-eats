@@ -7,6 +7,7 @@ import { supabase } from "@supabase/auth-ui-shared";
 import { Session, createClient } from "@supabase/supabase-js";
 import { supabaseClient } from "../services/supabaseClient";
 import { useSupabaseSession } from "../hooks/useSupabaseSession";
+import SearchBar from "./SearchBar";
 
 export default function SchoolPage({
   locations,
@@ -35,10 +36,8 @@ export default function SchoolPage({
           </picture>
         </a>
         <nav className="places-at">
-          <h2>Places</h2>
-          <h2>at</h2>
           <div className="search-container">
-            <MiniSearchBar placeholder={campusName}></MiniSearchBar>
+            <SearchBar />
           </div>
         </nav>
         <nav className="login-signup">

@@ -106,6 +106,8 @@ body {
 }
 
 input[type="search"] {
+  z-index: 2;
+
   background-color: #f5f5f5;
   width: max(37.5vw, 16em);
   border: none;
@@ -113,8 +115,8 @@ input[type="search"] {
   padding: 10px 10px 10px 50px;
   font-family: "Raleway";
   font-size: 1rem;
-  color: inherit;
-  border: 1px solid transparent;
+  color: #333333;
+  border: 1px solid #e5e5e5;
   background-image: url(../images/magnify.svg);
   background-repeat: no-repeat;
   background-size: 30px;
@@ -130,10 +132,12 @@ input[type="search"]:focus {
 }
 
 ul {
+  z-index: 2;
   background-color: #f5f5f5;
   border-radius: 0px 0px 10px 10px;
   font-family: "Raleway";
   overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 ul img {
