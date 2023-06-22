@@ -6,7 +6,7 @@ import AuthButtons from "./AuthButtons";
 import { supabase } from "@supabase/auth-ui-shared";
 import { Session, createClient } from "@supabase/supabase-js";
 import { supabaseClient } from "../services/supabaseClient";
-import { useSupabaseSession } from "../services/useSupabaseSession";
+import { useSupabaseSession } from "../hooks/useSupabaseSession";
 
 export default function SchoolPage({
   locations,
