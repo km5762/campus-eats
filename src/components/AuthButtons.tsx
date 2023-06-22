@@ -2,33 +2,23 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Modal } from "@mui/material";
 import { Button } from "@mui/base";
-import { Session, createClient } from "@supabase/supabase-js";
+import { Session, SupabaseClient, createClient } from "@supabase/supabase-js";
 import { Auth } from "@supabase/auth-ui-react";
-const supabaseUrl = "https://praaunntraqzwomikleq.supabase.co";
-const supabaseKey =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InByYWF1bm50cmFxendvbWlrbGVxIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQ1NDAzODMsImV4cCI6MjAwMDExNjM4M30.iy7rGNKGQ5HeK0xJhKN3OzXqbNnegkVVAic7rWZ-iXU";
-const supabase = createClient(supabaseUrl, supabaseKey);
 
-export default function AuthButtons() {
+interface AuthButtonsProps {
+  supabaseClient: SupabaseClient;
+  session: Session | null | undefined;
+}
+
+export default function AuthButtons({
+  supabaseClient,
+  session,
+}: AuthButtonsProps) {
   const [open, setOpen] = useState(false);
-  const [session, setSession] = useState<Session | null>(null);
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-    });
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
-    return () => subscription.unsubscribe();
-  }, []);
-
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  return (
+  return session === null ? (
     <>
       <Button onClick={handleOpen} className="login">
         Log in
@@ -36,21 +26,25 @@ export default function AuthButtons() {
       <Modal
         open={open}
         onClose={handleClose}
-        sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
       >
         <div className="auth-container">
           <a href="/">
             <img src="/images/campus-eats-logo-black.svg" />
           </a>
           <Auth
-            supabaseClient={supabase}
+            supabaseClient={supabaseClient}
             appearance={authAppearence}
             providers={["google", "facebook", "twitter"]}
           />
         </div>
       </Modal>
     </>
-  );
+  ) : null;
 }
 
 const authAppearence = {

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import fetchSearch from "../services/api";
+import debounce from "lodash/debounce";
 
 interface SuggestionsProps {
   suggestions: Suggestion[];
@@ -15,15 +16,18 @@ export default function SearchBar() {
   const initialState: Suggestion[] = [];
   const [suggestions, setSuggestions] = useState(initialState);
   const [searchValue, setSearchValue] = useState("");
+  const debouncedHandleChange = useMemo(() => {
+    return debounce(handleChange, 500);
+  }, []);
 
   function handleBlur() {
     setSuggestions([]);
   }
 
-  async function handleInput(event: any) {
+  async function handleChange(event: any) {
     const currentSearch = event.target.value;
     setSearchValue(currentSearch);
-    let result = [];
+    let result: Suggestion[] = [];
 
     if (currentSearch !== "") {
       result = await fetchSearch(currentSearch);
@@ -40,10 +44,10 @@ export default function SearchBar() {
     <>
       <input
         onBlur={handleBlur}
-        onFocus={handleInput}
+        onFocus={handleChange}
         type="search"
-        onInput={handleInput}
-        value={searchValue}
+        onChange={debouncedHandleChange}
+        // value={searchValue}
         placeholder="Find my school!"
       />
       <Suggestions suggestions={suggestions} />

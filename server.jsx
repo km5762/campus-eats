@@ -1,29 +1,27 @@
 const SchoolPage = require("./src/components/SchoolPage").default;
 const React = require("react");
-const campusRouter = require("./routes/campus");
-const dishesRouter = require("./routes/dishes");
 const { renderToString } = require("react-dom/server");
-const locations = require("./routes/locations");
 const express = require("express");
 const ejs = require("ejs");
 const app = express();
 const port = process.env.PORT || 3000;
 const path = require("path");
+const { createClient } = require("@supabase/supabase-js");
 require("dotenv").config();
 
 app.use(express.static(path.join(__dirname, "dist")));
-
-app.use("/api/campus", campusRouter);
-app.use("/api/campus", locations.router);
-app.use("/api/locations", dishesRouter);
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
+const supabaseUrl = "https://praaunntraqzwomikleq.supabase.co";
+const supabaseKey = process.env.SUPABASE_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
+
 app.get("/campus/:id/locations", async (req, res) => {
   const campusID = req.params.id;
-  let initialState = await locations.queryLocations(campusID);
+  let initialState = await queryLocations(campusID);
   const campusName = initialState[0].campus_name;
   initialState = initialState.map((location) => ({
     type: "location",
@@ -53,6 +51,22 @@ app.get("/campus/:id/locations", async (req, res) => {
     }
   );
 });
+
+async function queryLocations(campusID) {
+  try {
+    const { data, error } = await supabase.rpc("fn_get_locations_at", {
+      p_id: campusID,
+    });
+
+    if (error) {
+      throw error;
+    }
+    return data;
+  } catch (error) {
+    console.error("Error:", error);
+    return { error: "Internal Server Error" };
+  }
+}
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

@@ -4,6 +4,8 @@ import DishCard, { DishData } from "./DishCard";
 import LocationCard, { LocationData } from "./LocationCard";
 import { queryThroughCache, cache } from "../services/cache";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
+import { useMediaQuery } from "@mui/material";
+import BackButton from "./BackButton";
 
 export type CardData = DishData | LocationData;
 
@@ -21,10 +23,10 @@ export default function ContentContainer({
   const [breadCrumbs, setBreadCrumbs] = useState<BreadCrumb[]>([
     { class: "locations", name: campusName, query: `campus.${campusID}` },
   ]);
+  const smallScreen = useMediaQuery("(max-width: 650px)");
 
   async function handleLocationCardClick(id: number, name: string) {
     const dishes = await queryThroughCache(`location.${id}`);
-
     setContentClass("dishes");
     setBreadCrumbs((breadCrumbs) => [
       ...breadCrumbs,
@@ -70,13 +72,35 @@ export default function ContentContainer({
 
   return (
     <>
-      <BreadCrumbs
-        breadCrumbs={breadCrumbs}
-        setContentArray={setContentArray}
-        setContentClass={setContentClass}
-        setBreadCrumbs={setBreadCrumbs}
-      />
-      <div className={contentClass}>{parseData(contentArray)}</div>
+      {smallScreen ? (
+        <BackButton
+          breadCrumbs={breadCrumbs}
+          setContentArray={setContentArray}
+          setContentClass={setContentClass}
+        />
+      ) : (
+        <BreadCrumbs
+          breadCrumbs={breadCrumbs}
+          setContentArray={setContentArray}
+          setContentClass={setContentClass}
+          setBreadCrumbs={setBreadCrumbs}
+        />
+      )}
+      <div className="content-container">
+        <h2 className="content-label">{formatHeader(contentClass)}</h2>
+        <div className={contentClass}>{parseData(contentArray)}</div>
+      </div>
     </>
   );
+}
+
+function formatHeader(contentClass: string) {
+  switch (contentClass) {
+    case "locations":
+      return "Dining Locations";
+      break;
+    case "dishes":
+      return "Available Dishes";
+      break;
+  }
 }
