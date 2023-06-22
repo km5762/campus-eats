@@ -40,7 +40,8 @@ body {
   height: 100%;
 }
 
-.login-signup {
+.login-signup,
+.profile {
   display: flex;
   justify-content: flex-end;
   gap: min(1.5em, 2vw);

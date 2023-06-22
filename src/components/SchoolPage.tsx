@@ -9,6 +9,7 @@ import { supabaseClient } from "../services/supabaseClient";
 import { useSupabaseSession } from "../hooks/useSupabaseSession";
 import SearchBar from "./SearchBar";
 import { CircularProgress } from "@mui/material";
+import ProfileButton from "./ProfileButton";
 
 export default function SchoolPage({
   locations,
@@ -63,7 +64,7 @@ function renderSwitch(session: Session | undefined | null) {
       return <AuthButtons supabaseClient={supabaseClient} />;
       break;
     default:
-      return null;
+      return <ProfileButton color={"#6184d8"} scale={"1.5"} />;
       break;
   }
 }

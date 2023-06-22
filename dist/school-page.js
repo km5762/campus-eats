@@ -3201,6 +3201,27 @@ function useSlotProps(parameters) {
 
 /***/ }),
 
+/***/ "./node_modules/@mui/icons-material/esm/AccountCircle.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@mui/icons-material/esm/AccountCircle.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _utils_createSvgIcon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils/createSvgIcon */ "./node_modules/@mui/material/utils/createSvgIcon.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_utils_createSvgIcon__WEBPACK_IMPORTED_MODULE_1__["default"])( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+  d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88C7.55 15.8 9.68 15 12 15s4.45.8 6.14 2.12C16.43 19.18 14.03 20 12 20z"
+}), 'AccountCircle'));
+
+/***/ }),
+
 /***/ "./node_modules/@mui/icons-material/esm/NavigateBefore.js":
 /*!****************************************************************!*\
   !*** ./node_modules/@mui/icons-material/esm/NavigateBefore.js ***!
@@ -20806,6 +20827,43 @@ function LocationCard(_ref) {
 
 /***/ }),
 
+/***/ "./src/components/ProfileButton.tsx":
+/*!******************************************!*\
+  !*** ./src/components/ProfileButton.tsx ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ProfileButton)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/IconButton/IconButton.js");
+/* harmony import */ var _mui_icons_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/icons-material */ "./node_modules/@mui/icons-material/esm/AccountCircle.js");
+
+
+
+function ProfileButton(_ref) {
+  var color = _ref.color,
+    scale = _ref.scale;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
+    className: "profile"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    sx: {
+      boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    sx: {
+      transform: "scale(".concat(scale, ")"),
+      color: color
+    }
+  })));
+}
+
+/***/ }),
+
 /***/ "./src/components/SchoolPage.tsx":
 /*!***************************************!*\
   !*** ./src/components/SchoolPage.tsx ***!
@@ -20824,7 +20882,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_supabaseClient__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/supabaseClient */ "./src/services/supabaseClient.ts");
 /* harmony import */ var _hooks_useSupabaseSession__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../hooks/useSupabaseSession */ "./src/hooks/useSupabaseSession.ts");
 /* harmony import */ var _SearchBar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SearchBar */ "./src/components/SearchBar.tsx");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/CircularProgress/CircularProgress.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/CircularProgress/CircularProgress.js");
+/* harmony import */ var _ProfileButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ProfileButton */ "./src/components/ProfileButton.tsx");
+
 
 
 
@@ -20860,7 +20920,7 @@ function SchoolPage(_ref) {
 function renderSwitch(session) {
   switch (session) {
     case undefined:
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], null);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], null);
       break;
     case null:
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AuthButtons__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -20868,7 +20928,10 @@ function renderSwitch(session) {
       });
       break;
     default:
-      return null;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ProfileButton__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        color: "#6184d8",
+        scale: "1.5"
+      });
       break;
   }
 }

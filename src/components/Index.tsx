@@ -5,6 +5,7 @@ import { useSupabaseSession } from "../hooks/useSupabaseSession";
 import { supabaseClient } from "../services/supabaseClient";
 import { Session } from "@supabase/supabase-js";
 import { CircularProgress } from "@mui/material";
+import ProfileButton from "./ProfileButton";
 
 export default function Index() {
   const session = useSupabaseSession();
@@ -36,7 +37,7 @@ function renderSwitch(session: Session | undefined | null) {
       return <AuthButtons supabaseClient={supabaseClient} />;
       break;
     default:
-      return null;
+      return <ProfileButton color={"white"} scale={"2"} />;
       break;
   }
 }
