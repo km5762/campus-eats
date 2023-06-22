@@ -1,7 +1,7 @@
 import React from "react";
 import SearchBar from "./SearchBar";
 import AuthButtons from "./AuthButtons";
-import { useSupabaseSession } from "../services/useSupabaseSession";
+import { useSupabaseSession } from "../hooks/useSupabaseSession";
 import { supabaseClient } from "../services/supabaseClient";
 
 export default function Index() {
