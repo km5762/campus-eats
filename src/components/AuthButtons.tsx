@@ -7,21 +7,25 @@ import { Auth } from "@supabase/auth-ui-react";
 
 interface AuthButtonsProps {
   supabaseClient: SupabaseClient;
+  open: boolean;
+  handleOpen: Function;
+  handleClose: Function;
 }
 
-export default function AuthButtons({ supabaseClient }: AuthButtonsProps) {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
+export default function AuthButtons({
+  supabaseClient,
+  open,
+  handleOpen,
+  handleClose,
+}: AuthButtonsProps) {
   return (
     <nav className="login-signup">
-      <Button onClick={handleOpen} className="login">
+      <Button onClick={() => handleOpen()} className="login">
         Log in
       </Button>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={() => handleClose()}
         sx={{
           display: "flex",
           alignItems: "center",
