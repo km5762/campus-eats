@@ -19249,37 +19249,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Modal/Modal.js");
 /* harmony import */ var _mui_base__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/base */ "./node_modules/@mui/base/Button/Button.js");
 /* harmony import */ var _supabase_auth_ui_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @supabase/auth-ui-react */ "./node_modules/@supabase/auth-ui-react/dist/index.es.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
 
 function AuthButtons(_ref) {
-  var supabaseClient = _ref.supabaseClient;
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState2 = _slicedToArray(_useState, 2),
-    open = _useState2[0],
-    setOpen = _useState2[1];
-  var handleOpen = function handleOpen() {
-    return setOpen(true);
-  };
-  var handleClose = function handleClose() {
-    return setOpen(false);
-  };
+  var supabaseClient = _ref.supabaseClient,
+    open = _ref.open,
+    handleOpen = _ref.handleOpen,
+    handleClose = _ref.handleClose;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
     className: "login-signup"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_base__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    onClick: handleOpen,
+    onClick: function onClick() {
+      return handleOpen();
+    },
     className: "login"
   }, "Log in"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
     open: open,
-    onClose: handleClose,
+    onClose: function onClose() {
+      return handleClose();
+    },
     sx: {
       display: "flex",
       alignItems: "center",
@@ -19374,10 +19364,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _SearchBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SearchBar */ "./src/components/SearchBar.tsx");
 /* harmony import */ var _AuthButtons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AuthButtons */ "./src/components/AuthButtons.tsx");
-/* harmony import */ var _hooks_useSupabaseSession__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../hooks/useSupabaseSession */ "./src/hooks/useSupabaseSession.ts");
-/* harmony import */ var _services_supabaseClient__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/supabaseClient */ "./src/services/supabaseClient.ts");
+/* harmony import */ var _services_supabaseClient__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/supabaseClient */ "./src/services/supabaseClient.ts");
 /* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/CircularProgress/CircularProgress.js");
-/* harmony import */ var _ProfileButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ProfileButton */ "./src/components/ProfileButton.tsx");
+/* harmony import */ var _ProfileButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ProfileButton */ "./src/components/ProfileButton.tsx");
+/* harmony import */ var _contexts_AuthProvider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../contexts/AuthProvider */ "./src/contexts/AuthProvider.tsx");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -19386,8 +19382,39 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Index() {
-  var session = (0,_hooks_useSupabaseSession__WEBPACK_IMPORTED_MODULE_3__.useSupabaseSession)();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, renderSwitch(session), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  var session = (0,_contexts_AuthProvider__WEBPACK_IMPORTED_MODULE_5__.useAuth)();
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    open = _useState2[0],
+    setOpen = _useState2[1];
+  var handleOpen = function handleOpen() {
+    return setOpen(true);
+  };
+  var handleClose = function handleClose() {
+    return setOpen(false);
+  };
+  function renderAuthSwitch() {
+    switch (session) {
+      case undefined:
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], null);
+        break;
+      case null:
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AuthButtons__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          supabaseClient: _services_supabaseClient__WEBPACK_IMPORTED_MODULE_3__.supabaseClient,
+          handleClose: handleClose,
+          handleOpen: handleOpen,
+          open: open
+        });
+        break;
+      default:
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ProfileButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          color: "white",
+          scale: "2"
+        });
+        break;
+    }
+  }
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, renderAuthSwitch(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "main-content"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     className: "logo",
@@ -19396,24 +19423,6 @@ function Index() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Campus Dining - Done Smarter."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "search-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SearchBar__WEBPACK_IMPORTED_MODULE_1__["default"], null))));
-}
-function renderSwitch(session) {
-  switch (session) {
-    case undefined:
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], null);
-      break;
-    case null:
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AuthButtons__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        supabaseClient: _services_supabaseClient__WEBPACK_IMPORTED_MODULE_4__.supabaseClient
-      });
-      break;
-    default:
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ProfileButton__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        color: "white",
-        scale: "2"
-      });
-      break;
-  }
 }
 
 /***/ }),
@@ -19567,6 +19576,37 @@ function Suggestions(_ref) {
     }), suggestion.name));
   })));
 }
+
+/***/ }),
+
+/***/ "./src/contexts/AuthProvider.tsx":
+/*!***************************************!*\
+  !*** ./src/contexts/AuthProvider.tsx ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ AuthProvider),
+/* harmony export */   "useAuth": () => (/* binding */ useAuth)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _hooks_useSupabaseSession__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../hooks/useSupabaseSession */ "./src/hooks/useSupabaseSession.ts");
+
+
+var AuthContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)(undefined);
+function AuthProvider(_ref) {
+  var children = _ref.children;
+  var session = (0,_hooks_useSupabaseSession__WEBPACK_IMPORTED_MODULE_1__.useSupabaseSession)();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(AuthContext.Provider, {
+    value: session
+  }, children);
+}
+var useAuth = function useAuth() {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(AuthContext);
+};
 
 /***/ }),
 
@@ -61392,12 +61432,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_Index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Index */ "./src/components/Index.tsx");
+/* harmony import */ var _contexts_AuthProvider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./contexts/AuthProvider */ "./src/contexts/AuthProvider.tsx");
+
 
 
 
 window.addEventListener("load", function () {
-  var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(document.querySelector(".container")); // notice the '!'
-  root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_components_Index__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+  var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(document.querySelector(".container"));
+  root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement((react__WEBPACK_IMPORTED_MODULE_1___default().StrictMode), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_contexts_AuthProvider__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_components_Index__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
 });
 })();
 
