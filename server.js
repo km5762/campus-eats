@@ -18,13 +18,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_mui_material__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _mui_icons_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/icons-material */ "@mui/icons-material");
 /* harmony import */ var _mui_icons_material__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_mui_icons_material__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _contexts_AuthProvider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../contexts/AuthProvider */ "./src/contexts/AuthProvider.tsx");
+
 
 
 
 function AddLocationButton(_ref) {
   var handleOpen = _ref.handleOpen,
-    handleClose = _ref.handleClose,
-    session = _ref.session;
+    handleClose = _ref.handleClose;
+  var session = (0,_contexts_AuthProvider__WEBPACK_IMPORTED_MODULE_3__.useAuth)();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_1__.IconButton, {
     onClick: function onClick() {
       return handleOpen();
@@ -40,7 +42,7 @@ function AddLocationButton(_ref) {
     sx: {
       color: "#6184d8"
     }
-  }), "Add a location");
+  }), session ? "Add a location" : "Sign in to add a location!");
 }
 
 /***/ }),

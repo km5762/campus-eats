@@ -2,16 +2,16 @@ import React from "react";
 import { IconButton } from "@mui/material";
 import { Add } from "@mui/icons-material";
 import { Session } from "@supabase/supabase-js";
+import { useAuth } from "../contexts/AuthProvider";
 
 export default function AddLocationButton({
   handleOpen,
   handleClose,
-  session,
 }: {
   handleOpen: Function;
   handleClose: Function;
-  session: Session | null | undefined;
 }) {
+  const session = useAuth();
   return (
     <IconButton
       onClick={() => handleOpen()}
@@ -24,7 +24,7 @@ export default function AddLocationButton({
       }}
     >
       <Add sx={{ color: "#6184d8" }} />
-      Add a location
+      {session ? "Add a location" : "Sign in to add a location!"}
     </IconButton>
   );
 }
