@@ -10,8 +10,8 @@ import { useAuth } from "../contexts/AuthProvider";
 export default function Index() {
   const session = useAuth();
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const openAuthModal = () => setOpen(true);
+  const closeAuthModal = () => setOpen(false);
 
   function renderAuthSwitch() {
     switch (session) {
@@ -22,8 +22,8 @@ export default function Index() {
         return (
           <AuthButtons
             supabaseClient={supabaseClient}
-            handleClose={handleClose}
-            handleOpen={handleOpen}
+            openAuthModal={openAuthModal}
+            closeAuthModal={closeAuthModal}
             open={open}
           />
         );

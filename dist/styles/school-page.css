@@ -238,6 +238,7 @@ section {
 .content-container {
   padding: 5vw;
   padding-top: 2.5vw;
+  padding-bottom: 2.5vw;
   border-radius: 15px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background-color: white;
@@ -288,9 +289,16 @@ section {
   align-items: center;
 }
 
-form.add-location {
-  background-color: white;
-  border-radius: 15px;
+.add-location-sign-in {
+  font: inherit;
+  color: var(--brand);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.add-location-sign-in:hover {
+  color: var(--brandAccent);
 }
 
 .dishes {

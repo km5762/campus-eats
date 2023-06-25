@@ -20,8 +20,8 @@ export default function SchoolPage({
 }) {
   const session = useAuth();
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const openAuthModal = () => setOpen(true);
+  const closeAuthModal = () => setOpen(false);
 
   function renderAuthSwitch() {
     switch (session) {
@@ -32,8 +32,8 @@ export default function SchoolPage({
         return (
           <AuthButtons
             supabaseClient={supabaseClient}
-            handleClose={handleClose}
-            handleOpen={handleOpen}
+            openAuthModal={openAuthModal}
+            closeAuthModal={closeAuthModal}
             open={open}
           />
         );
@@ -71,8 +71,8 @@ export default function SchoolPage({
           locations={locations}
           campusName={campusName}
           campusID={campusID}
-          handleOpen={handleOpen}
-          handleClose={handleClose}
+          openAuthModal={openAuthModal}
+          closeAuthModal={closeAuthModal}
         ></ContentContainer>
       </section>
     </>

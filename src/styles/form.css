@@ -1,0 +1,86 @@
+form.add-location {
+  color: var(--inputLabelText);
+  background-color: white;
+  border-radius: 15px;
+  padding: 1.5em;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+form.add-location.add-location.add-location li {
+  display: flex;
+  flex-direction: column;
+}
+
+form.add-location h2 {
+  font-weight: 500;
+  font-size: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+form.add-location label {
+  display: block;
+  font-size: 14px;
+  color: var(--inputLabelText);
+}
+
+form.add-location input {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  font-size: 16px;
+  border-style: solid;
+  border-color: var(--inputBorder);
+  color: var(--inputText);
+  border-width: 1px;
+  padding: 10px;
+  font-family: "Raleway";
+}
+
+form.add-location input:focus {
+  border-color: var(--inputBorderFocus);
+  outline: none;
+}
+
+form.add-location input:hover {
+  border-color: var(--inputBorderHover);
+}
+
+form.add-location button {
+  font-size: 14px;
+  font-family: "Raleway";
+}
+
+form.add-location button[type="submit"] {
+  display: block;
+  background-color: var(--brand);
+  color: white;
+  border: solid var(--brandAccent) 1px;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+form.add-location button[type="submit"]:hover {
+  background-color: var(--brandAccent);
+}
+
+.thank-you {
+  max-width: 320px;
+  background-color: white;
+  color: var(--inputLabelText);
+  border-radius: 15px;
+  padding: 1.5em;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.thank-you h2 {
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: var(--brand);
+}
+
+.thank-you hr {
+  color: var(--dividerColor);
+}
+
+.thank-you p {
+  font-size: 0.75rem;
+}

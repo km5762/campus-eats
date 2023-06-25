@@ -4,28 +4,29 @@ import { Modal } from "@mui/material";
 import { Button } from "@mui/base";
 import { Session, SupabaseClient, createClient } from "@supabase/supabase-js";
 import { Auth } from "@supabase/auth-ui-react";
+import { form } from "../services/style";
 
 interface AuthButtonsProps {
   supabaseClient: SupabaseClient;
   open: boolean;
-  handleOpen: Function;
-  handleClose: Function;
+  openAuthModal: Function;
+  closeAuthModal: Function;
 }
 
 export default function AuthButtons({
   supabaseClient,
   open,
-  handleOpen,
-  handleClose,
+  openAuthModal,
+  closeAuthModal,
 }: AuthButtonsProps) {
   return (
     <nav className="login-signup">
-      <Button onClick={() => handleOpen()} className="login">
+      <Button onClick={() => openAuthModal()} className="login">
         Log in
       </Button>
       <Modal
         open={open}
-        onClose={() => handleClose()}
+        onClose={() => closeAuthModal()}
         sx={{
           display: "flex",
           alignItems: "center",
@@ -51,24 +52,7 @@ const authAppearence = {
   theme: {
     default: {
       colors: {
-        brand: "#6184d8",
-        brandAccent: "#6185d8b2",
-        brandButtonText: "white",
-        defaultButtonBackground: "white",
-        defaultButtonBackgroundHover: "#eaeaea",
-        defaultButtonBorder: "lightgray",
-        defaultButtonText: "#333333",
-        dividerBackground: "#e5e5e5",
-        inputBorder: "#e5e5e5",
-        inputBorderHover: "#4d4d4d",
-        inputBorderFocus: "#4d4d4d",
-        inputText: "#333333",
-        inputLabelText: "#333333",
-        inputPlaceholder: "#4d4d4d",
-        messageText: "gray",
-        messageTextDanger: "red",
-        anchorTextColor: "gray",
-        anchorTextHoverColor: "darkgray",
+        ...form,
       },
       fonts: {
         bodyFontFamily: `Raleway`,
