@@ -96,7 +96,10 @@ export default function ContentContainer({
         <h2 className="content-label">{formatHeader(contentClass)}</h2>
         <div className={contentClass}>{parseData(contentArray)}</div>
         {contentClass === "locations" && (
-          <AddLocationInterface openAuthModal={openAuthModal} />
+          <AddLocationInterface
+            openAuthModal={openAuthModal}
+            campusID={campusID}
+          />
         )}
       </div>
     </>

@@ -54,7 +54,7 @@ app.get("/campus/:id/locations", async (req, res) => {
 
 async function queryLocations(campusID) {
   try {
-    const { data, error } = await supabase.rpc("fn_get_locations_at", {
+    const { data, error } = await supabase.rpc("fn_get_approved_locations_at", {
       p_id: campusID,
     });
 

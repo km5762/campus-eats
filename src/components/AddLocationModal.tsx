@@ -1,17 +1,26 @@
 import React, { useState } from "react";
 import { Modal } from "@mui/material";
 import "../styles/form.css";
+import { insertLocation } from "../services/api";
 
 export default function AddLocationModal({
   open,
   closeAddLocationModal,
+  campusID,
 }: {
   open: boolean;
   closeAddLocationModal: Function;
+  campusID: number;
 }) {
   const [submitted, setSubmitted] = useState(false);
   function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
+
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
+
+    insertLocation(formData.get("location-name")! as string, campusID);
+
     setSubmitted(true);
   }
   return (
@@ -40,14 +49,19 @@ export default function AddLocationModal({
           </p>
         </div>
       ) : (
-        <form action="" className="add-location" onSubmit={handleSubmit}>
+        <form method="post" className="add-location" onSubmit={handleSubmit}>
           <h2>Add a location!</h2>
           <div
             style={{ display: "flex", flexDirection: "column", gap: "16px" }}
           >
             <div>
-              <label htmlFor="location-name">Location Name</label>
-              <input id="location-name" type="text" />
+              <label htmlFor="location-name-input">Location Name</label>
+              <input
+                type="text"
+                id="location-name-input"
+                name="location-name"
+                required
+              />
             </div>
             <button type="submit">Submit</button>
           </div>

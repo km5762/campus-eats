@@ -1,5 +1,5 @@
 import { DishData } from "../components/DishCard";
-import { fetchLocations, fetchDishes } from "./api";
+import { fetchApprovedLocations, fetchDishes } from "./api";
 import { LocationData } from "../components/LocationCard";
 
 interface Cache {
@@ -21,7 +21,7 @@ export async function queryThroughCache(query: string) {
       return cacheType[id];
     }
 
-    const fetchData = type === "campus" ? fetchLocations : fetchDishes;
+    const fetchData = type === "campus" ? fetchApprovedLocations : fetchDishes;
     const data = await fetchData(id);
     cacheType[id] = data;
     return data;

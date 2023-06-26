@@ -5,8 +5,10 @@ import { useAuth } from "../contexts/AuthProvider";
 
 export default function AddLocationInterface({
   openAuthModal,
+  campusID,
 }: {
   openAuthModal: Function;
+  campusID: number;
 }) {
   const [open, setOpen] = useState(false);
   const session = useAuth();
@@ -22,6 +24,7 @@ export default function AddLocationInterface({
       <AddLocationModal
         open={open}
         closeAddLocationModal={closeAddLocationModal}
+        campusID={campusID}
       />
     </>
   );

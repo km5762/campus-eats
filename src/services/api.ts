@@ -1,16 +1,11 @@
-import { createClient } from "@supabase/supabase-js";
 import { DishData } from "../components/DishCard";
 import { LocationData } from "../components/LocationCard";
 import { Suggestion } from "../components/SearchBar";
-
-const supabaseUrl = "https://praaunntraqzwomikleq.supabase.co";
-const supabaseKey =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InByYWF1bm50cmFxendvbWlrbGVxIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQ1NDAzODMsImV4cCI6MjAwMDExNjM4M30.iy7rGNKGQ5HeK0xJhKN3OzXqbNnegkVVAic7rWZ-iXU";
-const supabase = createClient(supabaseUrl, supabaseKey);
+import { supabaseClient } from "./supabaseClient";
 
 export default async function fetchSearch(search: string) {
   try {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseClient
       .from("campus")
       .select()
       .ilike("name", `%${search}%`);
@@ -30,11 +25,14 @@ export default async function fetchSearch(search: string) {
   }
 }
 
-export async function fetchLocations(campusID: number) {
+export async function fetchApprovedLocations(campusID: number) {
   try {
-    const { data, error } = await supabase.rpc("fn_get_locations_at", {
-      p_id: campusID,
-    });
+    const { data, error } = await supabaseClient.rpc(
+      "fn_get_approved_locations_at",
+      {
+        p_id: campusID,
+      }
+    );
 
     if (error) {
       throw error;
@@ -54,7 +52,7 @@ export async function fetchLocations(campusID: number) {
 
 export async function fetchDishes(locationID: number) {
   try {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseClient
       .from("dish")
       .select("*")
       .eq("location_id", locationID);
@@ -72,5 +70,19 @@ export async function fetchDishes(locationID: number) {
   } catch (error) {
     console.error(error);
     return [];
+  }
+}
+
+export async function insertLocation(name: string, campusID: number) {
+  try {
+    const { data, error } = await supabaseClient
+      .from("location")
+      .insert({ name: name, campus_id: campusID });
+
+    if (error) {
+      throw error;
+    }
+  } catch (error) {
+    console.error(error);
   }
 }
