@@ -20075,7 +20075,7 @@ function AddLocationModal(_ref) {
     }
   }, submitted ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "thank-you"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Thank you for helping to make CampusEats a better website!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "After your request has been reviewed my a moderator, your location will be added.")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Thank you for helping to make CampusEats a better website!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "After your request has been reviewed by a moderator, your location will be added.")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     action: "",
     className: "add-location",
     onSubmit: handleSubmit
@@ -21866,7 +21866,14 @@ form.add-location button[type="submit"]:hover {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
+@media (max-width: 450px) {
+  .thank-you {
+    max-width: 210px;
+  }
+}
+
 .thank-you h2 {
+  line-height: 1.5rem;
   font-weight: bold;
   font-size: 1.25rem;
   color: var(--brand);
@@ -21877,9 +21884,10 @@ form.add-location button[type="submit"]:hover {
 }
 
 .thank-you p {
+  line-height: 1.5rem;
   font-size: 0.75rem;
 }
-`, "",{"version":3,"sources":["webpack://./src/styles/form.css"],"names":[],"mappings":"AAAA;EACE,4BAA4B;EAC5B,uBAAuB;EACvB,mBAAmB;EACnB,cAAc;EACd,4CAA4C;AAC9C;;AAEA;EACE,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,gBAAgB;EAChB,kBAAkB;EAClB,sBAAsB;AACxB;;AAEA;EACE,cAAc;EACd,eAAe;EACf,4BAA4B;AAC9B;;AAEA;EACE,kBAAkB;EAClB,yBAAyB;EACzB,eAAe;EACf,mBAAmB;EACnB,gCAAgC;EAChC,uBAAuB;EACvB,iBAAiB;EACjB,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,qCAAqC;EACrC,aAAa;AACf;;AAEA;EACE,qCAAqC;AACvC;;AAEA;EACE,eAAe;EACf,sBAAsB;AACxB;;AAEA;EACE,cAAc;EACd,8BAA8B;EAC9B,YAAY;EACZ,oCAAoC;EACpC,mBAAmB;EACnB,aAAa;AACf;;AAEA;EACE,oCAAoC;AACtC;;AAEA;EACE,gBAAgB;EAChB,uBAAuB;EACvB,4BAA4B;EAC5B,mBAAmB;EACnB,cAAc;EACd,4CAA4C;AAC9C;;AAEA;EACE,iBAAiB;EACjB,kBAAkB;EAClB,mBAAmB;AACrB;;AAEA;EACE,0BAA0B;AAC5B;;AAEA;EACE,kBAAkB;AACpB","sourcesContent":["form.add-location {\n  color: var(--inputLabelText);\n  background-color: white;\n  border-radius: 15px;\n  padding: 1.5em;\n  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;\n}\n\nform.add-location.add-location.add-location li {\n  display: flex;\n  flex-direction: column;\n}\n\nform.add-location h2 {\n  font-weight: 500;\n  font-size: 1.25rem;\n  margin-bottom: 1.25rem;\n}\n\nform.add-location label {\n  display: block;\n  font-size: 14px;\n  color: var(--inputLabelText);\n}\n\nform.add-location input {\n  border-radius: 5px;\n  background-color: #f2f2f2;\n  font-size: 16px;\n  border-style: solid;\n  border-color: var(--inputBorder);\n  color: var(--inputText);\n  border-width: 1px;\n  padding: 10px;\n  font-family: \"Raleway\";\n}\n\nform.add-location input:focus {\n  border-color: var(--inputBorderFocus);\n  outline: none;\n}\n\nform.add-location input:hover {\n  border-color: var(--inputBorderHover);\n}\n\nform.add-location button {\n  font-size: 14px;\n  font-family: \"Raleway\";\n}\n\nform.add-location button[type=\"submit\"] {\n  display: block;\n  background-color: var(--brand);\n  color: white;\n  border: solid var(--brandAccent) 1px;\n  border-radius: 15px;\n  padding: 10px;\n}\n\nform.add-location button[type=\"submit\"]:hover {\n  background-color: var(--brandAccent);\n}\n\n.thank-you {\n  max-width: 320px;\n  background-color: white;\n  color: var(--inputLabelText);\n  border-radius: 15px;\n  padding: 1.5em;\n  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;\n}\n\n.thank-you h2 {\n  font-weight: bold;\n  font-size: 1.25rem;\n  color: var(--brand);\n}\n\n.thank-you hr {\n  color: var(--dividerColor);\n}\n\n.thank-you p {\n  font-size: 0.75rem;\n}\n"],"sourceRoot":""}]);
+`, "",{"version":3,"sources":["webpack://./src/styles/form.css"],"names":[],"mappings":"AAAA;EACE,4BAA4B;EAC5B,uBAAuB;EACvB,mBAAmB;EACnB,cAAc;EACd,4CAA4C;AAC9C;;AAEA;EACE,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,gBAAgB;EAChB,kBAAkB;EAClB,sBAAsB;AACxB;;AAEA;EACE,cAAc;EACd,eAAe;EACf,4BAA4B;AAC9B;;AAEA;EACE,kBAAkB;EAClB,yBAAyB;EACzB,eAAe;EACf,mBAAmB;EACnB,gCAAgC;EAChC,uBAAuB;EACvB,iBAAiB;EACjB,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,qCAAqC;EACrC,aAAa;AACf;;AAEA;EACE,qCAAqC;AACvC;;AAEA;EACE,eAAe;EACf,sBAAsB;AACxB;;AAEA;EACE,cAAc;EACd,8BAA8B;EAC9B,YAAY;EACZ,oCAAoC;EACpC,mBAAmB;EACnB,aAAa;AACf;;AAEA;EACE,oCAAoC;AACtC;;AAEA;EACE,gBAAgB;EAChB,uBAAuB;EACvB,4BAA4B;EAC5B,mBAAmB;EACnB,cAAc;EACd,4CAA4C;AAC9C;;AAEA;EACE;IACE,gBAAgB;EAClB;AACF;;AAEA;EACE,mBAAmB;EACnB,iBAAiB;EACjB,kBAAkB;EAClB,mBAAmB;AACrB;;AAEA;EACE,0BAA0B;AAC5B;;AAEA;EACE,mBAAmB;EACnB,kBAAkB;AACpB","sourcesContent":["form.add-location {\n  color: var(--inputLabelText);\n  background-color: white;\n  border-radius: 15px;\n  padding: 1.5em;\n  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;\n}\n\nform.add-location.add-location.add-location li {\n  display: flex;\n  flex-direction: column;\n}\n\nform.add-location h2 {\n  font-weight: 500;\n  font-size: 1.25rem;\n  margin-bottom: 1.25rem;\n}\n\nform.add-location label {\n  display: block;\n  font-size: 14px;\n  color: var(--inputLabelText);\n}\n\nform.add-location input {\n  border-radius: 5px;\n  background-color: #f2f2f2;\n  font-size: 16px;\n  border-style: solid;\n  border-color: var(--inputBorder);\n  color: var(--inputText);\n  border-width: 1px;\n  padding: 10px;\n  font-family: \"Raleway\";\n}\n\nform.add-location input:focus {\n  border-color: var(--inputBorderFocus);\n  outline: none;\n}\n\nform.add-location input:hover {\n  border-color: var(--inputBorderHover);\n}\n\nform.add-location button {\n  font-size: 14px;\n  font-family: \"Raleway\";\n}\n\nform.add-location button[type=\"submit\"] {\n  display: block;\n  background-color: var(--brand);\n  color: white;\n  border: solid var(--brandAccent) 1px;\n  border-radius: 15px;\n  padding: 10px;\n}\n\nform.add-location button[type=\"submit\"]:hover {\n  background-color: var(--brandAccent);\n}\n\n.thank-you {\n  max-width: 320px;\n  background-color: white;\n  color: var(--inputLabelText);\n  border-radius: 15px;\n  padding: 1.5em;\n  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;\n}\n\n@media (max-width: 450px) {\n  .thank-you {\n    max-width: 210px;\n  }\n}\n\n.thank-you h2 {\n  line-height: 1.5rem;\n  font-weight: bold;\n  font-size: 1.25rem;\n  color: var(--brand);\n}\n\n.thank-you hr {\n  color: var(--dividerColor);\n}\n\n.thank-you p {\n  line-height: 1.5rem;\n  font-size: 0.75rem;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

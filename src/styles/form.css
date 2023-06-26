@@ -71,7 +71,14 @@ form.add-location button[type="submit"]:hover {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
+@media (max-width: 450px) {
+  .thank-you {
+    max-width: 210px;
+  }
+}
+
 .thank-you h2 {
+  line-height: 1.5rem;
   font-weight: bold;
   font-size: 1.25rem;
   color: var(--brand);
@@ -82,5 +89,6 @@ form.add-location button[type="submit"]:hover {
 }
 
 .thank-you p {
+  line-height: 1.5rem;
   font-size: 0.75rem;
 }

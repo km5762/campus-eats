@@ -35,7 +35,7 @@ export default function AddLocationModal({
           <h2>Thank you for helping to make CampusEats a better website!</h2>
           <hr />
           <p>
-            After your request has been reviewed my a moderator, your location
+            After your request has been reviewed by a moderator, your location
             will be added.
           </p>
         </div>
