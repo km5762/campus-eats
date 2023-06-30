@@ -19320,7 +19320,7 @@ function insertLocation(_x4, _x5) {
 }
 function _insertLocation() {
   _insertLocation = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(name, campusID) {
-    var _yield$supabaseClient4, data, error;
+    var _yield$supabaseClient4, data, error, next_post_time, successful;
     return _regeneratorRuntime().wrap(function _callee4$(_context4) {
       while (1) switch (_context4.prev = _context4.next) {
         case 0:
@@ -19339,8 +19339,12 @@ function _insertLocation() {
           }
           throw error;
         case 7:
-          return _context4.abrupt("return", data);
-        case 8:
+          next_post_time = data.next_post_time, successful = data.successful;
+          return _context4.abrupt("return", {
+            nextPostTime: next_post_time,
+            successful: successful
+          });
+        case 9:
         case "end":
           return _context4.stop();
       }

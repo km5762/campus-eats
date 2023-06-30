@@ -83,5 +83,7 @@ export async function insertLocation(name: string, campusID: number) {
     throw error;
   }
 
-  return data;
+  const { next_post_time, successful } = data;
+
+  return { nextPostTime: next_post_time, successful };
 }

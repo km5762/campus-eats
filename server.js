@@ -220,7 +220,7 @@ function AddLocationModal(_ref) {
   }
   function _handleSubmit() {
     _handleSubmit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
-      var form, formData, nextValidTime;
+      var form, formData, _yield$insertLocation, successful, nextPostTime;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
@@ -230,13 +230,12 @@ function AddLocationModal(_ref) {
             _context.next = 5;
             return (0,_services_api__WEBPACK_IMPORTED_MODULE_3__.insertLocation)(formData.get("location-name"), campusID);
           case 5:
-            nextValidTime = _context.sent;
-            if (!nextValidTime) {
-              nextValidTime = new Date(nextValidTime);
-              setSubmitted(true);
-            }
-            setCountdownTo(nextValidTime);
-          case 8:
+            _yield$insertLocation = _context.sent;
+            successful = _yield$insertLocation.successful;
+            nextPostTime = _yield$insertLocation.nextPostTime;
+            setSubmitted(successful);
+            setCountdownTo(new Date(nextPostTime));
+          case 10:
           case "end":
             return _context.stop();
         }
@@ -257,11 +256,7 @@ function AddLocationModal(_ref) {
       gap: "16px"
     }
   }, function () {
-    if (submitted) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-        className: "thank-you"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Thank you for helping to make CampusEats a better website!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "After your request has been reviewed by a moderator, your location will be added."));
-    } else if (countdownTo) {
+    if (countdownTo && new Date() < countdownTo && !submitted) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "timeout-error"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Slow down!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Please wait", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react_countdown__WEBPACK_IMPORTED_MODULE_4___default()), {
@@ -270,6 +265,10 @@ function AddLocationModal(_ref) {
           return setCountdownTo(null);
         }
       }), " ", "minutes before making another request."));
+    } else if (submitted) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "thank-you"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Thank you for helping to make CampusEats a better website!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "After your request has been reviewed by a moderator, your location will be added."));
     } else {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
         method: "post",
@@ -1263,7 +1262,7 @@ function insertLocation(_x4, _x5) {
 }
 function _insertLocation() {
   _insertLocation = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(name, campusID) {
-    var _yield$supabaseClient4, data, error;
+    var _yield$supabaseClient4, data, error, next_post_time, successful;
     return _regeneratorRuntime().wrap(function _callee4$(_context4) {
       while (1) switch (_context4.prev = _context4.next) {
         case 0:
@@ -1282,8 +1281,12 @@ function _insertLocation() {
           }
           throw error;
         case 7:
-          return _context4.abrupt("return", data);
-        case 8:
+          next_post_time = data.next_post_time, successful = data.successful;
+          return _context4.abrupt("return", {
+            nextPostTime: next_post_time,
+            successful: successful
+          });
+        case 9:
         case "end":
           return _context4.stop();
       }

@@ -4,6 +4,7 @@ import "../styles/form.css";
 import { insertLocation } from "../services/api";
 import { PostgrestError } from "@supabase/supabase-js";
 import Countdown from "react-countdown";
+import { Construction } from "@mui/icons-material";
 
 interface AddLocationModalProps {
   open: boolean;
@@ -28,16 +29,13 @@ export default function AddLocationModal({
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
 
-    let nextValidTime = await insertLocation(
+    const { successful, nextPostTime } = await insertLocation(
       formData.get("location-name")! as string,
       campusID
     );
 
-    if (!nextValidTime) {
-      nextValidTime = new Date(nextValidTime);
-      setSubmitted(true);
-    }
-    setCountdownTo(nextValidTime);
+    setSubmitted(successful);
+    setCountdownTo(new Date(nextPostTime));
   }
 
   return (
@@ -55,20 +53,7 @@ export default function AddLocationModal({
       }}
     >
       {(() => {
-        if (submitted) {
-          return (
-            <div className="thank-you">
-              <h2>
-                Thank you for helping to make CampusEats a better website!
-              </h2>
-              <hr />
-              <p>
-                After your request has been reviewed by a moderator, your
-                location will be added.
-              </p>
-            </div>
-          );
-        } else if (countdownTo) {
+        if (countdownTo && new Date() < countdownTo && !submitted) {
           return (
             <div className="timeout-error">
               <h2>Slow down!</h2>
@@ -80,6 +65,19 @@ export default function AddLocationModal({
                   onComplete={() => setCountdownTo(null)}
                 />{" "}
                 minutes before making another request.
+              </p>
+            </div>
+          );
+        } else if (submitted) {
+          return (
+            <div className="thank-you">
+              <h2>
+                Thank you for helping to make CampusEats a better website!
+              </h2>
+              <hr />
+              <p>
+                After your request has been reviewed by a moderator, your
+                location will be added.
               </p>
             </div>
           );
