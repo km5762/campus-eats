@@ -13239,15 +13239,17 @@ class GoTrueClient {
                     if (this.autoRefreshToken && currentSession.refresh_token) {
                         const { error } = yield this._callRefreshToken(currentSession.refresh_token);
                         if (error) {
-                            console.log(error.message);
-                            yield this._removeSession();
+                            console.error(error);
+                            if (!(0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthRetryableFetchError)(error)) {
+                                yield this._removeSession();
+                            }
                         }
                     }
                 }
                 else {
-                    if (this.persistSession) {
-                        yield this._saveSession(currentSession);
-                    }
+                    // no need to persist currentSession again, as we just loaded it from
+                    // local storage; persisting it again may overwrite a value saved by
+                    // another client with access to the same local storage
                     yield this._notifyAllSubscribers('SIGNED_IN', currentSession);
                 }
             }
@@ -13758,7 +13760,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   GoTrueAdminApi: () => (/* reexport safe */ _GoTrueAdminApi__WEBPACK_IMPORTED_MODULE_0__["default"]),
 /* harmony export */   GoTrueClient: () => (/* reexport safe */ _GoTrueClient__WEBPACK_IMPORTED_MODULE_1__["default"]),
 /* harmony export */   isAuthApiError: () => (/* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.isAuthApiError),
-/* harmony export */   isAuthError: () => (/* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.isAuthError)
+/* harmony export */   isAuthError: () => (/* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.isAuthError),
+/* harmony export */   isAuthRetryableFetchError: () => (/* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.isAuthRetryableFetchError)
 /* harmony export */ });
 /* harmony import */ var _GoTrueAdminApi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GoTrueAdminApi */ "./node_modules/@supabase/gotrue-js/dist/module/GoTrueAdminApi.js");
 /* harmony import */ var _GoTrueClient__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GoTrueClient */ "./node_modules/@supabase/gotrue-js/dist/module/GoTrueClient.js");
@@ -13824,7 +13827,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   AuthUnknownError: () => (/* binding */ AuthUnknownError),
 /* harmony export */   CustomAuthError: () => (/* binding */ CustomAuthError),
 /* harmony export */   isAuthApiError: () => (/* binding */ isAuthApiError),
-/* harmony export */   isAuthError: () => (/* binding */ isAuthError)
+/* harmony export */   isAuthError: () => (/* binding */ isAuthError),
+/* harmony export */   isAuthRetryableFetchError: () => (/* binding */ isAuthRetryableFetchError)
 /* harmony export */ });
 class AuthError extends Error {
     constructor(message, status) {
@@ -13925,6 +13929,9 @@ class AuthRetryableFetchError extends CustomAuthError {
         super(message, 'AuthRetryableFetchError', status);
     }
 }
+function isAuthRetryableFetchError(error) {
+    return isAuthError(error) && error.name === 'AuthRetryableFetchError';
+}
 //# sourceMappingURL=errors.js.map
 
 /***/ }),
@@ -13970,28 +13977,26 @@ var __rest = (undefined && undefined.__rest) || function (s, e) {
 
 
 const _getErrorMessage = (err) => err.msg || err.message || err.error_description || err.error || JSON.stringify(err);
-const handleError = (error, reject) => __awaiter(void 0, void 0, void 0, function* () {
-    const NETWORK_ERROR_CODES = [502, 503, 504];
-    if (!(0,_helpers__WEBPACK_IMPORTED_MODULE_0__.looksLikeFetchResponse)(error)) {
-        reject(new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthRetryableFetchError(_getErrorMessage(error), 0));
-    }
-    else if (NETWORK_ERROR_CODES.includes(error.status)) {
-        // status in 500...599 range - server had an error, request might be retryed.
-        reject(new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthRetryableFetchError(_getErrorMessage(error), error.status));
-    }
-    else {
-        // got a response from server that is not in the 500...599 range - should not retry
-        error
-            .json()
-            .then((err) => {
-            reject(new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthApiError(_getErrorMessage(err), error.status || 500));
-        })
-            .catch((e) => {
-            // not a valid json response
-            reject(new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthUnknownError(_getErrorMessage(e), e));
-        });
-    }
-});
+const NETWORK_ERROR_CODES = [502, 503, 504];
+function handleError(error) {
+    return __awaiter(this, void 0, void 0, function* () {
+        if (!(0,_helpers__WEBPACK_IMPORTED_MODULE_0__.looksLikeFetchResponse)(error)) {
+            throw new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthRetryableFetchError(_getErrorMessage(error), 0);
+        }
+        if (NETWORK_ERROR_CODES.includes(error.status)) {
+            // status in 500...599 range - server had an error, request might be retryed.
+            throw new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthRetryableFetchError(_getErrorMessage(error), error.status);
+        }
+        let data;
+        try {
+            data = yield error.json();
+        }
+        catch (e) {
+            throw new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthUnknownError(_getErrorMessage(e), e);
+        }
+        throw new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthApiError(_getErrorMessage(data), error.status || 500);
+    });
+}
 const _getRequestParams = (method, options, parameters, body) => {
     const params = { method, headers: (options === null || options === void 0 ? void 0 : options.headers) || {} };
     if (method === 'GET') {
@@ -14019,18 +14024,28 @@ function _request(fetcher, method, url, options) {
 }
 function _handleRequest(fetcher, method, url, options, parameters, body) {
     return __awaiter(this, void 0, void 0, function* () {
-        return new Promise((resolve, reject) => {
-            fetcher(url, _getRequestParams(method, options, parameters, body))
-                .then((result) => {
-                if (!result.ok)
-                    throw result;
-                if (options === null || options === void 0 ? void 0 : options.noResolveJson)
-                    return result;
-                return result.json();
-            })
-                .then((data) => resolve(data))
-                .catch((error) => handleError(error, reject));
-        });
+        const requestParams = _getRequestParams(method, options, parameters, body);
+        let result;
+        try {
+            result = yield fetcher(url, requestParams);
+        }
+        catch (e) {
+            console.error(e);
+            // fetch failed, likely due to a network or CORS error
+            throw new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthRetryableFetchError(_getErrorMessage(e), 0);
+        }
+        if (!result.ok) {
+            yield handleError(result);
+        }
+        if (options === null || options === void 0 ? void 0 : options.noResolveJson) {
+            return result;
+        }
+        try {
+            return yield result.json();
+        }
+        catch (e) {
+            yield handleError(e);
+        }
     });
 }
 function _sessionResponse(data) {
@@ -14466,7 +14481,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   version: () => (/* binding */ version)
 /* harmony export */ });
 // Generated by genversion.
-const version = '2.31.0';
+const version = '2.34.0';
 //# sourceMappingURL=version.js.map
 
 /***/ }),
@@ -18560,7 +18575,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   SupabaseClient: () => (/* reexport safe */ _SupabaseClient__WEBPACK_IMPORTED_MODULE_3__["default"]),
 /* harmony export */   createClient: () => (/* binding */ createClient),
 /* harmony export */   isAuthApiError: () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.isAuthApiError),
-/* harmony export */   isAuthError: () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.isAuthError)
+/* harmony export */   isAuthError: () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.isAuthError),
+/* harmony export */   isAuthRetryableFetchError: () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.isAuthRetryableFetchError)
 /* harmony export */ });
 /* harmony import */ var _SupabaseClient__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SupabaseClient */ "./node_modules/@supabase/supabase-js/dist/module/SupabaseClient.js");
 /* harmony import */ var _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @supabase/gotrue-js */ "./node_modules/@supabase/gotrue-js/dist/module/index.js");
@@ -19308,33 +19324,27 @@ function _insertLocation() {
     return _regeneratorRuntime().wrap(function _callee4$(_context4) {
       while (1) switch (_context4.prev = _context4.next) {
         case 0:
-          _context4.prev = 0;
-          _context4.next = 3;
-          return _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.from("location").insert({
-            name: name,
-            campus_id: campusID
+          _context4.next = 2;
+          return _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.rpc("fn_insert_location", {
+            p_name: name,
+            p_campus_id: campusID
           });
-        case 3:
+        case 2:
           _yield$supabaseClient4 = _context4.sent;
           data = _yield$supabaseClient4.data;
           error = _yield$supabaseClient4.error;
           if (!error) {
-            _context4.next = 8;
+            _context4.next = 7;
             break;
           }
           throw error;
+        case 7:
+          return _context4.abrupt("return", data);
         case 8:
-          _context4.next = 13;
-          break;
-        case 10:
-          _context4.prev = 10;
-          _context4.t0 = _context4["catch"](0);
-          console.error(_context4.t0);
-        case 13:
         case "end":
           return _context4.stop();
       }
-    }, _callee4, null, [[0, 10]]);
+    }, _callee4);
   }));
   return _insertLocation.apply(this, arguments);
 }

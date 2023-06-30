@@ -62,7 +62,8 @@ form.add-location button[type="submit"]:hover {
   background-color: var(--brandAccent);
 }
 
-.thank-you {
+.thank-you,
+.timeout-error {
   max-width: 320px;
   background-color: white;
   color: var(--inputLabelText);
@@ -77,18 +78,28 @@ form.add-location button[type="submit"]:hover {
   }
 }
 
-.thank-you h2 {
+.thank-you h2,
+.timeout-error h2 {
   line-height: 1.5rem;
   font-weight: bold;
   font-size: 1.25rem;
+}
+
+.thank-you h2 {
   color: var(--brand);
 }
 
-.thank-you hr {
+.timeout-error h2 {
+  color: var(--messageTextDanger);
+}
+
+.thank-you hr,
+.timeout-error hr {
   color: var(--dividerColor);
 }
 
-.thank-you p {
+.thank-you p,
+.timeout-error p {
   line-height: 1.5rem;
   font-size: 0.75rem;
 }

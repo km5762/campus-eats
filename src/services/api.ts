@@ -74,15 +74,14 @@ export async function fetchDishes(locationID: number) {
 }
 
 export async function insertLocation(name: string, campusID: number) {
-  try {
-    const { data, error } = await supabaseClient
-      .from("location")
-      .insert({ name: name, campus_id: campusID });
+  const { data, error } = await supabaseClient.rpc("fn_insert_location", {
+    p_name: name,
+    p_campus_id: campusID,
+  });
 
-    if (error) {
-      throw error;
-    }
-  } catch (error) {
-    console.error(error);
+  if (error) {
+    throw error;
   }
+
+  return data;
 }

@@ -7,7 +7,8 @@ import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 import { useMediaQuery } from "@mui/material";
 import BackButton from "./BackButton";
 import AddLocationButton from "./AddLocationButton";
-import AddLocationInterface from "./AddLocationInterface";
+import AddLocationInterface from "./AddContentInterface";
+import AddContentInterface from "./AddContentInterface";
 
 export type CardData = DishData | LocationData;
 
@@ -95,12 +96,11 @@ export default function ContentContainer({
       <div className="content-container">
         <h2 className="content-label">{formatHeader(contentClass)}</h2>
         <div className={contentClass}>{parseData(contentArray)}</div>
-        {contentClass === "locations" && (
-          <AddLocationInterface
-            openAuthModal={openAuthModal}
-            campusID={campusID}
-          />
-        )}
+        <AddContentInterface
+          openAuthModal={openAuthModal}
+          campusID={campusID}
+          contentClass={contentClass}
+        />
       </div>
     </>
   );
