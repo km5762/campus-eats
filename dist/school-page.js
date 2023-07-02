@@ -20518,7 +20518,9 @@ function ContentContainer(_ref) {
     className: "content-label"
   }, formatHeader(contentClass)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: contentClass
-  }, parseData(contentArray)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AddContentInterface__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }, contentArray.length === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+    className: "empty-message"
+  }, "This campus has no ", contentClass, ".", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " Be the first to add one!") : parseData(contentArray)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AddContentInterface__WEBPACK_IMPORTED_MODULE_6__["default"], {
     openAuthModal: openAuthModal,
     campusID: campusID,
     contentClass: contentClass

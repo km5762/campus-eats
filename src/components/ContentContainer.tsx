@@ -95,7 +95,16 @@ export default function ContentContainer({
       )}
       <div className="content-container">
         <h2 className="content-label">{formatHeader(contentClass)}</h2>
-        <div className={contentClass}>{parseData(contentArray)}</div>
+        <div className={contentClass}>
+          {contentArray.length === 0 ? (
+            <h2 className="empty-message">
+              This campus has no {contentClass}.
+              <br /> Be the first to add one!
+            </h2>
+          ) : (
+            parseData(contentArray)
+          )}
+        </div>
         <AddContentInterface
           openAuthModal={openAuthModal}
           campusID={campusID}

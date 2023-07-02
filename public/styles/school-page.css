@@ -250,6 +250,16 @@ section {
   font-weight: 500;
 }
 
+.empty-message {
+  text-align: center;
+  margin: 5rem 0rem;
+  font-size: 1.25rem;
+  font-style: italic;
+  line-height: 2rem;
+  font-weight: 500;
+  color: var(--anchorTextColor);
+}
+
 .locations {
   display: flex;
   flex-direction: column;
