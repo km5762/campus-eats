@@ -2225,7 +2225,9 @@ app.get("/campus/:id/locations", /*#__PURE__*/function () {
         case 3:
           initialState = _context.sent;
           campusName = initialState[0].campus_name;
-          initialState = initialState.map(function (location) {
+          initialState = initialState.filter(function (location) {
+            return location.id !== null;
+          }).map(function (location) {
             return {
               type: "location",
               id: location.id,

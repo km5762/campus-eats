@@ -23,13 +23,15 @@ app.get("/campus/:id/locations", async (req, res) => {
   const campusID = req.params.id;
   let initialState = await queryLocations(campusID);
   const campusName = initialState[0].campus_name;
-  initialState = initialState.map((location) => ({
-    type: "location",
-    id: location.id,
-    name: location.name,
-    rating: location.rating,
-    count: location.dish_count,
-  }));
+  initialState = initialState
+    .filter((location) => location.id !== null)
+    .map((location) => ({
+      type: "location",
+      id: location.id,
+      name: location.name,
+      rating: location.rating,
+      count: location.dish_count,
+    }));
   const schoolPageApp = renderToString(
     <SchoolPage
       locations={initialState}
