@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Modal } from "@mui/material";
+import { Modal, Tooltip } from "@mui/material";
 import { Button } from "@mui/base";
 import { Session, SupabaseClient, createClient } from "@supabase/supabase-js";
 import { Auth } from "@supabase/auth-ui-react";
@@ -21,9 +21,11 @@ export default function AuthButtons({
 }: AuthButtonsProps) {
   return (
     <nav className="login-signup">
-      <Button onClick={() => openAuthModal()} className="login">
-        Log in
-      </Button>
+      <Tooltip title="Log in to add content!">
+        <Button onClick={() => openAuthModal()} className="login">
+          Log in
+        </Button>
+      </Tooltip>
       <Modal
         open={open}
         onClose={() => closeAuthModal()}

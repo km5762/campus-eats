@@ -334,12 +334,14 @@ function AuthButtons(_ref) {
     closeAuthModal = _ref.closeAuthModal;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
     className: "login-signup"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_1__.Tooltip, {
+    title: "Log in to add content!"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_base__WEBPACK_IMPORTED_MODULE_2__.Button, {
     onClick: function onClick() {
       return openAuthModal();
     },
     className: "login"
-  }, "Log in"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_1__.Modal, {
+  }, "Log in")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_1__.Modal, {
     open: open,
     onClose: function onClose() {
       return closeAuthModal();
