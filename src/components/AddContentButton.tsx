@@ -4,12 +4,38 @@ import { Add } from "@mui/icons-material";
 import { useAuth } from "../contexts/AuthProvider";
 import { form } from "../services/style";
 
-export default function AddLocationButton({
+interface AddContentButtonText {
+  signInMessage: string;
+  signInLink: string;
+  buttonText: string;
+}
+
+const contentMap: { [key: string]: AddContentButtonText } = {
+  locations: {
+    signInMessage: `Don't see a location?`,
+    signInLink: "Sign in to request it to be added!",
+    buttonText: "Add a location!",
+  },
+  dishes: {
+    signInMessage: `Don't see a dish?`,
+    signInLink: "Sign in to request it to be added!",
+    buttonText: "Add a dish!",
+  },
+  reviews: {
+    signInMessage: "Want to join the conversation?",
+    signInLink: "Sign in to add a review!",
+    buttonText: "Add a review!",
+  },
+};
+
+export default function AddContentButton({
   openAuthModal,
-  openAddLocationModal,
+  openAddContentModal,
+  contentClass,
 }: {
   openAuthModal: Function;
-  openAddLocationModal: Function;
+  openAddContentModal: Function;
+  contentClass: string;
 }) {
   const session = useAuth();
 
@@ -29,19 +55,19 @@ export default function AddLocationButton({
             justifyContent: "center",
           }}
         >
-          Don't see a location?
+          {contentMap[contentClass].signInMessage}
           <button
-            className="add-location-sign-in"
+            className={`add-content-sign-in`}
             onClick={() => openAuthModal()}
           >
-            Sign in to request it to be added!
+            {contentMap[contentClass].signInLink}
           </button>
         </span>
       );
     default:
       return (
         <IconButton
-          onClick={() => openAddLocationModal()}
+          onClick={() => openAddContentModal()}
           disableTouchRipple={true}
           sx={{
             borderRadius: "15px",
@@ -51,7 +77,7 @@ export default function AddLocationButton({
           }}
         >
           <Add sx={{ color: "#6184d8" }} />
-          Add a location!
+          {contentMap[contentClass].buttonText}
         </IconButton>
       );
   }

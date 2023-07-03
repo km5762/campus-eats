@@ -6,9 +6,9 @@ import { queryThroughCache, cache } from "../services/cache";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 import { useMediaQuery } from "@mui/material";
 import BackButton from "./BackButton";
-import AddLocationButton from "./AddLocationButton";
 import AddLocationInterface from "./AddContentInterface";
 import AddContentInterface from "./AddContentInterface";
+import AddLocationModal from "./AddLocationModal";
 
 export type CardData = DishData | LocationData;
 
@@ -96,23 +96,40 @@ export default function ContentContainer({
       <div className="content-container">
         <h2 className="content-label">{formatHeader(contentClass)}</h2>
         <div className={contentClass}>
-          {contentArray.length === 0 ? (
-            <h2 className="empty-message">
-              This campus has no {contentClass}.
-              <br /> Be the first to add one!
-            </h2>
-          ) : (
-            parseData(contentArray)
-          )}
+          {contentArray.length === 0
+            ? formatEmptyMessage(contentClass)
+            : parseData(contentArray)}
         </div>
         <AddContentInterface
           openAuthModal={openAuthModal}
           campusID={campusID}
           contentClass={contentClass}
+          AddContentModal={AddLocationModal}
         />
       </div>
     </>
   );
+}
+
+function formatEmptyMessage(contentClass: string) {
+  switch (contentClass) {
+    case "locations":
+      return (
+        <h2 className="empty-message">
+          This campus has no locations.
+          <br /> Be the first to add one!
+        </h2>
+      );
+      break;
+    case "dishes":
+      return (
+        <h2 className="empty-message">
+          This location has no dishes.
+          <br /> Be the first to add one!
+        </h2>
+      );
+      break;
+  }
 }
 
 function formatHeader(contentClass: string) {

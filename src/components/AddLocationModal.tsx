@@ -8,7 +8,7 @@ import { Construction } from "@mui/icons-material";
 
 interface AddLocationModalProps {
   open: boolean;
-  closeAddLocationModal: Function;
+  closeAddContentModal: Function;
   campusID: number;
   countdownTo: null | Date;
   setCountdownTo: Function;
@@ -16,7 +16,7 @@ interface AddLocationModalProps {
 
 export default function AddLocationModal({
   open,
-  closeAddLocationModal,
+  closeAddContentModal,
   campusID,
   countdownTo,
   setCountdownTo,
@@ -43,7 +43,7 @@ export default function AddLocationModal({
       open={open}
       onClose={() => {
         if (submitted) setSubmitted(false);
-        closeAddLocationModal();
+        closeAddContentModal();
       }}
       sx={{
         display: "flex",

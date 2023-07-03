@@ -299,7 +299,7 @@ section {
   align-items: center;
 }
 
-.add-location-sign-in {
+.add-content-sign-in {
   font: inherit;
   color: var(--brand);
   background: none;
@@ -307,7 +307,7 @@ section {
   cursor: pointer;
 }
 
-.add-location-sign-in:hover {
+.add-content-sign-in:hover {
   color: var(--brandAccent);
 }
 

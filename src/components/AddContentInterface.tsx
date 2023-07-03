@@ -1,18 +1,20 @@
 import React, { useState } from "react";
-import AddLocationButton from "./AddLocationButton";
 import AddLocationModal from "./AddLocationModal";
 import { useAuth } from "../contexts/AuthProvider";
+import AddContentButton from "./AddContentButton";
 
 interface AddContentInterfaceProps {
   contentClass: string;
   openAuthModal: Function;
   campusID: number;
+  AddContentModal: any;
 }
 
 export default function AddContentInterface({
   contentClass,
   openAuthModal,
   campusID,
+  AddContentModal,
 }: AddContentInterfaceProps) {
   const [open, setOpen] = useState(false);
   const [countdownTo, setCountdownTo] = useState<null | Date>(null);
@@ -21,20 +23,19 @@ export default function AddContentInterface({
   const closeAddContentModal = () => setOpen(false);
 
   return (
-    contentClass === "locations" && (
-      <>
-        <AddLocationButton
-          openAuthModal={openAuthModal}
-          openAddLocationModal={openAddContentModal}
-        />
-        <AddLocationModal
-          open={open}
-          closeAddLocationModal={closeAddContentModal}
-          campusID={campusID}
-          countdownTo={countdownTo}
-          setCountdownTo={setCountdownTo}
-        />
-      </>
-    )
+    <>
+      <AddContentButton
+        openAuthModal={openAuthModal}
+        openAddContentModal={openAddContentModal}
+        contentClass={contentClass}
+      />
+      <AddContentModal
+        open={open}
+        closeAddContentModal={closeAddContentModal}
+        campusID={campusID}
+        countdownTo={countdownTo}
+        setCountdownTo={setCountdownTo}
+      />
+    </>
   );
 }
