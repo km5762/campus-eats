@@ -73,7 +73,15 @@ export async function fetchDishes(locationID: number) {
   }
 }
 
-export async function insertLocation(name: string, campusID: number) {
+export interface InsertDataResponse {
+  successful: boolean;
+  nextPostTime: Date;
+}
+
+export async function insertLocation(
+  name: string,
+  campusID: number
+): Promise<InsertDataResponse> {
   const { data, error } = await supabaseClient.rpc("fn_insert_location", {
     p_name: name,
     p_campus_id: campusID,
@@ -85,5 +93,5 @@ export async function insertLocation(name: string, campusID: number) {
 
   const { next_post_time, successful } = data;
 
-  return { nextPostTime: next_post_time, successful };
+  return { nextPostTime: new Date(next_post_time), successful };
 }

@@ -24209,7 +24209,7 @@ function _insertLocation() {
         case 7:
           next_post_time = data.next_post_time, successful = data.successful;
           return _context4.abrupt("return", {
-            nextPostTime: next_post_time,
+            nextPostTime: new Date(next_post_time),
             successful: successful
           });
         case 9:

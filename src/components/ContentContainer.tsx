@@ -8,9 +8,10 @@ import { useMediaQuery } from "@mui/material";
 import BackButton from "./BackButton";
 import AddLocationInterface from "./AddContentInterface";
 import AddContentInterface from "./AddContentInterface";
-import AddLocationModal from "./AddLocationModal";
+import AddContentCountdownManager from "./AddContentCountdownManager";
 
 export type CardData = DishData | LocationData;
+export type ContentClass = "locations" | "dishes";
 
 export default function ContentContainer({
   locations,
@@ -25,7 +26,7 @@ export default function ContentContainer({
   openAuthModal: Function;
   closeAuthModal: Function;
 }) {
-  const [contentClass, setContentClass] = useState("locations");
+  const [contentClass, setContentClass] = useState<ContentClass>("locations");
   const [contentArray, setContentArray] = useState<CardData[]>(locations);
   const [breadCrumbs, setBreadCrumbs] = useState<BreadCrumb[]>([
     { class: "locations", name: campusName, query: `campus.${campusID}` },
@@ -100,11 +101,10 @@ export default function ContentContainer({
             ? formatEmptyMessage(contentClass)
             : parseData(contentArray)}
         </div>
-        <AddContentInterface
+        <AddContentCountdownManager
+          contentClass={contentClass}
           openAuthModal={openAuthModal}
           campusID={campusID}
-          contentClass={contentClass}
-          AddContentModal={AddLocationModal}
         />
       </div>
     </>

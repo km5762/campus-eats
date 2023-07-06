@@ -1,27 +1,40 @@
 import React, { useEffect, useState } from "react";
 import { Modal } from "@mui/material";
 import "../styles/form.css";
-import { insertLocation } from "../services/api";
+import { InsertDataResponse, insertLocation } from "../services/api";
 import { PostgrestError } from "@supabase/supabase-js";
 import Countdown from "react-countdown";
 import { Construction } from "@mui/icons-material";
+import { ContentClass } from "./ContentContainer";
 
-interface AddLocationModalProps {
+const contentClassMap: { [key: string]: string } = {
+  locations: "location",
+  dishes: "dish",
+};
+
+export interface AddContentModalProps {
   open: boolean;
   closeAddContentModal: Function;
   campusID: number;
-  countdownTo: null | Date;
-  setCountdownTo: Function;
+  countdown: null | Date;
+  setCountdown: Function;
+  contentClass: ContentClass;
+  AddContentForm: React.FC;
+  insertData: (formData: FormData) => Promise<InsertDataResponse>;
 }
 
-export default function AddLocationModal({
+export default function AddContentModal({
   open,
   closeAddContentModal,
   campusID,
-  countdownTo,
-  setCountdownTo,
-}: AddLocationModalProps) {
+  countdown,
+  setCountdown,
+  contentClass,
+  AddContentForm,
+  insertData,
+}: AddContentModalProps) {
   const [submitted, setSubmitted] = useState(false);
+  const contentType = contentClassMap[contentClass];
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -35,7 +48,7 @@ export default function AddLocationModal({
     );
 
     setSubmitted(successful);
-    setCountdownTo(new Date(nextPostTime));
+    setCountdown(nextPostTime);
   }
 
   return (
@@ -53,7 +66,7 @@ export default function AddLocationModal({
       }}
     >
       {(() => {
-        if (countdownTo && new Date() < countdownTo && !submitted) {
+        if (countdown && new Date() < countdown && !submitted) {
           return (
             <div className="timeout-error">
               <h2>Slow down!</h2>
@@ -61,8 +74,8 @@ export default function AddLocationModal({
               <p>
                 Please wait{" "}
                 <Countdown
-                  date={countdownTo}
-                  onComplete={() => setCountdownTo(null)}
+                  date={countdown}
+                  onComplete={() => setCountdown(null)}
                 />{" "}
                 minutes before making another request.
               </p>
@@ -77,7 +90,7 @@ export default function AddLocationModal({
               <hr />
               <p>
                 After your request has been reviewed by a moderator, your
-                location will be added.
+                {contentType} will be added.
               </p>
             </div>
           );
@@ -85,28 +98,10 @@ export default function AddLocationModal({
           return (
             <form
               method="post"
-              className="add-location"
+              className={`add-${contentType}`}
               onSubmit={handleSubmit}
             >
-              <h2>Add a location!</h2>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "16px",
-                }}
-              >
-                <div>
-                  <label htmlFor="location-name-input">Location Name</label>
-                  <input
-                    type="text"
-                    id="location-name-input"
-                    name="location-name"
-                    required
-                  />
-                </div>
-                <button type="submit">Submit</button>
-              </div>
+              <AddContentForm />
             </form>
           );
         }

@@ -10,7 +10,7 @@ interface AddContentButtonText {
   buttonText: string;
 }
 
-const contentMap: { [key: string]: AddContentButtonText } = {
+const contentClassMap: { [key: string]: AddContentButtonText } = {
   locations: {
     signInMessage: `Don't see a location?`,
     signInLink: "Sign in to request it to be added!",
@@ -55,12 +55,12 @@ export default function AddContentButton({
             justifyContent: "center",
           }}
         >
-          {contentMap[contentClass].signInMessage}
+          {contentClassMap[contentClass].signInMessage}
           <button
             className={`add-content-sign-in`}
             onClick={() => openAuthModal()}
           >
-            {contentMap[contentClass].signInLink}
+            {contentClassMap[contentClass].signInLink}
           </button>
         </span>
       );
@@ -77,7 +77,7 @@ export default function AddContentButton({
           }}
         >
           <Add sx={{ color: "#6184d8" }} />
-          {contentMap[contentClass].buttonText}
+          {contentClassMap[contentClass].buttonText}
         </IconButton>
       );
   }

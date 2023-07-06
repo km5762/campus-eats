@@ -1,9 +1,9 @@
 import React from "react";
 import { queryCache, cache } from "../services/cache";
-import { CardData } from "./ContentContainer";
+import { CardData, ContentClass } from "./ContentContainer";
 
 export interface BreadCrumb {
-  class: "locations" | "dishes";
+  class: ContentClass;
   name: string;
   query: string;
 }
@@ -16,7 +16,7 @@ export default function BreadCrumbs({
 }: {
   breadCrumbs: BreadCrumb[];
   setContentArray: React.Dispatch<React.SetStateAction<CardData[]>>;
-  setContentClass: React.Dispatch<React.SetStateAction<string>>;
+  setContentClass: React.Dispatch<React.SetStateAction<ContentClass>>;
   setBreadCrumbs: React.Dispatch<React.SetStateAction<BreadCrumb[]>>;
 }) {
   function handleBreadCrumbClick(index: number) {

@@ -1,41 +1,54 @@
 import React, { useState } from "react";
-import AddLocationModal from "./AddLocationModal";
 import { useAuth } from "../contexts/AuthProvider";
 import AddContentButton from "./AddContentButton";
+import { add } from "lodash";
+import { ContentClass } from "./ContentContainer";
+import { InsertDataResponse, insertLocation } from "../services/api";
+import AddLocationForm from "./AddLocationForm";
+import { AddContentCountdownManagerProps } from "./AddContentCountdownManager";
+import AddContentModal from "./AddContentModal";
 
-interface AddContentInterfaceProps {
-  contentClass: string;
-  openAuthModal: Function;
-  campusID: number;
-  AddContentModal: any;
+interface AddContentInterfaceProps extends AddContentCountdownManagerProps {
+  countdown: Date | null;
+  setCountdown: React.Dispatch<React.SetStateAction<Date | null>>;
 }
 
 export default function AddContentInterface({
   contentClass,
   openAuthModal,
   campusID,
-  AddContentModal,
+  countdown,
+  setCountdown,
 }: AddContentInterfaceProps) {
   const [open, setOpen] = useState(false);
-  const [countdownTo, setCountdownTo] = useState<null | Date>(null);
   const session = useAuth();
   const openAddContentModal = () => setOpen(true);
   const closeAddContentModal = () => setOpen(false);
 
   return (
-    <>
-      <AddContentButton
-        openAuthModal={openAuthModal}
-        openAddContentModal={openAddContentModal}
-        contentClass={contentClass}
-      />
-      <AddContentModal
-        open={open}
-        closeAddContentModal={closeAddContentModal}
-        campusID={campusID}
-        countdownTo={countdownTo}
-        setCountdownTo={setCountdownTo}
-      />
-    </>
+    contentClass === "locations" && (
+      <>
+        <AddContentButton
+          openAuthModal={openAuthModal}
+          openAddContentModal={openAddContentModal}
+          contentClass={contentClass}
+        />
+        <AddContentModal
+          open={open}
+          closeAddContentModal={closeAddContentModal}
+          campusID={campusID}
+          countdown={countdown}
+          setCountdown={setCountdown}
+          contentClass={contentClass}
+          insertData={async (formData: FormData) =>
+            await insertLocation(
+              formData.get("location-name")! as string,
+              campusID
+            )
+          }
+          AddContentForm={AddLocationForm}
+        />
+      </>
+    )
   );
 }

@@ -1,7 +1,7 @@
 import { IconButton } from "@mui/material";
 import { NavigateBefore } from "@mui/icons-material";
 import React from "react";
-import { CardData } from "./ContentContainer";
+import { CardData, ContentClass } from "./ContentContainer";
 import { BreadCrumb } from "./BreadCrumbs";
 import { queryCache } from "../services/cache";
 
@@ -11,7 +11,7 @@ export default function BackButton({
   breadCrumbs,
 }: {
   setContentArray: React.Dispatch<React.SetStateAction<CardData[]>>;
-  setContentClass: React.Dispatch<React.SetStateAction<string>>;
+  setContentClass: React.Dispatch<React.SetStateAction<ContentClass>>;
   breadCrumbs: BreadCrumb[];
 }) {
   function handleClick() {
