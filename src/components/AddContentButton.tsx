@@ -48,7 +48,7 @@ export default function AddContentButton({
           style={{
             marginTop: "0.75rem",
             flexWrap: "wrap",
-            fontSize: "0.75rem",
+            fontSize: "0.9rem",
             width: "100%",
             display: "flex",
             alignItems: "center",
@@ -70,9 +70,9 @@ export default function AddContentButton({
           onClick={() => openAddContentModal()}
           disableTouchRipple={true}
           sx={{
+            flex: "1",
             borderRadius: "15px",
             font: "inherit",
-            width: "100%",
             padding: "10px 0px 10px 0px",
           }}
         >

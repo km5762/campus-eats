@@ -8,6 +8,9 @@ import SearchBar from "./SearchBar";
 import { CircularProgress } from "@mui/material";
 import ProfileButton from "./ProfileButton";
 import { useAuth } from "../contexts/AuthProvider";
+import ContentIDProvider, {
+  useContentIDs,
+} from "../contexts/ContentIDProvider";
 
 export default function SchoolPage({
   locations,
@@ -45,7 +48,7 @@ export default function SchoolPage({
   }
 
   return (
-    <>
+    <ContentIDProvider campusID={campusID}>
       <header>
         <a href="/">
           <picture title="Campus Eats">
@@ -70,11 +73,10 @@ export default function SchoolPage({
         <ContentContainer
           locations={locations}
           campusName={campusName}
-          campusID={campusID}
           openAuthModal={openAuthModal}
           closeAuthModal={closeAuthModal}
         ></ContentContainer>
       </section>
-    </>
+    </ContentIDProvider>
   );
 }

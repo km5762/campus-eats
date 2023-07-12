@@ -6,8 +6,10 @@ export interface DishData {
   id: number;
   name: string;
   price: number;
-  availability: string;
   rating: number;
+  breakfast: boolean;
+  lunch: boolean;
+  dinner: boolean;
 }
 
 export interface DishCardProps {
@@ -15,7 +17,9 @@ export interface DishCardProps {
   id: number;
   name: string;
   price: number;
-  availability: string;
+  breakfast: boolean;
+  lunch: boolean;
+  dinner: boolean;
   rating: number;
   onDishCardClick: Function;
 }
@@ -24,10 +28,33 @@ export default function DishCard({
   id,
   name,
   price,
-  availability,
+  breakfast,
+  lunch,
+  dinner,
   rating,
   onDishCardClick,
 }: DishCardProps) {
+  function formatAvailability() {
+    let formattedString = "";
+
+    if (breakfast) {
+      formattedString += "Breakfast, ";
+    }
+
+    if (lunch) {
+      formattedString += "Lunch, ";
+    }
+
+    if (dinner) {
+      formattedString += "Dinner";
+    }
+
+    // Remove trailing comma and whitespace
+    formattedString = formattedString.trim().replace(/,\s*$/, "");
+
+    return formattedString;
+  }
+
   return (
     <div className="dish">
       <div className="top-half">
@@ -42,29 +69,8 @@ export default function DishCard({
       </div>
       <div className="bottom-half">
         <h2>{`$${price}`}</h2>
-        <h3>{formatAvailability(availability)}</h3>
+        <h3>{formatAvailability()}</h3>
       </div>
     </div>
   );
-}
-
-function formatAvailability(binaryString: string) {
-  let formattedString = "";
-
-  if (binaryString.charAt(0) === "1") {
-    formattedString += "Breakfast, ";
-  }
-
-  if (binaryString.charAt(1) === "1") {
-    formattedString += "Lunch, ";
-  }
-
-  if (binaryString.charAt(2) === "1") {
-    formattedString += "Dinner";
-  }
-
-  // Remove trailing comma and whitespace
-  formattedString = formattedString.trim().replace(/,\s*$/, "");
-
-  return formattedString;
 }

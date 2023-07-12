@@ -26,7 +26,6 @@ export interface AddContentModalProps {
 export default function AddContentModal({
   open,
   closeAddContentModal,
-  campusID,
   countdown,
   setCountdown,
   contentClass,
@@ -42,10 +41,7 @@ export default function AddContentModal({
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
 
-    const { successful, nextPostTime } = await insertLocation(
-      formData.get("location-name")! as string,
-      campusID
-    );
+    const { successful, nextPostTime } = await insertData(formData);
 
     setSubmitted(successful);
     setCountdown(nextPostTime);
@@ -53,6 +49,7 @@ export default function AddContentModal({
 
   return (
     <Modal
+      disableScrollLock={true}
       open={open}
       onClose={() => {
         if (submitted) setSubmitted(false);
@@ -98,7 +95,7 @@ export default function AddContentModal({
           return (
             <form
               method="post"
-              className={`add-${contentType}`}
+              className={`add-content`}
               onSubmit={handleSubmit}
             >
               <AddContentForm />

@@ -1,30 +1,38 @@
 import React, { useState } from "react";
 import { ContentClass } from "./ContentContainer";
 import AddContentInterface from "./AddContentInterface";
+import { useContentIDs } from "../contexts/ContentIDProvider";
 
 export interface AddContentCountdownManagerProps {
   contentClass: ContentClass;
   openAuthModal: Function;
-  campusID: number;
 }
 export default function AddContentCountdownManager({
   contentClass,
   openAuthModal,
-  campusID,
 }: AddContentCountdownManagerProps) {
   const [addLocationCountdown, setAddLocationCountdown] = useState<Date | null>(
     null
   );
-
+  const [addDishCountdown, setAddDishCountdown] = useState<Date | null>(null);
   return (
-    contentClass === "locations" && (
-      <AddContentInterface
-        countdown={addLocationCountdown}
-        setCountdown={setAddLocationCountdown}
-        contentClass={"locations"}
-        openAuthModal={openAuthModal}
-        campusID={campusID}
-      />
-    )
+    <>
+      {contentClass === "locations" && (
+        <AddContentInterface
+          countdown={addLocationCountdown}
+          setCountdown={setAddLocationCountdown}
+          contentClass={contentClass}
+          openAuthModal={openAuthModal}
+        />
+      )}
+      {contentClass === "dishes" && (
+        <AddContentInterface
+          countdown={addDishCountdown}
+          setCountdown={setAddDishCountdown}
+          contentClass={contentClass}
+          openAuthModal={openAuthModal}
+        />
+      )}
+    </>
   );
 }

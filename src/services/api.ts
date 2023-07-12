@@ -50,12 +50,13 @@ export async function fetchApprovedLocations(campusID: number) {
   }
 }
 
-export async function fetchDishes(locationID: number) {
+export async function fetchApprovedDishes(locationID: number) {
   try {
     const { data, error } = await supabaseClient
       .from("dish")
       .select("*")
-      .eq("location_id", locationID);
+      .eq("location_id", locationID)
+      .eq("status", "approved");
 
     if (error) {
       throw error;
@@ -85,6 +86,32 @@ export async function insertLocation(
   const { data, error } = await supabaseClient.rpc("fn_insert_location", {
     p_name: name,
     p_campus_id: campusID,
+  });
+
+  if (error) {
+    throw error;
+  }
+
+  const { next_post_time, successful } = data;
+
+  return { nextPostTime: new Date(next_post_time), successful };
+}
+
+export async function insertDish(
+  name: string,
+  locationID: number,
+  price: number,
+  breakfast: boolean,
+  lunch: boolean,
+  dinner: boolean
+): Promise<InsertDataResponse> {
+  const { data, error } = await supabaseClient.rpc("fn_insert_dish", {
+    p_name: name,
+    p_location_id: locationID,
+    p_price: price,
+    p_breakfast: breakfast,
+    p_lunch: lunch,
+    p_dinner: dinner,
   });
 
   if (error) {

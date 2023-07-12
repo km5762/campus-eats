@@ -23927,9 +23927,7 @@ function SearchBar() {
     onBlur: handleBlur,
     onFocus: handleChange,
     type: "search",
-    onChange: debouncedHandleChange
-    // value={searchValue}
-    ,
+    onChange: debouncedHandleChange,
     placeholder: "Find my school!"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Suggestions, {
     suggestions: suggestions
@@ -24045,8 +24043,9 @@ var useSupabaseSession = function useSupabaseSession() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ fetchSearch),
+/* harmony export */   fetchApprovedDishes: () => (/* binding */ fetchApprovedDishes),
 /* harmony export */   fetchApprovedLocations: () => (/* binding */ fetchApprovedLocations),
-/* harmony export */   fetchDishes: () => (/* binding */ fetchDishes),
+/* harmony export */   insertDish: () => (/* binding */ insertDish),
 /* harmony export */   insertLocation: () => (/* binding */ insertLocation)
 /* harmony export */ });
 /* harmony import */ var _supabaseClient__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./supabaseClient */ "./src/services/supabaseClient.ts");
@@ -24142,18 +24141,18 @@ function _fetchApprovedLocations() {
   }));
   return _fetchApprovedLocations.apply(this, arguments);
 }
-function fetchDishes(_x3) {
-  return _fetchDishes.apply(this, arguments);
+function fetchApprovedDishes(_x3) {
+  return _fetchApprovedDishes.apply(this, arguments);
 }
-function _fetchDishes() {
-  _fetchDishes = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(locationID) {
+function _fetchApprovedDishes() {
+  _fetchApprovedDishes = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(locationID) {
     var _yield$supabaseClient3, data, error, dishData;
     return _regeneratorRuntime().wrap(function _callee3$(_context3) {
       while (1) switch (_context3.prev = _context3.next) {
         case 0:
           _context3.prev = 0;
           _context3.next = 3;
-          return _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.from("dish").select("*").eq("location_id", locationID);
+          return _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.from("dish").select("*").eq("location_id", locationID).eq("status", "approved");
         case 3:
           _yield$supabaseClient3 = _context3.sent;
           data = _yield$supabaseClient3.data;
@@ -24181,7 +24180,7 @@ function _fetchDishes() {
       }
     }, _callee3, null, [[0, 12]]);
   }));
-  return _fetchDishes.apply(this, arguments);
+  return _fetchApprovedDishes.apply(this, arguments);
 }
 function insertLocation(_x4, _x5) {
   return _insertLocation.apply(this, arguments);
@@ -24219,6 +24218,47 @@ function _insertLocation() {
     }, _callee4);
   }));
   return _insertLocation.apply(this, arguments);
+}
+function insertDish(_x6, _x7, _x8, _x9, _x10, _x11) {
+  return _insertDish.apply(this, arguments);
+}
+function _insertDish() {
+  _insertDish = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(name, locationID, price, breakfast, lunch, dinner) {
+    var _yield$supabaseClient5, data, error, next_post_time, successful;
+    return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+      while (1) switch (_context5.prev = _context5.next) {
+        case 0:
+          _context5.next = 2;
+          return _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.rpc("fn_insert_dish", {
+            p_name: name,
+            p_location_id: locationID,
+            p_price: price,
+            p_breakfast: breakfast,
+            p_lunch: lunch,
+            p_dinner: dinner
+          });
+        case 2:
+          _yield$supabaseClient5 = _context5.sent;
+          data = _yield$supabaseClient5.data;
+          error = _yield$supabaseClient5.error;
+          if (!error) {
+            _context5.next = 7;
+            break;
+          }
+          throw error;
+        case 7:
+          next_post_time = data.next_post_time, successful = data.successful;
+          return _context5.abrupt("return", {
+            nextPostTime: new Date(next_post_time),
+            successful: successful
+          });
+        case 9:
+        case "end":
+          return _context5.stop();
+      }
+    }, _callee5);
+  }));
+  return _insertDish.apply(this, arguments);
 }
 
 /***/ }),

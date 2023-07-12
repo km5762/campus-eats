@@ -47,7 +47,6 @@ export default function SearchBar() {
         onFocus={handleChange}
         type="search"
         onChange={debouncedHandleChange}
-        // value={searchValue}
         placeholder="Find my school!"
       />
       <Suggestions suggestions={suggestions} />

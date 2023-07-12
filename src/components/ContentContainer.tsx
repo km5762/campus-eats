@@ -9,6 +9,7 @@ import BackButton from "./BackButton";
 import AddLocationInterface from "./AddContentInterface";
 import AddContentInterface from "./AddContentInterface";
 import AddContentCountdownManager from "./AddContentCountdownManager";
+import { useContentIDs } from "../contexts/ContentIDProvider";
 
 export type CardData = DishData | LocationData;
 export type ContentClass = "locations" | "dishes";
@@ -16,16 +17,16 @@ export type ContentClass = "locations" | "dishes";
 export default function ContentContainer({
   locations,
   campusName,
-  campusID,
   openAuthModal,
   closeAuthModal,
 }: {
   locations: LocationData[];
   campusName: string;
-  campusID: number;
   openAuthModal: Function;
   closeAuthModal: Function;
 }) {
+  const campusID = useContentIDs().contentIDs.campusID;
+  const setContentIDs = useContentIDs().setContentIDs;
   const [contentClass, setContentClass] = useState<ContentClass>("locations");
   const [contentArray, setContentArray] = useState<CardData[]>(locations);
   const [breadCrumbs, setBreadCrumbs] = useState<BreadCrumb[]>([
@@ -36,6 +37,10 @@ export default function ContentContainer({
   async function handleLocationCardClick(id: number, name: string) {
     const dishes = await queryThroughCache(`location.${id}`);
     setContentClass("dishes");
+    setContentIDs((prevContentIDs) => ({
+      ...prevContentIDs,
+      locationID: id,
+    }));
     setBreadCrumbs((breadCrumbs) => [
       ...breadCrumbs,
       { class: "dishes", name: name, query: `location.${id}` },
@@ -100,12 +105,11 @@ export default function ContentContainer({
           {contentArray.length === 0
             ? formatEmptyMessage(contentClass)
             : parseData(contentArray)}
+          <AddContentCountdownManager
+            contentClass={contentClass}
+            openAuthModal={openAuthModal}
+          />
         </div>
-        <AddContentCountdownManager
-          contentClass={contentClass}
-          openAuthModal={openAuthModal}
-          campusID={campusID}
-        />
       </div>
     </>
   );
