@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Modal } from "@mui/material";
 import "../styles/form.css";
-import { InsertDataResponse, insertLocation } from "../services/api";
+import {
+  InsertDataResponse,
+  insertContent,
+  insertLocation,
+} from "../services/api";
 import { PostgrestError } from "@supabase/supabase-js";
 import Countdown from "react-countdown";
 import { Construction } from "@mui/icons-material";
@@ -41,10 +45,10 @@ export default function AddContentModal({
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
 
-    const { successful, nextPostTime } = await insertData(formData);
+    await insertContent(formData);
 
-    setSubmitted(successful);
-    setCountdown(nextPostTime);
+    // setSubmitted(successful);
+    // setCountdown(nextPostTime);
   }
 
   return (
@@ -94,7 +98,9 @@ export default function AddContentModal({
         } else {
           return (
             <form
+              action="/api/dishes"
               method="post"
+              encType="multipart/form-data"
               className={`add-content`}
               onSubmit={handleSubmit}
             >

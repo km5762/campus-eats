@@ -24201,6 +24201,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   fetchApprovedDishes: () => (/* binding */ fetchApprovedDishes),
 /* harmony export */   fetchApprovedLocations: () => (/* binding */ fetchApprovedLocations),
 /* harmony export */   getCountdowns: () => (/* binding */ getCountdowns),
+/* harmony export */   insertContent: () => (/* binding */ insertContent),
 /* harmony export */   insertDish: () => (/* binding */ insertDish),
 /* harmony export */   insertLocation: () => (/* binding */ insertLocation),
 /* harmony export */   uploadImage: () => (/* binding */ uploadImage)
@@ -24385,7 +24386,7 @@ function _insertDish() {
     return _regeneratorRuntime().wrap(function _callee5$(_context5) {
       while (1) switch (_context5.prev = _context5.next) {
         case 0:
-          imgKey = generateKey(img.type);
+          imgKey = null;
           if (!img) {
             _context5.next = 7;
             break;
@@ -24504,6 +24505,39 @@ function _getCountdowns() {
     }, _callee7);
   }));
   return _getCountdowns.apply(this, arguments);
+}
+function insertContent(_x14) {
+  return _insertContent.apply(this, arguments);
+}
+function _insertContent() {
+  _insertContent = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(formData) {
+    var _sessionData$data$ses3, _sessionData$data$ses4;
+    var sessionData, userID, jwt;
+    return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+      while (1) switch (_context8.prev = _context8.next) {
+        case 0:
+          _context8.next = 2;
+          return _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.auth.getSession();
+        case 2:
+          sessionData = _context8.sent;
+          userID = (_sessionData$data$ses3 = sessionData.data.session) === null || _sessionData$data$ses3 === void 0 ? void 0 : _sessionData$data$ses3.user.id;
+          jwt = (_sessionData$data$ses4 = sessionData.data.session) === null || _sessionData$data$ses4 === void 0 ? void 0 : _sessionData$data$ses4.access_token;
+          _context8.next = 7;
+          return fetch("/api/dishes", {
+            method: "POST",
+            body: formData,
+            headers: {
+              Authorization: "Bearer ".concat(jwt),
+              "X-User-ID": userID !== null && userID !== void 0 ? userID : ""
+            }
+          });
+        case 7:
+        case "end":
+          return _context8.stop();
+      }
+    }, _callee8);
+  }));
+  return _insertContent.apply(this, arguments);
 }
 
 /***/ }),

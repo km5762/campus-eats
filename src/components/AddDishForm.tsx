@@ -1,6 +1,8 @@
 import React from "react";
+import { useContentIDs } from "../contexts/ContentIDProvider";
 
 export default function AddDishForm() {
+  const locationID = useContentIDs().contentIDs.locationID;
   return (
     <>
       <h2>Add a dish!</h2>
@@ -55,6 +57,7 @@ export default function AddDishForm() {
             />
             <label htmlFor="availability-dinner-input">Dinner</label>
           </div>
+          <input type="hidden" name="location-id" value={locationID} />
         </fieldset>
         <input type="file" name="dish-img" />
         <button type="submit">Submit</button>

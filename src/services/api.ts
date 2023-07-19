@@ -3,6 +3,7 @@ import { DishData } from "../components/DishCard";
 import { LocationData } from "../components/LocationCard";
 import { Suggestion } from "../components/SearchBar";
 import { supabaseClient } from "./supabaseClient";
+import generateKey from "./generateKey";
 
 export default async function fetchSearch(search: string) {
   try {
@@ -107,9 +108,10 @@ export async function insertDish(
   dinner: boolean,
   img?: File
 ): Promise<InsertDataResponse> {
-  let imgKey = generateKey(img.type);
+  let imgKey = null;
 
   if (img) {
+    // imgKey = generateKey(supabaseClient.auth.)
     const res = await uploadImage(img);
     console.log(res);
     imgKey = res.imgKey;
@@ -174,4 +176,19 @@ export async function getCountdowns(): Promise<Countdowns> {
     locationCountdown: new Date(location_countdown),
     dishCountdown: new Date(dish_countdown),
   };
+}
+
+export async function insertContent(formData: FormData) {
+  const sessionData = await supabaseClient.auth.getSession();
+  const userID = sessionData.data.session?.user.id;
+  const jwt = sessionData.data.session?.access_token;
+
+  await fetch("/api/dishes", {
+    method: "POST",
+    body: formData,
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+      "X-User-ID": userID ?? "",
+    },
+  });
 }
