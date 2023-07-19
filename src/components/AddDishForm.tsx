@@ -56,6 +56,7 @@ export default function AddDishForm() {
             <label htmlFor="availability-dinner-input">Dinner</label>
           </div>
         </fieldset>
+        <input type="file" name="dish-img" />
         <button type="submit">Submit</button>
       </div>
     </>

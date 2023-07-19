@@ -1,3 +1,4 @@
+import { useRadioGroup } from "@mui/material";
 import { DishData } from "../components/DishCard";
 import { LocationData } from "../components/LocationCard";
 import { Suggestion } from "../components/SearchBar";
@@ -103,8 +104,17 @@ export async function insertDish(
   price: number,
   breakfast: boolean,
   lunch: boolean,
-  dinner: boolean
+  dinner: boolean,
+  img?: File
 ): Promise<InsertDataResponse> {
+  let imgKey = generateKey(img.type);
+
+  if (img) {
+    const res = await uploadImage(img);
+    console.log(res);
+    imgKey = res.imgKey;
+  }
+
   const { data, error } = await supabaseClient.rpc("fn_insert_dish", {
     p_name: name,
     p_location_id: locationID,
@@ -112,6 +122,7 @@ export async function insertDish(
     p_breakfast: breakfast,
     p_lunch: lunch,
     p_dinner: dinner,
+    p_image: imgKey,
   });
 
   if (error) {
@@ -121,4 +132,46 @@ export async function insertDish(
   const { next_post_time, successful } = data;
 
   return { nextPostTime: new Date(next_post_time), successful };
+}
+
+export async function uploadImage(img: File) {
+  const sessionData = await supabaseClient.auth.getSession();
+  const userID = sessionData.data.session?.user.id;
+  const jwt = sessionData.data.session?.access_token;
+  const res = await fetch("/upload", {
+    method: "POST",
+    body: img,
+    headers: {
+      "Content-Type": img.type,
+      Authorization: `Bearer ${jwt}`,
+      "X-User-ID": userID ?? "",
+    },
+  });
+
+  return await res.json();
+}
+
+export interface Countdowns {
+  locationCountdown: Date;
+  dishCountdown: Date;
+}
+
+export async function getCountdowns(): Promise<Countdowns> {
+  const { data, error } = await supabaseClient.rpc(
+    "fn_get_post_countdowns",
+    {}
+  );
+
+  if (error) {
+    throw error;
+  }
+
+  console.log(data);
+
+  const { location_countdown, dish_countdown } = data;
+
+  return {
+    locationCountdown: new Date(location_countdown),
+    dishCountdown: new Date(dish_countdown),
+  };
 }

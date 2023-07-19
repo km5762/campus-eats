@@ -38,8 +38,17 @@ export default function AddContentInterface({
     const breakfast = !!formData.get("dish-breakfast?");
     const lunch = !!formData.get("dish-lunch?");
     const dinner = !!formData.get("dish-dinner?");
+    const img = formData.get("dish-img") as File;
 
-    return await insertDish(name, locationID, price, breakfast, lunch, dinner);
+    return await insertDish(
+      name,
+      locationID,
+      price,
+      breakfast,
+      lunch,
+      dinner,
+      img
+    );
   }
 
   return (

@@ -1,5 +1,8 @@
 const SchoolPage = require("./src/components/SchoolPage").default;
 const React = require("react");
+const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
+const generateKey = require("./src/services/generateKey");
+const bodyParser = require("body-parser");
 const { renderToString } = require("react-dom/server");
 const express = require("express");
 const ejs = require("ejs");
@@ -18,6 +21,66 @@ app.get("/", (req, res) => {
 const supabaseUrl = "https://praaunntraqzwomikleq.supabase.co";
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
+
+const s3 = new S3Client({
+  endpoint: "https://s3.us-east-005.backblazeb2.com",
+  region: "us-east-005",
+});
+const bucketName = "campus-eats";
+const authorizedMimeTypes = [
+  "image/jpg",
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+];
+
+app.post(
+  "/upload",
+  bodyParser.raw({
+    type: authorizedMimeTypes,
+    limit: "5mb",
+  }),
+  async (req, res) => {
+    const file = req.body;
+    const contentType = req.get("Content-Type");
+    const userID = req.get("X-User-ID");
+
+    if (file === undefined) {
+      res.status(400).json({
+        code: "NO_FILE",
+        message: "No file uploaded",
+      });
+      return;
+    } else if (!authorizedMimeTypes.includes(contentType)) {
+      res.status(400).json({
+        code: "INVALID_MIMETYPE",
+        message: `Invalid image mimetype "${contentType}". Authorized mimetypes are ${authorizedMimeTypes}`,
+      });
+      return;
+    }
+    try {
+      const imgKey = generateKey(userID, contentType.split("/")[1]);
+      await s3.send(
+        new PutObjectCommand({
+          Bucket: bucketName,
+          Key: generateKey(userID, imgKey),
+          Body: file,
+        })
+      );
+      res.status(200).json({
+        code: "UPLOAD_SUCCESS",
+        message: "Image uploaded successfully",
+        imgKey,
+      });
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      res.status(500).json({
+        code: "UPLOAD_ERROR",
+        message: "An error occurred while uploading the image",
+      });
+    }
+  }
+);
 
 app.get("/campus/:id/locations", async (req, res) => {
   const campusID = req.params.id;

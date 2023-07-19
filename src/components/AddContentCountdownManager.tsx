@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ContentClass } from "./ContentContainer";
 import AddContentInterface from "./AddContentInterface";
 import { useContentIDs } from "../contexts/ContentIDProvider";
+import { getCountdowns } from "../services/api";
 
 export interface AddContentCountdownManagerProps {
   contentClass: ContentClass;
@@ -15,6 +16,17 @@ export default function AddContentCountdownManager({
     null
   );
   const [addDishCountdown, setAddDishCountdown] = useState<Date | null>(null);
+
+  // useEffect(() => {
+  //   const seedCountdowns = async () => {
+  //     const { locationCountdown, dishCountdown } = await getCountdowns();
+  //     setAddLocationCountdown(locationCountdown);
+  //     setAddDishCountdown(dishCountdown);
+  //   };
+
+  //   seedCountdowns();
+  // }, []);
+
   return (
     <>
       {contentClass === "locations" && (

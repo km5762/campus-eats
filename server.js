@@ -163,6 +163,17 @@ function AddContentCountdownManager(_ref) {
     _useState4 = _slicedToArray(_useState3, 2),
     addDishCountdown = _useState4[0],
     setAddDishCountdown = _useState4[1];
+
+  // useEffect(() => {
+  //   const seedCountdowns = async () => {
+  //     const { locationCountdown, dishCountdown } = await getCountdowns();
+  //     setAddLocationCountdown(locationCountdown);
+  //     setAddDishCountdown(dishCountdown);
+  //   };
+
+  //   seedCountdowns();
+  // }, []);
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, contentClass === "locations" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AddContentInterface__WEBPACK_IMPORTED_MODULE_1__["default"], {
     countdown: addLocationCountdown,
     setCountdown: setAddLocationCountdown,
@@ -239,7 +250,7 @@ function AddContentInterface(_ref) {
   }
   function _parseDishForm() {
     _parseDishForm = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(formData) {
-      var name, price, breakfast, lunch, dinner;
+      var name, price, breakfast, lunch, dinner, img;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
           case 0:
@@ -248,11 +259,12 @@ function AddContentInterface(_ref) {
             breakfast = !!formData.get("dish-breakfast?");
             lunch = !!formData.get("dish-lunch?");
             dinner = !!formData.get("dish-dinner?");
-            _context2.next = 7;
-            return (0,_services_api__WEBPACK_IMPORTED_MODULE_3__.insertDish)(name, locationID, price, breakfast, lunch, dinner);
-          case 7:
-            return _context2.abrupt("return", _context2.sent);
+            img = formData.get("dish-img");
+            _context2.next = 8;
+            return (0,_services_api__WEBPACK_IMPORTED_MODULE_3__.insertDish)(name, locationID, price, breakfast, lunch, dinner, img);
           case 8:
+            return _context2.abrupt("return", _context2.sent);
+          case 9:
           case "end":
             return _context2.stop();
         }
@@ -480,7 +492,10 @@ function AddDishForm() {
     name: "dish-dinner?"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "availability-dinner-input"
-  }, "Dinner"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  }, "Dinner"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "file",
+    name: "dish-img"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "submit"
   }, "Submit")));
 }
@@ -1429,8 +1444,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ fetchSearch),
 /* harmony export */   fetchApprovedDishes: () => (/* binding */ fetchApprovedDishes),
 /* harmony export */   fetchApprovedLocations: () => (/* binding */ fetchApprovedLocations),
+/* harmony export */   getCountdowns: () => (/* binding */ getCountdowns),
 /* harmony export */   insertDish: () => (/* binding */ insertDish),
-/* harmony export */   insertLocation: () => (/* binding */ insertLocation)
+/* harmony export */   insertLocation: () => (/* binding */ insertLocation),
+/* harmony export */   uploadImage: () => (/* binding */ uploadImage)
 /* harmony export */ });
 /* harmony import */ var _supabaseClient__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./supabaseClient */ "./src/services/supabaseClient.ts");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -1603,46 +1620,134 @@ function _insertLocation() {
   }));
   return _insertLocation.apply(this, arguments);
 }
-function insertDish(_x6, _x7, _x8, _x9, _x10, _x11) {
+function insertDish(_x6, _x7, _x8, _x9, _x10, _x11, _x12) {
   return _insertDish.apply(this, arguments);
 }
 function _insertDish() {
-  _insertDish = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(name, locationID, price, breakfast, lunch, dinner) {
-    var _yield$supabaseClient5, data, error, next_post_time, successful;
+  _insertDish = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(name, locationID, price, breakfast, lunch, dinner, img) {
+    var imgKey, res, _yield$supabaseClient5, data, error, next_post_time, successful;
     return _regeneratorRuntime().wrap(function _callee5$(_context5) {
       while (1) switch (_context5.prev = _context5.next) {
         case 0:
-          _context5.next = 2;
+          imgKey = generateKey(img.type);
+          if (!img) {
+            _context5.next = 7;
+            break;
+          }
+          _context5.next = 4;
+          return uploadImage(img);
+        case 4:
+          res = _context5.sent;
+          console.log(res);
+          imgKey = res.imgKey;
+        case 7:
+          _context5.next = 9;
           return _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.rpc("fn_insert_dish", {
             p_name: name,
             p_location_id: locationID,
             p_price: price,
             p_breakfast: breakfast,
             p_lunch: lunch,
-            p_dinner: dinner
+            p_dinner: dinner,
+            p_image: imgKey
           });
-        case 2:
+        case 9:
           _yield$supabaseClient5 = _context5.sent;
           data = _yield$supabaseClient5.data;
           error = _yield$supabaseClient5.error;
           if (!error) {
-            _context5.next = 7;
+            _context5.next = 14;
             break;
           }
           throw error;
-        case 7:
+        case 14:
           next_post_time = data.next_post_time, successful = data.successful;
           return _context5.abrupt("return", {
             nextPostTime: new Date(next_post_time),
             successful: successful
           });
-        case 9:
+        case 16:
         case "end":
           return _context5.stop();
       }
     }, _callee5);
   }));
   return _insertDish.apply(this, arguments);
+}
+function uploadImage(_x13) {
+  return _uploadImage.apply(this, arguments);
+}
+function _uploadImage() {
+  _uploadImage = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(img) {
+    var _sessionData$data$ses, _sessionData$data$ses2;
+    var sessionData, userID, jwt, res;
+    return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+      while (1) switch (_context6.prev = _context6.next) {
+        case 0:
+          _context6.next = 2;
+          return _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.auth.getSession();
+        case 2:
+          sessionData = _context6.sent;
+          userID = (_sessionData$data$ses = sessionData.data.session) === null || _sessionData$data$ses === void 0 ? void 0 : _sessionData$data$ses.user.id;
+          jwt = (_sessionData$data$ses2 = sessionData.data.session) === null || _sessionData$data$ses2 === void 0 ? void 0 : _sessionData$data$ses2.access_token;
+          _context6.next = 7;
+          return fetch("/upload", {
+            method: "POST",
+            body: img,
+            headers: {
+              "Content-Type": img.type,
+              Authorization: "Bearer ".concat(jwt),
+              "X-User-ID": userID !== null && userID !== void 0 ? userID : ""
+            }
+          });
+        case 7:
+          res = _context6.sent;
+          _context6.next = 10;
+          return res.json();
+        case 10:
+          return _context6.abrupt("return", _context6.sent);
+        case 11:
+        case "end":
+          return _context6.stop();
+      }
+    }, _callee6);
+  }));
+  return _uploadImage.apply(this, arguments);
+}
+function getCountdowns() {
+  return _getCountdowns.apply(this, arguments);
+}
+function _getCountdowns() {
+  _getCountdowns = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
+    var _yield$supabaseClient6, data, error, location_countdown, dish_countdown;
+    return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+      while (1) switch (_context7.prev = _context7.next) {
+        case 0:
+          _context7.next = 2;
+          return _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.rpc("fn_get_post_countdowns", {});
+        case 2:
+          _yield$supabaseClient6 = _context7.sent;
+          data = _yield$supabaseClient6.data;
+          error = _yield$supabaseClient6.error;
+          if (!error) {
+            _context7.next = 7;
+            break;
+          }
+          throw error;
+        case 7:
+          console.log(data);
+          location_countdown = data.location_countdown, dish_countdown = data.dish_countdown;
+          return _context7.abrupt("return", {
+            locationCountdown: new Date(location_countdown),
+            dishCountdown: new Date(dish_countdown)
+          });
+        case 10:
+        case "end":
+          return _context7.stop();
+      }
+    }, _callee7);
+  }));
+  return _getCountdowns.apply(this, arguments);
 }
 
 /***/ }),
@@ -1734,6 +1839,26 @@ function queryCache(query) {
     }
   }
   throw new Error("Error: cache type \"".concat(type, "\" does not exist"));
+}
+
+/***/ }),
+
+/***/ "./src/services/generateKey.ts":
+/*!*************************************!*\
+  !*** ./src/services/generateKey.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ generateKey)
+/* harmony export */ });
+/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! uuid */ "uuid");
+/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(uuid__WEBPACK_IMPORTED_MODULE_0__);
+
+function generateKey(userID, extension) {
+  return "".concat(userID, ".").concat((0,uuid__WEBPACK_IMPORTED_MODULE_0__.v4)(), ".").concat(extension);
 }
 
 /***/ }),
@@ -2323,6 +2448,17 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
+/***/ "@aws-sdk/client-s3":
+/*!*************************************!*\
+  !*** external "@aws-sdk/client-s3" ***!
+  \*************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("@aws-sdk/client-s3");
+
+/***/ }),
+
 /***/ "@mui/base":
 /*!****************************!*\
   !*** external "@mui/base" ***!
@@ -2375,6 +2511,17 @@ module.exports = require("@supabase/auth-ui-react");
 
 "use strict";
 module.exports = require("@supabase/supabase-js");
+
+/***/ }),
+
+/***/ "body-parser":
+/*!******************************!*\
+  !*** external "body-parser" ***!
+  \******************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("body-parser");
 
 /***/ }),
 
@@ -2452,6 +2599,17 @@ module.exports = require("react-countdown");
 
 "use strict";
 module.exports = require("react-dom/server");
+
+/***/ }),
+
+/***/ "uuid":
+/*!***********************!*\
+  !*** external "uuid" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("uuid");
 
 /***/ }),
 
@@ -2551,15 +2709,20 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 var SchoolPage = (__webpack_require__(/*! ./src/components/SchoolPage */ "./src/components/SchoolPage.tsx")["default"]);
 var React = __webpack_require__(/*! react */ "react");
-var _require = __webpack_require__(/*! react-dom/server */ "react-dom/server"),
-  renderToString = _require.renderToString;
+var _require = __webpack_require__(/*! @aws-sdk/client-s3 */ "@aws-sdk/client-s3"),
+  S3Client = _require.S3Client,
+  PutObjectCommand = _require.PutObjectCommand;
+var generateKey = __webpack_require__(/*! ./src/services/generateKey */ "./src/services/generateKey.ts");
+var bodyParser = __webpack_require__(/*! body-parser */ "body-parser");
+var _require2 = __webpack_require__(/*! react-dom/server */ "react-dom/server"),
+  renderToString = _require2.renderToString;
 var express = __webpack_require__(/*! express */ "express");
 var ejs = __webpack_require__(/*! ejs */ "ejs");
 var app = express();
 var port = process.env.PORT || 3000;
 var path = __webpack_require__(/*! path */ "path");
-var _require2 = __webpack_require__(/*! @supabase/supabase-js */ "@supabase/supabase-js"),
-  createClient = _require2.createClient;
+var _require3 = __webpack_require__(/*! @supabase/supabase-js */ "@supabase/supabase-js"),
+  createClient = _require3.createClient;
 (__webpack_require__(/*! dotenv */ "dotenv").config)();
 app.use(express["static"](path.join(__dirname, "dist")));
 app.get("/", function (req, res) {
@@ -2568,17 +2731,89 @@ app.get("/", function (req, res) {
 var supabaseUrl = "https://praaunntraqzwomikleq.supabase.co";
 var supabaseKey = process.env.SUPABASE_KEY;
 var supabase = createClient(supabaseUrl, supabaseKey);
-app.get("/campus/:id/locations", /*#__PURE__*/function () {
+var s3 = new S3Client({
+  endpoint: "https://s3.us-east-005.backblazeb2.com",
+  region: "us-east-005"
+});
+var bucketName = "campus-eats";
+var authorizedMimeTypes = ["image/jpg", "image/jpeg", "image/png", "image/webp"];
+app.post("/upload", bodyParser.raw({
+  type: authorizedMimeTypes,
+  limit: "5mb"
+}), /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(req, res) {
-    var campusID, initialState, campusName, schoolPageApp, filePath;
+    var file, contentType, userID, imgKey;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
+          file = req.body;
+          contentType = req.get("Content-Type");
+          userID = req.get("X-User-ID");
+          if (!(file === undefined)) {
+            _context.next = 8;
+            break;
+          }
+          res.status(400).json({
+            code: "NO_FILE",
+            message: "No file uploaded"
+          });
+          return _context.abrupt("return");
+        case 8:
+          if (authorizedMimeTypes.includes(contentType)) {
+            _context.next = 11;
+            break;
+          }
+          res.status(400).json({
+            code: "INVALID_MIMETYPE",
+            message: "Invalid image mimetype \"".concat(contentType, "\". Authorized mimetypes are ").concat(authorizedMimeTypes)
+          });
+          return _context.abrupt("return");
+        case 11:
+          _context.prev = 11;
+          imgKey = generateKey(userID, contentType.split("/")[1]);
+          _context.next = 15;
+          return s3.send(new PutObjectCommand({
+            Bucket: bucketName,
+            Key: generateKey(userID, imgKey),
+            Body: file
+          }));
+        case 15:
+          res.status(200).json({
+            code: "UPLOAD_SUCCESS",
+            message: "Image uploaded successfully",
+            imgKey: imgKey
+          });
+          _context.next = 22;
+          break;
+        case 18:
+          _context.prev = 18;
+          _context.t0 = _context["catch"](11);
+          console.error("Error uploading image:", _context.t0);
+          res.status(500).json({
+            code: "UPLOAD_ERROR",
+            message: "An error occurred while uploading the image"
+          });
+        case 22:
+        case "end":
+          return _context.stop();
+      }
+    }, _callee, null, [[11, 18]]);
+  }));
+  return function (_x, _x2) {
+    return _ref.apply(this, arguments);
+  };
+}());
+app.get("/campus/:id/locations", /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(req, res) {
+    var campusID, initialState, campusName, schoolPageApp, filePath;
+    return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+      while (1) switch (_context2.prev = _context2.next) {
+        case 0:
           campusID = req.params.id;
-          _context.next = 3;
+          _context2.next = 3;
           return queryLocations(campusID);
         case 3:
-          initialState = _context.sent;
+          initialState = _context2.sent;
           campusName = initialState[0].campus_name;
           initialState = initialState.filter(function (location) {
             return location.id !== null;
@@ -2612,51 +2847,51 @@ app.get("/campus/:id/locations", /*#__PURE__*/function () {
           });
         case 10:
         case "end":
-          return _context.stop();
+          return _context2.stop();
       }
-    }, _callee);
+    }, _callee2);
   }));
-  return function (_x, _x2) {
-    return _ref.apply(this, arguments);
+  return function (_x3, _x4) {
+    return _ref2.apply(this, arguments);
   };
 }());
-function queryLocations(_x3) {
+function queryLocations(_x5) {
   return _queryLocations.apply(this, arguments);
 }
 function _queryLocations() {
-  _queryLocations = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(campusID) {
+  _queryLocations = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(campusID) {
     var _yield$supabase$rpc, data, error;
-    return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-      while (1) switch (_context2.prev = _context2.next) {
+    return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+      while (1) switch (_context3.prev = _context3.next) {
         case 0:
-          _context2.prev = 0;
-          _context2.next = 3;
+          _context3.prev = 0;
+          _context3.next = 3;
           return supabase.rpc("fn_get_approved_locations_at", {
             p_id: campusID
           });
         case 3:
-          _yield$supabase$rpc = _context2.sent;
+          _yield$supabase$rpc = _context3.sent;
           data = _yield$supabase$rpc.data;
           error = _yield$supabase$rpc.error;
           if (!error) {
-            _context2.next = 8;
+            _context3.next = 8;
             break;
           }
           throw error;
         case 8:
-          return _context2.abrupt("return", data);
+          return _context3.abrupt("return", data);
         case 11:
-          _context2.prev = 11;
-          _context2.t0 = _context2["catch"](0);
-          console.error("Error:", _context2.t0);
-          return _context2.abrupt("return", {
+          _context3.prev = 11;
+          _context3.t0 = _context3["catch"](0);
+          console.error("Error:", _context3.t0);
+          return _context3.abrupt("return", {
             error: "Internal Server Error"
           });
         case 15:
         case "end":
-          return _context2.stop();
+          return _context3.stop();
       }
-    }, _callee2, null, [[0, 11]]);
+    }, _callee3, null, [[0, 11]]);
   }));
   return _queryLocations.apply(this, arguments);
 }

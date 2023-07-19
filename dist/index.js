@@ -2490,6 +2490,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils */ "./node_modules/@mui/base/utils/useSlotProps.js");
 /* harmony import */ var _utils_ClassNameConfigurator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/ClassNameConfigurator */ "./node_modules/@mui/base/utils/ClassNameConfigurator.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+'use client';
+
 
 
 const _excluded = ["action", "children", "disabled", "focusableWhenDisabled", "onFocusVisible", "slotProps", "slots"];
@@ -2674,6 +2676,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/elementAcceptingRef.js");
 /* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/exactProp/exactProp.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+'use client';
+
 /* eslint-disable consistent-return, jsx-a11y/no-noninteractive-tabindex */
 
 
@@ -3035,6 +3039,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../utils */ "./node_modules/@mui/base/utils/useSlotProps.js");
 /* harmony import */ var _utils_ClassNameConfigurator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/ClassNameConfigurator */ "./node_modules/@mui/base/utils/ClassNameConfigurator.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+'use client';
+
 
 
 const _excluded = ["children", "closeAfterTransition", "container", "disableAutoFocus", "disableEnforceFocus", "disableEscapeKeyDown", "disablePortal", "disableRestoreFocus", "disableScrollLock", "hideBackdrop", "keepMounted", "manager", "onBackdropClick", "onClose", "onKeyDown", "open", "onTransitionEnter", "onTransitionExited", "slotProps", "slots"];
@@ -3703,6 +3709,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utils */ "./node_modules/@mui/base/utils/useSlotProps.js");
 /* harmony import */ var _utils_ClassNameConfigurator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/ClassNameConfigurator */ "./node_modules/@mui/base/utils/ClassNameConfigurator.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+'use client';
+
 
 
 const _excluded = ["anchorEl", "children", "direction", "disablePortal", "modifiers", "open", "placement", "popperOptions", "popperRef", "slotProps", "slots", "TransitionProps", "ownerState"],
@@ -4125,6 +4133,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/HTMLElementType/HTMLElementType.js");
 /* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/exactProp/exactProp.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+'use client';
+
 
 
 
@@ -4232,6 +4242,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/useIsFocusVisible.js");
 /* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/useForkRef/useForkRef.js");
 /* harmony import */ var _utils_extractEventHandlers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/extractEventHandlers */ "./node_modules/@mui/base/utils/extractEventHandlers.js");
+'use client';
+
 
 
 
@@ -4428,6 +4440,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+'use client';
+
 
 
 const defaultContextValue = {
@@ -4697,9 +4711,9 @@ __webpack_require__.r(__webpack_exports__);
  * If `componentProps` is a function, calls it with the provided `ownerState`.
  * Otherwise, just returns `componentProps`.
  */
-function resolveComponentProps(componentProps, ownerState) {
+function resolveComponentProps(componentProps, ownerState, slotState) {
   if (typeof componentProps === 'function') {
-    return componentProps(ownerState);
+    return componentProps(ownerState, slotState);
   }
   return componentProps;
 }
@@ -4723,9 +4737,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _appendOwnerState__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./appendOwnerState */ "./node_modules/@mui/base/utils/appendOwnerState.js");
 /* harmony import */ var _mergeSlotProps__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mergeSlotProps */ "./node_modules/@mui/base/utils/mergeSlotProps.js");
 /* harmony import */ var _resolveComponentProps__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./resolveComponentProps */ "./node_modules/@mui/base/utils/resolveComponentProps.js");
+'use client';
 
 
-const _excluded = ["elementType", "externalSlotProps", "ownerState"];
+
+const _excluded = ["elementType", "externalSlotProps", "ownerState", "skipResolvingSlotProps"];
 
 
 
@@ -4743,10 +4759,11 @@ function useSlotProps(parameters) {
   const {
       elementType,
       externalSlotProps,
-      ownerState
+      ownerState,
+      skipResolvingSlotProps = false
     } = parameters,
     rest = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(parameters, _excluded);
-  const resolvedComponentsProps = (0,_resolveComponentProps__WEBPACK_IMPORTED_MODULE_2__["default"])(externalSlotProps, ownerState);
+  const resolvedComponentsProps = skipResolvingSlotProps ? {} : (0,_resolveComponentProps__WEBPACK_IMPORTED_MODULE_2__["default"])(externalSlotProps, ownerState);
   const {
     props: mergedProps,
     internalRef
@@ -4775,6 +4792,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _utils_createSvgIcon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils/createSvgIcon */ "./node_modules/@mui/material/utils/createSvgIcon.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+"use client";
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_utils_createSvgIcon__WEBPACK_IMPORTED_MODULE_1__["default"])( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
@@ -4807,6 +4826,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Fade__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Fade */ "./node_modules/@mui/material/Fade/Fade.js");
 /* harmony import */ var _backdropClasses__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./backdropClasses */ "./node_modules/@mui/material/Backdrop/backdropClasses.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+'use client';
+
 
 
 const _excluded = ["children", "className", "component", "components", "componentsProps", "invisible", "open", "slotProps", "slots", "TransitionComponent", "transitionDuration"];
@@ -5050,6 +5071,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TouchRipple__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./TouchRipple */ "./node_modules/@mui/material/ButtonBase/TouchRipple.js");
 /* harmony import */ var _buttonBaseClasses__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./buttonBaseClasses */ "./node_modules/@mui/material/ButtonBase/buttonBaseClasses.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+'use client';
+
 
 
 const _excluded = ["action", "centerRipple", "children", "className", "component", "disabled", "disableRipple", "disableTouchRipple", "focusRipple", "focusVisibleClassName", "LinkComponent", "onBlur", "onClick", "onContextMenu", "onDragLeave", "onFocus", "onFocusVisible", "onKeyDown", "onKeyUp", "onMouseDown", "onMouseLeave", "onMouseUp", "onTouchEnd", "onTouchMove", "onTouchStart", "tabIndex", "TouchRippleProps", "touchRippleRef", "type"];
@@ -5545,6 +5568,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+'use client';
+
 
 
 
@@ -5663,6 +5688,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Ripple__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Ripple */ "./node_modules/@mui/material/ButtonBase/Ripple.js");
 /* harmony import */ var _touchRippleClasses__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./touchRippleClasses */ "./node_modules/@mui/material/ButtonBase/touchRippleClasses.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+'use client';
+
 
 
 const _excluded = ["center", "classes", "className"];
@@ -6077,6 +6104,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_styled__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../styles/styled */ "./node_modules/@mui/material/styles/styled.js");
 /* harmony import */ var _circularProgressClasses__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./circularProgressClasses */ "./node_modules/@mui/material/CircularProgress/circularProgressClasses.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+'use client';
+
 
 
 const _excluded = ["className", "color", "disableShrink", "size", "style", "thickness", "value", "variant"];
@@ -6377,6 +6406,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _transitions_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../transitions/utils */ "./node_modules/@mui/material/transitions/utils.js");
 /* harmony import */ var _utils_useForkRef__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/useForkRef */ "./node_modules/@mui/material/utils/useForkRef.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+'use client';
+
 
 
 const _excluded = ["addEndListener", "appear", "children", "easing", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "style", "timeout", "TransitionComponent"];
@@ -6606,6 +6637,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _transitions_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../transitions/utils */ "./node_modules/@mui/material/transitions/utils.js");
 /* harmony import */ var _utils_useForkRef__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/useForkRef */ "./node_modules/@mui/material/utils/useForkRef.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+'use client';
+
 
 
 const _excluded = ["addEndListener", "appear", "children", "easing", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "style", "timeout", "TransitionComponent"];
@@ -6893,6 +6926,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_capitalize__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/capitalize */ "./node_modules/@mui/material/utils/capitalize.js");
 /* harmony import */ var _iconButtonClasses__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./iconButtonClasses */ "./node_modules/@mui/material/IconButton/iconButtonClasses.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+'use client';
+
 
 
 const _excluded = ["edge", "children", "className", "color", "disabled", "disableFocusRipple", "size"];
@@ -7152,6 +7187,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_useThemeProps__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../styles/useThemeProps */ "./node_modules/@mui/material/styles/useThemeProps.js");
 /* harmony import */ var _Backdrop__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Backdrop */ "./node_modules/@mui/material/Backdrop/Backdrop.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+'use client';
+
 
 
 const _excluded = ["BackdropComponent", "BackdropProps", "classes", "className", "closeAfterTransition", "children", "container", "component", "components", "componentsProps", "disableAutoFocus", "disableEnforceFocus", "disableEscapeKeyDown", "disablePortal", "disableRestoreFocus", "disableScrollLock", "hideBackdrop", "keepMounted", "onBackdropClick", "onClose", "open", "slotProps", "slots", "theme"];
@@ -7497,6 +7534,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../styles */ "./node_modules/@mui/material/styles/styled.js");
 /* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../styles */ "./node_modules/@mui/material/styles/useThemeProps.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+'use client';
+
 
 
 const _excluded = ["anchorEl", "component", "components", "componentsProps", "container", "disablePortal", "keepMounted", "modifiers", "open", "placement", "popperOptions", "popperRef", "transition", "slots", "slotProps"];
@@ -7726,6 +7765,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_styled__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../styles/styled */ "./node_modules/@mui/material/styles/styled.js");
 /* harmony import */ var _svgIconClasses__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./svgIconClasses */ "./node_modules/@mui/material/SvgIcon/svgIconClasses.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+'use client';
+
 
 
 const _excluded = ["children", "className", "color", "component", "fontSize", "htmlColor", "inheritViewBox", "titleAccess", "viewBox"];
@@ -7974,6 +8015,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_useControlled__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../utils/useControlled */ "./node_modules/@mui/material/utils/useControlled.js");
 /* harmony import */ var _tooltipClasses__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./tooltipClasses */ "./node_modules/@mui/material/Tooltip/tooltipClasses.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+'use client';
+
 
 
 const _excluded = ["arrow", "children", "classes", "components", "componentsProps", "describeChild", "disableFocusListener", "disableHoverListener", "disableInteractive", "disableTouchListener", "enterDelay", "enterNextDelay", "enterTouchDelay", "followCursor", "id", "leaveDelay", "leaveTouchDelay", "onClose", "onOpen", "open", "placement", "PopperComponent", "PopperProps", "slotProps", "slots", "title", "TransitionComponent", "TransitionProps"];
@@ -9582,6 +9625,9 @@ function createTransitions(inputTransitions) {
       if (!isNumber(delay) && !isString(delay)) {
         console.error('MUI: Argument "delay" must be a number or a string.');
       }
+      if (typeof options !== 'object') {
+        console.error(['MUI: Secong argument of transition.create must be an object.', "Arguments should be either `create('prop1', options)` or `create(['prop1', 'prop2'], options)`"].join('\n'));
+      }
       if (Object.keys(other).length !== 0) {
         console.error(`MUI: Unrecognized argument(s) [${Object.keys(other).join(',')}].`);
       }
@@ -9717,6 +9763,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _createTheme__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./createTheme */ "./node_modules/@mui/material/styles/createTheme.js");
+'use client';
+
 
 const defaultTheme = (0,_createTheme__WEBPACK_IMPORTED_MODULE_0__["default"])();
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (defaultTheme);
@@ -9778,6 +9826,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mui_system__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @mui/system */ "./node_modules/@mui/system/esm/createStyled.js");
 /* harmony import */ var _defaultTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./defaultTheme */ "./node_modules/@mui/material/styles/defaultTheme.js");
 /* harmony import */ var _identifier__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./identifier */ "./node_modules/@mui/material/styles/identifier.js");
+'use client';
+
 
 
 
@@ -9808,6 +9858,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mui_system__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/system */ "./node_modules/@mui/system/esm/useTheme.js");
 /* harmony import */ var _defaultTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./defaultTheme */ "./node_modules/@mui/material/styles/defaultTheme.js");
 /* harmony import */ var _identifier__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./identifier */ "./node_modules/@mui/material/styles/identifier.js");
+'use client';
+
 
 
 
@@ -9837,6 +9889,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mui_system__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @mui/system */ "./node_modules/@mui/system/esm/useThemeProps/useThemeProps.js");
 /* harmony import */ var _defaultTheme__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./defaultTheme */ "./node_modules/@mui/material/styles/defaultTheme.js");
 /* harmony import */ var _identifier__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./identifier */ "./node_modules/@mui/material/styles/identifier.js");
+'use client';
+
 
 
 
@@ -9943,6 +9997,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _SvgIcon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../SvgIcon */ "./node_modules/@mui/material/SvgIcon/SvgIcon.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+'use client';
+
 
 
 
@@ -9983,6 +10039,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/useControlled/useControlled.js");
+'use client';
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_mui_utils__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
@@ -10000,6 +10058,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/useEventCallback/useEventCallback.js");
+'use client';
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_mui_utils__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
@@ -10017,6 +10077,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/useForkRef/useForkRef.js");
+'use client';
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_mui_utils__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
@@ -10034,6 +10096,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/useId/useId.js");
+'use client';
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_mui_utils__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
@@ -10051,6 +10115,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/useIsFocusVisible.js");
+'use client';
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_mui_utils__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
@@ -12450,6 +12516,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _createTheme__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./createTheme */ "./node_modules/@mui/system/esm/createTheme/createTheme.js");
 /* harmony import */ var _useThemeWithoutDefault__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./useThemeWithoutDefault */ "./node_modules/@mui/system/esm/useThemeWithoutDefault.js");
+'use client';
+
 
 
 const systemDefaultTheme = (0,_createTheme__WEBPACK_IMPORTED_MODULE_0__["default"])();
@@ -12500,6 +12568,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _getThemeProps__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getThemeProps */ "./node_modules/@mui/system/esm/useThemeProps/getThemeProps.js");
 /* harmony import */ var _useTheme__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../useTheme */ "./node_modules/@mui/system/esm/useTheme.js");
+'use client';
+
 
 
 function useThemeProps({
@@ -12536,6 +12606,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _mui_styled_engine__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/styled-engine */ "./node_modules/@emotion/react/dist/emotion-element-c39617d8.browser.esm.js");
+'use client';
+
 
 
 function isObjectEmpty(obj) {
@@ -16720,15 +16792,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/fetch */ "./node_modules/@supabase/gotrue-js/dist/module/lib/fetch.js");
 /* harmony import */ var _lib_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/helpers */ "./node_modules/@supabase/gotrue-js/dist/module/lib/helpers.js");
 /* harmony import */ var _lib_errors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/errors */ "./node_modules/@supabase/gotrue-js/dist/module/lib/errors.js");
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __rest = (undefined && undefined.__rest) || function (s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
@@ -16756,47 +16819,44 @@ class GoTrueAdminApi {
     /**
      * Removes a logged-in session.
      * @param jwt A valid, logged-in JWT.
+     * @param scope The logout sope.
      */
-    signOut(jwt) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'POST', `${this.url}/logout`, {
-                    headers: this.headers,
-                    jwt,
-                    noResolveJson: true,
-                });
-                return { data: null, error: null };
+    async signOut(jwt, scope = 'global') {
+        try {
+            await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'POST', `${this.url}/logout?scope=${scope}`, {
+                headers: this.headers,
+                jwt,
+                noResolveJson: true,
+            });
+            return { data: null, error: null };
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: null, error };
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: null, error };
-                }
-                throw error;
-            }
-        });
+            throw error;
+        }
     }
     /**
      * Sends an invite link to an email address.
      * @param email The email address of the user.
      * @param options Additional options to be included when inviting.
      */
-    inviteUserByEmail(email, options = {}) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'POST', `${this.url}/invite`, {
-                    body: { email, data: options.data },
-                    headers: this.headers,
-                    redirectTo: options.redirectTo,
-                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._userResponse,
-                });
+    async inviteUserByEmail(email, options = {}) {
+        try {
+            return await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'POST', `${this.url}/invite`, {
+                body: { email, data: options.data },
+                headers: this.headers,
+                redirectTo: options.redirectTo,
+                xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._userResponse,
+            });
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: { user: null }, error };
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: { user: null }, error };
-                }
-                throw error;
-            }
-        });
+            throw error;
+        }
     }
     /**
      * Generates email links and OTPs to be sent via a custom email provider.
@@ -16805,58 +16865,54 @@ class GoTrueAdminApi {
      * @param options.data Optional user metadata. For signup only.
      * @param options.redirectTo The redirect url which should be appended to the generated link
      */
-    generateLink(params) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const { options } = params, rest = __rest(params, ["options"]);
-                const body = Object.assign(Object.assign({}, rest), options);
-                if ('newEmail' in rest) {
-                    // replace newEmail with new_email in request body
-                    body.new_email = rest === null || rest === void 0 ? void 0 : rest.newEmail;
-                    delete body['newEmail'];
-                }
-                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'POST', `${this.url}/admin/generate_link`, {
-                    body: body,
-                    headers: this.headers,
-                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._generateLinkResponse,
-                    redirectTo: options === null || options === void 0 ? void 0 : options.redirectTo,
-                });
+    async generateLink(params) {
+        try {
+            const { options } = params, rest = __rest(params, ["options"]);
+            const body = Object.assign(Object.assign({}, rest), options);
+            if ('newEmail' in rest) {
+                // replace newEmail with new_email in request body
+                body.new_email = rest === null || rest === void 0 ? void 0 : rest.newEmail;
+                delete body['newEmail'];
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return {
-                        data: {
-                            properties: null,
-                            user: null,
-                        },
-                        error,
-                    };
-                }
-                throw error;
+            return await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'POST', `${this.url}/admin/generate_link`, {
+                body: body,
+                headers: this.headers,
+                xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._generateLinkResponse,
+                redirectTo: options === null || options === void 0 ? void 0 : options.redirectTo,
+            });
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return {
+                    data: {
+                        properties: null,
+                        user: null,
+                    },
+                    error,
+                };
             }
-        });
+            throw error;
+        }
     }
     // User Admin API
     /**
      * Creates a new user.
      * This function should only be called on a server. Never expose your `service_role` key in the browser.
      */
-    createUser(attributes) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'POST', `${this.url}/admin/users`, {
-                    body: attributes,
-                    headers: this.headers,
-                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._userResponse,
-                });
+    async createUser(attributes) {
+        try {
+            return await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'POST', `${this.url}/admin/users`, {
+                body: attributes,
+                headers: this.headers,
+                xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._userResponse,
+            });
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: { user: null }, error };
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: { user: null }, error };
-                }
-                throw error;
-            }
-        });
+            throw error;
+        }
     }
     /**
      * Get a list of users.
@@ -16864,42 +16920,40 @@ class GoTrueAdminApi {
      * This function should only be called on a server. Never expose your `service_role` key in the browser.
      * @param params An object which supports `page` and `perPage` as numbers, to alter the paginated results.
      */
-    listUsers(params) {
+    async listUsers(params) {
         var _a, _b, _c, _d, _e, _f, _g;
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const pagination = { nextPage: null, lastPage: 0, total: 0 };
-                const response = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'GET', `${this.url}/admin/users`, {
-                    headers: this.headers,
-                    noResolveJson: true,
-                    query: {
-                        page: (_b = (_a = params === null || params === void 0 ? void 0 : params.page) === null || _a === void 0 ? void 0 : _a.toString()) !== null && _b !== void 0 ? _b : '',
-                        per_page: (_d = (_c = params === null || params === void 0 ? void 0 : params.perPage) === null || _c === void 0 ? void 0 : _c.toString()) !== null && _d !== void 0 ? _d : '',
-                    },
-                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._noResolveJsonResponse,
+        try {
+            const pagination = { nextPage: null, lastPage: 0, total: 0 };
+            const response = await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'GET', `${this.url}/admin/users`, {
+                headers: this.headers,
+                noResolveJson: true,
+                query: {
+                    page: (_b = (_a = params === null || params === void 0 ? void 0 : params.page) === null || _a === void 0 ? void 0 : _a.toString()) !== null && _b !== void 0 ? _b : '',
+                    per_page: (_d = (_c = params === null || params === void 0 ? void 0 : params.perPage) === null || _c === void 0 ? void 0 : _c.toString()) !== null && _d !== void 0 ? _d : '',
+                },
+                xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._noResolveJsonResponse,
+            });
+            if (response.error)
+                throw response.error;
+            const users = await response.json();
+            const total = (_e = response.headers.get('x-total-count')) !== null && _e !== void 0 ? _e : 0;
+            const links = (_g = (_f = response.headers.get('link')) === null || _f === void 0 ? void 0 : _f.split(',')) !== null && _g !== void 0 ? _g : [];
+            if (links.length > 0) {
+                links.forEach((link) => {
+                    const page = parseInt(link.split(';')[0].split('=')[1].substring(0, 1));
+                    const rel = JSON.parse(link.split(';')[1].split('=')[1]);
+                    pagination[`${rel}Page`] = page;
                 });
-                if (response.error)
-                    throw response.error;
-                const users = yield response.json();
-                const total = (_e = response.headers.get('x-total-count')) !== null && _e !== void 0 ? _e : 0;
-                const links = (_g = (_f = response.headers.get('link')) === null || _f === void 0 ? void 0 : _f.split(',')) !== null && _g !== void 0 ? _g : [];
-                if (links.length > 0) {
-                    links.forEach((link) => {
-                        const page = parseInt(link.split(';')[0].split('=')[1].substring(0, 1));
-                        const rel = JSON.parse(link.split(';')[1].split('=')[1]);
-                        pagination[`${rel}Page`] = page;
-                    });
-                    pagination.total = parseInt(total);
-                }
-                return { data: Object.assign(Object.assign({}, users), pagination), error: null };
+                pagination.total = parseInt(total);
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: { users: [] }, error };
-                }
-                throw error;
+            return { data: Object.assign(Object.assign({}, users), pagination), error: null };
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: { users: [] }, error };
             }
-        });
+            throw error;
+        }
     }
     /**
      * Get user by id.
@@ -16908,21 +16962,19 @@ class GoTrueAdminApi {
      *
      * This function should only be called on a server. Never expose your `service_role` key in the browser.
      */
-    getUserById(uid) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'GET', `${this.url}/admin/users/${uid}`, {
-                    headers: this.headers,
-                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._userResponse,
-                });
+    async getUserById(uid) {
+        try {
+            return await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'GET', `${this.url}/admin/users/${uid}`, {
+                headers: this.headers,
+                xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._userResponse,
+            });
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: { user: null }, error };
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: { user: null }, error };
-                }
-                throw error;
-            }
-        });
+            throw error;
+        }
     }
     /**
      * Updates the user data.
@@ -16931,22 +16983,20 @@ class GoTrueAdminApi {
      *
      * This function should only be called on a server. Never expose your `service_role` key in the browser.
      */
-    updateUserById(uid, attributes) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'PUT', `${this.url}/admin/users/${uid}`, {
-                    body: attributes,
-                    headers: this.headers,
-                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._userResponse,
-                });
+    async updateUserById(uid, attributes) {
+        try {
+            return await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'PUT', `${this.url}/admin/users/${uid}`, {
+                body: attributes,
+                headers: this.headers,
+                xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._userResponse,
+            });
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: { user: null }, error };
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: { user: null }, error };
-                }
-                throw error;
-            }
-        });
+            throw error;
+        }
     }
     /**
      * Delete a user. Requires a `service_role` key.
@@ -16957,59 +17007,53 @@ class GoTrueAdminApi {
      *
      * This function should only be called on a server. Never expose your `service_role` key in the browser.
      */
-    deleteUser(id, shouldSoftDelete = false) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'DELETE', `${this.url}/admin/users/${id}`, {
-                    headers: this.headers,
-                    body: {
-                        should_soft_delete: shouldSoftDelete,
-                    },
-                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._userResponse,
-                });
+    async deleteUser(id, shouldSoftDelete = false) {
+        try {
+            return await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'DELETE', `${this.url}/admin/users/${id}`, {
+                headers: this.headers,
+                body: {
+                    should_soft_delete: shouldSoftDelete,
+                },
+                xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._userResponse,
+            });
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: { user: null }, error };
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: { user: null }, error };
-                }
-                throw error;
-            }
-        });
+            throw error;
+        }
     }
-    _listFactors(params) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const { data, error } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'GET', `${this.url}/admin/users/${params.userId}/factors`, {
-                    headers: this.headers,
-                    xform: (factors) => {
-                        return { data: { factors }, error: null };
-                    },
-                });
-                return { data, error };
+    async _listFactors(params) {
+        try {
+            const { data, error } = await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'GET', `${this.url}/admin/users/${params.userId}/factors`, {
+                headers: this.headers,
+                xform: (factors) => {
+                    return { data: { factors }, error: null };
+                },
+            });
+            return { data, error };
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: null, error };
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: null, error };
-                }
-                throw error;
-            }
-        });
+            throw error;
+        }
     }
-    _deleteFactor(params) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'DELETE', `${this.url}/admin/users/${params.userId}/factors/${params.id}`, {
-                    headers: this.headers,
-                });
-                return { data, error: null };
+    async _deleteFactor(params) {
+        try {
+            const data = await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'DELETE', `${this.url}/admin/users/${params.userId}/factors/${params.id}`, {
+                headers: this.headers,
+            });
+            return { data, error: null };
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: null, error };
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: null, error };
-                }
-                throw error;
-            }
-        });
+            throw error;
+        }
     }
 }
 //# sourceMappingURL=GoTrueAdminApi.js.map
@@ -17034,15 +17078,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_helpers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./lib/helpers */ "./node_modules/@supabase/gotrue-js/dist/module/lib/helpers.js");
 /* harmony import */ var _lib_local_storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./lib/local-storage */ "./node_modules/@supabase/gotrue-js/dist/module/lib/local-storage.js");
 /* harmony import */ var _lib_polyfills__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./lib/polyfills */ "./node_modules/@supabase/gotrue-js/dist/module/lib/polyfills.js");
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 
 
 
@@ -17059,6 +17094,7 @@ const DEFAULT_OPTIONS = {
     detectSessionInUrl: true,
     headers: _lib_constants__WEBPACK_IMPORTED_MODULE_1__.DEFAULT_HEADERS,
     flowType: 'implicit',
+    debug: false,
 };
 /** Current session will be checked for refresh at this interval. */
 const AUTO_REFRESH_TICK_DURATION = 30 * 1000;
@@ -17087,7 +17123,13 @@ class GoTrueClient {
          * Used to broadcast state change events to other tabs listening.
          */
         this.broadcastChannel = null;
+        this.instanceID = GoTrueClient.nextInstanceID;
+        GoTrueClient.nextInstanceID += 1;
+        if (this.instanceID > 0 && (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)()) {
+            console.warn('Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.');
+        }
         const settings = Object.assign(Object.assign({}, DEFAULT_OPTIONS), options);
+        this.logDebugMessages = settings.debug;
         this.inMemorySession = null;
         this.storageKey = settings.storageKey;
         this.autoRefreshToken = settings.autoRefreshToken;
@@ -17123,11 +17165,18 @@ class GoTrueClient {
             catch (e) {
                 console.error('Failed to create a new BroadcastChannel, multi-tab state changes will not be available', e);
             }
-            (_a = this.broadcastChannel) === null || _a === void 0 ? void 0 : _a.addEventListener('message', (event) => __awaiter(this, void 0, void 0, function* () {
-                yield this._notifyAllSubscribers(event.data.event, event.data.session, false); // broadcast = false so we don't get an endless loop of messages
-            }));
+            (_a = this.broadcastChannel) === null || _a === void 0 ? void 0 : _a.addEventListener('message', async (event) => {
+                this._debug('received broadcast notification from other tab or client', event);
+                await this._notifyAllSubscribers(event.data.event, event.data.session, false); // broadcast = false so we don't get an endless loop of messages
+            });
         }
         this.initialize();
+    }
+    _debug(...args) {
+        if (this.logDebugMessages) {
+            console.log(`GoTrueClient@${this.instanceID} ${new Date().toISOString()}`, ...args);
+        }
+        return this;
     }
     /**
      * Initializes the client session either from the url or from storage.
@@ -17146,49 +17195,50 @@ class GoTrueClient {
      * 2. Never return a session from this method as it would be cached over
      *    the whole lifetime of the client
      */
-    _initialize() {
-        return __awaiter(this, void 0, void 0, function* () {
-            if (this.initializePromise) {
-                return this.initializePromise;
-            }
-            try {
-                const isPKCEFlow = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)() ? yield this._isPKCEFlow() : false;
-                if (isPKCEFlow || (this.detectSessionInUrl && this._isImplicitGrantFlow())) {
-                    const { data, error } = yield this._getSessionFromUrl(isPKCEFlow);
-                    if (error) {
-                        // failed login attempt via url,
-                        // remove old session as in verifyOtp, signUp and signInWith*
-                        yield this._removeSession();
-                        return { error };
-                    }
-                    const { session, redirectType } = data;
-                    yield this._saveSession(session);
-                    setTimeout(() => __awaiter(this, void 0, void 0, function* () {
-                        if (redirectType === 'recovery') {
-                            yield this._notifyAllSubscribers('PASSWORD_RECOVERY', session);
-                        }
-                        else {
-                            yield this._notifyAllSubscribers('SIGNED_IN', session);
-                        }
-                    }), 0);
-                    return { error: null };
-                }
-                // no login attempt via callback url try to recover session from storage
-                yield this._recoverAndRefresh();
-                return { error: null };
-            }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+    async _initialize() {
+        if (this.initializePromise) {
+            return this.initializePromise;
+        }
+        try {
+            const isPKCEFlow = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)() ? await this._isPKCEFlow() : false;
+            this._debug('#_initialize()', 'begin', 'is PKCE flow', isPKCEFlow);
+            if (isPKCEFlow || (this.detectSessionInUrl && this._isImplicitGrantFlow())) {
+                const { data, error } = await this._getSessionFromUrl(isPKCEFlow);
+                if (error) {
+                    this._debug('#_initialize()', 'error detecting session from URL', error);
+                    // failed login attempt via url,
+                    // remove old session as in verifyOtp, signUp and signInWith*
+                    await this._removeSession();
                     return { error };
                 }
-                return {
-                    error: new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthUnknownError('Unexpected error during initialization', error),
-                };
+                const { session, redirectType } = data;
+                this._debug('#_initialize()', 'detected session in URL', session, 'redirect type', redirectType);
+                setTimeout(async () => {
+                    if (redirectType === 'recovery') {
+                        await this._notifyAllSubscribers('PASSWORD_RECOVERY', session);
+                    }
+                    else {
+                        await this._notifyAllSubscribers('SIGNED_IN', session);
+                    }
+                }, 0);
+                return { error: null };
             }
-            finally {
-                yield this._handleVisibilityChange();
+            // no login attempt via callback url try to recover session from storage
+            await this._recoverAndRefresh();
+            return { error: null };
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { error };
             }
-        });
+            return {
+                error: new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthUnknownError('Unexpected error during initialization', error),
+            };
+        }
+        finally {
+            await this._handleVisibilityChange();
+            this._debug('#_initialize()', 'end');
+        }
     }
     /**
      * Creates a new user.
@@ -17200,72 +17250,70 @@ class GoTrueClient {
      * @returns A logged-in session if the server has "autoconfirm" ON
      * @returns A user if the server has "autoconfirm" OFF
      */
-    signUp(credentials) {
+    async signUp(credentials) {
         var _a, _b, _c;
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                yield this._removeSession();
-                let res;
-                if ('email' in credentials) {
-                    const { email, password, options } = credentials;
-                    let codeChallenge = null;
-                    let codeChallengeMethod = null;
-                    if (this.flowType === 'pkce') {
-                        const codeVerifier = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEVerifier)();
-                        yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.setItemAsync)(this.storage, `${this.storageKey}-code-verifier`, codeVerifier);
-                        codeChallenge = yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEChallenge)(codeVerifier);
-                        codeChallengeMethod = codeVerifier === codeChallenge ? 'plain' : 's256';
-                    }
-                    res = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/signup`, {
-                        headers: this.headers,
-                        redirectTo: options === null || options === void 0 ? void 0 : options.emailRedirectTo,
-                        body: {
-                            email,
-                            password,
-                            data: (_a = options === null || options === void 0 ? void 0 : options.data) !== null && _a !== void 0 ? _a : {},
-                            gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
-                            code_challenge: codeChallenge,
-                            code_challenge_method: codeChallengeMethod,
-                        },
-                        xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
-                    });
+        try {
+            await this._removeSession();
+            let res;
+            if ('email' in credentials) {
+                const { email, password, options } = credentials;
+                let codeChallenge = null;
+                let codeChallengeMethod = null;
+                if (this.flowType === 'pkce') {
+                    const codeVerifier = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEVerifier)();
+                    await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.setItemAsync)(this.storage, `${this.storageKey}-code-verifier`, codeVerifier);
+                    codeChallenge = await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEChallenge)(codeVerifier);
+                    codeChallengeMethod = codeVerifier === codeChallenge ? 'plain' : 's256';
                 }
-                else if ('phone' in credentials) {
-                    const { phone, password, options } = credentials;
-                    res = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/signup`, {
-                        headers: this.headers,
-                        body: {
-                            phone,
-                            password,
-                            data: (_b = options === null || options === void 0 ? void 0 : options.data) !== null && _b !== void 0 ? _b : {},
-                            channel: (_c = options === null || options === void 0 ? void 0 : options.channel) !== null && _c !== void 0 ? _c : 'sms',
-                            gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
-                        },
-                        xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
-                    });
-                }
-                else {
-                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthInvalidCredentialsError('You must provide either an email or phone number and a password');
-                }
-                const { data, error } = res;
-                if (error || !data) {
-                    return { data: { user: null, session: null }, error: error };
-                }
-                const session = data.session;
-                const user = data.user;
-                if (data.session) {
-                    yield this._saveSession(data.session);
-                    yield this._notifyAllSubscribers('SIGNED_IN', session);
-                }
-                return { data: { user, session }, error: null };
+                res = await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/signup`, {
+                    headers: this.headers,
+                    redirectTo: options === null || options === void 0 ? void 0 : options.emailRedirectTo,
+                    body: {
+                        email,
+                        password,
+                        data: (_a = options === null || options === void 0 ? void 0 : options.data) !== null && _a !== void 0 ? _a : {},
+                        gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
+                        code_challenge: codeChallenge,
+                        code_challenge_method: codeChallengeMethod,
+                    },
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
+                });
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: { user: null, session: null }, error };
-                }
-                throw error;
+            else if ('phone' in credentials) {
+                const { phone, password, options } = credentials;
+                res = await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/signup`, {
+                    headers: this.headers,
+                    body: {
+                        phone,
+                        password,
+                        data: (_b = options === null || options === void 0 ? void 0 : options.data) !== null && _b !== void 0 ? _b : {},
+                        channel: (_c = options === null || options === void 0 ? void 0 : options.channel) !== null && _c !== void 0 ? _c : 'sms',
+                        gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
+                    },
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
+                });
             }
-        });
+            else {
+                throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthInvalidCredentialsError('You must provide either an email or phone number and a password');
+            }
+            const { data, error } = res;
+            if (error || !data) {
+                return { data: { user: null, session: null }, error: error };
+            }
+            const session = data.session;
+            const user = data.user;
+            if (data.session) {
+                await this._saveSession(data.session);
+                await this._notifyAllSubscribers('SIGNED_IN', session);
+            }
+            return { data: { user, session }, error: null };
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: { user: null, session: null }, error };
+            }
+            throw error;
+        }
     }
     /**
      * Log in an existing user with an email and password or phone and password.
@@ -17275,90 +17323,38 @@ class GoTrueClient {
      * email/phone and password combination is wrong or that the account can only
      * be accessed via social login.
      */
-    signInWithPassword(credentials) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                yield this._removeSession();
-                let res;
-                if ('email' in credentials) {
-                    const { email, password, options } = credentials;
-                    res = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/token?grant_type=password`, {
-                        headers: this.headers,
-                        body: {
-                            email,
-                            password,
-                            gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
-                        },
-                        xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
-                    });
-                }
-                else if ('phone' in credentials) {
-                    const { phone, password, options } = credentials;
-                    res = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/token?grant_type=password`, {
-                        headers: this.headers,
-                        body: {
-                            phone,
-                            password,
-                            gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
-                        },
-                        xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
-                    });
-                }
-                else {
-                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthInvalidCredentialsError('You must provide either an email or phone number and a password');
-                }
-                const { data, error } = res;
-                if (error) {
-                    return { data: { user: null, session: null }, error };
-                }
-                else if (!data || !data.session || !data.user) {
-                    return { data: { user: null, session: null }, error: new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthInvalidTokenResponseError() };
-                }
-                if (data.session) {
-                    yield this._saveSession(data.session);
-                    yield this._notifyAllSubscribers('SIGNED_IN', data.session);
-                }
-                return { data: { user: data.user, session: data.session }, error };
+    async signInWithPassword(credentials) {
+        try {
+            await this._removeSession();
+            let res;
+            if ('email' in credentials) {
+                const { email, password, options } = credentials;
+                res = await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/token?grant_type=password`, {
+                    headers: this.headers,
+                    body: {
+                        email,
+                        password,
+                        gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
+                    },
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
+                });
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: { user: null, session: null }, error };
-                }
-                throw error;
+            else if ('phone' in credentials) {
+                const { phone, password, options } = credentials;
+                res = await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/token?grant_type=password`, {
+                    headers: this.headers,
+                    body: {
+                        phone,
+                        password,
+                        gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
+                    },
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
+                });
             }
-        });
-    }
-    /**
-     * Log in an existing user via a third-party provider.
-     * This method supports the PKCE flow.
-     */
-    signInWithOAuth(credentials) {
-        var _a, _b, _c, _d;
-        return __awaiter(this, void 0, void 0, function* () {
-            yield this._removeSession();
-            return yield this._handleProviderSignIn(credentials.provider, {
-                redirectTo: (_a = credentials.options) === null || _a === void 0 ? void 0 : _a.redirectTo,
-                scopes: (_b = credentials.options) === null || _b === void 0 ? void 0 : _b.scopes,
-                queryParams: (_c = credentials.options) === null || _c === void 0 ? void 0 : _c.queryParams,
-                skipBrowserRedirect: (_d = credentials.options) === null || _d === void 0 ? void 0 : _d.skipBrowserRedirect,
-            });
-        });
-    }
-    /**
-     * Log in an existing user by exchanging an Auth Code issued during the PKCE flow.
-     */
-    exchangeCodeForSession(authCode) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const codeVerifier = yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getItemAsync)(this.storage, `${this.storageKey}-code-verifier`);
-            const { data, error } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/token?grant_type=pkce`, {
-                headers: this.headers,
-                body: {
-                    auth_code: authCode,
-                    code_verifier: codeVerifier,
-                },
-                xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
-            });
-            yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.removeItemAsync)(this.storage, `${this.storageKey}-code-verifier`);
+            else {
+                throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthInvalidCredentialsError('You must provide either an email or phone number and a password');
+            }
+            const { data, error } = res;
             if (error) {
                 return { data: { user: null, session: null }, error };
             }
@@ -17366,56 +17362,99 @@ class GoTrueClient {
                 return { data: { user: null, session: null }, error: new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthInvalidTokenResponseError() };
             }
             if (data.session) {
-                yield this._saveSession(data.session);
-                yield this._notifyAllSubscribers('SIGNED_IN', data.session);
+                await this._saveSession(data.session);
+                await this._notifyAllSubscribers('SIGNED_IN', data.session);
             }
-            return { data, error };
+            return { data: { user: data.user, session: data.session }, error };
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: { user: null, session: null }, error };
+            }
+            throw error;
+        }
+    }
+    /**
+     * Log in an existing user via a third-party provider.
+     * This method supports the PKCE flow.
+     */
+    async signInWithOAuth(credentials) {
+        var _a, _b, _c, _d;
+        await this._removeSession();
+        return await this._handleProviderSignIn(credentials.provider, {
+            redirectTo: (_a = credentials.options) === null || _a === void 0 ? void 0 : _a.redirectTo,
+            scopes: (_b = credentials.options) === null || _b === void 0 ? void 0 : _b.scopes,
+            queryParams: (_c = credentials.options) === null || _c === void 0 ? void 0 : _c.queryParams,
+            skipBrowserRedirect: (_d = credentials.options) === null || _d === void 0 ? void 0 : _d.skipBrowserRedirect,
         });
     }
     /**
-     * Allows signing in with an ID token issued by certain supported providers.
-     * The ID token is verified for validity and a new session is established.
-     *
-     * @experimental
+     * Log in an existing user by exchanging an Auth Code issued during the PKCE flow.
      */
-    signInWithIdToken(credentials) {
-        return __awaiter(this, void 0, void 0, function* () {
-            yield this._removeSession();
-            try {
-                const { options, provider, token, nonce } = credentials;
-                const res = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/token?grant_type=id_token`, {
-                    headers: this.headers,
-                    body: {
-                        provider,
-                        id_token: token,
-                        nonce,
-                        gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
-                    },
-                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
-                });
-                const { data, error } = res;
-                if (error) {
-                    return { data: { user: null, session: null }, error };
-                }
-                else if (!data || !data.session || !data.user) {
-                    return {
-                        data: { user: null, session: null },
-                        error: new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthInvalidTokenResponseError(),
-                    };
-                }
-                if (data.session) {
-                    yield this._saveSession(data.session);
-                    yield this._notifyAllSubscribers('SIGNED_IN', data.session);
-                }
-                return { data, error };
-            }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: { user: null, session: null }, error };
-                }
-                throw error;
-            }
+    async exchangeCodeForSession(authCode) {
+        const codeVerifier = await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getItemAsync)(this.storage, `${this.storageKey}-code-verifier`);
+        const { data, error } = await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/token?grant_type=pkce`, {
+            headers: this.headers,
+            body: {
+                auth_code: authCode,
+                code_verifier: codeVerifier,
+            },
+            xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
         });
+        await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.removeItemAsync)(this.storage, `${this.storageKey}-code-verifier`);
+        if (error) {
+            return { data: { user: null, session: null }, error };
+        }
+        else if (!data || !data.session || !data.user) {
+            return { data: { user: null, session: null }, error: new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthInvalidTokenResponseError() };
+        }
+        if (data.session) {
+            await this._saveSession(data.session);
+            await this._notifyAllSubscribers('SIGNED_IN', data.session);
+        }
+        return { data, error };
+    }
+    /**
+     * Allows signing in with an OIDC ID token. The authentication provider used
+     * should be enabled and configured.
+     */
+    async signInWithIdToken(credentials) {
+        await this._removeSession();
+        try {
+            const { options, provider, token, access_token, nonce } = credentials;
+            const res = await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/token?grant_type=id_token`, {
+                headers: this.headers,
+                body: {
+                    provider,
+                    id_token: token,
+                    access_token,
+                    nonce,
+                    gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
+                },
+                xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
+            });
+            const { data, error } = res;
+            if (error) {
+                return { data: { user: null, session: null }, error };
+            }
+            else if (!data || !data.session || !data.user) {
+                return {
+                    data: { user: null, session: null },
+                    error: new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthInvalidTokenResponseError(),
+                };
+            }
+            if (data.session) {
+                await this._saveSession(data.session);
+                await this._notifyAllSubscribers('SIGNED_IN', data.session);
+            }
+            return { data, error };
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: { user: null, session: null }, error };
+            }
+            throw error;
+        }
     }
     /**
      * Log in a user using magiclink or a one-time password (OTP).
@@ -17434,97 +17473,93 @@ class GoTrueClient {
      * at this time.
      * This method supports PKCE when an email is passed.
      */
-    signInWithOtp(credentials) {
+    async signInWithOtp(credentials) {
         var _a, _b, _c, _d, _e;
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                yield this._removeSession();
-                if ('email' in credentials) {
-                    const { email, options } = credentials;
-                    let codeChallenge = null;
-                    let codeChallengeMethod = null;
-                    if (this.flowType === 'pkce') {
-                        const codeVerifier = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEVerifier)();
-                        yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.setItemAsync)(this.storage, `${this.storageKey}-code-verifier`, codeVerifier);
-                        codeChallenge = yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEChallenge)(codeVerifier);
-                        codeChallengeMethod = codeVerifier === codeChallenge ? 'plain' : 's256';
-                    }
-                    const { error } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/otp`, {
-                        headers: this.headers,
-                        body: {
-                            email,
-                            data: (_a = options === null || options === void 0 ? void 0 : options.data) !== null && _a !== void 0 ? _a : {},
-                            create_user: (_b = options === null || options === void 0 ? void 0 : options.shouldCreateUser) !== null && _b !== void 0 ? _b : true,
-                            gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
-                            code_challenge: codeChallenge,
-                            code_challenge_method: codeChallengeMethod,
-                        },
-                        redirectTo: options === null || options === void 0 ? void 0 : options.emailRedirectTo,
-                    });
-                    return { data: { user: null, session: null }, error };
+        try {
+            await this._removeSession();
+            if ('email' in credentials) {
+                const { email, options } = credentials;
+                let codeChallenge = null;
+                let codeChallengeMethod = null;
+                if (this.flowType === 'pkce') {
+                    const codeVerifier = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEVerifier)();
+                    await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.setItemAsync)(this.storage, `${this.storageKey}-code-verifier`, codeVerifier);
+                    codeChallenge = await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEChallenge)(codeVerifier);
+                    codeChallengeMethod = codeVerifier === codeChallenge ? 'plain' : 's256';
                 }
-                if ('phone' in credentials) {
-                    const { phone, options } = credentials;
-                    const { data, error } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/otp`, {
-                        headers: this.headers,
-                        body: {
-                            phone,
-                            data: (_c = options === null || options === void 0 ? void 0 : options.data) !== null && _c !== void 0 ? _c : {},
-                            create_user: (_d = options === null || options === void 0 ? void 0 : options.shouldCreateUser) !== null && _d !== void 0 ? _d : true,
-                            gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
-                            channel: (_e = options === null || options === void 0 ? void 0 : options.channel) !== null && _e !== void 0 ? _e : 'sms',
-                        },
-                    });
-                    return { data: { user: null, session: null, messageId: data === null || data === void 0 ? void 0 : data.message_id }, error };
-                }
-                throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthInvalidCredentialsError('You must provide either an email or phone number.');
+                const { error } = await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/otp`, {
+                    headers: this.headers,
+                    body: {
+                        email,
+                        data: (_a = options === null || options === void 0 ? void 0 : options.data) !== null && _a !== void 0 ? _a : {},
+                        create_user: (_b = options === null || options === void 0 ? void 0 : options.shouldCreateUser) !== null && _b !== void 0 ? _b : true,
+                        gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
+                        code_challenge: codeChallenge,
+                        code_challenge_method: codeChallengeMethod,
+                    },
+                    redirectTo: options === null || options === void 0 ? void 0 : options.emailRedirectTo,
+                });
+                return { data: { user: null, session: null }, error };
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: { user: null, session: null }, error };
-                }
-                throw error;
+            if ('phone' in credentials) {
+                const { phone, options } = credentials;
+                const { data, error } = await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/otp`, {
+                    headers: this.headers,
+                    body: {
+                        phone,
+                        data: (_c = options === null || options === void 0 ? void 0 : options.data) !== null && _c !== void 0 ? _c : {},
+                        create_user: (_d = options === null || options === void 0 ? void 0 : options.shouldCreateUser) !== null && _d !== void 0 ? _d : true,
+                        gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
+                        channel: (_e = options === null || options === void 0 ? void 0 : options.channel) !== null && _e !== void 0 ? _e : 'sms',
+                    },
+                });
+                return { data: { user: null, session: null, messageId: data === null || data === void 0 ? void 0 : data.message_id }, error };
             }
-        });
+            throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthInvalidCredentialsError('You must provide either an email or phone number.');
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: { user: null, session: null }, error };
+            }
+            throw error;
+        }
     }
     /**
      * Log in a user given a User supplied OTP received via mobile.
      */
-    verifyOtp(params) {
+    async verifyOtp(params) {
         var _a, _b;
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                if (params.type !== 'email_change' && params.type !== 'phone_change') {
-                    // we don't want to remove the authenticated session if the user is performing an email_change or phone_change verification
-                    yield this._removeSession();
-                }
-                const { data, error } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/verify`, {
-                    headers: this.headers,
-                    body: Object.assign(Object.assign({}, params), { gotrue_meta_security: { captcha_token: (_a = params.options) === null || _a === void 0 ? void 0 : _a.captchaToken } }),
-                    redirectTo: (_b = params.options) === null || _b === void 0 ? void 0 : _b.redirectTo,
-                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
-                });
-                if (error) {
-                    throw error;
-                }
-                if (!data) {
-                    throw new Error('An error occurred on token verification.');
-                }
-                const session = data.session;
-                const user = data.user;
-                if (session === null || session === void 0 ? void 0 : session.access_token) {
-                    yield this._saveSession(session);
-                    yield this._notifyAllSubscribers('SIGNED_IN', session);
-                }
-                return { data: { user, session }, error: null };
+        try {
+            if (params.type !== 'email_change' && params.type !== 'phone_change') {
+                // we don't want to remove the authenticated session if the user is performing an email_change or phone_change verification
+                await this._removeSession();
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: { user: null, session: null }, error };
-                }
+            const { data, error } = await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/verify`, {
+                headers: this.headers,
+                body: Object.assign(Object.assign({}, params), { gotrue_meta_security: { captcha_token: (_a = params.options) === null || _a === void 0 ? void 0 : _a.captchaToken } }),
+                redirectTo: (_b = params.options) === null || _b === void 0 ? void 0 : _b.redirectTo,
+                xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
+            });
+            if (error) {
                 throw error;
             }
-        });
+            if (!data) {
+                throw new Error('An error occurred on token verification.');
+            }
+            const session = data.session;
+            const user = data.user;
+            if (session === null || session === void 0 ? void 0 : session.access_token) {
+                await this._saveSession(session);
+                await this._notifyAllSubscribers('SIGNED_IN', session);
+            }
+            return { data: { user, session }, error: null };
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: { user: null, session: null }, error };
+            }
+            throw error;
+        }
     }
     /**
      * Attempts a single-sign on using an enterprise Identity Provider. A
@@ -17540,118 +17575,147 @@ class GoTrueClient {
      * If you have built an organization-specific login page, you can use the
      * organization's SSO Identity Provider UUID directly instead.
      */
-    signInWithSSO(params) {
+    async signInWithSSO(params) {
         var _a, _b, _c;
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                yield this._removeSession();
-                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/sso`, {
-                    body: Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({}, ('providerId' in params ? { provider_id: params.providerId } : null)), ('domain' in params ? { domain: params.domain } : null)), { redirect_to: (_b = (_a = params.options) === null || _a === void 0 ? void 0 : _a.redirectTo) !== null && _b !== void 0 ? _b : undefined }), (((_c = params === null || params === void 0 ? void 0 : params.options) === null || _c === void 0 ? void 0 : _c.captchaToken)
-                        ? { gotrue_meta_security: { captcha_token: params.options.captchaToken } }
-                        : null)), { skip_http_redirect: true }),
-                    headers: this.headers,
-                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._ssoResponse,
-                });
+        try {
+            await this._removeSession();
+            return await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/sso`, {
+                body: Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({}, ('providerId' in params ? { provider_id: params.providerId } : null)), ('domain' in params ? { domain: params.domain } : null)), { redirect_to: (_b = (_a = params.options) === null || _a === void 0 ? void 0 : _a.redirectTo) !== null && _b !== void 0 ? _b : undefined }), (((_c = params === null || params === void 0 ? void 0 : params.options) === null || _c === void 0 ? void 0 : _c.captchaToken)
+                    ? { gotrue_meta_security: { captcha_token: params.options.captchaToken } }
+                    : null)), { skip_http_redirect: true }),
+                headers: this.headers,
+                xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._ssoResponse,
+            });
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: null, error };
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: null, error };
-                }
-                throw error;
-            }
-        });
+            throw error;
+        }
     }
     /**
      * Sends a reauthentication OTP to the user's email or phone number.
      * Requires the user to be signed-in.
      */
-    reauthenticate() {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const { data: { session }, error: sessionError, } = yield this.getSession();
+    async reauthenticate() {
+        try {
+            return await this._useSession(async (result) => {
+                const { data: { session }, error: sessionError, } = result;
                 if (sessionError)
                     throw sessionError;
                 if (!session)
                     throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthSessionMissingError();
-                const { error } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'GET', `${this.url}/reauthenticate`, {
+                const { error } = await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'GET', `${this.url}/reauthenticate`, {
                     headers: this.headers,
                     jwt: session.access_token,
                 });
                 return { data: { user: null, session: null }, error };
+            });
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: { user: null, session: null }, error };
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: { user: null, session: null }, error };
-                }
-                throw error;
-            }
-        });
+            throw error;
+        }
     }
     /**
      * Resends an existing signup confirmation email, email change email, SMS OTP or phone change OTP.
      */
-    resend(credentials) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                yield this._removeSession();
-                const endpoint = `${this.url}/resend`;
-                if ('email' in credentials) {
-                    const { email, type, options } = credentials;
-                    const { error } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', endpoint, {
-                        headers: this.headers,
-                        body: {
-                            email,
-                            type,
-                            gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
-                        },
-                    });
-                    return { data: { user: null, session: null }, error };
-                }
-                else if ('phone' in credentials) {
-                    const { phone, type, options } = credentials;
-                    const { data, error } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', endpoint, {
-                        headers: this.headers,
-                        body: {
-                            phone,
-                            type,
-                            gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
-                        },
-                    });
-                    return { data: { user: null, session: null, messageId: data === null || data === void 0 ? void 0 : data.message_id }, error };
-                }
-                throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthInvalidCredentialsError('You must provide either an email or phone number and a type');
+    async resend(credentials) {
+        try {
+            if (credentials.type != 'email_change' && credentials.type != 'phone_change') {
+                await this._removeSession();
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: { user: null, session: null }, error };
-                }
-                throw error;
+            const endpoint = `${this.url}/resend`;
+            if ('email' in credentials) {
+                const { email, type, options } = credentials;
+                const { error } = await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', endpoint, {
+                    headers: this.headers,
+                    body: {
+                        email,
+                        type,
+                        gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
+                    },
+                    redirectTo: options === null || options === void 0 ? void 0 : options.emailRedirectTo,
+                });
+                return { data: { user: null, session: null }, error };
             }
-        });
+            else if ('phone' in credentials) {
+                const { phone, type, options } = credentials;
+                const { data, error } = await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', endpoint, {
+                    headers: this.headers,
+                    body: {
+                        phone,
+                        type,
+                        gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
+                    },
+                });
+                return { data: { user: null, session: null, messageId: data === null || data === void 0 ? void 0 : data.message_id }, error };
+            }
+            throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthInvalidCredentialsError('You must provide either an email or phone number and a type');
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: { user: null, session: null }, error };
+            }
+            throw error;
+        }
     }
     /**
      * Returns the session, refreshing it if necessary.
      * The session returned can be null if the session is not detected which can happen in the event a user is not signed-in or has logged out.
      */
-    getSession() {
-        return __awaiter(this, void 0, void 0, function* () {
-            // make sure we've read the session from the url if there is one
-            // save to just await, as long we make sure _initialize() never throws
-            yield this.initializePromise;
+    async getSession() {
+        return this._useSession(async (result) => {
+            return result;
+        });
+    }
+    /**
+     * Use instead of {@link #getSession} inside the library. It is
+     * semantically usually what you want, as getting a session involves some
+     * processing afterwards that requires only one client operating on the
+     * session at once across multiple tabs or processes.
+     */
+    async _useSession(fn) {
+        return await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.stackGuard)('_useSession', async () => {
+            // the use of __loadSession here is the only correct use of the function!
+            const result = await this.__loadSession();
+            return await fn(result);
+        });
+    }
+    /**
+     * NEVER USE DIRECTLY!
+     *
+     * Always use {@link #_useSession}.
+     */
+    async __loadSession() {
+        if (this.logDebugMessages && !(0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isInStackGuard)('_useSession')) {
+            throw new Error('Please use #_useSession()');
+        }
+        // make sure we've read the session from the url if there is one
+        // save to just await, as long we make sure _initialize() never throws
+        await this.initializePromise;
+        this._debug('#__loadSession()', 'begin');
+        try {
             let currentSession = null;
             if (this.persistSession) {
-                const maybeSession = yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getItemAsync)(this.storage, this.storageKey);
+                const maybeSession = await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getItemAsync)(this.storage, this.storageKey);
+                this._debug('#getSession()', 'session from storage', maybeSession);
                 if (maybeSession !== null) {
                     if (this._isValidSession(maybeSession)) {
                         currentSession = maybeSession;
                     }
                     else {
-                        yield this._removeSession();
+                        this._debug('#getSession()', 'session from storage is not valid');
+                        await this._removeSession();
                     }
                 }
             }
             else {
                 currentSession = this.inMemorySession;
+                this._debug('#getSession()', 'session from memory', currentSession);
             }
             if (!currentSession) {
                 return { data: { session: null }, error: null };
@@ -17659,53 +17723,57 @@ class GoTrueClient {
             const hasExpired = currentSession.expires_at
                 ? currentSession.expires_at <= Date.now() / 1000
                 : false;
+            this._debug('#__loadSession()', `session has${hasExpired ? '' : ' not'} expired`, 'expires_at', currentSession.expires_at);
             if (!hasExpired) {
                 return { data: { session: currentSession }, error: null };
             }
-            const { session, error } = yield this._callRefreshToken(currentSession.refresh_token);
+            const { session, error } = await this._callRefreshToken(currentSession.refresh_token);
             if (error) {
                 return { data: { session: null }, error };
             }
             return { data: { session }, error: null };
-        });
+        }
+        finally {
+            this._debug('#__loadSession()', 'end');
+        }
     }
     /**
      * Gets the current user details if there is an existing session.
      * @param jwt Takes in an optional access token jwt. If no jwt is provided, getUser() will attempt to get the jwt from the current session.
      */
-    getUser(jwt) {
-        var _a, _b;
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
+    async getUser(jwt) {
+        try {
+            return await this._useSession(async (result) => {
+                var _a, _b;
                 if (!jwt) {
-                    const { data, error } = yield this.getSession();
+                    const { data, error } = result;
                     if (error) {
                         throw error;
                     }
                     // Default to Authorization header if there is no existing session
                     jwt = (_b = (_a = data.session) === null || _a === void 0 ? void 0 : _a.access_token) !== null && _b !== void 0 ? _b : undefined;
                 }
-                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'GET', `${this.url}/user`, {
+                return await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'GET', `${this.url}/user`, {
                     headers: this.headers,
                     jwt: jwt,
                     xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._userResponse,
                 });
+            });
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: { user: null }, error };
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: { user: null }, error };
-                }
-                throw error;
-            }
-        });
+            throw error;
+        }
     }
     /**
      * Updates user data for a logged in user.
      */
-    updateUser(attributes, options = {}) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const { data: sessionData, error: sessionError } = yield this.getSession();
+    async updateUser(attributes, options = {}) {
+        try {
+            return await this._useSession(async (result) => {
+                const { data: sessionData, error: sessionError } = result;
                 if (sessionError) {
                     throw sessionError;
                 }
@@ -17713,7 +17781,7 @@ class GoTrueClient {
                     throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthSessionMissingError();
                 }
                 const session = sessionData.session;
-                const { data, error: userError } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'PUT', `${this.url}/user`, {
+                const { data, error: userError } = await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'PUT', `${this.url}/user`, {
                     headers: this.headers,
                     redirectTo: options === null || options === void 0 ? void 0 : options.emailRedirectTo,
                     body: attributes,
@@ -17723,17 +17791,17 @@ class GoTrueClient {
                 if (userError)
                     throw userError;
                 session.user = data.user;
-                yield this._saveSession(session);
-                yield this._notifyAllSubscribers('USER_UPDATED', session);
+                await this._saveSession(session);
+                await this._notifyAllSubscribers('USER_UPDATED', session);
                 return { data: { user: session.user }, error: null };
+            });
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: { user: null }, error };
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: { user: null }, error };
-                }
-                throw error;
-            }
-        });
+            throw error;
+        }
     }
     /**
      * Decodes a JWT (without performing any validation).
@@ -17746,56 +17814,54 @@ class GoTrueClient {
      * If the refresh token or access token in the current session is invalid, an error will be thrown.
      * @param currentSession The current session that minimally contains an access token and refresh token.
      */
-    setSession(currentSession) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                if (!currentSession.access_token || !currentSession.refresh_token) {
-                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthSessionMissingError();
-                }
-                const timeNow = Date.now() / 1000;
-                let expiresAt = timeNow;
-                let hasExpired = true;
-                let session = null;
-                const payload = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.decodeJWTPayload)(currentSession.access_token);
-                if (payload.exp) {
-                    expiresAt = payload.exp;
-                    hasExpired = expiresAt <= timeNow;
-                }
-                if (hasExpired) {
-                    const { session: refreshedSession, error } = yield this._callRefreshToken(currentSession.refresh_token);
-                    if (error) {
-                        return { data: { user: null, session: null }, error: error };
-                    }
-                    if (!refreshedSession) {
-                        return { data: { user: null, session: null }, error: null };
-                    }
-                    session = refreshedSession;
-                }
-                else {
-                    const { data, error } = yield this.getUser(currentSession.access_token);
-                    if (error) {
-                        throw error;
-                    }
-                    session = {
-                        access_token: currentSession.access_token,
-                        refresh_token: currentSession.refresh_token,
-                        user: data.user,
-                        token_type: 'bearer',
-                        expires_in: expiresAt - timeNow,
-                        expires_at: expiresAt,
-                    };
-                    yield this._saveSession(session);
-                    yield this._notifyAllSubscribers('SIGNED_IN', session);
-                }
-                return { data: { user: session.user, session }, error: null };
+    async setSession(currentSession) {
+        try {
+            if (!currentSession.access_token || !currentSession.refresh_token) {
+                throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthSessionMissingError();
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: { session: null, user: null }, error };
-                }
-                throw error;
+            const timeNow = Date.now() / 1000;
+            let expiresAt = timeNow;
+            let hasExpired = true;
+            let session = null;
+            const payload = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.decodeJWTPayload)(currentSession.access_token);
+            if (payload.exp) {
+                expiresAt = payload.exp;
+                hasExpired = expiresAt <= timeNow;
             }
-        });
+            if (hasExpired) {
+                const { session: refreshedSession, error } = await this._callRefreshToken(currentSession.refresh_token);
+                if (error) {
+                    return { data: { user: null, session: null }, error: error };
+                }
+                if (!refreshedSession) {
+                    return { data: { user: null, session: null }, error: null };
+                }
+                session = refreshedSession;
+            }
+            else {
+                const { data, error } = await this.getUser(currentSession.access_token);
+                if (error) {
+                    throw error;
+                }
+                session = {
+                    access_token: currentSession.access_token,
+                    refresh_token: currentSession.refresh_token,
+                    user: data.user,
+                    token_type: 'bearer',
+                    expires_in: expiresAt - timeNow,
+                    expires_at: expiresAt,
+                };
+                await this._saveSession(session);
+                await this._notifyAllSubscribers('SIGNED_IN', session);
+            }
+            return { data: { user: session.user, session }, error: null };
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: { session: null, user: null }, error };
+            }
+            throw error;
+        }
     }
     /**
      * Returns a new session, regardless of expiry status.
@@ -17803,12 +17869,12 @@ class GoTrueClient {
      * If the current session's refresh token is invalid, an error will be thrown.
      * @param currentSession The current session. If passed in, it must contain a refresh token.
      */
-    refreshSession(currentSession) {
-        var _a;
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
+    async refreshSession(currentSession) {
+        try {
+            return await this._useSession(async (result) => {
+                var _a;
                 if (!currentSession) {
-                    const { data, error } = yield this.getSession();
+                    const { data, error } = result;
                     if (error) {
                         throw error;
                     }
@@ -17817,7 +17883,7 @@ class GoTrueClient {
                 if (!(currentSession === null || currentSession === void 0 ? void 0 : currentSession.refresh_token)) {
                     throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthSessionMissingError();
                 }
-                const { session, error } = yield this._callRefreshToken(currentSession.refresh_token);
+                const { session, error } = await this._callRefreshToken(currentSession.refresh_token);
                 if (error) {
                     return { data: { user: null, session: null }, error: error };
                 }
@@ -17825,95 +17891,94 @@ class GoTrueClient {
                     return { data: { user: null, session: null }, error: null };
                 }
                 return { data: { user: session.user, session }, error: null };
+            });
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: { user: null, session: null }, error };
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: { user: null, session: null }, error };
-                }
-                throw error;
-            }
-        });
+            throw error;
+        }
     }
     /**
      * Gets the session data from a URL string
      */
-    _getSessionFromUrl(isPKCEFlow) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                if (!(0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)())
-                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No browser detected.');
-                if (this.flowType === 'implicit' && !this._isImplicitGrantFlow()) {
-                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('Not a valid implicit grant flow url.');
-                }
-                else if (this.flowType == 'pkce' && !isPKCEFlow) {
-                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthPKCEGrantCodeExchangeError('Not a valid PKCE flow url.');
-                }
-                if (isPKCEFlow) {
-                    const authCode = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('code');
-                    if (!authCode)
-                        throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthPKCEGrantCodeExchangeError('No code detected.');
-                    const { data, error } = yield this.exchangeCodeForSession(authCode);
-                    if (error)
-                        throw error;
-                    if (!data.session)
-                        throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthPKCEGrantCodeExchangeError('No session detected.');
-                    let url = new URL(window.location.href);
-                    url.searchParams.delete('code');
-                    window.history.replaceState(window.history.state, '', url.toString());
-                    return { data: { session: data.session, redirectType: null }, error: null };
-                }
-                const error_description = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('error_description');
-                if (error_description) {
-                    const error_code = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('error_code');
-                    if (!error_code)
-                        throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No error_code detected.');
-                    const error = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('error');
-                    if (!error)
-                        throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No error detected.');
-                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError(error_description, { error, code: error_code });
-                }
-                const provider_token = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('provider_token');
-                const provider_refresh_token = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('provider_refresh_token');
-                const access_token = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('access_token');
-                if (!access_token)
-                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No access_token detected.');
-                const expires_in = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('expires_in');
-                if (!expires_in)
-                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No expires_in detected.');
-                const refresh_token = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('refresh_token');
-                if (!refresh_token)
-                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No refresh_token detected.');
-                const token_type = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('token_type');
-                if (!token_type)
-                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No token_type detected.');
-                const timeNow = Math.round(Date.now() / 1000);
-                const expires_at = timeNow + parseInt(expires_in);
-                const { data, error } = yield this.getUser(access_token);
+    async _getSessionFromUrl(isPKCEFlow) {
+        try {
+            if (!(0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)())
+                throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No browser detected.');
+            if (this.flowType === 'implicit' && !this._isImplicitGrantFlow()) {
+                throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('Not a valid implicit grant flow url.');
+            }
+            else if (this.flowType == 'pkce' && !isPKCEFlow) {
+                throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthPKCEGrantCodeExchangeError('Not a valid PKCE flow url.');
+            }
+            if (isPKCEFlow) {
+                const authCode = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('code');
+                if (!authCode)
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthPKCEGrantCodeExchangeError('No code detected.');
+                const { data, error } = await this.exchangeCodeForSession(authCode);
                 if (error)
                     throw error;
-                const user = data.user;
-                const session = {
-                    provider_token,
-                    provider_refresh_token,
-                    access_token,
-                    expires_in: parseInt(expires_in),
-                    expires_at,
-                    refresh_token,
-                    token_type,
-                    user,
-                };
-                const redirectType = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('type');
-                // Remove tokens from URL
-                window.location.hash = '';
-                return { data: { session, redirectType }, error: null };
+                if (!data.session)
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthPKCEGrantCodeExchangeError('No session detected.');
+                let url = new URL(window.location.href);
+                url.searchParams.delete('code');
+                window.history.replaceState(window.history.state, '', url.toString());
+                return { data: { session: data.session, redirectType: null }, error: null };
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: { session: null, redirectType: null }, error };
-                }
+            const error_description = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('error_description');
+            if (error_description) {
+                const error_code = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('error_code');
+                if (!error_code)
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No error_code detected.');
+                const error = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('error');
+                if (!error)
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No error detected.');
+                throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError(error_description, { error, code: error_code });
+            }
+            const provider_token = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('provider_token');
+            const provider_refresh_token = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('provider_refresh_token');
+            const access_token = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('access_token');
+            if (!access_token)
+                throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No access_token detected.');
+            const expires_in = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('expires_in');
+            if (!expires_in)
+                throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No expires_in detected.');
+            const refresh_token = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('refresh_token');
+            if (!refresh_token)
+                throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No refresh_token detected.');
+            const token_type = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('token_type');
+            if (!token_type)
+                throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No token_type detected.');
+            const timeNow = Math.round(Date.now() / 1000);
+            const expires_at = timeNow + parseInt(expires_in);
+            const { data, error } = await this.getUser(access_token);
+            if (error)
                 throw error;
+            const user = data.user;
+            const session = {
+                provider_token,
+                provider_refresh_token,
+                access_token,
+                expires_in: parseInt(expires_in),
+                expires_at,
+                refresh_token,
+                token_type,
+                user,
+            };
+            const redirectType = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('type');
+            // Remove tokens from URL
+            window.location.hash = '';
+            this._debug('#_getSessionFromUrl()', 'clearing window.location.hash');
+            return { data: { session, redirectType }, error: null };
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: { session: null, redirectType: null }, error };
             }
-        });
+            throw error;
+        }
     }
     /**
      * Checks if the current URL contains parameters given by an implicit oauth grant flow (https://www.rfc-editor.org/rfc/rfc6749.html#section-4.2)
@@ -17926,11 +17991,9 @@ class GoTrueClient {
     /**
      * Checks if the current URL and backing storage contain parameters given by a PKCE flow
      */
-    _isPKCEFlow() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const currentStorageContent = yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getItemAsync)(this.storage, `${this.storageKey}-code-verifier`);
-            return Boolean((0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('code')) && Boolean(currentStorageContent);
-        });
+    async _isPKCEFlow() {
+        const currentStorageContent = await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getItemAsync)(this.storage, `${this.storageKey}-code-verifier`);
+        return Boolean((0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('code')) && Boolean(currentStorageContent);
     }
     /**
      * Inside a browser context, `signOut()` will remove the logged in user from the browser session
@@ -17938,17 +18001,19 @@ class GoTrueClient {
      *
      * For server-side management, you can revoke all refresh tokens for a user by passing a user's JWT through to `auth.api.signOut(JWT: string)`.
      * There is no way to revoke a user's access token jwt until it expires. It is recommended to set a shorter expiry on the jwt for this reason.
+     *
+     * If using others scope, no `SIGNED_OUT` event is fired!
      */
-    signOut() {
-        var _a;
-        return __awaiter(this, void 0, void 0, function* () {
-            const { data, error: sessionError } = yield this.getSession();
+    async signOut({ scope } = { scope: 'global' }) {
+        return await this._useSession(async (result) => {
+            var _a;
+            const { data, error: sessionError } = result;
             if (sessionError) {
                 return { error: sessionError };
             }
             const accessToken = (_a = data.session) === null || _a === void 0 ? void 0 : _a.access_token;
             if (accessToken) {
-                const { error } = yield this.admin.signOut(accessToken);
+                const { error } = await this.admin.signOut(accessToken, scope);
                 if (error) {
                     // ignore 404s since user might not exist anymore
                     // ignore 401s since an invalid or expired JWT should sign out the current session
@@ -17957,9 +18022,11 @@ class GoTrueClient {
                     }
                 }
             }
-            yield this._removeSession();
-            yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.removeItemAsync)(this.storage, `${this.storageKey}-code-verifier`);
-            yield this._notifyAllSubscribers('SIGNED_OUT', null);
+            if (scope !== 'others') {
+                await this._removeSession();
+                await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.removeItemAsync)(this.storage, `${this.storageKey}-code-verifier`);
+                await this._notifyAllSubscribers('SIGNED_OUT', null);
+            }
             return { error: null };
         });
     }
@@ -17973,24 +18040,28 @@ class GoTrueClient {
             id,
             callback,
             unsubscribe: () => {
+                this._debug('#unsubscribe()', 'state change callback with id removed', id);
                 this.stateChangeEmitters.delete(id);
             },
         };
+        this._debug('#onAuthStateChange()', 'registered callback with id', id);
         this.stateChangeEmitters.set(id, subscription);
-        this.emitInitialSession(id);
+        this._emitInitialSession(id);
         return { data: { subscription } };
     }
-    emitInitialSession(id) {
-        var _a, _b;
-        return __awaiter(this, void 0, void 0, function* () {
+    async _emitInitialSession(id) {
+        return await this._useSession(async (result) => {
+            var _a, _b;
             try {
-                const { data: { session }, error, } = yield this.getSession();
+                const { data: { session }, error, } = result;
                 if (error)
                     throw error;
-                yield ((_a = this.stateChangeEmitters.get(id)) === null || _a === void 0 ? void 0 : _a.callback('INITIAL_SESSION', session));
+                await ((_a = this.stateChangeEmitters.get(id)) === null || _a === void 0 ? void 0 : _a.callback('INITIAL_SESSION', session));
+                this._debug('INITIAL_SESSION', 'callback id', id, 'session', session);
             }
             catch (err) {
-                yield ((_b = this.stateChangeEmitters.get(id)) === null || _b === void 0 ? void 0 : _b.callback('INITIAL_SESSION', null));
+                await ((_b = this.stateChangeEmitters.get(id)) === null || _b === void 0 ? void 0 : _b.callback('INITIAL_SESSION', null));
+                this._debug('INITIAL_SESSION', 'callback id', id, 'error', err);
                 console.error(err);
             }
         });
@@ -18002,65 +18073,68 @@ class GoTrueClient {
      * @param options.redirectTo The URL to send the user to after they click the password reset link.
      * @param options.captchaToken Verification token received when the user completes the captcha on the site.
      */
-    resetPasswordForEmail(email, options = {}) {
-        return __awaiter(this, void 0, void 0, function* () {
-            let codeChallenge = null;
-            let codeChallengeMethod = null;
-            if (this.flowType === 'pkce') {
-                const codeVerifier = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEVerifier)();
-                yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.setItemAsync)(this.storage, `${this.storageKey}-code-verifier`, codeVerifier);
-                codeChallenge = yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEChallenge)(codeVerifier);
-                codeChallengeMethod = codeVerifier === codeChallenge ? 'plain' : 's256';
+    async resetPasswordForEmail(email, options = {}) {
+        let codeChallenge = null;
+        let codeChallengeMethod = null;
+        if (this.flowType === 'pkce') {
+            const codeVerifier = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEVerifier)();
+            await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.setItemAsync)(this.storage, `${this.storageKey}-code-verifier`, codeVerifier);
+            codeChallenge = await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEChallenge)(codeVerifier);
+            codeChallengeMethod = codeVerifier === codeChallenge ? 'plain' : 's256';
+        }
+        try {
+            return await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/recover`, {
+                body: {
+                    email,
+                    code_challenge: codeChallenge,
+                    code_challenge_method: codeChallengeMethod,
+                    gotrue_meta_security: { captcha_token: options.captchaToken },
+                },
+                headers: this.headers,
+                redirectTo: options.redirectTo,
+            });
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: null, error };
             }
-            try {
-                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/recover`, {
-                    body: {
-                        email,
-                        code_challenge: codeChallenge,
-                        code_challenge_method: codeChallengeMethod,
-                        gotrue_meta_security: { captcha_token: options.captchaToken },
-                    },
-                    headers: this.headers,
-                    redirectTo: options.redirectTo,
-                });
-            }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: null, error };
-                }
-                throw error;
-            }
-        });
+            throw error;
+        }
     }
     /**
      * Generates a new JWT.
      * @param refreshToken A valid refresh token that was returned on login.
      */
-    _refreshAccessToken(refreshToken) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const startedAt = Date.now();
-                // will attempt to refresh the token with exponential backoff
-                return yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.retryable)((attempt) => __awaiter(this, void 0, void 0, function* () {
-                    yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.sleep)(attempt * 200); // 0, 200, 400, 800, ...
-                    return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/token?grant_type=refresh_token`, {
-                        body: { refresh_token: refreshToken },
-                        headers: this.headers,
-                        xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
-                    });
-                }), (attempt, _, result) => result &&
-                    result.error &&
-                    result.error instanceof _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthRetryableFetchError &&
-                    // retryable only if the request can be sent before the backoff overflows the tick duration
-                    Date.now() + (attempt + 1) * 200 - startedAt < AUTO_REFRESH_TICK_DURATION);
+    async _refreshAccessToken(refreshToken) {
+        const debugName = `#_refreshAccessToken(${refreshToken.substring(0, 5)}...)`;
+        this._debug(debugName, 'begin');
+        try {
+            const startedAt = Date.now();
+            // will attempt to refresh the token with exponential backoff
+            return await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.retryable)(async (attempt) => {
+                await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.sleep)(attempt * 200); // 0, 200, 400, 800, ...
+                this._debug(debugName, 'refreshing attempt', attempt);
+                return await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/token?grant_type=refresh_token`, {
+                    body: { refresh_token: refreshToken },
+                    headers: this.headers,
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
+                });
+            }, (attempt, _, result) => result &&
+                result.error &&
+                (0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthRetryableFetchError)(result.error) &&
+                // retryable only if the request can be sent before the backoff overflows the tick duration
+                Date.now() + (attempt + 1) * 200 - startedAt < AUTO_REFRESH_TICK_DURATION);
+        }
+        catch (error) {
+            this._debug(debugName, 'error', error);
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: { session: null, user: null }, error };
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: { session: null, user: null }, error };
-                }
-                throw error;
-            }
-        });
+            throw error;
+        }
+        finally {
+            this._debug(debugName, 'end');
+        }
     }
     _isValidSession(maybeSession) {
         const isValidSession = typeof maybeSession === 'object' &&
@@ -18070,146 +18144,160 @@ class GoTrueClient {
             'expires_at' in maybeSession;
         return isValidSession;
     }
-    _handleProviderSignIn(provider, options) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const url = yield this._getUrlForProvider(provider, {
-                redirectTo: options.redirectTo,
-                scopes: options.scopes,
-                queryParams: options.queryParams,
-            });
-            // try to open on the browser
-            if ((0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)() && !options.skipBrowserRedirect) {
-                window.location.assign(url);
-            }
-            return { data: { provider, url }, error: null };
+    async _handleProviderSignIn(provider, options) {
+        const url = await this._getUrlForProvider(provider, {
+            redirectTo: options.redirectTo,
+            scopes: options.scopes,
+            queryParams: options.queryParams,
         });
+        this._debug('#_handleProviderSignIn()', 'provider', provider, 'options', options, 'url', url);
+        // try to open on the browser
+        if ((0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)() && !options.skipBrowserRedirect) {
+            window.location.assign(url);
+        }
+        return { data: { provider, url }, error: null };
     }
     /**
      * Recovers the session from LocalStorage and refreshes
      * Note: this method is async to accommodate for AsyncStorage e.g. in React native.
      */
-    _recoverAndRefresh() {
+    async _recoverAndRefresh() {
         var _a;
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const currentSession = yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getItemAsync)(this.storage, this.storageKey);
-                if (!this._isValidSession(currentSession)) {
-                    if (currentSession !== null) {
-                        yield this._removeSession();
-                    }
-                    return;
+        const debugName = '#_recoverAndRefresh()';
+        this._debug(debugName, 'begin');
+        try {
+            const currentSession = await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getItemAsync)(this.storage, this.storageKey);
+            this._debug(debugName, 'session from storage', currentSession);
+            if (!this._isValidSession(currentSession)) {
+                this._debug(debugName, 'session is not valid');
+                if (currentSession !== null) {
+                    await this._removeSession();
                 }
-                const timeNow = Math.round(Date.now() / 1000);
-                if (((_a = currentSession.expires_at) !== null && _a !== void 0 ? _a : Infinity) < timeNow + _lib_constants__WEBPACK_IMPORTED_MODULE_1__.EXPIRY_MARGIN) {
-                    if (this.autoRefreshToken && currentSession.refresh_token) {
-                        const { error } = yield this._callRefreshToken(currentSession.refresh_token);
-                        if (error) {
-                            console.error(error);
-                            if (!(0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthRetryableFetchError)(error)) {
-                                yield this._removeSession();
-                            }
+                return;
+            }
+            const timeNow = Math.round(Date.now() / 1000);
+            const expiresWithMargin = ((_a = currentSession.expires_at) !== null && _a !== void 0 ? _a : Infinity) < timeNow + _lib_constants__WEBPACK_IMPORTED_MODULE_1__.EXPIRY_MARGIN;
+            this._debug(debugName, `session has${expiresWithMargin ? '' : ' not'} expired with margin of ${_lib_constants__WEBPACK_IMPORTED_MODULE_1__.EXPIRY_MARGIN}s`);
+            if (expiresWithMargin) {
+                if (this.autoRefreshToken && currentSession.refresh_token) {
+                    const { error } = await this._callRefreshToken(currentSession.refresh_token);
+                    if (error) {
+                        console.error(error);
+                        if (!(0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthRetryableFetchError)(error)) {
+                            this._debug(debugName, 'refresh failed with a non-retryable error, removing the session', error);
+                            await this._removeSession();
                         }
                     }
                 }
-                else {
-                    // no need to persist currentSession again, as we just loaded it from
-                    // local storage; persisting it again may overwrite a value saved by
-                    // another client with access to the same local storage
-                    yield this._notifyAllSubscribers('SIGNED_IN', currentSession);
-                }
             }
-            catch (err) {
-                console.error(err);
-                return;
+            else {
+                // no need to persist currentSession again, as we just loaded it from
+                // local storage; persisting it again may overwrite a value saved by
+                // another client with access to the same local storage
+                await this._notifyAllSubscribers('SIGNED_IN', currentSession);
             }
-        });
+        }
+        catch (err) {
+            this._debug(debugName, 'error', err);
+            console.error(err);
+            return;
+        }
+        finally {
+            this._debug(debugName, 'end');
+        }
     }
-    _callRefreshToken(refreshToken) {
+    async _callRefreshToken(refreshToken) {
         var _a, _b;
-        return __awaiter(this, void 0, void 0, function* () {
-            // refreshing is already in progress
-            if (this.refreshingDeferred) {
-                return this.refreshingDeferred.promise;
-            }
-            try {
-                this.refreshingDeferred = new _lib_helpers__WEBPACK_IMPORTED_MODULE_4__.Deferred();
-                if (!refreshToken) {
-                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthSessionMissingError();
-                }
-                const { data, error } = yield this._refreshAccessToken(refreshToken);
-                if (error)
-                    throw error;
-                if (!data.session)
-                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthSessionMissingError();
-                yield this._saveSession(data.session);
-                yield this._notifyAllSubscribers('TOKEN_REFRESHED', data.session);
-                const result = { session: data.session, error: null };
-                this.refreshingDeferred.resolve(result);
+        if (!refreshToken) {
+            throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthSessionMissingError();
+        }
+        // refreshing is already in progress
+        if (this.refreshingDeferred) {
+            return this.refreshingDeferred.promise;
+        }
+        const debugName = `#_callRefreshToken(${refreshToken.substring(0, 5)}...)`;
+        this._debug(debugName, 'begin');
+        try {
+            this.refreshingDeferred = new _lib_helpers__WEBPACK_IMPORTED_MODULE_4__.Deferred();
+            const { data, error } = await this._refreshAccessToken(refreshToken);
+            if (error)
+                throw error;
+            if (!data.session)
+                throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthSessionMissingError();
+            await this._saveSession(data.session);
+            await this._notifyAllSubscribers('TOKEN_REFRESHED', data.session);
+            const result = { session: data.session, error: null };
+            this.refreshingDeferred.resolve(result);
+            return result;
+        }
+        catch (error) {
+            this._debug(debugName, 'error', error);
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                const result = { session: null, error };
+                (_a = this.refreshingDeferred) === null || _a === void 0 ? void 0 : _a.resolve(result);
                 return result;
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    const result = { session: null, error };
-                    (_a = this.refreshingDeferred) === null || _a === void 0 ? void 0 : _a.resolve(result);
-                    return result;
-                }
-                (_b = this.refreshingDeferred) === null || _b === void 0 ? void 0 : _b.reject(error);
-                throw error;
-            }
-            finally {
-                this.refreshingDeferred = null;
-            }
-        });
+            (_b = this.refreshingDeferred) === null || _b === void 0 ? void 0 : _b.reject(error);
+            throw error;
+        }
+        finally {
+            this.refreshingDeferred = null;
+            this._debug(debugName, 'end');
+        }
     }
-    _notifyAllSubscribers(event, session, broadcast = true) {
-        return __awaiter(this, void 0, void 0, function* () {
+    async _notifyAllSubscribers(event, session, broadcast = true) {
+        const debugName = `#_notifyAllSubscribers(${event})`;
+        this._debug(debugName, 'begin', session, `broadcast = ${broadcast}`);
+        try {
             if (this.broadcastChannel && broadcast) {
                 this.broadcastChannel.postMessage({ event, session });
             }
             const errors = [];
-            const promises = Array.from(this.stateChangeEmitters.values()).map((x) => __awaiter(this, void 0, void 0, function* () {
+            const promises = Array.from(this.stateChangeEmitters.values()).map(async (x) => {
                 try {
-                    yield x.callback(event, session);
+                    await x.callback(event, session);
                 }
                 catch (e) {
                     errors.push(e);
                 }
-            }));
-            yield Promise.all(promises);
+            });
+            await Promise.all(promises);
             if (errors.length > 0) {
                 for (let i = 0; i < errors.length; i += 1) {
                     console.error(errors[i]);
                 }
                 throw errors[0];
             }
-        });
+        }
+        finally {
+            this._debug(debugName, 'end');
+        }
     }
     /**
      * set currentSession and currentUser
      * process to _startAutoRefreshToken if possible
      */
-    _saveSession(session) {
-        return __awaiter(this, void 0, void 0, function* () {
-            if (!this.persistSession) {
-                this.inMemorySession = session;
-            }
-            if (this.persistSession && session.expires_at) {
-                yield this._persistSession(session);
-            }
-        });
+    async _saveSession(session) {
+        this._debug('#_saveSession()', session);
+        if (!this.persistSession) {
+            this.inMemorySession = session;
+        }
+        if (this.persistSession && session.expires_at) {
+            await this._persistSession(session);
+        }
     }
     _persistSession(currentSession) {
+        this._debug('#_persistSession()', currentSession);
         return (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.setItemAsync)(this.storage, this.storageKey, currentSession);
     }
-    _removeSession() {
-        return __awaiter(this, void 0, void 0, function* () {
-            if (this.persistSession) {
-                yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.removeItemAsync)(this.storage, this.storageKey);
-            }
-            else {
-                this.inMemorySession = null;
-            }
-        });
+    async _removeSession() {
+        this._debug('#_removeSession()');
+        if (this.persistSession) {
+            await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.removeItemAsync)(this.storage, this.storageKey);
+        }
+        else {
+            this.inMemorySession = null;
+        }
     }
     /**
      * Removes any registered visibilitychange callback.
@@ -18218,6 +18306,7 @@ class GoTrueClient {
      * {@see #stopAutoRefresh}
      */
     _removeVisibilityChangedCallback() {
+        this._debug('#_removeVisibilityChangedCallback()');
         const callback = this.visibilityChangedCallback;
         this.visibilityChangedCallback = null;
         try {
@@ -18233,43 +18322,41 @@ class GoTrueClient {
      * This is the private implementation of {@link #startAutoRefresh}. Use this
      * within the library.
      */
-    _startAutoRefresh() {
-        return __awaiter(this, void 0, void 0, function* () {
-            yield this._stopAutoRefresh();
-            const ticker = setInterval(() => this._autoRefreshTokenTick(), AUTO_REFRESH_TICK_DURATION);
-            this.autoRefreshTicker = ticker;
-            if (ticker && typeof ticker === 'object' && typeof ticker.unref === 'function') {
-                // ticker is a NodeJS Timeout object that has an `unref` method
-                // https://nodejs.org/api/timers.html#timeoutunref
-                // When auto refresh is used in NodeJS (like for testing) the
-                // `setInterval` is preventing the process from being marked as
-                // finished and tests run endlessly. This can be prevented by calling
-                // `unref()` on the returned object.
-                ticker.unref();
-                // @ts-ignore
-            }
-            else if (typeof Deno !== 'undefined' && typeof Deno.unrefTimer === 'function') {
-                // similar like for NodeJS, but with the Deno API
-                // https://deno.land/api@latest?unstable&s=Deno.unrefTimer
-                // @ts-ignore
-                Deno.unrefTimer(ticker);
-            }
-            // run the tick immediately
-            yield this._autoRefreshTokenTick();
-        });
+    async _startAutoRefresh() {
+        await this._stopAutoRefresh();
+        this._debug('#_startAutoRefresh()');
+        const ticker = setInterval(() => this._autoRefreshTokenTick(), AUTO_REFRESH_TICK_DURATION);
+        this.autoRefreshTicker = ticker;
+        if (ticker && typeof ticker === 'object' && typeof ticker.unref === 'function') {
+            // ticker is a NodeJS Timeout object that has an `unref` method
+            // https://nodejs.org/api/timers.html#timeoutunref
+            // When auto refresh is used in NodeJS (like for testing) the
+            // `setInterval` is preventing the process from being marked as
+            // finished and tests run endlessly. This can be prevented by calling
+            // `unref()` on the returned object.
+            ticker.unref();
+            // @ts-ignore
+        }
+        else if (typeof Deno !== 'undefined' && typeof Deno.unrefTimer === 'function') {
+            // similar like for NodeJS, but with the Deno API
+            // https://deno.land/api@latest?unstable&s=Deno.unrefTimer
+            // @ts-ignore
+            Deno.unrefTimer(ticker);
+        }
+        // run the tick immediately
+        await this._autoRefreshTokenTick();
     }
     /**
      * This is the private implementation of {@link #stopAutoRefresh}. Use this
      * within the library.
      */
-    _stopAutoRefresh() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const ticker = this.autoRefreshTicker;
-            this.autoRefreshTicker = null;
-            if (ticker) {
-                clearInterval(ticker);
-            }
-        });
+    async _stopAutoRefresh() {
+        this._debug('#_stopAutoRefresh()');
+        const ticker = this.autoRefreshTicker;
+        this.autoRefreshTicker = null;
+        if (ticker) {
+            clearInterval(ticker);
+        }
     }
     /**
      * Starts an auto-refresh process in the background. The session is checked
@@ -18293,11 +18380,9 @@ class GoTrueClient {
      *
      * {@see #stopAutoRefresh}
      */
-    startAutoRefresh() {
-        return __awaiter(this, void 0, void 0, function* () {
-            this._removeVisibilityChangedCallback();
-            yield this._startAutoRefresh();
-        });
+    async startAutoRefresh() {
+        this._removeVisibilityChangedCallback();
+        await this._startAutoRefresh();
     }
     /**
      * Stops an active auto refresh process running in the background (if any).
@@ -18307,83 +18392,88 @@ class GoTrueClient {
      *
      * See {@link #startAutoRefresh} for more details.
      */
-    stopAutoRefresh() {
-        return __awaiter(this, void 0, void 0, function* () {
-            this._removeVisibilityChangedCallback();
-            yield this._stopAutoRefresh();
-        });
+    async stopAutoRefresh() {
+        this._removeVisibilityChangedCallback();
+        await this._stopAutoRefresh();
     }
     /**
      * Runs the auto refresh token tick.
      */
-    _autoRefreshTokenTick() {
-        return __awaiter(this, void 0, void 0, function* () {
+    async _autoRefreshTokenTick() {
+        this._debug('#_autoRefreshTokenTick()', 'begin');
+        try {
             const now = Date.now();
             try {
-                const { data: { session }, } = yield this.getSession();
-                if (!session || !session.refresh_token || !session.expires_at) {
-                    return;
-                }
-                // session will expire in this many ticks (or has already expired if <= 0)
-                const expiresInTicks = Math.floor((session.expires_at * 1000 - now) / AUTO_REFRESH_TICK_DURATION);
-                if (expiresInTicks < AUTO_REFRESH_TICK_THRESHOLD) {
-                    yield this._callRefreshToken(session.refresh_token);
-                }
+                return await this._useSession(async (result) => {
+                    const { data: { session }, } = result;
+                    if (!session || !session.refresh_token || !session.expires_at) {
+                        this._debug('#_autoRefreshTokenTick()', 'no session');
+                        return;
+                    }
+                    // session will expire in this many ticks (or has already expired if <= 0)
+                    const expiresInTicks = Math.floor((session.expires_at * 1000 - now) / AUTO_REFRESH_TICK_DURATION);
+                    this._debug('#_autoRefreshTokenTick()', `access token expires in ${expiresInTicks} ticks, a tick lasts ${AUTO_REFRESH_TICK_DURATION}ms, refresh threshold is ${AUTO_REFRESH_TICK_THRESHOLD} ticks`);
+                    if (expiresInTicks <= AUTO_REFRESH_TICK_THRESHOLD) {
+                        await this._callRefreshToken(session.refresh_token);
+                    }
+                });
             }
             catch (e) {
                 console.error('Auto refresh tick failed with error. This is likely a transient error.', e);
             }
-        });
+        }
+        finally {
+            this._debug('#_autoRefreshTokenTick()', 'end');
+        }
     }
     /**
      * Registers callbacks on the browser / platform, which in-turn run
      * algorithms when the browser window/tab are in foreground. On non-browser
      * platforms it assumes always foreground.
      */
-    _handleVisibilityChange() {
-        return __awaiter(this, void 0, void 0, function* () {
-            if (!(0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)() || !(window === null || window === void 0 ? void 0 : window.addEventListener)) {
-                if (this.autoRefreshToken) {
-                    // in non-browser environments the refresh token ticker runs always
-                    this.startAutoRefresh();
-                }
-                return false;
+    async _handleVisibilityChange() {
+        this._debug('#_handleVisibilityChange()');
+        if (!(0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)() || !(window === null || window === void 0 ? void 0 : window.addEventListener)) {
+            if (this.autoRefreshToken) {
+                // in non-browser environments the refresh token ticker runs always
+                this.startAutoRefresh();
             }
-            try {
-                this.visibilityChangedCallback = () => __awaiter(this, void 0, void 0, function* () { return yield this._onVisibilityChanged(false); });
-                window === null || window === void 0 ? void 0 : window.addEventListener('visibilitychange', this.visibilityChangedCallback);
-                // now immediately call the visbility changed callback to setup with the
-                // current visbility state
-                yield this._onVisibilityChanged(true); // initial call
-            }
-            catch (error) {
-                console.error('_handleVisibilityChange', error);
-            }
-        });
+            return false;
+        }
+        try {
+            this.visibilityChangedCallback = async () => await this._onVisibilityChanged(false);
+            window === null || window === void 0 ? void 0 : window.addEventListener('visibilitychange', this.visibilityChangedCallback);
+            // now immediately call the visbility changed callback to setup with the
+            // current visbility state
+            await this._onVisibilityChanged(true); // initial call
+        }
+        catch (error) {
+            console.error('_handleVisibilityChange', error);
+        }
     }
     /**
      * Callback registered with `window.addEventListener('visibilitychange')`.
      */
-    _onVisibilityChanged(isInitial) {
-        return __awaiter(this, void 0, void 0, function* () {
-            if (document.visibilityState === 'visible') {
-                if (!isInitial) {
-                    // initial visibility change setup is handled in another flow under #initialize()
-                    yield this.initializePromise;
-                    yield this._recoverAndRefresh();
-                }
-                if (this.autoRefreshToken) {
-                    // in browser environments the refresh token ticker runs only on focused tabs
-                    // which prevents race conditions
-                    this._startAutoRefresh();
-                }
+    async _onVisibilityChanged(isInitial) {
+        this._debug(`#_onVisibilityChanged(${isInitial})`, 'visibilityState', document.visibilityState);
+        if (document.visibilityState === 'visible') {
+            if (!isInitial) {
+                // initial visibility change setup is handled in another flow under #initialize()
+                await this.initializePromise;
+                await this._recoverAndRefresh();
+                this._debug('#_onVisibilityChanged()', 'finished waiting for initialize, _recoverAndRefresh');
             }
-            else if (document.visibilityState === 'hidden') {
-                if (this.autoRefreshToken) {
-                    this._stopAutoRefresh();
-                }
+            if (this.autoRefreshToken) {
+                // in browser environments the refresh token ticker runs only on focused tabs
+                // which prevents race conditions
+                this._startAutoRefresh();
             }
-        });
+        }
+        else if (document.visibilityState === 'hidden') {
+            if (this.autoRefreshToken) {
+                this._stopAutoRefresh();
+            }
+        }
     }
     /**
      * Generates the relevant login URL for a third-party provider.
@@ -18391,66 +18481,65 @@ class GoTrueClient {
      * @param options.scopes A space-separated list of scopes granted to the OAuth application.
      * @param options.queryParams An object of key-value pairs containing query parameters granted to the OAuth application.
      */
-    _getUrlForProvider(provider, options) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const urlParams = [`provider=${encodeURIComponent(provider)}`];
-            if (options === null || options === void 0 ? void 0 : options.redirectTo) {
-                urlParams.push(`redirect_to=${encodeURIComponent(options.redirectTo)}`);
-            }
-            if (options === null || options === void 0 ? void 0 : options.scopes) {
-                urlParams.push(`scopes=${encodeURIComponent(options.scopes)}`);
-            }
-            if (this.flowType === 'pkce') {
-                const codeVerifier = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEVerifier)();
-                yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.setItemAsync)(this.storage, `${this.storageKey}-code-verifier`, codeVerifier);
-                const codeChallenge = yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEChallenge)(codeVerifier);
-                const codeChallengeMethod = codeVerifier === codeChallenge ? 'plain' : 's256';
-                const flowParams = new URLSearchParams({
-                    code_challenge: `${encodeURIComponent(codeChallenge)}`,
-                    code_challenge_method: `${encodeURIComponent(codeChallengeMethod)}`,
-                });
-                urlParams.push(flowParams.toString());
-            }
-            if (options === null || options === void 0 ? void 0 : options.queryParams) {
-                const query = new URLSearchParams(options.queryParams);
-                urlParams.push(query.toString());
-            }
-            return `${this.url}/authorize?${urlParams.join('&')}`;
-        });
+    async _getUrlForProvider(provider, options) {
+        const urlParams = [`provider=${encodeURIComponent(provider)}`];
+        if (options === null || options === void 0 ? void 0 : options.redirectTo) {
+            urlParams.push(`redirect_to=${encodeURIComponent(options.redirectTo)}`);
+        }
+        if (options === null || options === void 0 ? void 0 : options.scopes) {
+            urlParams.push(`scopes=${encodeURIComponent(options.scopes)}`);
+        }
+        if (this.flowType === 'pkce') {
+            const codeVerifier = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEVerifier)();
+            await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.setItemAsync)(this.storage, `${this.storageKey}-code-verifier`, codeVerifier);
+            const codeChallenge = await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEChallenge)(codeVerifier);
+            const codeChallengeMethod = codeVerifier === codeChallenge ? 'plain' : 's256';
+            this._debug('PKCE', 'code verifier', `${codeVerifier.substring(0, 5)}...`, 'code challenge', codeChallenge, 'method', codeChallengeMethod);
+            const flowParams = new URLSearchParams({
+                code_challenge: `${encodeURIComponent(codeChallenge)}`,
+                code_challenge_method: `${encodeURIComponent(codeChallengeMethod)}`,
+            });
+            urlParams.push(flowParams.toString());
+        }
+        if (options === null || options === void 0 ? void 0 : options.queryParams) {
+            const query = new URLSearchParams(options.queryParams);
+            urlParams.push(query.toString());
+        }
+        return `${this.url}/authorize?${urlParams.join('&')}`;
     }
-    _unenroll(params) {
-        var _a;
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const { data: sessionData, error: sessionError } = yield this.getSession();
+    async _unenroll(params) {
+        try {
+            return await this._useSession(async (result) => {
+                var _a;
+                const { data: sessionData, error: sessionError } = result;
                 if (sessionError) {
                     return { data: null, error: sessionError };
                 }
-                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'DELETE', `${this.url}/factors/${params.factorId}`, {
+                return await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'DELETE', `${this.url}/factors/${params.factorId}`, {
                     headers: this.headers,
                     jwt: (_a = sessionData === null || sessionData === void 0 ? void 0 : sessionData.session) === null || _a === void 0 ? void 0 : _a.access_token,
                 });
+            });
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: null, error };
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: null, error };
-                }
-                throw error;
-            }
-        });
+            throw error;
+        }
     }
     /**
      * {@see GoTrueMFAApi#enroll}
      */
-    _enroll(params) {
-        var _a, _b;
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const { data: sessionData, error: sessionError } = yield this.getSession();
+    async _enroll(params) {
+        try {
+            return await this._useSession(async (result) => {
+                var _a, _b;
+                const { data: sessionData, error: sessionError } = result;
                 if (sessionError) {
                     return { data: null, error: sessionError };
                 }
-                const { data, error } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/factors`, {
+                const { data, error } = await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/factors`, {
                     body: {
                         friendly_name: params.friendlyName,
                         factor_type: params.factorType,
@@ -18466,27 +18555,27 @@ class GoTrueClient {
                     data.totp.qr_code = `data:image/svg+xml;utf-8,${data.totp.qr_code}`;
                 }
                 return { data, error: null };
+            });
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: null, error };
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: null, error };
-                }
-                throw error;
-            }
-        });
+            throw error;
+        }
     }
     /**
      * {@see GoTrueMFAApi#verify}
      */
-    _verify(params) {
-        var _a;
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const { data: sessionData, error: sessionError } = yield this.getSession();
+    async _verify(params) {
+        try {
+            return await this._useSession(async (result) => {
+                var _a;
+                const { data: sessionData, error: sessionError } = result;
                 if (sessionError) {
                     return { data: null, error: sessionError };
                 }
-                const { data, error } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/factors/${params.factorId}/verify`, {
+                const { data, error } = await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/factors/${params.factorId}/verify`, {
                     body: { code: params.code, challenge_id: params.challengeId },
                     headers: this.headers,
                     jwt: (_a = sessionData === null || sessionData === void 0 ? void 0 : sessionData.session) === null || _a === void 0 ? void 0 : _a.access_token,
@@ -18494,87 +18583,83 @@ class GoTrueClient {
                 if (error) {
                     return { data: null, error };
                 }
-                yield this._saveSession(Object.assign({ expires_at: Math.round(Date.now() / 1000) + data.expires_in }, data));
-                yield this._notifyAllSubscribers('MFA_CHALLENGE_VERIFIED', data);
+                await this._saveSession(Object.assign({ expires_at: Math.round(Date.now() / 1000) + data.expires_in }, data));
+                await this._notifyAllSubscribers('MFA_CHALLENGE_VERIFIED', data);
                 return { data, error };
+            });
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: null, error };
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: null, error };
-                }
-                throw error;
-            }
-        });
+            throw error;
+        }
     }
     /**
      * {@see GoTrueMFAApi#challenge}
      */
-    _challenge(params) {
-        var _a;
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const { data: sessionData, error: sessionError } = yield this.getSession();
+    async _challenge(params) {
+        try {
+            return await this._useSession(async (result) => {
+                var _a;
+                const { data: sessionData, error: sessionError } = result;
                 if (sessionError) {
                     return { data: null, error: sessionError };
                 }
-                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/factors/${params.factorId}/challenge`, {
+                return await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/factors/${params.factorId}/challenge`, {
                     headers: this.headers,
                     jwt: (_a = sessionData === null || sessionData === void 0 ? void 0 : sessionData.session) === null || _a === void 0 ? void 0 : _a.access_token,
                 });
+            });
+        }
+        catch (error) {
+            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                return { data: null, error };
             }
-            catch (error) {
-                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                    return { data: null, error };
-                }
-                throw error;
-            }
-        });
+            throw error;
+        }
     }
     /**
      * {@see GoTrueMFAApi#challengeAndVerify}
      */
-    _challengeAndVerify(params) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { data: challengeData, error: challengeError } = yield this._challenge({
-                factorId: params.factorId,
-            });
-            if (challengeError) {
-                return { data: null, error: challengeError };
-            }
-            return yield this._verify({
-                factorId: params.factorId,
-                challengeId: challengeData.id,
-                code: params.code,
-            });
+    async _challengeAndVerify(params) {
+        const { data: challengeData, error: challengeError } = await this._challenge({
+            factorId: params.factorId,
+        });
+        if (challengeError) {
+            return { data: null, error: challengeError };
+        }
+        return await this._verify({
+            factorId: params.factorId,
+            challengeId: challengeData.id,
+            code: params.code,
         });
     }
     /**
      * {@see GoTrueMFAApi#listFactors}
      */
-    _listFactors() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { data: { user }, error: userError, } = yield this.getUser();
-            if (userError) {
-                return { data: null, error: userError };
-            }
-            const factors = (user === null || user === void 0 ? void 0 : user.factors) || [];
-            const totp = factors.filter((factor) => factor.factor_type === 'totp' && factor.status === 'verified');
-            return {
-                data: {
-                    all: factors,
-                    totp,
-                },
-                error: null,
-            };
-        });
+    async _listFactors() {
+        const { data: { user }, error: userError, } = await this.getUser();
+        if (userError) {
+            return { data: null, error: userError };
+        }
+        const factors = (user === null || user === void 0 ? void 0 : user.factors) || [];
+        const totp = factors.filter((factor) => factor.factor_type === 'totp' && factor.status === 'verified');
+        return {
+            data: {
+                all: factors,
+                totp,
+            },
+            error: null,
+        };
     }
     /**
      * {@see GoTrueMFAApi#getAuthenticatorAssuranceLevel}
      */
-    _getAuthenticatorAssuranceLevel() {
-        var _a, _b;
-        return __awaiter(this, void 0, void 0, function* () {
-            const { data: { session }, error: sessionError, } = yield this.getSession();
+    async _getAuthenticatorAssuranceLevel() {
+        return await this._useSession(async (result) => {
+            var _a, _b;
+            const { data: { session }, error: sessionError, } = result;
             if (sessionError) {
                 return { data: null, error: sessionError };
             }
@@ -18599,6 +18684,7 @@ class GoTrueClient {
         });
     }
 }
+GoTrueClient.nextInstanceID = 0;
 //# sourceMappingURL=GoTrueClient.js.map
 
 /***/ }),
@@ -18819,15 +18905,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers */ "./node_modules/@supabase/gotrue-js/dist/module/lib/helpers.js");
 /* harmony import */ var _errors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./errors */ "./node_modules/@supabase/gotrue-js/dist/module/lib/errors.js");
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __rest = (undefined && undefined.__rest) || function (s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
@@ -18843,24 +18920,22 @@ var __rest = (undefined && undefined.__rest) || function (s, e) {
 
 const _getErrorMessage = (err) => err.msg || err.message || err.error_description || err.error || JSON.stringify(err);
 const NETWORK_ERROR_CODES = [502, 503, 504];
-function handleError(error) {
-    return __awaiter(this, void 0, void 0, function* () {
-        if (!(0,_helpers__WEBPACK_IMPORTED_MODULE_0__.looksLikeFetchResponse)(error)) {
-            throw new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthRetryableFetchError(_getErrorMessage(error), 0);
-        }
-        if (NETWORK_ERROR_CODES.includes(error.status)) {
-            // status in 500...599 range - server had an error, request might be retryed.
-            throw new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthRetryableFetchError(_getErrorMessage(error), error.status);
-        }
-        let data;
-        try {
-            data = yield error.json();
-        }
-        catch (e) {
-            throw new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthUnknownError(_getErrorMessage(e), e);
-        }
-        throw new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthApiError(_getErrorMessage(data), error.status || 500);
-    });
+async function handleError(error) {
+    if (!(0,_helpers__WEBPACK_IMPORTED_MODULE_0__.looksLikeFetchResponse)(error)) {
+        throw new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthRetryableFetchError(_getErrorMessage(error), 0);
+    }
+    if (NETWORK_ERROR_CODES.includes(error.status)) {
+        // status in 500...599 range - server had an error, request might be retryed.
+        throw new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthRetryableFetchError(_getErrorMessage(error), error.status);
+    }
+    let data;
+    try {
+        data = await error.json();
+    }
+    catch (e) {
+        throw new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthUnknownError(_getErrorMessage(e), e);
+    }
+    throw new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthApiError(_getErrorMessage(data), error.status || 500);
 }
 const _getRequestParams = (method, options, parameters, body) => {
     const params = { method, headers: (options === null || options === void 0 ? void 0 : options.headers) || {} };
@@ -18871,47 +18946,43 @@ const _getRequestParams = (method, options, parameters, body) => {
     params.body = JSON.stringify(body);
     return Object.assign(Object.assign({}, params), parameters);
 };
-function _request(fetcher, method, url, options) {
+async function _request(fetcher, method, url, options) {
     var _a;
-    return __awaiter(this, void 0, void 0, function* () {
-        const headers = Object.assign({}, options === null || options === void 0 ? void 0 : options.headers);
-        if (options === null || options === void 0 ? void 0 : options.jwt) {
-            headers['Authorization'] = `Bearer ${options.jwt}`;
-        }
-        const qs = (_a = options === null || options === void 0 ? void 0 : options.query) !== null && _a !== void 0 ? _a : {};
-        if (options === null || options === void 0 ? void 0 : options.redirectTo) {
-            qs['redirect_to'] = options.redirectTo;
-        }
-        const queryString = Object.keys(qs).length ? '?' + new URLSearchParams(qs).toString() : '';
-        const data = yield _handleRequest(fetcher, method, url + queryString, { headers, noResolveJson: options === null || options === void 0 ? void 0 : options.noResolveJson }, {}, options === null || options === void 0 ? void 0 : options.body);
-        return (options === null || options === void 0 ? void 0 : options.xform) ? options === null || options === void 0 ? void 0 : options.xform(data) : { data: Object.assign({}, data), error: null };
-    });
+    const headers = Object.assign({}, options === null || options === void 0 ? void 0 : options.headers);
+    if (options === null || options === void 0 ? void 0 : options.jwt) {
+        headers['Authorization'] = `Bearer ${options.jwt}`;
+    }
+    const qs = (_a = options === null || options === void 0 ? void 0 : options.query) !== null && _a !== void 0 ? _a : {};
+    if (options === null || options === void 0 ? void 0 : options.redirectTo) {
+        qs['redirect_to'] = options.redirectTo;
+    }
+    const queryString = Object.keys(qs).length ? '?' + new URLSearchParams(qs).toString() : '';
+    const data = await _handleRequest(fetcher, method, url + queryString, { headers, noResolveJson: options === null || options === void 0 ? void 0 : options.noResolveJson }, {}, options === null || options === void 0 ? void 0 : options.body);
+    return (options === null || options === void 0 ? void 0 : options.xform) ? options === null || options === void 0 ? void 0 : options.xform(data) : { data: Object.assign({}, data), error: null };
 }
-function _handleRequest(fetcher, method, url, options, parameters, body) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const requestParams = _getRequestParams(method, options, parameters, body);
-        let result;
-        try {
-            result = yield fetcher(url, requestParams);
-        }
-        catch (e) {
-            console.error(e);
-            // fetch failed, likely due to a network or CORS error
-            throw new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthRetryableFetchError(_getErrorMessage(e), 0);
-        }
-        if (!result.ok) {
-            yield handleError(result);
-        }
-        if (options === null || options === void 0 ? void 0 : options.noResolveJson) {
-            return result;
-        }
-        try {
-            return yield result.json();
-        }
-        catch (e) {
-            yield handleError(e);
-        }
-    });
+async function _handleRequest(fetcher, method, url, options, parameters, body) {
+    const requestParams = _getRequestParams(method, options, parameters, body);
+    let result;
+    try {
+        result = await fetcher(url, requestParams);
+    }
+    catch (e) {
+        console.error(e);
+        // fetch failed, likely due to a network or CORS error
+        throw new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthRetryableFetchError(_getErrorMessage(e), 0);
+    }
+    if (!result.ok) {
+        await handleError(result);
+    }
+    if (options === null || options === void 0 ? void 0 : options.noResolveJson) {
+        return result;
+    }
+    try {
+        return await result.json();
+    }
+    catch (e) {
+        await handleError(e);
+    }
 }
 function _sessionResponse(data) {
     var _a;
@@ -18982,24 +19053,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   getItemAsync: () => (/* binding */ getItemAsync),
 /* harmony export */   getParameterByName: () => (/* binding */ getParameterByName),
 /* harmony export */   isBrowser: () => (/* binding */ isBrowser),
+/* harmony export */   isInStackGuard: () => (/* binding */ isInStackGuard),
 /* harmony export */   looksLikeFetchResponse: () => (/* binding */ looksLikeFetchResponse),
 /* harmony export */   removeItemAsync: () => (/* binding */ removeItemAsync),
 /* harmony export */   resolveFetch: () => (/* binding */ resolveFetch),
 /* harmony export */   retryable: () => (/* binding */ retryable),
 /* harmony export */   setItemAsync: () => (/* binding */ setItemAsync),
 /* harmony export */   sleep: () => (/* binding */ sleep),
+/* harmony export */   stackGuard: () => (/* binding */ stackGuard),
 /* harmony export */   supportsLocalStorage: () => (/* binding */ supportsLocalStorage),
 /* harmony export */   uuid: () => (/* binding */ uuid)
 /* harmony export */ });
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 function expiresAt(expiresIn) {
     const timeNow = Math.round(Date.now() / 1000);
     return timeNow + expiresIn;
@@ -19068,7 +19132,7 @@ const resolveFetch = (customFetch) => {
         _fetch = customFetch;
     }
     else if (typeof fetch === 'undefined') {
-        _fetch = (...args) => __awaiter(void 0, void 0, void 0, function* () { return yield (yield Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! cross-fetch */ "./node_modules/cross-fetch/dist/browser-ponyfill.js", 23))).fetch(...args); });
+        _fetch = async (...args) => await (await Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! cross-fetch */ "./node_modules/cross-fetch/dist/browser-ponyfill.js", 23))).fetch(...args);
     }
     else {
         _fetch = fetch;
@@ -19084,11 +19148,11 @@ const looksLikeFetchResponse = (maybeResponse) => {
         typeof maybeResponse.json === 'function');
 };
 // Storage helpers
-const setItemAsync = (storage, key, data) => __awaiter(void 0, void 0, void 0, function* () {
-    yield storage.setItem(key, JSON.stringify(data));
-});
-const getItemAsync = (storage, key) => __awaiter(void 0, void 0, void 0, function* () {
-    const value = yield storage.getItem(key);
+const setItemAsync = async (storage, key, data) => {
+    await storage.setItem(key, JSON.stringify(data));
+};
+const getItemAsync = async (storage, key) => {
+    const value = await storage.getItem(key);
     if (!value) {
         return null;
     }
@@ -19098,10 +19162,10 @@ const getItemAsync = (storage, key) => __awaiter(void 0, void 0, void 0, functio
     catch (_a) {
         return value;
     }
-});
-const removeItemAsync = (storage, key) => __awaiter(void 0, void 0, void 0, function* () {
-    yield storage.removeItem(key);
-});
+};
+const removeItemAsync = async (storage, key) => {
+    await storage.removeItem(key);
+};
 function decodeBase64URL(value) {
     const key = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
     let base64 = '';
@@ -19176,10 +19240,10 @@ function retryable(fn, isRetryable) {
     const promise = new Promise((accept, reject) => {
         // eslint-disable-next-line @typescript-eslint/no-extra-semi
         ;
-        (() => __awaiter(this, void 0, void 0, function* () {
+        (async () => {
             for (let attempt = 0; attempt < Infinity; attempt++) {
                 try {
-                    const result = yield fn(attempt);
+                    const result = await fn(attempt);
                     if (!isRetryable(attempt, null, result)) {
                         accept(result);
                         return;
@@ -19192,7 +19256,7 @@ function retryable(fn, isRetryable) {
                     }
                 }
             }
-        }))();
+        })();
     });
     return promise;
 }
@@ -19215,30 +19279,117 @@ function generatePKCEVerifier() {
     crypto.getRandomValues(array);
     return Array.from(array, dec2hex).join('');
 }
-function sha256(randomString) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const encoder = new TextEncoder();
-        const encodedData = encoder.encode(randomString);
-        const hash = yield crypto.subtle.digest('SHA-256', encodedData);
-        const bytes = new Uint8Array(hash);
-        return Array.from(bytes)
-            .map((c) => String.fromCharCode(c))
-            .join('');
-    });
+async function sha256(randomString) {
+    const encoder = new TextEncoder();
+    const encodedData = encoder.encode(randomString);
+    const hash = await crypto.subtle.digest('SHA-256', encodedData);
+    const bytes = new Uint8Array(hash);
+    return Array.from(bytes)
+        .map((c) => String.fromCharCode(c))
+        .join('');
 }
 function base64urlencode(str) {
     return btoa(str).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 }
-function generatePKCEChallenge(verifier) {
-    return __awaiter(this, void 0, void 0, function* () {
-        if (typeof crypto === 'undefined') {
-            console.warn('WebCrypto API is not supported. Code challenge method will default to use plain instead of sha256.');
-            return verifier;
-        }
-        const hashed = yield sha256(verifier);
-        return base64urlencode(hashed);
-    });
+async function generatePKCEChallenge(verifier) {
+    if (typeof crypto === 'undefined') {
+        console.warn('WebCrypto API is not supported. Code challenge method will default to use plain instead of sha256.');
+        return verifier;
+    }
+    const hashed = await sha256(verifier);
+    return base64urlencode(hashed);
 }
+const STACK_GUARD_PREFIX = `__stack_guard__`;
+const STACK_GUARD_SUFFIX = `__`;
+// Firefox and WebKit based browsers encode the stack entry differently, but
+// they all include the function name. So instead of trying to parse the entry,
+// we're only looking for the special string `__stack_guard__${guardName}__`.
+// Guard names can only be letters with dashes or underscores.
+//
+// Example Firefox stack trace:
+// ```
+// __stack_guard__EXAMPLE__@debugger eval code:1:55
+// @debugger eval code:1:3
+// ```
+//
+// Example WebKit/Chrome stack trace:
+// ```
+// Error
+//  at Object.__stack_guard__EXAMPLE__ (<anonymous>:1:55)
+//  at <anonymous>:1:13
+// ```
+//
+const STACK_ENTRY_REGEX = /__stack_guard__([a-zA-Z0-9_-]+)__/;
+let STACK_GUARD_CHECKED = false;
+let STACK_GUARD_CHECK_FN; // eslint-disable-line prefer-const
+/**
+ * Checks if the current caller of the function is in a {@link
+ * #stackGuard} of the provided `name`. Works by looking through
+ * the stack trace of an `Error` object for a special function
+ * name (generated by {@link #stackGuard}).
+ *
+ * @param name The name of the stack guard to check for. Must be `[a-zA-Z0-9_-]` only.
+ */
+function isInStackGuard(name) {
+    var _a, _b;
+    STACK_GUARD_CHECK_FN();
+    let error;
+    try {
+        throw new Error();
+    }
+    catch (e) {
+        error = e;
+    }
+    const stack = (_b = (_a = error.stack) === null || _a === void 0 ? void 0 : _a.split('\n')) !== null && _b !== void 0 ? _b : [];
+    for (let i = 0; i < stack.length; i += 1) {
+        const entry = stack[i];
+        const match = entry.match(STACK_ENTRY_REGEX);
+        if (match && match[1] === name) {
+            return true;
+        }
+    }
+    return false;
+}
+/**
+ * Creates a minification resistant stack guard, i.e. if you
+ * call {@link #isInStackGuard} from within the `fn` parameter
+ * function, you will always get `true` otherwise it will be
+ * `false`.
+ *
+ * Works by dynamically defining a function name before calling
+ * into `fn`, which is then parsed from the stack trace on an
+ * `Error` object within {@link #isInStackGuard}.
+ *
+ * @param name The name of the stack guard. Must be `[a-zA-Z0-9_-]` only.
+ * @param fn The async/await function to be run within the stack guard.
+ */
+async function stackGuard(name, fn) {
+    await STACK_GUARD_CHECK_FN();
+    const guardName = `${STACK_GUARD_PREFIX}${name}${STACK_GUARD_SUFFIX}`;
+    const guardFunc = {
+        // per ECMAScript rules, this defines a new function with the dynamic name
+        // contained in the `guardName` variable
+        // this function name shows up in stack traces and is resistant to mangling
+        // from minification processes as it is determined at runtime
+        [guardName]: async () => await fn(),
+    };
+    return await guardFunc[guardName]();
+}
+// In certain cases, if this file is transpiled using an ES2015 target, or is
+// running in a JS engine that does not support async/await stack traces, this
+// function will log a single warning message.
+STACK_GUARD_CHECK_FN = async () => {
+    if (!STACK_GUARD_CHECKED) {
+        STACK_GUARD_CHECKED = true;
+        await stackGuard('ENV_CHECK', async () => {
+            const result = isInStackGuard('ENV_CHECK');
+            if (!result) {
+                console.warn('@supabase/gotrue-js: Stack guards not supported in this environment. Generally not an issue but may point to a very conservative transpilation environment (use ES2017 or above) that implements async/await with generators, or this is a JavaScript engine that does not support async/await stack traces.');
+            }
+            return result;
+        });
+    }
+};
 //# sourceMappingURL=helpers.js.map
 
 /***/ }),
@@ -19346,7 +19497,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   version: () => (/* binding */ version)
 /* harmony export */ });
 // Generated by genversion.
-const version = '2.34.0';
+const version = '2.41.0';
 //# sourceMappingURL=version.js.map
 
 /***/ }),
@@ -20396,7 +20547,11 @@ class PostgrestTransformBuilder extends _PostgrestBuilder__WEBPACK_IMPORTED_MODU
         return this;
     }
     /**
-     * Limit the query result by `from` and `to` inclusively.
+     * Limit the query result by starting at an offset (`from`) and ending at the offset (`from + to`).
+     * Only records within this range are returned.
+     * This respects the query order and if there is no order clause the range could behave unexpectedly.
+     * The `from` and `to` values are 0-based and inclusive: `range(1, 3)` will include the second, third
+     * and fourth rows of the query.
      *
      * @param from - The starting index from which to limit the result
      * @param to - The last index to which to limit the result
@@ -20588,7 +20743,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   version: () => (/* binding */ version)
 /* harmony export */ });
-const version = '1.7.1';
+const version = '1.7.2';
 //# sourceMappingURL=version.js.map
 
 /***/ }),
@@ -24045,8 +24200,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ fetchSearch),
 /* harmony export */   fetchApprovedDishes: () => (/* binding */ fetchApprovedDishes),
 /* harmony export */   fetchApprovedLocations: () => (/* binding */ fetchApprovedLocations),
+/* harmony export */   getCountdowns: () => (/* binding */ getCountdowns),
 /* harmony export */   insertDish: () => (/* binding */ insertDish),
-/* harmony export */   insertLocation: () => (/* binding */ insertLocation)
+/* harmony export */   insertLocation: () => (/* binding */ insertLocation),
+/* harmony export */   uploadImage: () => (/* binding */ uploadImage)
 /* harmony export */ });
 /* harmony import */ var _supabaseClient__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./supabaseClient */ "./src/services/supabaseClient.ts");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -24219,46 +24376,134 @@ function _insertLocation() {
   }));
   return _insertLocation.apply(this, arguments);
 }
-function insertDish(_x6, _x7, _x8, _x9, _x10, _x11) {
+function insertDish(_x6, _x7, _x8, _x9, _x10, _x11, _x12) {
   return _insertDish.apply(this, arguments);
 }
 function _insertDish() {
-  _insertDish = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(name, locationID, price, breakfast, lunch, dinner) {
-    var _yield$supabaseClient5, data, error, next_post_time, successful;
+  _insertDish = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(name, locationID, price, breakfast, lunch, dinner, img) {
+    var imgKey, res, _yield$supabaseClient5, data, error, next_post_time, successful;
     return _regeneratorRuntime().wrap(function _callee5$(_context5) {
       while (1) switch (_context5.prev = _context5.next) {
         case 0:
-          _context5.next = 2;
+          imgKey = generateKey(img.type);
+          if (!img) {
+            _context5.next = 7;
+            break;
+          }
+          _context5.next = 4;
+          return uploadImage(img);
+        case 4:
+          res = _context5.sent;
+          console.log(res);
+          imgKey = res.imgKey;
+        case 7:
+          _context5.next = 9;
           return _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.rpc("fn_insert_dish", {
             p_name: name,
             p_location_id: locationID,
             p_price: price,
             p_breakfast: breakfast,
             p_lunch: lunch,
-            p_dinner: dinner
+            p_dinner: dinner,
+            p_image: imgKey
           });
-        case 2:
+        case 9:
           _yield$supabaseClient5 = _context5.sent;
           data = _yield$supabaseClient5.data;
           error = _yield$supabaseClient5.error;
           if (!error) {
-            _context5.next = 7;
+            _context5.next = 14;
             break;
           }
           throw error;
-        case 7:
+        case 14:
           next_post_time = data.next_post_time, successful = data.successful;
           return _context5.abrupt("return", {
             nextPostTime: new Date(next_post_time),
             successful: successful
           });
-        case 9:
+        case 16:
         case "end":
           return _context5.stop();
       }
     }, _callee5);
   }));
   return _insertDish.apply(this, arguments);
+}
+function uploadImage(_x13) {
+  return _uploadImage.apply(this, arguments);
+}
+function _uploadImage() {
+  _uploadImage = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(img) {
+    var _sessionData$data$ses, _sessionData$data$ses2;
+    var sessionData, userID, jwt, res;
+    return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+      while (1) switch (_context6.prev = _context6.next) {
+        case 0:
+          _context6.next = 2;
+          return _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.auth.getSession();
+        case 2:
+          sessionData = _context6.sent;
+          userID = (_sessionData$data$ses = sessionData.data.session) === null || _sessionData$data$ses === void 0 ? void 0 : _sessionData$data$ses.user.id;
+          jwt = (_sessionData$data$ses2 = sessionData.data.session) === null || _sessionData$data$ses2 === void 0 ? void 0 : _sessionData$data$ses2.access_token;
+          _context6.next = 7;
+          return fetch("/upload", {
+            method: "POST",
+            body: img,
+            headers: {
+              "Content-Type": img.type,
+              Authorization: "Bearer ".concat(jwt),
+              "X-User-ID": userID !== null && userID !== void 0 ? userID : ""
+            }
+          });
+        case 7:
+          res = _context6.sent;
+          _context6.next = 10;
+          return res.json();
+        case 10:
+          return _context6.abrupt("return", _context6.sent);
+        case 11:
+        case "end":
+          return _context6.stop();
+      }
+    }, _callee6);
+  }));
+  return _uploadImage.apply(this, arguments);
+}
+function getCountdowns() {
+  return _getCountdowns.apply(this, arguments);
+}
+function _getCountdowns() {
+  _getCountdowns = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
+    var _yield$supabaseClient6, data, error, location_countdown, dish_countdown;
+    return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+      while (1) switch (_context7.prev = _context7.next) {
+        case 0:
+          _context7.next = 2;
+          return _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.rpc("fn_get_post_countdowns", {});
+        case 2:
+          _yield$supabaseClient6 = _context7.sent;
+          data = _yield$supabaseClient6.data;
+          error = _yield$supabaseClient6.error;
+          if (!error) {
+            _context7.next = 7;
+            break;
+          }
+          throw error;
+        case 7:
+          console.log(data);
+          location_countdown = data.location_countdown, dish_countdown = data.dish_countdown;
+          return _context7.abrupt("return", {
+            locationCountdown: new Date(location_countdown),
+            dishCountdown: new Date(dish_countdown)
+          });
+        case 10:
+        case "end":
+          return _context7.stop();
+      }
+    }, _callee7);
+  }));
+  return _getCountdowns.apply(this, arguments);
 }
 
 /***/ }),
