@@ -1,8 +1,10 @@
+/* eslint-disable camelcase */
 const SchoolPage = require("./src/components/SchoolPage").default;
 const React = require("react");
 const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
 const { renderToString } = require("react-dom/server");
 const jwt_decode = require("jwt-decode");
+const jwt = require("jsonwebtoken");
 const express = require("express");
 const { v4: uuid } = require("uuid");
 const multer = require("multer");
@@ -39,25 +41,55 @@ const authorizedMimeTypes = [
 ];
 
 async function authorize(req, res, next) {
-  const jwt = req.headers.authorization;
+  const jwtHeader = req.headers.authorization;
 
-  if (!jwt) {
-    res.status(401).json({
-      code: "UNAUTHORIZED",
-      message: "Authentication credentials are missing or invalid",
+  if (!jwtHeader) {
+    return res.status(401).json({
+      code: "MISSING_TOKEN",
+      message: "Required authentication token is missing.",
+    });
+  } else {
+    const jwtToken = jwtHeader.split(" ")[1];
+    jwt.verify(jwtToken, process.env.SUPABASE_JWT_SECRET, (error, decoded) => {
+      if (error) {
+        return res.status(401).json({
+          code: "INVALID_TOKEN",
+          message: "Provided authentication token is invalid.",
+        });
+      } else {
+        const userClient = createClient(supabaseUrl, supabaseAnonKey, {
+          auth: { persistSession: false, detectSessionInUrl: false },
+          global: {
+            headers: {
+              Authorization: jwtHeader,
+            },
+          },
+        });
+        req.userClient = userClient;
+        req.userID = jwt_decode(jwtHeader).sub;
+        next();
+      }
     });
   }
+}
 
-  const userClient = createClient(supabaseUrl, supabaseAnonKey, {
-    auth: { persistSession: false, detectSessionInUrl: false },
-    global: {
-      headers: {
-        Authorization: jwt,
-      },
-    },
-  });
-  req.userClient = userClient;
-  req.userID = jwt_decode(jwt).sub;
+async function validateImage(req, res, next) {
+  const { file } = req;
+
+  if (file) {
+    const { mimetype } = file;
+    const key = generateKey(req.userID, mimetype.split("/")[1]);
+
+    if (!authorizedMimeTypes.includes(mimetype)) {
+      return res.status(415).json({
+        code: "INVALID_MIMETYPE",
+        message: `Invalid image mimetype "${mimetype}". Authorized mimetypes are ${authorizedMimeTypes}`,
+      });
+    }
+
+    req.imageKey = key;
+  }
+
   next();
 }
 
@@ -65,9 +97,9 @@ app.post(
   "/api/dishes",
   authorize,
   upload.single("dish-img"),
+  validateImage,
   async (req, res) => {
-    const userClient = req.userClient;
-    const file = req.file;
+    const { userClient } = req;
 
     const { data, error } = await userClient.rpc("fn_insert_dish", {
       p_name: req.body["dish-name"],
@@ -76,48 +108,52 @@ app.post(
       p_breakfast: !!req.body["dish-breakfast?"],
       p_lunch: !!req.body["dish-lunch?"],
       p_dinner: !!req.body["dish-dinner?"],
-      p_image: generateKey(req.userID, file.mimetype.split("/")[1]),
+      p_image: req.imageKey,
     });
 
-    console.log(data);
-    console.log(error);
-    // const file = req.body;
-    // const contentType = req.get("Content-Type");
-    // const userID = req.get("X-User-ID");
-    // if (file === undefined) {
-    //   res.status(400).json({
-    //     code: "NO_FILE",
-    //     message: "No file uploaded",
-    //   });
-    //   return;
-    // } else if (!authorizedMimeTypes.includes(contentType)) {
-    //   res.status(400).json({
-    //     code: "INVALID_MIMETYPE",
-    //     message: `Invalid image mimetype "${contentType}". Authorized mimetypes are ${authorizedMimeTypes}`,
-    //   });
-    //   return;
-    // }
-    // try {
-    //   const imgKey = generateKey(userID, contentType.split("/")[1]);
-    //   await s3.send(
-    //     new PutObjectCommand({
-    //       Bucket: bucketName,
-    //       Key: generateKey(userID, imgKey),
-    //       Body: file,
-    //     })
-    //   );
-    //   res.status(200).json({
-    //     code: "UPLOAD_SUCCESS",
-    //     message: "Image uploaded successfully",
-    //     imgKey,
-    //   });
-    // } catch (error) {
-    //   console.error("Error uploading image:", error);
-    //   res.status(500).json({
-    //     code: "UPLOAD_ERROR",
-    //     message: "An error occurred while uploading the image",
-    //   });
-    // }
+    if (error) {
+      return res.status(500).json({
+        code: "SUPABASE_POSTGREST_ERROR",
+        message: error.message,
+      });
+    } else {
+      const { next_post_at, code, successful } = data;
+      if (!successful && code === "43000") {
+        return res.status(429).json({
+          code: "TOO_MANY_REQUESTS",
+          message: "The rate limit for this action has been exceeded.",
+          next_post_at,
+        });
+      } else if (successful) {
+        if (req.file) {
+          try {
+            await s3.send(
+              new PutObjectCommand({
+                Bucket: bucketName,
+                Key: req.imageKey,
+                Body: req.file.buffer,
+              })
+            );
+          } catch (error) {
+            return res.status(500).json({
+              code: "UPLOAD_ERROR",
+              message: error.message,
+            });
+          }
+          return res.status(200).json({
+            code: "POST_WITH_IMAGE_SUCCESS",
+            message:
+              "Image uploaded successfully and database has been updated.",
+            nextPostAt: new Date(next_post_at),
+          });
+        } else {
+          return res.status(200).json({
+            code: "POST_WITHOUT_IMAGE_SUCCESS",
+            message: "Database has been successfully updated",
+          });
+        }
+      }
+    }
   }
 );
 

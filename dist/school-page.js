@@ -25037,7 +25037,7 @@ function AddContentInterface(_ref) {
             dinner = !!formData.get("dish-dinner?");
             img = formData.get("dish-img");
             _context2.next = 8;
-            return (0,_services_api__WEBPACK_IMPORTED_MODULE_3__.insertDish)(name, locationID, price, breakfast, lunch, dinner, img);
+            return insertDish(name, locationID, price, breakfast, lunch, dinner, img);
           case 8:
             return _context2.abrupt("return", _context2.sent);
           case 9:
@@ -26216,9 +26216,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   fetchApprovedLocations: () => (/* binding */ fetchApprovedLocations),
 /* harmony export */   getCountdowns: () => (/* binding */ getCountdowns),
 /* harmony export */   insertContent: () => (/* binding */ insertContent),
-/* harmony export */   insertDish: () => (/* binding */ insertDish),
-/* harmony export */   insertLocation: () => (/* binding */ insertLocation),
-/* harmony export */   uploadImage: () => (/* binding */ uploadImage)
+/* harmony export */   insertLocation: () => (/* binding */ insertLocation)
 /* harmony export */ });
 /* harmony import */ var _supabaseClient__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./supabaseClient */ "./src/services/supabaseClient.ts");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -26359,7 +26357,7 @@ function insertLocation(_x4, _x5) {
 }
 function _insertLocation() {
   _insertLocation = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(name, campusID) {
-    var _yield$supabaseClient4, data, error, next_post_time, successful;
+    var _yield$supabaseClient4, data, error, next_post_at, code, successful;
     return _regeneratorRuntime().wrap(function _callee4$(_context4) {
       while (1) switch (_context4.prev = _context4.next) {
         case 0:
@@ -26378,9 +26376,10 @@ function _insertLocation() {
           }
           throw error;
         case 7:
-          next_post_time = data.next_post_time, successful = data.successful;
+          next_post_at = data.next_post_at, code = data.code, successful = data.successful;
           return _context4.abrupt("return", {
-            nextPostTime: new Date(next_post_time),
+            nextPostAt: new Date(next_post_at),
+            code: code,
             successful: successful
           });
         case 9:
@@ -26391,65 +26390,46 @@ function _insertLocation() {
   }));
   return _insertLocation.apply(this, arguments);
 }
-function insertDish(_x6, _x7, _x8, _x9, _x10, _x11, _x12) {
-  return _insertDish.apply(this, arguments);
+function getCountdowns() {
+  return _getCountdowns.apply(this, arguments);
 }
-function _insertDish() {
-  _insertDish = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(name, locationID, price, breakfast, lunch, dinner, img) {
-    var imgKey, res, _yield$supabaseClient5, data, error, next_post_time, successful;
+function _getCountdowns() {
+  _getCountdowns = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
+    var _yield$supabaseClient5, data, error, location_countdown, dish_countdown;
     return _regeneratorRuntime().wrap(function _callee5$(_context5) {
       while (1) switch (_context5.prev = _context5.next) {
         case 0:
-          imgKey = null;
-          if (!img) {
-            _context5.next = 7;
-            break;
-          }
-          _context5.next = 4;
-          return uploadImage(img);
-        case 4:
-          res = _context5.sent;
-          console.log(res);
-          imgKey = res.imgKey;
-        case 7:
-          _context5.next = 9;
-          return _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.rpc("fn_insert_dish", {
-            p_name: name,
-            p_location_id: locationID,
-            p_price: price,
-            p_breakfast: breakfast,
-            p_lunch: lunch,
-            p_dinner: dinner,
-            p_image: imgKey
-          });
-        case 9:
+          _context5.next = 2;
+          return _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.rpc("fn_get_post_countdowns", {});
+        case 2:
           _yield$supabaseClient5 = _context5.sent;
           data = _yield$supabaseClient5.data;
           error = _yield$supabaseClient5.error;
           if (!error) {
-            _context5.next = 14;
+            _context5.next = 7;
             break;
           }
           throw error;
-        case 14:
-          next_post_time = data.next_post_time, successful = data.successful;
+        case 7:
+          console.log(data);
+          location_countdown = data.location_countdown, dish_countdown = data.dish_countdown;
           return _context5.abrupt("return", {
-            nextPostTime: new Date(next_post_time),
-            successful: successful
+            locationCountdown: new Date(location_countdown),
+            dishCountdown: new Date(dish_countdown)
           });
-        case 16:
+        case 10:
         case "end":
           return _context5.stop();
       }
     }, _callee5);
   }));
-  return _insertDish.apply(this, arguments);
+  return _getCountdowns.apply(this, arguments);
 }
-function uploadImage(_x13) {
-  return _uploadImage.apply(this, arguments);
+function insertContent(_x6) {
+  return _insertContent.apply(this, arguments);
 }
-function _uploadImage() {
-  _uploadImage = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(img) {
+function _insertContent() {
+  _insertContent = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(formData) {
     var _sessionData$data$ses, _sessionData$data$ses2;
     var sessionData, userID, jwt, res;
     return _regeneratorRuntime().wrap(function _callee6$(_context6) {
@@ -26462,94 +26442,26 @@ function _uploadImage() {
           userID = (_sessionData$data$ses = sessionData.data.session) === null || _sessionData$data$ses === void 0 ? void 0 : _sessionData$data$ses.user.id;
           jwt = (_sessionData$data$ses2 = sessionData.data.session) === null || _sessionData$data$ses2 === void 0 ? void 0 : _sessionData$data$ses2.access_token;
           _context6.next = 7;
-          return fetch("/upload", {
-            method: "POST",
-            body: img,
-            headers: {
-              "Content-Type": img.type,
-              Authorization: "Bearer ".concat(jwt),
-              "X-User-ID": userID !== null && userID !== void 0 ? userID : ""
-            }
-          });
-        case 7:
-          res = _context6.sent;
-          _context6.next = 10;
-          return res.json();
-        case 10:
-          return _context6.abrupt("return", _context6.sent);
-        case 11:
-        case "end":
-          return _context6.stop();
-      }
-    }, _callee6);
-  }));
-  return _uploadImage.apply(this, arguments);
-}
-function getCountdowns() {
-  return _getCountdowns.apply(this, arguments);
-}
-function _getCountdowns() {
-  _getCountdowns = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
-    var _yield$supabaseClient6, data, error, location_countdown, dish_countdown;
-    return _regeneratorRuntime().wrap(function _callee7$(_context7) {
-      while (1) switch (_context7.prev = _context7.next) {
-        case 0:
-          _context7.next = 2;
-          return _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.rpc("fn_get_post_countdowns", {});
-        case 2:
-          _yield$supabaseClient6 = _context7.sent;
-          data = _yield$supabaseClient6.data;
-          error = _yield$supabaseClient6.error;
-          if (!error) {
-            _context7.next = 7;
-            break;
-          }
-          throw error;
-        case 7:
-          console.log(data);
-          location_countdown = data.location_countdown, dish_countdown = data.dish_countdown;
-          return _context7.abrupt("return", {
-            locationCountdown: new Date(location_countdown),
-            dishCountdown: new Date(dish_countdown)
-          });
-        case 10:
-        case "end":
-          return _context7.stop();
-      }
-    }, _callee7);
-  }));
-  return _getCountdowns.apply(this, arguments);
-}
-function insertContent(_x14) {
-  return _insertContent.apply(this, arguments);
-}
-function _insertContent() {
-  _insertContent = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(formData) {
-    var _sessionData$data$ses3, _sessionData$data$ses4;
-    var sessionData, userID, jwt;
-    return _regeneratorRuntime().wrap(function _callee8$(_context8) {
-      while (1) switch (_context8.prev = _context8.next) {
-        case 0:
-          _context8.next = 2;
-          return _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.auth.getSession();
-        case 2:
-          sessionData = _context8.sent;
-          userID = (_sessionData$data$ses3 = sessionData.data.session) === null || _sessionData$data$ses3 === void 0 ? void 0 : _sessionData$data$ses3.user.id;
-          jwt = (_sessionData$data$ses4 = sessionData.data.session) === null || _sessionData$data$ses4 === void 0 ? void 0 : _sessionData$data$ses4.access_token;
-          _context8.next = 7;
           return fetch("/api/dishes", {
             method: "POST",
             body: formData,
             headers: {
-              Authorization: "Bearer ".concat(jwt),
-              "X-User-ID": userID !== null && userID !== void 0 ? userID : ""
+              Authorization: "Bearer ".concat(jwt)
             }
           });
         case 7:
+          res = _context6.sent;
+          _context6.t0 = console;
+          _context6.next = 11;
+          return res.json();
+        case 11:
+          _context6.t1 = _context6.sent;
+          _context6.t0.log.call(_context6.t0, _context6.t1);
+        case 13:
         case "end":
-          return _context8.stop();
+          return _context6.stop();
       }
-    }, _callee8);
+    }, _callee6);
   }));
   return _insertContent.apply(this, arguments);
 }

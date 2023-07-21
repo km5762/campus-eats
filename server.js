@@ -261,7 +261,7 @@ function AddContentInterface(_ref) {
             dinner = !!formData.get("dish-dinner?");
             img = formData.get("dish-img");
             _context2.next = 8;
-            return (0,_services_api__WEBPACK_IMPORTED_MODULE_3__.insertDish)(name, locationID, price, breakfast, lunch, dinner, img);
+            return insertDish(name, locationID, price, breakfast, lunch, dinner, img);
           case 8:
             return _context2.abrupt("return", _context2.sent);
           case 9:
@@ -1451,9 +1451,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   fetchApprovedLocations: () => (/* binding */ fetchApprovedLocations),
 /* harmony export */   getCountdowns: () => (/* binding */ getCountdowns),
 /* harmony export */   insertContent: () => (/* binding */ insertContent),
-/* harmony export */   insertDish: () => (/* binding */ insertDish),
-/* harmony export */   insertLocation: () => (/* binding */ insertLocation),
-/* harmony export */   uploadImage: () => (/* binding */ uploadImage)
+/* harmony export */   insertLocation: () => (/* binding */ insertLocation)
 /* harmony export */ });
 /* harmony import */ var _supabaseClient__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./supabaseClient */ "./src/services/supabaseClient.ts");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -1594,7 +1592,7 @@ function insertLocation(_x4, _x5) {
 }
 function _insertLocation() {
   _insertLocation = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(name, campusID) {
-    var _yield$supabaseClient4, data, error, next_post_time, successful;
+    var _yield$supabaseClient4, data, error, next_post_at, code, successful;
     return _regeneratorRuntime().wrap(function _callee4$(_context4) {
       while (1) switch (_context4.prev = _context4.next) {
         case 0:
@@ -1613,9 +1611,10 @@ function _insertLocation() {
           }
           throw error;
         case 7:
-          next_post_time = data.next_post_time, successful = data.successful;
+          next_post_at = data.next_post_at, code = data.code, successful = data.successful;
           return _context4.abrupt("return", {
-            nextPostTime: new Date(next_post_time),
+            nextPostAt: new Date(next_post_at),
+            code: code,
             successful: successful
           });
         case 9:
@@ -1626,65 +1625,46 @@ function _insertLocation() {
   }));
   return _insertLocation.apply(this, arguments);
 }
-function insertDish(_x6, _x7, _x8, _x9, _x10, _x11, _x12) {
-  return _insertDish.apply(this, arguments);
+function getCountdowns() {
+  return _getCountdowns.apply(this, arguments);
 }
-function _insertDish() {
-  _insertDish = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(name, locationID, price, breakfast, lunch, dinner, img) {
-    var imgKey, res, _yield$supabaseClient5, data, error, next_post_time, successful;
+function _getCountdowns() {
+  _getCountdowns = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
+    var _yield$supabaseClient5, data, error, location_countdown, dish_countdown;
     return _regeneratorRuntime().wrap(function _callee5$(_context5) {
       while (1) switch (_context5.prev = _context5.next) {
         case 0:
-          imgKey = null;
-          if (!img) {
-            _context5.next = 7;
-            break;
-          }
-          _context5.next = 4;
-          return uploadImage(img);
-        case 4:
-          res = _context5.sent;
-          console.log(res);
-          imgKey = res.imgKey;
-        case 7:
-          _context5.next = 9;
-          return _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.rpc("fn_insert_dish", {
-            p_name: name,
-            p_location_id: locationID,
-            p_price: price,
-            p_breakfast: breakfast,
-            p_lunch: lunch,
-            p_dinner: dinner,
-            p_image: imgKey
-          });
-        case 9:
+          _context5.next = 2;
+          return _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.rpc("fn_get_post_countdowns", {});
+        case 2:
           _yield$supabaseClient5 = _context5.sent;
           data = _yield$supabaseClient5.data;
           error = _yield$supabaseClient5.error;
           if (!error) {
-            _context5.next = 14;
+            _context5.next = 7;
             break;
           }
           throw error;
-        case 14:
-          next_post_time = data.next_post_time, successful = data.successful;
+        case 7:
+          console.log(data);
+          location_countdown = data.location_countdown, dish_countdown = data.dish_countdown;
           return _context5.abrupt("return", {
-            nextPostTime: new Date(next_post_time),
-            successful: successful
+            locationCountdown: new Date(location_countdown),
+            dishCountdown: new Date(dish_countdown)
           });
-        case 16:
+        case 10:
         case "end":
           return _context5.stop();
       }
     }, _callee5);
   }));
-  return _insertDish.apply(this, arguments);
+  return _getCountdowns.apply(this, arguments);
 }
-function uploadImage(_x13) {
-  return _uploadImage.apply(this, arguments);
+function insertContent(_x6) {
+  return _insertContent.apply(this, arguments);
 }
-function _uploadImage() {
-  _uploadImage = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(img) {
+function _insertContent() {
+  _insertContent = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(formData) {
     var _sessionData$data$ses, _sessionData$data$ses2;
     var sessionData, userID, jwt, res;
     return _regeneratorRuntime().wrap(function _callee6$(_context6) {
@@ -1697,94 +1677,26 @@ function _uploadImage() {
           userID = (_sessionData$data$ses = sessionData.data.session) === null || _sessionData$data$ses === void 0 ? void 0 : _sessionData$data$ses.user.id;
           jwt = (_sessionData$data$ses2 = sessionData.data.session) === null || _sessionData$data$ses2 === void 0 ? void 0 : _sessionData$data$ses2.access_token;
           _context6.next = 7;
-          return fetch("/upload", {
-            method: "POST",
-            body: img,
-            headers: {
-              "Content-Type": img.type,
-              Authorization: "Bearer ".concat(jwt),
-              "X-User-ID": userID !== null && userID !== void 0 ? userID : ""
-            }
-          });
-        case 7:
-          res = _context6.sent;
-          _context6.next = 10;
-          return res.json();
-        case 10:
-          return _context6.abrupt("return", _context6.sent);
-        case 11:
-        case "end":
-          return _context6.stop();
-      }
-    }, _callee6);
-  }));
-  return _uploadImage.apply(this, arguments);
-}
-function getCountdowns() {
-  return _getCountdowns.apply(this, arguments);
-}
-function _getCountdowns() {
-  _getCountdowns = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
-    var _yield$supabaseClient6, data, error, location_countdown, dish_countdown;
-    return _regeneratorRuntime().wrap(function _callee7$(_context7) {
-      while (1) switch (_context7.prev = _context7.next) {
-        case 0:
-          _context7.next = 2;
-          return _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.rpc("fn_get_post_countdowns", {});
-        case 2:
-          _yield$supabaseClient6 = _context7.sent;
-          data = _yield$supabaseClient6.data;
-          error = _yield$supabaseClient6.error;
-          if (!error) {
-            _context7.next = 7;
-            break;
-          }
-          throw error;
-        case 7:
-          console.log(data);
-          location_countdown = data.location_countdown, dish_countdown = data.dish_countdown;
-          return _context7.abrupt("return", {
-            locationCountdown: new Date(location_countdown),
-            dishCountdown: new Date(dish_countdown)
-          });
-        case 10:
-        case "end":
-          return _context7.stop();
-      }
-    }, _callee7);
-  }));
-  return _getCountdowns.apply(this, arguments);
-}
-function insertContent(_x14) {
-  return _insertContent.apply(this, arguments);
-}
-function _insertContent() {
-  _insertContent = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(formData) {
-    var _sessionData$data$ses3, _sessionData$data$ses4;
-    var sessionData, userID, jwt;
-    return _regeneratorRuntime().wrap(function _callee8$(_context8) {
-      while (1) switch (_context8.prev = _context8.next) {
-        case 0:
-          _context8.next = 2;
-          return _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.auth.getSession();
-        case 2:
-          sessionData = _context8.sent;
-          userID = (_sessionData$data$ses3 = sessionData.data.session) === null || _sessionData$data$ses3 === void 0 ? void 0 : _sessionData$data$ses3.user.id;
-          jwt = (_sessionData$data$ses4 = sessionData.data.session) === null || _sessionData$data$ses4 === void 0 ? void 0 : _sessionData$data$ses4.access_token;
-          _context8.next = 7;
           return fetch("/api/dishes", {
             method: "POST",
             body: formData,
             headers: {
-              Authorization: "Bearer ".concat(jwt),
-              "X-User-ID": userID !== null && userID !== void 0 ? userID : ""
+              Authorization: "Bearer ".concat(jwt)
             }
           });
         case 7:
+          res = _context6.sent;
+          _context6.t0 = console;
+          _context6.next = 11;
+          return res.json();
+        case 11:
+          _context6.t1 = _context6.sent;
+          _context6.t0.log.call(_context6.t0, _context6.t1);
+        case 13:
         case "end":
-          return _context8.stop();
+          return _context6.stop();
       }
-    }, _callee8);
+    }, _callee6);
   }));
   return _insertContent.apply(this, arguments);
 }
@@ -2566,6 +2478,17 @@ module.exports = require("express");
 
 /***/ }),
 
+/***/ "jsonwebtoken":
+/*!*******************************!*\
+  !*** external "jsonwebtoken" ***!
+  \*******************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("jsonwebtoken");
+
+/***/ }),
+
 /***/ "jwt-decode":
 /*!*****************************!*\
   !*** external "jwt-decode" ***!
@@ -2737,6 +2660,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+/* eslint-disable camelcase */
 var SchoolPage = (__webpack_require__(/*! ./src/components/SchoolPage */ "./src/components/SchoolPage.tsx")["default"]);
 var React = __webpack_require__(/*! react */ "react");
 var _require = __webpack_require__(/*! @aws-sdk/client-s3 */ "@aws-sdk/client-s3"),
@@ -2745,6 +2669,7 @@ var _require = __webpack_require__(/*! @aws-sdk/client-s3 */ "@aws-sdk/client-s3
 var _require2 = __webpack_require__(/*! react-dom/server */ "react-dom/server"),
   renderToString = _require2.renderToString;
 var jwt_decode = __webpack_require__(/*! jwt-decode */ "jwt-decode");
+var jwt = __webpack_require__(/*! jsonwebtoken */ "jsonwebtoken");
 var express = __webpack_require__(/*! express */ "express");
 var _require3 = __webpack_require__(/*! uuid */ "uuid"),
   uuid = _require3.v4;
@@ -2780,32 +2705,45 @@ function authorize(_x, _x2, _x3) {
 }
 function _authorize() {
   _authorize = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(req, res, next) {
-    var jwt, userClient;
+    var jwtHeader, jwtToken;
     return _regeneratorRuntime().wrap(function _callee3$(_context3) {
       while (1) switch (_context3.prev = _context3.next) {
         case 0:
-          jwt = req.headers.authorization;
-          if (!jwt) {
-            res.status(401).json({
-              code: "UNAUTHORIZED",
-              message: "Authentication credentials are missing or invalid"
-            });
+          jwtHeader = req.headers.authorization;
+          if (jwtHeader) {
+            _context3.next = 5;
+            break;
           }
-          userClient = createClient(supabaseUrl, supabaseAnonKey, {
-            auth: {
-              persistSession: false,
-              detectSessionInUrl: false
-            },
-            global: {
-              headers: {
-                Authorization: jwt
-              }
+          return _context3.abrupt("return", res.status(401).json({
+            code: "MISSING_TOKEN",
+            message: "Required authentication token is missing."
+          }));
+        case 5:
+          jwtToken = jwtHeader.split(" ")[1];
+          jwt.verify(jwtToken, process.env.SUPABASE_JWT_SECRET, function (error, decoded) {
+            if (error) {
+              return res.status(401).json({
+                code: "INVALID_TOKEN",
+                message: "Provided authentication token is invalid."
+              });
+            } else {
+              var userClient = createClient(supabaseUrl, supabaseAnonKey, {
+                auth: {
+                  persistSession: false,
+                  detectSessionInUrl: false
+                },
+                global: {
+                  headers: {
+                    Authorization: jwtHeader
+                  }
+                }
+              });
+              req.userClient = userClient;
+              req.userID = jwt_decode(jwtHeader).sub;
+              next();
             }
           });
-          req.userClient = userClient;
-          req.userID = jwt_decode(jwt).sub;
-          next();
-        case 6:
+        case 7:
         case "end":
           return _context3.stop();
       }
@@ -2813,15 +2751,50 @@ function _authorize() {
   }));
   return _authorize.apply(this, arguments);
 }
-app.post("/api/dishes", authorize, upload.single("dish-img"), /*#__PURE__*/function () {
+function validateImage(_x4, _x5, _x6) {
+  return _validateImage.apply(this, arguments);
+}
+function _validateImage() {
+  _validateImage = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(req, res, next) {
+    var file, mimetype, key;
+    return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+      while (1) switch (_context4.prev = _context4.next) {
+        case 0:
+          file = req.file;
+          if (!file) {
+            _context4.next = 7;
+            break;
+          }
+          mimetype = file.mimetype;
+          key = generateKey(req.userID, mimetype.split("/")[1]);
+          if (authorizedMimeTypes.includes(mimetype)) {
+            _context4.next = 6;
+            break;
+          }
+          return _context4.abrupt("return", res.status(415).json({
+            code: "INVALID_MIMETYPE",
+            message: "Invalid image mimetype \"".concat(mimetype, "\". Authorized mimetypes are ").concat(authorizedMimeTypes)
+          }));
+        case 6:
+          req.imageKey = key;
+        case 7:
+          next();
+        case 8:
+        case "end":
+          return _context4.stop();
+      }
+    }, _callee4);
+  }));
+  return _validateImage.apply(this, arguments);
+}
+app.post("/api/dishes", authorize, upload.single("dish-img"), validateImage, /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(req, res) {
-    var userClient, file, _yield$userClient$rpc, data, error;
+    var userClient, _yield$userClient$rpc, data, error, next_post_at, code, successful;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           userClient = req.userClient;
-          file = req.file;
-          _context.next = 4;
+          _context.next = 3;
           return userClient.rpc("fn_insert_dish", {
             p_name: req.body["dish-name"],
             p_location_id: req.body["location-id"],
@@ -2829,58 +2802,75 @@ app.post("/api/dishes", authorize, upload.single("dish-img"), /*#__PURE__*/funct
             p_breakfast: !!req.body["dish-breakfast?"],
             p_lunch: !!req.body["dish-lunch?"],
             p_dinner: !!req.body["dish-dinner?"],
-            p_image: generateKey(req.userID, file.mimetype.split("/")[1])
+            p_image: req.imageKey
           });
-        case 4:
+        case 3:
           _yield$userClient$rpc = _context.sent;
           data = _yield$userClient$rpc.data;
           error = _yield$userClient$rpc.error;
-          console.log(data);
-          console.log(error);
-          // const file = req.body;
-          // const contentType = req.get("Content-Type");
-          // const userID = req.get("X-User-ID");
-          // if (file === undefined) {
-          //   res.status(400).json({
-          //     code: "NO_FILE",
-          //     message: "No file uploaded",
-          //   });
-          //   return;
-          // } else if (!authorizedMimeTypes.includes(contentType)) {
-          //   res.status(400).json({
-          //     code: "INVALID_MIMETYPE",
-          //     message: `Invalid image mimetype "${contentType}". Authorized mimetypes are ${authorizedMimeTypes}`,
-          //   });
-          //   return;
-          // }
-          // try {
-          //   const imgKey = generateKey(userID, contentType.split("/")[1]);
-          //   await s3.send(
-          //     new PutObjectCommand({
-          //       Bucket: bucketName,
-          //       Key: generateKey(userID, imgKey),
-          //       Body: file,
-          //     })
-          //   );
-          //   res.status(200).json({
-          //     code: "UPLOAD_SUCCESS",
-          //     message: "Image uploaded successfully",
-          //     imgKey,
-          //   });
-          // } catch (error) {
-          //   console.error("Error uploading image:", error);
-          //   res.status(500).json({
-          //     code: "UPLOAD_ERROR",
-          //     message: "An error occurred while uploading the image",
-          //   });
-          // }
-        case 9:
+          if (!error) {
+            _context.next = 10;
+            break;
+          }
+          return _context.abrupt("return", res.status(500).json({
+            code: "SUPABASE_POSTGREST_ERROR",
+            message: error.message
+          }));
+        case 10:
+          next_post_at = data.next_post_at, code = data.code, successful = data.successful;
+          if (!(!successful && code === "43000")) {
+            _context.next = 15;
+            break;
+          }
+          return _context.abrupt("return", res.status(429).json({
+            code: "TOO_MANY_REQUESTS",
+            message: "The rate limit for this action has been exceeded.",
+            next_post_at: next_post_at
+          }));
+        case 15:
+          if (!successful) {
+            _context.next = 29;
+            break;
+          }
+          if (!req.file) {
+            _context.next = 28;
+            break;
+          }
+          _context.prev = 17;
+          _context.next = 20;
+          return s3.send(new PutObjectCommand({
+            Bucket: bucketName,
+            Key: req.imageKey,
+            Body: req.file.buffer
+          }));
+        case 20:
+          _context.next = 25;
+          break;
+        case 22:
+          _context.prev = 22;
+          _context.t0 = _context["catch"](17);
+          return _context.abrupt("return", res.status(500).json({
+            code: "UPLOAD_ERROR",
+            message: _context.t0.message
+          }));
+        case 25:
+          return _context.abrupt("return", res.status(200).json({
+            code: "POST_WITH_IMAGE_SUCCESS",
+            message: "Image uploaded successfully and database has been updated.",
+            nextPostAt: new Date(next_post_at)
+          }));
+        case 28:
+          return _context.abrupt("return", res.status(200).json({
+            code: "POST_WITHOUT_IMAGE_SUCCESS",
+            message: "Database has been successfully updated"
+          }));
+        case 29:
         case "end":
           return _context.stop();
       }
-    }, _callee);
+    }, _callee, null, [[17, 22]]);
   }));
-  return function (_x4, _x5) {
+  return function (_x7, _x8) {
     return _ref.apply(this, arguments);
   };
 }());
@@ -2932,47 +2922,47 @@ app.get("/campus/:id/locations", /*#__PURE__*/function () {
       }
     }, _callee2);
   }));
-  return function (_x6, _x7) {
+  return function (_x9, _x10) {
     return _ref2.apply(this, arguments);
   };
 }());
-function queryLocations(_x8) {
+function queryLocations(_x11) {
   return _queryLocations.apply(this, arguments);
 }
 function _queryLocations() {
-  _queryLocations = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(campusID) {
+  _queryLocations = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(campusID) {
     var _yield$anonClient$rpc, data, error;
-    return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-      while (1) switch (_context4.prev = _context4.next) {
+    return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+      while (1) switch (_context5.prev = _context5.next) {
         case 0:
-          _context4.prev = 0;
-          _context4.next = 3;
+          _context5.prev = 0;
+          _context5.next = 3;
           return anonClient.rpc("fn_get_approved_locations_at", {
             p_id: campusID
           });
         case 3:
-          _yield$anonClient$rpc = _context4.sent;
+          _yield$anonClient$rpc = _context5.sent;
           data = _yield$anonClient$rpc.data;
           error = _yield$anonClient$rpc.error;
           if (!error) {
-            _context4.next = 8;
+            _context5.next = 8;
             break;
           }
           throw error;
         case 8:
-          return _context4.abrupt("return", data);
+          return _context5.abrupt("return", data);
         case 11:
-          _context4.prev = 11;
-          _context4.t0 = _context4["catch"](0);
-          console.error("Error:", _context4.t0);
-          return _context4.abrupt("return", {
+          _context5.prev = 11;
+          _context5.t0 = _context5["catch"](0);
+          console.error("Error:", _context5.t0);
+          return _context5.abrupt("return", {
             error: "Internal Server Error"
           });
         case 15:
         case "end":
-          return _context4.stop();
+          return _context5.stop();
       }
-    }, _callee4, null, [[0, 11]]);
+    }, _callee5, null, [[0, 11]]);
   }));
   return _queryLocations.apply(this, arguments);
 }

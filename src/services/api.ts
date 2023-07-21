@@ -76,15 +76,16 @@ export async function fetchApprovedDishes(locationID: number) {
   }
 }
 
-export interface InsertDataResponse {
+export interface TryPostStatus {
   successful: boolean;
-  nextPostTime: Date;
+  code: string;
+  nextPostAt: Date;
 }
 
 export async function insertLocation(
   name: string,
   campusID: number
-): Promise<InsertDataResponse> {
+): Promise<TryPostStatus> {
   const { data, error } = await supabaseClient.rpc("fn_insert_location", {
     p_name: name,
     p_campus_id: campusID,
@@ -94,63 +95,9 @@ export async function insertLocation(
     throw error;
   }
 
-  const { next_post_time, successful } = data;
+  const { next_post_at, code, successful } = data;
 
-  return { nextPostTime: new Date(next_post_time), successful };
-}
-
-export async function insertDish(
-  name: string,
-  locationID: number,
-  price: number,
-  breakfast: boolean,
-  lunch: boolean,
-  dinner: boolean,
-  img?: File
-): Promise<InsertDataResponse> {
-  let imgKey = null;
-
-  if (img) {
-    // imgKey = generateKey(supabaseClient.auth.)
-    const res = await uploadImage(img);
-    console.log(res);
-    imgKey = res.imgKey;
-  }
-
-  const { data, error } = await supabaseClient.rpc("fn_insert_dish", {
-    p_name: name,
-    p_location_id: locationID,
-    p_price: price,
-    p_breakfast: breakfast,
-    p_lunch: lunch,
-    p_dinner: dinner,
-    p_image: imgKey,
-  });
-
-  if (error) {
-    throw error;
-  }
-
-  const { next_post_time, successful } = data;
-
-  return { nextPostTime: new Date(next_post_time), successful };
-}
-
-export async function uploadImage(img: File) {
-  const sessionData = await supabaseClient.auth.getSession();
-  const userID = sessionData.data.session?.user.id;
-  const jwt = sessionData.data.session?.access_token;
-  const res = await fetch("/upload", {
-    method: "POST",
-    body: img,
-    headers: {
-      "Content-Type": img.type,
-      Authorization: `Bearer ${jwt}`,
-      "X-User-ID": userID ?? "",
-    },
-  });
-
-  return await res.json();
+  return { nextPostAt: new Date(next_post_at), code, successful };
 }
 
 export interface Countdowns {
@@ -183,12 +130,13 @@ export async function insertContent(formData: FormData) {
   const userID = sessionData.data.session?.user.id;
   const jwt = sessionData.data.session?.access_token;
 
-  await fetch("/api/dishes", {
+  const res = await fetch("/api/dishes", {
     method: "POST",
     body: formData,
     headers: {
       Authorization: `Bearer ${jwt}`,
-      "X-User-ID": userID ?? "",
     },
   });
+
+  console.log(await res.json());
 }

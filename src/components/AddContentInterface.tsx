@@ -3,11 +3,7 @@ import { useAuth } from "../contexts/AuthProvider";
 import AddContentButton from "./AddContentButton";
 import { add } from "lodash";
 import { ContentClass } from "./ContentContainer";
-import {
-  InsertDataResponse,
-  insertDish,
-  insertLocation,
-} from "../services/api";
+import { TryPostStatus, insertLocation } from "../services/api";
 import AddLocationForm from "./AddLocationForm";
 import { AddContentCountdownManagerProps } from "./AddContentCountdownManager";
 import AddContentModal from "./AddContentModal";
