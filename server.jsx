@@ -118,11 +118,11 @@ app.post(
       });
     } else {
       const { next_post_at, code, successful } = data;
-      if (!successful && code === "43000") {
+      if (!successful && code === "TOO_MANY_REQUESTS") {
         return res.status(429).json({
           code: "TOO_MANY_REQUESTS",
           message: "The rate limit for this action has been exceeded.",
-          next_post_at,
+          nextPostAt: next_post_at,
         });
       } else if (successful) {
         if (req.file) {
@@ -144,7 +144,7 @@ app.post(
             code: "POST_WITH_IMAGE_SUCCESS",
             message:
               "Image uploaded successfully and database has been updated.",
-            nextPostAt: new Date(next_post_at),
+            nextPostAt: next_post_at,
           });
         } else {
           return res.status(200).json({

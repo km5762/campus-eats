@@ -6,6 +6,7 @@ export interface DishData {
   id: number;
   name: string;
   price: number;
+  image?: string;
   rating: number;
   breakfast: boolean;
   lunch: boolean;
@@ -15,6 +16,7 @@ export interface DishData {
 export interface DishCardProps {
   key: number;
   id: number;
+  image?: string;
   name: string;
   price: number;
   breakfast: boolean;
@@ -32,6 +34,7 @@ export default function DishCard({
   lunch,
   dinner,
   rating,
+  image,
   onDishCardClick,
 }: DishCardProps) {
   function formatAvailability() {
@@ -56,7 +59,21 @@ export default function DishCard({
   }
 
   return (
-    <div className="dish">
+    <div
+      className="dish"
+      style={
+        image
+          ? {
+              background: `linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent), url(https://f005.backblazeb2.com/file/campus-eats/${image})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center center",
+              backgroundRepeat: "no-repeat",
+              color: "white",
+              textShadow: "0 2px 3px rgba(0, 0, 0, 0.3)",
+            }
+          : { backgroundColor: "var(--inputBorder)" }
+      }
+    >
       <div className="top-half">
         <h2>{name}</h2>
         <Rating

@@ -319,7 +319,6 @@ section {
 }
 
 .dish {
-  background-color: var(--inputBorder);
   border-radius: 15px;
 }
 
@@ -331,7 +330,6 @@ h3 {
 .dish .top-half,
 .bottom-half {
   padding: 1.35em;
-  background-color: var(--inputBorder);
 }
 
 .dish .top-half {

@@ -24201,7 +24201,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   fetchApprovedDishes: () => (/* binding */ fetchApprovedDishes),
 /* harmony export */   fetchApprovedLocations: () => (/* binding */ fetchApprovedLocations),
 /* harmony export */   getCountdowns: () => (/* binding */ getCountdowns),
-/* harmony export */   insertContent: () => (/* binding */ insertContent),
+/* harmony export */   insertDish: () => (/* binding */ insertDish),
 /* harmony export */   insertLocation: () => (/* binding */ insertLocation)
 /* harmony export */ });
 /* harmony import */ var _supabaseClient__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./supabaseClient */ "./src/services/supabaseClient.ts");
@@ -24411,13 +24411,13 @@ function _getCountdowns() {
   }));
   return _getCountdowns.apply(this, arguments);
 }
-function insertContent(_x6) {
-  return _insertContent.apply(this, arguments);
+function insertDish(_x6) {
+  return _insertDish.apply(this, arguments);
 }
-function _insertContent() {
-  _insertContent = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(formData) {
-    var _sessionData$data$ses, _sessionData$data$ses2;
-    var sessionData, userID, jwt, res;
+function _insertDish() {
+  _insertDish = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(formData) {
+    var _sessionData$data$ses;
+    var sessionData, jwt, res, json;
     return _regeneratorRuntime().wrap(function _callee6$(_context6) {
       while (1) switch (_context6.prev = _context6.next) {
         case 0:
@@ -24425,9 +24425,8 @@ function _insertContent() {
           return _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.auth.getSession();
         case 2:
           sessionData = _context6.sent;
-          userID = (_sessionData$data$ses = sessionData.data.session) === null || _sessionData$data$ses === void 0 ? void 0 : _sessionData$data$ses.user.id;
-          jwt = (_sessionData$data$ses2 = sessionData.data.session) === null || _sessionData$data$ses2 === void 0 ? void 0 : _sessionData$data$ses2.access_token;
-          _context6.next = 7;
+          jwt = (_sessionData$data$ses = sessionData.data.session) === null || _sessionData$data$ses === void 0 ? void 0 : _sessionData$data$ses.access_token;
+          _context6.next = 6;
           return fetch("/api/dishes", {
             method: "POST",
             body: formData,
@@ -24435,21 +24434,24 @@ function _insertContent() {
               Authorization: "Bearer ".concat(jwt)
             }
           });
-        case 7:
+        case 6:
           res = _context6.sent;
-          _context6.t0 = console;
-          _context6.next = 11;
+          _context6.next = 9;
           return res.json();
+        case 9:
+          json = _context6.sent;
+          return _context6.abrupt("return", {
+            successful: res.ok,
+            code: json.code,
+            nextPostAt: new Date(json.nextPostAt)
+          });
         case 11:
-          _context6.t1 = _context6.sent;
-          _context6.t0.log.call(_context6.t0, _context6.t1);
-        case 13:
         case "end":
           return _context6.stop();
       }
     }, _callee6);
   }));
-  return _insertContent.apply(this, arguments);
+  return _insertDish.apply(this, arguments);
 }
 
 /***/ }),

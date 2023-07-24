@@ -3,7 +3,7 @@ import { useAuth } from "../contexts/AuthProvider";
 import AddContentButton from "./AddContentButton";
 import { add } from "lodash";
 import { ContentClass } from "./ContentContainer";
-import { TryPostStatus, insertLocation } from "../services/api";
+import { TryPostResponse, insertDish, insertLocation } from "../services/api";
 import AddLocationForm from "./AddLocationForm";
 import { AddContentCountdownManagerProps } from "./AddContentCountdownManager";
 import AddContentModal from "./AddContentModal";
@@ -27,25 +27,6 @@ export default function AddContentInterface({
   const session = useAuth();
   const openAddContentModal = () => setOpen(true);
   const closeAddContentModal = () => setOpen(false);
-
-  async function parseDishForm(formData: FormData) {
-    const name = formData.get("dish-name")! as string;
-    const price = formData.get("dish-price")! as unknown as number;
-    const breakfast = !!formData.get("dish-breakfast?");
-    const lunch = !!formData.get("dish-lunch?");
-    const dinner = !!formData.get("dish-dinner?");
-    const img = formData.get("dish-img") as File;
-
-    return await insertDish(
-      name,
-      locationID,
-      price,
-      breakfast,
-      lunch,
-      dinner,
-      img
-    );
-  }
 
   return (
     <>
@@ -87,7 +68,7 @@ export default function AddContentInterface({
             countdown={countdown}
             setCountdown={setCountdown}
             contentClass={contentClass}
-            insertData={parseDishForm}
+            insertData={insertDish}
             AddContentForm={AddDishForm}
           />
         </>

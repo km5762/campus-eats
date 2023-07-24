@@ -76,7 +76,7 @@ export async function fetchApprovedDishes(locationID: number) {
   }
 }
 
-export interface TryPostStatus {
+export interface TryPostResponse {
   successful: boolean;
   code: string;
   nextPostAt: Date;
@@ -85,7 +85,7 @@ export interface TryPostStatus {
 export async function insertLocation(
   name: string,
   campusID: number
-): Promise<TryPostStatus> {
+): Promise<TryPostResponse> {
   const { data, error } = await supabaseClient.rpc("fn_insert_location", {
     p_name: name,
     p_campus_id: campusID,
@@ -125,9 +125,8 @@ export async function getCountdowns(): Promise<Countdowns> {
   };
 }
 
-export async function insertContent(formData: FormData) {
+export async function insertDish(formData: FormData) {
   const sessionData = await supabaseClient.auth.getSession();
-  const userID = sessionData.data.session?.user.id;
   const jwt = sessionData.data.session?.access_token;
 
   const res = await fetch("/api/dishes", {
@@ -138,5 +137,10 @@ export async function insertContent(formData: FormData) {
     },
   });
 
-  console.log(await res.json());
+  const json = await res.json();
+  return {
+    successful: res.ok,
+    code: json.code,
+    nextPostAt: new Date(json.nextPostAt),
+  };
 }

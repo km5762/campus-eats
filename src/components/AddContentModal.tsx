@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Modal } from "@mui/material";
 import "../styles/form.css";
-import { TryPostStatus, insertContent, insertLocation } from "../services/api";
+import { TryPostResponse, insertLocation } from "../services/api";
 import { PostgrestError } from "@supabase/supabase-js";
 import Countdown from "react-countdown";
 import { Construction } from "@mui/icons-material";
@@ -20,7 +20,7 @@ export interface AddContentModalProps {
   setCountdown: Function;
   contentClass: ContentClass;
   AddContentForm: React.FC;
-  insertData: (formData: FormData) => Promise<TryPostStatus>;
+  insertData: (formData: FormData) => Promise<TryPostResponse>;
 }
 
 export default function AddContentModal({
@@ -41,10 +41,10 @@ export default function AddContentModal({
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
 
-    await insertContent(formData);
+    const { successful, nextPostAt } = await insertData(formData);
 
-    // setSubmitted(successful);
-    // setCountdown(nextPostTime);
+    setSubmitted(successful);
+    setCountdown(nextPostAt);
   }
 
   return (
