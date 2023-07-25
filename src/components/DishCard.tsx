@@ -1,5 +1,6 @@
 import React from "react";
-import { Rating, useMediaQuery } from "@mui/material";
+import { Rating, Tooltip, useMediaQuery } from "@mui/material";
+import { Star, StarBorder } from "@mui/icons-material";
 
 export interface DishData {
   type: "dish";
@@ -69,19 +70,34 @@ export default function DishCard({
               backgroundPosition: "center center",
               backgroundRepeat: "no-repeat",
               color: "white",
-              textShadow: "0 2px 3px rgba(0, 0, 0, 0.3)",
+              textShadow: "0 2px 2px rgba(0, 0, 0, 1)",
             }
           : { backgroundColor: "var(--inputBorder)" }
       }
     >
       <div className="top-half">
-        <h2>{name}</h2>
+        <Tooltip
+          title={name}
+          placement="top-start"
+          className="dish-name-tooltip"
+        >
+          <h1>{name}</h1>
+        </Tooltip>
         <Rating
           name="read-only"
           value={rating}
           precision={0.25}
-          sx={{ svg: { width: "clamp(16px, 4vw, 24px)" } }}
+          sx={{
+            svg: { width: "clamp(16px, 4vw, 24px)" },
+            filter: image
+              ? "drop-shadow(0 2px 2px rgba(0, 0, 0, 1))"
+              : undefined,
+          }}
           readOnly
+          icon={image ? <Star className="star-overlayed" /> : undefined}
+          emptyIcon={
+            image ? <StarBorder className="empty-star-overlayed" /> : undefined
+          }
         />
       </div>
       <div className="bottom-half">

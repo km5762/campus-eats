@@ -320,9 +320,29 @@ section {
 
 .dish {
   border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.1s ease-out;
 }
 
-.dish h2,
+.dish:not(.dish-name-tooltip):hover {
+  opacity: 0.75;
+  transform: scale(1.05);
+}
+
+.dish h1 {
+  font-weight: 800;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-bottom: 5px;
+}
+
+.dish h2 {
+  font-weight: 600;
+}
+
+.dish h1,
+h2,
 h3 {
   margin-left: 2.5px;
 }
@@ -332,6 +352,13 @@ h3 {
   padding: 1.35em;
 }
 
+.empty-star-overlayed {
+  color: white;
+}
+
+.star-overlayed {
+  color: #faaf00;
+}
 .dish .top-half {
   border-radius: 15px 15px 0px 0px;
 }

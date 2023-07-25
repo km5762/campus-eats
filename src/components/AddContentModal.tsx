@@ -86,7 +86,7 @@ export default function AddContentModal({
               </h2>
               <hr />
               <p>
-                After your request has been reviewed by a moderator, your
+                After your request has been reviewed by a moderator, your{" "}
                 {contentType} will be added.
               </p>
             </div>
