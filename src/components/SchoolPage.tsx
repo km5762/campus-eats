@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ContentContainer from "./ContentContainer";
 import { LocationData } from "./LocationCard";
-import AuthButtons from "./AuthButtons";
+import AuthInterface from "./AuthInterface";
 import { supabaseClient } from "../services/supabaseClient";
 import { useSupabaseSession } from "../hooks/useSupabaseSession";
 import SearchBar from "./SearchBar";
@@ -11,6 +11,7 @@ import { useAuth } from "../contexts/AuthProvider";
 import ContentIDProvider, {
   useContentIDs,
 } from "../contexts/ContentIDProvider";
+import ProfileInterface from "./ProfileInterface";
 
 export default function SchoolPage({
   locations,
@@ -33,7 +34,7 @@ export default function SchoolPage({
         break;
       case null:
         return (
-          <AuthButtons
+          <AuthInterface
             supabaseClient={supabaseClient}
             openAuthModal={openAuthModal}
             closeAuthModal={closeAuthModal}
@@ -42,7 +43,13 @@ export default function SchoolPage({
         );
         break;
       default:
-        return <ProfileButton color={"#6184d8"} scale={"1.5"} />;
+        return (
+          <ProfileInterface
+            color={"#6184d8"}
+            scale={"1.5"}
+            closeAuthModal={closeAuthModal}
+          />
+        );
         break;
     }
   }

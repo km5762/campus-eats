@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import SearchBar from "./SearchBar";
-import AuthButtons from "./AuthButtons";
+import AuthButtons from "./AuthInterface";
 import { useSupabaseSession } from "../hooks/useSupabaseSession";
 import { supabaseClient } from "../services/supabaseClient";
 import { CircularProgress } from "@mui/material";
 import ProfileButton from "./ProfileButton";
 import { useAuth } from "../contexts/AuthProvider";
+import ProfileInterface from "./ProfileInterface";
 
 export default function Index() {
   const session = useAuth();
@@ -29,7 +30,13 @@ export default function Index() {
         );
         break;
       default:
-        return <ProfileButton color={"white"} scale={"2"} />;
+        return (
+          <ProfileInterface
+            color={"white"}
+            scale={"2"}
+            closeAuthModal={closeAuthModal}
+          />
+        );
         break;
     }
   }

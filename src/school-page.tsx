@@ -3,6 +3,8 @@ import React from "react";
 import SchoolPage from "./components/SchoolPage";
 import AuthProvider from "./contexts/AuthProvider";
 import ContentIDProvider from "./contexts/ContentIDProvider";
+import ThemeProvider from "@mui/material/styles/ThemeProvider";
+import theme from "./services/theme";
 
 declare global {
   interface Window {
@@ -16,11 +18,13 @@ hydrateRoot(
   <React.StrictMode>
     <AuthProvider>
       <ContentIDProvider campusID={window.__INITIAL_STATE__.id}>
-        <SchoolPage
-          locations={window.__INITIAL_STATE__.data}
-          campusName={document.title}
-          campusID={window.__INITIAL_STATE__.id}
-        />
+        <ThemeProvider theme={theme}>
+          <SchoolPage
+            locations={window.__INITIAL_STATE__.data}
+            campusName={document.title}
+            campusID={window.__INITIAL_STATE__.id}
+          />
+        </ThemeProvider>
       </ContentIDProvider>
     </AuthProvider>
   </React.StrictMode>

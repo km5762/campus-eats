@@ -6,19 +6,19 @@ import { Session, SupabaseClient, createClient } from "@supabase/supabase-js";
 import { Auth } from "@supabase/auth-ui-react";
 import { form } from "../services/style";
 
-interface AuthButtonsProps {
+interface AuthInterfaceProps {
   supabaseClient: SupabaseClient;
   open: boolean;
   openAuthModal: Function;
   closeAuthModal: Function;
 }
 
-export default function AuthButtons({
+export default function AuthInterface({
   supabaseClient,
   open,
   openAuthModal,
   closeAuthModal,
-}: AuthButtonsProps) {
+}: AuthInterfaceProps) {
   return (
     <nav className="login-signup">
       <Tooltip title="Log in to add content!">
