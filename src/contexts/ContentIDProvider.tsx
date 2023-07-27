@@ -3,6 +3,7 @@ import React, { createContext, useContext, useState } from "react";
 interface ContentIDs {
   campusID: number;
   locationID: number;
+  dishID: number;
 }
 
 interface ContentIDContext {
@@ -11,7 +12,7 @@ interface ContentIDContext {
 }
 
 const ContentIDContext = createContext<ContentIDContext>({
-  contentIDs: { campusID: -999, locationID: -999 },
+  contentIDs: { campusID: -999, locationID: -999, dishID: -999 },
   setContentIDs: () => {},
 });
 
@@ -25,6 +26,7 @@ export default function ContentIDProvider({
   const [contentIDs, setContentIDs] = useState<ContentIDs>({
     campusID: campusID,
     locationID: -999,
+    dishID: -999,
   });
 
   return (
