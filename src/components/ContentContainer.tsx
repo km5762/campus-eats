@@ -10,6 +10,7 @@ import AddLocationInterface from "./AddContentInterface";
 import AddContentInterface from "./AddContentInterface";
 import AddContentCountdownManager from "./AddContentCountdownManager";
 import { useContentIDs } from "../contexts/ContentIDProvider";
+import ReviewsModal from "./ReviewsModal";
 
 export type CardData = DishData | LocationData;
 export type ContentClass = "locations" | "dishes";
@@ -25,13 +26,14 @@ export default function ContentContainer({
   openAuthModal: Function;
   closeAuthModal: Function;
 }) {
-  const campusID = useContentIDs().contentIDs.campusID;
+  const { campusID, locationID, dishID } = useContentIDs().contentIDs;
   const setContentIDs = useContentIDs().setContentIDs;
   const [contentClass, setContentClass] = useState<ContentClass>("locations");
   const [contentArray, setContentArray] = useState<CardData[]>(locations);
   const [breadCrumbs, setBreadCrumbs] = useState<BreadCrumb[]>([
     { class: "locations", name: campusName, query: `campus.${campusID}` },
   ]);
+  const [open, setOpen] = useState(false);
   const smallScreen = useMediaQuery("(max-width: 650px)");
 
   async function handleLocationCardClick(id: number, name: string) {
@@ -48,7 +50,14 @@ export default function ContentContainer({
     setContentArray(dishes);
   }
 
-  async function handleDishCardClick(id: number, name: string) {}
+  async function handleDishCardClick(id: number) {
+    console.log(id);
+    setOpen(true);
+    setContentIDs((prevContentIDs) => ({
+      ...prevContentIDs,
+      dishID: id,
+    }));
+  }
 
   function parseData(data: CardData[]) {
     const cards: ReactJSXElement[] = [];
@@ -99,6 +108,7 @@ export default function ContentContainer({
           setBreadCrumbs={setBreadCrumbs}
         />
       )}
+      {dishID !== -999 && <ReviewsModal open={open} setOpen={setOpen} />}
       <div className="content-container">
         <h2 className="content-label">{formatHeader(contentClass)}</h2>
         <div className={contentClass}>

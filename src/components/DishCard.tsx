@@ -74,6 +74,7 @@ export default function DishCard({
             }
           : { backgroundColor: "var(--inputBorder)" }
       }
+      onClick={() => onDishCardClick(id)}
     >
       <div className="top-half">
         <Tooltip
