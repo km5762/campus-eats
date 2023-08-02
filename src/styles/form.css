@@ -1,24 +1,24 @@
-form.add-content {
+.form-container {
   color: var(--inputLabelText);
-  background-color: white;
   border-radius: 15px;
   padding: 1.5em;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-form.add-content h2 {
+form h2 {
   font-weight: 500;
   font-size: 1.25rem;
   margin-bottom: 1.25rem;
 }
 
-form.add-content label {
-  display: block;
+form label {
+  display: flex;
+  flex-direction: column;
   font-size: 14px;
   color: var(--inputLabelText);
 }
 
-form.add-content input {
+form input {
   border-radius: 5px;
   background-color: #f2f2f2;
   font-size: 16px;
@@ -30,21 +30,21 @@ form.add-content input {
   font-family: "Raleway";
 }
 
-form.add-content input:focus {
+form input:focus {
   border-color: var(--inputBorderFocus);
   outline: none;
 }
 
-form.add-content input:hover {
+form input:hover {
   border-color: var(--inputBorderHover);
 }
 
-form.add-content button {
+form button {
   font-size: 14px;
   font-family: "Raleway";
 }
 
-form.add-content button[type="submit"] {
+form button[type="submit"] {
   display: block;
   background-color: var(--brand);
   color: white;
@@ -53,18 +53,36 @@ form.add-content button[type="submit"] {
   padding: 10px;
 }
 
-form.add-content fieldset div {
+form fieldset div {
   display: flex;
   align-items: center;
   margin: 8px 0px;
 }
 
-form.add-content fieldset label {
+form fieldset label {
   font-size: 16px;
 }
 
-form.add-content button[type="submit"]:hover {
+form .error-message {
+  color: red;
+  font-size: 12px;
+}
+
+form button[type="submit"]:hover,
+form button[type="submit"]:disabled {
   background-color: var(--brandAccent);
+}
+
+form hr {
+  color: var(--dividerBackground);
+  width: 90%;
+}
+
+form .switch-view {
+  background: none;
+  text-decoration: underline;
+  border: none;
+  cursor: pointer;
 }
 
 .thank-you,

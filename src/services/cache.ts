@@ -48,6 +48,8 @@ export function queryCache(query: `${"location"}.${number}`): DishData[];
 
 export function queryCache(query: `${"campus"}.${number}`): LocationData[];
 
+export function queryCache(query: `${"campus"}.${number}`): LocationData[];
+
 // Use only if you know the query is cached
 export function queryCache(query: CacheQuery): DishData[] | LocationData[] {
   const [type, id] = query.split(".") as [CacheQueryType, number];
@@ -57,8 +59,20 @@ export function queryCache(query: CacheQuery): DishData[] | LocationData[] {
   if (id in cacheType) {
     return cacheType[id];
   } else {
-    throw new Error(
-      `Error: query "${query}" not cached. Use queryThroughCache if you are unsure whether the query is cached.`
+    throw new CacheMissError(
+      query,
+      "Error: Attempted query not cached. Use queryThroughCache if you are unsure a query is cached."
     );
+  }
+}
+
+export class CacheMissError extends Error {
+  message: string;
+  query: CacheQuery;
+
+  constructor(query: CacheQuery, message: string) {
+    super(message);
+    this.message = message;
+    this.query = query;
   }
 }

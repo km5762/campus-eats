@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SearchBar from "./SearchBar";
-import AuthButtons from "./AuthInterface";
+import AuthInterface from "./AuthInterface";
 import { useSupabaseSession } from "../hooks/useSupabaseSession";
 import { supabaseClient } from "../services/supabaseClient";
 import { CircularProgress } from "@mui/material";
@@ -21,7 +21,7 @@ export default function Index() {
         break;
       case null:
         return (
-          <AuthButtons
+          <AuthInterface
             supabaseClient={supabaseClient}
             openAuthModal={openAuthModal}
             closeAuthModal={closeAuthModal}

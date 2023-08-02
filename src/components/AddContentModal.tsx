@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Modal } from "@mui/material";
+import { Modal, Paper } from "@mui/material";
 import "../styles/form.css";
 import { TryPostResponse, insertLocation } from "../services/api";
 import { PostgrestError } from "@supabase/supabase-js";
@@ -93,15 +93,17 @@ export default function AddContentModal({
           );
         } else {
           return (
-            <form
-              action="/api/dishes"
-              method="post"
-              encType="multipart/form-data"
-              className={`add-content`}
-              onSubmit={handleSubmit}
-            >
-              <AddContentForm />
-            </form>
+            <Paper className="form-container">
+              <form
+                action="/api/dishes"
+                method="post"
+                encType="multipart/form-data"
+                className={`add-content`}
+                onSubmit={handleSubmit}
+              >
+                <AddContentForm />
+              </form>
+            </Paper>
           );
         }
       })()}

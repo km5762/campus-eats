@@ -71,9 +71,9 @@ export default function AddContentButton({
           disableTouchRipple={true}
           sx={{
             flex: "1",
-            borderRadius: "15px",
+            borderRadius: contentClass === "locations" ? "4px" : "15px",
             font: "inherit",
-            padding: "10px 0px 10px 0px",
+            padding: "1.35em",
           }}
         >
           <Add sx={{ color: "#6184d8" }} />

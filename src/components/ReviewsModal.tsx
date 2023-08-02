@@ -1,8 +1,14 @@
 import { IconButton, Modal, Paper, Typography } from "@mui/material";
 import React from "react";
 import { useContentIDs } from "../contexts/ContentIDProvider";
-import { queryCache } from "../services/cache";
+import {
+  CacheMissError,
+  queryCache,
+  queryThroughCache,
+} from "../services/cache";
 import { Close } from "@mui/icons-material";
+import "../styles/reviews-modal.css";
+import ReviewCard from "./ReviewCard";
 
 export default function ReviewsModal({
   open,
@@ -24,13 +30,39 @@ export default function ReviewsModal({
       open={open}
       sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
     >
-      <Paper sx={{ height: "80vh" }}>
-        <div style={{ display: "flex", justifyContent: "end" }}>
-          <IconButton>
-            <Close />
+      <Paper
+        style={{
+          height: "80vh",
+          backgroundColor: "#f5f5f5",
+          padding: "0.75rem 1.5rem",
+        }}
+      >
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography variant={"h6"}>Reviews for {name}</Typography>
+          <IconButton
+            size="small"
+            edge="end"
+            sx={{ padding: 0, minHeight: 0, minWidth: 0, margin: 0 }}
+            disableRipple={true}
+          >
+            <Close
+              sx={{
+                "&:hover": {
+                  color: "tomato",
+                },
+              }}
+              style={{ padding: "0", margin: "0" }}
+            />
           </IconButton>
         </div>
-        <Typography variant={"h5"}>Reviews for {name!}</Typography>
+        <ReviewCard
+          verdict={"Catastrophically bad"}
+          rating={1.3}
+          image={""}
+          likes={5}
+          dislikes={3}
+          userName="Ted"
+        />
       </Paper>
     </Modal>
   );
