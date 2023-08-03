@@ -1,11 +1,11 @@
 import React from "react";
-import { queryCache, cache } from "../services/cache";
+import { queryCache, cache, CacheQuery } from "../services/cache";
 import { CardData, ContentClass } from "./ContentContainer";
 
 export interface BreadCrumb {
   class: ContentClass;
   name: string;
-  query: string;
+  query: CacheQuery;
 }
 
 export default function BreadCrumbs({

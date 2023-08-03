@@ -43,13 +43,7 @@ export default function SchoolPage({
         );
         break;
       default:
-        return (
-          <ProfileInterface
-            color={"#6184d8"}
-            scale={"1.5"}
-            closeAuthModal={closeAuthModal}
-          />
-        );
+        return <ProfileInterface size={40} closeAuthModal={closeAuthModal} />;
         break;
     }
   }

@@ -1,5 +1,11 @@
-import { IconButton, Modal, Paper, Typography } from "@mui/material";
-import React from "react";
+import {
+  IconButton,
+  Modal,
+  Paper,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
+import React, { useEffect, useState } from "react";
 import { useContentIDs } from "../contexts/ContentIDProvider";
 import {
   CacheMissError,
@@ -8,7 +14,7 @@ import {
 } from "../services/cache";
 import { Close } from "@mui/icons-material";
 import "../styles/reviews-modal.css";
-import ReviewCard from "./ReviewCard";
+import ReviewCard, { ReviewData } from "./ReviewCard";
 
 export default function ReviewsModal({
   open,
@@ -22,6 +28,20 @@ export default function ReviewsModal({
   const name = (queryCache(`location.${locationID}`) as any[]).find(
     (dish) => dish.id === dishID
   ).name;
+  const [reviewData, setReviewData] = useState<ReviewData[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      if (dishID !== -999) {
+        setReviewData(await queryThroughCache(`dish.${dishID}`));
+      }
+    })();
+  }, [dishID]);
+
+  const isMobile =
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
 
   return (
     <Modal
@@ -35,6 +55,7 @@ export default function ReviewsModal({
           height: "80vh",
           backgroundColor: "#f5f5f5",
           padding: "0.75rem 1.5rem",
+          overflow: "hidden",
         }}
       >
         <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -55,14 +76,17 @@ export default function ReviewsModal({
             />
           </IconButton>
         </div>
-        <ReviewCard
-          verdict={"Catastrophically bad"}
-          rating={1.3}
-          image={""}
-          likes={5}
-          dislikes={3}
-          userName="Ted"
-        />
+        <div
+          style={{
+            overflowY: "scroll",
+            maxHeight: "70vh",
+            padding: isMobile ? "0.8rem" : "3px",
+          }}
+        >
+          {reviewData.map((review) => (
+            <ReviewCard {...review} key={review.id} />
+          ))}
+        </div>
       </Paper>
     </Modal>
   );

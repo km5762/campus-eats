@@ -6,24 +6,23 @@ import { ClickAwayListener, Menu } from "@mui/base";
 import { IconButton } from "@mui/material";
 import { Popper } from "@mui/base";
 import { AccountCircle, Logout } from "@mui/icons-material";
-import { supabase } from "@supabase/auth-ui-shared";
 import { supabaseClient } from "../services/supabaseClient";
 import { PersonOutline } from "@mui/icons-material";
 import { Typography } from "@mui/material";
 import { size } from "lodash";
+import Avatar from "boring-avatars";
+import { useAuth } from "../contexts/AuthProvider";
 
 export default function ProfileInterface({
-  scale,
-  color,
+  size,
   closeAuthModal,
 }: {
-  scale: string;
-  color: string;
+  size: number;
   closeAuthModal: Function;
 }) {
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
-
+  const session = useAuth();
   return (
     <>
       <ClickAwayListener onClickAway={() => setOpen(false)}>
@@ -34,11 +33,10 @@ export default function ProfileInterface({
             ref={anchorRef}
             disableTouchRipple={true}
           >
-            <AccountCircle
-              sx={{
-                transform: `scale(${scale})`,
-                color: color,
-              }}
+            <Avatar
+              size={size}
+              name={session?.user.user_metadata["username"]}
+              variant="beam"
             />
           </IconButton>
         </nav>

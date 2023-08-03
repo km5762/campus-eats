@@ -36,13 +36,25 @@ export default function SignUpForm({ setView }: SignUpFormProps) {
       setLoading(true);
 
       const { data, error } = await supabaseClient.auth.signUp({
-        email,
-        password,
+        email: email,
+        password: password,
+        options: {
+          data: {
+            username: username,
+          },
+        },
       });
 
       if (error) {
         setLoading(false);
-        setError(error.message);
+        if (
+          error.message ===
+          `duplicate key value violates unique constraint "profile_username_key"`
+        ) {
+          setError("Sorry, that username is already taken.");
+        } else {
+          setError(error.message);
+        }
       } else {
         setView(View.signUpSuccess);
       }

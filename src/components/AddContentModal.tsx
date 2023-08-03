@@ -20,7 +20,8 @@ export interface AddContentModalProps {
   setCountdown: Function;
   contentClass: ContentClass;
   AddContentForm: React.FC;
-  insertData: (formData: FormData) => Promise<TryPostResponse>;
+  jwt?: string;
+  insertData: (formData: FormData, jwt?: string) => Promise<TryPostResponse>;
 }
 
 export default function AddContentModal({
@@ -30,6 +31,7 @@ export default function AddContentModal({
   setCountdown,
   contentClass,
   AddContentForm,
+  jwt,
   insertData,
 }: AddContentModalProps) {
   const [submitted, setSubmitted] = useState(false);
@@ -41,7 +43,9 @@ export default function AddContentModal({
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
 
-    const { successful, nextPostAt } = await insertData(formData);
+    const { successful, nextPostAt } = jwt
+      ? await insertData(formData, jwt)
+      : await insertData(formData);
 
     setSubmitted(successful);
     setCountdown(nextPostAt);

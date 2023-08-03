@@ -68,6 +68,7 @@ export default function AddContentInterface({
             countdown={countdown}
             setCountdown={setCountdown}
             contentClass={contentClass}
+            jwt={session?.access_token}
             insertData={insertDish}
             AddContentForm={AddDishForm}
           />

@@ -30,13 +30,7 @@ export default function Index() {
         );
         break;
       default:
-        return (
-          <ProfileInterface
-            color={"white"}
-            scale={"2"}
-            closeAuthModal={closeAuthModal}
-          />
-        );
+        return <ProfileInterface size={60} closeAuthModal={closeAuthModal} />;
         break;
     }
   }

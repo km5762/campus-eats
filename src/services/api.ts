@@ -4,6 +4,7 @@ import { LocationData } from "../components/LocationCard";
 import { Suggestion } from "../components/SearchBar";
 import { supabaseClient } from "./supabaseClient";
 import generateKey from "./generateKey";
+import { ReviewData } from "../components/ReviewCard";
 
 export default async function fetchSearch(search: string) {
   try {
@@ -125,10 +126,7 @@ export async function getCountdowns(): Promise<Countdowns> {
   };
 }
 
-export async function insertDish(formData: FormData) {
-  const sessionData = await supabaseClient.auth.getSession();
-  const jwt = sessionData.data.session?.access_token;
-
+export async function insertDish(formData: FormData, jwt?: string) {
   const res = await fetch("/api/dishes", {
     method: "POST",
     body: formData,
@@ -143,4 +141,35 @@ export async function insertDish(formData: FormData) {
     code: json.code,
     nextPostAt: new Date(json.nextPostAt),
   };
+}
+
+export async function fetchReviews(dishID: number) {
+  try {
+    const { data, error } = await supabaseClient.rpc("fn_get_reviews", {
+      p_id: dishID,
+    });
+
+    if (error) {
+      throw error;
+    }
+
+    console.log(data);
+
+    const reviewData: ReviewData[] = data.map((review: any) => ({
+      id: review.id,
+      verdict: review.verdict,
+      comments: review.comments,
+      rating: review.rating,
+      image: review.image,
+      likes: review.likes,
+      dislikes: review.dislikes,
+      username: review.username,
+      createdAt: new Date(review.created_at),
+    }));
+
+    return reviewData;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
 }
