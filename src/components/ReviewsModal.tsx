@@ -64,6 +64,8 @@ export default function ReviewsModal({
           padding: "0.75rem 1.5rem",
           overflow: "hidden",
           width: "min(100vw, 900px)",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
         <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -89,6 +91,11 @@ export default function ReviewsModal({
             overflowY: "scroll",
             maxHeight: "70vh",
             padding: isMobile ? "0.8rem" : "3px",
+            justifyContent: loading ? "center" : undefined,
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+            flex: "1",
           }}
         >
           {loading ? (

@@ -1506,7 +1506,9 @@ function ReviewsModal(_ref) {
       backgroundColor: "#f5f5f5",
       padding: "0.75rem 1.5rem",
       overflow: "hidden",
-      width: "min(100vw, 900px)"
+      width: "min(100vw, 900px)",
+      display: "flex",
+      flexDirection: "column"
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
     style: {
@@ -1539,7 +1541,12 @@ function ReviewsModal(_ref) {
     style: {
       overflowY: "scroll",
       maxHeight: "70vh",
-      padding: isMobile ? "0.8rem" : "3px"
+      padding: isMobile ? "0.8rem" : "3px",
+      justifyContent: loading ? "center" : undefined,
+      display: "flex",
+      alignItems: "center",
+      flexDirection: "column",
+      flex: "1"
     }
   }, loading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.CircularProgress, null) : reviewData.map(function (review) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_ReviewCard__WEBPACK_IMPORTED_MODULE_6__["default"], _extends({}, review, {
