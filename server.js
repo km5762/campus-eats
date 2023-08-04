@@ -942,14 +942,13 @@ function ContentContainer(_ref) {
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
           case 0:
-            console.log(id);
             setOpen(true);
             setContentIDs(function (prevContentIDs) {
               return _objectSpread(_objectSpread({}, prevContentIDs), {}, {
                 dishID: id
               });
             });
-          case 3:
+          case 2:
           case "end":
             return _context2.stop();
         }
@@ -991,7 +990,7 @@ function ContentContainer(_ref) {
     setContentArray: setContentArray,
     setContentClass: setContentClass,
     setBreadCrumbs: setBreadCrumbs
-  }), dishID !== -999 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ReviewsModal__WEBPACK_IMPORTED_MODULE_9__["default"], {
+  }), contentClass === "dishes" && contentArray.length !== 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ReviewsModal__WEBPACK_IMPORTED_MODULE_9__["default"], {
     open: open,
     setOpen: setOpen
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -1446,33 +1445,43 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function ReviewsModal(_ref) {
+  var _queryCache;
   var open = _ref.open,
     setOpen = _ref.setOpen;
-  var dishID = (0,_contexts_ContentIDProvider__WEBPACK_IMPORTED_MODULE_2__.useContentIDs)().contentIDs.dishID;
-  var locationID = (0,_contexts_ContentIDProvider__WEBPACK_IMPORTED_MODULE_2__.useContentIDs)().contentIDs.locationID;
-  var name = (0,_services_cache__WEBPACK_IMPORTED_MODULE_3__.queryCache)("location.".concat(locationID)).find(function (dish) {
+  var _useContentIDs = (0,_contexts_ContentIDProvider__WEBPACK_IMPORTED_MODULE_2__.useContentIDs)(),
+    contentIDs = _useContentIDs.contentIDs;
+  var dishID = open ? contentIDs.dishID : undefined;
+  var locationID = contentIDs.locationID;
+  var name = open ? (_queryCache = (0,_services_cache__WEBPACK_IMPORTED_MODULE_3__.queryCache)("location.".concat(locationID))) === null || _queryCache === void 0 || (_queryCache = _queryCache.find(function (dish) {
     return dish.id === dishID;
-  }).name;
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+  })) === null || _queryCache === void 0 ? void 0 : _queryCache.name : undefined;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
-    reviewData = _useState2[0],
-    setReviewData = _useState2[1];
+    loading = _useState2[0],
+    setLoading = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+    _useState4 = _slicedToArray(_useState3, 2),
+    reviewData = _useState4[0],
+    setReviewData = _useState4[1];
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
-            if (!(dishID !== -999)) {
-              _context.next = 6;
+            setLoading(true);
+            if (!dishID) {
+              _context.next = 7;
               break;
             }
             _context.t0 = setReviewData;
-            _context.next = 4;
+            _context.next = 5;
             return (0,_services_cache__WEBPACK_IMPORTED_MODULE_3__.queryThroughCache)("dish.".concat(dishID));
-          case 4:
+          case 5:
             _context.t1 = _context.sent;
             (0, _context.t0)(_context.t1);
-          case 6:
+          case 7:
+            setLoading(false);
+          case 8:
           case "end":
             return _context.stop();
         }
@@ -1496,7 +1505,8 @@ function ReviewsModal(_ref) {
       height: "80vh",
       backgroundColor: "#f5f5f5",
       padding: "0.75rem 1.5rem",
-      overflow: "hidden"
+      overflow: "hidden",
+      width: "min(100vw, 900px)"
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
     style: {
@@ -1531,7 +1541,7 @@ function ReviewsModal(_ref) {
       maxHeight: "70vh",
       padding: isMobile ? "0.8rem" : "3px"
     }
-  }, reviewData.map(function (review) {
+  }, loading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.CircularProgress, null) : reviewData.map(function (review) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_ReviewCard__WEBPACK_IMPORTED_MODULE_6__["default"], _extends({}, review, {
       key: review.id
     }));
@@ -2418,13 +2428,12 @@ function _getCountdowns() {
           }
           throw error;
         case 7:
-          console.log(data);
           location_countdown = data.location_countdown, dish_countdown = data.dish_countdown;
           return _context5.abrupt("return", {
             locationCountdown: new Date(location_countdown),
             dishCountdown: new Date(dish_countdown)
           });
-        case 10:
+        case 9:
         case "end":
           return _context5.stop();
       }
@@ -2492,7 +2501,6 @@ function _fetchReviews() {
           }
           throw error;
         case 8:
-          console.log(data);
           reviewData = data.map(function (review) {
             return {
               id: review.id,
@@ -2507,16 +2515,16 @@ function _fetchReviews() {
             };
           });
           return _context7.abrupt("return", reviewData);
-        case 13:
-          _context7.prev = 13;
+        case 12:
+          _context7.prev = 12;
           _context7.t0 = _context7["catch"](0);
           console.error(_context7.t0);
           return _context7.abrupt("return", []);
-        case 17:
+        case 16:
         case "end":
           return _context7.stop();
       }
-    }, _callee7, null, [[0, 13]]);
+    }, _callee7, null, [[0, 12]]);
   }));
   return _fetchReviews.apply(this, arguments);
 }

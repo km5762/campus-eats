@@ -51,7 +51,6 @@ export default function ContentContainer({
   }
 
   async function handleDishCardClick(id: number) {
-    console.log(id);
     setOpen(true);
     setContentIDs((prevContentIDs) => ({
       ...prevContentIDs,
@@ -108,7 +107,9 @@ export default function ContentContainer({
           setBreadCrumbs={setBreadCrumbs}
         />
       )}
-      {dishID !== -999 && <ReviewsModal open={open} setOpen={setOpen} />}
+      {contentClass === "dishes" && contentArray.length !== 0 && (
+        <ReviewsModal open={open} setOpen={setOpen} />
+      )}
       <div className="content-container">
         <h2 className="content-label">{formatHeader(contentClass)}</h2>
         <div className={contentClass}>

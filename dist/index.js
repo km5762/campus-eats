@@ -27299,13 +27299,12 @@ function _getCountdowns() {
           }
           throw error;
         case 7:
-          console.log(data);
           location_countdown = data.location_countdown, dish_countdown = data.dish_countdown;
           return _context5.abrupt("return", {
             locationCountdown: new Date(location_countdown),
             dishCountdown: new Date(dish_countdown)
           });
-        case 10:
+        case 9:
         case "end":
           return _context5.stop();
       }
@@ -27373,7 +27372,6 @@ function _fetchReviews() {
           }
           throw error;
         case 8:
-          console.log(data);
           reviewData = data.map(function (review) {
             return {
               id: review.id,
@@ -27388,16 +27386,16 @@ function _fetchReviews() {
             };
           });
           return _context7.abrupt("return", reviewData);
-        case 13:
-          _context7.prev = 13;
+        case 12:
+          _context7.prev = 12;
           _context7.t0 = _context7["catch"](0);
           console.error(_context7.t0);
           return _context7.abrupt("return", []);
-        case 17:
+        case 16:
         case "end":
           return _context7.stop();
       }
-    }, _callee7, null, [[0, 13]]);
+    }, _callee7, null, [[0, 12]]);
   }));
   return _fetchReviews.apply(this, arguments);
 }

@@ -116,8 +116,6 @@ export async function getCountdowns(): Promise<Countdowns> {
     throw error;
   }
 
-  console.log(data);
-
   const { location_countdown, dish_countdown } = data;
 
   return {
@@ -152,8 +150,6 @@ export async function fetchReviews(dishID: number) {
     if (error) {
       throw error;
     }
-
-    console.log(data);
 
     const reviewData: ReviewData[] = data.map((review: any) => ({
       id: review.id,
