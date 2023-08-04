@@ -28754,7 +28754,7 @@ function ReviewsModal(_ref) {
   var name = open ? (_queryCache = (0,_services_cache__WEBPACK_IMPORTED_MODULE_2__.queryCache)("location.".concat(locationID))) === null || _queryCache === void 0 || (_queryCache = _queryCache.find(function (dish) {
     return dish.id === dishID;
   })) === null || _queryCache === void 0 ? void 0 : _queryCache.name : undefined;
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
     _useState2 = _slicedToArray(_useState, 2),
     loading = _useState2[0],
     setLoading = _useState2[1];
@@ -28762,37 +28762,49 @@ function ReviewsModal(_ref) {
     _useState4 = _slicedToArray(_useState3, 2),
     reviewData = _useState4[0],
     setReviewData = _useState4[1];
+  var controller = new AbortController();
+  function handleClose() {
+    setOpen(false);
+    setLoading(true);
+    setReviewData([]);
+  }
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      var signal;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
-            setLoading(true);
             if (!dishID) {
-              _context.next = 7;
+              _context.next = 12;
               break;
             }
+            signal = controller.signal;
+            setLoading(true);
+            _context.prev = 3;
             _context.t0 = setReviewData;
-            _context.next = 5;
-            return (0,_services_cache__WEBPACK_IMPORTED_MODULE_2__.queryThroughCache)("dish.".concat(dishID));
-          case 5:
+            _context.next = 7;
+            return (0,_services_cache__WEBPACK_IMPORTED_MODULE_2__.queryThroughCache)("dish.".concat(dishID), signal);
+          case 7:
             _context.t1 = _context.sent;
             (0, _context.t0)(_context.t1);
-          case 7:
+          case 9:
+            _context.prev = 9;
             setLoading(false);
-          case 8:
+            return _context.finish(9);
+          case 12:
           case "end":
             return _context.stop();
         }
-      }, _callee);
+      }, _callee, null, [[3,, 9, 12]]);
     }))();
+    return function () {
+      controller.abort();
+    };
   }, [dishID]);
   var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
     disableScrollLock: true,
-    onClose: function onClose() {
-      return setOpen(false);
-    },
+    onClose: handleClose,
     open: open,
     sx: {
       display: "flex",
@@ -28805,7 +28817,7 @@ function ReviewsModal(_ref) {
       backgroundColor: "#f5f5f5",
       padding: "0.75rem 1.5rem",
       overflow: "hidden",
-      width: "min(100vw, 900px)",
+      width: "mn(100vw, 900px)",
       display: "flex",
       flexDirection: "column"
     }
@@ -28825,7 +28837,8 @@ function ReviewsModal(_ref) {
       minWidth: 0,
       margin: 0
     },
-    disableRipple: true
+    disableRipple: true,
+    onClick: handleClose
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material__WEBPACK_IMPORTED_MODULE_9__["default"], {
     sx: {
       "&:hover": {
@@ -28838,16 +28851,18 @@ function ReviewsModal(_ref) {
     }
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     style: {
-      overflowY: "scroll",
+      overflowY: "auto",
       maxHeight: "70vh",
       padding: isMobile ? "0.8rem" : "3px",
-      justifyContent: loading ? "center" : undefined,
+      justifyContent: reviewData.length === 0 ? "center" : undefined,
+      alignItems: reviewData.length === 0 ? "center" : undefined,
       display: "flex",
-      alignItems: "center",
       flexDirection: "column",
       flex: "1"
     }
-  }, loading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], null) : reviewData.map(function (review) {
+  }, loading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], null) : reviewData.length === 0 && loading === false ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+    className: "empty-message"
+  }, "This dish has no reviews.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " Be the first to add one!") : reviewData.map(function (review) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ReviewCard__WEBPACK_IMPORTED_MODULE_4__["default"], _extends({}, review, {
       key: review.id
     }));
@@ -29781,30 +29796,33 @@ function _insertDish() {
   }));
   return _insertDish.apply(this, arguments);
 }
-function fetchReviews(_x8) {
+function fetchReviews(_x8, _x9) {
   return _fetchReviews.apply(this, arguments);
 }
 function _fetchReviews() {
-  _fetchReviews = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(dishID) {
-    var _yield$supabaseClient6, data, error, reviewData;
+  _fetchReviews = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(dishID, signal) {
+    var request, _yield$request, data, error, reviewData;
     return _regeneratorRuntime().wrap(function _callee7$(_context7) {
       while (1) switch (_context7.prev = _context7.next) {
         case 0:
-          _context7.prev = 0;
-          _context7.next = 3;
-          return _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.rpc("fn_get_reviews", {
+          request = _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.rpc("fn_get_reviews", {
             p_id: dishID
           });
-        case 3:
-          _yield$supabaseClient6 = _context7.sent;
-          data = _yield$supabaseClient6.data;
-          error = _yield$supabaseClient6.error;
+          if (signal) {
+            request = request.abortSignal(signal);
+          }
+          _context7.next = 4;
+          return request;
+        case 4:
+          _yield$request = _context7.sent;
+          data = _yield$request.data;
+          error = _yield$request.error;
           if (!error) {
-            _context7.next = 8;
+            _context7.next = 9;
             break;
           }
           throw error;
-        case 8:
+        case 9:
           reviewData = data.map(function (review) {
             return {
               id: review.id,
@@ -29819,16 +29837,11 @@ function _fetchReviews() {
             };
           });
           return _context7.abrupt("return", reviewData);
-        case 12:
-          _context7.prev = 12;
-          _context7.t0 = _context7["catch"](0);
-          console.error(_context7.t0);
-          return _context7.abrupt("return", []);
-        case 16:
+        case 11:
         case "end":
           return _context7.stop();
       }
-    }, _callee7, null, [[0, 12]]);
+    }, _callee7);
   }));
   return _fetchReviews.apply(this, arguments);
 }
@@ -29883,11 +29896,11 @@ var cache = {
   dish: {}
 };
 // Use if it is not known whether the query is cached
-function queryThroughCache(_x) {
+function queryThroughCache(_x, _x2) {
   return _queryThroughCache.apply(this, arguments);
 }
 function _queryThroughCache() {
-  _queryThroughCache = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(query) {
+  _queryThroughCache = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(query, signal) {
     var _ref3, _ref4, type, id, cacheType, fetchData, data;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
@@ -29907,17 +29920,26 @@ function _queryThroughCache() {
           } else {
             fetchData = _api__WEBPACK_IMPORTED_MODULE_0__.fetchReviews;
           }
-          _context.next = 7;
-          return fetchData(id);
-        case 7:
+          _context.prev = 5;
+          _context.next = 8;
+          return fetchData(id, signal);
+        case 8:
           data = _context.sent;
+          // Use the provided signal here
           cacheType[id] = data;
           return _context.abrupt("return", data);
-        case 10:
+        case 13:
+          _context.prev = 13;
+          _context.t0 = _context["catch"](5);
+          if (_context.t0.code === 20) {
+            console.log("Fetch aborted:", query);
+          }
+          return _context.abrupt("return", []);
+        case 17:
         case "end":
           return _context.stop();
       }
-    }, _callee);
+    }, _callee, null, [[5, 13]]);
   }));
   return _queryThroughCache.apply(this, arguments);
 }
@@ -71441,7 +71463,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var root = document.querySelector("#root");
-(0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.hydrateRoot)(root, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement((react__WEBPACK_IMPORTED_MODULE_1___default().StrictMode), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_contexts_AuthProvider__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_contexts_ContentIDProvider__WEBPACK_IMPORTED_MODULE_4__["default"], {
+(0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.hydrateRoot)(root, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_contexts_AuthProvider__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_contexts_ContentIDProvider__WEBPACK_IMPORTED_MODULE_4__["default"], {
   campusID: window.__INITIAL_STATE__.id
 }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_material_styles_ThemeProvider__WEBPACK_IMPORTED_MODULE_6__["default"], {
   theme: _services_theme__WEBPACK_IMPORTED_MODULE_5__["default"]
@@ -71449,7 +71471,7 @@ var root = document.querySelector("#root");
   locations: window.__INITIAL_STATE__.data,
   campusName: document.title,
   campusID: window.__INITIAL_STATE__.id
-}))))));
+})))));
 })();
 
 /******/ })()

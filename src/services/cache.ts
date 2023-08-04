@@ -19,20 +19,24 @@ export type CacheQuery = `${CacheQueryType}.${number}`;
 export const cache: Cache = { campus: {}, location: {}, dish: {} };
 
 export async function queryThroughCache(
-  query: `${"location"}.${number}`
+  query: `${"location"}.${number}`,
+  signal?: AbortSignal
 ): Promise<DishData[]>;
 
 export async function queryThroughCache(
-  query: `${"campus"}.${number}`
+  query: `${"campus"}.${number}`,
+  signal?: AbortSignal
 ): Promise<LocationData[]>;
 
 export async function queryThroughCache(
-  query: `${"dish"}.${number}`
+  query: `${"dish"}.${number}`,
+  signal?: AbortSignal
 ): Promise<ReviewData[]>;
 
 // Use if it is not known whether the query is cached
 export async function queryThroughCache(
-  query: CacheQuery
+  query: CacheQuery,
+  signal?: AbortSignal
 ): Promise<LocationData[] | DishData[] | ReviewData[]> {
   const [type, id] = query.split(".") as [CacheQueryType, number];
 
@@ -51,9 +55,16 @@ export async function queryThroughCache(
     fetchData = fetchReviews;
   }
 
-  const data = await fetchData(id);
-  cacheType[id] = data;
-  return data;
+  try {
+    const data = await fetchData(id, signal); // Use the provided signal here
+    cacheType[id] = data;
+    return data;
+  } catch (error) {
+    if (error.code === 20) {
+      console.log("Fetch aborted:", query);
+    }
+    return [];
+  }
 }
 
 export function queryCache(query: `${"location"}.${number}`): DishData[];

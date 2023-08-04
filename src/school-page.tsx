@@ -15,17 +15,15 @@ declare global {
 const root = document.querySelector("#root") as Element;
 hydrateRoot(
   root,
-  <React.StrictMode>
-    <AuthProvider>
-      <ContentIDProvider campusID={window.__INITIAL_STATE__.id}>
-        <ThemeProvider theme={theme}>
-          <SchoolPage
-            locations={window.__INITIAL_STATE__.data}
-            campusName={document.title}
-            campusID={window.__INITIAL_STATE__.id}
-          />
-        </ThemeProvider>
-      </ContentIDProvider>
-    </AuthProvider>
-  </React.StrictMode>
+  <AuthProvider>
+    <ContentIDProvider campusID={window.__INITIAL_STATE__.id}>
+      <ThemeProvider theme={theme}>
+        <SchoolPage
+          locations={window.__INITIAL_STATE__.data}
+          campusName={document.title}
+          campusID={window.__INITIAL_STATE__.id}
+        />
+      </ThemeProvider>
+    </ContentIDProvider>
+  </AuthProvider>
 );

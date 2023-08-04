@@ -141,31 +141,32 @@ export async function insertDish(formData: FormData, jwt?: string) {
   };
 }
 
-export async function fetchReviews(dishID: number) {
-  try {
-    const { data, error } = await supabaseClient.rpc("fn_get_reviews", {
-      p_id: dishID,
-    });
+export async function fetchReviews(dishID: number, signal?: AbortSignal) {
+  let request = supabaseClient.rpc("fn_get_reviews", {
+    p_id: dishID,
+  });
 
-    if (error) {
-      throw error;
-    }
-
-    const reviewData: ReviewData[] = data.map((review: any) => ({
-      id: review.id,
-      verdict: review.verdict,
-      comments: review.comments,
-      rating: review.rating,
-      image: review.image,
-      likes: review.likes,
-      dislikes: review.dislikes,
-      username: review.username,
-      createdAt: new Date(review.created_at),
-    }));
-
-    return reviewData;
-  } catch (error) {
-    console.error(error);
-    return [];
+  if (signal) {
+    request = request.abortSignal(signal);
   }
+
+  const { data, error } = await request;
+
+  if (error) {
+    throw error;
+  }
+
+  const reviewData: ReviewData[] = data.map((review: any) => ({
+    id: review.id,
+    verdict: review.verdict,
+    comments: review.comments,
+    rating: review.rating,
+    image: review.image,
+    likes: review.likes,
+    dislikes: review.dislikes,
+    username: review.username,
+    createdAt: new Date(review.created_at),
+  }));
+
+  return reviewData;
 }

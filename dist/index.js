@@ -27348,30 +27348,33 @@ function _insertDish() {
   }));
   return _insertDish.apply(this, arguments);
 }
-function fetchReviews(_x8) {
+function fetchReviews(_x8, _x9) {
   return _fetchReviews.apply(this, arguments);
 }
 function _fetchReviews() {
-  _fetchReviews = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(dishID) {
-    var _yield$supabaseClient6, data, error, reviewData;
+  _fetchReviews = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(dishID, signal) {
+    var request, _yield$request, data, error, reviewData;
     return _regeneratorRuntime().wrap(function _callee7$(_context7) {
       while (1) switch (_context7.prev = _context7.next) {
         case 0:
-          _context7.prev = 0;
-          _context7.next = 3;
-          return _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.rpc("fn_get_reviews", {
+          request = _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.rpc("fn_get_reviews", {
             p_id: dishID
           });
-        case 3:
-          _yield$supabaseClient6 = _context7.sent;
-          data = _yield$supabaseClient6.data;
-          error = _yield$supabaseClient6.error;
+          if (signal) {
+            request = request.abortSignal(signal);
+          }
+          _context7.next = 4;
+          return request;
+        case 4:
+          _yield$request = _context7.sent;
+          data = _yield$request.data;
+          error = _yield$request.error;
           if (!error) {
-            _context7.next = 8;
+            _context7.next = 9;
             break;
           }
           throw error;
-        case 8:
+        case 9:
           reviewData = data.map(function (review) {
             return {
               id: review.id,
@@ -27386,16 +27389,11 @@ function _fetchReviews() {
             };
           });
           return _context7.abrupt("return", reviewData);
-        case 12:
-          _context7.prev = 12;
-          _context7.t0 = _context7["catch"](0);
-          console.error(_context7.t0);
-          return _context7.abrupt("return", []);
-        case 16:
+        case 11:
         case "end":
           return _context7.stop();
       }
-    }, _callee7, null, [[0, 12]]);
+    }, _callee7);
   }));
   return _fetchReviews.apply(this, arguments);
 }

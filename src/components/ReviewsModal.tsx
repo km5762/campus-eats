@@ -12,6 +12,7 @@ import {
   CacheMissError,
   queryCache,
   queryThroughCache,
+  cache,
 } from "../services/cache";
 import { Close } from "@mui/icons-material";
 import "../styles/reviews-modal.css";
@@ -32,17 +33,31 @@ export default function ReviewsModal({
         (dish) => dish.id === dishID
       )?.name
     : undefined;
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [reviewData, setReviewData] = useState<ReviewData[]>([]);
+  const controller = new AbortController();
+
+  function handleClose() {
+    setOpen(false);
+    setLoading(true);
+    setReviewData([]);
+  }
 
   useEffect(() => {
     (async () => {
-      setLoading(true);
       if (dishID) {
-        setReviewData(await queryThroughCache(`dish.${dishID}`));
+        const signal = controller.signal;
+        setLoading(true);
+        try {
+          setReviewData(await queryThroughCache(`dish.${dishID}`, signal));
+        } finally {
+          setLoading(false);
+        }
       }
-      setLoading(false);
     })();
+    return () => {
+      controller.abort();
+    };
   }, [dishID]);
 
   const isMobile =
@@ -53,7 +68,7 @@ export default function ReviewsModal({
   return (
     <Modal
       disableScrollLock={true}
-      onClose={() => setOpen(false)}
+      onClose={handleClose}
       open={open}
       sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
     >
@@ -63,7 +78,7 @@ export default function ReviewsModal({
           backgroundColor: "#f5f5f5",
           padding: "0.75rem 1.5rem",
           overflow: "hidden",
-          width: "min(100vw, 900px)",
+          width: "mn(100vw, 900px)",
           display: "flex",
           flexDirection: "column",
         }}
@@ -75,6 +90,7 @@ export default function ReviewsModal({
             edge="end"
             sx={{ padding: 0, minHeight: 0, minWidth: 0, margin: 0 }}
             disableRipple={true}
+            onClick={handleClose}
           >
             <Close
               sx={{
@@ -88,18 +104,23 @@ export default function ReviewsModal({
         </div>
         <div
           style={{
-            overflowY: "scroll",
+            overflowY: "auto",
             maxHeight: "70vh",
             padding: isMobile ? "0.8rem" : "3px",
-            justifyContent: loading ? "center" : undefined,
+            justifyContent: reviewData.length === 0 ? "center" : undefined,
+            alignItems: reviewData.length === 0 ? "center" : undefined,
             display: "flex",
-            alignItems: "center",
             flexDirection: "column",
             flex: "1",
           }}
         >
           {loading ? (
             <CircularProgress />
+          ) : reviewData.length === 0 && loading === false ? (
+            <h2 className="empty-message">
+              This dish has no reviews.
+              <br /> Be the first to add one!
+            </h2>
           ) : (
             reviewData.map((review) => (
               <ReviewCard {...review} key={review.id} />
