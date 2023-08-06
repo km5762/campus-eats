@@ -25,7 +25,7 @@ export default function ReviewsModal({
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
-  const { contentIDs } = useContentIDs();
+  const { contentIDs, setContentIDs } = useContentIDs();
   const dishID = open ? contentIDs.dishID : undefined;
   const locationID = contentIDs.locationID;
   const name = open
@@ -35,28 +35,39 @@ export default function ReviewsModal({
     : undefined;
   const [loading, setLoading] = useState(true);
   const [reviewData, setReviewData] = useState<ReviewData[]>([]);
-  const controller = new AbortController();
 
   function handleClose() {
+    setContentIDs({ ...contentIDs, dishID: -999 });
     setOpen(false);
     setLoading(true);
     setReviewData([]);
   }
 
   useEffect(() => {
+    const controller = new AbortController();
+    let aborted = false;
+
     (async () => {
       if (dishID) {
+        ///Since dishID is set to undefined while the modal is closed, this avoids the effect triggering again
         const signal = controller.signal;
         setLoading(true);
         try {
           setReviewData(await queryThroughCache(`dish.${dishID}`, signal));
         } finally {
-          setLoading(false);
+          if (!aborted) {
+            /// This avoids loading being set to false after the modal is closed in the event that the query is aborted.
+            setLoading(false);
+          }
         }
       }
     })();
     return () => {
-      controller.abort();
+      if (dishID) {
+        /// This is to prevent the cleanup function from running when modal goes from closed -> open
+        aborted = true;
+        controller.abort();
+      }
     };
   }, [dishID]);
 
@@ -78,10 +89,10 @@ export default function ReviewsModal({
           backgroundColor: "#f5f5f5",
           padding: "0.75rem 1.5rem",
           overflow: "hidden",
-          width: "mn(100vw, 900px)",
           display: "flex",
           flexDirection: "column",
         }}
+        sx={{ width: "min(100vw, 900px)" }}
       >
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <Typography variant={"h6"}>Reviews for {name}</Typography>
