@@ -1,4 +1,5 @@
 import {
+  Button,
   CircularProgress,
   IconButton,
   Modal,
@@ -14,7 +15,7 @@ import {
   queryThroughCache,
   cache,
 } from "../services/cache";
-import { Close } from "@mui/icons-material";
+import { Close, Create, RateReviewOutlined } from "@mui/icons-material";
 import "../styles/reviews-modal.css";
 import ReviewCard, { ReviewData } from "./ReviewCard";
 
@@ -87,7 +88,7 @@ export default function ReviewsModal({
         style={{
           height: "80vh",
           backgroundColor: "#f5f5f5",
-          padding: "0.75rem 1.5rem",
+          padding: "0.75rem 1.25rem",
           overflow: "hidden",
           display: "flex",
           flexDirection: "column",
@@ -137,6 +138,28 @@ export default function ReviewsModal({
               <ReviewCard {...review} key={review.id} />
             ))
           )}
+        </div>
+        <div>
+          <Button
+            style={{
+              color: "white",
+              float: "right",
+              marginTop: "0.75rem",
+              border: "solid var(--brandAccent) 1px",
+              paddingLeft: "10px",
+              paddingRight: "10px",
+            }}
+            sx={{
+              backgroundColor: "var(--brand)",
+              "&:hover": {
+                backgroundColor: "var(--brandAccent)",
+              },
+            }}
+            startIcon={<Create />}
+            size="small"
+          >
+            Write a review
+          </Button>
         </div>
       </Paper>
     </Modal>

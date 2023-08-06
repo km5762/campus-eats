@@ -27468,7 +27468,10 @@ __webpack_require__.r(__webpack_exports__);
 
 var theme = (0,_mui_material__WEBPACK_IMPORTED_MODULE_0__["default"])({
   typography: {
-    fontFamily: "Raleway"
+    fontFamily: "Raleway",
+    button: {
+      textTransform: "none"
+    }
   },
   components: {
     MuiButtonBase: {

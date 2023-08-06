@@ -1534,7 +1534,7 @@ function ReviewsModal(_ref) {
     style: {
       height: "80vh",
       backgroundColor: "#f5f5f5",
-      padding: "0.75rem 1.5rem",
+      padding: "0.75rem 1.25rem",
       overflow: "hidden",
       display: "flex",
       flexDirection: "column"
@@ -1587,7 +1587,24 @@ function ReviewsModal(_ref) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_ReviewCard__WEBPACK_IMPORTED_MODULE_6__["default"], _extends({}, review, {
       key: review.id
     }));
-  }))));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.Button, {
+    style: {
+      color: "white",
+      "float": "right",
+      marginTop: "0.75rem",
+      border: "solid var(--brandAccent) 1px",
+      paddingLeft: "10px",
+      paddingRight: "10px"
+    },
+    sx: {
+      backgroundColor: "var(--brand)",
+      "&:hover": {
+        backgroundColor: "var(--brandAccent)"
+      }
+    },
+    startIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_icons_material__WEBPACK_IMPORTED_MODULE_4__.Create, null),
+    size: "small"
+  }, "Write a review"))));
 }
 
 /***/ }),
