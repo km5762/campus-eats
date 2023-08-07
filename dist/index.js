@@ -28111,14 +28111,16 @@ form h2 {
   margin-bottom: 1.25rem;
 }
 
-form label {
+form label:not(.css-dqr9h-MuiRating-label) {
   display: flex;
   flex-direction: column;
   font-size: 14px;
   color: var(--inputLabelText);
 }
 
-form input {
+form input,
+form textarea {
+  margin-top: 3px;
   border-radius: 5px;
   background-color: #f2f2f2;
   font-size: 16px;
@@ -28130,18 +28132,25 @@ form input {
   font-family: "Raleway";
 }
 
-form input:focus {
+form input:focus,
+form textarea:focus {
   border-color: var(--inputBorderFocus);
   outline: none;
 }
 
-form input:hover {
+form input:hover,
+form textarea:hover {
   border-color: var(--inputBorderHover);
 }
 
 form button {
   font-size: 14px;
   font-family: "Raleway";
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 form button[type="submit"] {
@@ -28151,6 +28160,19 @@ form button[type="submit"] {
   border: solid var(--brandAccent) 1px;
   border-radius: 15px;
   padding: 10px;
+}
+
+form .cancel {
+  display: block;
+  border: solid 1px;
+  border-radius: 15px;
+  border-color: var(--defaultButtonBorder);
+  color: var(--brand);
+  padding: 10px;
+}
+
+form .cancel:hover {
+  background-color: #6185d81c;
 }
 
 form fieldset div {
@@ -28226,7 +28248,7 @@ form .switch-view {
   line-height: 1.5rem;
   font-size: 0.75rem;
 }
-`, "",{"version":3,"sources":["webpack://./src/styles/form.css"],"names":[],"mappings":"AAAA;EACE,4BAA4B;EAC5B,mBAAmB;EACnB,cAAc;EACd,4CAA4C;AAC9C;;AAEA;EACE,gBAAgB;EAChB,kBAAkB;EAClB,sBAAsB;AACxB;;AAEA;EACE,aAAa;EACb,sBAAsB;EACtB,eAAe;EACf,4BAA4B;AAC9B;;AAEA;EACE,kBAAkB;EAClB,yBAAyB;EACzB,eAAe;EACf,mBAAmB;EACnB,gCAAgC;EAChC,uBAAuB;EACvB,iBAAiB;EACjB,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,qCAAqC;EACrC,aAAa;AACf;;AAEA;EACE,qCAAqC;AACvC;;AAEA;EACE,eAAe;EACf,sBAAsB;AACxB;;AAEA;EACE,cAAc;EACd,8BAA8B;EAC9B,YAAY;EACZ,oCAAoC;EACpC,mBAAmB;EACnB,aAAa;AACf;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,eAAe;AACjB;;AAEA;EACE,eAAe;AACjB;;AAEA;EACE,UAAU;EACV,eAAe;AACjB;;AAEA;;EAEE,oCAAoC;AACtC;;AAEA;EACE,+BAA+B;EAC/B,UAAU;AACZ;;AAEA;EACE,gBAAgB;EAChB,0BAA0B;EAC1B,YAAY;EACZ,eAAe;AACjB;;AAEA;;EAEE,gBAAgB;EAChB,uBAAuB;EACvB,4BAA4B;EAC5B,mBAAmB;EACnB,cAAc;EACd,4CAA4C;AAC9C;;AAEA;EACE;IACE,gBAAgB;EAClB;AACF;;AAEA;;EAEE,mBAAmB;EACnB,iBAAiB;EACjB,kBAAkB;AACpB;;AAEA;EACE,mBAAmB;AACrB;;AAEA;EACE,+BAA+B;AACjC;;AAEA;;EAEE,0BAA0B;AAC5B;;AAEA;;EAEE,mBAAmB;EACnB,kBAAkB;AACpB","sourcesContent":[".form-container {\n  color: var(--inputLabelText);\n  border-radius: 15px;\n  padding: 1.5em;\n  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;\n}\n\nform h2 {\n  font-weight: 500;\n  font-size: 1.25rem;\n  margin-bottom: 1.25rem;\n}\n\nform label {\n  display: flex;\n  flex-direction: column;\n  font-size: 14px;\n  color: var(--inputLabelText);\n}\n\nform input {\n  border-radius: 5px;\n  background-color: #f2f2f2;\n  font-size: 16px;\n  border-style: solid;\n  border-color: var(--inputBorder);\n  color: var(--inputText);\n  border-width: 1px;\n  padding: 10px;\n  font-family: \"Raleway\";\n}\n\nform input:focus {\n  border-color: var(--inputBorderFocus);\n  outline: none;\n}\n\nform input:hover {\n  border-color: var(--inputBorderHover);\n}\n\nform button {\n  font-size: 14px;\n  font-family: \"Raleway\";\n}\n\nform button[type=\"submit\"] {\n  display: block;\n  background-color: var(--brand);\n  color: white;\n  border: solid var(--brandAccent) 1px;\n  border-radius: 15px;\n  padding: 10px;\n}\n\nform fieldset div {\n  display: flex;\n  align-items: center;\n  margin: 8px 0px;\n}\n\nform fieldset label {\n  font-size: 16px;\n}\n\nform .error-message {\n  color: red;\n  font-size: 12px;\n}\n\nform button[type=\"submit\"]:hover,\nform button[type=\"submit\"]:disabled {\n  background-color: var(--brandAccent);\n}\n\nform hr {\n  color: var(--dividerBackground);\n  width: 90%;\n}\n\nform .switch-view {\n  background: none;\n  text-decoration: underline;\n  border: none;\n  cursor: pointer;\n}\n\n.thank-you,\n.timeout-error {\n  max-width: 320px;\n  background-color: white;\n  color: var(--inputLabelText);\n  border-radius: 15px;\n  padding: 1.5em;\n  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;\n}\n\n@media (max-width: 450px) {\n  .thank-you {\n    max-width: 210px;\n  }\n}\n\n.thank-you h2,\n.timeout-error h2 {\n  line-height: 1.5rem;\n  font-weight: bold;\n  font-size: 1.25rem;\n}\n\n.thank-you h2 {\n  color: var(--brand);\n}\n\n.timeout-error h2 {\n  color: var(--messageTextDanger);\n}\n\n.thank-you hr,\n.timeout-error hr {\n  color: var(--dividerColor);\n}\n\n.thank-you p,\n.timeout-error p {\n  line-height: 1.5rem;\n  font-size: 0.75rem;\n}\n"],"sourceRoot":""}]);
+`, "",{"version":3,"sources":["webpack://./src/styles/form.css"],"names":[],"mappings":"AAAA;EACE,4BAA4B;EAC5B,mBAAmB;EACnB,cAAc;EACd,4CAA4C;AAC9C;;AAEA;EACE,gBAAgB;EAChB,kBAAkB;EAClB,sBAAsB;AACxB;;AAEA;EACE,aAAa;EACb,sBAAsB;EACtB,eAAe;EACf,4BAA4B;AAC9B;;AAEA;;EAEE,eAAe;EACf,kBAAkB;EAClB,yBAAyB;EACzB,eAAe;EACf,mBAAmB;EACnB,gCAAgC;EAChC,uBAAuB;EACvB,iBAAiB;EACjB,aAAa;EACb,sBAAsB;AACxB;;AAEA;;EAEE,qCAAqC;EACrC,aAAa;AACf;;AAEA;;EAEE,qCAAqC;AACvC;;AAEA;EACE,eAAe;EACf,sBAAsB;EACtB,eAAe;EACf;;;gDAG8C;AAChD;;AAEA;EACE,cAAc;EACd,8BAA8B;EAC9B,YAAY;EACZ,oCAAoC;EACpC,mBAAmB;EACnB,aAAa;AACf;;AAEA;EACE,cAAc;EACd,iBAAiB;EACjB,mBAAmB;EACnB,wCAAwC;EACxC,mBAAmB;EACnB,aAAa;AACf;;AAEA;EACE,2BAA2B;AAC7B;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,eAAe;AACjB;;AAEA;EACE,eAAe;AACjB;;AAEA;EACE,UAAU;EACV,eAAe;AACjB;;AAEA;;EAEE,oCAAoC;AACtC;;AAEA;EACE,+BAA+B;EAC/B,UAAU;AACZ;;AAEA;EACE,gBAAgB;EAChB,0BAA0B;EAC1B,YAAY;EACZ,eAAe;AACjB;;AAEA;;EAEE,gBAAgB;EAChB,uBAAuB;EACvB,4BAA4B;EAC5B,mBAAmB;EACnB,cAAc;EACd,4CAA4C;AAC9C;;AAEA;EACE;IACE,gBAAgB;EAClB;AACF;;AAEA;;EAEE,mBAAmB;EACnB,iBAAiB;EACjB,kBAAkB;AACpB;;AAEA;EACE,mBAAmB;AACrB;;AAEA;EACE,+BAA+B;AACjC;;AAEA;;EAEE,0BAA0B;AAC5B;;AAEA;;EAEE,mBAAmB;EACnB,kBAAkB;AACpB","sourcesContent":[".form-container {\n  color: var(--inputLabelText);\n  border-radius: 15px;\n  padding: 1.5em;\n  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;\n}\n\nform h2 {\n  font-weight: 500;\n  font-size: 1.25rem;\n  margin-bottom: 1.25rem;\n}\n\nform label:not(.css-dqr9h-MuiRating-label) {\n  display: flex;\n  flex-direction: column;\n  font-size: 14px;\n  color: var(--inputLabelText);\n}\n\nform input,\nform textarea {\n  margin-top: 3px;\n  border-radius: 5px;\n  background-color: #f2f2f2;\n  font-size: 16px;\n  border-style: solid;\n  border-color: var(--inputBorder);\n  color: var(--inputText);\n  border-width: 1px;\n  padding: 10px;\n  font-family: \"Raleway\";\n}\n\nform input:focus,\nform textarea:focus {\n  border-color: var(--inputBorderFocus);\n  outline: none;\n}\n\nform input:hover,\nform textarea:hover {\n  border-color: var(--inputBorderHover);\n}\n\nform button {\n  font-size: 14px;\n  font-family: \"Raleway\";\n  cursor: pointer;\n  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,\n    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,\n    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,\n    color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n}\n\nform button[type=\"submit\"] {\n  display: block;\n  background-color: var(--brand);\n  color: white;\n  border: solid var(--brandAccent) 1px;\n  border-radius: 15px;\n  padding: 10px;\n}\n\nform .cancel {\n  display: block;\n  border: solid 1px;\n  border-radius: 15px;\n  border-color: var(--defaultButtonBorder);\n  color: var(--brand);\n  padding: 10px;\n}\n\nform .cancel:hover {\n  background-color: #6185d81c;\n}\n\nform fieldset div {\n  display: flex;\n  align-items: center;\n  margin: 8px 0px;\n}\n\nform fieldset label {\n  font-size: 16px;\n}\n\nform .error-message {\n  color: red;\n  font-size: 12px;\n}\n\nform button[type=\"submit\"]:hover,\nform button[type=\"submit\"]:disabled {\n  background-color: var(--brandAccent);\n}\n\nform hr {\n  color: var(--dividerBackground);\n  width: 90%;\n}\n\nform .switch-view {\n  background: none;\n  text-decoration: underline;\n  border: none;\n  cursor: pointer;\n}\n\n.thank-you,\n.timeout-error {\n  max-width: 320px;\n  background-color: white;\n  color: var(--inputLabelText);\n  border-radius: 15px;\n  padding: 1.5em;\n  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;\n}\n\n@media (max-width: 450px) {\n  .thank-you {\n    max-width: 210px;\n  }\n}\n\n.thank-you h2,\n.timeout-error h2 {\n  line-height: 1.5rem;\n  font-weight: bold;\n  font-size: 1.25rem;\n}\n\n.thank-you h2 {\n  color: var(--brand);\n}\n\n.timeout-error h2 {\n  color: var(--messageTextDanger);\n}\n\n.thank-you hr,\n.timeout-error hr {\n  color: var(--dividerColor);\n}\n\n.thank-you p,\n.timeout-error p {\n  line-height: 1.5rem;\n  font-size: 0.75rem;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

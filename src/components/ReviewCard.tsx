@@ -30,10 +30,7 @@ export default function ReviewCard({
 }: ReviewData) {
   const [open, setOpen] = useState(false);
   return (
-    <Paper
-      className="review"
-      style={{ padding: "1rem", objectFit: "contain", margin: "1rem 0rem" }}
-    >
+    <Paper className="review" style={{ padding: "1rem", objectFit: "contain" }}>
       <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
         <IconButton
           sx={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
