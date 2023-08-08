@@ -93,15 +93,62 @@ async function validateImage(req, res, next) {
   next();
 }
 
+async function handleInsertion(req, res, rpc, params) {
+  const { userClient } = req;
+
+  const { data, error } = await userClient.rpc(rpc, params);
+
+  if (error) {
+    return res.status(500).json({
+      code: "SUPABASE_POSTGREST_ERROR",
+      message: error.message,
+    });
+  } else {
+    const { next_post_at, code, successful } = data;
+    if (!successful && code === "TOO_MANY_REQUESTS") {
+      return res.status(429).json({
+        code: "TOO_MANY_REQUESTS",
+        message: "The rate limit for this action has been exceeded.",
+        nextPostAt: next_post_at,
+      });
+    } else if (successful) {
+      if (req.file) {
+        try {
+          await s3.send(
+            new PutObjectCommand({
+              Bucket: bucketName,
+              Key: req.imageKey,
+              Body: req.file.buffer,
+            })
+          );
+        } catch (error) {
+          return res.status(500).json({
+            code: "UPLOAD_ERROR",
+            message: error.message,
+          });
+        }
+        return res.status(200).json({
+          code: "POST_WITH_IMAGE_SUCCESS",
+          message: "Image uploaded successfully and database has been updated.",
+          nextPostAt: next_post_at,
+        });
+      } else {
+        return res.status(200).json({
+          code: "POST_WITHOUT_IMAGE_SUCCESS",
+          message: "Database has been successfully updated",
+        });
+      }
+    }
+  }
+}
+
 app.post(
   "/api/dishes",
   authorize,
-  upload.single("dish-img"),
+  upload.single("content-image"),
   validateImage,
   async (req, res) => {
-    const { userClient } = req;
-
-    const { data, error } = await userClient.rpc("fn_insert_dish", {
+    await handleInsertion(req, res, "fn_insert_dish", {
       p_name: req.body["dish-name"],
       p_location_id: req.body["location-id"],
       p_price: req.body["dish-price"],
@@ -110,50 +157,22 @@ app.post(
       p_dinner: !!req.body["dish-dinner?"],
       p_image: req.imageKey,
     });
+  }
+);
 
-    if (error) {
-      return res.status(500).json({
-        code: "SUPABASE_POSTGREST_ERROR",
-        message: error.message,
-      });
-    } else {
-      const { next_post_at, code, successful } = data;
-      if (!successful && code === "TOO_MANY_REQUESTS") {
-        return res.status(429).json({
-          code: "TOO_MANY_REQUESTS",
-          message: "The rate limit for this action has been exceeded.",
-          nextPostAt: next_post_at,
-        });
-      } else if (successful) {
-        if (req.file) {
-          try {
-            await s3.send(
-              new PutObjectCommand({
-                Bucket: bucketName,
-                Key: req.imageKey,
-                Body: req.file.buffer,
-              })
-            );
-          } catch (error) {
-            return res.status(500).json({
-              code: "UPLOAD_ERROR",
-              message: error.message,
-            });
-          }
-          return res.status(200).json({
-            code: "POST_WITH_IMAGE_SUCCESS",
-            message:
-              "Image uploaded successfully and database has been updated.",
-            nextPostAt: next_post_at,
-          });
-        } else {
-          return res.status(200).json({
-            code: "POST_WITHOUT_IMAGE_SUCCESS",
-            message: "Database has been successfully updated",
-          });
-        }
-      }
-    }
+app.post(
+  "/api/reviews",
+  authorize,
+  upload.single("content-image"),
+  validateImage,
+  async (req, res) => {
+    await handleInsertion(req, res, "fn_insert_review", {
+      p_rating: req.body["review-rating"],
+      p_dish_id: req.body["dish-id"],
+      p_comments: req.body["review-comments"],
+      p_verdict: req.body["review-verdict"],
+      p_image: req.imageKey,
+    });
   }
 );
 

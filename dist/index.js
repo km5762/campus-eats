@@ -27104,7 +27104,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   fetchReviews: () => (/* binding */ fetchReviews),
 /* harmony export */   getCountdowns: () => (/* binding */ getCountdowns),
 /* harmony export */   insertDish: () => (/* binding */ insertDish),
-/* harmony export */   insertLocation: () => (/* binding */ insertLocation)
+/* harmony export */   insertLocation: () => (/* binding */ insertLocation),
+/* harmony export */   insertReview: () => (/* binding */ insertReview)
 /* harmony export */ });
 /* harmony import */ var _supabaseClient__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./supabaseClient */ "./src/services/supabaseClient.ts");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -27348,14 +27349,42 @@ function _insertDish() {
   }));
   return _insertDish.apply(this, arguments);
 }
-function fetchReviews(_x8, _x9) {
+function insertReview(_x8, _x9) {
+  return _insertReview.apply(this, arguments);
+}
+function _insertReview() {
+  _insertReview = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(formData, jwt) {
+    var res;
+    return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+      while (1) switch (_context7.prev = _context7.next) {
+        case 0:
+          _context7.next = 2;
+          return fetch("/api/reviews", {
+            method: "POST",
+            body: formData,
+            headers: {
+              Authorization: "Bearer ".concat(jwt)
+            }
+          });
+        case 2:
+          res = _context7.sent;
+          return _context7.abrupt("return", res);
+        case 4:
+        case "end":
+          return _context7.stop();
+      }
+    }, _callee7);
+  }));
+  return _insertReview.apply(this, arguments);
+}
+function fetchReviews(_x10, _x11) {
   return _fetchReviews.apply(this, arguments);
 }
 function _fetchReviews() {
-  _fetchReviews = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(dishID, signal) {
+  _fetchReviews = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(dishID, signal) {
     var request, _yield$request, data, error, reviewData;
-    return _regeneratorRuntime().wrap(function _callee7$(_context7) {
-      while (1) switch (_context7.prev = _context7.next) {
+    return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+      while (1) switch (_context8.prev = _context8.next) {
         case 0:
           request = _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseClient.rpc("fn_get_reviews", {
             p_id: dishID
@@ -27363,14 +27392,14 @@ function _fetchReviews() {
           if (signal) {
             request = request.abortSignal(signal);
           }
-          _context7.next = 4;
+          _context8.next = 4;
           return request;
         case 4:
-          _yield$request = _context7.sent;
+          _yield$request = _context8.sent;
           data = _yield$request.data;
           error = _yield$request.error;
           if (!error) {
-            _context7.next = 9;
+            _context8.next = 9;
             break;
           }
           throw error;
@@ -27388,12 +27417,12 @@ function _fetchReviews() {
               createdAt: new Date(review.created_at)
             };
           });
-          return _context7.abrupt("return", reviewData);
+          return _context8.abrupt("return", reviewData);
         case 11:
         case "end":
-          return _context7.stop();
+          return _context8.stop();
       }
-    }, _callee7);
+    }, _callee8);
   }));
   return _fetchReviews.apply(this, arguments);
 }

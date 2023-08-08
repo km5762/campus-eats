@@ -59,7 +59,7 @@ export default function AddDishForm() {
           </div>
           <input type="hidden" name="location-id" value={locationID} />
         </fieldset>
-        <input type="file" name="dish-img" />
+        <input type="file" name="content-image" />
         <button type="submit">Submit</button>
       </div>
     </>

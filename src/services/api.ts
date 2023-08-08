@@ -124,7 +124,10 @@ export async function getCountdowns(): Promise<Countdowns> {
   };
 }
 
-export async function insertDish(formData: FormData, jwt?: string) {
+export async function insertDish(
+  formData: FormData,
+  jwt?: string
+): Promise<TryPostResponse> {
   const res = await fetch("/api/dishes", {
     method: "POST",
     body: formData,
@@ -139,6 +142,18 @@ export async function insertDish(formData: FormData, jwt?: string) {
     code: json.code,
     nextPostAt: new Date(json.nextPostAt),
   };
+}
+
+export async function insertReview(formData: FormData, jwt?: string) {
+  const res = await fetch("/api/reviews", {
+    method: "POST",
+    body: formData,
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
+
+  return res;
 }
 
 export async function fetchReviews(dishID: number, signal?: AbortSignal) {

@@ -1,6 +1,8 @@
 import {
+  Backdrop,
   Button,
   CircularProgress,
+  Dialog,
   IconButton,
   Modal,
   Paper,
@@ -19,15 +21,19 @@ import { Close, Create, RateReviewOutlined } from "@mui/icons-material";
 import "../styles/reviews-modal.css";
 import ReviewCard, { ReviewData } from "./ReviewCard";
 import AddReviewForm from "./AddReviewForm";
+import { useAuth } from "../contexts/AuthProvider";
 
 export default function ReviewsModal({
   open,
   setOpen,
+  openAuthModal,
 }: {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  openAuthModal: Function;
 }) {
   const { contentIDs, setContentIDs } = useContentIDs();
+  const session = useAuth();
   const dishID = open ? contentIDs.dishID : undefined;
   const locationID = contentIDs.locationID;
   const name = open
@@ -91,6 +97,7 @@ export default function ReviewsModal({
     >
       <Paper
         style={{
+          position: "relative",
           backgroundColor: "#f5f5f5",
           maxHeight: "85vh",
           minHeight:
@@ -152,33 +159,41 @@ export default function ReviewsModal({
                 ))
               )}
             </div>
-            <div>
-              {!isWritingReview && (
-                <Button
-                  style={{
-                    color: "white",
-                    float: "right",
-                    marginTop: "0.75rem",
-                    border: "solid var(--brandAccent) 1px",
-                    paddingLeft: "10px",
-                    paddingRight: "10px",
-                  }}
-                  sx={{
-                    backgroundColor: "var(--brand)",
-                    "&:hover": {
-                      backgroundColor: "var(--brandAccent)",
-                    },
-                    "&:disabled": {
-                      backgroundColor: "var(--brandAccent)",
-                    },
-                  }}
-                  startIcon={<Create />}
-                  size="small"
-                  onClick={() => setIsWritingReview(true)}
-                  disabled={loading}
-                >
-                  Write a review
-                </Button>
+            <div style={{ marginTop: "0.75rem" }}>
+              {session === undefined ? (
+                <CircularProgress style={{ float: "right" }} />
+              ) : (
+                !isWritingReview && (
+                  <Button
+                    style={{
+                      color: "white",
+                      float: "right",
+                      border: "solid var(--brandAccent) 1px",
+                      paddingLeft: "10px",
+                      paddingRight: "10px",
+                    }}
+                    sx={{
+                      backgroundColor: "var(--brand)",
+                      "&:hover": {
+                        backgroundColor: "var(--brandAccent)",
+                      },
+                      "&:disabled": {
+                        backgroundColor: "var(--brandAccent)",
+                      },
+                    }}
+                    startIcon={<Create />}
+                    size="small"
+                    onClick={
+                      session
+                        ? () => setIsWritingReview(true)
+                        : () => openAuthModal()
+                    }
+                    disabled={loading}
+                  >
+                    {session && "Write a review"}
+                    {session === null && "Sign in to add a review!"}
+                  </Button>
+                )
               )}
             </div>
           </>

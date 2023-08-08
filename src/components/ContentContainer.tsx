@@ -108,7 +108,7 @@ export default function ContentContainer({
         />
       )}
       {contentClass === "dishes" && contentArray.length !== 0 && (
-        <ReviewsModal open={open} setOpen={setOpen} />
+        <ReviewsModal open={open} setOpen={setOpen} openAuthModal={openAuthModal}/>
       )}
       <div className="content-container">
         <h2 className="content-label">{formatHeader(contentClass)}</h2>

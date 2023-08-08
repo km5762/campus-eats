@@ -1,6 +1,17 @@
 import React, { useState } from "react";
 import "../styles/form.css";
-import { Paper, Rating } from "@mui/material";
+import {
+  Backdrop,
+  CircularProgress,
+  Dialog,
+  Modal,
+  Paper,
+  Rating,
+  Typography,
+} from "@mui/material";
+import { insertReview } from "../services/api";
+import { useSupabaseSession } from "../hooks/useSupabaseSession";
+import { useContentIDs } from "../contexts/ContentIDProvider";
 
 export default function AddReviewForm({
   setIsWritingReview,
@@ -9,11 +20,56 @@ export default function AddReviewForm({
 }) {
   const [verdict, setVerdict] = useState("");
   const [comments, setComments] = useState("");
+  const session = useSupabaseSession();
+  const dishID = useContentIDs().contentIDs.dishID;
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit(event: React.FormEvent) {
+    event.preventDefault();
+
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
+
+    setOpen(true);
+    setLoading(true);
+    const res = await insertReview(formData, session?.access_token);
+    setLoading(false);
+
+    if (res.ok) {
+    }
+  }
 
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <Paper style={{ padding: "1rem" }}>
+          <Backdrop
+            onClick={() => {
+              if (!loading) {
+                setOpen(false);
+                setIsWritingReview(false);
+              }
+            }}
+            style={{
+              position: "absolute",
+              backgroundColor: "rgb(255 255 255 / 25%)",
+              backdropFilter: "blur(1px)",
+              zIndex: "1300",
+            }}
+            open={open}
+          >
+            {loading ? (
+              <CircularProgress />
+            ) : (
+              <Paper style={{ padding: "1rem" }}>
+                <Typography variant="h6" style={{ color: "var(--brand)" }}>
+                  Success!
+                </Typography>
+                <Typography>Your review has been posted.</Typography>
+              </Paper>
+            )}
+          </Backdrop>
           <div
             style={{ display: "flex", flexDirection: "column", gap: "16px" }}
           >
@@ -25,6 +81,7 @@ export default function AddReviewForm({
                   placeholder='What do you want people to take away? (E.g. "Would not buy again", "Pleasantly suprised")'
                   maxLength={100}
                   onChange={(event) => setVerdict(event.target.value)}
+                  name="review-verdict"
                   required
                 />
                 <span>{`${verdict.length}/100`}</span>
@@ -38,6 +95,7 @@ export default function AddReviewForm({
                   maxLength={500}
                   onChange={(event) => setComments(event.target.value)}
                   rows={8}
+                  name="review-comments"
                   required
                 />
                 <span>{`${comments.length}/500`}</span>
@@ -45,11 +103,15 @@ export default function AddReviewForm({
             </div>
             <label>
               Image
-              <input type="file" />
+              <input type="file" name="content-image" />
             </label>
             <label style={{ alignItems: "flex-start" }}>
               Rating
-              <Rating precision={0.25} sx={{ fontSize: "2rem" }} />
+              <Rating
+                precision={0.25}
+                sx={{ fontSize: "2rem" }}
+                name="review-rating"
+              />
             </label>
           </div>
         </Paper>
@@ -68,6 +130,7 @@ export default function AddReviewForm({
           >
             Cancel
           </button>
+          <input type="hidden" name="dish-id" value={dishID} />
           <button type="submit">Submit</button>
         </div>
       </form>
