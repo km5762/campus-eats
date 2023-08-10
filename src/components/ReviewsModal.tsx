@@ -131,7 +131,10 @@ export default function ReviewsModal({
           </IconButton>
         </div>
         {isWritingReview ? (
-          <AddReviewForm setIsWritingReview={setIsWritingReview} />
+          <AddReviewForm
+            setIsWritingReview={setIsWritingReview}
+            setReviewData={setReviewData}
+          />
         ) : (
           <>
             <div

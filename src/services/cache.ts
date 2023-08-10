@@ -13,6 +13,7 @@ interface Cache {
   dish: { [id: number]: ReviewData[] };
 }
 
+export type ContentData = LocationData | ReviewData | DishData;
 export type CacheQueryType = "location" | "campus" | "dish";
 export type CacheQuery = `${CacheQueryType}.${number}`;
 
@@ -37,7 +38,7 @@ export async function queryThroughCache(
 export async function queryThroughCache(
   query: CacheQuery,
   signal?: AbortSignal
-): Promise<LocationData[] | DishData[] | ReviewData[]> {
+): Promise<ContentData[]> {
   const [type, id] = query.split(".") as [CacheQueryType, number];
 
   const cacheType = cache[type];
@@ -74,9 +75,7 @@ export function queryCache(query: `${"campus"}.${number}`): LocationData[];
 export function queryCache(query: `${"dish"}.${number}`): ReviewData[];
 
 // Use only if you know the query is cached
-export function queryCache(
-  query: CacheQuery
-): DishData[] | LocationData[] | ReviewData[] {
+export function queryCache(query: CacheQuery): ContentData[] {
   const [type, id] = query.split(".") as [CacheQueryType, number];
 
   const cacheType = cache[type];
@@ -86,6 +85,23 @@ export function queryCache(
   } else {
     throw new CacheMissError(query);
   }
+}
+
+type ContentTypeFromQuery<T extends CacheQueryType> = T extends "location"
+  ? DishData
+  : T extends "campus"
+  ? LocationData
+  : T extends "dish"
+  ? ReviewData
+  : never;
+
+export function appendCacheEntry<T extends CacheQueryType>(
+  query: CacheQuery,
+  data: ContentTypeFromQuery<T>
+) {
+  const [type, id] = query.split(".") as [CacheQueryType, number];
+  if (cache[type][id]) (cache[type][id] as ContentData[]).push(data);
+  else (cache[type][id] as ContentData[]) = [data];
 }
 
 export class CacheMissError extends Error {

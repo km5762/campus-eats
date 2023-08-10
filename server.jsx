@@ -104,11 +104,18 @@ async function handleInsertion(req, res, rpc, params) {
       message: error.message,
     });
   } else {
-    const { next_post_at, code, successful } = data;
-    if (!successful && code === "TOO_MANY_REQUESTS") {
+    const { successful, code, next_post_at, new_row } = data;
+
+    if (!successful && code === "43000") {
       return res.status(429).json({
         code: "TOO_MANY_REQUESTS",
         message: "The rate limit for this action has been exceeded.",
+        nextPostAt: next_post_at,
+      });
+    } else if (!successful) {
+      return res.status(500).json({
+        code: "SUPABASE_POSTGREST_ERROR",
+        message: `Insertion failed with Postgres error code: ${code}`,
         nextPostAt: next_post_at,
       });
     } else if (successful) {
@@ -131,11 +138,15 @@ async function handleInsertion(req, res, rpc, params) {
           code: "POST_WITH_IMAGE_SUCCESS",
           message: "Image uploaded successfully and database has been updated.",
           nextPostAt: next_post_at,
+          newRow: new_row,
+          newImage: req.imageKey,
         });
       } else {
         return res.status(200).json({
           code: "POST_WITHOUT_IMAGE_SUCCESS",
           message: "Database has been successfully updated",
+          nextPostAt: next_post_at,
+          newRow: new_row,
         });
       }
     }
@@ -167,7 +178,7 @@ app.post(
   validateImage,
   async (req, res) => {
     await handleInsertion(req, res, "fn_insert_review", {
-      p_rating: req.body["review-rating"],
+      p_rating: req.body["review-rating"] ?? 0,
       p_dish_id: req.body["dish-id"],
       p_comments: req.body["review-comments"],
       p_verdict: req.body["review-verdict"],

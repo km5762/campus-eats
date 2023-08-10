@@ -12,11 +12,20 @@ import {
 import { insertReview } from "../services/api";
 import { useSupabaseSession } from "../hooks/useSupabaseSession";
 import { useContentIDs } from "../contexts/ContentIDProvider";
+import { CacheQuery, appendCacheEntry, queryCache } from "../services/cache";
+import { ReviewData } from "./ReviewCard";
+
+interface ErrorMessage {
+  header: string;
+  message: string;
+}
 
 export default function AddReviewForm({
   setIsWritingReview,
+  setReviewData,
 }: {
   setIsWritingReview: React.Dispatch<React.SetStateAction<boolean>>;
+  setReviewData: React.Dispatch<React.SetStateAction<ReviewData[]>>;
 }) {
   const [verdict, setVerdict] = useState("");
   const [comments, setComments] = useState("");
@@ -24,9 +33,16 @@ export default function AddReviewForm({
   const dishID = useContentIDs().contentIDs.dishID;
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [rating, setRating] = useState<number | null>(null);
+  const [error, setError] = useState<ErrorMessage | null>(null);
+  const [fileError, setFileError] = useState(false);
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
+
+    if (fileError) {
+      return;
+    }
 
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
@@ -35,9 +51,53 @@ export default function AddReviewForm({
     setLoading(true);
     const res = await insertReview(formData, session?.access_token);
     setLoading(false);
+    const json = await res.json();
 
     if (res.ok) {
+      const username = session?.user.user_metadata["username"];
+
+      const newReviewData: ReviewData = {
+        id: json.newRow,
+        verdict: verdict,
+        comments: comments,
+        rating: rating ?? 0,
+        image: json.newImage,
+        likes: 0,
+        dislikes: 0,
+        username: username,
+        createdAt: new Date(),
+      };
+
+      const cacheQuery: CacheQuery = `dish.${dishID}`;
+      appendCacheEntry(cacheQuery, newReviewData);
+      setReviewData(queryCache(`dish.${dishID}`));
+    } else {
+      if (res.status === 429) {
+        setError({
+          header: "Slow down!",
+          message: "You are sending too many requests. Try again in a bit.",
+        });
+      } else if (res.status === 500) {
+        setError({
+          header: "Something went wrong...",
+          message:
+            "Something unexpected occured on our end. Try again in a bit.",
+        });
+      }
     }
+  }
+
+  function validateFile(event: React.ChangeEvent<HTMLInputElement>) {
+    const allowedFileTypes = [
+      "image/jpeg",
+      "image/png",
+      "image/jpg",
+      "image/webp",
+    ];
+    const selectedFile = event.target.files?.[0];
+
+    if (selectedFile)
+      setFileError(!allowedFileTypes.includes(selectedFile.type));
   }
 
   return (
@@ -63,10 +123,21 @@ export default function AddReviewForm({
               <CircularProgress />
             ) : (
               <Paper style={{ padding: "1rem" }}>
-                <Typography variant="h6" style={{ color: "var(--brand)" }}>
-                  Success!
-                </Typography>
-                <Typography>Your review has been posted.</Typography>
+                {error ? (
+                  <>
+                    <Typography variant="h6" style={{ color: "red" }}>
+                      Success!
+                    </Typography>
+                    <Typography>Your review has been posted.</Typography>
+                  </>
+                ) : (
+                  <>
+                    <Typography variant="h6" style={{ color: "var(--brand)" }}>
+                      Success!
+                    </Typography>
+                    <Typography>Your review has been posted.</Typography>
+                  </>
+                )}
               </Paper>
             )}
           </Backdrop>
@@ -95,6 +166,7 @@ export default function AddReviewForm({
                   maxLength={500}
                   onChange={(event) => setComments(event.target.value)}
                   rows={8}
+                  placeholder="Any further comments you want to share. Elaborate!"
                   name="review-comments"
                   required
                 />
@@ -103,13 +175,24 @@ export default function AddReviewForm({
             </div>
             <label>
               Image
-              <input type="file" name="content-image" />
+              <input
+                type="file"
+                name="content-image"
+                accept="image/jpg, image/jpeg, image/png, image/webp"
+                onChange={validateFile}
+              />
+              <span style={{ color: "red" }}>
+                {fileError
+                  ? "Invalid file type. Accepted file types are jpg, jpeg, png, and webp."
+                  : "\u00A0"}
+              </span>
             </label>
             <label style={{ alignItems: "flex-start" }}>
               Rating
               <Rating
                 precision={0.25}
                 sx={{ fontSize: "2rem" }}
+                onChange={(event, newValue) => setRating(newValue)}
                 name="review-rating"
               />
             </label>
