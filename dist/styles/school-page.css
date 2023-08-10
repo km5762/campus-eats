@@ -292,6 +292,10 @@ section {
   color: var(--brandAccent);
 }
 
+.location button:focus {
+  border: 2px solid black;
+}
+
 .location span {
   display: flex;
   align-items: center;
@@ -327,7 +331,8 @@ section {
   transition: transform 0.1s ease-out;
 }
 
-.dish:not(.dish-name-tooltip):hover {
+.dish:not(.dish-name-tooltip):hover,
+.dish:not(.dish-name-tooltip):focus {
   opacity: 0.75;
   transform: scale(1.05);
 }

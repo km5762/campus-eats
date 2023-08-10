@@ -90,6 +90,11 @@ form .error-message {
   font-size: 12px;
 }
 
+form .error-message:focus {
+  border: 1px solid;
+  border-radius: 15px;
+}
+
 form button[type="submit"]:hover,
 form button[type="submit"]:disabled {
   background-color: var(--brandAccent);

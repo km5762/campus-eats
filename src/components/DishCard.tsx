@@ -62,6 +62,11 @@ export default function DishCard({
   return (
     <div
       className="dish"
+      tabIndex={0}
+      role="button"
+      onKeyDown={(event) => {
+        if (event.key === "Enter") onDishCardClick(id);
+      }}
       style={
         image
           ? {

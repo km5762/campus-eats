@@ -11,6 +11,14 @@ const theme = createTheme({
     MuiButtonBase: {
       defaultProps: {
         disableTouchRipple: true,
+        disableRipple: true,
+      },
+      styleOverrides: {
+        root: {
+          "&:focus": {
+            outline: "2px solid black",
+          },
+        },
       },
     },
   },

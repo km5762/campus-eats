@@ -1,3 +1,4 @@
+import Button from "@mui/base/Button";
 import { Rating, useMediaQuery } from "@mui/material";
 import React from "react";
 
@@ -47,7 +48,7 @@ export default function LocationCard({
           readOnly
         />
       </div>
-      <button onClick={handleButtonClick}>{`See all ${count} dishes`}</button>
+      <Button onClick={handleButtonClick}>{`See all ${count} dishes`}</Button>
     </div>
   );
 }
