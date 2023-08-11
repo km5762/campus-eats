@@ -209,7 +209,9 @@ export default function AddReviewForm({
             Cancel
           </button>
           <input type="hidden" name="dish-id" value={dishID} />
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={loading}>
+            Submit
+          </button>
         </div>
       </form>
     </>

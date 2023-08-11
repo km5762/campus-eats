@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function AddLocationForm() {
+export default function AddLocationForm({ loading }: { loading: boolean }) {
   return (
     <>
       <h2>Add a location!</h2>
@@ -20,7 +20,9 @@ export default function AddLocationForm() {
             required
           />
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" disabled={loading}>
+          Submit
+        </button>
       </div>
     </>
   );

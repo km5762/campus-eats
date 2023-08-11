@@ -479,7 +479,9 @@ function AddContentModal(_ref) {
         encType: "multipart/form-data",
         className: "add-content",
         onSubmit: handleSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(AddContentForm, null)));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(AddContentForm, {
+        loading: loading
+      })));
     }
   }());
 }
@@ -502,7 +504,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _contexts_ContentIDProvider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../contexts/ContentIDProvider */ "./src/contexts/ContentIDProvider.tsx");
 
 
-function AddDishForm() {
+function AddDishForm(_ref) {
+  var loading = _ref.loading;
   var locationID = (0,_contexts_ContentIDProvider__WEBPACK_IMPORTED_MODULE_1__.useContentIDs)().contentIDs.locationID;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Add a dish!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     style: {
@@ -552,7 +555,8 @@ function AddDishForm() {
     type: "file",
     name: "content-image"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    type: "submit"
+    type: "submit",
+    disabled: loading
   }, "Submit")));
 }
 
@@ -572,7 +576,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
-function AddLocationForm() {
+function AddLocationForm(_ref) {
+  var loading = _ref.loading;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Add a location!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     style: {
       display: "flex",
@@ -587,7 +592,8 @@ function AddLocationForm() {
     name: "location-name",
     required: true
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    type: "submit"
+    type: "submit",
+    disabled: loading
   }, "Submit")));
 }
 
@@ -832,7 +838,8 @@ function AddReviewForm(_ref) {
     name: "dish-id",
     value: dishID
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    type: "submit"
+    type: "submit",
+    disabled: loading
   }, "Submit"))));
 }
 

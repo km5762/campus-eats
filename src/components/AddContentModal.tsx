@@ -20,7 +20,7 @@ export interface AddContentModalProps {
   countdown: null | Date;
   setCountdown: Function;
   contentClass: ContentClass;
-  AddContentForm: React.FC;
+  AddContentForm: React.FC<{ loading: boolean }>;
   jwt?: string;
   insertData: (formData: FormData, jwt?: string) => Promise<TryPostResponse>;
 }
@@ -114,7 +114,7 @@ export default function AddContentModal({
                 className={`add-content`}
                 onSubmit={handleSubmit}
               >
-                <AddContentForm />
+                <AddContentForm loading={loading} />
               </form>
             </Paper>
           );

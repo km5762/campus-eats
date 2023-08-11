@@ -1,7 +1,7 @@
 import React from "react";
 import { useContentIDs } from "../contexts/ContentIDProvider";
 
-export default function AddDishForm() {
+export default function AddDishForm({ loading }: { loading: boolean }) {
   const locationID = useContentIDs().contentIDs.locationID;
   return (
     <>
@@ -60,7 +60,9 @@ export default function AddDishForm() {
           <input type="hidden" name="location-id" value={locationID} />
         </fieldset>
         <input type="file" name="content-image" />
-        <button type="submit">Submit</button>
+        <button type="submit" disabled={loading}>
+          Submit
+        </button>
       </div>
     </>
   );
