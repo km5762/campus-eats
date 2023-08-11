@@ -14,6 +14,7 @@ import { useSupabaseSession } from "../hooks/useSupabaseSession";
 import { useContentIDs } from "../contexts/ContentIDProvider";
 import { CacheQuery, appendCacheEntry, queryCache } from "../services/cache";
 import { ReviewData } from "./ReviewCard";
+import FormDialogModal from "./FormDialogModal";
 
 interface ErrorMessage {
   header: string;
@@ -104,18 +105,12 @@ export default function AddReviewForm({
     <>
       <form onSubmit={handleSubmit}>
         <Paper style={{ padding: "1rem" }}>
-          <Backdrop
+          <FormDialogModal
             onClick={() => {
               if (!loading) {
                 setOpen(false);
                 setIsWritingReview(false);
               }
-            }}
-            style={{
-              position: "absolute",
-              backgroundColor: "rgb(255 255 255 / 25%)",
-              backdropFilter: "blur(1px)",
-              zIndex: "1300",
             }}
             open={open}
           >
@@ -140,7 +135,7 @@ export default function AddReviewForm({
                 )}
               </Paper>
             )}
-          </Backdrop>
+          </FormDialogModal>
           <div
             style={{ display: "flex", flexDirection: "column", gap: "16px" }}
           >
