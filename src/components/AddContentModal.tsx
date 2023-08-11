@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Modal, Paper } from "@mui/material";
+import { CircularProgress, Modal, Paper } from "@mui/material";
 import "../styles/form.css";
 import { TryPostResponse, insertLocation } from "../services/api";
 import { PostgrestError } from "@supabase/supabase-js";
 import Countdown from "react-countdown";
 import { Construction } from "@mui/icons-material";
 import { ContentClass } from "./ContentContainer";
+import FormDialogModal from "./FormDialogModal";
 
 const contentClassMap: { [key: string]: string } = {
   locations: "location",
@@ -35,6 +36,7 @@ export default function AddContentModal({
   insertData,
 }: AddContentModalProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const contentType = contentClassMap[contentClass];
 
   async function handleSubmit(event: React.FormEvent) {
@@ -43,10 +45,11 @@ export default function AddContentModal({
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
 
+    setLoading(true);
     const { successful, nextPostAt } = jwt
       ? await insertData(formData, jwt)
       : await insertData(formData);
-
+    setLoading(false);
     setSubmitted(successful);
     setCountdown(nextPostAt);
   }
@@ -97,7 +100,13 @@ export default function AddContentModal({
           );
         } else {
           return (
-            <Paper className="form-container">
+            <Paper
+              className="form-container"
+              style={{ position: "relative", overflow: "hidden" }}
+            >
+              <FormDialogModal open={loading}>
+                <CircularProgress />
+              </FormDialogModal>
               <form
                 action="/api/dishes"
                 method="post"

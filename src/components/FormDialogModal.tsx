@@ -6,13 +6,15 @@ export default function FormDialogModal({
   open,
   children,
 }: {
-  onClick: Function;
+  onClick?: Function;
   open: boolean;
   children: React.ReactNode;
 }) {
   return (
     <Backdrop
-      onClick={() => onClick()}
+      onClick={() => {
+        if (onClick) onClick();
+      }}
       style={{
         position: "absolute",
         backgroundColor: "rgb(255 255 255 / 25%)",
