@@ -2,9 +2,9 @@ import { useRadioGroup } from "@mui/material";
 import { DishData } from "../components/DishCard";
 import { LocationData } from "../components/LocationCard";
 import { Suggestion } from "../components/SearchBar";
-import { supabaseClient } from "./supabaseClient";
+import { supabaseClient, supabaseKey, supabaseUrl } from "./supabaseClient";
 import generateKey from "./generateKey";
-import { ReviewData } from "../components/ReviewCard";
+import { ReviewData, VoteData } from "../components/ReviewCard";
 
 export default async function fetchSearch(search: string) {
   try {
@@ -181,6 +181,7 @@ export async function fetchReviews(dishID: number, signal?: AbortSignal) {
     dislikes: review.dislikes,
     username: review.username,
     createdAt: new Date(review.created_at),
+    usersVote: review.users_vote,
   }));
 
   return reviewData;

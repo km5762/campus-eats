@@ -5,6 +5,7 @@ import AuthProvider from "./contexts/AuthProvider";
 import ContentIDProvider from "./contexts/ContentIDProvider";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import theme from "./services/theme";
+import UserVotesStoreProvider from "./contexts/UserVotesStoreProvider";
 
 declare global {
   interface Window {
@@ -17,13 +18,15 @@ hydrateRoot(
   root,
   <AuthProvider>
     <ContentIDProvider campusID={window.__INITIAL_STATE__.id}>
-      <ThemeProvider theme={theme}>
-        <SchoolPage
-          locations={window.__INITIAL_STATE__.data}
-          campusName={document.title}
-          campusID={window.__INITIAL_STATE__.id}
-        />
-      </ThemeProvider>
+      <UserVotesStoreProvider>
+        <ThemeProvider theme={theme}>
+          <SchoolPage
+            locations={window.__INITIAL_STATE__.data}
+            campusName={document.title}
+            campusID={window.__INITIAL_STATE__.id}
+          />
+        </ThemeProvider>
+      </UserVotesStoreProvider>
     </ContentIDProvider>
   </AuthProvider>
 );
