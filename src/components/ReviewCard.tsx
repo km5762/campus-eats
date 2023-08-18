@@ -4,6 +4,8 @@ import Avatar from "boring-avatars";
 import React, { useState } from "react";
 import { ThumbDown, ThumbUp } from "@mui/icons-material";
 import Modal from "@mui/base/Modal";
+import { useAuth } from "../contexts/AuthProvider";
+import { useUserVotesStore } from "../contexts/UserVotesStoreProvider";
 
 export interface ReviewData {
   id: number;
@@ -15,6 +17,12 @@ export interface ReviewData {
   dislikes: number;
   username: string;
   createdAt: Date;
+  usersVote: boolean | null;
+}
+
+export interface VoteData {
+  reviewID: number;
+  value: boolean;
 }
 
 export default function ReviewCard({
@@ -27,8 +35,36 @@ export default function ReviewCard({
   dislikes,
   username,
   createdAt,
+  usersVote,
 }: ReviewData) {
   const [open, setOpen] = useState(false);
+  const { addVote, userVotesStore } = useUserVotesStore();
+  const placeHolderVote = userVotesStore[id];
+  const session = useAuth();
+
+  const isLiked =
+    (usersVote === true && placeHolderVote === undefined) ||
+    placeHolderVote === true;
+  const isDisliked =
+    (usersVote === false && placeHolderVote === undefined) ||
+    placeHolderVote === false;
+
+  function handleLike() {
+    if (
+      (placeHolderVote === undefined || placeHolderVote === false) &&
+      (usersVote === null || usersVote === false)
+    )
+      addVote(id, true);
+  }
+
+  function handleDislike() {
+    if (
+      (placeHolderVote === undefined || placeHolderVote === true) &&
+      (usersVote === null || usersVote === true)
+    )
+      addVote(id, false);
+  }
+
   return (
     <Paper className="review" style={{ padding: "1rem", objectFit: "contain" }}>
       <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
@@ -73,22 +109,40 @@ export default function ReviewCard({
       >
         <div>
           <Tooltip title="Helpful">
-            <IconButton>
-              <ThumbUp fontSize="large" />
+            <IconButton onClick={handleLike} disabled={!session}>
+              <ThumbUp
+                fontSize="large"
+                style={{
+                  color: isLiked ? "var(--brand)" : undefined,
+                }}
+              />
             </IconButton>
           </Tooltip>
           <Typography variant="caption" fontSize={"1.25rem"}>
-            {likes}
+            {placeHolderVote === true
+              ? likes + 1
+              : placeHolderVote === false
+              ? likes - 1
+              : likes}
           </Typography>
         </div>
         <div>
           <Tooltip title="Not Helpful">
-            <IconButton>
-              <ThumbDown fontSize="large" />
+            <IconButton onClick={handleDislike} disabled={!session}>
+              <ThumbDown
+                fontSize="large"
+                style={{
+                  color: isDisliked ? "var(--brand)" : undefined,
+                }}
+              />
             </IconButton>
           </Tooltip>
           <Typography variant="caption" fontSize={"1.25rem"}>
-            {dislikes}
+            {placeHolderVote === false
+              ? dislikes + 1
+              : placeHolderVote === true
+              ? dislikes - 1
+              : dislikes}
           </Typography>
         </div>
       </div>

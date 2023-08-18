@@ -6,6 +6,7 @@ import {
 } from "./api";
 import { LocationData } from "../components/LocationCard";
 import { ReviewData } from "../components/ReviewCard";
+import { supabaseClient } from "./supabaseClient";
 
 interface Cache {
   campus: { [id: number]: LocationData[] };
@@ -57,7 +58,7 @@ export async function queryThroughCache(
   }
 
   try {
-    const data = await fetchData(id, signal); // Use the provided signal here
+    const data = await fetchData(id, signal);
     cacheType[id] = data;
     return data;
   } catch (error) {
@@ -104,6 +105,11 @@ export function appendCacheEntry<T extends CacheQueryType>(
   else (cache[type][id] as ContentData[]) = [data];
 }
 
+export function clearUserSpecificData() {
+  /// Need to do clear this cache on auth events - the "usersVote" is session specific
+  cache["dish"] = {};
+}
+
 export class CacheMissError extends Error {
   query: CacheQuery;
 
@@ -127,3 +133,9 @@ export class InvalidCacheTypeError extends Error {
     this.query = query;
   }
 }
+
+supabaseClient.auth.onAuthStateChange((event) => {
+  if (event === "SIGNED_OUT" || event === "SIGNED_IN") {
+    clearUserSpecificData();
+  }
+});

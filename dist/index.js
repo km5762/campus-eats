@@ -27098,7 +27098,6 @@ var useSupabaseSession = function useSupabaseSession() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   batchVotes: () => (/* binding */ batchVotes),
 /* harmony export */   "default": () => (/* binding */ fetchSearch),
 /* harmony export */   fetchApprovedDishes: () => (/* binding */ fetchApprovedDishes),
 /* harmony export */   fetchApprovedLocations: () => (/* binding */ fetchApprovedLocations),
@@ -27427,54 +27426,6 @@ function _fetchReviews() {
     }, _callee8);
   }));
   return _fetchReviews.apply(this, arguments);
-}
-function batchVotes(_x12, _x13) {
-  return _batchVotes.apply(this, arguments);
-}
-function _batchVotes() {
-  _batchVotes = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(votes, jwt) {
-    var sqlRepresentation, response, data, error;
-    return _regeneratorRuntime().wrap(function _callee9$(_context9) {
-      while (1) switch (_context9.prev = _context9.next) {
-        case 0:
-          sqlRepresentation = Array.from(votes).map(function (vote) {
-            return {
-              review_id: vote.reviewID,
-              value: vote.value
-            };
-          });
-          _context9.next = 3;
-          return fetch("".concat(_supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseUrl, "/rest/v1/vote"), {
-            method: "POST",
-            keepalive: true,
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: "Bearer ".concat(jwt),
-              apikey: _supabaseClient__WEBPACK_IMPORTED_MODULE_0__.supabaseKey
-            },
-            body: JSON.stringify(sqlRepresentation)
-          });
-        case 3:
-          response = _context9.sent;
-          _context9.next = 6;
-          return response.json();
-        case 6:
-          data = _context9.sent;
-          error = response.ok ? null : data;
-          if (!error) {
-            _context9.next = 10;
-            break;
-          }
-          throw error;
-        case 10:
-          return _context9.abrupt("return", data);
-        case 11:
-        case "end":
-          return _context9.stop();
-      }
-    }, _callee9);
-  }));
-  return _batchVotes.apply(this, arguments);
 }
 
 /***/ }),

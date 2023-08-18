@@ -61,6 +61,7 @@ export default function UserVotesStoreProvider({
         },
         body: JSON.stringify(sqlRepresentation),
       });
+      clearVotes();
     }
   }
 
