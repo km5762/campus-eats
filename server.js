@@ -1728,7 +1728,7 @@ function ReviewCard(_ref) {
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.Typography, {
     variant: "caption",
     fontSize: "1.25rem"
-  }, placeHolderVote === true ? likes + 1 : placeHolderVote === false ? likes - 1 : likes)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.Tooltip, {
+  }, placeHolderVote === true ? likes + 1 : placeHolderVote === false && usersVote === true ? likes - 1 : likes)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.Tooltip, {
     title: "Not Helpful"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.IconButton, {
     onClick: handleDislike,
@@ -1741,7 +1741,7 @@ function ReviewCard(_ref) {
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.Typography, {
     variant: "caption",
     fontSize: "1.25rem"
-  }, placeHolderVote === false ? dislikes + 1 : placeHolderVote === true ? dislikes - 1 : dislikes))));
+  }, placeHolderVote === false ? dislikes + 1 : placeHolderVote === true && usersVote === false ? dislikes - 1 : dislikes))));
 }
 
 /***/ }),
@@ -1873,7 +1873,7 @@ function ReviewsModal(_ref) {
         controller.abort();
       }
     };
-  }, [dishID]);
+  }, [dishID, session]);
   var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.Modal, {
     disableScrollLock: true,

@@ -1,5 +1,4 @@
 import { VoteData } from "../components/ReviewCard";
-import { batchVotes } from "./api";
 import { supabaseUrl, supabaseKey, supabaseClient } from "./supabaseClient";
 
 export interface UserVotesStore {
