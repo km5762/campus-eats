@@ -121,7 +121,7 @@ export default function ReviewCard({
           <Typography variant="caption" fontSize={"1.25rem"}>
             {placeHolderVote === true
               ? likes + 1
-              : placeHolderVote === false
+              : placeHolderVote === false && usersVote === true
               ? likes - 1
               : likes}
           </Typography>
@@ -140,7 +140,7 @@ export default function ReviewCard({
           <Typography variant="caption" fontSize={"1.25rem"}>
             {placeHolderVote === false
               ? dislikes + 1
-              : placeHolderVote === true
+              : placeHolderVote === true && usersVote === false
               ? dislikes - 1
               : dislikes}
           </Typography>
