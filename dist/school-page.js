@@ -29493,8 +29493,8 @@ function ReviewCard(_ref) {
       gap: "1rem"
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], {
-    title: "Helpful"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    title: session ? "Helpful" : "Sign in to like this review!"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
     onClick: handleLike,
     disabled: !session
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_icons_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -29502,12 +29502,12 @@ function ReviewCard(_ref) {
     style: {
       color: isLiked ? "var(--brand)" : undefined
     }
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
     variant: "caption",
     fontSize: "1.25rem"
   }, placeHolderVote === true ? likes + 1 : placeHolderVote === false && usersVote === true ? likes - 1 : likes)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], {
-    title: "Not Helpful"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    title: session ? "Not helpful" : "Sign in to dislike this review!"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
     onClick: handleDislike,
     disabled: !session
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_icons_material__WEBPACK_IMPORTED_MODULE_11__["default"], {
@@ -29515,7 +29515,7 @@ function ReviewCard(_ref) {
     style: {
       color: isDisliked ? "var(--brand)" : undefined
     }
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
     variant: "caption",
     fontSize: "1.25rem"
   }, placeHolderVote === false ? dislikes + 1 : placeHolderVote === true && usersVote === false ? dislikes - 1 : dislikes))));

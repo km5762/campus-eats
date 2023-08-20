@@ -108,15 +108,17 @@ export default function ReviewCard({
         }}
       >
         <div>
-          <Tooltip title="Helpful">
-            <IconButton onClick={handleLike} disabled={!session}>
-              <ThumbUp
-                fontSize="large"
-                style={{
-                  color: isLiked ? "var(--brand)" : undefined,
-                }}
-              />
-            </IconButton>
+          <Tooltip title={session ? "Helpful" : "Sign in to like this review!"}>
+            <span>
+              <IconButton onClick={handleLike} disabled={!session}>
+                <ThumbUp
+                  fontSize="large"
+                  style={{
+                    color: isLiked ? "var(--brand)" : undefined,
+                  }}
+                />
+              </IconButton>
+            </span>
           </Tooltip>
           <Typography variant="caption" fontSize={"1.25rem"}>
             {placeHolderVote === true
@@ -127,15 +129,19 @@ export default function ReviewCard({
           </Typography>
         </div>
         <div>
-          <Tooltip title="Not Helpful">
-            <IconButton onClick={handleDislike} disabled={!session}>
-              <ThumbDown
-                fontSize="large"
-                style={{
-                  color: isDisliked ? "var(--brand)" : undefined,
-                }}
-              />
-            </IconButton>
+          <Tooltip
+            title={session ? "Not helpful" : "Sign in to dislike this review!"}
+          >
+            <span>
+              <IconButton onClick={handleDislike} disabled={!session}>
+                <ThumbDown
+                  fontSize="large"
+                  style={{
+                    color: isDisliked ? "var(--brand)" : undefined,
+                  }}
+                />
+              </IconButton>
+            </span>
           </Tooltip>
           <Typography variant="caption" fontSize={"1.25rem"}>
             {placeHolderVote === false
