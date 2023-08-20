@@ -4,13 +4,14 @@ import DishCard, { DishData } from "./DishCard";
 import LocationCard, { LocationData } from "./LocationCard";
 import { queryThroughCache, cache } from "../services/cache";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
-import { useMediaQuery } from "@mui/material";
+import { Button, useMediaQuery } from "@mui/material";
 import BackButton from "./BackButton";
-import AddLocationInterface from "./AddContentInterface";
-import AddContentInterface from "./AddContentInterface";
 import AddContentCountdownManager from "./AddContentCountdownManager";
 import { useContentIDs } from "../contexts/ContentIDProvider";
 import ReviewsModal from "./ReviewsModal";
+import Menu from "@mui/base/Menu";
+import { ArrowDropDown } from "@mui/icons-material";
+import SortContentDropdown from "./SortContentDropdown";
 
 export type CardData = DishData | LocationData;
 export type ContentClass = "locations" | "dishes";
@@ -115,7 +116,19 @@ export default function ContentContainer({
         />
       )}
       <div className="content-container">
-        <h2 className="content-label">{formatHeader(contentClass)}</h2>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginBottom: "1rem",
+          }}
+        >
+          <h2 className="content-label">{formatHeader(contentClass)}</h2>
+          <SortContentDropdown
+            contentData={contentArray}
+            setContentData={setContentArray}
+          />
+        </div>
         <div className={contentClass}>
           {contentArray.length === 0
             ? formatEmptyMessage(contentClass)
