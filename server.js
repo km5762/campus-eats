@@ -1665,10 +1665,10 @@ function ReviewCard(_ref) {
   var isLiked = usersVote === true && placeHolderVote === undefined || placeHolderVote === true;
   var isDisliked = usersVote === false && placeHolderVote === undefined || placeHolderVote === false;
   function handleLike() {
-    if ((placeHolderVote === undefined || placeHolderVote === false) && (usersVote === null || usersVote === false)) addVote(id, true);
+    if (isLiked) addVote(id, null);else if ((placeHolderVote === undefined || placeHolderVote === false || placeHolderVote === null) && (usersVote === null || usersVote === false || usersVote === true)) addVote(id, true);
   }
   function handleDislike() {
-    if ((placeHolderVote === undefined || placeHolderVote === true) && (usersVote === null || usersVote === true)) addVote(id, false);
+    if (isDisliked) addVote(id, null);else if ((placeHolderVote === undefined || placeHolderVote === true || placeHolderVote === null) && (usersVote === null || usersVote === true || usersVote === false)) addVote(id, false);
   }
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.Paper, {
     className: "review",
@@ -1739,7 +1739,7 @@ function ReviewCard(_ref) {
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.Typography, {
     variant: "caption",
     fontSize: "1.25rem"
-  }, placeHolderVote === true ? likes + 1 : placeHolderVote === false && usersVote === true ? likes - 1 : likes)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.Tooltip, {
+  }, placeHolderVote === true && placeHolderVote !== usersVote ? likes + 1 : (placeHolderVote === false || placeHolderVote === null) && usersVote === true ? likes - 1 : likes)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.Tooltip, {
     title: session ? "Not helpful" : "Sign in to dislike this review!"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.IconButton, {
     onClick: handleDislike,
@@ -1752,7 +1752,7 @@ function ReviewCard(_ref) {
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_0__.Typography, {
     variant: "caption",
     fontSize: "1.25rem"
-  }, placeHolderVote === false ? dislikes + 1 : placeHolderVote === true && usersVote === false ? dislikes - 1 : dislikes))));
+  }, placeHolderVote === false && placeHolderVote !== usersVote ? dislikes + 1 : (placeHolderVote === true || placeHolderVote === null) && usersVote === false ? dislikes - 1 : dislikes))));
 }
 
 /***/ }),
@@ -2786,6 +2786,7 @@ function UserVotesStoreProvider(_ref) {
     setUserVotesStore(function (prevVotes) {
       return _objectSpread(_objectSpread({}, prevVotes), {}, _defineProperty({}, reviewID, value));
     });
+    console.log(userVotesStore);
   }
   function syncVotes() {
     var reviewIDs = Object.keys(userVotesStore);

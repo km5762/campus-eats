@@ -50,17 +50,23 @@ export default function ReviewCard({
     placeHolderVote === false;
 
   function handleLike() {
-    if (
-      (placeHolderVote === undefined || placeHolderVote === false) &&
-      (usersVote === null || usersVote === false)
+    if (isLiked) addVote(id, null);
+    else if (
+      (placeHolderVote === undefined ||
+        placeHolderVote === false ||
+        placeHolderVote === null) &&
+      (usersVote === null || usersVote === false || usersVote === true)
     )
       addVote(id, true);
   }
 
   function handleDislike() {
-    if (
-      (placeHolderVote === undefined || placeHolderVote === true) &&
-      (usersVote === null || usersVote === true)
+    if (isDisliked) addVote(id, null);
+    else if (
+      (placeHolderVote === undefined ||
+        placeHolderVote === true ||
+        placeHolderVote === null) &&
+      (usersVote === null || usersVote === true || usersVote === false)
     )
       addVote(id, false);
   }
@@ -121,9 +127,10 @@ export default function ReviewCard({
             </span>
           </Tooltip>
           <Typography variant="caption" fontSize={"1.25rem"}>
-            {placeHolderVote === true
+            {placeHolderVote === true && placeHolderVote !== usersVote
               ? likes + 1
-              : placeHolderVote === false && usersVote === true
+              : (placeHolderVote === false || placeHolderVote === null) &&
+                usersVote === true
               ? likes - 1
               : likes}
           </Typography>
@@ -144,9 +151,10 @@ export default function ReviewCard({
             </span>
           </Tooltip>
           <Typography variant="caption" fontSize={"1.25rem"}>
-            {placeHolderVote === false
+            {placeHolderVote === false && placeHolderVote !== usersVote
               ? dislikes + 1
-              : placeHolderVote === true && usersVote === false
+              : (placeHolderVote === true || placeHolderVote === null) &&
+                usersVote === false
               ? dislikes - 1
               : dislikes}
           </Typography>

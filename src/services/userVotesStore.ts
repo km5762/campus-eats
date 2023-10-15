@@ -3,7 +3,7 @@ import { onAuthStateChange } from "../hooks/useSupabaseSession";
 import { supabaseUrl, supabaseKey, supabaseClient } from "./supabaseClient";
 
 export interface UserVotesStore {
-  [key: number]: boolean;
+  [key: number]: boolean | null;
 }
 
 export const userVotesStore: UserVotesStore = {};
@@ -13,7 +13,7 @@ export function setJWT(setTo: string | undefined) {
   jwt = setTo;
 }
 
-export function addVote(reviewID: number, value: boolean) {
+export function addVote(reviewID: number, value: boolean | null) {
   userVotesStore[reviewID] = value;
   console.log(userVotesStore);
 }

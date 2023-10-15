@@ -8,12 +8,12 @@ import { useAuth } from "./AuthProvider";
 import { onAuthStateChange } from "../hooks/useSupabaseSession";
 
 export interface UserVotesStore {
-  [key: number]: boolean;
+  [key: number]: boolean | null;
 }
 
 interface UserVotesStoreContext {
   userVotesStore: UserVotesStore;
-  addVote: (reviewID: number, value: boolean) => void;
+  addVote: (reviewID: number, value: boolean | null) => void;
 }
 
 const UserVotesStoreContext = createContext<UserVotesStoreContext | undefined>(
@@ -38,8 +38,9 @@ export default function UserVotesStoreProvider({
   const [userVotesStore, setUserVotesStore] = useState<UserVotesStore>({});
   const jwt = useAuth()?.access_token;
 
-  function addVote(reviewID: number, value: boolean) {
+  function addVote(reviewID: number, value: boolean | null) {
     setUserVotesStore((prevVotes) => ({ ...prevVotes, [reviewID]: value }));
+    console.log(userVotesStore);
   }
 
   function syncVotes() {
