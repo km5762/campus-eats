@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import { supabaseClient } from "../services/supabaseClient";
-import { Session } from "@supabase/supabase-js";
+import {
+  AuthChangeEvent,
+  Session,
+  Subscription,
+  User,
+} from "@supabase/supabase-js";
 
 export const useSupabaseSession = () => {
   const [session, setSession] = useState<Session | null | undefined>(undefined);
@@ -11,7 +16,7 @@ export const useSupabaseSession = () => {
     });
     const {
       data: { subscription },
-    } = supabaseClient.auth.onAuthStateChange((_event, session) => {
+    } = onAuthStateChange((_event, session) => {
       setSession(session);
     });
     return () => subscription.unsubscribe();
@@ -19,3 +24,14 @@ export const useSupabaseSession = () => {
 
   return session;
 };
+
+export function onAuthStateChange(
+  callback: (event: AuthChangeEvent, session: Session | null) => void
+) {
+  let currentSession: Session | null;
+  return supabaseClient.auth.onAuthStateChange((event, session) => {
+    if (session?.user?.id == currentSession?.user?.id) return;
+    currentSession = session;
+    callback(event, session);
+  });
+}

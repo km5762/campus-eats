@@ -2476,7 +2476,7 @@ var weakMemoize = function weakMemoize(func) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   Button: () => (/* binding */ Button)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
 /* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
@@ -2541,7 +2541,7 @@ const Button = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(functi
     focusVisible,
     setFocusVisible,
     getRootProps
-  } = (0,_useButton__WEBPACK_IMPORTED_MODULE_7__["default"])((0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+  } = (0,_useButton__WEBPACK_IMPORTED_MODULE_7__.useButton)((0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
     focusableWhenDisabled
   }));
   react__WEBPACK_IMPORTED_MODULE_2__.useImperativeHandle(action, () => ({
@@ -2558,7 +2558,7 @@ const Button = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(functi
   const classes = useUtilityClasses(ownerState);
   const defaultElement = other.href || other.to ? 'a' : 'button';
   const Root = (_slots$root = slots.root) != null ? _slots$root : defaultElement;
-  const rootProps = (0,_utils__WEBPACK_IMPORTED_MODULE_8__["default"])({
+  const rootProps = (0,_utils__WEBPACK_IMPORTED_MODULE_8__.useSlotProps)({
     elementType: Root,
     getSlotProps: getRootProps,
     externalForwardedProps: other,
@@ -2590,6 +2590,10 @@ const Button = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(functi
    * @ignore
    */
   children: (prop_types__WEBPACK_IMPORTED_MODULE_9___default().node),
+  /**
+   * @ignore
+   */
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_9___default().string),
   /**
    * If `true`, the component is disabled.
    * @default false
@@ -2628,7 +2632,7 @@ const Button = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(functi
    */
   to: (prop_types__WEBPACK_IMPORTED_MODULE_9___default().string)
 } : 0;
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Button);
+
 
 /***/ }),
 
@@ -2641,7 +2645,7 @@ const Button = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(functi
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   buttonClasses: () => (/* binding */ buttonClasses),
 /* harmony export */   getButtonUtilityClass: () => (/* binding */ getButtonUtilityClass)
 /* harmony export */ });
 /* harmony import */ var _generateUtilityClass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../generateUtilityClass */ "./node_modules/@mui/utils/esm/generateUtilityClass/generateUtilityClass.js");
@@ -2652,7 +2656,6 @@ function getButtonUtilityClass(slot) {
   return (0,_generateUtilityClass__WEBPACK_IMPORTED_MODULE_0__["default"])('MuiButton', slot);
 }
 const buttonClasses = (0,_generateUtilityClasses__WEBPACK_IMPORTED_MODULE_1__["default"])('MuiButton', ['root', 'active', 'disabled', 'focusVisible']);
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (buttonClasses);
 
 /***/ }),
 
@@ -2665,7 +2668,7 @@ const buttonClasses = (0,_generateUtilityClasses__WEBPACK_IMPORTED_MODULE_1__["d
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   ClickAwayListener: () => (/* binding */ ClickAwayListener)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -2853,7 +2856,7 @@ if (true) {
   // eslint-disable-next-line
   ClickAwayListener['propTypes' + ''] = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_7__["default"])(ClickAwayListener.propTypes);
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ClickAwayListener);
+
 
 /***/ }),
 
@@ -2866,7 +2869,7 @@ if (true) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   FocusTrap: () => (/* binding */ FocusTrap)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -3031,51 +3034,6 @@ function FocusTrap(props) {
       return;
     }
     const doc = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_3__["default"])(rootRef.current);
-    const contain = nativeEvent => {
-      const {
-        current: rootElement
-      } = rootRef;
-
-      // Cleanup functions are executed lazily in React 17.
-      // Contain can be called between the component being unmounted and its cleanup function being run.
-      if (rootElement === null) {
-        return;
-      }
-      if (!doc.hasFocus() || disableEnforceFocus || !isEnabled() || ignoreNextEnforceFocus.current) {
-        ignoreNextEnforceFocus.current = false;
-        return;
-      }
-      if (!rootElement.contains(doc.activeElement)) {
-        // if the focus event is not coming from inside the children's react tree, reset the refs
-        if (nativeEvent && reactFocusEventTarget.current !== nativeEvent.target || doc.activeElement !== reactFocusEventTarget.current) {
-          reactFocusEventTarget.current = null;
-        } else if (reactFocusEventTarget.current !== null) {
-          return;
-        }
-        if (!activated.current) {
-          return;
-        }
-        let tabbable = [];
-        if (doc.activeElement === sentinelStart.current || doc.activeElement === sentinelEnd.current) {
-          tabbable = getTabbable(rootRef.current);
-        }
-        if (tabbable.length > 0) {
-          var _lastKeydown$current, _lastKeydown$current2;
-          const isShiftTab = Boolean(((_lastKeydown$current = lastKeydown.current) == null ? void 0 : _lastKeydown$current.shiftKey) && ((_lastKeydown$current2 = lastKeydown.current) == null ? void 0 : _lastKeydown$current2.key) === 'Tab');
-          const focusNext = tabbable[0];
-          const focusPrevious = tabbable[tabbable.length - 1];
-          if (typeof focusNext !== 'string' && typeof focusPrevious !== 'string') {
-            if (isShiftTab) {
-              focusPrevious.focus();
-            } else {
-              focusNext.focus();
-            }
-          }
-        } else {
-          rootElement.focus();
-        }
-      }
-    };
     const loopFocus = nativeEvent => {
       lastKeydown.current = nativeEvent;
       if (disableEnforceFocus || !isEnabled() || nativeEvent.key !== 'Tab') {
@@ -3093,6 +3051,62 @@ function FocusTrap(props) {
         }
       }
     };
+    const contain = () => {
+      const rootElement = rootRef.current;
+
+      // Cleanup functions are executed lazily in React 17.
+      // Contain can be called between the component being unmounted and its cleanup function being run.
+      if (rootElement === null) {
+        return;
+      }
+      if (!doc.hasFocus() || !isEnabled() || ignoreNextEnforceFocus.current) {
+        ignoreNextEnforceFocus.current = false;
+        return;
+      }
+
+      // The focus is already inside
+      if (rootElement.contains(doc.activeElement)) {
+        return;
+      }
+
+      // The disableEnforceFocus is set and the focus is outside of the focus trap (and sentinel nodes)
+      if (disableEnforceFocus && doc.activeElement !== sentinelStart.current && doc.activeElement !== sentinelEnd.current) {
+        return;
+      }
+
+      // if the focus event is not coming from inside the children's react tree, reset the refs
+      if (doc.activeElement !== reactFocusEventTarget.current) {
+        reactFocusEventTarget.current = null;
+      } else if (reactFocusEventTarget.current !== null) {
+        return;
+      }
+      if (!activated.current) {
+        return;
+      }
+      let tabbable = [];
+      if (doc.activeElement === sentinelStart.current || doc.activeElement === sentinelEnd.current) {
+        tabbable = getTabbable(rootRef.current);
+      }
+
+      // one of the sentinel nodes was focused, so move the focus
+      // to the first/last tabbable element inside the focus trap
+      if (tabbable.length > 0) {
+        var _lastKeydown$current, _lastKeydown$current2;
+        const isShiftTab = Boolean(((_lastKeydown$current = lastKeydown.current) == null ? void 0 : _lastKeydown$current.shiftKey) && ((_lastKeydown$current2 = lastKeydown.current) == null ? void 0 : _lastKeydown$current2.key) === 'Tab');
+        const focusNext = tabbable[0];
+        const focusPrevious = tabbable[tabbable.length - 1];
+        if (typeof focusNext !== 'string' && typeof focusPrevious !== 'string') {
+          if (isShiftTab) {
+            focusPrevious.focus();
+          } else {
+            focusNext.focus();
+          }
+        }
+        // no tabbable elements in the trap focus or the focus was outside of the focus trap
+      } else {
+        rootElement.focus();
+      }
+    };
     doc.addEventListener('focusin', contain);
     doc.addEventListener('keydown', loopFocus, true);
 
@@ -3104,7 +3118,7 @@ function FocusTrap(props) {
     // https://html.spec.whatwg.org/multipage/interaction.html#focus-fixup-rule.
     const interval = setInterval(() => {
       if (doc.activeElement && doc.activeElement.tagName === 'BODY') {
-        contain(null);
+        contain();
       }
     }, 50);
     return () => {
@@ -3205,678 +3219,7 @@ if (true) {
   // eslint-disable-next-line
   FocusTrap['propTypes' + ''] = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_6__["default"])(FocusTrap.propTypes);
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FocusTrap);
 
-/***/ }),
-
-/***/ "./node_modules/@mui/base/Modal/Modal.js":
-/*!***********************************************!*\
-  !*** ./node_modules/@mui/base/Modal/Modal.js ***!
-  \***********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_16__);
-/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/useForkRef/useForkRef.js");
-/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/ownerDocument/ownerDocument.js");
-/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/useEventCallback/useEventCallback.js");
-/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/createChainedFunction.js");
-/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/elementAcceptingRef.js");
-/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/HTMLElementType/HTMLElementType.js");
-/* harmony import */ var _composeClasses__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../composeClasses */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
-/* harmony import */ var _Portal__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../Portal */ "./node_modules/@mui/base/Portal/Portal.js");
-/* harmony import */ var _ModalManager__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ModalManager */ "./node_modules/@mui/base/Modal/ModalManager.js");
-/* harmony import */ var _FocusTrap__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../FocusTrap */ "./node_modules/@mui/base/FocusTrap/FocusTrap.js");
-/* harmony import */ var _modalClasses__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modalClasses */ "./node_modules/@mui/base/Modal/modalClasses.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../utils */ "./node_modules/@mui/base/utils/useSlotProps.js");
-/* harmony import */ var _utils_ClassNameConfigurator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/ClassNameConfigurator */ "./node_modules/@mui/base/utils/ClassNameConfigurator.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-'use client';
-
-
-
-const _excluded = ["children", "closeAfterTransition", "container", "disableAutoFocus", "disableEnforceFocus", "disableEscapeKeyDown", "disablePortal", "disableRestoreFocus", "disableScrollLock", "hideBackdrop", "keepMounted", "manager", "onBackdropClick", "onClose", "onKeyDown", "open", "onTransitionEnter", "onTransitionExited", "slotProps", "slots"];
-
-
-
-
-
-
-
-
-
-
-
-
-const useUtilityClasses = ownerState => {
-  const {
-    open,
-    exited
-  } = ownerState;
-  const slots = {
-    root: ['root', !open && exited && 'hidden'],
-    backdrop: ['backdrop']
-  };
-  return (0,_composeClasses__WEBPACK_IMPORTED_MODULE_4__["default"])(slots, (0,_utils_ClassNameConfigurator__WEBPACK_IMPORTED_MODULE_5__.useClassNamesOverride)(_modalClasses__WEBPACK_IMPORTED_MODULE_6__.getModalUtilityClass));
-};
-function getContainer(container) {
-  return typeof container === 'function' ? container() : container;
-}
-function getHasTransition(children) {
-  return children ? children.props.hasOwnProperty('in') : false;
-}
-
-// A modal manager used to track and manage the state of open Modals.
-// Modals don't open on the server so this won't conflict with concurrent requests.
-const defaultManager = new _ModalManager__WEBPACK_IMPORTED_MODULE_7__["default"]();
-
-/**
- * Modal is a lower-level construct that is leveraged by the following components:
- *
- * *   [Dialog](https://mui.com/material-ui/api/dialog/)
- * *   [Drawer](https://mui.com/material-ui/api/drawer/)
- * *   [Menu](https://mui.com/material-ui/api/menu/)
- * *   [Popover](https://mui.com/material-ui/api/popover/)
- *
- * If you are creating a modal dialog, you probably want to use the [Dialog](https://mui.com/material-ui/api/dialog/) component
- * rather than directly using Modal.
- *
- * This component shares many concepts with [react-overlays](https://react-bootstrap.github.io/react-overlays/#modals).
- *
- * Demos:
- *
- * - [Modal](https://mui.com/base-ui/react-modal/)
- *
- * API:
- *
- * - [Modal API](https://mui.com/base-ui/react-modal/components-api/#modal)
- */
-const Modal = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(function Modal(props, forwardedRef) {
-  var _props$ariaHidden, _slots$root;
-  const {
-      children,
-      closeAfterTransition = false,
-      container,
-      disableAutoFocus = false,
-      disableEnforceFocus = false,
-      disableEscapeKeyDown = false,
-      disablePortal = false,
-      disableRestoreFocus = false,
-      disableScrollLock = false,
-      hideBackdrop = false,
-      keepMounted = false,
-      // private
-      manager: managerProp = defaultManager,
-      onBackdropClick,
-      onClose,
-      onKeyDown,
-      open,
-      onTransitionEnter,
-      onTransitionExited,
-      slotProps = {},
-      slots = {}
-    } = props,
-    other = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(props, _excluded);
-  // TODO: `modal`` must change its type in this file to match the type of methods
-  // provided by `ModalManager`
-  const manager = managerProp;
-  const [exited, setExited] = react__WEBPACK_IMPORTED_MODULE_2__.useState(!open);
-  const modal = react__WEBPACK_IMPORTED_MODULE_2__.useRef({});
-  const mountNodeRef = react__WEBPACK_IMPORTED_MODULE_2__.useRef(null);
-  const modalRef = react__WEBPACK_IMPORTED_MODULE_2__.useRef(null);
-  const handleRef = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_8__["default"])(modalRef, forwardedRef);
-  const hasTransition = getHasTransition(children);
-  const ariaHiddenProp = (_props$ariaHidden = props['aria-hidden']) != null ? _props$ariaHidden : true;
-  const getDoc = () => (0,_mui_utils__WEBPACK_IMPORTED_MODULE_9__["default"])(mountNodeRef.current);
-  const getModal = () => {
-    modal.current.modalRef = modalRef.current;
-    modal.current.mountNode = mountNodeRef.current;
-    return modal.current;
-  };
-  const handleMounted = () => {
-    manager.mount(getModal(), {
-      disableScrollLock
-    });
-
-    // Fix a bug on Chrome where the scroll isn't initially 0.
-    if (modalRef.current) {
-      modalRef.current.scrollTop = 0;
-    }
-  };
-  const handleOpen = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_10__["default"])(() => {
-    const resolvedContainer = getContainer(container) || getDoc().body;
-    manager.add(getModal(), resolvedContainer);
-
-    // The element was already mounted.
-    if (modalRef.current) {
-      handleMounted();
-    }
-  });
-  const isTopModal = react__WEBPACK_IMPORTED_MODULE_2__.useCallback(() => manager.isTopModal(getModal()), [manager]);
-  const handlePortalRef = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_10__["default"])(node => {
-    mountNodeRef.current = node;
-    if (!node || !modalRef.current) {
-      return;
-    }
-    if (open && isTopModal()) {
-      handleMounted();
-    } else {
-      (0,_ModalManager__WEBPACK_IMPORTED_MODULE_7__.ariaHidden)(modalRef.current, ariaHiddenProp);
-    }
-  });
-  const handleClose = react__WEBPACK_IMPORTED_MODULE_2__.useCallback(() => {
-    manager.remove(getModal(), ariaHiddenProp);
-  }, [manager, ariaHiddenProp]);
-  react__WEBPACK_IMPORTED_MODULE_2__.useEffect(() => {
-    return () => {
-      handleClose();
-    };
-  }, [handleClose]);
-  react__WEBPACK_IMPORTED_MODULE_2__.useEffect(() => {
-    if (open) {
-      handleOpen();
-    } else if (!hasTransition || !closeAfterTransition) {
-      handleClose();
-    }
-  }, [open, handleClose, hasTransition, closeAfterTransition, handleOpen]);
-  const ownerState = (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
-    closeAfterTransition,
-    disableAutoFocus,
-    disableEnforceFocus,
-    disableEscapeKeyDown,
-    disablePortal,
-    disableRestoreFocus,
-    disableScrollLock,
-    exited,
-    hideBackdrop,
-    keepMounted
-  });
-  const classes = useUtilityClasses(ownerState);
-  const handleEnter = () => {
-    setExited(false);
-    if (onTransitionEnter) {
-      onTransitionEnter();
-    }
-  };
-  const handleExited = () => {
-    setExited(true);
-    if (onTransitionExited) {
-      onTransitionExited();
-    }
-    if (closeAfterTransition) {
-      handleClose();
-    }
-  };
-  const handleBackdropClick = event => {
-    if (event.target !== event.currentTarget) {
-      return;
-    }
-    if (onBackdropClick) {
-      onBackdropClick(event);
-    }
-    if (onClose) {
-      onClose(event, 'backdropClick');
-    }
-  };
-  const handleKeyDown = event => {
-    if (onKeyDown) {
-      onKeyDown(event);
-    }
-
-    // The handler doesn't take event.defaultPrevented into account:
-    //
-    // event.preventDefault() is meant to stop default behaviors like
-    // clicking a checkbox to check it, hitting a button to submit a form,
-    // and hitting left arrow to move the cursor in a text input etc.
-    // Only special HTML elements have these default behaviors.
-    if (event.key !== 'Escape' || !isTopModal()) {
-      return;
-    }
-    if (!disableEscapeKeyDown) {
-      // Swallow the event, in case someone is listening for the escape key on the body.
-      event.stopPropagation();
-      if (onClose) {
-        onClose(event, 'escapeKeyDown');
-      }
-    }
-  };
-  const childProps = {};
-  if (children.props.tabIndex === undefined) {
-    childProps.tabIndex = '-1';
-  }
-
-  // It's a Transition like component
-  if (hasTransition) {
-    childProps.onEnter = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_11__["default"])(handleEnter, children.props.onEnter);
-    childProps.onExited = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_11__["default"])(handleExited, children.props.onExited);
-  }
-  const Root = (_slots$root = slots.root) != null ? _slots$root : 'div';
-  const rootProps = (0,_utils__WEBPACK_IMPORTED_MODULE_12__["default"])({
-    elementType: Root,
-    externalSlotProps: slotProps.root,
-    externalForwardedProps: other,
-    additionalProps: {
-      ref: handleRef,
-      role: 'presentation',
-      onKeyDown: handleKeyDown
-    },
-    className: classes.root,
-    ownerState
-  });
-  const BackdropComponent = slots.backdrop;
-  const backdropProps = (0,_utils__WEBPACK_IMPORTED_MODULE_12__["default"])({
-    elementType: BackdropComponent,
-    externalSlotProps: slotProps.backdrop,
-    additionalProps: {
-      'aria-hidden': true,
-      onClick: handleBackdropClick,
-      open
-    },
-    className: classes.backdrop,
-    ownerState
-  });
-  if (!keepMounted && !open && (!hasTransition || exited)) {
-    return null;
-  }
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Portal__WEBPACK_IMPORTED_MODULE_13__["default"]
-  // @ts-expect-error TODO: include ref to Base UI Portal props
-  , {
-    ref: handlePortalRef,
-    container: container,
-    disablePortal: disablePortal,
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(Root, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, rootProps, {
-      children: [!hideBackdrop && BackdropComponent ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(BackdropComponent, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, backdropProps)) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_FocusTrap__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        disableEnforceFocus: disableEnforceFocus,
-        disableAutoFocus: disableAutoFocus,
-        disableRestoreFocus: disableRestoreFocus,
-        isEnabled: isTopModal,
-        open: open,
-        children: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.cloneElement(children, childProps)
-      })]
-    }))
-  });
-});
- true ? Modal.propTypes /* remove-proptypes */ = {
-  // ----------------------------- Warning --------------------------------
-  // | These PropTypes are generated from the TypeScript type definitions |
-  // |     To update them edit TypeScript types and run "yarn proptypes"  |
-  // ----------------------------------------------------------------------
-  /**
-   * A single child content element.
-   */
-  children: _mui_utils__WEBPACK_IMPORTED_MODULE_15__["default"].isRequired,
-  /**
-   * When set to true the Modal waits until a nested Transition is completed before closing.
-   * @default false
-   */
-  closeAfterTransition: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().bool),
-  /**
-   * An HTML element or function that returns one.
-   * The `container` will have the portal children appended to it.
-   *
-   * By default, it uses the body of the top-level document object,
-   * so it's simply `document.body` most of the time.
-   */
-  container: prop_types__WEBPACK_IMPORTED_MODULE_16___default().oneOfType([_mui_utils__WEBPACK_IMPORTED_MODULE_17__["default"], (prop_types__WEBPACK_IMPORTED_MODULE_16___default().func)]),
-  /**
-   * If `true`, the modal will not automatically shift focus to itself when it opens, and
-   * replace it to the last focused element when it closes.
-   * This also works correctly with any modal children that have the `disableAutoFocus` prop.
-   *
-   * Generally this should never be set to `true` as it makes the modal less
-   * accessible to assistive technologies, like screen readers.
-   * @default false
-   */
-  disableAutoFocus: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().bool),
-  /**
-   * If `true`, the modal will not prevent focus from leaving the modal while open.
-   *
-   * Generally this should never be set to `true` as it makes the modal less
-   * accessible to assistive technologies, like screen readers.
-   * @default false
-   */
-  disableEnforceFocus: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().bool),
-  /**
-   * If `true`, hitting escape will not fire the `onClose` callback.
-   * @default false
-   */
-  disableEscapeKeyDown: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().bool),
-  /**
-   * The `children` will be under the DOM hierarchy of the parent component.
-   * @default false
-   */
-  disablePortal: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().bool),
-  /**
-   * If `true`, the modal will not restore focus to previously focused element once
-   * modal is hidden or unmounted.
-   * @default false
-   */
-  disableRestoreFocus: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().bool),
-  /**
-   * Disable the scroll lock behavior.
-   * @default false
-   */
-  disableScrollLock: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().bool),
-  /**
-   * If `true`, the backdrop is not rendered.
-   * @default false
-   */
-  hideBackdrop: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().bool),
-  /**
-   * Always keep the children in the DOM.
-   * This prop can be useful in SEO situation or
-   * when you want to maximize the responsiveness of the Modal.
-   * @default false
-   */
-  keepMounted: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().bool),
-  /**
-   * Callback fired when the backdrop is clicked.
-   * @deprecated Use the `onClose` prop with the `reason` argument to handle the `backdropClick` events.
-   */
-  onBackdropClick: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().func),
-  /**
-   * Callback fired when the component requests to be closed.
-   * The `reason` parameter can optionally be used to control the response to `onClose`.
-   *
-   * @param {object} event The event source of the callback.
-   * @param {string} reason Can be: `"escapeKeyDown"`, `"backdropClick"`.
-   */
-  onClose: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().func),
-  /**
-   * A function called when a transition enters.
-   */
-  onTransitionEnter: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().func),
-  /**
-   * A function called when a transition has exited.
-   */
-  onTransitionExited: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().func),
-  /**
-   * If `true`, the component is shown.
-   */
-  open: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().bool).isRequired,
-  /**
-   * The props used for each slot inside the Modal.
-   * @default {}
-   */
-  slotProps: prop_types__WEBPACK_IMPORTED_MODULE_16___default().shape({
-    backdrop: prop_types__WEBPACK_IMPORTED_MODULE_16___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_16___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_16___default().object)]),
-    root: prop_types__WEBPACK_IMPORTED_MODULE_16___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_16___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_16___default().object)])
-  }),
-  /**
-   * The components used for each slot inside the Modal.
-   * Either a string to use a HTML element or a component.
-   * @default {}
-   */
-  slots: prop_types__WEBPACK_IMPORTED_MODULE_16___default().shape({
-    backdrop: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().elementType),
-    root: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().elementType)
-  })
-} : 0;
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Modal);
-
-/***/ }),
-
-/***/ "./node_modules/@mui/base/Modal/ModalManager.js":
-/*!******************************************************!*\
-  !*** ./node_modules/@mui/base/Modal/ModalManager.js ***!
-  \******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   ariaHidden: () => (/* binding */ ariaHidden),
-/* harmony export */   "default": () => (/* binding */ ModalManager)
-/* harmony export */ });
-/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/ownerDocument/ownerDocument.js");
-/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/ownerWindow/ownerWindow.js");
-/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/getScrollbarSize.js");
-
-// Is a vertical scrollbar displayed?
-function isOverflowing(container) {
-  const doc = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_0__["default"])(container);
-  if (doc.body === container) {
-    return (0,_mui_utils__WEBPACK_IMPORTED_MODULE_1__["default"])(container).innerWidth > doc.documentElement.clientWidth;
-  }
-  return container.scrollHeight > container.clientHeight;
-}
-function ariaHidden(element, show) {
-  if (show) {
-    element.setAttribute('aria-hidden', 'true');
-  } else {
-    element.removeAttribute('aria-hidden');
-  }
-}
-function getPaddingRight(element) {
-  return parseInt((0,_mui_utils__WEBPACK_IMPORTED_MODULE_1__["default"])(element).getComputedStyle(element).paddingRight, 10) || 0;
-}
-function isAriaHiddenForbiddenOnElement(element) {
-  // The forbidden HTML tags are the ones from ARIA specification that
-  // can be children of body and can't have aria-hidden attribute.
-  // cf. https://www.w3.org/TR/html-aria/#docconformance
-  const forbiddenTagNames = ['TEMPLATE', 'SCRIPT', 'STYLE', 'LINK', 'MAP', 'META', 'NOSCRIPT', 'PICTURE', 'COL', 'COLGROUP', 'PARAM', 'SLOT', 'SOURCE', 'TRACK'];
-  const isForbiddenTagName = forbiddenTagNames.indexOf(element.tagName) !== -1;
-  const isInputHidden = element.tagName === 'INPUT' && element.getAttribute('type') === 'hidden';
-  return isForbiddenTagName || isInputHidden;
-}
-function ariaHiddenSiblings(container, mountElement, currentElement, elementsToExclude, show) {
-  const blacklist = [mountElement, currentElement, ...elementsToExclude];
-  [].forEach.call(container.children, element => {
-    const isNotExcludedElement = blacklist.indexOf(element) === -1;
-    const isNotForbiddenElement = !isAriaHiddenForbiddenOnElement(element);
-    if (isNotExcludedElement && isNotForbiddenElement) {
-      ariaHidden(element, show);
-    }
-  });
-}
-function findIndexOf(items, callback) {
-  let idx = -1;
-  items.some((item, index) => {
-    if (callback(item)) {
-      idx = index;
-      return true;
-    }
-    return false;
-  });
-  return idx;
-}
-function handleContainer(containerInfo, props) {
-  const restoreStyle = [];
-  const container = containerInfo.container;
-  if (!props.disableScrollLock) {
-    if (isOverflowing(container)) {
-      // Compute the size before applying overflow hidden to avoid any scroll jumps.
-      const scrollbarSize = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_2__["default"])((0,_mui_utils__WEBPACK_IMPORTED_MODULE_0__["default"])(container));
-      restoreStyle.push({
-        value: container.style.paddingRight,
-        property: 'padding-right',
-        el: container
-      });
-      // Use computed style, here to get the real padding to add our scrollbar width.
-      container.style.paddingRight = `${getPaddingRight(container) + scrollbarSize}px`;
-
-      // .mui-fixed is a global helper.
-      const fixedElements = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_0__["default"])(container).querySelectorAll('.mui-fixed');
-      [].forEach.call(fixedElements, element => {
-        restoreStyle.push({
-          value: element.style.paddingRight,
-          property: 'padding-right',
-          el: element
-        });
-        element.style.paddingRight = `${getPaddingRight(element) + scrollbarSize}px`;
-      });
-    }
-    let scrollContainer;
-    if (container.parentNode instanceof DocumentFragment) {
-      scrollContainer = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_0__["default"])(container).body;
-    } else {
-      // Improve Gatsby support
-      // https://css-tricks.com/snippets/css/force-vertical-scrollbar/
-      const parent = container.parentElement;
-      const containerWindow = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_1__["default"])(container);
-      scrollContainer = (parent == null ? void 0 : parent.nodeName) === 'HTML' && containerWindow.getComputedStyle(parent).overflowY === 'scroll' ? parent : container;
-    }
-
-    // Block the scroll even if no scrollbar is visible to account for mobile keyboard
-    // screensize shrink.
-    restoreStyle.push({
-      value: scrollContainer.style.overflow,
-      property: 'overflow',
-      el: scrollContainer
-    }, {
-      value: scrollContainer.style.overflowX,
-      property: 'overflow-x',
-      el: scrollContainer
-    }, {
-      value: scrollContainer.style.overflowY,
-      property: 'overflow-y',
-      el: scrollContainer
-    });
-    scrollContainer.style.overflow = 'hidden';
-  }
-  const restore = () => {
-    restoreStyle.forEach(({
-      value,
-      el,
-      property
-    }) => {
-      if (value) {
-        el.style.setProperty(property, value);
-      } else {
-        el.style.removeProperty(property);
-      }
-    });
-  };
-  return restore;
-}
-function getHiddenSiblings(container) {
-  const hiddenSiblings = [];
-  [].forEach.call(container.children, element => {
-    if (element.getAttribute('aria-hidden') === 'true') {
-      hiddenSiblings.push(element);
-    }
-  });
-  return hiddenSiblings;
-}
-/**
- * @ignore - do not document.
- *
- * Proper state management for containers and the modals in those containers.
- * Simplified, but inspired by react-overlay's ModalManager class.
- * Used by the Modal to ensure proper styling of containers.
- */
-class ModalManager {
-  constructor() {
-    this.containers = void 0;
-    this.modals = void 0;
-    this.modals = [];
-    this.containers = [];
-  }
-  add(modal, container) {
-    let modalIndex = this.modals.indexOf(modal);
-    if (modalIndex !== -1) {
-      return modalIndex;
-    }
-    modalIndex = this.modals.length;
-    this.modals.push(modal);
-
-    // If the modal we are adding is already in the DOM.
-    if (modal.modalRef) {
-      ariaHidden(modal.modalRef, false);
-    }
-    const hiddenSiblings = getHiddenSiblings(container);
-    ariaHiddenSiblings(container, modal.mount, modal.modalRef, hiddenSiblings, true);
-    const containerIndex = findIndexOf(this.containers, item => item.container === container);
-    if (containerIndex !== -1) {
-      this.containers[containerIndex].modals.push(modal);
-      return modalIndex;
-    }
-    this.containers.push({
-      modals: [modal],
-      container,
-      restore: null,
-      hiddenSiblings
-    });
-    return modalIndex;
-  }
-  mount(modal, props) {
-    const containerIndex = findIndexOf(this.containers, item => item.modals.indexOf(modal) !== -1);
-    const containerInfo = this.containers[containerIndex];
-    if (!containerInfo.restore) {
-      containerInfo.restore = handleContainer(containerInfo, props);
-    }
-  }
-  remove(modal, ariaHiddenState = true) {
-    const modalIndex = this.modals.indexOf(modal);
-    if (modalIndex === -1) {
-      return modalIndex;
-    }
-    const containerIndex = findIndexOf(this.containers, item => item.modals.indexOf(modal) !== -1);
-    const containerInfo = this.containers[containerIndex];
-    containerInfo.modals.splice(containerInfo.modals.indexOf(modal), 1);
-    this.modals.splice(modalIndex, 1);
-
-    // If that was the last modal in a container, clean up the container.
-    if (containerInfo.modals.length === 0) {
-      // The modal might be closed before it had the chance to be mounted in the DOM.
-      if (containerInfo.restore) {
-        containerInfo.restore();
-      }
-      if (modal.modalRef) {
-        // In case the modal wasn't in the DOM yet.
-        ariaHidden(modal.modalRef, ariaHiddenState);
-      }
-      ariaHiddenSiblings(containerInfo.container, modal.mount, modal.modalRef, containerInfo.hiddenSiblings, false);
-      this.containers.splice(containerIndex, 1);
-    } else {
-      // Otherwise make sure the next top modal is visible to a screen reader.
-      const nextTop = containerInfo.modals[containerInfo.modals.length - 1];
-      // as soon as a modal is adding its modalRef is undefined. it can't set
-      // aria-hidden because the dom element doesn't exist either
-      // when modal was unmounted before modalRef gets null
-      if (nextTop.modalRef) {
-        ariaHidden(nextTop.modalRef, false);
-      }
-    }
-    return modalIndex;
-  }
-  isTopModal(modal) {
-    return this.modals.length > 0 && this.modals[this.modals.length - 1] === modal;
-  }
-}
-
-/***/ }),
-
-/***/ "./node_modules/@mui/base/Modal/modalClasses.js":
-/*!******************************************************!*\
-  !*** ./node_modules/@mui/base/Modal/modalClasses.js ***!
-  \******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
-/* harmony export */   getModalUtilityClass: () => (/* binding */ getModalUtilityClass)
-/* harmony export */ });
-/* harmony import */ var _generateUtilityClasses__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../generateUtilityClasses */ "./node_modules/@mui/utils/esm/generateUtilityClasses/generateUtilityClasses.js");
-/* harmony import */ var _generateUtilityClass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../generateUtilityClass */ "./node_modules/@mui/utils/esm/generateUtilityClass/generateUtilityClass.js");
-
-
-function getModalUtilityClass(slot) {
-  return (0,_generateUtilityClass__WEBPACK_IMPORTED_MODULE_0__["default"])('MuiModal', slot);
-}
-const modalClasses = (0,_generateUtilityClasses__WEBPACK_IMPORTED_MODULE_1__["default"])('MuiModal', ['root', 'hidden', 'backdrop']);
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (modalClasses);
 
 /***/ }),
 
@@ -3889,7 +3232,7 @@ const modalClasses = (0,_generateUtilityClasses__WEBPACK_IMPORTED_MODULE_1__["de
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   Popper: () => (/* binding */ Popper)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
 /* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
@@ -4064,7 +3407,7 @@ const PopperTooltip = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef
   }
   const classes = useUtilityClasses();
   const Root = (_slots$root = slots.root) != null ? _slots$root : 'div';
-  const rootProps = (0,_utils__WEBPACK_IMPORTED_MODULE_10__["default"])({
+  const rootProps = (0,_utils__WEBPACK_IMPORTED_MODULE_10__.useSlotProps)({
     elementType: Root,
     externalSlotProps: slotProps.root,
     externalForwardedProps: other,
@@ -4137,7 +3480,7 @@ const Popper = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(functi
     onEnter: handleEnter,
     onExited: handleExited
   } : undefined;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Portal__WEBPACK_IMPORTED_MODULE_12__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Portal__WEBPACK_IMPORTED_MODULE_12__.Portal, {
     disablePortal: disablePortal,
     container: container,
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(PopperTooltip, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
@@ -4284,7 +3627,7 @@ const Popper = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(functi
    */
   transition: (prop_types__WEBPACK_IMPORTED_MODULE_14___default().bool)
 } : 0;
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Popper);
+
 
 /***/ }),
 
@@ -4297,8 +3640,8 @@ const Popper = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(functi
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
-/* harmony export */   getPopperUtilityClass: () => (/* binding */ getPopperUtilityClass)
+/* harmony export */   getPopperUtilityClass: () => (/* binding */ getPopperUtilityClass),
+/* harmony export */   popperClasses: () => (/* binding */ popperClasses)
 /* harmony export */ });
 /* harmony import */ var _generateUtilityClass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../generateUtilityClass */ "./node_modules/@mui/utils/esm/generateUtilityClass/generateUtilityClass.js");
 /* harmony import */ var _generateUtilityClasses__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../generateUtilityClasses */ "./node_modules/@mui/utils/esm/generateUtilityClasses/generateUtilityClasses.js");
@@ -4308,7 +3651,6 @@ function getPopperUtilityClass(slot) {
   return (0,_generateUtilityClass__WEBPACK_IMPORTED_MODULE_0__["default"])('MuiPopper', slot);
 }
 const popperClasses = (0,_generateUtilityClasses__WEBPACK_IMPORTED_MODULE_1__["default"])('MuiPopper', ['root']);
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (popperClasses);
 
 /***/ }),
 
@@ -4321,7 +3663,7 @@ const popperClasses = (0,_generateUtilityClasses__WEBPACK_IMPORTED_MODULE_1__["d
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   Portal: () => (/* binding */ Portal)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -4422,7 +3764,453 @@ if (true) {
   // eslint-disable-next-line
   Portal['propTypes' + ''] = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_8__["default"])(Portal.propTypes);
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Portal);
+
+
+/***/ }),
+
+/***/ "./node_modules/@mui/base/unstable_useModal/ModalManager.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@mui/base/unstable_useModal/ModalManager.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ModalManager: () => (/* binding */ ModalManager),
+/* harmony export */   ariaHidden: () => (/* binding */ ariaHidden)
+/* harmony export */ });
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/ownerDocument/ownerDocument.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/ownerWindow/ownerWindow.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/getScrollbarSize.js");
+
+// Is a vertical scrollbar displayed?
+function isOverflowing(container) {
+  const doc = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_0__["default"])(container);
+  if (doc.body === container) {
+    return (0,_mui_utils__WEBPACK_IMPORTED_MODULE_1__["default"])(container).innerWidth > doc.documentElement.clientWidth;
+  }
+  return container.scrollHeight > container.clientHeight;
+}
+function ariaHidden(element, show) {
+  if (show) {
+    element.setAttribute('aria-hidden', 'true');
+  } else {
+    element.removeAttribute('aria-hidden');
+  }
+}
+function getPaddingRight(element) {
+  return parseInt((0,_mui_utils__WEBPACK_IMPORTED_MODULE_1__["default"])(element).getComputedStyle(element).paddingRight, 10) || 0;
+}
+function isAriaHiddenForbiddenOnElement(element) {
+  // The forbidden HTML tags are the ones from ARIA specification that
+  // can be children of body and can't have aria-hidden attribute.
+  // cf. https://www.w3.org/TR/html-aria/#docconformance
+  const forbiddenTagNames = ['TEMPLATE', 'SCRIPT', 'STYLE', 'LINK', 'MAP', 'META', 'NOSCRIPT', 'PICTURE', 'COL', 'COLGROUP', 'PARAM', 'SLOT', 'SOURCE', 'TRACK'];
+  const isForbiddenTagName = forbiddenTagNames.indexOf(element.tagName) !== -1;
+  const isInputHidden = element.tagName === 'INPUT' && element.getAttribute('type') === 'hidden';
+  return isForbiddenTagName || isInputHidden;
+}
+function ariaHiddenSiblings(container, mountElement, currentElement, elementsToExclude, show) {
+  const blacklist = [mountElement, currentElement, ...elementsToExclude];
+  [].forEach.call(container.children, element => {
+    const isNotExcludedElement = blacklist.indexOf(element) === -1;
+    const isNotForbiddenElement = !isAriaHiddenForbiddenOnElement(element);
+    if (isNotExcludedElement && isNotForbiddenElement) {
+      ariaHidden(element, show);
+    }
+  });
+}
+function findIndexOf(items, callback) {
+  let idx = -1;
+  items.some((item, index) => {
+    if (callback(item)) {
+      idx = index;
+      return true;
+    }
+    return false;
+  });
+  return idx;
+}
+function handleContainer(containerInfo, props) {
+  const restoreStyle = [];
+  const container = containerInfo.container;
+  if (!props.disableScrollLock) {
+    if (isOverflowing(container)) {
+      // Compute the size before applying overflow hidden to avoid any scroll jumps.
+      const scrollbarSize = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_2__["default"])((0,_mui_utils__WEBPACK_IMPORTED_MODULE_0__["default"])(container));
+      restoreStyle.push({
+        value: container.style.paddingRight,
+        property: 'padding-right',
+        el: container
+      });
+      // Use computed style, here to get the real padding to add our scrollbar width.
+      container.style.paddingRight = `${getPaddingRight(container) + scrollbarSize}px`;
+
+      // .mui-fixed is a global helper.
+      const fixedElements = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_0__["default"])(container).querySelectorAll('.mui-fixed');
+      [].forEach.call(fixedElements, element => {
+        restoreStyle.push({
+          value: element.style.paddingRight,
+          property: 'padding-right',
+          el: element
+        });
+        element.style.paddingRight = `${getPaddingRight(element) + scrollbarSize}px`;
+      });
+    }
+    let scrollContainer;
+    if (container.parentNode instanceof DocumentFragment) {
+      scrollContainer = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_0__["default"])(container).body;
+    } else {
+      // Support html overflow-y: auto for scroll stability between pages
+      // https://css-tricks.com/snippets/css/force-vertical-scrollbar/
+      const parent = container.parentElement;
+      const containerWindow = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_1__["default"])(container);
+      scrollContainer = (parent == null ? void 0 : parent.nodeName) === 'HTML' && containerWindow.getComputedStyle(parent).overflowY === 'scroll' ? parent : container;
+    }
+
+    // Block the scroll even if no scrollbar is visible to account for mobile keyboard
+    // screensize shrink.
+    restoreStyle.push({
+      value: scrollContainer.style.overflow,
+      property: 'overflow',
+      el: scrollContainer
+    }, {
+      value: scrollContainer.style.overflowX,
+      property: 'overflow-x',
+      el: scrollContainer
+    }, {
+      value: scrollContainer.style.overflowY,
+      property: 'overflow-y',
+      el: scrollContainer
+    });
+    scrollContainer.style.overflow = 'hidden';
+  }
+  const restore = () => {
+    restoreStyle.forEach(({
+      value,
+      el,
+      property
+    }) => {
+      if (value) {
+        el.style.setProperty(property, value);
+      } else {
+        el.style.removeProperty(property);
+      }
+    });
+  };
+  return restore;
+}
+function getHiddenSiblings(container) {
+  const hiddenSiblings = [];
+  [].forEach.call(container.children, element => {
+    if (element.getAttribute('aria-hidden') === 'true') {
+      hiddenSiblings.push(element);
+    }
+  });
+  return hiddenSiblings;
+}
+/**
+ * @ignore - do not document.
+ *
+ * Proper state management for containers and the modals in those containers.
+ * Simplified, but inspired by react-overlay's ModalManager class.
+ * Used by the Modal to ensure proper styling of containers.
+ */
+class ModalManager {
+  constructor() {
+    this.containers = void 0;
+    this.modals = void 0;
+    this.modals = [];
+    this.containers = [];
+  }
+  add(modal, container) {
+    let modalIndex = this.modals.indexOf(modal);
+    if (modalIndex !== -1) {
+      return modalIndex;
+    }
+    modalIndex = this.modals.length;
+    this.modals.push(modal);
+
+    // If the modal we are adding is already in the DOM.
+    if (modal.modalRef) {
+      ariaHidden(modal.modalRef, false);
+    }
+    const hiddenSiblings = getHiddenSiblings(container);
+    ariaHiddenSiblings(container, modal.mount, modal.modalRef, hiddenSiblings, true);
+    const containerIndex = findIndexOf(this.containers, item => item.container === container);
+    if (containerIndex !== -1) {
+      this.containers[containerIndex].modals.push(modal);
+      return modalIndex;
+    }
+    this.containers.push({
+      modals: [modal],
+      container,
+      restore: null,
+      hiddenSiblings
+    });
+    return modalIndex;
+  }
+  mount(modal, props) {
+    const containerIndex = findIndexOf(this.containers, item => item.modals.indexOf(modal) !== -1);
+    const containerInfo = this.containers[containerIndex];
+    if (!containerInfo.restore) {
+      containerInfo.restore = handleContainer(containerInfo, props);
+    }
+  }
+  remove(modal, ariaHiddenState = true) {
+    const modalIndex = this.modals.indexOf(modal);
+    if (modalIndex === -1) {
+      return modalIndex;
+    }
+    const containerIndex = findIndexOf(this.containers, item => item.modals.indexOf(modal) !== -1);
+    const containerInfo = this.containers[containerIndex];
+    containerInfo.modals.splice(containerInfo.modals.indexOf(modal), 1);
+    this.modals.splice(modalIndex, 1);
+
+    // If that was the last modal in a container, clean up the container.
+    if (containerInfo.modals.length === 0) {
+      // The modal might be closed before it had the chance to be mounted in the DOM.
+      if (containerInfo.restore) {
+        containerInfo.restore();
+      }
+      if (modal.modalRef) {
+        // In case the modal wasn't in the DOM yet.
+        ariaHidden(modal.modalRef, ariaHiddenState);
+      }
+      ariaHiddenSiblings(containerInfo.container, modal.mount, modal.modalRef, containerInfo.hiddenSiblings, false);
+      this.containers.splice(containerIndex, 1);
+    } else {
+      // Otherwise make sure the next top modal is visible to a screen reader.
+      const nextTop = containerInfo.modals[containerInfo.modals.length - 1];
+      // as soon as a modal is adding its modalRef is undefined. it can't set
+      // aria-hidden because the dom element doesn't exist either
+      // when modal was unmounted before modalRef gets null
+      if (nextTop.modalRef) {
+        ariaHidden(nextTop.modalRef, false);
+      }
+    }
+    return modalIndex;
+  }
+  isTopModal(modal) {
+    return this.modals.length > 0 && this.modals[this.modals.length - 1] === modal;
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/@mui/base/unstable_useModal/useModal.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/@mui/base/unstable_useModal/useModal.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   useModal: () => (/* binding */ useModal)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/useForkRef/useForkRef.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/ownerDocument/ownerDocument.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/useEventCallback/useEventCallback.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/createChainedFunction.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils */ "./node_modules/@mui/base/utils/extractEventHandlers.js");
+/* harmony import */ var _ModalManager__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ModalManager */ "./node_modules/@mui/base/unstable_useModal/ModalManager.js");
+'use client';
+
+
+
+
+
+
+function getContainer(container) {
+  return typeof container === 'function' ? container() : container;
+}
+function getHasTransition(children) {
+  return children ? children.props.hasOwnProperty('in') : false;
+}
+
+// A modal manager used to track and manage the state of open Modals.
+// Modals don't open on the server so this won't conflict with concurrent requests.
+const defaultManager = new _ModalManager__WEBPACK_IMPORTED_MODULE_2__.ModalManager();
+/**
+ *
+ * Demos:
+ *
+ * - [Modal](https://mui.com/base-ui/react-modal/#hook)
+ *
+ * API:
+ *
+ * - [useModal API](https://mui.com/base-ui/react-modal/hooks-api/#use-modal)
+ */
+function useModal(parameters) {
+  const {
+    container,
+    disableEscapeKeyDown = false,
+    disableScrollLock = false,
+    // @ts-ignore internal logic - Base UI supports the manager as a prop too
+    manager = defaultManager,
+    closeAfterTransition = false,
+    onTransitionEnter,
+    onTransitionExited,
+    children,
+    onClose,
+    open,
+    rootRef
+  } = parameters;
+
+  // @ts-ignore internal logic
+  const modal = react__WEBPACK_IMPORTED_MODULE_1__.useRef({});
+  const mountNodeRef = react__WEBPACK_IMPORTED_MODULE_1__.useRef(null);
+  const modalRef = react__WEBPACK_IMPORTED_MODULE_1__.useRef(null);
+  const handleRef = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_3__["default"])(modalRef, rootRef);
+  const [exited, setExited] = react__WEBPACK_IMPORTED_MODULE_1__.useState(!open);
+  const hasTransition = getHasTransition(children);
+  let ariaHiddenProp = true;
+  if (parameters['aria-hidden'] === 'false' || parameters['aria-hidden'] === false) {
+    ariaHiddenProp = false;
+  }
+  const getDoc = () => (0,_mui_utils__WEBPACK_IMPORTED_MODULE_4__["default"])(mountNodeRef.current);
+  const getModal = () => {
+    modal.current.modalRef = modalRef.current;
+    modal.current.mount = mountNodeRef.current;
+    return modal.current;
+  };
+  const handleMounted = () => {
+    manager.mount(getModal(), {
+      disableScrollLock
+    });
+
+    // Fix a bug on Chrome where the scroll isn't initially 0.
+    if (modalRef.current) {
+      modalRef.current.scrollTop = 0;
+    }
+  };
+  const handleOpen = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_5__["default"])(() => {
+    const resolvedContainer = getContainer(container) || getDoc().body;
+    manager.add(getModal(), resolvedContainer);
+
+    // The element was already mounted.
+    if (modalRef.current) {
+      handleMounted();
+    }
+  });
+  const isTopModal = react__WEBPACK_IMPORTED_MODULE_1__.useCallback(() => manager.isTopModal(getModal()), [manager]);
+  const handlePortalRef = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_5__["default"])(node => {
+    mountNodeRef.current = node;
+    if (!node) {
+      return;
+    }
+    if (open && isTopModal()) {
+      handleMounted();
+    } else if (modalRef.current) {
+      (0,_ModalManager__WEBPACK_IMPORTED_MODULE_2__.ariaHidden)(modalRef.current, ariaHiddenProp);
+    }
+  });
+  const handleClose = react__WEBPACK_IMPORTED_MODULE_1__.useCallback(() => {
+    manager.remove(getModal(), ariaHiddenProp);
+  }, [ariaHiddenProp, manager]);
+  react__WEBPACK_IMPORTED_MODULE_1__.useEffect(() => {
+    return () => {
+      handleClose();
+    };
+  }, [handleClose]);
+  react__WEBPACK_IMPORTED_MODULE_1__.useEffect(() => {
+    if (open) {
+      handleOpen();
+    } else if (!hasTransition || !closeAfterTransition) {
+      handleClose();
+    }
+  }, [open, handleClose, hasTransition, closeAfterTransition, handleOpen]);
+  const createHandleKeyDown = otherHandlers => event => {
+    var _otherHandlers$onKeyD;
+    (_otherHandlers$onKeyD = otherHandlers.onKeyDown) == null || _otherHandlers$onKeyD.call(otherHandlers, event);
+
+    // The handler doesn't take event.defaultPrevented into account:
+    //
+    // event.preventDefault() is meant to stop default behaviors like
+    // clicking a checkbox to check it, hitting a button to submit a form,
+    // and hitting left arrow to move the cursor in a text input etc.
+    // Only special HTML elements have these default behaviors.
+    if (event.key !== 'Escape' || !isTopModal()) {
+      return;
+    }
+    if (!disableEscapeKeyDown) {
+      // Swallow the event, in case someone is listening for the escape key on the body.
+      event.stopPropagation();
+      if (onClose) {
+        onClose(event, 'escapeKeyDown');
+      }
+    }
+  };
+  const createHandleBackdropClick = otherHandlers => event => {
+    var _otherHandlers$onClic;
+    (_otherHandlers$onClic = otherHandlers.onClick) == null || _otherHandlers$onClic.call(otherHandlers, event);
+    if (event.target !== event.currentTarget) {
+      return;
+    }
+    if (onClose) {
+      onClose(event, 'backdropClick');
+    }
+  };
+  const getRootProps = (otherHandlers = {}) => {
+    const propsEventHandlers = (0,_utils__WEBPACK_IMPORTED_MODULE_6__.extractEventHandlers)(parameters);
+
+    // The custom event handlers shouldn't be spread on the root element
+    delete propsEventHandlers.onTransitionEnter;
+    delete propsEventHandlers.onTransitionExited;
+    const externalEventHandlers = (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, propsEventHandlers, otherHandlers);
+    return (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+      role: 'presentation'
+    }, externalEventHandlers, {
+      onKeyDown: createHandleKeyDown(externalEventHandlers),
+      ref: handleRef
+    });
+  };
+  const getBackdropProps = (otherHandlers = {}) => {
+    const externalEventHandlers = otherHandlers;
+    return (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+      'aria-hidden': true
+    }, externalEventHandlers, {
+      onClick: createHandleBackdropClick(externalEventHandlers),
+      open
+    });
+  };
+  const getTransitionProps = () => {
+    const handleEnter = () => {
+      setExited(false);
+      if (onTransitionEnter) {
+        onTransitionEnter();
+      }
+    };
+    const handleExited = () => {
+      setExited(true);
+      if (onTransitionExited) {
+        onTransitionExited();
+      }
+      if (closeAfterTransition) {
+        handleClose();
+      }
+    };
+    return {
+      onEnter: (0,_mui_utils__WEBPACK_IMPORTED_MODULE_7__["default"])(handleEnter, children == null ? void 0 : children.props.onEnter),
+      onExited: (0,_mui_utils__WEBPACK_IMPORTED_MODULE_7__["default"])(handleExited, children == null ? void 0 : children.props.onExited)
+    };
+  };
+  return {
+    getRootProps,
+    getBackdropProps,
+    getTransitionProps,
+    rootRef: handleRef,
+    portalRef: handlePortalRef,
+    isTopModal,
+    exited,
+    hasTransition
+  };
+}
 
 /***/ }),
 
@@ -4435,7 +4223,7 @@ if (true) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ useButton)
+/* harmony export */   useButton: () => (/* binding */ useButton)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -4490,7 +4278,7 @@ function useButton(parameters = {}) {
     if (focusVisible) {
       event.preventDefault();
     }
-    (_otherHandlers$onMous = otherHandlers.onMouseLeave) == null ? void 0 : _otherHandlers$onMous.call(otherHandlers, event);
+    (_otherHandlers$onMous = otherHandlers.onMouseLeave) == null || _otherHandlers$onMous.call(otherHandlers, event);
   };
   const createHandleBlur = otherHandlers => event => {
     var _otherHandlers$onBlur;
@@ -4498,7 +4286,7 @@ function useButton(parameters = {}) {
     if (isFocusVisibleRef.current === false) {
       setFocusVisible(false);
     }
-    (_otherHandlers$onBlur = otherHandlers.onBlur) == null ? void 0 : _otherHandlers$onBlur.call(otherHandlers, event);
+    (_otherHandlers$onBlur = otherHandlers.onBlur) == null || _otherHandlers$onBlur.call(otherHandlers, event);
   };
   const createHandleFocus = otherHandlers => event => {
     var _otherHandlers$onFocu2;
@@ -4510,9 +4298,9 @@ function useButton(parameters = {}) {
     if (isFocusVisibleRef.current === true) {
       var _otherHandlers$onFocu;
       setFocusVisible(true);
-      (_otherHandlers$onFocu = otherHandlers.onFocusVisible) == null ? void 0 : _otherHandlers$onFocu.call(otherHandlers, event);
+      (_otherHandlers$onFocu = otherHandlers.onFocusVisible) == null || _otherHandlers$onFocu.call(otherHandlers, event);
     }
-    (_otherHandlers$onFocu2 = otherHandlers.onFocus) == null ? void 0 : _otherHandlers$onFocu2.call(otherHandlers, event);
+    (_otherHandlers$onFocu2 = otherHandlers.onFocus) == null || _otherHandlers$onFocu2.call(otherHandlers, event);
   };
   const isNativeButton = () => {
     const button = buttonRef.current;
@@ -4521,7 +4309,7 @@ function useButton(parameters = {}) {
   const createHandleClick = otherHandlers => event => {
     if (!disabled) {
       var _otherHandlers$onClic;
-      (_otherHandlers$onClic = otherHandlers.onClick) == null ? void 0 : _otherHandlers$onClic.call(otherHandlers, event);
+      (_otherHandlers$onClic = otherHandlers.onClick) == null || _otherHandlers$onClic.call(otherHandlers, event);
     }
   };
   const createHandleMouseDown = otherHandlers => event => {
@@ -4534,11 +4322,11 @@ function useButton(parameters = {}) {
         once: true
       });
     }
-    (_otherHandlers$onMous2 = otherHandlers.onMouseDown) == null ? void 0 : _otherHandlers$onMous2.call(otherHandlers, event);
+    (_otherHandlers$onMous2 = otherHandlers.onMouseDown) == null || _otherHandlers$onMous2.call(otherHandlers, event);
   };
   const createHandleKeyDown = otherHandlers => event => {
     var _otherHandlers$onKeyD;
-    (_otherHandlers$onKeyD = otherHandlers.onKeyDown) == null ? void 0 : _otherHandlers$onKeyD.call(otherHandlers, event);
+    (_otherHandlers$onKeyD = otherHandlers.onKeyDown) == null || _otherHandlers$onKeyD.call(otherHandlers, event);
     if (event.defaultMuiPrevented) {
       return;
     }
@@ -4552,7 +4340,7 @@ function useButton(parameters = {}) {
     // Keyboard accessibility for non interactive elements
     if (event.target === event.currentTarget && !isNativeButton() && event.key === 'Enter' && !disabled) {
       var _otherHandlers$onClic2;
-      (_otherHandlers$onClic2 = otherHandlers.onClick) == null ? void 0 : _otherHandlers$onClic2.call(otherHandlers, event);
+      (_otherHandlers$onClic2 = otherHandlers.onClick) == null || _otherHandlers$onClic2.call(otherHandlers, event);
       event.preventDefault();
     }
   };
@@ -4564,12 +4352,12 @@ function useButton(parameters = {}) {
     if (event.target === event.currentTarget) {
       setActive(false);
     }
-    (_otherHandlers$onKeyU = otherHandlers.onKeyUp) == null ? void 0 : _otherHandlers$onKeyU.call(otherHandlers, event);
+    (_otherHandlers$onKeyU = otherHandlers.onKeyUp) == null || _otherHandlers$onKeyU.call(otherHandlers, event);
 
     // Keyboard accessibility for non interactive elements
     if (event.target === event.currentTarget && !isNativeButton() && !disabled && event.key === ' ' && !event.defaultMuiPrevented) {
       var _otherHandlers$onClic3;
-      (_otherHandlers$onClic3 = otherHandlers.onClick) == null ? void 0 : _otherHandlers$onClic3.call(otherHandlers, event);
+      (_otherHandlers$onClic3 = otherHandlers.onClick) == null || _otherHandlers$onClic3.call(otherHandlers, event);
     }
   };
   const updateHostElementName = react__WEBPACK_IMPORTED_MODULE_1__.useCallback(instance => {
@@ -4578,6 +4366,9 @@ function useButton(parameters = {}) {
   }, []);
   const handleRef = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_3__["default"])(updateHostElementName, externalRef, focusVisibleRef, buttonRef);
   const buttonProps = {};
+  if (tabIndex !== undefined) {
+    buttonProps.tabIndex = tabIndex;
+  }
   if (hostElementName === 'BUTTON') {
     buttonProps.type = type != null ? type : 'button';
     if (focusableWhenDisabled) {
@@ -4595,16 +4386,11 @@ function useButton(parameters = {}) {
       buttonProps.tabIndex = focusableWhenDisabled ? tabIndex != null ? tabIndex : 0 : -1;
     }
   }
-  const getRootProps = (otherHandlers = {}) => {
-    const propsEventHandlers = (0,_utils_extractEventHandlers__WEBPACK_IMPORTED_MODULE_4__["default"])(parameters);
-    const externalEventHandlers = (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, propsEventHandlers, otherHandlers);
-
-    // onFocusVisible can be present on the props, but since it's not a valid React event handler,
-    // it must not be forwarded to the inner component.
-    delete externalEventHandlers.onFocusVisible;
-    return (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+  const getRootProps = (externalProps = {}) => {
+    const externalEventHandlers = (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, (0,_utils_extractEventHandlers__WEBPACK_IMPORTED_MODULE_4__.extractEventHandlers)(parameters), (0,_utils_extractEventHandlers__WEBPACK_IMPORTED_MODULE_4__.extractEventHandlers)(externalProps));
+    const props = (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
       type
-    }, externalEventHandlers, buttonProps, {
+    }, externalEventHandlers, buttonProps, externalProps, {
       onBlur: createHandleBlur(externalEventHandlers),
       onClick: createHandleClick(externalEventHandlers),
       onFocus: createHandleFocus(externalEventHandlers),
@@ -4614,6 +4400,12 @@ function useButton(parameters = {}) {
       onMouseLeave: createHandleMouseLeave(externalEventHandlers),
       ref: handleRef
     });
+
+    // onFocusVisible can be present on the props or parameters,
+    // but it's not a valid React event handler so it must not be forwarded to the inner component.
+    // If present, it will be handled by the focus handler.
+    delete props.onFocusVisible;
+    return props;
   };
   return {
     getRootProps,
@@ -4635,7 +4427,7 @@ function useButton(parameters = {}) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ ClassNameConfigurator),
+/* harmony export */   ClassNameConfigurator: () => (/* binding */ ClassNameConfigurator),
 /* harmony export */   useClassNamesOverride: () => (/* binding */ useClassNamesOverride)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -4697,7 +4489,7 @@ function ClassNameConfigurator(props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ appendOwnerState)
+/* harmony export */   appendOwnerState: () => (/* binding */ appendOwnerState)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
 /* harmony import */ var _isHostComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isHostComponent */ "./node_modules/@mui/base/utils/isHostComponent.js");
@@ -4718,7 +4510,7 @@ __webpack_require__.r(__webpack_exports__);
  * @param ownerState
  */
 function appendOwnerState(elementType, otherProps, ownerState) {
-  if (elementType === undefined || (0,_isHostComponent__WEBPACK_IMPORTED_MODULE_1__["default"])(elementType)) {
+  if (elementType === undefined || (0,_isHostComponent__WEBPACK_IMPORTED_MODULE_1__.isHostComponent)(elementType)) {
     return otherProps;
   }
   return (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, otherProps, {
@@ -4737,7 +4529,7 @@ function appendOwnerState(elementType, otherProps, ownerState) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ extractEventHandlers)
+/* harmony export */   extractEventHandlers: () => (/* binding */ extractEventHandlers)
 /* harmony export */ });
 /**
  * Extracts event handlers from a given object.
@@ -4768,7 +4560,7 @@ function extractEventHandlers(object, excludeKeys = []) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ isHostComponent)
+/* harmony export */   isHostComponent: () => (/* binding */ isHostComponent)
 /* harmony export */ });
 /**
  * Determines if a given element is a DOM element name (i.e. not a React component).
@@ -4788,10 +4580,10 @@ function isHostComponent(element) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ mergeSlotProps)
+/* harmony export */   mergeSlotProps: () => (/* binding */ mergeSlotProps)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.mjs");
 /* harmony import */ var _extractEventHandlers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./extractEventHandlers */ "./node_modules/@mui/base/utils/extractEventHandlers.js");
 /* harmony import */ var _omitEventHandlers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./omitEventHandlers */ "./node_modules/@mui/base/utils/omitEventHandlers.js");
 
@@ -4840,9 +4632,9 @@ function mergeSlotProps(parameters) {
   // In this case, getSlotProps is responsible for calling the external event handlers.
   // We don't need to include them in the merged props because of this.
 
-  const eventHandlers = (0,_extractEventHandlers__WEBPACK_IMPORTED_MODULE_2__["default"])((0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, externalForwardedProps, externalSlotProps));
-  const componentsPropsWithoutEventHandlers = (0,_omitEventHandlers__WEBPACK_IMPORTED_MODULE_3__["default"])(externalSlotProps);
-  const otherPropsWithoutEventHandlers = (0,_omitEventHandlers__WEBPACK_IMPORTED_MODULE_3__["default"])(externalForwardedProps);
+  const eventHandlers = (0,_extractEventHandlers__WEBPACK_IMPORTED_MODULE_2__.extractEventHandlers)((0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, externalForwardedProps, externalSlotProps));
+  const componentsPropsWithoutEventHandlers = (0,_omitEventHandlers__WEBPACK_IMPORTED_MODULE_3__.omitEventHandlers)(externalSlotProps);
+  const otherPropsWithoutEventHandlers = (0,_omitEventHandlers__WEBPACK_IMPORTED_MODULE_3__.omitEventHandlers)(externalForwardedProps);
   const internalSlotProps = getSlotProps(eventHandlers);
 
   // The order of classes is important here.
@@ -4875,7 +4667,7 @@ function mergeSlotProps(parameters) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ omitEventHandlers)
+/* harmony export */   omitEventHandlers: () => (/* binding */ omitEventHandlers)
 /* harmony export */ });
 /**
  * Removes event handlers from the given object.
@@ -4906,7 +4698,7 @@ function omitEventHandlers(object) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ resolveComponentProps)
+/* harmony export */   resolveComponentProps: () => (/* binding */ resolveComponentProps)
 /* harmony export */ });
 /**
  * If `componentProps` is a function, calls it with the provided `ownerState`.
@@ -4930,7 +4722,7 @@ function resolveComponentProps(componentProps, ownerState, slotState) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ useSlotProps)
+/* harmony export */   useSlotProps: () => (/* binding */ useSlotProps)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
 /* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
@@ -4964,15 +4756,15 @@ function useSlotProps(parameters) {
       skipResolvingSlotProps = false
     } = parameters,
     rest = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(parameters, _excluded);
-  const resolvedComponentsProps = skipResolvingSlotProps ? {} : (0,_resolveComponentProps__WEBPACK_IMPORTED_MODULE_2__["default"])(externalSlotProps, ownerState);
+  const resolvedComponentsProps = skipResolvingSlotProps ? {} : (0,_resolveComponentProps__WEBPACK_IMPORTED_MODULE_2__.resolveComponentProps)(externalSlotProps, ownerState);
   const {
     props: mergedProps,
     internalRef
-  } = (0,_mergeSlotProps__WEBPACK_IMPORTED_MODULE_3__["default"])((0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, rest, {
+  } = (0,_mergeSlotProps__WEBPACK_IMPORTED_MODULE_3__.mergeSlotProps)((0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, rest, {
     externalSlotProps: resolvedComponentsProps
   }));
   const ref = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_4__["default"])(internalRef, resolvedComponentsProps == null ? void 0 : resolvedComponentsProps.ref, (_parameters$additiona = parameters.additionalProps) == null ? void 0 : _parameters$additiona.ref);
-  const props = (0,_appendOwnerState__WEBPACK_IMPORTED_MODULE_5__["default"])(elementType, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, mergedProps, {
+  const props = (0,_appendOwnerState__WEBPACK_IMPORTED_MODULE_5__.appendOwnerState)(elementType, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, mergedProps, {
     ref
   }), ownerState);
   return props;
@@ -5043,8 +4835,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
-/* harmony import */ var _mui_base__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/base */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.mjs");
+/* harmony import */ var _mui_base_composeClasses__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/base/composeClasses */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
 /* harmony import */ var _styles_styled__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../styles/styled */ "./node_modules/@mui/material/styles/styled.js");
 /* harmony import */ var _styles_useThemeProps__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../styles/useThemeProps */ "./node_modules/@mui/material/styles/useThemeProps.js");
 /* harmony import */ var _Fade__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Fade */ "./node_modules/@mui/material/Fade/Fade.js");
@@ -5072,7 +4864,7 @@ const useUtilityClasses = ownerState => {
   const slots = {
     root: ['root', invisible && 'invisible']
   };
-  return (0,_mui_base__WEBPACK_IMPORTED_MODULE_5__["default"])(slots, _backdropClasses__WEBPACK_IMPORTED_MODULE_6__.getBackdropUtilityClass, classes);
+  return (0,_mui_base_composeClasses__WEBPACK_IMPORTED_MODULE_5__["default"])(slots, _backdropClasses__WEBPACK_IMPORTED_MODULE_6__.getBackdropUtilityClass, classes);
 };
 const BackdropRoot = (0,_styles_styled__WEBPACK_IMPORTED_MODULE_7__["default"])('div', {
   name: 'MuiBackdrop',
@@ -5283,7 +5075,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.mjs");
 /* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/refType.js");
 /* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/elementTypeAcceptingRef.js");
 /* harmony import */ var _mui_base_composeClasses__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/base/composeClasses */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
@@ -5790,7 +5582,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.mjs");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 'use client';
 
@@ -5905,7 +5697,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_11__);
 /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-transition-group */ "./node_modules/react-transition-group/esm/TransitionGroup.js");
-/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.mjs");
 /* harmony import */ var _mui_system__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/system */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
 /* harmony import */ var _styles_styled__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../styles/styled */ "./node_modules/@mui/material/styles/styled.js");
 /* harmony import */ var _styles_useThemeProps__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../styles/useThemeProps */ "./node_modules/@mui/material/styles/useThemeProps.js");
@@ -6319,9 +6111,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.mjs");
 /* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/chainPropTypes/chainPropTypes.js");
-/* harmony import */ var _mui_base__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/base */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
+/* harmony import */ var _mui_base_composeClasses__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/base/composeClasses */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
 /* harmony import */ var _mui_system__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/system */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
 /* harmony import */ var _utils_capitalize__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/capitalize */ "./node_modules/@mui/material/utils/capitalize.js");
 /* harmony import */ var _styles_useThemeProps__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../styles/useThemeProps */ "./node_modules/@mui/material/styles/useThemeProps.js");
@@ -6387,7 +6179,7 @@ const useUtilityClasses = ownerState => {
     svg: ['svg'],
     circle: ['circle', `circle${(0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_6__["default"])(variant)}`, disableShrink && 'circleDisableShrink']
   };
-  return (0,_mui_base__WEBPACK_IMPORTED_MODULE_7__["default"])(slots, _circularProgressClasses__WEBPACK_IMPORTED_MODULE_8__.getCircularProgressUtilityClass, classes);
+  return (0,_mui_base_composeClasses__WEBPACK_IMPORTED_MODULE_7__["default"])(slots, _circularProgressClasses__WEBPACK_IMPORTED_MODULE_8__.getCircularProgressUtilityClass, classes);
 };
 const CircularProgressRoot = (0,_styles_styled__WEBPACK_IMPORTED_MODULE_9__["default"])('span', {
   name: 'MuiCircularProgress',
@@ -6531,7 +6323,7 @@ const CircularProgress = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forward
   /**
    * The color of the component.
    * It supports both default and custom theme colors, which can be added as shown in the
-   * [palette customization guide](https://mui.com/material-ui/customization/palette/#adding-new-colors).
+   * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
    * @default 'primary'
    */
   color: prop_types__WEBPACK_IMPORTED_MODULE_11___default().oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_11___default().oneOf(['inherit', 'primary', 'secondary', 'error', 'info', 'success', 'warning']), (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string)]),
@@ -6549,7 +6341,7 @@ const CircularProgress = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forward
   /**
    * The size of the component.
    * If using a number, the pixel unit is assumed.
-   * If using a string, you need to provide the CSS unit, e.g '3rem'.
+   * If using a string, you need to provide the CSS unit, e.g. '3rem'.
    * @default 40
    */
   size: prop_types__WEBPACK_IMPORTED_MODULE_11___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_11___default().number), (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string)]),
@@ -7164,9 +6956,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.mjs");
 /* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/chainPropTypes/chainPropTypes.js");
-/* harmony import */ var _mui_base__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/base */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
+/* harmony import */ var _mui_base_composeClasses__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/base/composeClasses */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
 /* harmony import */ var _mui_system__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @mui/system */ "./node_modules/@mui/system/esm/colorManipulator.js");
 /* harmony import */ var _styles_styled__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../styles/styled */ "./node_modules/@mui/material/styles/styled.js");
 /* harmony import */ var _styles_useThemeProps__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../styles/useThemeProps */ "./node_modules/@mui/material/styles/useThemeProps.js");
@@ -7202,7 +6994,7 @@ const useUtilityClasses = ownerState => {
   const slots = {
     root: ['root', disabled && 'disabled', color !== 'default' && `color${(0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_5__["default"])(color)}`, edge && `edge${(0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_5__["default"])(edge)}`, `size${(0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_5__["default"])(size)}`]
   };
-  return (0,_mui_base__WEBPACK_IMPORTED_MODULE_6__["default"])(slots, _iconButtonClasses__WEBPACK_IMPORTED_MODULE_7__.getIconButtonUtilityClass, classes);
+  return (0,_mui_base_composeClasses__WEBPACK_IMPORTED_MODULE_6__["default"])(slots, _iconButtonClasses__WEBPACK_IMPORTED_MODULE_7__.getIconButtonUtilityClass, classes);
 };
 const IconButtonRoot = (0,_styles_styled__WEBPACK_IMPORTED_MODULE_8__["default"])(_ButtonBase__WEBPACK_IMPORTED_MODULE_9__["default"], {
   name: 'MuiIconButton',
@@ -7337,7 +7129,7 @@ const IconButton = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(fu
   /**
    * The color of the component.
    * It supports both default and custom theme colors, which can be added as shown in the
-   * [palette customization guide](https://mui.com/material-ui/customization/palette/#adding-new-colors).
+   * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
    * @default 'default'
    */
   color: prop_types__WEBPACK_IMPORTED_MODULE_13___default().oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_13___default().oneOf(['inherit', 'default', 'primary', 'secondary', 'error', 'info', 'success', 'warning']), (prop_types__WEBPACK_IMPORTED_MODULE_13___default().string)]),
@@ -7423,8 +7215,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
-/* harmony import */ var _mui_base__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/base */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.mjs");
+/* harmony import */ var _mui_base_composeClasses__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/base/composeClasses */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
 /* harmony import */ var _styles_styled__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../styles/styled */ "./node_modules/@mui/material/styles/styled.js");
 /* harmony import */ var _styles_useThemeProps__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../styles/useThemeProps */ "./node_modules/@mui/material/styles/useThemeProps.js");
 /* harmony import */ var _ListContext__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./ListContext */ "./node_modules/@mui/material/List/ListContext.js");
@@ -7455,7 +7247,7 @@ const useUtilityClasses = ownerState => {
   const slots = {
     root: ['root', !disablePadding && 'padding', dense && 'dense', subheader && 'subheader']
   };
-  return (0,_mui_base__WEBPACK_IMPORTED_MODULE_5__["default"])(slots, _listClasses__WEBPACK_IMPORTED_MODULE_6__.getListUtilityClass, classes);
+  return (0,_mui_base_composeClasses__WEBPACK_IMPORTED_MODULE_5__["default"])(slots, _listClasses__WEBPACK_IMPORTED_MODULE_6__.getListUtilityClass, classes);
 };
 const ListRoot = (0,_styles_styled__WEBPACK_IMPORTED_MODULE_7__["default"])('ul', {
   name: 'MuiList',
@@ -7630,8 +7422,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
-/* harmony import */ var _mui_base__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/base */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.mjs");
+/* harmony import */ var _mui_base_composeClasses__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/base/composeClasses */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
 /* harmony import */ var _styles_styled__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../styles/styled */ "./node_modules/@mui/material/styles/styled.js");
 /* harmony import */ var _styles_useThemeProps__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../styles/useThemeProps */ "./node_modules/@mui/material/styles/useThemeProps.js");
 /* harmony import */ var _listItemIconClasses__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./listItemIconClasses */ "./node_modules/@mui/material/ListItemIcon/listItemIconClasses.js");
@@ -7659,7 +7451,7 @@ const useUtilityClasses = ownerState => {
   const slots = {
     root: ['root', alignItems === 'flex-start' && 'alignItemsFlexStart']
   };
-  return (0,_mui_base__WEBPACK_IMPORTED_MODULE_5__["default"])(slots, _listItemIconClasses__WEBPACK_IMPORTED_MODULE_6__.getListItemIconUtilityClass, classes);
+  return (0,_mui_base_composeClasses__WEBPACK_IMPORTED_MODULE_5__["default"])(slots, _listItemIconClasses__WEBPACK_IMPORTED_MODULE_6__.getListItemIconUtilityClass, classes);
 };
 const ListItemIconRoot = (0,_styles_styled__WEBPACK_IMPORTED_MODULE_7__["default"])('div', {
   name: 'MuiListItemIcon',
@@ -7773,8 +7565,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
-/* harmony import */ var _mui_base__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/base */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.mjs");
+/* harmony import */ var _mui_base_composeClasses__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/base/composeClasses */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
 /* harmony import */ var _Typography__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../Typography */ "./node_modules/@mui/material/Typography/Typography.js");
 /* harmony import */ var _List_ListContext__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../List/ListContext */ "./node_modules/@mui/material/List/ListContext.js");
 /* harmony import */ var _styles_useThemeProps__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../styles/useThemeProps */ "./node_modules/@mui/material/styles/useThemeProps.js");
@@ -7810,7 +7602,7 @@ const useUtilityClasses = ownerState => {
     primary: ['primary'],
     secondary: ['secondary']
   };
-  return (0,_mui_base__WEBPACK_IMPORTED_MODULE_5__["default"])(slots, _listItemTextClasses__WEBPACK_IMPORTED_MODULE_6__.getListItemTextUtilityClass, classes);
+  return (0,_mui_base_composeClasses__WEBPACK_IMPORTED_MODULE_5__["default"])(slots, _listItemTextClasses__WEBPACK_IMPORTED_MODULE_6__.getListItemTextUtilityClass, classes);
 };
 const ListItemTextRoot = (0,_styles_styled__WEBPACK_IMPORTED_MODULE_7__["default"])('div', {
   name: 'MuiListItemText',
@@ -7995,8 +7787,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
-/* harmony import */ var _mui_base__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/base */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.mjs");
+/* harmony import */ var _mui_base_composeClasses__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/base/composeClasses */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
 /* harmony import */ var _mui_system__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @mui/system */ "./node_modules/@mui/system/esm/colorManipulator.js");
 /* harmony import */ var _styles_styled__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../styles/styled */ "./node_modules/@mui/material/styles/styled.js");
 /* harmony import */ var _styles_useThemeProps__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../styles/useThemeProps */ "./node_modules/@mui/material/styles/useThemeProps.js");
@@ -8048,7 +7840,7 @@ const useUtilityClasses = ownerState => {
   const slots = {
     root: ['root', dense && 'dense', disabled && 'disabled', !disableGutters && 'gutters', divider && 'divider', selected && 'selected']
   };
-  const composedClasses = (0,_mui_base__WEBPACK_IMPORTED_MODULE_5__["default"])(slots, _menuItemClasses__WEBPACK_IMPORTED_MODULE_6__.getMenuItemUtilityClass, classes);
+  const composedClasses = (0,_mui_base_composeClasses__WEBPACK_IMPORTED_MODULE_5__["default"])(slots, _menuItemClasses__WEBPACK_IMPORTED_MODULE_6__.getMenuItemUtilityClass, classes);
   return (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, classes, composedClasses);
 };
 const MenuItemRoot = (0,_styles_styled__WEBPACK_IMPORTED_MODULE_7__["default"])(_ButtonBase__WEBPACK_IMPORTED_MODULE_8__["default"], {
@@ -8614,31 +8406,32 @@ const MenuList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(func
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
-/* harmony export */   modalClasses: () => (/* binding */ modalClasses)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
 /* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
-/* harmony import */ var _mui_base_Modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/base/Modal */ "./node_modules/@mui/base/Modal/modalClasses.js");
-/* harmony import */ var _mui_base_Modal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @mui/base/Modal */ "./node_modules/@mui/base/Modal/Modal.js");
-/* harmony import */ var _mui_base_utils__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @mui/base/utils */ "./node_modules/@mui/base/utils/resolveComponentProps.js");
-/* harmony import */ var _mui_base_utils__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @mui/base/utils */ "./node_modules/@mui/base/utils/isHostComponent.js");
-/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/elementAcceptingRef.js");
-/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/HTMLElementType/HTMLElementType.js");
-/* harmony import */ var _styles_styled__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../styles/styled */ "./node_modules/@mui/material/styles/styled.js");
-/* harmony import */ var _styles_useThemeProps__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../styles/useThemeProps */ "./node_modules/@mui/material/styles/useThemeProps.js");
-/* harmony import */ var _Backdrop__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Backdrop */ "./node_modules/@mui/material/Backdrop/Backdrop.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.mjs");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/elementAcceptingRef.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/HTMLElementType/HTMLElementType.js");
+/* harmony import */ var _mui_base__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @mui/base */ "./node_modules/@mui/base/utils/useSlotProps.js");
+/* harmony import */ var _mui_base_unstable_useModal__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @mui/base/unstable_useModal */ "./node_modules/@mui/base/unstable_useModal/useModal.js");
+/* harmony import */ var _mui_base_composeClasses__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/base/composeClasses */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
+/* harmony import */ var _Unstable_TrapFocus__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../Unstable_TrapFocus */ "./node_modules/@mui/base/FocusTrap/FocusTrap.js");
+/* harmony import */ var _Portal__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../Portal */ "./node_modules/@mui/base/Portal/Portal.js");
+/* harmony import */ var _styles_styled__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../styles/styled */ "./node_modules/@mui/material/styles/styled.js");
+/* harmony import */ var _styles_useThemeProps__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../styles/useThemeProps */ "./node_modules/@mui/material/styles/useThemeProps.js");
+/* harmony import */ var _Backdrop__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Backdrop */ "./node_modules/@mui/material/Backdrop/Backdrop.js");
+/* harmony import */ var _modalClasses__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modalClasses */ "./node_modules/@mui/material/Modal/modalClasses.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 'use client';
 
 
 
-const _excluded = ["BackdropComponent", "BackdropProps", "classes", "className", "closeAfterTransition", "children", "container", "component", "components", "componentsProps", "disableAutoFocus", "disableEnforceFocus", "disableEscapeKeyDown", "disablePortal", "disableRestoreFocus", "disableScrollLock", "hideBackdrop", "keepMounted", "onBackdropClick", "onClose", "open", "slotProps", "slots", "theme"];
+const _excluded = ["BackdropComponent", "BackdropProps", "classes", "className", "closeAfterTransition", "children", "container", "component", "components", "componentsProps", "disableAutoFocus", "disableEnforceFocus", "disableEscapeKeyDown", "disablePortal", "disableRestoreFocus", "disableScrollLock", "hideBackdrop", "keepMounted", "onBackdropClick", "onClose", "onTransitionEnter", "onTransitionExited", "open", "slotProps", "slots", "theme"];
 
 
 
@@ -8649,8 +8442,24 @@ const _excluded = ["BackdropComponent", "BackdropProps", "classes", "className",
 
 
 
-const modalClasses = _mui_base_Modal__WEBPACK_IMPORTED_MODULE_5__["default"];
-const ModalRoot = (0,_styles_styled__WEBPACK_IMPORTED_MODULE_6__["default"])('div', {
+
+
+
+
+
+const useUtilityClasses = ownerState => {
+  const {
+    open,
+    exited,
+    classes
+  } = ownerState;
+  const slots = {
+    root: ['root', !open && exited && 'hidden'],
+    backdrop: ['backdrop']
+  };
+  return (0,_mui_base_composeClasses__WEBPACK_IMPORTED_MODULE_5__["default"])(slots, _modalClasses__WEBPACK_IMPORTED_MODULE_6__.getModalUtilityClass, classes);
+};
+const ModalRoot = (0,_styles_styled__WEBPACK_IMPORTED_MODULE_7__["default"])('div', {
   name: 'MuiModal',
   slot: 'Root',
   overridesResolver: (props, styles) => {
@@ -8672,7 +8481,7 @@ const ModalRoot = (0,_styles_styled__WEBPACK_IMPORTED_MODULE_6__["default"])('di
 }, !ownerState.open && ownerState.exited && {
   visibility: 'hidden'
 }));
-const ModalBackdrop = (0,_styles_styled__WEBPACK_IMPORTED_MODULE_6__["default"])(_Backdrop__WEBPACK_IMPORTED_MODULE_7__["default"], {
+const ModalBackdrop = (0,_styles_styled__WEBPACK_IMPORTED_MODULE_7__["default"])(_Backdrop__WEBPACK_IMPORTED_MODULE_8__["default"], {
   name: 'MuiModal',
   slot: 'Backdrop',
   overridesResolver: (props, styles) => {
@@ -8697,14 +8506,13 @@ const ModalBackdrop = (0,_styles_styled__WEBPACK_IMPORTED_MODULE_6__["default"])
  */
 const Modal = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(function Modal(inProps, ref) {
   var _ref, _slots$root, _ref2, _slots$backdrop, _slotProps$root, _slotProps$backdrop;
-  const props = (0,_styles_useThemeProps__WEBPACK_IMPORTED_MODULE_8__["default"])({
+  const props = (0,_styles_useThemeProps__WEBPACK_IMPORTED_MODULE_9__["default"])({
     name: 'MuiModal',
     props: inProps
   });
   const {
       BackdropComponent = ModalBackdrop,
       BackdropProps,
-      classes,
       className,
       closeAfterTransition = false,
       children,
@@ -8721,17 +8529,13 @@ const Modal = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(functio
       hideBackdrop = false,
       keepMounted = false,
       onBackdropClick,
-      onClose,
       open,
       slotProps,
-      slots,
+      slots
       // eslint-disable-next-line react/prop-types
-      theme
     } = props,
     other = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(props, _excluded);
-  const [exited, setExited] = react__WEBPACK_IMPORTED_MODULE_2__.useState(true);
-  const commonProps = {
-    container,
+  const propsWithDefaults = (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, props, {
     closeAfterTransition,
     disableAutoFocus,
     disableEnforceFocus,
@@ -8740,40 +8544,90 @@ const Modal = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(functio
     disableRestoreFocus,
     disableScrollLock,
     hideBackdrop,
-    keepMounted,
-    onBackdropClick,
-    onClose,
-    open
-  };
-  const ownerState = (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, props, commonProps, {
+    keepMounted
+  });
+  const {
+    getRootProps,
+    getBackdropProps,
+    getTransitionProps,
+    portalRef,
+    isTopModal,
+    exited,
+    hasTransition
+  } = (0,_mui_base_unstable_useModal__WEBPACK_IMPORTED_MODULE_10__.useModal)((0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, propsWithDefaults, {
+    rootRef: ref
+  }));
+  const ownerState = (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, propsWithDefaults, {
     exited
   });
+  const classes = useUtilityClasses(ownerState);
+  const childProps = {};
+  if (children.props.tabIndex === undefined) {
+    childProps.tabIndex = '-1';
+  }
+
+  // It's a Transition like component
+  if (hasTransition) {
+    const {
+      onEnter,
+      onExited
+    } = getTransitionProps();
+    childProps.onEnter = onEnter;
+    childProps.onExited = onExited;
+  }
   const RootSlot = (_ref = (_slots$root = slots == null ? void 0 : slots.root) != null ? _slots$root : components.Root) != null ? _ref : ModalRoot;
   const BackdropSlot = (_ref2 = (_slots$backdrop = slots == null ? void 0 : slots.backdrop) != null ? _slots$backdrop : components.Backdrop) != null ? _ref2 : BackdropComponent;
   const rootSlotProps = (_slotProps$root = slotProps == null ? void 0 : slotProps.root) != null ? _slotProps$root : componentsProps.root;
   const backdropSlotProps = (_slotProps$backdrop = slotProps == null ? void 0 : slotProps.backdrop) != null ? _slotProps$backdrop : componentsProps.backdrop;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_base_Modal__WEBPACK_IMPORTED_MODULE_9__["default"], (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({
-    slots: {
-      root: RootSlot,
-      backdrop: BackdropSlot
+  const rootProps = (0,_mui_base__WEBPACK_IMPORTED_MODULE_11__.useSlotProps)({
+    elementType: RootSlot,
+    externalSlotProps: rootSlotProps,
+    externalForwardedProps: other,
+    getSlotProps: getRootProps,
+    additionalProps: {
+      ref,
+      as: component
     },
-    slotProps: {
-      root: () => (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, (0,_mui_base_utils__WEBPACK_IMPORTED_MODULE_10__["default"])(rootSlotProps, ownerState), !(0,_mui_base_utils__WEBPACK_IMPORTED_MODULE_11__["default"])(RootSlot) && {
-        as: component,
-        theme
-      }, {
-        className: (0,clsx__WEBPACK_IMPORTED_MODULE_3__["default"])(className, rootSlotProps == null ? void 0 : rootSlotProps.className, classes == null ? void 0 : classes.root, !ownerState.open && ownerState.exited && (classes == null ? void 0 : classes.hidden))
-      }),
-      backdrop: () => (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, BackdropProps, (0,_mui_base_utils__WEBPACK_IMPORTED_MODULE_10__["default"])(backdropSlotProps, ownerState), {
-        className: (0,clsx__WEBPACK_IMPORTED_MODULE_3__["default"])(backdropSlotProps == null ? void 0 : backdropSlotProps.className, BackdropProps == null ? void 0 : BackdropProps.className, classes == null ? void 0 : classes.backdrop)
-      })
+    ownerState,
+    className: (0,clsx__WEBPACK_IMPORTED_MODULE_3__["default"])(className, rootSlotProps == null ? void 0 : rootSlotProps.className, classes == null ? void 0 : classes.root, !ownerState.open && ownerState.exited && (classes == null ? void 0 : classes.hidden))
+  });
+  const backdropProps = (0,_mui_base__WEBPACK_IMPORTED_MODULE_11__.useSlotProps)({
+    elementType: BackdropSlot,
+    externalSlotProps: backdropSlotProps,
+    additionalProps: BackdropProps,
+    getSlotProps: otherHandlers => {
+      return getBackdropProps((0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, otherHandlers, {
+        onClick: e => {
+          if (onBackdropClick) {
+            onBackdropClick(e);
+          }
+          if (otherHandlers != null && otherHandlers.onClick) {
+            otherHandlers.onClick(e);
+          }
+        }
+      }));
     },
-    onTransitionEnter: () => setExited(false),
-    onTransitionExited: () => setExited(true),
-    ref: ref
-  }, other, commonProps, {
-    children: children
-  }));
+    className: (0,clsx__WEBPACK_IMPORTED_MODULE_3__["default"])(backdropSlotProps == null ? void 0 : backdropSlotProps.className, BackdropProps == null ? void 0 : BackdropProps.className, classes == null ? void 0 : classes.backdrop),
+    ownerState
+  });
+  if (!keepMounted && !open && (!hasTransition || exited)) {
+    return null;
+  }
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Portal__WEBPACK_IMPORTED_MODULE_12__.Portal, {
+    ref: portalRef,
+    container: container,
+    disablePortal: disablePortal,
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(RootSlot, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, rootProps, {
+      children: [!hideBackdrop && BackdropComponent ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(BackdropSlot, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, backdropProps)) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Unstable_TrapFocus__WEBPACK_IMPORTED_MODULE_13__.FocusTrap, {
+        disableEnforceFocus: disableEnforceFocus,
+        disableAutoFocus: disableAutoFocus,
+        disableRestoreFocus: disableRestoreFocus,
+        isEnabled: isTopModal,
+        open: open,
+        children: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.cloneElement(children, childProps)
+      })]
+    }))
+  });
 });
  true ? Modal.propTypes /* remove-proptypes */ = {
   // ----------------------------- Warning --------------------------------
@@ -8794,34 +8648,34 @@ const Modal = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(functio
    *   zIndex: -1,
    * })
    */
-  BackdropComponent: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().elementType),
+  BackdropComponent: (prop_types__WEBPACK_IMPORTED_MODULE_14___default().elementType),
   /**
    * Props applied to the [`Backdrop`](/material-ui/api/backdrop/) element.
    * @deprecated Use `slotProps.backdrop` instead.
    */
-  BackdropProps: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().object),
+  BackdropProps: (prop_types__WEBPACK_IMPORTED_MODULE_14___default().object),
   /**
    * A single child content element.
    */
-  children: _mui_utils__WEBPACK_IMPORTED_MODULE_13__["default"].isRequired,
+  children: _mui_utils__WEBPACK_IMPORTED_MODULE_15__["default"].isRequired,
   /**
    * Override or extend the styles applied to the component.
    */
-  classes: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().object),
+  classes: (prop_types__WEBPACK_IMPORTED_MODULE_14___default().object),
   /**
    * @ignore
    */
-  className: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().string),
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_14___default().string),
   /**
    * When set to true the Modal waits until a nested Transition is completed before closing.
    * @default false
    */
-  closeAfterTransition: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().bool),
+  closeAfterTransition: (prop_types__WEBPACK_IMPORTED_MODULE_14___default().bool),
   /**
    * The component used for the root node.
    * Either a string to use a HTML element or a component.
    */
-  component: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().elementType),
+  component: (prop_types__WEBPACK_IMPORTED_MODULE_14___default().elementType),
   /**
    * The components used for each slot inside.
    *
@@ -8830,9 +8684,9 @@ const Modal = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(functio
    *
    * @default {}
    */
-  components: prop_types__WEBPACK_IMPORTED_MODULE_12___default().shape({
-    Backdrop: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().elementType),
-    Root: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().elementType)
+  components: prop_types__WEBPACK_IMPORTED_MODULE_14___default().shape({
+    Backdrop: (prop_types__WEBPACK_IMPORTED_MODULE_14___default().elementType),
+    Root: (prop_types__WEBPACK_IMPORTED_MODULE_14___default().elementType)
   }),
   /**
    * The extra props for the slot components.
@@ -8843,9 +8697,9 @@ const Modal = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(functio
    *
    * @default {}
    */
-  componentsProps: prop_types__WEBPACK_IMPORTED_MODULE_12___default().shape({
-    backdrop: prop_types__WEBPACK_IMPORTED_MODULE_12___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_12___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_12___default().object)]),
-    root: prop_types__WEBPACK_IMPORTED_MODULE_12___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_12___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_12___default().object)])
+  componentsProps: prop_types__WEBPACK_IMPORTED_MODULE_14___default().shape({
+    backdrop: prop_types__WEBPACK_IMPORTED_MODULE_14___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_14___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_14___default().object)]),
+    root: prop_types__WEBPACK_IMPORTED_MODULE_14___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_14___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_14___default().object)])
   }),
   /**
    * An HTML element or function that returns one.
@@ -8854,7 +8708,7 @@ const Modal = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(functio
    * By default, it uses the body of the top-level document object,
    * so it's simply `document.body` most of the time.
    */
-  container: prop_types__WEBPACK_IMPORTED_MODULE_12___default().oneOfType([_mui_utils__WEBPACK_IMPORTED_MODULE_14__["default"], (prop_types__WEBPACK_IMPORTED_MODULE_12___default().func)]),
+  container: prop_types__WEBPACK_IMPORTED_MODULE_14___default().oneOfType([_mui_utils__WEBPACK_IMPORTED_MODULE_16__["default"], (prop_types__WEBPACK_IMPORTED_MODULE_14___default().func)]),
   /**
    * If `true`, the modal will not automatically shift focus to itself when it opens, and
    * replace it to the last focused element when it closes.
@@ -8864,7 +8718,7 @@ const Modal = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(functio
    * accessible to assistive technologies, like screen readers.
    * @default false
    */
-  disableAutoFocus: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().bool),
+  disableAutoFocus: (prop_types__WEBPACK_IMPORTED_MODULE_14___default().bool),
   /**
    * If `true`, the modal will not prevent focus from leaving the modal while open.
    *
@@ -8872,45 +8726,45 @@ const Modal = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(functio
    * accessible to assistive technologies, like screen readers.
    * @default false
    */
-  disableEnforceFocus: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().bool),
+  disableEnforceFocus: (prop_types__WEBPACK_IMPORTED_MODULE_14___default().bool),
   /**
    * If `true`, hitting escape will not fire the `onClose` callback.
    * @default false
    */
-  disableEscapeKeyDown: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().bool),
+  disableEscapeKeyDown: (prop_types__WEBPACK_IMPORTED_MODULE_14___default().bool),
   /**
    * The `children` will be under the DOM hierarchy of the parent component.
    * @default false
    */
-  disablePortal: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().bool),
+  disablePortal: (prop_types__WEBPACK_IMPORTED_MODULE_14___default().bool),
   /**
    * If `true`, the modal will not restore focus to previously focused element once
    * modal is hidden or unmounted.
    * @default false
    */
-  disableRestoreFocus: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().bool),
+  disableRestoreFocus: (prop_types__WEBPACK_IMPORTED_MODULE_14___default().bool),
   /**
    * Disable the scroll lock behavior.
    * @default false
    */
-  disableScrollLock: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().bool),
+  disableScrollLock: (prop_types__WEBPACK_IMPORTED_MODULE_14___default().bool),
   /**
    * If `true`, the backdrop is not rendered.
    * @default false
    */
-  hideBackdrop: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().bool),
+  hideBackdrop: (prop_types__WEBPACK_IMPORTED_MODULE_14___default().bool),
   /**
    * Always keep the children in the DOM.
    * This prop can be useful in SEO situation or
    * when you want to maximize the responsiveness of the Modal.
    * @default false
    */
-  keepMounted: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().bool),
+  keepMounted: (prop_types__WEBPACK_IMPORTED_MODULE_14___default().bool),
   /**
    * Callback fired when the backdrop is clicked.
    * @deprecated Use the `onClose` prop with the `reason` argument to handle the `backdropClick` events.
    */
-  onBackdropClick: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().func),
+  onBackdropClick: (prop_types__WEBPACK_IMPORTED_MODULE_14___default().func),
   /**
    * Callback fired when the component requests to be closed.
    * The `reason` parameter can optionally be used to control the response to `onClose`.
@@ -8918,42 +8772,66 @@ const Modal = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(functio
    * @param {object} event The event source of the callback.
    * @param {string} reason Can be: `"escapeKeyDown"`, `"backdropClick"`.
    */
-  onClose: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().func),
+  onClose: (prop_types__WEBPACK_IMPORTED_MODULE_14___default().func),
   /**
    * A function called when a transition enters.
    */
-  onTransitionEnter: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().func),
+  onTransitionEnter: (prop_types__WEBPACK_IMPORTED_MODULE_14___default().func),
   /**
    * A function called when a transition has exited.
    */
-  onTransitionExited: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().func),
+  onTransitionExited: (prop_types__WEBPACK_IMPORTED_MODULE_14___default().func),
   /**
    * If `true`, the component is shown.
    */
-  open: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().bool).isRequired,
+  open: (prop_types__WEBPACK_IMPORTED_MODULE_14___default().bool).isRequired,
   /**
    * The props used for each slot inside the Modal.
    * @default {}
    */
-  slotProps: prop_types__WEBPACK_IMPORTED_MODULE_12___default().shape({
-    backdrop: prop_types__WEBPACK_IMPORTED_MODULE_12___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_12___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_12___default().object)]),
-    root: prop_types__WEBPACK_IMPORTED_MODULE_12___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_12___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_12___default().object)])
+  slotProps: prop_types__WEBPACK_IMPORTED_MODULE_14___default().shape({
+    backdrop: prop_types__WEBPACK_IMPORTED_MODULE_14___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_14___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_14___default().object)]),
+    root: prop_types__WEBPACK_IMPORTED_MODULE_14___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_14___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_14___default().object)])
   }),
   /**
    * The components used for each slot inside the Modal.
    * Either a string to use a HTML element or a component.
    * @default {}
    */
-  slots: prop_types__WEBPACK_IMPORTED_MODULE_12___default().shape({
-    backdrop: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().elementType),
-    root: (prop_types__WEBPACK_IMPORTED_MODULE_12___default().elementType)
+  slots: prop_types__WEBPACK_IMPORTED_MODULE_14___default().shape({
+    backdrop: (prop_types__WEBPACK_IMPORTED_MODULE_14___default().elementType),
+    root: (prop_types__WEBPACK_IMPORTED_MODULE_14___default().elementType)
   }),
   /**
    * The system prop that allows defining system overrides as well as additional CSS styles.
    */
-  sx: prop_types__WEBPACK_IMPORTED_MODULE_12___default().oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_12___default().arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_12___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_12___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_12___default().object), (prop_types__WEBPACK_IMPORTED_MODULE_12___default().bool)])), (prop_types__WEBPACK_IMPORTED_MODULE_12___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_12___default().object)])
+  sx: prop_types__WEBPACK_IMPORTED_MODULE_14___default().oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_14___default().arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_14___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_14___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_14___default().object), (prop_types__WEBPACK_IMPORTED_MODULE_14___default().bool)])), (prop_types__WEBPACK_IMPORTED_MODULE_14___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_14___default().object)])
 } : 0;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Modal);
+
+/***/ }),
+
+/***/ "./node_modules/@mui/material/Modal/modalClasses.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@mui/material/Modal/modalClasses.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   getModalUtilityClass: () => (/* binding */ getModalUtilityClass)
+/* harmony export */ });
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/generateUtilityClasses/generateUtilityClasses.js");
+/* harmony import */ var _generateUtilityClass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../generateUtilityClass */ "./node_modules/@mui/utils/esm/generateUtilityClass/generateUtilityClass.js");
+
+
+function getModalUtilityClass(slot) {
+  return (0,_generateUtilityClass__WEBPACK_IMPORTED_MODULE_0__["default"])('MuiModal', slot);
+}
+const modalClasses = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_1__["default"])('MuiModal', ['root', 'hidden', 'backdrop']);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (modalClasses);
 
 /***/ }),
 
@@ -8974,10 +8852,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.mjs");
 /* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/chainPropTypes/chainPropTypes.js");
 /* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/integerPropType.js");
-/* harmony import */ var _mui_base__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/base */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
+/* harmony import */ var _mui_base_composeClasses__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/base/composeClasses */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
 /* harmony import */ var _mui_system__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/system */ "./node_modules/@mui/system/esm/colorManipulator.js");
 /* harmony import */ var _styles_styled__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../styles/styled */ "./node_modules/@mui/material/styles/styled.js");
 /* harmony import */ var _styles_getOverlayAlpha__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../styles/getOverlayAlpha */ "./node_modules/@mui/material/styles/getOverlayAlpha.js");
@@ -9012,7 +8890,7 @@ const useUtilityClasses = ownerState => {
   const slots = {
     root: ['root', variant, !square && 'rounded', variant === 'elevation' && `elevation${elevation}`]
   };
-  return (0,_mui_base__WEBPACK_IMPORTED_MODULE_5__["default"])(slots, _paperClasses__WEBPACK_IMPORTED_MODULE_6__.getPaperUtilityClass, classes);
+  return (0,_mui_base_composeClasses__WEBPACK_IMPORTED_MODULE_5__["default"])(slots, _paperClasses__WEBPACK_IMPORTED_MODULE_6__.getPaperUtilityClass, classes);
 };
 const PaperRoot = (0,_styles_styled__WEBPACK_IMPORTED_MODULE_7__["default"])('div', {
   name: 'MuiPaper',
@@ -9194,7 +9072,7 @@ const _excluded = ["anchorEl", "component", "components", "componentsProps", "co
 
 
 
-const PopperRoot = (0,_styles__WEBPACK_IMPORTED_MODULE_4__["default"])(_mui_base_Popper__WEBPACK_IMPORTED_MODULE_5__["default"], {
+const PopperRoot = (0,_styles__WEBPACK_IMPORTED_MODULE_4__["default"])(_mui_base_Popper__WEBPACK_IMPORTED_MODULE_5__.Popper, {
   name: 'MuiPopper',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root
@@ -9406,8 +9284,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
-/* harmony import */ var _mui_base__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/base */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.mjs");
+/* harmony import */ var _mui_base_composeClasses__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/base/composeClasses */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
 /* harmony import */ var _utils_capitalize__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/capitalize */ "./node_modules/@mui/material/utils/capitalize.js");
 /* harmony import */ var _styles_useThemeProps__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../styles/useThemeProps */ "./node_modules/@mui/material/styles/useThemeProps.js");
 /* harmony import */ var _styles_styled__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../styles/styled */ "./node_modules/@mui/material/styles/styled.js");
@@ -9437,7 +9315,7 @@ const useUtilityClasses = ownerState => {
   const slots = {
     root: ['root', color !== 'inherit' && `color${(0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_5__["default"])(color)}`, `fontSize${(0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_5__["default"])(fontSize)}`]
   };
-  return (0,_mui_base__WEBPACK_IMPORTED_MODULE_6__["default"])(slots, _svgIconClasses__WEBPACK_IMPORTED_MODULE_7__.getSvgIconUtilityClass, classes);
+  return (0,_mui_base_composeClasses__WEBPACK_IMPORTED_MODULE_6__["default"])(slots, _svgIconClasses__WEBPACK_IMPORTED_MODULE_7__.getSvgIconUtilityClass, classes);
 };
 const SvgIconRoot = (0,_styles_styled__WEBPACK_IMPORTED_MODULE_8__["default"])('svg', {
   name: 'MuiSvgIcon',
@@ -9452,7 +9330,7 @@ const SvgIconRoot = (0,_styles_styled__WEBPACK_IMPORTED_MODULE_8__["default"])('
   theme,
   ownerState
 }) => {
-  var _theme$transitions, _theme$transitions$cr, _theme$transitions2, _theme$transitions2$d, _theme$typography, _theme$typography$pxT, _theme$typography2, _theme$typography2$px, _theme$typography3, _theme$typography3$px, _palette$ownerState$c, _palette, _palette$ownerState$c2, _palette2, _palette2$action, _palette3, _palette3$action;
+  var _theme$transitions, _theme$transitions$cr, _theme$transitions2, _theme$typography, _theme$typography$pxT, _theme$typography2, _theme$typography2$px, _theme$typography3, _theme$typography3$px, _palette$ownerState$c, _palette, _palette2, _palette3;
   return {
     userSelect: 'none',
     width: '1em',
@@ -9462,19 +9340,19 @@ const SvgIconRoot = (0,_styles_styled__WEBPACK_IMPORTED_MODULE_8__["default"])('
     // e.g. heroicons uses fill="none" and stroke="currentColor"
     fill: ownerState.hasSvgAsChild ? undefined : 'currentColor',
     flexShrink: 0,
-    transition: (_theme$transitions = theme.transitions) == null ? void 0 : (_theme$transitions$cr = _theme$transitions.create) == null ? void 0 : _theme$transitions$cr.call(_theme$transitions, 'fill', {
-      duration: (_theme$transitions2 = theme.transitions) == null ? void 0 : (_theme$transitions2$d = _theme$transitions2.duration) == null ? void 0 : _theme$transitions2$d.shorter
+    transition: (_theme$transitions = theme.transitions) == null || (_theme$transitions$cr = _theme$transitions.create) == null ? void 0 : _theme$transitions$cr.call(_theme$transitions, 'fill', {
+      duration: (_theme$transitions2 = theme.transitions) == null || (_theme$transitions2 = _theme$transitions2.duration) == null ? void 0 : _theme$transitions2.shorter
     }),
     fontSize: {
       inherit: 'inherit',
-      small: ((_theme$typography = theme.typography) == null ? void 0 : (_theme$typography$pxT = _theme$typography.pxToRem) == null ? void 0 : _theme$typography$pxT.call(_theme$typography, 20)) || '1.25rem',
-      medium: ((_theme$typography2 = theme.typography) == null ? void 0 : (_theme$typography2$px = _theme$typography2.pxToRem) == null ? void 0 : _theme$typography2$px.call(_theme$typography2, 24)) || '1.5rem',
-      large: ((_theme$typography3 = theme.typography) == null ? void 0 : (_theme$typography3$px = _theme$typography3.pxToRem) == null ? void 0 : _theme$typography3$px.call(_theme$typography3, 35)) || '2.1875rem'
+      small: ((_theme$typography = theme.typography) == null || (_theme$typography$pxT = _theme$typography.pxToRem) == null ? void 0 : _theme$typography$pxT.call(_theme$typography, 20)) || '1.25rem',
+      medium: ((_theme$typography2 = theme.typography) == null || (_theme$typography2$px = _theme$typography2.pxToRem) == null ? void 0 : _theme$typography2$px.call(_theme$typography2, 24)) || '1.5rem',
+      large: ((_theme$typography3 = theme.typography) == null || (_theme$typography3$px = _theme$typography3.pxToRem) == null ? void 0 : _theme$typography3$px.call(_theme$typography3, 35)) || '2.1875rem'
     }[ownerState.fontSize],
     // TODO v5 deprecate, v6 remove for sx
-    color: (_palette$ownerState$c = (_palette = (theme.vars || theme).palette) == null ? void 0 : (_palette$ownerState$c2 = _palette[ownerState.color]) == null ? void 0 : _palette$ownerState$c2.main) != null ? _palette$ownerState$c : {
-      action: (_palette2 = (theme.vars || theme).palette) == null ? void 0 : (_palette2$action = _palette2.action) == null ? void 0 : _palette2$action.active,
-      disabled: (_palette3 = (theme.vars || theme).palette) == null ? void 0 : (_palette3$action = _palette3.action) == null ? void 0 : _palette3$action.disabled,
+    color: (_palette$ownerState$c = (_palette = (theme.vars || theme).palette) == null || (_palette = _palette[ownerState.color]) == null ? void 0 : _palette.main) != null ? _palette$ownerState$c : {
+      action: (_palette2 = (theme.vars || theme).palette) == null || (_palette2 = _palette2.action) == null ? void 0 : _palette2.active,
+      disabled: (_palette3 = (theme.vars || theme).palette) == null || (_palette3 = _palette3.action) == null ? void 0 : _palette3.disabled,
       inherit: undefined
     }[ownerState.color]
   };
@@ -9546,7 +9424,7 @@ const SvgIcon = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(funct
   /**
    * The color of the component.
    * It supports both default and custom theme colors, which can be added as shown in the
-   * [palette customization guide](https://mui.com/material-ui/customization/palette/#adding-new-colors).
+   * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
    * You can use the `htmlColor` prop to apply a color attribute to the SVG element.
    * @default 'inherit'
    */
@@ -9645,7 +9523,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_20__);
-/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.mjs");
 /* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/elementAcceptingRef.js");
 /* harmony import */ var _mui_base__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/base */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
 /* harmony import */ var _mui_base__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @mui/base */ "./node_modules/@mui/base/utils/appendOwnerState.js");
@@ -10206,14 +10084,14 @@ const Tooltip = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(funct
   const TransitionComponent = (_ref2 = (_ref3 = (_slots$transition = slots.transition) != null ? _slots$transition : components.Transition) != null ? _ref3 : TransitionComponentProp) != null ? _ref2 : _Grow__WEBPACK_IMPORTED_MODULE_12__["default"];
   const TooltipComponent = (_ref4 = (_slots$tooltip = slots.tooltip) != null ? _slots$tooltip : components.Tooltip) != null ? _ref4 : TooltipTooltip;
   const ArrowComponent = (_ref5 = (_slots$arrow = slots.arrow) != null ? _slots$arrow : components.Arrow) != null ? _ref5 : TooltipArrow;
-  const popperProps = (0,_mui_base__WEBPACK_IMPORTED_MODULE_19__["default"])(PopperComponent, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, PopperProps, (_slotProps$popper = slotProps.popper) != null ? _slotProps$popper : componentsProps.popper, {
+  const popperProps = (0,_mui_base__WEBPACK_IMPORTED_MODULE_19__.appendOwnerState)(PopperComponent, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, PopperProps, (_slotProps$popper = slotProps.popper) != null ? _slotProps$popper : componentsProps.popper, {
     className: (0,clsx__WEBPACK_IMPORTED_MODULE_3__["default"])(classes.popper, PopperProps == null ? void 0 : PopperProps.className, (_ref6 = (_slotProps$popper2 = slotProps.popper) != null ? _slotProps$popper2 : componentsProps.popper) == null ? void 0 : _ref6.className)
   }), ownerState);
-  const transitionProps = (0,_mui_base__WEBPACK_IMPORTED_MODULE_19__["default"])(TransitionComponent, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, TransitionProps, (_slotProps$transition = slotProps.transition) != null ? _slotProps$transition : componentsProps.transition), ownerState);
-  const tooltipProps = (0,_mui_base__WEBPACK_IMPORTED_MODULE_19__["default"])(TooltipComponent, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, (_slotProps$tooltip = slotProps.tooltip) != null ? _slotProps$tooltip : componentsProps.tooltip, {
+  const transitionProps = (0,_mui_base__WEBPACK_IMPORTED_MODULE_19__.appendOwnerState)(TransitionComponent, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, TransitionProps, (_slotProps$transition = slotProps.transition) != null ? _slotProps$transition : componentsProps.transition), ownerState);
+  const tooltipProps = (0,_mui_base__WEBPACK_IMPORTED_MODULE_19__.appendOwnerState)(TooltipComponent, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, (_slotProps$tooltip = slotProps.tooltip) != null ? _slotProps$tooltip : componentsProps.tooltip, {
     className: (0,clsx__WEBPACK_IMPORTED_MODULE_3__["default"])(classes.tooltip, (_ref7 = (_slotProps$tooltip2 = slotProps.tooltip) != null ? _slotProps$tooltip2 : componentsProps.tooltip) == null ? void 0 : _ref7.className)
   }), ownerState);
-  const tooltipArrowProps = (0,_mui_base__WEBPACK_IMPORTED_MODULE_19__["default"])(ArrowComponent, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, (_slotProps$arrow = slotProps.arrow) != null ? _slotProps$arrow : componentsProps.arrow, {
+  const tooltipArrowProps = (0,_mui_base__WEBPACK_IMPORTED_MODULE_19__.appendOwnerState)(ArrowComponent, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, (_slotProps$arrow = slotProps.arrow) != null ? _slotProps$arrow : componentsProps.arrow, {
     className: (0,clsx__WEBPACK_IMPORTED_MODULE_3__["default"])(classes.arrow, (_ref8 = (_slotProps$arrow2 = slotProps.arrow) != null ? _slotProps$arrow2 : componentsProps.arrow) == null ? void 0 : _ref8.className)
   }), ownerState);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
@@ -10489,9 +10367,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.mjs");
 /* harmony import */ var _mui_system__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @mui/system */ "./node_modules/@mui/system/esm/styleFunctionSx/extendSxProp.js");
-/* harmony import */ var _mui_base__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/base */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
+/* harmony import */ var _mui_base_composeClasses__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/base/composeClasses */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
 /* harmony import */ var _styles_styled__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../styles/styled */ "./node_modules/@mui/material/styles/styled.js");
 /* harmony import */ var _styles_useThemeProps__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../styles/useThemeProps */ "./node_modules/@mui/material/styles/useThemeProps.js");
 /* harmony import */ var _utils_capitalize__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/capitalize */ "./node_modules/@mui/material/utils/capitalize.js");
@@ -10524,7 +10402,7 @@ const useUtilityClasses = ownerState => {
   const slots = {
     root: ['root', variant, ownerState.align !== 'inherit' && `align${(0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_5__["default"])(align)}`, gutterBottom && 'gutterBottom', noWrap && 'noWrap', paragraph && 'paragraph']
   };
-  return (0,_mui_base__WEBPACK_IMPORTED_MODULE_6__["default"])(slots, _typographyClasses__WEBPACK_IMPORTED_MODULE_7__.getTypographyUtilityClass, classes);
+  return (0,_mui_base_composeClasses__WEBPACK_IMPORTED_MODULE_6__["default"])(slots, _typographyClasses__WEBPACK_IMPORTED_MODULE_7__.getTypographyUtilityClass, classes);
 };
 const TypographyRoot = (0,_styles_styled__WEBPACK_IMPORTED_MODULE_8__["default"])('span', {
   name: 'MuiTypography',
@@ -10540,7 +10418,10 @@ const TypographyRoot = (0,_styles_styled__WEBPACK_IMPORTED_MODULE_8__["default"]
   ownerState
 }) => (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({
   margin: 0
-}, ownerState.variant && theme.typography[ownerState.variant], ownerState.align !== 'inherit' && {
+}, ownerState.variant === 'inherit' && {
+  // Some elements, like <button> on Chrome have default font that doesn't inherit, reset this.
+  font: 'inherit'
+}, ownerState.variant !== 'inherit' && theme.typography[ownerState.variant], ownerState.align !== 'inherit' && {
   textAlign: ownerState.align
 }, ownerState.noWrap && {
   overflow: 'hidden',
@@ -11677,6 +11558,7 @@ function createTypography(palette, typography) {
     button: buildVariant(fontWeightMedium, 14, 1.75, 0.4, caseAllCaps),
     caption: buildVariant(fontWeightRegular, 12, 1.66, 0.4),
     overline: buildVariant(fontWeightRegular, 12, 2.66, 1, caseAllCaps),
+    // TODO v6: Remove handling of 'inherit' variant from the theme as it is already handled in Material UI's Typography component. Also, remember to remove the associated types.
     inherit: {
       fontFamily: 'inherit',
       fontWeight: 'inherit',
@@ -12321,6 +12203,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+'use client';
+
 
 
 
@@ -12363,6 +12247,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-element-c39617d8.browser.esm.js");
 /* harmony import */ var _emotion_cache__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/cache */ "./node_modules/@emotion/cache/dist/emotion-cache.browser.esm.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+'use client';
+
 
 
 
@@ -12426,12 +12312,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _StyledEngineProvider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./StyledEngineProvider */ "./node_modules/@mui/styled-engine/StyledEngineProvider/StyledEngineProvider.js");
 /* harmony import */ var _GlobalStyles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./GlobalStyles */ "./node_modules/@mui/styled-engine/GlobalStyles/GlobalStyles.js");
 /**
- * @mui/styled-engine v5.13.2
+ * @mui/styled-engine v5.14.13
  *
  * @license MIT
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
+'use client';
+
 /* eslint-disable no-underscore-dangle */
 
 function styled(tag, options) {
@@ -13270,7 +13158,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
 /* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
 /* harmony import */ var _mui_styled_engine__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/styled-engine */ "./node_modules/@mui/styled-engine/index.js");
-/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/getDisplayName.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/deepmerge.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/capitalize/capitalize.js");
+/* harmony import */ var _mui_utils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/utils */ "./node_modules/@mui/utils/esm/getDisplayName.js");
 /* harmony import */ var _createTheme__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./createTheme */ "./node_modules/@mui/system/esm/createTheme/createTheme.js");
 /* harmony import */ var _propsToClassKey__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./propsToClassKey */ "./node_modules/@mui/system/esm/propsToClassKey.js");
 /* harmony import */ var _styleFunctionSx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./styleFunctionSx */ "./node_modules/@mui/system/esm/styleFunctionSx/styleFunctionSx.js");
@@ -13301,39 +13191,47 @@ const getStyleOverrides = (name, theme) => {
   }
   return null;
 };
+const transformVariants = variants => {
+  const variantsStyles = {};
+  if (variants) {
+    variants.forEach(definition => {
+      const key = (0,_propsToClassKey__WEBPACK_IMPORTED_MODULE_2__["default"])(definition.props);
+      variantsStyles[key] = definition.style;
+    });
+  }
+  return variantsStyles;
+};
 const getVariantStyles = (name, theme) => {
   let variants = [];
   if (theme && theme.components && theme.components[name] && theme.components[name].variants) {
     variants = theme.components[name].variants;
   }
-  const variantsStyles = {};
-  variants.forEach(definition => {
-    const key = (0,_propsToClassKey__WEBPACK_IMPORTED_MODULE_2__["default"])(definition.props);
-    variantsStyles[key] = definition.style;
-  });
-  return variantsStyles;
+  return transformVariants(variants);
 };
-const variantsResolver = (props, styles, theme, name) => {
-  var _theme$components, _theme$components$nam;
+const variantsResolver = (props, styles, variants) => {
   const {
     ownerState = {}
   } = props;
   const variantsStyles = [];
-  const themeVariants = theme == null ? void 0 : (_theme$components = theme.components) == null ? void 0 : (_theme$components$nam = _theme$components[name]) == null ? void 0 : _theme$components$nam.variants;
-  if (themeVariants) {
-    themeVariants.forEach(themeVariant => {
+  if (variants) {
+    variants.forEach(variant => {
       let isMatch = true;
-      Object.keys(themeVariant.props).forEach(key => {
-        if (ownerState[key] !== themeVariant.props[key] && props[key] !== themeVariant.props[key]) {
+      Object.keys(variant.props).forEach(key => {
+        if (ownerState[key] !== variant.props[key] && props[key] !== variant.props[key]) {
           isMatch = false;
         }
       });
       if (isMatch) {
-        variantsStyles.push(styles[(0,_propsToClassKey__WEBPACK_IMPORTED_MODULE_2__["default"])(themeVariant.props)]);
+        variantsStyles.push(styles[(0,_propsToClassKey__WEBPACK_IMPORTED_MODULE_2__["default"])(variant.props)]);
       }
     });
   }
   return variantsStyles;
+};
+const themeVariantsResolver = (props, styles, theme, name) => {
+  var _theme$components;
+  const themeVariants = theme == null || (_theme$components = theme.components) == null || (_theme$components = _theme$components[name]) == null ? void 0 : _theme$components.variants;
+  return variantsResolver(props, styles, themeVariants);
 };
 
 // Update /system/styled/#api in case if this changes
@@ -13342,6 +13240,9 @@ function shouldForwardProp(prop) {
 }
 const systemDefaultTheme = (0,_createTheme__WEBPACK_IMPORTED_MODULE_3__["default"])();
 const lowercaseFirstLetter = string => {
+  if (!string) {
+    return string;
+  }
   return string.charAt(0).toLowerCase() + string.slice(1);
 };
 function resolveTheme({
@@ -13351,6 +13252,35 @@ function resolveTheme({
 }) {
   return isEmpty(theme) ? defaultTheme : theme[themeId] || theme;
 }
+function defaultOverridesResolver(slot) {
+  if (!slot) {
+    return null;
+  }
+  return (props, styles) => styles[slot];
+}
+const muiStyledFunctionResolver = ({
+  styledArg,
+  props,
+  defaultTheme,
+  themeId
+}) => {
+  const resolvedStyles = styledArg((0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, props, {
+    theme: resolveTheme((0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, props, {
+      defaultTheme,
+      themeId
+    }))
+  }));
+  let optionalVariants;
+  if (resolvedStyles && resolvedStyles.variants) {
+    optionalVariants = resolvedStyles.variants;
+    delete resolvedStyles.variants;
+  }
+  if (optionalVariants) {
+    const variantsStyles = variantsResolver(props, transformVariants(optionalVariants), optionalVariants);
+    return [resolvedStyles, ...variantsStyles];
+  }
+  return resolvedStyles;
+};
 function createStyled(input = {}) {
   const {
     themeId,
@@ -13375,21 +13305,31 @@ function createStyled(input = {}) {
         slot: componentSlot,
         skipVariantsResolver: inputSkipVariantsResolver,
         skipSx: inputSkipSx,
-        overridesResolver
+        // TODO v6: remove `lowercaseFirstLetter()` in the next major release
+        // For more details: https://github.com/mui/material-ui/pull/37908
+        overridesResolver = defaultOverridesResolver(lowercaseFirstLetter(componentSlot))
       } = inputOptions,
       options = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(inputOptions, _excluded);
 
     // if skipVariantsResolver option is defined, take the value, otherwise, true for root and false for other slots.
-    const skipVariantsResolver = inputSkipVariantsResolver !== undefined ? inputSkipVariantsResolver : componentSlot && componentSlot !== 'Root' || false;
+    const skipVariantsResolver = inputSkipVariantsResolver !== undefined ? inputSkipVariantsResolver :
+    // TODO v6: remove `Root` in the next major release
+    // For more details: https://github.com/mui/material-ui/pull/37908
+    componentSlot && componentSlot !== 'Root' && componentSlot !== 'root' || false;
     const skipSx = inputSkipSx || false;
     let label;
     if (true) {
       if (componentName) {
+        // TODO v6: remove `lowercaseFirstLetter()` in the next major release
+        // For more details: https://github.com/mui/material-ui/pull/37908
         label = `${componentName}-${lowercaseFirstLetter(componentSlot || 'Root')}`;
       }
     }
     let shouldForwardPropOption = shouldForwardProp;
-    if (componentSlot === 'Root') {
+
+    // TODO v6: remove `Root` in the next major release
+    // For more details: https://github.com/mui/material-ui/pull/37908
+    if (componentSlot === 'Root' || componentSlot === 'root') {
       shouldForwardPropOption = rootShouldForwardProp;
     } else if (componentSlot) {
       // any other slot specified
@@ -13407,16 +13347,61 @@ function createStyled(input = {}) {
         // On the server Emotion doesn't use React.forwardRef for creating components, so the created
         // component stays as a function. This condition makes sure that we do not interpolate functions
         // which are basically components used as a selectors.
-        return typeof stylesArg === 'function' && stylesArg.__emotion_real !== stylesArg ? props => {
-          return stylesArg((0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, props, {
-            theme: resolveTheme((0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, props, {
-              defaultTheme,
-              themeId
-            }))
-          }));
-        } : stylesArg;
+        if (typeof stylesArg === 'function' && stylesArg.__emotion_real !== stylesArg) {
+          return props => muiStyledFunctionResolver({
+            styledArg: stylesArg,
+            props,
+            defaultTheme,
+            themeId
+          });
+        }
+        if ((0,_mui_utils__WEBPACK_IMPORTED_MODULE_6__.isPlainObject)(stylesArg)) {
+          let transformedStylesArg = stylesArg;
+          let styledArgVariants;
+          if (stylesArg && stylesArg.variants) {
+            styledArgVariants = stylesArg.variants;
+            delete transformedStylesArg.variants;
+            transformedStylesArg = props => {
+              let result = stylesArg;
+              const variantStyles = variantsResolver(props, transformVariants(styledArgVariants), styledArgVariants);
+              variantStyles.forEach(variantStyle => {
+                result = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_6__["default"])(result, variantStyle);
+              });
+              return result;
+            };
+          }
+          return transformedStylesArg;
+        }
+        return stylesArg;
       }) : [];
       let transformedStyleArg = styleArg;
+      if ((0,_mui_utils__WEBPACK_IMPORTED_MODULE_6__.isPlainObject)(styleArg)) {
+        let styledArgVariants;
+        if (styleArg && styleArg.variants) {
+          styledArgVariants = styleArg.variants;
+          delete transformedStyleArg.variants;
+          transformedStyleArg = props => {
+            let result = styleArg;
+            const variantStyles = variantsResolver(props, transformVariants(styledArgVariants), styledArgVariants);
+            variantStyles.forEach(variantStyle => {
+              result = (0,_mui_utils__WEBPACK_IMPORTED_MODULE_6__["default"])(result, variantStyle);
+            });
+            return result;
+          };
+        }
+      } else if (typeof styleArg === 'function' &&
+      // On the server Emotion doesn't use React.forwardRef for creating components, so the created
+      // component stays as a function. This condition makes sure that we do not interpolate functions
+      // which are basically components used as a selectors.
+      styleArg.__emotion_real !== styleArg) {
+        // If the type is function, we need to define the default theme.
+        transformedStyleArg = props => muiStyledFunctionResolver({
+          styledArg: styleArg,
+          props,
+          defaultTheme,
+          themeId
+        });
+      }
       if (componentName && overridesResolver) {
         expressionsWithDefaultTheme.push(props => {
           const theme = resolveTheme((0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, props, {
@@ -13442,7 +13427,7 @@ function createStyled(input = {}) {
             defaultTheme,
             themeId
           }));
-          return variantsResolver(props, getVariantStyles(componentName, theme), theme, componentName);
+          return themeVariantsResolver(props, getVariantStyles(componentName, theme), theme, componentName);
         });
       }
       if (!skipSx) {
@@ -13454,27 +13439,15 @@ function createStyled(input = {}) {
         // If the type is array, than we need to add placeholders in the template for the overrides, variants and the sx styles.
         transformedStyleArg = [...styleArg, ...placeholders];
         transformedStyleArg.raw = [...styleArg.raw, ...placeholders];
-      } else if (typeof styleArg === 'function' &&
-      // On the server Emotion doesn't use React.forwardRef for creating components, so the created
-      // component stays as a function. This condition makes sure that we do not interpolate functions
-      // which are basically components used as a selectors.
-      styleArg.__emotion_real !== styleArg) {
-        // If the type is function, we need to define the default theme.
-        transformedStyleArg = props => styleArg((0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, props, {
-          theme: resolveTheme((0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, props, {
-            defaultTheme,
-            themeId
-          }))
-        }));
       }
       const Component = defaultStyledResolver(transformedStyleArg, ...expressionsWithDefaultTheme);
       if (true) {
         let displayName;
         if (componentName) {
-          displayName = `${componentName}${componentSlot || ''}`;
+          displayName = `${componentName}${(0,_mui_utils__WEBPACK_IMPORTED_MODULE_7__["default"])(componentSlot || '')}`;
         }
         if (displayName === undefined) {
-          displayName = `Styled(${(0,_mui_utils__WEBPACK_IMPORTED_MODULE_6__["default"])(tag)})`;
+          displayName = `Styled(${(0,_mui_utils__WEBPACK_IMPORTED_MODULE_8__["default"])(tag)})`;
         }
         Component.displayName = displayName;
       }
@@ -14032,10 +14005,20 @@ const width = (0,_style__WEBPACK_IMPORTED_MODULE_0__["default"])({
 const maxWidth = props => {
   if (props.maxWidth !== undefined && props.maxWidth !== null) {
     const styleFromPropValue = propValue => {
-      var _props$theme, _props$theme$breakpoi, _props$theme$breakpoi2;
-      const breakpoint = ((_props$theme = props.theme) == null ? void 0 : (_props$theme$breakpoi = _props$theme.breakpoints) == null ? void 0 : (_props$theme$breakpoi2 = _props$theme$breakpoi.values) == null ? void 0 : _props$theme$breakpoi2[propValue]) || _breakpoints__WEBPACK_IMPORTED_MODULE_1__.values[propValue];
+      var _props$theme, _props$theme2;
+      const breakpoint = ((_props$theme = props.theme) == null || (_props$theme = _props$theme.breakpoints) == null || (_props$theme = _props$theme.values) == null ? void 0 : _props$theme[propValue]) || _breakpoints__WEBPACK_IMPORTED_MODULE_1__.values[propValue];
+      if (!breakpoint) {
+        return {
+          maxWidth: sizingTransform(propValue)
+        };
+      }
+      if (((_props$theme2 = props.theme) == null || (_props$theme2 = _props$theme2.breakpoints) == null ? void 0 : _props$theme2.unit) !== 'px') {
+        return {
+          maxWidth: `${breakpoint}${props.theme.breakpoints.unit}`
+        };
+      }
       return {
-        maxWidth: breakpoint || sizingTransform(propValue)
+        maxWidth: breakpoint
       };
     };
     return (0,_breakpoints__WEBPACK_IMPORTED_MODULE_1__.handleBreakpoints)(props, props.maxWidth, styleFromPropValue);
@@ -14296,6 +14279,11 @@ function getStyleValue(themeMapping, transform, propValueFinal, userValue = prop
     value = themeMapping[propValueFinal] || userValue;
   } else {
     value = getPath(themeMapping, propValueFinal) || userValue;
+  }
+  if (typeof value === 'object') {
+    if (true) {
+      console.warn(`MUI: The value found in theme for prop: "${propValueFinal}" is an [Object] instead of string or number. Check if you forgot to add the correct dotted notation, eg, "background.paper" instead of "background".`);
+    }
   }
   if (transform) {
     value = transform(value, userValue, themeMapping);
@@ -14673,7 +14661,7 @@ const splitProps = props => {
     systemProps: {},
     otherProps: {}
   };
-  const config = (_props$theme$unstable = props == null ? void 0 : (_props$theme = props.theme) == null ? void 0 : _props$theme.unstable_sxConfig) != null ? _props$theme$unstable : _defaultSxConfig__WEBPACK_IMPORTED_MODULE_2__["default"];
+  const config = (_props$theme$unstable = props == null || (_props$theme = props.theme) == null ? void 0 : _props$theme.unstable_sxConfig) != null ? _props$theme$unstable : _defaultSxConfig__WEBPACK_IMPORTED_MODULE_2__["default"];
   Object.keys(props).forEach(prop => {
     if (config[prop]) {
       result.systemProps[prop] = props[prop];
@@ -14766,6 +14754,8 @@ function unstable_createStyleFunctionSx() {
     if (val == null) {
       return null;
     }
+
+    // TODO v6: remove, see https://github.com/mui/material-ui/pull/38123
     if (themeKey === 'typography' && val === 'inherit') {
       return {
         [prop]: val
@@ -15094,7 +15084,7 @@ __webpack_require__.r(__webpack_exports__);
 function composeClasses(slots, getUtilityClass, classes = undefined) {
   const output = {};
   Object.keys(slots).forEach(
-  // `Objet.keys(slots)` can't be wider than `T` because we infer `T` from `slots`.
+  // `Object.keys(slots)` can't be wider than `T` because we infer `T` from `slots`.
   // @ts-expect-error https://github.com/microsoft/TypeScript/pull/12253#issuecomment-263132208
   slot => {
     output[slot] = slots[slot].reduce((acc, key) => {
@@ -15359,16 +15349,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _ClassNameGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../ClassNameGenerator */ "./node_modules/@mui/utils/esm/ClassNameGenerator/ClassNameGenerator.js");
 
+
+// If GlobalStateSlot is changed, GLOBAL_STATE_CLASSES in
+// \packages\api-docs-builder\utils\parseSlotsAndClasses.ts must be updated accordingly.
 const globalStateClassesMapping = {
   active: 'active',
   checked: 'checked',
   completed: 'completed',
   disabled: 'disabled',
-  readOnly: 'readOnly',
   error: 'error',
   expanded: 'expanded',
   focused: 'focused',
   focusVisible: 'focusVisible',
+  open: 'open',
+  readOnly: 'readOnly',
   required: 'required',
   selected: 'selected'
 };
@@ -15704,6 +15698,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+'use client';
+
 /* eslint-disable react-hooks/rules-of-hooks, react-hooks/exhaustive-deps */
 
 function useControlled({
@@ -15756,7 +15752,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+'use client';
 
+
+
+/**
+ * A version of `React.useLayoutEffect` that does not show a warning when server-side rendering.
+ * This is useful for effects that are only needed for client-side rendering but not for SSR.
+ *
+ * Before you use this hook, make sure to read https://gist.github.com/gaearon/e7d97cdf38a2907924ea12e4ebdf3c85
+ * and confirm it doesn't apply to your use-case.
+ */
 const useEnhancedEffect = typeof window !== 'undefined' ? react__WEBPACK_IMPORTED_MODULE_0__.useLayoutEffect : react__WEBPACK_IMPORTED_MODULE_0__.useEffect;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useEnhancedEffect);
 
@@ -15771,17 +15777,21 @@ const useEnhancedEffect = typeof window !== 'undefined' ? react__WEBPACK_IMPORTE
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ useEventCallback)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _useEnhancedEffect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../useEnhancedEffect */ "./node_modules/@mui/utils/esm/useEnhancedEffect/useEnhancedEffect.js");
+'use client';
+
 
 
 
 /**
- * https://github.com/facebook/react/issues/14099#issuecomment-440013892
+ * Inspired by https://github.com/facebook/react/issues/14099#issuecomment-440013892
+ * See RFC in https://github.com/reactjs/rfcs/pull/220
  */
+
 function useEventCallback(fn) {
   const ref = react__WEBPACK_IMPORTED_MODULE_0__.useRef(fn);
   (0,_useEnhancedEffect__WEBPACK_IMPORTED_MODULE_1__["default"])(() => {
@@ -15792,6 +15802,7 @@ function useEventCallback(fn) {
   // tslint:disable-next-line:ban-comma-operator
   (0, ref.current)(...args), []);
 }
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useEventCallback);
 
 /***/ }),
 
@@ -15809,6 +15820,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _setRef__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../setRef */ "./node_modules/@mui/utils/esm/setRef.js");
+'use client';
+
 
 
 function useForkRef(...refs) {
@@ -15845,6 +15858,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+'use client';
+
 
 let globalId = 0;
 function useGlobalId(idOverride) {
@@ -15896,6 +15911,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+'use client';
+
 // based on https://github.com/WICG/focus-visible/blob/v4.1.5/src/focus-visible.js
 
 let hadKeyboardEvent = true;
@@ -19135,22 +19152,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   resolveFetch: () => (/* binding */ resolveFetch)
 /* harmony export */ });
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 const resolveFetch = (customFetch) => {
     let _fetch;
     if (customFetch) {
         _fetch = customFetch;
     }
     else if (typeof fetch === 'undefined') {
-        _fetch = (...args) => __awaiter(void 0, void 0, void 0, function* () { return yield (yield Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! cross-fetch */ "./node_modules/cross-fetch/dist/browser-ponyfill.js", 23))).fetch(...args); });
+        _fetch = (...args) => Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! @supabase/node-fetch */ "./node_modules/@supabase/node-fetch/browser.js", 23)).then(({ default: fetch }) => fetch(...args));
     }
     else {
         _fetch = fetch;
@@ -19501,6 +19509,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_helpers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./lib/helpers */ "./node_modules/@supabase/gotrue-js/dist/module/lib/helpers.js");
 /* harmony import */ var _lib_local_storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./lib/local-storage */ "./node_modules/@supabase/gotrue-js/dist/module/lib/local-storage.js");
 /* harmony import */ var _lib_polyfills__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./lib/polyfills */ "./node_modules/@supabase/gotrue-js/dist/module/lib/polyfills.js");
+/* harmony import */ var _lib_version__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./lib/version */ "./node_modules/@supabase/gotrue-js/dist/module/lib/version.js");
+/* harmony import */ var _lib_locks__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./lib/locks */ "./node_modules/@supabase/gotrue-js/dist/module/lib/locks.js");
+
+
 
 
 
@@ -19524,12 +19536,16 @@ const AUTO_REFRESH_TICK_DURATION = 30 * 1000;
 /**
  * A token refresh will be attempted this many ticks before the current session expires. */
 const AUTO_REFRESH_TICK_THRESHOLD = 3;
+async function lockNoOp(name, acquireTimeout, fn) {
+    return await fn();
+}
 class GoTrueClient {
     /**
      * Create a new client for use in the browser.
      */
     constructor(options) {
         var _a;
+        this.memoryStorage = null;
         this.stateChangeEmitters = new Map();
         this.autoRefreshTicker = null;
         this.visibilityChangedCallback = null;
@@ -19542,22 +19558,26 @@ class GoTrueClient {
          */
         this.initializePromise = null;
         this.detectSessionInUrl = true;
+        this.lockAcquired = false;
+        this.pendingInLock = [];
         /**
          * Used to broadcast state change events to other tabs listening.
          */
         this.broadcastChannel = null;
+        this.logger = console.log;
         this.instanceID = GoTrueClient.nextInstanceID;
         GoTrueClient.nextInstanceID += 1;
         if (this.instanceID > 0 && (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)()) {
             console.warn('Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.');
         }
         const settings = Object.assign(Object.assign({}, DEFAULT_OPTIONS), options);
-        this.logDebugMessages = settings.debug;
-        this.inMemorySession = null;
+        this.logDebugMessages = !!settings.debug;
+        if (typeof settings.debug === 'function') {
+            this.logger = settings.debug;
+        }
+        this.persistSession = settings.persistSession;
         this.storageKey = settings.storageKey;
         this.autoRefreshToken = settings.autoRefreshToken;
-        this.persistSession = settings.persistSession;
-        this.storage = settings.storage || _lib_local_storage__WEBPACK_IMPORTED_MODULE_5__["default"];
         this.admin = new _GoTrueAdminApi__WEBPACK_IMPORTED_MODULE_0__["default"]({
             url: settings.url,
             headers: settings.headers,
@@ -19566,6 +19586,7 @@ class GoTrueClient {
         this.url = settings.url;
         this.headers = settings.headers;
         this.fetch = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.resolveFetch)(settings.fetch);
+        this.lock = settings.lock || lockNoOp;
         this.detectSessionInUrl = settings.detectSessionInUrl;
         this.flowType = settings.flowType;
         this.mfa = {
@@ -19577,9 +19598,23 @@ class GoTrueClient {
             challengeAndVerify: this._challengeAndVerify.bind(this),
             getAuthenticatorAssuranceLevel: this._getAuthenticatorAssuranceLevel.bind(this),
         };
-        if (this.persistSession && this.storage === _lib_local_storage__WEBPACK_IMPORTED_MODULE_5__["default"] && !(0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.supportsLocalStorage)()) {
-            console.warn(`No storage option exists to persist the session, which may result in unexpected behavior when using auth.
-        If you want to set persistSession to true, please provide a storage option or you may set persistSession to false to disable this warning.`);
+        if (this.persistSession) {
+            if (settings.storage) {
+                this.storage = settings.storage;
+            }
+            else {
+                if ((0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.supportsLocalStorage)()) {
+                    this.storage = _lib_local_storage__WEBPACK_IMPORTED_MODULE_5__.localStorageAdapter;
+                }
+                else {
+                    this.memoryStorage = {};
+                    this.storage = (0,_lib_local_storage__WEBPACK_IMPORTED_MODULE_5__.memoryLocalStorageAdapter)(this.memoryStorage);
+                }
+            }
+        }
+        else {
+            this.memoryStorage = {};
+            this.storage = (0,_lib_local_storage__WEBPACK_IMPORTED_MODULE_5__.memoryLocalStorageAdapter)(this.memoryStorage);
         }
         if ((0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)() && globalThis.BroadcastChannel && this.persistSession && this.storageKey) {
             try {
@@ -19597,7 +19632,7 @@ class GoTrueClient {
     }
     _debug(...args) {
         if (this.logDebugMessages) {
-            console.log(`GoTrueClient@${this.instanceID} ${new Date().toISOString()}`, ...args);
+            this.logger(`GoTrueClient@${this.instanceID} (${_lib_version__WEBPACK_IMPORTED_MODULE_7__.version}) ${new Date().toISOString()}`, ...args);
         }
         return this;
     }
@@ -19606,11 +19641,16 @@ class GoTrueClient {
      * This method is automatically called when instantiating the client, but should also be called
      * manually when checking for an error from an auth redirect (oauth, magiclink, password recovery, etc).
      */
-    initialize() {
-        if (!this.initializePromise) {
-            this.initializePromise = this._initialize();
+    async initialize() {
+        if (this.initializePromise) {
+            return await this.initializePromise;
         }
-        return this.initializePromise;
+        this.initializePromise = (async () => {
+            return await this._acquireLock(-1, async () => {
+                return await this._initialize();
+            });
+        })();
+        return await this.initializePromise;
     }
     /**
      * IMPORTANT:
@@ -19619,14 +19659,11 @@ class GoTrueClient {
      *    the whole lifetime of the client
      */
     async _initialize() {
-        if (this.initializePromise) {
-            return this.initializePromise;
-        }
         try {
             const isPKCEFlow = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)() ? await this._isPKCEFlow() : false;
             this._debug('#_initialize()', 'begin', 'is PKCE flow', isPKCEFlow);
             if (isPKCEFlow || (this.detectSessionInUrl && this._isImplicitGrantFlow())) {
-                const { data, error } = await this._getSessionFromUrl(isPKCEFlow);
+                const { data, error } = await this._getSessionFromURL(isPKCEFlow);
                 if (error) {
                     this._debug('#_initialize()', 'error detecting session from URL', error);
                     // failed login attempt via url,
@@ -19636,6 +19673,7 @@ class GoTrueClient {
                 }
                 const { session, redirectType } = data;
                 this._debug('#_initialize()', 'detected session in URL', session, 'redirect type', redirectType);
+                await this._saveSession(session);
                 setTimeout(async () => {
                     if (redirectType === 'recovery') {
                         await this._notifyAllSubscribers('PASSWORD_RECOVERY', session);
@@ -19815,6 +19853,12 @@ class GoTrueClient {
      * Log in an existing user by exchanging an Auth Code issued during the PKCE flow.
      */
     async exchangeCodeForSession(authCode) {
+        await this.initializePromise;
+        return this._acquireLock(-1, async () => {
+            return this._exchangeCodeForSession(authCode);
+        });
+    }
+    async _exchangeCodeForSession(authCode) {
         const codeVerifier = await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getItemAsync)(this.storage, `${this.storageKey}-code-verifier`);
         const { data, error } = await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/token?grant_type=pkce`, {
             headers: this.headers,
@@ -19948,7 +19992,7 @@ class GoTrueClient {
         }
     }
     /**
-     * Log in a user given a User supplied OTP received via mobile.
+     * Log in a user given a User supplied OTP or TokenHash received through mobile or email.
      */
     async verifyOtp(params) {
         var _a, _b;
@@ -19957,10 +20001,16 @@ class GoTrueClient {
                 // we don't want to remove the authenticated session if the user is performing an email_change or phone_change verification
                 await this._removeSession();
             }
+            let redirectTo = undefined;
+            let captchaToken = undefined;
+            if ('options' in params) {
+                redirectTo = (_a = params.options) === null || _a === void 0 ? void 0 : _a.redirectTo;
+                captchaToken = (_b = params.options) === null || _b === void 0 ? void 0 : _b.captchaToken;
+            }
             const { data, error } = await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/verify`, {
                 headers: this.headers,
-                body: Object.assign(Object.assign({}, params), { gotrue_meta_security: { captcha_token: (_a = params.options) === null || _a === void 0 ? void 0 : _a.captchaToken } }),
-                redirectTo: (_b = params.options) === null || _b === void 0 ? void 0 : _b.redirectTo,
+                body: Object.assign(Object.assign({}, params), { gotrue_meta_security: { captcha_token: captchaToken } }),
+                redirectTo,
                 xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
             });
             if (error) {
@@ -20022,6 +20072,12 @@ class GoTrueClient {
      * Requires the user to be signed-in.
      */
     async reauthenticate() {
+        await this.initializePromise;
+        return await this._acquireLock(-1, async () => {
+            return await this._reauthenticate();
+        });
+    }
+    async _reauthenticate() {
         try {
             return await this._useSession(async (result) => {
                 const { data: { session }, error: sessionError, } = result;
@@ -20091,9 +20147,68 @@ class GoTrueClient {
      * The session returned can be null if the session is not detected which can happen in the event a user is not signed-in or has logged out.
      */
     async getSession() {
-        return this._useSession(async (result) => {
-            return result;
+        await this.initializePromise;
+        return this._acquireLock(-1, async () => {
+            return this._useSession(async (result) => {
+                return result;
+            });
         });
+    }
+    /**
+     * Acquires a global lock based on the storage key.
+     */
+    async _acquireLock(acquireTimeout, fn) {
+        this._debug('#_acquireLock', 'begin', acquireTimeout);
+        try {
+            if (this.lockAcquired) {
+                const last = this.pendingInLock.length
+                    ? this.pendingInLock[this.pendingInLock.length - 1]
+                    : Promise.resolve();
+                const result = (async () => {
+                    await last;
+                    return await fn();
+                })();
+                this.pendingInLock.push((async () => {
+                    try {
+                        await result;
+                    }
+                    catch (e) {
+                        // we just care if it finished
+                    }
+                })());
+                return result;
+            }
+            return await this.lock(`lock:${this.storageKey}`, acquireTimeout, async () => {
+                this._debug('#_acquireLock', 'lock acquired for storage key', this.storageKey);
+                try {
+                    this.lockAcquired = true;
+                    const result = fn();
+                    this.pendingInLock.push((async () => {
+                        try {
+                            await result;
+                        }
+                        catch (e) {
+                            // we just care if it finished
+                        }
+                    })());
+                    await result;
+                    // keep draining the queue until there's nothing to wait on
+                    while (this.pendingInLock.length) {
+                        const waitOn = [...this.pendingInLock];
+                        await Promise.all(waitOn);
+                        this.pendingInLock.splice(0, waitOn.length);
+                    }
+                    return await result;
+                }
+                finally {
+                    this._debug('#_acquireLock', 'lock released for storage key', this.storageKey);
+                    this.lockAcquired = false;
+                }
+            });
+        }
+        finally {
+            this._debug('#_acquireLock', 'end');
+        }
     }
     /**
      * Use instead of {@link #getSession} inside the library. It is
@@ -20102,11 +20217,15 @@ class GoTrueClient {
      * session at once across multiple tabs or processes.
      */
     async _useSession(fn) {
-        return await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.stackGuard)('_useSession', async () => {
+        this._debug('#_useSession', 'begin');
+        try {
             // the use of __loadSession here is the only correct use of the function!
             const result = await this.__loadSession();
             return await fn(result);
-        });
+        }
+        finally {
+            this._debug('#_useSession', 'end');
+        }
     }
     /**
      * NEVER USE DIRECTLY!
@@ -20114,31 +20233,22 @@ class GoTrueClient {
      * Always use {@link #_useSession}.
      */
     async __loadSession() {
-        if (this.logDebugMessages && !(0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isInStackGuard)('_useSession')) {
-            throw new Error('Please use #_useSession()');
-        }
-        // make sure we've read the session from the url if there is one
-        // save to just await, as long we make sure _initialize() never throws
-        await this.initializePromise;
         this._debug('#__loadSession()', 'begin');
+        if (!this.lockAcquired) {
+            this._debug('#__loadSession()', 'used outside of an acquired lock!', new Error().stack);
+        }
         try {
             let currentSession = null;
-            if (this.persistSession) {
-                const maybeSession = await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getItemAsync)(this.storage, this.storageKey);
-                this._debug('#getSession()', 'session from storage', maybeSession);
-                if (maybeSession !== null) {
-                    if (this._isValidSession(maybeSession)) {
-                        currentSession = maybeSession;
-                    }
-                    else {
-                        this._debug('#getSession()', 'session from storage is not valid');
-                        await this._removeSession();
-                    }
+            const maybeSession = await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getItemAsync)(this.storage, this.storageKey);
+            this._debug('#getSession()', 'session from storage', maybeSession);
+            if (maybeSession !== null) {
+                if (this._isValidSession(maybeSession)) {
+                    currentSession = maybeSession;
                 }
-            }
-            else {
-                currentSession = this.inMemorySession;
-                this._debug('#getSession()', 'session from memory', currentSession);
+                else {
+                    this._debug('#getSession()', 'session from storage is not valid');
+                    await this._removeSession();
+                }
             }
             if (!currentSession) {
                 return { data: { session: null }, error: null };
@@ -20165,20 +20275,32 @@ class GoTrueClient {
      * @param jwt Takes in an optional access token jwt. If no jwt is provided, getUser() will attempt to get the jwt from the current session.
      */
     async getUser(jwt) {
+        if (jwt) {
+            return await this._getUser(jwt);
+        }
+        await this.initializePromise;
+        return this._acquireLock(-1, async () => {
+            return await this._getUser();
+        });
+    }
+    async _getUser(jwt) {
         try {
-            return await this._useSession(async (result) => {
-                var _a, _b;
-                if (!jwt) {
-                    const { data, error } = result;
-                    if (error) {
-                        throw error;
-                    }
-                    // Default to Authorization header if there is no existing session
-                    jwt = (_b = (_a = data.session) === null || _a === void 0 ? void 0 : _a.access_token) !== null && _b !== void 0 ? _b : undefined;
-                }
+            if (jwt) {
                 return await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'GET', `${this.url}/user`, {
                     headers: this.headers,
                     jwt: jwt,
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._userResponse,
+                });
+            }
+            return await this._useSession(async (result) => {
+                var _a, _b;
+                const { data, error } = result;
+                if (error) {
+                    throw error;
+                }
+                return await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'GET', `${this.url}/user`, {
+                    headers: this.headers,
+                    jwt: (_b = (_a = data.session) === null || _a === void 0 ? void 0 : _a.access_token) !== null && _b !== void 0 ? _b : undefined,
                     xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._userResponse,
                 });
             });
@@ -20194,6 +20316,12 @@ class GoTrueClient {
      * Updates user data for a logged in user.
      */
     async updateUser(attributes, options = {}) {
+        await this.initializePromise;
+        return await this._acquireLock(-1, async () => {
+            return await this._updateUser(attributes, options);
+        });
+    }
+    async _updateUser(attributes, options = {}) {
         try {
             return await this._useSession(async (result) => {
                 const { data: sessionData, error: sessionError } = result;
@@ -20204,10 +20332,18 @@ class GoTrueClient {
                     throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthSessionMissingError();
                 }
                 const session = sessionData.session;
+                let codeChallenge = null;
+                let codeChallengeMethod = null;
+                if (this.flowType === 'pkce' && attributes.email != null) {
+                    const codeVerifier = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEVerifier)();
+                    await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.setItemAsync)(this.storage, `${this.storageKey}-code-verifier`, codeVerifier);
+                    codeChallenge = await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.generatePKCEChallenge)(codeVerifier);
+                    codeChallengeMethod = codeVerifier === codeChallenge ? 'plain' : 's256';
+                }
                 const { data, error: userError } = await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'PUT', `${this.url}/user`, {
                     headers: this.headers,
                     redirectTo: options === null || options === void 0 ? void 0 : options.emailRedirectTo,
-                    body: attributes,
+                    body: Object.assign(Object.assign({}, attributes), { code_challenge: codeChallenge, code_challenge_method: codeChallengeMethod }),
                     jwt: session.access_token,
                     xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._userResponse,
                 });
@@ -20238,6 +20374,12 @@ class GoTrueClient {
      * @param currentSession The current session that minimally contains an access token and refresh token.
      */
     async setSession(currentSession) {
+        await this.initializePromise;
+        return await this._acquireLock(-1, async () => {
+            return await this._setSession(currentSession);
+        });
+    }
+    async _setSession(currentSession) {
         try {
             if (!currentSession.access_token || !currentSession.refresh_token) {
                 throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthSessionMissingError();
@@ -20262,7 +20404,7 @@ class GoTrueClient {
                 session = refreshedSession;
             }
             else {
-                const { data, error } = await this.getUser(currentSession.access_token);
+                const { data, error } = await this._getUser(currentSession.access_token);
                 if (error) {
                     throw error;
                 }
@@ -20293,6 +20435,12 @@ class GoTrueClient {
      * @param currentSession The current session. If passed in, it must contain a refresh token.
      */
     async refreshSession(currentSession) {
+        await this.initializePromise;
+        return await this._acquireLock(-1, async () => {
+            return await this._refreshSession(currentSession);
+        });
+    }
+    async _refreshSession(currentSession) {
         try {
             return await this._useSession(async (result) => {
                 var _a;
@@ -20326,7 +20474,7 @@ class GoTrueClient {
     /**
      * Gets the session data from a URL string
      */
-    async _getSessionFromUrl(isPKCEFlow) {
+    async _getSessionFromURL(isPKCEFlow) {
         try {
             if (!(0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)())
                 throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No browser detected.');
@@ -20336,65 +20484,62 @@ class GoTrueClient {
             else if (this.flowType == 'pkce' && !isPKCEFlow) {
                 throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthPKCEGrantCodeExchangeError('Not a valid PKCE flow url.');
             }
+            const params = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.parseParametersFromURL)(window.location.href);
             if (isPKCEFlow) {
-                const authCode = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('code');
-                if (!authCode)
+                if (!params.code)
                     throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthPKCEGrantCodeExchangeError('No code detected.');
-                const { data, error } = await this.exchangeCodeForSession(authCode);
+                const { data, error } = await this._exchangeCodeForSession(params.code);
                 if (error)
                     throw error;
-                if (!data.session)
-                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthPKCEGrantCodeExchangeError('No session detected.');
-                let url = new URL(window.location.href);
+                const url = new URL(window.location.href);
                 url.searchParams.delete('code');
                 window.history.replaceState(window.history.state, '', url.toString());
                 return { data: { session: data.session, redirectType: null }, error: null };
             }
-            const error_description = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('error_description');
-            if (error_description) {
-                const error_code = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('error_code');
-                if (!error_code)
-                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No error_code detected.');
-                const error = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('error');
-                if (!error)
-                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No error detected.');
-                throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError(error_description, { error, code: error_code });
+            if (params.error || params.error_description || params.error_code) {
+                throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError(params.error_description || 'Error in URL with unspecified error_description', {
+                    error: params.error || 'unspecified_error',
+                    code: params.error_code || 'unspecified_code',
+                });
             }
-            const provider_token = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('provider_token');
-            const provider_refresh_token = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('provider_refresh_token');
-            const access_token = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('access_token');
-            if (!access_token)
-                throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No access_token detected.');
-            const expires_in = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('expires_in');
-            if (!expires_in)
-                throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No expires_in detected.');
-            const refresh_token = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('refresh_token');
-            if (!refresh_token)
-                throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No refresh_token detected.');
-            const token_type = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('token_type');
-            if (!token_type)
-                throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No token_type detected.');
+            const { provider_token, provider_refresh_token, access_token, refresh_token, expires_in, expires_at, token_type, } = params;
+            if (!access_token || !expires_in || !refresh_token || !token_type) {
+                throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No session defined in URL');
+            }
             const timeNow = Math.round(Date.now() / 1000);
-            const expires_at = timeNow + parseInt(expires_in);
-            const { data, error } = await this.getUser(access_token);
+            const expiresIn = parseInt(expires_in);
+            let expiresAt = timeNow + expiresIn;
+            if (expires_at) {
+                expiresAt = parseInt(expires_at);
+            }
+            const actuallyExpiresIn = expiresAt - timeNow;
+            if (actuallyExpiresIn * 1000 <= AUTO_REFRESH_TICK_DURATION) {
+                console.warn(`@supabase/gotrue-js: Session as retrieved from URL expires in ${actuallyExpiresIn}s, should have been closer to ${expiresIn}s`);
+            }
+            const issuedAt = expiresAt - expiresIn;
+            if (timeNow - issuedAt >= 120) {
+                console.warn('@supabase/gotrue-js: Session as retrieved from URL was issued over 120s ago, URL could be stale', issuedAt, expiresAt, timeNow);
+            }
+            else if (timeNow - issuedAt < 0) {
+                console.warn('@supabase/gotrue-js: Session as retrieved from URL was issued in the future? Check the device clok for skew', issuedAt, expiresAt, timeNow);
+            }
+            const { data, error } = await this._getUser(access_token);
             if (error)
                 throw error;
-            const user = data.user;
             const session = {
                 provider_token,
                 provider_refresh_token,
                 access_token,
-                expires_in: parseInt(expires_in),
-                expires_at,
+                expires_in: expiresIn,
+                expires_at: expiresAt,
                 refresh_token,
                 token_type,
-                user,
+                user: data.user,
             };
-            const redirectType = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('type');
             // Remove tokens from URL
             window.location.hash = '';
-            this._debug('#_getSessionFromUrl()', 'clearing window.location.hash');
-            return { data: { session, redirectType }, error: null };
+            this._debug('#_getSessionFromURL()', 'clearing window.location.hash');
+            return { data: { session, redirectType: params.type }, error: null };
         }
         catch (error) {
             if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
@@ -20407,16 +20552,16 @@ class GoTrueClient {
      * Checks if the current URL contains parameters given by an implicit oauth grant flow (https://www.rfc-editor.org/rfc/rfc6749.html#section-4.2)
      */
     _isImplicitGrantFlow() {
-        return ((0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)() &&
-            (Boolean((0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('access_token')) ||
-                Boolean((0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('error_description'))));
+        const params = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.parseParametersFromURL)(window.location.href);
+        return !!((0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)() && (params.access_token || params.error_description));
     }
     /**
      * Checks if the current URL and backing storage contain parameters given by a PKCE flow
      */
     async _isPKCEFlow() {
+        const params = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.parseParametersFromURL)(window.location.href);
         const currentStorageContent = await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getItemAsync)(this.storage, `${this.storageKey}-code-verifier`);
-        return Boolean((0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('code')) && Boolean(currentStorageContent);
+        return !!(params.code && currentStorageContent);
     }
     /**
      * Inside a browser context, `signOut()` will remove the logged in user from the browser session
@@ -20427,7 +20572,13 @@ class GoTrueClient {
      *
      * If using others scope, no `SIGNED_OUT` event is fired!
      */
-    async signOut({ scope } = { scope: 'global' }) {
+    async signOut(options = { scope: 'global' }) {
+        await this.initializePromise;
+        return await this._acquireLock(-1, async () => {
+            return await this._signOut(options);
+        });
+    }
+    async _signOut({ scope } = { scope: 'global' }) {
         return await this._useSession(async (result) => {
             var _a;
             const { data, error: sessionError } = result;
@@ -20469,7 +20620,12 @@ class GoTrueClient {
         };
         this._debug('#onAuthStateChange()', 'registered callback with id', id);
         this.stateChangeEmitters.set(id, subscription);
-        this._emitInitialSession(id);
+        (async () => {
+            await this.initializePromise;
+            await this._acquireLock(-1, async () => {
+                this._emitInitialSession(id);
+            });
+        })();
         return { data: { subscription } };
     }
     async _emitInitialSession(id) {
@@ -20702,12 +20858,7 @@ class GoTrueClient {
      */
     async _saveSession(session) {
         this._debug('#_saveSession()', session);
-        if (!this.persistSession) {
-            this.inMemorySession = session;
-        }
-        if (this.persistSession && session.expires_at) {
-            await this._persistSession(session);
-        }
+        await this._persistSession(session);
     }
     _persistSession(currentSession) {
         this._debug('#_persistSession()', currentSession);
@@ -20715,12 +20866,7 @@ class GoTrueClient {
     }
     async _removeSession() {
         this._debug('#_removeSession()');
-        if (this.persistSession) {
-            await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.removeItemAsync)(this.storage, this.storageKey);
-        }
-        else {
-            this.inMemorySession = null;
-        }
+        await (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.removeItemAsync)(this.storage, this.storageKey);
     }
     /**
      * Removes any registered visibilitychange callback.
@@ -20766,8 +20912,13 @@ class GoTrueClient {
             // @ts-ignore
             Deno.unrefTimer(ticker);
         }
-        // run the tick immediately
-        await this._autoRefreshTokenTick();
+        // run the tick immediately, but in the next pass of the event loop so that
+        // #_initialize can be allowed to complete without recursively waiting on
+        // itself
+        setTimeout(async () => {
+            await this.initializePromise;
+            await this._autoRefreshTokenTick();
+        }, 0);
     }
     /**
      * This is the private implementation of {@link #stopAutoRefresh}. Use this
@@ -20825,28 +20976,40 @@ class GoTrueClient {
     async _autoRefreshTokenTick() {
         this._debug('#_autoRefreshTokenTick()', 'begin');
         try {
-            const now = Date.now();
-            try {
-                return await this._useSession(async (result) => {
-                    const { data: { session }, } = result;
-                    if (!session || !session.refresh_token || !session.expires_at) {
-                        this._debug('#_autoRefreshTokenTick()', 'no session');
-                        return;
+            await this._acquireLock(0, async () => {
+                try {
+                    const now = Date.now();
+                    try {
+                        return await this._useSession(async (result) => {
+                            const { data: { session }, } = result;
+                            if (!session || !session.refresh_token || !session.expires_at) {
+                                this._debug('#_autoRefreshTokenTick()', 'no session');
+                                return;
+                            }
+                            // session will expire in this many ticks (or has already expired if <= 0)
+                            const expiresInTicks = Math.floor((session.expires_at * 1000 - now) / AUTO_REFRESH_TICK_DURATION);
+                            this._debug('#_autoRefreshTokenTick()', `access token expires in ${expiresInTicks} ticks, a tick lasts ${AUTO_REFRESH_TICK_DURATION}ms, refresh threshold is ${AUTO_REFRESH_TICK_THRESHOLD} ticks`);
+                            if (expiresInTicks <= AUTO_REFRESH_TICK_THRESHOLD) {
+                                await this._callRefreshToken(session.refresh_token);
+                            }
+                        });
                     }
-                    // session will expire in this many ticks (or has already expired if <= 0)
-                    const expiresInTicks = Math.floor((session.expires_at * 1000 - now) / AUTO_REFRESH_TICK_DURATION);
-                    this._debug('#_autoRefreshTokenTick()', `access token expires in ${expiresInTicks} ticks, a tick lasts ${AUTO_REFRESH_TICK_DURATION}ms, refresh threshold is ${AUTO_REFRESH_TICK_THRESHOLD} ticks`);
-                    if (expiresInTicks <= AUTO_REFRESH_TICK_THRESHOLD) {
-                        await this._callRefreshToken(session.refresh_token);
+                    catch (e) {
+                        console.error('Auto refresh tick failed with error. This is likely a transient error.', e);
                     }
-                });
-            }
-            catch (e) {
-                console.error('Auto refresh tick failed with error. This is likely a transient error.', e);
-            }
+                }
+                finally {
+                    this._debug('#_autoRefreshTokenTick()', 'end');
+                }
+            });
         }
-        finally {
-            this._debug('#_autoRefreshTokenTick()', 'end');
+        catch (e) {
+            if (e.isAcquireTimeout || e instanceof _lib_locks__WEBPACK_IMPORTED_MODULE_8__.LockAcquireTimeoutError) {
+                this._debug('auto refresh token tick lock not available');
+            }
+            else {
+                throw e;
+            }
         }
     }
     /**
@@ -20877,19 +21040,30 @@ class GoTrueClient {
     /**
      * Callback registered with `window.addEventListener('visibilitychange')`.
      */
-    async _onVisibilityChanged(isInitial) {
-        this._debug(`#_onVisibilityChanged(${isInitial})`, 'visibilityState', document.visibilityState);
+    async _onVisibilityChanged(calledFromInitialize) {
+        const methodName = `#_onVisibilityChanged(${calledFromInitialize})`;
+        this._debug(methodName, 'visibilityState', document.visibilityState);
         if (document.visibilityState === 'visible') {
-            if (!isInitial) {
-                // initial visibility change setup is handled in another flow under #initialize()
-                await this.initializePromise;
-                await this._recoverAndRefresh();
-                this._debug('#_onVisibilityChanged()', 'finished waiting for initialize, _recoverAndRefresh');
-            }
             if (this.autoRefreshToken) {
                 // in browser environments the refresh token ticker runs only on focused tabs
                 // which prevents race conditions
                 this._startAutoRefresh();
+            }
+            if (!calledFromInitialize) {
+                // called when the visibility has changed, i.e. the browser
+                // transitioned from hidden -> visible so we need to see if the session
+                // should be recovered immediately... but to do that we need to acquire
+                // the lock first asynchronously
+                await this.initializePromise;
+                await this._acquireLock(-1, async () => {
+                    if (document.visibilityState !== 'visible') {
+                        this._debug(methodName, 'acquired the lock to recover the session, but the browser visibilityState is no longer visible, aborting');
+                        // visibility has changed while waiting for the lock, abort
+                        return;
+                    }
+                    // recover the session
+                    await this._recoverAndRefresh();
+                });
             }
         }
         else if (document.visibilityState === 'hidden') {
@@ -20991,61 +21165,67 @@ class GoTrueClient {
      * {@see GoTrueMFAApi#verify}
      */
     async _verify(params) {
-        try {
-            return await this._useSession(async (result) => {
-                var _a;
-                const { data: sessionData, error: sessionError } = result;
-                if (sessionError) {
-                    return { data: null, error: sessionError };
-                }
-                const { data, error } = await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/factors/${params.factorId}/verify`, {
-                    body: { code: params.code, challenge_id: params.challengeId },
-                    headers: this.headers,
-                    jwt: (_a = sessionData === null || sessionData === void 0 ? void 0 : sessionData.session) === null || _a === void 0 ? void 0 : _a.access_token,
+        return this._acquireLock(-1, async () => {
+            try {
+                return await this._useSession(async (result) => {
+                    var _a;
+                    const { data: sessionData, error: sessionError } = result;
+                    if (sessionError) {
+                        return { data: null, error: sessionError };
+                    }
+                    const { data, error } = await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/factors/${params.factorId}/verify`, {
+                        body: { code: params.code, challenge_id: params.challengeId },
+                        headers: this.headers,
+                        jwt: (_a = sessionData === null || sessionData === void 0 ? void 0 : sessionData.session) === null || _a === void 0 ? void 0 : _a.access_token,
+                    });
+                    if (error) {
+                        return { data: null, error };
+                    }
+                    await this._saveSession(Object.assign({ expires_at: Math.round(Date.now() / 1000) + data.expires_in }, data));
+                    await this._notifyAllSubscribers('MFA_CHALLENGE_VERIFIED', data);
+                    return { data, error };
                 });
-                if (error) {
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
                     return { data: null, error };
                 }
-                await this._saveSession(Object.assign({ expires_at: Math.round(Date.now() / 1000) + data.expires_in }, data));
-                await this._notifyAllSubscribers('MFA_CHALLENGE_VERIFIED', data);
-                return { data, error };
-            });
-        }
-        catch (error) {
-            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                return { data: null, error };
+                throw error;
             }
-            throw error;
-        }
+        });
     }
     /**
      * {@see GoTrueMFAApi#challenge}
      */
     async _challenge(params) {
-        try {
-            return await this._useSession(async (result) => {
-                var _a;
-                const { data: sessionData, error: sessionError } = result;
-                if (sessionError) {
-                    return { data: null, error: sessionError };
-                }
-                return await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/factors/${params.factorId}/challenge`, {
-                    headers: this.headers,
-                    jwt: (_a = sessionData === null || sessionData === void 0 ? void 0 : sessionData.session) === null || _a === void 0 ? void 0 : _a.access_token,
+        return this._acquireLock(-1, async () => {
+            try {
+                return await this._useSession(async (result) => {
+                    var _a;
+                    const { data: sessionData, error: sessionError } = result;
+                    if (sessionError) {
+                        return { data: null, error: sessionError };
+                    }
+                    return await (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/factors/${params.factorId}/challenge`, {
+                        headers: this.headers,
+                        jwt: (_a = sessionData === null || sessionData === void 0 ? void 0 : sessionData.session) === null || _a === void 0 ? void 0 : _a.access_token,
+                    });
                 });
-            });
-        }
-        catch (error) {
-            if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
-                return { data: null, error };
             }
-            throw error;
-        }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
     }
     /**
      * {@see GoTrueMFAApi#challengeAndVerify}
      */
     async _challengeAndVerify(params) {
+        // both _challenge and _verify independently acquire the lock, so no need
+        // to acquire it here
         const { data: challengeData, error: challengeError } = await this._challenge({
             factorId: params.factorId,
         });
@@ -21062,6 +21242,7 @@ class GoTrueClient {
      * {@see GoTrueMFAApi#listFactors}
      */
     async _listFactors() {
+        // use #getUser instead of #_getUser as the former acquires a lock
         const { data: { user }, error: userError, } = await this.getUser();
         if (userError) {
             return { data: null, error: userError };
@@ -21080,30 +21261,32 @@ class GoTrueClient {
      * {@see GoTrueMFAApi#getAuthenticatorAssuranceLevel}
      */
     async _getAuthenticatorAssuranceLevel() {
-        return await this._useSession(async (result) => {
-            var _a, _b;
-            const { data: { session }, error: sessionError, } = result;
-            if (sessionError) {
-                return { data: null, error: sessionError };
-            }
-            if (!session) {
-                return {
-                    data: { currentLevel: null, nextLevel: null, currentAuthenticationMethods: [] },
-                    error: null,
-                };
-            }
-            const payload = this._decodeJWT(session.access_token);
-            let currentLevel = null;
-            if (payload.aal) {
-                currentLevel = payload.aal;
-            }
-            let nextLevel = currentLevel;
-            const verifiedFactors = (_b = (_a = session.user.factors) === null || _a === void 0 ? void 0 : _a.filter((factor) => factor.status === 'verified')) !== null && _b !== void 0 ? _b : [];
-            if (verifiedFactors.length > 0) {
-                nextLevel = 'aal2';
-            }
-            const currentAuthenticationMethods = payload.amr || [];
-            return { data: { currentLevel, nextLevel, currentAuthenticationMethods }, error: null };
+        return this._acquireLock(-1, async () => {
+            return await this._useSession(async (result) => {
+                var _a, _b;
+                const { data: { session }, error: sessionError, } = result;
+                if (sessionError) {
+                    return { data: null, error: sessionError };
+                }
+                if (!session) {
+                    return {
+                        data: { currentLevel: null, nextLevel: null, currentAuthenticationMethods: [] },
+                        error: null,
+                    };
+                }
+                const payload = this._decodeJWT(session.access_token);
+                let currentLevel = null;
+                if (payload.aal) {
+                    currentLevel = payload.aal;
+                }
+                let nextLevel = currentLevel;
+                const verifiedFactors = (_b = (_a = session.user.factors) === null || _a === void 0 ? void 0 : _a.filter((factor) => factor.status === 'verified')) !== null && _b !== void 0 ? _b : [];
+                if (verifiedFactors.length > 0) {
+                    nextLevel = 'aal2';
+                }
+                const currentAuthenticationMethods = payload.amr || [];
+                return { data: { currentLevel, nextLevel, currentAuthenticationMethods }, error: null };
+            });
         });
     }
 }
@@ -21133,14 +21316,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   CustomAuthError: () => (/* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.CustomAuthError),
 /* harmony export */   GoTrueAdminApi: () => (/* reexport safe */ _GoTrueAdminApi__WEBPACK_IMPORTED_MODULE_0__["default"]),
 /* harmony export */   GoTrueClient: () => (/* reexport safe */ _GoTrueClient__WEBPACK_IMPORTED_MODULE_1__["default"]),
+/* harmony export */   NavigatorLockAcquireTimeoutError: () => (/* reexport safe */ _lib_locks__WEBPACK_IMPORTED_MODULE_4__.NavigatorLockAcquireTimeoutError),
 /* harmony export */   isAuthApiError: () => (/* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.isAuthApiError),
 /* harmony export */   isAuthError: () => (/* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.isAuthError),
-/* harmony export */   isAuthRetryableFetchError: () => (/* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.isAuthRetryableFetchError)
+/* harmony export */   isAuthRetryableFetchError: () => (/* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.isAuthRetryableFetchError),
+/* harmony export */   lockInternals: () => (/* reexport safe */ _lib_locks__WEBPACK_IMPORTED_MODULE_4__.internals),
+/* harmony export */   navigatorLock: () => (/* reexport safe */ _lib_locks__WEBPACK_IMPORTED_MODULE_4__.navigatorLock)
 /* harmony export */ });
 /* harmony import */ var _GoTrueAdminApi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GoTrueAdminApi */ "./node_modules/@supabase/gotrue-js/dist/module/GoTrueAdminApi.js");
 /* harmony import */ var _GoTrueClient__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GoTrueClient */ "./node_modules/@supabase/gotrue-js/dist/module/GoTrueClient.js");
 /* harmony import */ var _lib_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/types */ "./node_modules/@supabase/gotrue-js/dist/module/lib/types.js");
 /* harmony import */ var _lib_errors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lib/errors */ "./node_modules/@supabase/gotrue-js/dist/module/lib/errors.js");
+/* harmony import */ var _lib_locks__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./lib/locks */ "./node_modules/@supabase/gotrue-js/dist/module/lib/locks.js");
+
 
 
 
@@ -21412,7 +21600,9 @@ function _sessionResponse(data) {
     let session = null;
     if (hasSession(data)) {
         session = Object.assign({}, data);
-        session.expires_at = (0,_helpers__WEBPACK_IMPORTED_MODULE_0__.expiresAt)(data.expires_in);
+        if (!data.expires_at) {
+            session.expires_at = (0,_helpers__WEBPACK_IMPORTED_MODULE_0__.expiresAt)(data.expires_in);
+        }
     }
     const user = (_a = data.user) !== null && _a !== void 0 ? _a : data;
     return { data: { session, user }, error: null };
@@ -21474,16 +21664,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   generatePKCEChallenge: () => (/* binding */ generatePKCEChallenge),
 /* harmony export */   generatePKCEVerifier: () => (/* binding */ generatePKCEVerifier),
 /* harmony export */   getItemAsync: () => (/* binding */ getItemAsync),
-/* harmony export */   getParameterByName: () => (/* binding */ getParameterByName),
 /* harmony export */   isBrowser: () => (/* binding */ isBrowser),
-/* harmony export */   isInStackGuard: () => (/* binding */ isInStackGuard),
 /* harmony export */   looksLikeFetchResponse: () => (/* binding */ looksLikeFetchResponse),
+/* harmony export */   parseParametersFromURL: () => (/* binding */ parseParametersFromURL),
 /* harmony export */   removeItemAsync: () => (/* binding */ removeItemAsync),
 /* harmony export */   resolveFetch: () => (/* binding */ resolveFetch),
 /* harmony export */   retryable: () => (/* binding */ retryable),
 /* harmony export */   setItemAsync: () => (/* binding */ setItemAsync),
 /* harmony export */   sleep: () => (/* binding */ sleep),
-/* harmony export */   stackGuard: () => (/* binding */ stackGuard),
 /* harmony export */   supportsLocalStorage: () => (/* binding */ supportsLocalStorage),
 /* harmony export */   uuid: () => (/* binding */ uuid)
 /* harmony export */ });
@@ -21536,18 +21724,28 @@ const supportsLocalStorage = () => {
     }
     return localStorageWriteTests.writable;
 };
-function getParameterByName(name, url) {
-    var _a;
-    if (!url)
-        url = ((_a = window === null || window === void 0 ? void 0 : window.location) === null || _a === void 0 ? void 0 : _a.href) || '';
-    // eslint-disable-next-line no-useless-escape
-    name = name.replace(/[\[\]]/g, '\\$&');
-    const regex = new RegExp('[?&#]' + name + '(=([^&#]*)|&|#|$)'), results = regex.exec(url);
-    if (!results)
-        return null;
-    if (!results[2])
-        return '';
-    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+/**
+ * Extracts parameters encoded in the URL both in the query and fragment.
+ */
+function parseParametersFromURL(href) {
+    const result = {};
+    const url = new URL(href);
+    if (url.hash && url.hash[0] === '#') {
+        try {
+            const hashSearchParams = new URLSearchParams(url.hash.substring(1));
+            hashSearchParams.forEach((value, key) => {
+                result[key] = value;
+            });
+        }
+        catch (e) {
+            // hash is not a query string
+        }
+    }
+    // search parameters take precedence over hash parameters
+    url.searchParams.forEach((value, key) => {
+        result[key] = value;
+    });
+    return result;
 }
 const resolveFetch = (customFetch) => {
     let _fetch;
@@ -21555,7 +21753,7 @@ const resolveFetch = (customFetch) => {
         _fetch = customFetch;
     }
     else if (typeof fetch === 'undefined') {
-        _fetch = async (...args) => await (await Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! cross-fetch */ "./node_modules/cross-fetch/dist/browser-ponyfill.js", 23))).fetch(...args);
+        _fetch = (...args) => Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! @supabase/node-fetch */ "./node_modules/@supabase/node-fetch/browser.js", 23)).then(({ default: fetch }) => fetch(...args));
     }
     else {
         _fetch = fetch;
@@ -21649,8 +21847,8 @@ function decodeJWTPayload(token) {
 /**
  * Creates a promise that resolves to null after some time.
  */
-function sleep(time) {
-    return new Promise((accept) => {
+async function sleep(time) {
+    return await new Promise((accept) => {
         setTimeout(() => accept(null), time);
     });
 }
@@ -21715,104 +21913,16 @@ function base64urlencode(str) {
     return btoa(str).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 }
 async function generatePKCEChallenge(verifier) {
-    if (typeof crypto === 'undefined') {
+    const hasCryptoSupport = typeof crypto !== 'undefined' &&
+        typeof crypto.subtle !== 'undefined' &&
+        typeof TextEncoder !== 'undefined';
+    if (!hasCryptoSupport) {
         console.warn('WebCrypto API is not supported. Code challenge method will default to use plain instead of sha256.');
         return verifier;
     }
     const hashed = await sha256(verifier);
     return base64urlencode(hashed);
 }
-const STACK_GUARD_PREFIX = `__stack_guard__`;
-const STACK_GUARD_SUFFIX = `__`;
-// Firefox and WebKit based browsers encode the stack entry differently, but
-// they all include the function name. So instead of trying to parse the entry,
-// we're only looking for the special string `__stack_guard__${guardName}__`.
-// Guard names can only be letters with dashes or underscores.
-//
-// Example Firefox stack trace:
-// ```
-// __stack_guard__EXAMPLE__@debugger eval code:1:55
-// @debugger eval code:1:3
-// ```
-//
-// Example WebKit/Chrome stack trace:
-// ```
-// Error
-//  at Object.__stack_guard__EXAMPLE__ (<anonymous>:1:55)
-//  at <anonymous>:1:13
-// ```
-//
-const STACK_ENTRY_REGEX = /__stack_guard__([a-zA-Z0-9_-]+)__/;
-let STACK_GUARD_CHECKED = false;
-let STACK_GUARD_CHECK_FN; // eslint-disable-line prefer-const
-/**
- * Checks if the current caller of the function is in a {@link
- * #stackGuard} of the provided `name`. Works by looking through
- * the stack trace of an `Error` object for a special function
- * name (generated by {@link #stackGuard}).
- *
- * @param name The name of the stack guard to check for. Must be `[a-zA-Z0-9_-]` only.
- */
-function isInStackGuard(name) {
-    var _a, _b;
-    STACK_GUARD_CHECK_FN();
-    let error;
-    try {
-        throw new Error();
-    }
-    catch (e) {
-        error = e;
-    }
-    const stack = (_b = (_a = error.stack) === null || _a === void 0 ? void 0 : _a.split('\n')) !== null && _b !== void 0 ? _b : [];
-    for (let i = 0; i < stack.length; i += 1) {
-        const entry = stack[i];
-        const match = entry.match(STACK_ENTRY_REGEX);
-        if (match && match[1] === name) {
-            return true;
-        }
-    }
-    return false;
-}
-/**
- * Creates a minification resistant stack guard, i.e. if you
- * call {@link #isInStackGuard} from within the `fn` parameter
- * function, you will always get `true` otherwise it will be
- * `false`.
- *
- * Works by dynamically defining a function name before calling
- * into `fn`, which is then parsed from the stack trace on an
- * `Error` object within {@link #isInStackGuard}.
- *
- * @param name The name of the stack guard. Must be `[a-zA-Z0-9_-]` only.
- * @param fn The async/await function to be run within the stack guard.
- */
-async function stackGuard(name, fn) {
-    await STACK_GUARD_CHECK_FN();
-    const guardName = `${STACK_GUARD_PREFIX}${name}${STACK_GUARD_SUFFIX}`;
-    const guardFunc = {
-        // per ECMAScript rules, this defines a new function with the dynamic name
-        // contained in the `guardName` variable
-        // this function name shows up in stack traces and is resistant to mangling
-        // from minification processes as it is determined at runtime
-        [guardName]: async () => await fn(),
-    };
-    return await guardFunc[guardName]();
-}
-// In certain cases, if this file is transpiled using an ES2015 target, or is
-// running in a JS engine that does not support async/await stack traces, this
-// function will log a single warning message.
-STACK_GUARD_CHECK_FN = async () => {
-    if (!STACK_GUARD_CHECKED) {
-        STACK_GUARD_CHECKED = true;
-        await stackGuard('ENV_CHECK', async () => {
-            const result = isInStackGuard('ENV_CHECK');
-            if (!result) {
-                console.warn('@supabase/gotrue-js: Stack guards not supported in this environment. Generally not an issue but may point to a very conservative transpilation environment (use ES2017 or above) that implements async/await with generators, or this is a JavaScript engine that does not support async/await stack traces.');
-            }
-            return result;
-        });
-    }
-};
 //# sourceMappingURL=helpers.js.map
 
 /***/ }),
@@ -21826,10 +21936,14 @@ STACK_GUARD_CHECK_FN = async () => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   localStorageAdapter: () => (/* binding */ localStorageAdapter),
+/* harmony export */   memoryLocalStorageAdapter: () => (/* binding */ memoryLocalStorageAdapter)
 /* harmony export */ });
 /* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers */ "./node_modules/@supabase/gotrue-js/dist/module/lib/helpers.js");
 
+/**
+ * Provides safe access to the globalThis.localStorage property.
+ */
 const localStorageAdapter = {
     getItem: (key) => {
         if (!(0,_helpers__WEBPACK_IMPORTED_MODULE_0__.supportsLocalStorage)()) {
@@ -21850,8 +21964,154 @@ const localStorageAdapter = {
         globalThis.localStorage.removeItem(key);
     },
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (localStorageAdapter);
+/**
+ * Returns a localStorage-like object that stores the key-value pairs in
+ * memory.
+ */
+function memoryLocalStorageAdapter(store = {}) {
+    return {
+        getItem: (key) => {
+            return store[key] || null;
+        },
+        setItem: (key, value) => {
+            store[key] = value;
+        },
+        removeItem: (key) => {
+            delete store[key];
+        },
+    };
+}
 //# sourceMappingURL=local-storage.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/gotrue-js/dist/module/lib/locks.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@supabase/gotrue-js/dist/module/lib/locks.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   LockAcquireTimeoutError: () => (/* binding */ LockAcquireTimeoutError),
+/* harmony export */   NavigatorLockAcquireTimeoutError: () => (/* binding */ NavigatorLockAcquireTimeoutError),
+/* harmony export */   internals: () => (/* binding */ internals),
+/* harmony export */   navigatorLock: () => (/* binding */ navigatorLock)
+/* harmony export */ });
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers */ "./node_modules/@supabase/gotrue-js/dist/module/lib/helpers.js");
+
+/**
+ * @experimental
+ */
+const internals = {
+    /**
+     * @experimental
+     */
+    debug: !!(globalThis &&
+        (0,_helpers__WEBPACK_IMPORTED_MODULE_0__.supportsLocalStorage)() &&
+        globalThis.localStorage &&
+        globalThis.localStorage.getItem('supabase.gotrue-js.locks.debug') === 'true'),
+};
+class LockAcquireTimeoutError extends Error {
+    constructor(message) {
+        super(message);
+        this.isAcquireTimeout = true;
+    }
+}
+class NavigatorLockAcquireTimeoutError extends LockAcquireTimeoutError {
+}
+/**
+ * Implements a global exclusive lock using the Navigator LockManager API. It
+ * is available on all browsers released after 2022-03-15 with Safari being the
+ * last one to release support. If the API is not available, this function will
+ * throw. Make sure you check availablility before configuring {@link
+ * GoTrueClient}.
+ *
+ * You can turn on debugging by setting the `supabase.gotrue-js.locks.debug`
+ * local storage item to `true`.
+ *
+ * Internals:
+ *
+ * Since the LockManager API does not preserve stack traces for the async
+ * function passed in the `request` method, a trick is used where acquiring the
+ * lock releases a previously started promise to run the operation in the `fn`
+ * function. The lock waits for that promise to finish (with or without error),
+ * while the function will finally wait for the result anyway.
+ *
+ * @experimental
+ *
+ * @param name Name of the lock to be acquired.
+ * @param acquireTimeout If negative, no timeout. If 0 an error is thrown if
+ *                       the lock can't be acquired without waiting. If positive, the lock acquire
+ *                       will time out after so many milliseconds. An error is
+ *                       a timeout if it has `isAcquireTimeout` set to true.
+ * @param fn The operation to run once the lock is acquired.
+ */
+async function navigatorLock(name, acquireTimeout, fn) {
+    if (internals.debug) {
+        console.log('@supabase/gotrue-js: navigatorLock: acquire lock', name, acquireTimeout);
+    }
+    const abortController = new globalThis.AbortController();
+    if (acquireTimeout > 0) {
+        setTimeout(() => {
+            abortController.abort();
+            if (internals.debug) {
+                console.log('@supabase/gotrue-js: navigatorLock acquire timed out', name);
+            }
+        }, acquireTimeout);
+    }
+    // MDN article: https://developer.mozilla.org/en-US/docs/Web/API/LockManager/request
+    return await globalThis.navigator.locks.request(name, acquireTimeout === 0
+        ? {
+            mode: 'exclusive',
+            ifAvailable: true,
+        }
+        : {
+            mode: 'exclusive',
+            signal: abortController.signal,
+        }, async (lock) => {
+        if (lock) {
+            if (internals.debug) {
+                console.log('@supabase/gotrue-js: navigatorLock: acquired', name, lock.name);
+            }
+            try {
+                return await fn();
+            }
+            finally {
+                if (internals.debug) {
+                    console.log('@supabase/gotrue-js: navigatorLock: released', name, lock.name);
+                }
+            }
+        }
+        else {
+            if (acquireTimeout === 0) {
+                if (internals.debug) {
+                    console.log('@supabase/gotrue-js: navigatorLock: not immediately available', name);
+                }
+                throw new NavigatorLockAcquireTimeoutError(`Acquiring an exclusive Navigator LockManager lock "${name}" immediately failed`);
+            }
+            else {
+                if (internals.debug) {
+                    try {
+                        const result = await globalThis.navigator.locks.query();
+                        console.log('@supabase/gotrue-js: Navigator LockManager state', JSON.stringify(result, null, '  '));
+                    }
+                    catch (e) {
+                        console.warn('@supabase/gotrue-js: Error when querying Navigator LockManager state', e);
+                    }
+                }
+                // Browser is not following the Navigator LockManager spec, it
+                // returned a null lock when we didn't use ifAvailable. So we can
+                // pretend the lock is acquired in the name of backward compatibility
+                // and user experience and just run the function.
+                console.warn('@supabase/gotrue-js: Navigator LockManager returned a null lock when using #request without ifAvailable set to true, it appears this browser is not following the LockManager spec https://developer.mozilla.org/en-US/docs/Web/API/LockManager/request');
+                return await fn();
+            }
+        }
+    });
+}
+//# sourceMappingURL=locks.js.map
 
 /***/ }),
 
@@ -21920,8 +22180,44 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   version: () => (/* binding */ version)
 /* harmony export */ });
 // Generated by genversion.
-const version = '2.41.0';
+const version = '2.55.0';
 //# sourceMappingURL=version.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/node-fetch/browser.js":
+/*!******************************************************!*\
+  !*** ./node_modules/@supabase/node-fetch/browser.js ***!
+  \******************************************************/
+/***/ ((module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+// ref: https://github.com/tc39/proposal-global
+var getGlobal = function () {
+	// the only reliable means to get the global object is
+	// `Function('return this')()`
+	// However, this causes CSP violations in Chrome apps.
+	if (typeof self !== 'undefined') { return self; }
+	if (typeof window !== 'undefined') { return window; }
+	if (typeof __webpack_require__.g !== 'undefined') { return __webpack_require__.g; }
+	throw new Error('unable to locate global object');
+}
+
+var globalObject = getGlobal();
+
+module.exports = exports = globalObject.fetch;
+
+// Needed for TypeScript and Webpack.
+if (globalObject.fetch) {
+	exports["default"] = globalObject.fetch.bind(globalObject);
+}
+
+exports.Headers = globalObject.Headers;
+exports.Request = globalObject.Request;
+exports.Response = globalObject.Response;
+
 
 /***/ }),
 
@@ -21936,8 +22232,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ PostgrestBuilder)
 /* harmony export */ });
-/* harmony import */ var cross_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cross-fetch */ "./node_modules/cross-fetch/dist/browser-ponyfill.js");
-/* harmony import */ var cross_fetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(cross_fetch__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _supabase_node_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @supabase/node-fetch */ "./node_modules/@supabase/node-fetch/browser.js");
+/* harmony import */ var _supabase_node_fetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_supabase_node_fetch__WEBPACK_IMPORTED_MODULE_0__);
+// @ts-ignore
 
 class PostgrestBuilder {
     constructor(builder) {
@@ -21954,7 +22251,7 @@ class PostgrestBuilder {
             this.fetch = builder.fetch;
         }
         else if (typeof fetch === 'undefined') {
-            this.fetch = (cross_fetch__WEBPACK_IMPORTED_MODULE_0___default());
+            this.fetch = (_supabase_node_fetch__WEBPACK_IMPORTED_MODULE_0___default());
         }
         else {
             this.fetch = fetch;
@@ -22069,7 +22366,7 @@ class PostgrestBuilder {
                         };
                     }
                 }
-                if (error && this.isMaybeSingle && ((_c = error === null || error === void 0 ? void 0 : error.details) === null || _c === void 0 ? void 0 : _c.includes('Results contain 0 rows'))) {
+                if (error && this.isMaybeSingle && ((_c = error === null || error === void 0 ? void 0 : error.details) === null || _c === void 0 ? void 0 : _c.includes('0 rows'))) {
                     error = null;
                     status = 200;
                     statusText = 'OK';
@@ -22152,7 +22449,7 @@ class PostgrestClient {
     constructor(url, { headers = {}, schema, fetch, } = {}) {
         this.url = url;
         this.headers = Object.assign(Object.assign({}, _constants__WEBPACK_IMPORTED_MODULE_2__.DEFAULT_HEADERS), headers);
-        this.schema = schema;
+        this.schemaName = schema;
         this.fetch = fetch;
     }
     /**
@@ -22164,7 +22461,21 @@ class PostgrestClient {
         const url = new URL(`${this.url}/${relation}`);
         return new _PostgrestQueryBuilder__WEBPACK_IMPORTED_MODULE_0__["default"](url, {
             headers: Object.assign({}, this.headers),
-            schema: this.schema,
+            schema: this.schemaName,
+            fetch: this.fetch,
+        });
+    }
+    /**
+     * Select a schema to query or perform an function (rpc) call.
+     *
+     * The schema needs to be on the list of exposed schemas inside Supabase.
+     *
+     * @param schema - The schema to query
+     */
+    schema(schema) {
+        return new PostgrestClient(this.url, {
+            headers: this.headers,
+            schema,
             fetch: this.fetch,
         });
     }
@@ -22211,7 +22522,7 @@ class PostgrestClient {
             method,
             url,
             headers,
-            schema: this.schema,
+            schema: this.schemaName,
             body,
             fetch: this.fetch,
             allowEmpty: false,
@@ -22703,7 +23014,8 @@ class PostgrestQueryBuilder {
      * numbers.
      *
      * @param options.defaultToNull - Make missing fields default to `null`.
-     * Otherwise, use the default value for the column.
+     * Otherwise, use the default value for the column. Only applies for bulk
+     * inserts.
      */
     insert(values, { count, defaultToNull = true, } = {}) {
         const method = 'POST';
@@ -22771,7 +23083,7 @@ class PostgrestQueryBuilder {
      * @param options.defaultToNull - Make missing fields default to `null`.
      * Otherwise, use the default value for the column. This only applies when
      * inserting new rows, not when merging with existing rows under
-     * `ignoreDuplicates: false`.
+     * `ignoreDuplicates: false`. This also only applies when doing bulk upserts.
      */
     upsert(values, { onConflict, ignoreDuplicates = false, count, defaultToNull = true, } = {}) {
         const method = 'POST';
@@ -23166,7 +23478,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   version: () => (/* binding */ version)
 /* harmony export */ });
-const version = '1.7.2';
+const version = '1.8.5';
 //# sourceMappingURL=version.js.map
 
 /***/ }),
@@ -23190,15 +23502,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_timer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/timer */ "./node_modules/@supabase/realtime-js/dist/module/lib/timer.js");
 /* harmony import */ var _RealtimePresence__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RealtimePresence */ "./node_modules/@supabase/realtime-js/dist/module/RealtimePresence.js");
 /* harmony import */ var _lib_transformers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./lib/transformers */ "./node_modules/@supabase/realtime-js/dist/module/lib/transformers.js");
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 
 
 
@@ -23243,6 +23546,7 @@ class RealtimeChannel {
         this.state = _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_STATES.closed;
         this.joinedOnce = false;
         this.pushBuffer = [];
+        this.subTopic = topic.replace(/^realtime:/i, '');
         this.params.config = Object.assign({
             broadcast: { ack: false, self: false },
             presence: { key: '' },
@@ -23282,10 +23586,14 @@ class RealtimeChannel {
             this._trigger(this._replyEventName(ref), payload);
         });
         this.presence = new _RealtimePresence__WEBPACK_IMPORTED_MODULE_3__["default"](this);
+        this.broadcastEndpointURL = this._broadcastEndpointURL();
     }
     /** Subscribe registers your client with the server */
     subscribe(callback, timeout = this.timeout) {
         var _a, _b;
+        if (!this.socket.isConnected()) {
+            this.socket.connect();
+        }
         if (this.joinedOnce) {
             throw `tried to subscribe multiple times. 'subscribe' can only be called a single time per channel instance`;
         }
@@ -23356,40 +23664,71 @@ class RealtimeChannel {
     presenceState() {
         return this.presence.state;
     }
-    track(payload, opts = {}) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return yield this.send({
-                type: 'presence',
-                event: 'track',
-                payload,
-            }, opts.timeout || this.timeout);
-        });
+    async track(payload, opts = {}) {
+        return await this.send({
+            type: 'presence',
+            event: 'track',
+            payload,
+        }, opts.timeout || this.timeout);
     }
-    untrack(opts = {}) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return yield this.send({
-                type: 'presence',
-                event: 'untrack',
-            }, opts);
-        });
+    async untrack(opts = {}) {
+        return await this.send({
+            type: 'presence',
+            event: 'untrack',
+        }, opts);
     }
     on(type, filter, callback) {
         return this._on(type, filter, callback);
     }
-    send(payload, opts = {}) {
-        return new Promise((resolve) => {
-            var _a, _b, _c;
-            const push = this._push(payload.type, payload, opts.timeout || this.timeout);
-            if (push.rateLimited) {
-                resolve('rate limited');
+    async send(payload, opts = {}) {
+        var _a, _b;
+        if (!this._canPush() && payload.type === 'broadcast') {
+            const { event, payload: endpoint_payload } = payload;
+            const options = {
+                method: 'POST',
+                headers: {
+                    apikey: (_a = this.socket.accessToken) !== null && _a !== void 0 ? _a : '',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    messages: [
+                        { topic: this.subTopic, event, payload: endpoint_payload },
+                    ],
+                }),
+            };
+            try {
+                const response = await this._fetchWithTimeout(this.broadcastEndpointURL, options, (_b = opts.timeout) !== null && _b !== void 0 ? _b : this.timeout);
+                if (response.ok) {
+                    return 'ok';
+                }
+                else {
+                    return 'error';
+                }
             }
-            if (payload.type === 'broadcast' &&
-                !((_c = (_b = (_a = this.params) === null || _a === void 0 ? void 0 : _a.config) === null || _b === void 0 ? void 0 : _b.broadcast) === null || _c === void 0 ? void 0 : _c.ack)) {
-                resolve('ok');
+            catch (error) {
+                if (error.name === 'AbortError') {
+                    return 'timed out';
+                }
+                else {
+                    return 'error';
+                }
             }
-            push.receive('ok', () => resolve('ok'));
-            push.receive('timeout', () => resolve('timed out'));
-        });
+        }
+        else {
+            return new Promise((resolve) => {
+                var _a, _b, _c;
+                const push = this._push(payload.type, payload, opts.timeout || this.timeout);
+                if (push.rateLimited) {
+                    resolve('rate limited');
+                }
+                if (payload.type === 'broadcast' &&
+                    !((_c = (_b = (_a = this.params) === null || _a === void 0 ? void 0 : _a.config) === null || _b === void 0 ? void 0 : _b.broadcast) === null || _c === void 0 ? void 0 : _c.ack)) {
+                    resolve('ok');
+                }
+                push.receive('ok', () => resolve('ok'));
+                push.receive('timeout', () => resolve('timed out'));
+            });
+        }
     }
     updateJoinPayload(payload) {
         this.joinPush.updatePayload(payload);
@@ -23431,6 +23770,20 @@ class RealtimeChannel {
                 leavePush.trigger('ok', {});
             }
         });
+    }
+    /** @internal */
+    _broadcastEndpointURL() {
+        let url = this.socket.endPoint;
+        url = url.replace(/^ws/i, 'http');
+        url = url.replace(/(\/socket\/websocket|\/socket|\/websocket)\/?$/i, '');
+        return url.replace(/\/+$/, '') + '/api/broadcast';
+    }
+    async _fetchWithTimeout(url, options, timeout) {
+        const controller = new AbortController();
+        const id = setTimeout(() => controller.abort(), timeout);
+        const response = await this.socket.fetch(url, Object.assign(Object.assign({}, options), { signal: controller.signal }));
+        clearTimeout(id);
+        return response;
     }
     /** @internal */
     _push(event, payload, timeout = this.timeout) {
@@ -23661,15 +24014,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_timer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/timer */ "./node_modules/@supabase/realtime-js/dist/module/lib/timer.js");
 /* harmony import */ var _lib_serializer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lib/serializer */ "./node_modules/@supabase/realtime-js/dist/module/lib/serializer.js");
 /* harmony import */ var _RealtimeChannel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./RealtimeChannel */ "./node_modules/@supabase/realtime-js/dist/module/RealtimeChannel.js");
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 
 
 
@@ -23692,7 +24036,7 @@ class RealtimeClient {
      * @param options.reconnectAfterMs he optional function that returns the millsec reconnect interval. Defaults to stepped backoff off.
      */
     constructor(endPoint, options) {
-        var _a;
+        var _a, _b;
         this.accessToken = null;
         this.channels = [];
         this.endPoint = '';
@@ -23716,6 +24060,24 @@ class RealtimeClient {
         };
         this.eventsPerSecondLimitMs = 100;
         this.inThrottle = false;
+        /**
+         * Use either custom fetch, if provided, or default fetch to make HTTP requests
+         *
+         * @internal
+         */
+        this._resolveFetch = (customFetch) => {
+            let _fetch;
+            if (customFetch) {
+                _fetch = customFetch;
+            }
+            else if (typeof fetch === 'undefined') {
+                _fetch = (...args) => Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! @supabase/node-fetch */ "./node_modules/@supabase/node-fetch/browser.js", 23)).then(({ default: fetch }) => fetch(...args));
+            }
+            else {
+                _fetch = fetch;
+            }
+            return (...args) => _fetch(...args);
+        };
         this.endPoint = `${endPoint}/${_lib_constants__WEBPACK_IMPORTED_MODULE_1__.TRANSPORTS.websocket}`;
         if (options === null || options === void 0 ? void 0 : options.params)
             this.params = options.params;
@@ -23732,6 +24094,9 @@ class RealtimeClient {
         const eventsPerSecond = (_a = options === null || options === void 0 ? void 0 : options.params) === null || _a === void 0 ? void 0 : _a.eventsPerSecond;
         if (eventsPerSecond)
             this.eventsPerSecondLimitMs = Math.floor(1000 / eventsPerSecond);
+        const accessToken = (_b = options === null || options === void 0 ? void 0 : options.params) === null || _b === void 0 ? void 0 : _b.apikey;
+        if (accessToken)
+            this.accessToken = accessToken;
         this.reconnectAfterMs = (options === null || options === void 0 ? void 0 : options.reconnectAfterMs)
             ? options.reconnectAfterMs
             : (tries) => {
@@ -23745,10 +24110,11 @@ class RealtimeClient {
         this.decode = (options === null || options === void 0 ? void 0 : options.decode)
             ? options.decode
             : this.serializer.decode.bind(this.serializer);
-        this.reconnectTimer = new _lib_timer__WEBPACK_IMPORTED_MODULE_2__["default"](() => __awaiter(this, void 0, void 0, function* () {
+        this.reconnectTimer = new _lib_timer__WEBPACK_IMPORTED_MODULE_2__["default"](async () => {
             this.disconnect();
             this.connect();
-        }), this.reconnectAfterMs);
+        }, this.reconnectAfterMs);
+        this.fetch = this._resolveFetch(options === null || options === void 0 ? void 0 : options.fetch);
     }
     /**
      * Connects the socket, unless already connected.
@@ -23797,24 +24163,20 @@ class RealtimeClient {
      * Unsubscribes and removes a single channel
      * @param channel A RealtimeChannel instance
      */
-    removeChannel(channel) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const status = yield channel.unsubscribe();
-            if (this.channels.length === 0) {
-                this.disconnect();
-            }
-            return status;
-        });
+    async removeChannel(channel) {
+        const status = await channel.unsubscribe();
+        if (this.channels.length === 0) {
+            this.disconnect();
+        }
+        return status;
     }
     /**
      * Unsubscribes and removes all channels
      */
-    removeAllChannels() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const values_1 = yield Promise.all(this.channels.map((channel) => channel.unsubscribe()));
-            this.disconnect();
-            return values_1;
-        });
+    async removeAllChannels() {
+        const values_1 = await Promise.all(this.channels.map((channel) => channel.unsubscribe()));
+        this.disconnect();
+        return values_1;
     }
     /**
      * Logs the message.
@@ -23846,9 +24208,6 @@ class RealtimeClient {
         return this.connectionState() === _lib_constants__WEBPACK_IMPORTED_MODULE_1__.CONNECTION_STATE.Open;
     }
     channel(topic, params = { config: {} }) {
-        if (!this.isConnected()) {
-            this.connect();
-        }
         const chan = new _RealtimeChannel__WEBPACK_IMPORTED_MODULE_4__["default"](`realtime:${topic}`, params, this);
         this.channels.push(chan);
         return chan;
@@ -24831,7 +25190,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   version: () => (/* binding */ version)
 /* harmony export */ });
-const version = '2.7.3';
+const version = '2.8.0';
 //# sourceMappingURL=version.js.map
 
 /***/ }),
@@ -25055,7 +25414,7 @@ const resolveFetch = (customFetch) => {
         _fetch = customFetch;
     }
     else if (typeof fetch === 'undefined') {
-        _fetch = (...args) => __awaiter(void 0, void 0, void 0, function* () { return yield (yield Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! cross-fetch */ "./node_modules/cross-fetch/dist/browser-ponyfill.js", 23))).fetch(...args); });
+        _fetch = (...args) => Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! @supabase/node-fetch */ "./node_modules/@supabase/node-fetch/browser.js", 23)).then(({ default: fetch }) => fetch(...args));
     }
     else {
         _fetch = fetch;
@@ -25064,7 +25423,8 @@ const resolveFetch = (customFetch) => {
 };
 const resolveResponse = () => __awaiter(void 0, void 0, void 0, function* () {
     if (typeof Response === 'undefined') {
-        return (yield Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! cross-fetch */ "./node_modules/cross-fetch/dist/browser-ponyfill.js", 23))).Response;
+        // @ts-ignore
+        return (yield Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! @supabase/node-fetch */ "./node_modules/@supabase/node-fetch/browser.js", 23))).Response;
     }
     return Response;
 });
@@ -25084,7 +25444,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   version: () => (/* binding */ version)
 /* harmony export */ });
 // generated by genversion
-const version = '2.5.1';
+const version = '2.5.4';
 //# sourceMappingURL=version.js.map
 
 /***/ }),
@@ -25433,7 +25793,7 @@ class StorageFileApi {
     /**
      * Creates a signed upload URL.
      * Signed upload URLs can be used to upload files to the bucket without further authentication.
-     * They are valid for one minute.
+     * They are valid for 2 hours.
      * @param path The file path, including the current file name. For example `folder/image.png`.
      */
     createSignedUploadUrl(path) {
@@ -25876,6 +26236,17 @@ class SupabaseClient {
         return this.rest.from(relation);
     }
     /**
+     * Perform a query on a schema distinct from the default schema supplied via
+     * the `options.db.schema` constructor parameter.
+     *
+     * The schema needs to be on the list of exposed schemas inside Supabase.
+     *
+     * @param schema - The name of the schema to query
+     */
+    schema(schema) {
+        return this.rest.schema(schema);
+    }
+    /**
      * Perform a function call.
      *
      * @param fn - The function name to call
@@ -25937,7 +26308,7 @@ class SupabaseClient {
             return (_b = (_a = data.session) === null || _a === void 0 ? void 0 : _a.access_token) !== null && _b !== void 0 ? _b : null;
         });
     }
-    _initSupabaseAuthClient({ autoRefreshToken, persistSession, detectSessionInUrl, storage, storageKey, flowType, }, headers, fetch) {
+    _initSupabaseAuthClient({ autoRefreshToken, persistSession, detectSessionInUrl, storage, storageKey, flowType, debug, }, headers, fetch) {
         const authHeaders = {
             Authorization: `Bearer ${this.supabaseKey}`,
             apikey: `${this.supabaseKey}`,
@@ -25951,6 +26322,7 @@ class SupabaseClient {
             detectSessionInUrl,
             storage,
             flowType,
+            debug,
             fetch,
         });
     }
@@ -26008,6 +26380,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   FunctionsRelayError: () => (/* reexport safe */ _supabase_functions_js__WEBPACK_IMPORTED_MODULE_1__.FunctionsRelayError),
 /* harmony export */   GoTrueAdminApi: () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.GoTrueAdminApi),
 /* harmony export */   GoTrueClient: () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.GoTrueClient),
+/* harmony export */   NavigatorLockAcquireTimeoutError: () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.NavigatorLockAcquireTimeoutError),
 /* harmony export */   REALTIME_LISTEN_TYPES: () => (/* reexport safe */ _supabase_realtime_js__WEBPACK_IMPORTED_MODULE_2__.REALTIME_LISTEN_TYPES),
 /* harmony export */   REALTIME_POSTGRES_CHANGES_LISTEN_EVENT: () => (/* reexport safe */ _supabase_realtime_js__WEBPACK_IMPORTED_MODULE_2__.REALTIME_POSTGRES_CHANGES_LISTEN_EVENT),
 /* harmony export */   REALTIME_PRESENCE_LISTEN_EVENTS: () => (/* reexport safe */ _supabase_realtime_js__WEBPACK_IMPORTED_MODULE_2__.REALTIME_PRESENCE_LISTEN_EVENTS),
@@ -26019,7 +26392,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   createClient: () => (/* binding */ createClient),
 /* harmony export */   isAuthApiError: () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.isAuthApiError),
 /* harmony export */   isAuthError: () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.isAuthError),
-/* harmony export */   isAuthRetryableFetchError: () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.isAuthRetryableFetchError)
+/* harmony export */   isAuthRetryableFetchError: () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.isAuthRetryableFetchError),
+/* harmony export */   lockInternals: () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.lockInternals),
+/* harmony export */   navigatorLock: () => (/* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.navigatorLock)
 /* harmony export */ });
 /* harmony import */ var _SupabaseClient__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SupabaseClient */ "./node_modules/@supabase/supabase-js/dist/module/SupabaseClient.js");
 /* harmony import */ var _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @supabase/gotrue-js */ "./node_modules/@supabase/gotrue-js/dist/module/index.js");
@@ -26076,7 +26451,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _version__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./version */ "./node_modules/@supabase/supabase-js/dist/module/lib/version.js");
 // constants.ts
 
-const DEFAULT_HEADERS = { 'X-Client-Info': `supabase-js/${_version__WEBPACK_IMPORTED_MODULE_0__.version}` };
+let JS_ENV = '';
+// @ts-ignore
+if (typeof Deno !== 'undefined') {
+    JS_ENV = 'deno';
+}
+else if (typeof document !== 'undefined') {
+    JS_ENV = 'web';
+}
+else if (typeof navigator !== 'undefined' && navigator.product === 'ReactNative') {
+    JS_ENV = 'react-native';
+}
+else {
+    JS_ENV = 'node';
+}
+const DEFAULT_HEADERS = { 'X-Client-Info': `supabase-js-${JS_ENV}/${_version__WEBPACK_IMPORTED_MODULE_0__.version}` };
 //# sourceMappingURL=constants.js.map
 
 /***/ }),
@@ -26094,8 +26483,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   resolveFetch: () => (/* binding */ resolveFetch),
 /* harmony export */   resolveHeadersConstructor: () => (/* binding */ resolveHeadersConstructor)
 /* harmony export */ });
-/* harmony import */ var cross_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cross-fetch */ "./node_modules/cross-fetch/dist/browser-ponyfill.js");
-/* harmony import */ var cross_fetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(cross_fetch__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _supabase_node_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @supabase/node-fetch */ "./node_modules/@supabase/node-fetch/browser.js");
+/* harmony import */ var _supabase_node_fetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_supabase_node_fetch__WEBPACK_IMPORTED_MODULE_0__);
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -26105,6 +26494,7 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+// @ts-ignore
 
 const resolveFetch = (customFetch) => {
     let _fetch;
@@ -26112,7 +26502,7 @@ const resolveFetch = (customFetch) => {
         _fetch = customFetch;
     }
     else if (typeof fetch === 'undefined') {
-        _fetch = (cross_fetch__WEBPACK_IMPORTED_MODULE_0___default());
+        _fetch = (_supabase_node_fetch__WEBPACK_IMPORTED_MODULE_0___default());
     }
     else {
         _fetch = fetch;
@@ -26121,7 +26511,7 @@ const resolveFetch = (customFetch) => {
 };
 const resolveHeadersConstructor = () => {
     if (typeof Headers === 'undefined') {
-        return cross_fetch__WEBPACK_IMPORTED_MODULE_0__.Headers;
+        return _supabase_node_fetch__WEBPACK_IMPORTED_MODULE_0__.Headers;
     }
     return Headers;
 };
@@ -26194,7 +26584,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   version: () => (/* binding */ version)
 /* harmony export */ });
-const version = '2.26.0';
+const version = '2.38.1';
 //# sourceMappingURL=version.js.map
 
 /***/ }),
@@ -26264,9 +26654,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SignInForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SignInForm */ "./src/components/SignInForm.tsx");
 /* harmony import */ var _SignUpForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SignUpForm */ "./src/components/SignUpForm.tsx");
 /* harmony import */ var _SignUpSuccessDialog__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SignUpSuccessDialog */ "./src/components/SignUpSuccessDialog.tsx");
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
@@ -26274,7 +26664,7 @@ function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArra
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
@@ -26303,7 +26693,7 @@ function AuthInterface(_ref) {
     className: "login-signup"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
     title: "Log in to add content!"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_base__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_base__WEBPACK_IMPORTED_MODULE_6__.Button, {
     onClick: function onClick() {
       return openAuthModal();
     },
@@ -26409,7 +26799,7 @@ function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArra
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
@@ -26494,7 +26884,7 @@ function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArra
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
@@ -26516,7 +26906,7 @@ function ProfileInterface(_ref) {
     setOpen = _useState2[1];
   var anchorRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   var session = (0,_contexts_AuthProvider__WEBPACK_IMPORTED_MODULE_3__.useAuth)();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_base__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_base__WEBPACK_IMPORTED_MODULE_4__.ClickAwayListener, {
     onClickAway: function onClickAway() {
       return setOpen(false);
     }
@@ -26535,7 +26925,7 @@ function ProfileInterface(_ref) {
     size: size,
     name: session === null || session === void 0 ? void 0 : session.user.user_metadata["username"],
     variant: "beam"
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_base__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_base__WEBPACK_IMPORTED_MODULE_6__.Popper, {
     open: open,
     anchorEl: anchorRef.current,
     placement: "bottom-start"
@@ -26591,15 +26981,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/api */ "./src/services/api.ts");
 /* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/debounce */ "./node_modules/lodash/debounce.js");
 /* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_2__);
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw new Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw new Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
@@ -26620,7 +27010,7 @@ function SearchBar() {
   function handleBlur() {
     setSuggestions([]);
   }
-  function handleChange(_x2) {
+  function handleChange(_x) {
     return _handleChange.apply(this, arguments);
   }
   function _handleChange() {
@@ -26703,15 +27093,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_supabaseClient__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/supabaseClient */ "./src/services/supabaseClient.ts");
 /* harmony import */ var _styles_form_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../styles/form.css */ "./src/styles/form.css");
 /* harmony import */ var _AuthInterface__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AuthInterface */ "./src/components/AuthInterface.tsx");
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw new Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw new Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
@@ -26735,7 +27125,7 @@ function SignInForm(_ref) {
     _useState8 = _slicedToArray(_useState7, 2),
     error = _useState8[0],
     setError = _useState8[1];
-  function handleSubmit(_x2) {
+  function handleSubmit(_x) {
     return _handleSubmit.apply(this, arguments);
   }
   function _handleSubmit() {
@@ -26827,15 +27217,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_supabaseClient__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/supabaseClient */ "./src/services/supabaseClient.ts");
 /* harmony import */ var _styles_form_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../styles/form.css */ "./src/styles/form.css");
 /* harmony import */ var _AuthInterface__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AuthInterface */ "./src/components/AuthInterface.tsx");
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw new Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw new Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
@@ -26878,7 +27268,7 @@ function SignUpForm(_ref) {
       setError("");
     }
   }, [password, confirmPassword, username]);
-  function handleSubmit(_x2) {
+  function handleSubmit(_x) {
     return _handleSubmit.apply(this, arguments);
   }
   function _handleSubmit() {
@@ -27053,6 +27443,7 @@ var useAuth = function useAuth() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   onAuthStateChange: () => (/* binding */ onAuthStateChange),
 /* harmony export */   useSupabaseSession: () => (/* binding */ useSupabaseSession)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -27062,7 +27453,7 @@ function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArra
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
@@ -27076,16 +27467,25 @@ var useSupabaseSession = function useSupabaseSession() {
       var session = _ref.data.session;
       setSession(session);
     });
-    var _supabaseClient$auth$ = _services_supabaseClient__WEBPACK_IMPORTED_MODULE_1__.supabaseClient.auth.onAuthStateChange(function (_event, session) {
+    var _onAuthStateChange = onAuthStateChange(function (_event, session) {
         setSession(session);
       }),
-      subscription = _supabaseClient$auth$.data.subscription;
+      subscription = _onAuthStateChange.data.subscription;
     return function () {
       return subscription.unsubscribe();
     };
   }, []);
   return session;
 };
+function onAuthStateChange(callback) {
+  var currentSession;
+  return _services_supabaseClient__WEBPACK_IMPORTED_MODULE_1__.supabaseClient.auth.onAuthStateChange(function (event, session) {
+    var _session$user, _currentSession;
+    if ((session === null || session === void 0 || (_session$user = session.user) === null || _session$user === void 0 ? void 0 : _session$user.id) == ((_currentSession = currentSession) === null || _currentSession === void 0 || (_currentSession = _currentSession.user) === null || _currentSession === void 0 ? void 0 : _currentSession.id)) return;
+    currentSession = session;
+    callback(event, session);
+  });
+}
 
 /***/ }),
 
@@ -27108,10 +27508,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   insertReview: () => (/* binding */ insertReview)
 /* harmony export */ });
 /* harmony import */ var _supabaseClient__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./supabaseClient */ "./src/services/supabaseClient.ts");
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw new Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw new Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
@@ -27535,586 +27935,6 @@ var theme = (0,_mui_material__WEBPACK_IMPORTED_MODULE_0__["default"])({
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 !function(e,t){if(true)module.exports=t(__webpack_require__(/*! react */ "./node_modules/react/index.js"));else { var l, r; }}(this,(function(e){return function(e){var t={};function r(l){if(t[l])return t[l].exports;var i=t[l]={i:l,l:!1,exports:{}};return e[l].call(i.exports,i,i.exports,r),i.l=!0,i.exports}return r.m=e,r.c=t,r.d=function(e,t,l){r.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:l})},r.r=function(e){"undefined"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},r.t=function(e,t){if(1&t&&(e=r(e)),8&t)return e;if(4&t&&"object"===typeof e&&e&&e.__esModule)return e;var l=Object.create(null);if(r.r(l),Object.defineProperty(l,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var i in e)r.d(l,i,function(t){return e[t]}.bind(null,i));return l},r.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return r.d(t,"a",t),t},r.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},r.p="/",r(r.s=1)}([function(t,r){t.exports=e},function(e,t,r){e.exports=r(2)},function(e,t,r){"use strict";function l(e,t,r){return t in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}function i(e,t){var r=Object.keys(e);if(Object.getOwnPropertySymbols){var l=Object.getOwnPropertySymbols(e);t&&(l=l.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),r.push.apply(r,l)}return r}function a(e,t){if(null==e)return{};var r,l,i=function(e,t){if(null==e)return{};var r,l,i={},a=Object.keys(e);for(l=0;l<a.length;l++)r=a[l],t.indexOf(r)>=0||(i[r]=e[r]);return i}(e,t);if(Object.getOwnPropertySymbols){var a=Object.getOwnPropertySymbols(e);for(l=0;l<a.length;l++)r=a[l],t.indexOf(r)>=0||Object.prototype.propertyIsEnumerable.call(e,r)&&(i[r]=e[r])}return i}r.r(t);var n=r(0),c=r.n(n),h=function(e){for(var t=0,r=0;r<e.length;r++){t=(t<<5)-t+e.charCodeAt(r),t&=t}return Math.abs(t)},o=function(e,t){return Math.floor(e/Math.pow(10,t)%10)},s=function(e,t){return!(o(e,t)%2)},f=function(e,t,r){var l=e%t;return r&&o(e,r)%2===0?-l:l},m=function(e,t,r){return t[e%r]};var u=function(e){var t=function(e,t){var r=h(e),l=t&&t.length;return Array.from({length:4},(function(e,i){return{color:m(r+i,t,l),translateX:f(r*(i+1),40-(i+17),1),translateY:f(r*(i+1),40-(i+17),2),rotate:f(r*(i+1),360),isSquare:s(r,2)}}))}(e.name,e.colors),r=n.useId();return n.createElement("svg",{viewBox:"0 0 80 80",fill:"none",role:"img",xmlns:"http://www.w3.org/2000/svg",width:e.size,height:e.size},e.title&&n.createElement("title",null,e.name),n.createElement("mask",{id:r,maskUnits:"userSpaceOnUse",x:0,y:0,width:80,height:80},n.createElement("rect",{width:80,height:80,rx:e.square?void 0:160,fill:"#FFFFFF"})),n.createElement("g",{mask:"url(#".concat(r,")")},n.createElement("rect",{width:80,height:80,fill:t[0].color}),n.createElement("rect",{x:10,y:30,width:80,height:t[1].isSquare?80:10,fill:t[1].color,transform:"translate("+t[1].translateX+" "+t[1].translateY+") rotate("+t[1].rotate+" 40 40)"}),n.createElement("circle",{cx:40,cy:40,fill:t[2].color,r:16,transform:"translate("+t[2].translateX+" "+t[2].translateY+")"}),n.createElement("line",{x1:0,y1:40,x2:80,y2:40,strokeWidth:2,stroke:t[3].color,transform:"translate("+t[3].translateX+" "+t[3].translateY+") rotate("+t[3].rotate+" 40 40)"})))};var d=function(e){var t=function(e,t){var r=h(t),l=e&&e.length,i=Array.from({length:5},(function(t,i){return m(r+i,e,l)})),a=[];return a[0]=i[0],a[1]=i[1],a[2]=i[1],a[3]=i[2],a[4]=i[2],a[5]=i[3],a[6]=i[3],a[7]=i[0],a[8]=i[4],a}(e.colors,e.name),r=c.a.useId();return c.a.createElement("svg",{viewBox:"0 0 90 90",fill:"none",role:"img",xmlns:"http://www.w3.org/2000/svg",width:e.size,height:e.size},e.title&&c.a.createElement("title",null,e.name),c.a.createElement("mask",{id:r,maskUnits:"userSpaceOnUse",x:0,y:0,width:90,height:90},c.a.createElement("rect",{width:90,height:90,rx:e.square?void 0:180,fill:"#FFFFFF"})),c.a.createElement("g",{mask:"url(#".concat(r,")")},c.a.createElement("path",{d:"M0 0h90v45H0z",fill:t[0]}),c.a.createElement("path",{d:"M0 45h90v45H0z",fill:t[1]}),c.a.createElement("path",{d:"M83 45a38 38 0 00-76 0h76z",fill:t[2]}),c.a.createElement("path",{d:"M83 45a38 38 0 01-76 0h76z",fill:t[3]}),c.a.createElement("path",{d:"M77 45a32 32 0 10-64 0h64z",fill:t[4]}),c.a.createElement("path",{d:"M77 45a32 32 0 11-64 0h64z",fill:t[5]}),c.a.createElement("path",{d:"M71 45a26 26 0 00-52 0h52z",fill:t[6]}),c.a.createElement("path",{d:"M71 45a26 26 0 01-52 0h52z",fill:t[7]}),c.a.createElement("circle",{cx:45,cy:45,r:23,fill:t[8]})))};var g=function(e){var t=function(e,t){var r=h(e),l=t&&t.length;return Array.from({length:64},(function(e,i){return m(r%(i+1),t,l)}))}(e.name,e.colors),r=n.useId();return n.createElement("svg",{viewBox:"0 0 80 80",fill:"none",role:"img",xmlns:"http://www.w3.org/2000/svg",width:e.size,height:e.size},e.title&&n.createElement("title",null,e.name),n.createElement("mask",{id:r,"mask-type":"alpha",maskUnits:"userSpaceOnUse",x:0,y:0,width:80,height:80},n.createElement("rect",{width:80,height:80,rx:e.square?void 0:160,fill:"#FFFFFF"})),n.createElement("g",{mask:"url(#".concat(r,")")},n.createElement("rect",{width:10,height:10,fill:t[0]}),n.createElement("rect",{x:20,width:10,height:10,fill:t[1]}),n.createElement("rect",{x:40,width:10,height:10,fill:t[2]}),n.createElement("rect",{x:60,width:10,height:10,fill:t[3]}),n.createElement("rect",{x:10,width:10,height:10,fill:t[4]}),n.createElement("rect",{x:30,width:10,height:10,fill:t[5]}),n.createElement("rect",{x:50,width:10,height:10,fill:t[6]}),n.createElement("rect",{x:70,width:10,height:10,fill:t[7]}),n.createElement("rect",{y:10,width:10,height:10,fill:t[8]}),n.createElement("rect",{y:20,width:10,height:10,fill:t[9]}),n.createElement("rect",{y:30,width:10,height:10,fill:t[10]}),n.createElement("rect",{y:40,width:10,height:10,fill:t[11]}),n.createElement("rect",{y:50,width:10,height:10,fill:t[12]}),n.createElement("rect",{y:60,width:10,height:10,fill:t[13]}),n.createElement("rect",{y:70,width:10,height:10,fill:t[14]}),n.createElement("rect",{x:20,y:10,width:10,height:10,fill:t[15]}),n.createElement("rect",{x:20,y:20,width:10,height:10,fill:t[16]}),n.createElement("rect",{x:20,y:30,width:10,height:10,fill:t[17]}),n.createElement("rect",{x:20,y:40,width:10,height:10,fill:t[18]}),n.createElement("rect",{x:20,y:50,width:10,height:10,fill:t[19]}),n.createElement("rect",{x:20,y:60,width:10,height:10,fill:t[20]}),n.createElement("rect",{x:20,y:70,width:10,height:10,fill:t[21]}),n.createElement("rect",{x:40,y:10,width:10,height:10,fill:t[22]}),n.createElement("rect",{x:40,y:20,width:10,height:10,fill:t[23]}),n.createElement("rect",{x:40,y:30,width:10,height:10,fill:t[24]}),n.createElement("rect",{x:40,y:40,width:10,height:10,fill:t[25]}),n.createElement("rect",{x:40,y:50,width:10,height:10,fill:t[26]}),n.createElement("rect",{x:40,y:60,width:10,height:10,fill:t[27]}),n.createElement("rect",{x:40,y:70,width:10,height:10,fill:t[28]}),n.createElement("rect",{x:60,y:10,width:10,height:10,fill:t[29]}),n.createElement("rect",{x:60,y:20,width:10,height:10,fill:t[30]}),n.createElement("rect",{x:60,y:30,width:10,height:10,fill:t[31]}),n.createElement("rect",{x:60,y:40,width:10,height:10,fill:t[32]}),n.createElement("rect",{x:60,y:50,width:10,height:10,fill:t[33]}),n.createElement("rect",{x:60,y:60,width:10,height:10,fill:t[34]}),n.createElement("rect",{x:60,y:70,width:10,height:10,fill:t[35]}),n.createElement("rect",{x:10,y:10,width:10,height:10,fill:t[36]}),n.createElement("rect",{x:10,y:20,width:10,height:10,fill:t[37]}),n.createElement("rect",{x:10,y:30,width:10,height:10,fill:t[38]}),n.createElement("rect",{x:10,y:40,width:10,height:10,fill:t[39]}),n.createElement("rect",{x:10,y:50,width:10,height:10,fill:t[40]}),n.createElement("rect",{x:10,y:60,width:10,height:10,fill:t[41]}),n.createElement("rect",{x:10,y:70,width:10,height:10,fill:t[42]}),n.createElement("rect",{x:30,y:10,width:10,height:10,fill:t[43]}),n.createElement("rect",{x:30,y:20,width:10,height:10,fill:t[44]}),n.createElement("rect",{x:30,y:30,width:10,height:10,fill:t[45]}),n.createElement("rect",{x:30,y:40,width:10,height:10,fill:t[46]}),n.createElement("rect",{x:30,y:50,width:10,height:10,fill:t[47]}),n.createElement("rect",{x:30,y:60,width:10,height:10,fill:t[48]}),n.createElement("rect",{x:30,y:70,width:10,height:10,fill:t[49]}),n.createElement("rect",{x:50,y:10,width:10,height:10,fill:t[50]}),n.createElement("rect",{x:50,y:20,width:10,height:10,fill:t[51]}),n.createElement("rect",{x:50,y:30,width:10,height:10,fill:t[52]}),n.createElement("rect",{x:50,y:40,width:10,height:10,fill:t[53]}),n.createElement("rect",{x:50,y:50,width:10,height:10,fill:t[54]}),n.createElement("rect",{x:50,y:60,width:10,height:10,fill:t[55]}),n.createElement("rect",{x:50,y:70,width:10,height:10,fill:t[56]}),n.createElement("rect",{x:70,y:10,width:10,height:10,fill:t[57]}),n.createElement("rect",{x:70,y:20,width:10,height:10,fill:t[58]}),n.createElement("rect",{x:70,y:30,width:10,height:10,fill:t[59]}),n.createElement("rect",{x:70,y:40,width:10,height:10,fill:t[60]}),n.createElement("rect",{x:70,y:50,width:10,height:10,fill:t[61]}),n.createElement("rect",{x:70,y:60,width:10,height:10,fill:t[62]}),n.createElement("rect",{x:70,y:70,width:10,height:10,fill:t[63]})))};var w=function(e){var t=function(e,t){var r,l=h(e),i=t&&t.length,a=m(l,t,i),n=f(l,10,1),c=n<5?n+4:n,o=f(l,10,2),u=o<5?o+4:o;return{wrapperColor:a,faceColor:(r=a,"#"===r.slice(0,1)&&(r=r.slice(1)),(299*parseInt(r.substr(0,2),16)+587*parseInt(r.substr(2,2),16)+114*parseInt(r.substr(4,2),16))/1e3>=128?"#000000":"#FFFFFF"),backgroundColor:m(l+13,t,i),wrapperTranslateX:c,wrapperTranslateY:u,wrapperRotate:f(l,360),wrapperScale:1+f(l,3)/10,isMouthOpen:s(l,2),isCircle:s(l,1),eyeSpread:f(l,5),mouthSpread:f(l,3),faceRotate:f(l,10,3),faceTranslateX:c>6?c/2:f(l,8,1),faceTranslateY:u>6?u/2:f(l,7,2)}}(e.name,e.colors),r=n.useId();return n.createElement("svg",{viewBox:"0 0 36 36",fill:"none",role:"img",xmlns:"http://www.w3.org/2000/svg",width:e.size,height:e.size},e.title&&n.createElement("title",null,e.name),n.createElement("mask",{id:r,maskUnits:"userSpaceOnUse",x:0,y:0,width:36,height:36},n.createElement("rect",{width:36,height:36,rx:e.square?void 0:72,fill:"#FFFFFF"})),n.createElement("g",{mask:"url(#".concat(r,")")},n.createElement("rect",{width:36,height:36,fill:t.backgroundColor}),n.createElement("rect",{x:"0",y:"0",width:36,height:36,transform:"translate("+t.wrapperTranslateX+" "+t.wrapperTranslateY+") rotate("+t.wrapperRotate+" 18 18) scale("+t.wrapperScale+")",fill:t.wrapperColor,rx:t.isCircle?36:6}),n.createElement("g",{transform:"translate("+t.faceTranslateX+" "+t.faceTranslateY+") rotate("+t.faceRotate+" 18 18)"},t.isMouthOpen?n.createElement("path",{d:"M15 "+(19+t.mouthSpread)+"c2 1 4 1 6 0",stroke:t.faceColor,fill:"none",strokeLinecap:"round"}):n.createElement("path",{d:"M13,"+(19+t.mouthSpread)+" a1,0.75 0 0,0 10,0",fill:t.faceColor}),n.createElement("rect",{x:14-t.eyeSpread,y:14,width:1.5,height:2,rx:1,stroke:"none",fill:t.faceColor}),n.createElement("rect",{x:20+t.eyeSpread,y:14,width:1.5,height:2,rx:1,stroke:"none",fill:t.faceColor}))))};var E=function(e){var t=function(e,t){var r=h(e),l=t&&t.length;return Array.from({length:4},(function(e,i){return m(r+i,t,l)}))}(e.name,e.colors),r=e.name.replace(/\s/g,""),l=n.useId();return n.createElement("svg",{viewBox:"0 0 80 80",fill:"none",role:"img",xmlns:"http://www.w3.org/2000/svg",width:e.size,height:e.size},e.title&&n.createElement("title",null,e.name),n.createElement("mask",{id:l,maskUnits:"userSpaceOnUse",x:0,y:0,width:80,height:80},n.createElement("rect",{width:80,height:80,rx:e.square?void 0:160,fill:"#FFFFFF"})),n.createElement("g",{mask:"url(#".concat(l,")")},n.createElement("path",{fill:"url(#gradient_paint0_linear_"+r+")",d:"M0 0h80v40H0z"}),n.createElement("path",{fill:"url(#gradient_paint1_linear_"+r+")",d:"M0 40h80v40H0z"})),n.createElement("defs",null,n.createElement("linearGradient",{id:"gradient_paint0_linear_"+r,x1:40,y1:0,x2:40,y2:40,gradientUnits:"userSpaceOnUse"},n.createElement("stop",{stopColor:t[0]}),n.createElement("stop",{offset:1,stopColor:t[1]})),n.createElement("linearGradient",{id:"gradient_paint1_linear_"+r,x1:40,y1:40,x2:40,y2:80,gradientUnits:"userSpaceOnUse"},n.createElement("stop",{stopColor:t[2]}),n.createElement("stop",{offset:1,stopColor:t[3]}))))};var p=function(e){var t=function(e,t){var r=h(e),l=t&&t.length;return Array.from({length:3},(function(e,i){return{color:m(r+i,t,l),translateX:f(r*(i+1),8,1),translateY:f(r*(i+1),8,2),scale:1.2+f(r*(i+1),4)/10,rotate:f(r*(i+1),360,1)}}))}(e.name,e.colors),r=n.useId();return n.createElement("svg",{viewBox:"0 0 80 80",fill:"none",role:"img",xmlns:"http://www.w3.org/2000/svg",width:e.size,height:e.size},e.title&&n.createElement("title",null,e.name),n.createElement("mask",{id:r,maskUnits:"userSpaceOnUse",x:0,y:0,width:80,height:80},n.createElement("rect",{width:80,height:80,rx:e.square?void 0:160,fill:"#FFFFFF"})),n.createElement("g",{mask:"url(#".concat(r,")")},n.createElement("rect",{width:80,height:80,fill:t[0].color}),n.createElement("path",{filter:"url(#prefix__filter0_f)",d:"M32.414 59.35L50.376 70.5H72.5v-71H33.728L26.5 13.381l19.057 27.08L32.414 59.35z",fill:t[1].color,transform:"translate("+t[1].translateX+" "+t[1].translateY+") rotate("+t[1].rotate+" 40 40) scale("+t[2].scale+")"}),n.createElement("path",{filter:"url(#prefix__filter0_f)",style:{mixBlendMode:"overlay"},d:"M22.216 24L0 46.75l14.108 38.129L78 86l-3.081-59.276-22.378 4.005 12.972 20.186-23.35 27.395L22.215 24z",fill:t[2].color,transform:"translate("+t[2].translateX+" "+t[2].translateY+") rotate("+t[2].rotate+" 40 40) scale("+t[2].scale+")"})),n.createElement("defs",null,n.createElement("filter",{id:"prefix__filter0_f",filterUnits:"userSpaceOnUse",colorInterpolationFilters:"sRGB"},n.createElement("feFlood",{floodOpacity:0,result:"BackgroundImageFix"}),n.createElement("feBlend",{in:"SourceGraphic",in2:"BackgroundImageFix",result:"shape"}),n.createElement("feGaussianBlur",{stdDeviation:7,result:"effect1_foregroundBlur"}))))},y=["pixel","bauhaus","ring","beam","sunset","marble"],x={geometric:"beam",abstract:"bauhaus"},v=function(e){var t=e.variant,r=void 0===t?"marble":t,n=e.colors,h=void 0===n?["#92A1C6","#146A7C","#F0AB3D","#C271B4","#C20D90"]:n,o=e.name,s=void 0===o?"Clara Barton":o,f=e.square,m=void 0!==f&&f,v=e.title,b=void 0!==v&&v,F=e.size,O=function(e){for(var t=1;t<arguments.length;t++){var r=null!=arguments[t]?arguments[t]:{};t%2?i(Object(r),!0).forEach((function(t){l(e,t,r[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(r)):i(Object(r)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(r,t))}))}return e}({colors:h,name:s,title:b,size:void 0===F?40:F,square:m},a(e,["variant","colors","name","square","title","size"]));return{pixel:c.a.createElement(g,O),bauhaus:c.a.createElement(u,O),ring:c.a.createElement(d,O),beam:c.a.createElement(w,O),sunset:c.a.createElement(E,O),marble:c.a.createElement(p,O)}[Object.keys(x).includes(r)?x[r]:y.includes(r)?r:"marble"]};t.default=v}])}));
-
-/***/ }),
-
-/***/ "./node_modules/clsx/dist/clsx.m.js":
-/*!******************************************!*\
-  !*** ./node_modules/clsx/dist/clsx.m.js ***!
-  \******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   clsx: () => (/* binding */ clsx),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-function r(e){var t,f,n="";if("string"==typeof e||"number"==typeof e)n+=e;else if("object"==typeof e)if(Array.isArray(e))for(t=0;t<e.length;t++)e[t]&&(f=r(e[t]))&&(n&&(n+=" "),n+=f);else for(t in e)e[t]&&(n&&(n+=" "),n+=t);return n}function clsx(){for(var e,t,f=0,n="";f<arguments.length;)(e=arguments[f++])&&(t=r(e))&&(n&&(n+=" "),n+=t);return n}/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (clsx);
-
-/***/ }),
-
-/***/ "./node_modules/cross-fetch/dist/browser-ponyfill.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/cross-fetch/dist/browser-ponyfill.js ***!
-  \***********************************************************/
-/***/ (function(module, exports) {
-
-var global = typeof self !== 'undefined' ? self : this;
-var __self__ = (function () {
-function F() {
-this.fetch = false;
-this.DOMException = global.DOMException
-}
-F.prototype = global;
-return new F();
-})();
-(function(self) {
-
-var irrelevant = (function (exports) {
-
-  var support = {
-    searchParams: 'URLSearchParams' in self,
-    iterable: 'Symbol' in self && 'iterator' in Symbol,
-    blob:
-      'FileReader' in self &&
-      'Blob' in self &&
-      (function() {
-        try {
-          new Blob();
-          return true
-        } catch (e) {
-          return false
-        }
-      })(),
-    formData: 'FormData' in self,
-    arrayBuffer: 'ArrayBuffer' in self
-  };
-
-  function isDataView(obj) {
-    return obj && DataView.prototype.isPrototypeOf(obj)
-  }
-
-  if (support.arrayBuffer) {
-    var viewClasses = [
-      '[object Int8Array]',
-      '[object Uint8Array]',
-      '[object Uint8ClampedArray]',
-      '[object Int16Array]',
-      '[object Uint16Array]',
-      '[object Int32Array]',
-      '[object Uint32Array]',
-      '[object Float32Array]',
-      '[object Float64Array]'
-    ];
-
-    var isArrayBufferView =
-      ArrayBuffer.isView ||
-      function(obj) {
-        return obj && viewClasses.indexOf(Object.prototype.toString.call(obj)) > -1
-      };
-  }
-
-  function normalizeName(name) {
-    if (typeof name !== 'string') {
-      name = String(name);
-    }
-    if (/[^a-z0-9\-#$%&'*+.^_`|~]/i.test(name)) {
-      throw new TypeError('Invalid character in header field name')
-    }
-    return name.toLowerCase()
-  }
-
-  function normalizeValue(value) {
-    if (typeof value !== 'string') {
-      value = String(value);
-    }
-    return value
-  }
-
-  // Build a destructive iterator for the value list
-  function iteratorFor(items) {
-    var iterator = {
-      next: function() {
-        var value = items.shift();
-        return {done: value === undefined, value: value}
-      }
-    };
-
-    if (support.iterable) {
-      iterator[Symbol.iterator] = function() {
-        return iterator
-      };
-    }
-
-    return iterator
-  }
-
-  function Headers(headers) {
-    this.map = {};
-
-    if (headers instanceof Headers) {
-      headers.forEach(function(value, name) {
-        this.append(name, value);
-      }, this);
-    } else if (Array.isArray(headers)) {
-      headers.forEach(function(header) {
-        this.append(header[0], header[1]);
-      }, this);
-    } else if (headers) {
-      Object.getOwnPropertyNames(headers).forEach(function(name) {
-        this.append(name, headers[name]);
-      }, this);
-    }
-  }
-
-  Headers.prototype.append = function(name, value) {
-    name = normalizeName(name);
-    value = normalizeValue(value);
-    var oldValue = this.map[name];
-    this.map[name] = oldValue ? oldValue + ', ' + value : value;
-  };
-
-  Headers.prototype['delete'] = function(name) {
-    delete this.map[normalizeName(name)];
-  };
-
-  Headers.prototype.get = function(name) {
-    name = normalizeName(name);
-    return this.has(name) ? this.map[name] : null
-  };
-
-  Headers.prototype.has = function(name) {
-    return this.map.hasOwnProperty(normalizeName(name))
-  };
-
-  Headers.prototype.set = function(name, value) {
-    this.map[normalizeName(name)] = normalizeValue(value);
-  };
-
-  Headers.prototype.forEach = function(callback, thisArg) {
-    for (var name in this.map) {
-      if (this.map.hasOwnProperty(name)) {
-        callback.call(thisArg, this.map[name], name, this);
-      }
-    }
-  };
-
-  Headers.prototype.keys = function() {
-    var items = [];
-    this.forEach(function(value, name) {
-      items.push(name);
-    });
-    return iteratorFor(items)
-  };
-
-  Headers.prototype.values = function() {
-    var items = [];
-    this.forEach(function(value) {
-      items.push(value);
-    });
-    return iteratorFor(items)
-  };
-
-  Headers.prototype.entries = function() {
-    var items = [];
-    this.forEach(function(value, name) {
-      items.push([name, value]);
-    });
-    return iteratorFor(items)
-  };
-
-  if (support.iterable) {
-    Headers.prototype[Symbol.iterator] = Headers.prototype.entries;
-  }
-
-  function consumed(body) {
-    if (body.bodyUsed) {
-      return Promise.reject(new TypeError('Already read'))
-    }
-    body.bodyUsed = true;
-  }
-
-  function fileReaderReady(reader) {
-    return new Promise(function(resolve, reject) {
-      reader.onload = function() {
-        resolve(reader.result);
-      };
-      reader.onerror = function() {
-        reject(reader.error);
-      };
-    })
-  }
-
-  function readBlobAsArrayBuffer(blob) {
-    var reader = new FileReader();
-    var promise = fileReaderReady(reader);
-    reader.readAsArrayBuffer(blob);
-    return promise
-  }
-
-  function readBlobAsText(blob) {
-    var reader = new FileReader();
-    var promise = fileReaderReady(reader);
-    reader.readAsText(blob);
-    return promise
-  }
-
-  function readArrayBufferAsText(buf) {
-    var view = new Uint8Array(buf);
-    var chars = new Array(view.length);
-
-    for (var i = 0; i < view.length; i++) {
-      chars[i] = String.fromCharCode(view[i]);
-    }
-    return chars.join('')
-  }
-
-  function bufferClone(buf) {
-    if (buf.slice) {
-      return buf.slice(0)
-    } else {
-      var view = new Uint8Array(buf.byteLength);
-      view.set(new Uint8Array(buf));
-      return view.buffer
-    }
-  }
-
-  function Body() {
-    this.bodyUsed = false;
-
-    this._initBody = function(body) {
-      this._bodyInit = body;
-      if (!body) {
-        this._bodyText = '';
-      } else if (typeof body === 'string') {
-        this._bodyText = body;
-      } else if (support.blob && Blob.prototype.isPrototypeOf(body)) {
-        this._bodyBlob = body;
-      } else if (support.formData && FormData.prototype.isPrototypeOf(body)) {
-        this._bodyFormData = body;
-      } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
-        this._bodyText = body.toString();
-      } else if (support.arrayBuffer && support.blob && isDataView(body)) {
-        this._bodyArrayBuffer = bufferClone(body.buffer);
-        // IE 10-11 can't handle a DataView body.
-        this._bodyInit = new Blob([this._bodyArrayBuffer]);
-      } else if (support.arrayBuffer && (ArrayBuffer.prototype.isPrototypeOf(body) || isArrayBufferView(body))) {
-        this._bodyArrayBuffer = bufferClone(body);
-      } else {
-        this._bodyText = body = Object.prototype.toString.call(body);
-      }
-
-      if (!this.headers.get('content-type')) {
-        if (typeof body === 'string') {
-          this.headers.set('content-type', 'text/plain;charset=UTF-8');
-        } else if (this._bodyBlob && this._bodyBlob.type) {
-          this.headers.set('content-type', this._bodyBlob.type);
-        } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
-          this.headers.set('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
-        }
-      }
-    };
-
-    if (support.blob) {
-      this.blob = function() {
-        var rejected = consumed(this);
-        if (rejected) {
-          return rejected
-        }
-
-        if (this._bodyBlob) {
-          return Promise.resolve(this._bodyBlob)
-        } else if (this._bodyArrayBuffer) {
-          return Promise.resolve(new Blob([this._bodyArrayBuffer]))
-        } else if (this._bodyFormData) {
-          throw new Error('could not read FormData body as blob')
-        } else {
-          return Promise.resolve(new Blob([this._bodyText]))
-        }
-      };
-
-      this.arrayBuffer = function() {
-        if (this._bodyArrayBuffer) {
-          return consumed(this) || Promise.resolve(this._bodyArrayBuffer)
-        } else {
-          return this.blob().then(readBlobAsArrayBuffer)
-        }
-      };
-    }
-
-    this.text = function() {
-      var rejected = consumed(this);
-      if (rejected) {
-        return rejected
-      }
-
-      if (this._bodyBlob) {
-        return readBlobAsText(this._bodyBlob)
-      } else if (this._bodyArrayBuffer) {
-        return Promise.resolve(readArrayBufferAsText(this._bodyArrayBuffer))
-      } else if (this._bodyFormData) {
-        throw new Error('could not read FormData body as text')
-      } else {
-        return Promise.resolve(this._bodyText)
-      }
-    };
-
-    if (support.formData) {
-      this.formData = function() {
-        return this.text().then(decode)
-      };
-    }
-
-    this.json = function() {
-      return this.text().then(JSON.parse)
-    };
-
-    return this
-  }
-
-  // HTTP methods whose capitalization should be normalized
-  var methods = ['DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT'];
-
-  function normalizeMethod(method) {
-    var upcased = method.toUpperCase();
-    return methods.indexOf(upcased) > -1 ? upcased : method
-  }
-
-  function Request(input, options) {
-    options = options || {};
-    var body = options.body;
-
-    if (input instanceof Request) {
-      if (input.bodyUsed) {
-        throw new TypeError('Already read')
-      }
-      this.url = input.url;
-      this.credentials = input.credentials;
-      if (!options.headers) {
-        this.headers = new Headers(input.headers);
-      }
-      this.method = input.method;
-      this.mode = input.mode;
-      this.signal = input.signal;
-      if (!body && input._bodyInit != null) {
-        body = input._bodyInit;
-        input.bodyUsed = true;
-      }
-    } else {
-      this.url = String(input);
-    }
-
-    this.credentials = options.credentials || this.credentials || 'same-origin';
-    if (options.headers || !this.headers) {
-      this.headers = new Headers(options.headers);
-    }
-    this.method = normalizeMethod(options.method || this.method || 'GET');
-    this.mode = options.mode || this.mode || null;
-    this.signal = options.signal || this.signal;
-    this.referrer = null;
-
-    if ((this.method === 'GET' || this.method === 'HEAD') && body) {
-      throw new TypeError('Body not allowed for GET or HEAD requests')
-    }
-    this._initBody(body);
-  }
-
-  Request.prototype.clone = function() {
-    return new Request(this, {body: this._bodyInit})
-  };
-
-  function decode(body) {
-    var form = new FormData();
-    body
-      .trim()
-      .split('&')
-      .forEach(function(bytes) {
-        if (bytes) {
-          var split = bytes.split('=');
-          var name = split.shift().replace(/\+/g, ' ');
-          var value = split.join('=').replace(/\+/g, ' ');
-          form.append(decodeURIComponent(name), decodeURIComponent(value));
-        }
-      });
-    return form
-  }
-
-  function parseHeaders(rawHeaders) {
-    var headers = new Headers();
-    // Replace instances of \r\n and \n followed by at least one space or horizontal tab with a space
-    // https://tools.ietf.org/html/rfc7230#section-3.2
-    var preProcessedHeaders = rawHeaders.replace(/\r?\n[\t ]+/g, ' ');
-    preProcessedHeaders.split(/\r?\n/).forEach(function(line) {
-      var parts = line.split(':');
-      var key = parts.shift().trim();
-      if (key) {
-        var value = parts.join(':').trim();
-        headers.append(key, value);
-      }
-    });
-    return headers
-  }
-
-  Body.call(Request.prototype);
-
-  function Response(bodyInit, options) {
-    if (!options) {
-      options = {};
-    }
-
-    this.type = 'default';
-    this.status = options.status === undefined ? 200 : options.status;
-    this.ok = this.status >= 200 && this.status < 300;
-    this.statusText = 'statusText' in options ? options.statusText : 'OK';
-    this.headers = new Headers(options.headers);
-    this.url = options.url || '';
-    this._initBody(bodyInit);
-  }
-
-  Body.call(Response.prototype);
-
-  Response.prototype.clone = function() {
-    return new Response(this._bodyInit, {
-      status: this.status,
-      statusText: this.statusText,
-      headers: new Headers(this.headers),
-      url: this.url
-    })
-  };
-
-  Response.error = function() {
-    var response = new Response(null, {status: 0, statusText: ''});
-    response.type = 'error';
-    return response
-  };
-
-  var redirectStatuses = [301, 302, 303, 307, 308];
-
-  Response.redirect = function(url, status) {
-    if (redirectStatuses.indexOf(status) === -1) {
-      throw new RangeError('Invalid status code')
-    }
-
-    return new Response(null, {status: status, headers: {location: url}})
-  };
-
-  exports.DOMException = self.DOMException;
-  try {
-    new exports.DOMException();
-  } catch (err) {
-    exports.DOMException = function(message, name) {
-      this.message = message;
-      this.name = name;
-      var error = Error(message);
-      this.stack = error.stack;
-    };
-    exports.DOMException.prototype = Object.create(Error.prototype);
-    exports.DOMException.prototype.constructor = exports.DOMException;
-  }
-
-  function fetch(input, init) {
-    return new Promise(function(resolve, reject) {
-      var request = new Request(input, init);
-
-      if (request.signal && request.signal.aborted) {
-        return reject(new exports.DOMException('Aborted', 'AbortError'))
-      }
-
-      var xhr = new XMLHttpRequest();
-
-      function abortXhr() {
-        xhr.abort();
-      }
-
-      xhr.onload = function() {
-        var options = {
-          status: xhr.status,
-          statusText: xhr.statusText,
-          headers: parseHeaders(xhr.getAllResponseHeaders() || '')
-        };
-        options.url = 'responseURL' in xhr ? xhr.responseURL : options.headers.get('X-Request-URL');
-        var body = 'response' in xhr ? xhr.response : xhr.responseText;
-        resolve(new Response(body, options));
-      };
-
-      xhr.onerror = function() {
-        reject(new TypeError('Network request failed'));
-      };
-
-      xhr.ontimeout = function() {
-        reject(new TypeError('Network request failed'));
-      };
-
-      xhr.onabort = function() {
-        reject(new exports.DOMException('Aborted', 'AbortError'));
-      };
-
-      xhr.open(request.method, request.url, true);
-
-      if (request.credentials === 'include') {
-        xhr.withCredentials = true;
-      } else if (request.credentials === 'omit') {
-        xhr.withCredentials = false;
-      }
-
-      if ('responseType' in xhr && support.blob) {
-        xhr.responseType = 'blob';
-      }
-
-      request.headers.forEach(function(value, name) {
-        xhr.setRequestHeader(name, value);
-      });
-
-      if (request.signal) {
-        request.signal.addEventListener('abort', abortXhr);
-
-        xhr.onreadystatechange = function() {
-          // DONE (success or failure)
-          if (xhr.readyState === 4) {
-            request.signal.removeEventListener('abort', abortXhr);
-          }
-        };
-      }
-
-      xhr.send(typeof request._bodyInit === 'undefined' ? null : request._bodyInit);
-    })
-  }
-
-  fetch.polyfill = true;
-
-  if (!self.fetch) {
-    self.fetch = fetch;
-    self.Headers = Headers;
-    self.Request = Request;
-    self.Response = Response;
-  }
-
-  exports.Headers = Headers;
-  exports.Request = Request;
-  exports.Response = Response;
-  exports.fetch = fetch;
-
-  Object.defineProperty(exports, '__esModule', { value: true });
-
-  return exports;
-
-})({});
-})(__self__);
-__self__.fetch.ponyfill = true;
-// Remove "polyfill" property added by whatwg-fetch
-delete __self__.fetch.polyfill;
-// Choose between native implementation (global) or custom implementation (__self__)
-// var ctx = global.fetch ? global : __self__;
-var ctx = __self__; // this line disable service worker support temporarily
-exports = ctx.fetch // To enable: import fetch from 'cross-fetch'
-exports["default"] = ctx.fetch // For TypeScript consumers without esModuleInterop.
-exports.fetch = ctx.fetch // To enable: import {fetch} from 'cross-fetch'
-exports.Headers = ctx.Headers
-exports.Request = ctx.Request
-exports.Response = ctx.Response
-module.exports = exports
-
 
 /***/ }),
 
@@ -67094,6 +66914,22 @@ function _setPrototypeOf(o, p) {
   };
   return _setPrototypeOf(o, p);
 }
+
+/***/ }),
+
+/***/ "./node_modules/clsx/dist/clsx.mjs":
+/*!*****************************************!*\
+  !*** ./node_modules/clsx/dist/clsx.mjs ***!
+  \*****************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   clsx: () => (/* binding */ clsx),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function r(e){var t,f,n="";if("string"==typeof e||"number"==typeof e)n+=e;else if("object"==typeof e)if(Array.isArray(e))for(t=0;t<e.length;t++)e[t]&&(f=r(e[t]))&&(n&&(n+=" "),n+=f);else for(t in e)e[t]&&(n&&(n+=" "),n+=t);return n}function clsx(){for(var e,t,f=0,n="";f<arguments.length;)(e=arguments[f++])&&(t=r(e))&&(n&&(n+=" "),n+=t);return n}/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (clsx);
 
 /***/ }),
 

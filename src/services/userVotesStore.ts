@@ -1,4 +1,5 @@
 import { VoteData } from "../components/ReviewCard";
+import { onAuthStateChange } from "../hooks/useSupabaseSession";
 import { supabaseUrl, supabaseKey, supabaseClient } from "./supabaseClient";
 
 export interface UserVotesStore {
@@ -44,7 +45,7 @@ if (typeof window !== "undefined") {
   window.addEventListener("pagehide", syncVotes);
 }
 
-supabaseClient.auth.onAuthStateChange((event) => {
+onAuthStateChange((event) => {
   if (event == "SIGNED_OUT") {
     syncVotes();
   }

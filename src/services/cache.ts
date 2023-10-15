@@ -7,6 +7,7 @@ import {
 import { LocationData } from "../components/LocationCard";
 import { ReviewData } from "../components/ReviewCard";
 import { supabaseClient } from "./supabaseClient";
+import { onAuthStateChange } from "../hooks/useSupabaseSession";
 
 interface Cache {
   campus: { [id: number]: LocationData[] };
@@ -134,7 +135,7 @@ export class InvalidCacheTypeError extends Error {
   }
 }
 
-supabaseClient.auth.onAuthStateChange((event) => {
+onAuthStateChange((event) => {
   if (event === "SIGNED_OUT" || event === "SIGNED_IN") {
     clearUserSpecificData();
   }

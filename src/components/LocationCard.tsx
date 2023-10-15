@@ -1,6 +1,6 @@
-import Button from "@mui/base/Button";
 import { Rating, useMediaQuery } from "@mui/material";
 import React from "react";
+import { Button } from "@mui/base";
 
 export interface LocationData {
   type: "location";

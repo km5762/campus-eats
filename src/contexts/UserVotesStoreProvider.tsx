@@ -5,6 +5,7 @@ import {
   supabaseUrl,
 } from "../services/supabaseClient";
 import { useAuth } from "./AuthProvider";
+import { onAuthStateChange } from "../hooks/useSupabaseSession";
 
 export interface UserVotesStore {
   [key: number]: boolean;
@@ -73,7 +74,7 @@ export default function UserVotesStoreProvider({
     window.addEventListener("pagehide", syncVotes);
     const {
       data: { subscription },
-    } = supabaseClient.auth.onAuthStateChange((event) => {
+    } = onAuthStateChange((event) => {
       if (event === "SIGNED_OUT") {
         syncVotes();
         clearVotes();
@@ -85,10 +86,6 @@ export default function UserVotesStoreProvider({
       subscription.unsubscribe();
     };
   }, [userVotesStore]);
-
-  useEffect(() => {
-    console.log(userVotesStore);
-  });
 
   return (
     <UserVotesStoreContext.Provider value={{ userVotesStore, addVote }}>
