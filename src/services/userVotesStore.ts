@@ -27,7 +27,7 @@ function syncVotes() {
       sqlRepresentation.push({ review_id, value });
     }
 
-    fetch(`${supabaseUrl}/rest/v1/vote`, {
+    fetch(`${supabaseUrl}/rest/v1/rpc/upsert_votes`, {
       method: "POST",
       keepalive: true,
       headers: {
@@ -36,7 +36,7 @@ function syncVotes() {
         apikey: supabaseKey,
         Prefer: "resolution=merge-duplicates",
       },
-      body: JSON.stringify(sqlRepresentation),
+      body: JSON.stringify({ p_votes: sqlRepresentation }),
     });
   }
 }
