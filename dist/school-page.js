@@ -31007,7 +31007,7 @@ function UserVotesStoreProvider(_ref) {
     setUserVotesStore(function (prevVotes) {
       return _objectSpread(_objectSpread({}, prevVotes), {}, _defineProperty({}, reviewID, value));
     });
-    console.log(userVotesStore);
+    console.log(_objectSpread(_objectSpread({}, userVotesStore), {}, _defineProperty({}, reviewID, value)));
   }
   function syncVotes() {
     var reviewIDs = Object.keys(userVotesStore);
@@ -31022,16 +31022,17 @@ function UserVotesStoreProvider(_ref) {
           value: _value
         });
       }
-      fetch("".concat(_services_supabaseClient__WEBPACK_IMPORTED_MODULE_1__.supabaseUrl, "/rest/v1/vote"), {
+      fetch("".concat(_services_supabaseClient__WEBPACK_IMPORTED_MODULE_1__.supabaseUrl, "/rest/v1/rpc/upsert_votes"), {
         method: "POST",
         keepalive: true,
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer ".concat(jwt),
-          apikey: _services_supabaseClient__WEBPACK_IMPORTED_MODULE_1__.supabaseKey,
-          Prefer: "resolution=merge-duplicates"
+          apikey: _services_supabaseClient__WEBPACK_IMPORTED_MODULE_1__.supabaseKey
         },
-        body: JSON.stringify(sqlRepresentation)
+        body: JSON.stringify({
+          p_votes: sqlRepresentation
+        })
       });
       clearVotes();
     }

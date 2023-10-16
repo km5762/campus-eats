@@ -40,7 +40,7 @@ export default function UserVotesStoreProvider({
 
   function addVote(reviewID: number, value: boolean | null) {
     setUserVotesStore((prevVotes) => ({ ...prevVotes, [reviewID]: value }));
-    console.log(userVotesStore);
+    console.log({ ...userVotesStore, [reviewID]: value });
   }
 
   function syncVotes() {
@@ -52,16 +52,15 @@ export default function UserVotesStoreProvider({
         sqlRepresentation.push({ review_id, value });
       }
 
-      fetch(`${supabaseUrl}/rest/v1/vote`, {
+      fetch(`${supabaseUrl}/rest/v1/rpc/upsert_votes`, {
         method: "POST",
         keepalive: true,
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${jwt}`,
           apikey: supabaseKey,
-          Prefer: "resolution=merge-duplicates",
         },
-        body: JSON.stringify(sqlRepresentation),
+        body: JSON.stringify({ p_votes: sqlRepresentation }),
       });
       clearVotes();
     }
