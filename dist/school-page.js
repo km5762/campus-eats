@@ -28929,7 +28929,8 @@ function AddReviewForm(_ref) {
                 likes: 0,
                 dislikes: 0,
                 username: username,
-                createdAt: new Date()
+                createdAt: new Date(),
+                usersVote: null
               };
               cacheQuery = "dish.".concat(dishID);
               (0,_services_cache__WEBPACK_IMPORTED_MODULE_5__.appendCacheEntry)(cacheQuery, newReviewData);
@@ -28984,7 +28985,7 @@ function AddReviewForm(_ref) {
     style: {
       color: "red"
     }
-  }, "Success!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], null, "Your review has been posted.")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], {
+  }, error.header), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], null, error.message)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], {
     variant: "h6",
     style: {
       color: "var(--brand)"

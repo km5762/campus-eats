@@ -67,6 +67,7 @@ export default function AddReviewForm({
         dislikes: 0,
         username: username,
         createdAt: new Date(),
+        usersVote: null,
       };
 
       const cacheQuery: CacheQuery = `dish.${dishID}`;
@@ -121,9 +122,9 @@ export default function AddReviewForm({
                 {error ? (
                   <>
                     <Typography variant="h6" style={{ color: "red" }}>
-                      Success!
+                      {error.header}
                     </Typography>
-                    <Typography>Your review has been posted.</Typography>
+                    <Typography>{error.message}</Typography>
                   </>
                 ) : (
                   <>
