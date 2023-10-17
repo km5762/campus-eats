@@ -29695,7 +29695,7 @@ function LocationCard(_ref) {
     className: "rating-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
     className: "decimal-value"
-  }, rating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, Math.round(rating * 100) / 100), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
     name: "read-only",
     value: notStacked ? 1 : rating,
     max: notStacked ? 1 : 5,

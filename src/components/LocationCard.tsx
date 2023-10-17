@@ -38,7 +38,7 @@ export default function LocationCard({
     <div className="location">
       <span className="name">{name}</span>
       <div className="rating-container">
-        <span className="decimal-value">{rating}</span>
+        <span className="decimal-value">{Math.round(rating * 100) / 100}</span>
         <Rating
           name="read-only"
           value={notStacked ? 1 : rating}
