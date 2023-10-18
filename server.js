@@ -527,8 +527,7 @@ function AddDishForm(_ref) {
     min: "0.01",
     id: "dish-price-input",
     step: "0.01",
-    name: "dish-price",
-    required: true
+    name: "dish-price"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("fieldset", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("legend", null, "Availability"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "checkbox",
     id: "availability-breakfast-input",
@@ -1401,7 +1400,7 @@ function DishCard(_ref) {
     }) : undefined
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "bottom-half"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "$".concat(price)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, formatAvailability())));
+  }, price && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "$".concat(price)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, formatAvailability())));
 }
 
 /***/ }),
