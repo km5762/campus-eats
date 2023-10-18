@@ -107,7 +107,7 @@ export default function DishCard({
         />
       </div>
       <div className="bottom-half">
-        <h2>{`$${price}`}</h2>
+        {price && <h2>{`$${price}`}</h2>}
         <h3>{formatAvailability()}</h3>
       </div>
     </div>
