@@ -25,7 +25,6 @@ export default function AddDishForm({ loading }: { loading: boolean }) {
             id="dish-price-input"
             step="0.01"
             name="dish-price"
-            required
           />
         </div>
         <fieldset>
