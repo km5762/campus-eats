@@ -2,7 +2,7 @@
 
 Welcome to **Campus Eats**, the ultimate platform for rating and reviewing college dining options! Whether you're a student, faculty, or visitor, this website is your go-to resource for finding and sharing information about the best places to eat on campus.
 
-Visit Campus Eats: [Campus Eats Website](https://campus-eats-production.up.railway.app)
+Visit Campus Eats: [Campus Eats Website](https://campus-eats.onrender.com/)
 
 ## Table of Contents
 
@@ -60,7 +60,7 @@ Campus Eats is built using various technologies and tools to provide a seamless 
 - **Database**: PostgreSQL
 - **Image Storage**: Backblaze B2
 - **UI Framework**: Material UI
-- **Deployment**: [Railway](https://railway.app/)
+- **Deployment**: [Render](https://render.com/)
 
 ## How to Contribute
 
