@@ -1,92 +1,89 @@
 # Campus Eats
 
-Welcome to Campus Eats, the ultimate platform for rating and commenting on college dining options! Whether you're a student, faculty, or visitor, this website is your go-to resource for finding and sharing information about the best places to eat on campus.
+Welcome to **Campus Eats**, the ultimate platform for rating and reviewing college dining options! Whether you're a student, faculty, or visitor, this website is your go-to resource for finding and sharing information about the best places to eat on campus.
+
+Visit Campus Eats: [Campus Eats Website](https://campus-eats-production.up.railway.app)
 
 ## Table of Contents
 
-1. [Introduction](#introduction)
-2. [Features](#features)
-3. [Getting Started](#getting-started)
-4. [Usage](#usage)
-5. [Contributing](#contributing)
-6. [License](#license)
-
-## Introduction
-
-Campus Eats is designed to help the college community discover, evaluate, and share their experiences with on-campus dining options. It's a place where users can provide ratings, leave comments, and upload images to help others make informed decisions about where to grab a meal.
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Technologies Used](#technologies-used)
+- [How to Contribute](#how-to-contribute)
+- [License](#license)
 
 ## Features
 
-### Authentication
+Campus Eats offers a wide range of features to enhance your dining experience:
 
-- **User Registration:** Create a new account with a unique username and password.
-- **User Login:** Securely log in to your account with your credentials.
+- **Authentication**: Securely sign in to your account to make the most out of Campus Eats, including submitting reviews, upvoting/downvoting, and more.
 
-### Dining Options
+- **Image Uploading/Retrieval**: Add mouthwatering images of your favorite dishes, and view images uploaded by others to get a visual sense of what's on the menu.
 
-- **Add New Dining Options:** Users can submit new dining options with details like name, location, and category.
-- **View Dining Details:** Check out the details of each dining option, including its ratings and comments.
+- **Vote and Scoring System**: Influence the community by upvoting and downvoting reviews, and see the average rating of dining locations, dishes, and campuses.
 
-### Ratings and Comments
+- **Mobile Responsive**: Enjoy Campus Eats on any device, from your smartphone to your desktop.
 
-- **Rate Dining Options:** Users can rate dining options on a scale of 1 to 5 stars.
-- **Leave Comments:** Share your thoughts and experiences by leaving comments on dining options.
-- **Upvotes and Downvotes:** Users can upvote or downvote comments, helping to surface the most helpful and relevant content.
+- **Accessibility**: We're committed to making our platform accessible to all users, regardless of abilities or disabilities.
 
-### Image Uploading and Retrieval
+- **Search Features**: Easily find dining options by searching for your campus.
 
-- **Upload Images:** Share your culinary experiences by uploading images of your meals at each dining option.
-- **View Images:** Explore the photo gallery associated with each dining option to get a visual feel for the place.
+- **Hierarchical Organization**: Our content is organized hierarchically to make navigation a breeze: Campus > Location > Dish > Review.
 
 ## Getting Started
 
-To get started with Campus Eats, follow these steps:
+### Prerequisites
 
-1. Clone the repository to your local machine.
+Before you dive into Campus Eats, make sure you have the following:
 
-   ```shell
-   git clone https://github.com/yourusername/campus-eats.git
-   ```
+- A modern web browser (Chrome, Firefox, Safari, or Edge recommended)
+- An internet connection
 
-2. Install the necessary dependencies. Make sure you have Node.js and npm installed.
+### Usage
 
-   ```shell
-   cd campus-eats
-   npm install
-   ```
+1. Visit the Campus Eats website at [https://campus-eats-production.up.railway.app](https://campus-eats-production.up.railway.app).
 
-3. Configure your database. You can use PostgreSQL, MySQL, or any other relational database system. Update the database connection information in the configuration file.
+2. Sign in to your account or create a new one to start exploring and reviewing campus dining options.
 
-4. Set up environment variables. Create a `.env` file and specify the required environment variables, such as database connection details, session secrets, and API keys.
+3. Browse through the campus hierarchy, search for specific items, or view reviews.
 
-5. Run the application.
+4. Submit your own reviews, including ratings and images, to share your dining experiences.
 
-   ```shell
-   npm start
-   ```
+5. Interact with the community by upvoting/downvoting reviews that you find helpful.
 
-6. Open your web browser and access the website at `http://localhost:3000`.
+## Technologies Used
 
-## Usage
+Campus Eats is built using various technologies and tools to provide a seamless experience:
 
-1. Register or log in to your account.
-2. Browse the list of available dining options on your campus.
-3. Click on a dining option to view more details, ratings, and comments.
-4. Leave your own ratings and comments, and upload images to share your experiences.
-5. Upvote or downvote comments to help the community find the most valuable information.
-6. Add new dining options if you discover a hidden gem or if there are new places on campus.
+- **Frontend**: HTML, CSS, JavaScript, TypeScript, React.js
+- **Backend**: Node.js, Express.js
+- **Database**: PostgreSQL
+- **Image Storage**: Backblaze B2
+- **UI Framework**: Material UI
+- **Deployment**: [Railway](https://railway.app/)
 
-## Contributing
+## How to Contribute
 
-We welcome contributions to Campus Eats! If you'd like to enhance the website or fix bugs, please follow these guidelines:
+We welcome contributions from the community to make Campus Eats even better. Here's how you can get involved:
 
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Make your changes and test thoroughly.
-4. Submit a pull request with a detailed description of your changes.
+1. Fork the repository to your own GitHub account.
+
+2. Clone the project to your local machine.
+
+3. Create a new branch for your feature or bug fix: `git checkout -b feature/your-feature-name`.
+
+4. Make your changes and test them thoroughly.
+
+5. Commit your changes with clear and concise messages: `git commit -m 'Add feature: your-feature-name'`.
+
+6. Push your branch to your GitHub repository: `git push origin feature/your-feature-name`.
+
+7. Create a pull request to the `main` branch of the original repository.
+
+We'll review your pull request and merge it if it aligns with our project's goals.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE). You are free to use, modify, and distribute the code as long as you adhere to the terms and conditions specified in the license.
+This project is licensed under the [MIT License](LICENSE) - feel free to use it, modify it, and distribute it as you see fit, while giving appropriate credit to the Campus Eats team.
 
-Thank you for using Campus Eats! We hope this platform enhances your dining experience on campus and helps build a thriving community around good food. Enjoy exploring and sharing your culinary adventures!
+Happy dining and reviewing with Campus Eats! 🍔🍕🍱
