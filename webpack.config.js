@@ -70,7 +70,7 @@ const configPublic = Object.assign({}, config, {
 const configServer = Object.assign({}, config, {
   name: "configServer",
   target: "node",
-  entry: "./server.jsx",
+  entry: "./api/server.jsx",
   output: {
     filename: "server.js",
     path: path.resolve(__dirname),

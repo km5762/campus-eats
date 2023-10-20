@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-const SchoolPage = require("./src/components/SchoolPage").default;
+const SchoolPage = require("../src/components/SchoolPage").default;
 const React = require("react");
 const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
 const { renderToString } = require("react-dom/server");
@@ -248,3 +248,5 @@ function generateKey(userID, extension) {
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+module.exports = app;
