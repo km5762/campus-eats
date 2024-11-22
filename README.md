@@ -2,7 +2,7 @@
 
 Welcome to **Campus Eats**, the ultimate platform for rating and reviewing college dining options! Whether you're a student, faculty, or visitor, this website is your go-to resource for finding and sharing information about the best places to eat on campus.
 
-Visit Campus Eats: [Campus Eats Website](http://campus-eats.online/)
+Visit Campus Eats: [Campus Eats Website](http://campus-eats.site/)
 
 ## Table of Contents
 
@@ -41,7 +41,7 @@ Before you dive into Campus Eats, make sure you have the following:
 
 ### Usage
 
-1. Visit the Campus Eats website at [http://campus-eats.online/](http://campus-eats.online/).
+1. Visit the Campus Eats website at [http://campus-eats.site/](http://campus-eats.site/).
 
 2. Sign in to your account or create a new one to start exploring and reviewing campus dining options.
 
